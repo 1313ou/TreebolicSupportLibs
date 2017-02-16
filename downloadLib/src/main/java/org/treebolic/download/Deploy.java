@@ -1,0 +1,307 @@
+package org.treebolic.download;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+
+import android.util.Log;
+
+/**
+ * Deployer
+ *
+ * @author Bernard Bou
+ */
+public class Deploy
+{
+	/**
+	 * Log tag
+	 */
+	private static final String TAG = "Deploy"; //$NON-NLS-1$
+
+	/**
+	 * Copy stream to file
+	 * 
+	 * @param in
+	 *            input stream
+	 * @param toFile
+	 *            dest file
+	 * @throws IOException
+	 */
+	public static void copy(final InputStream in, final File toFile) throws IOException
+	{
+		FileOutputStream out = null;
+		try
+		{
+			out = new FileOutputStream(toFile);
+
+			final byte[] buffer = new byte[1024];
+			int read;
+			while ((read = in.read(buffer)) != -1)
+			{
+				out.write(buffer, 0, read);
+			}
+		}
+		finally
+		{
+			if (out != null)
+				out.close();
+		}
+	}
+
+	/**
+	 * Expand archive stream to dir
+	 * 
+	 * @param in
+	 *            input stream
+	 * @param toDir
+	 *            to directory
+	 * @param asTarGz
+	 *            is tar gz type
+	 * @throws IOException
+	 */
+	public static void expand(final InputStream in, final File toDir, boolean asTarGz) throws IOException
+	{
+		if (asTarGz)
+		{
+			extractTarGz(in, toDir, true, ".*", null); //$NON-NLS-1$
+			return;
+		}
+		expandZip(in, toDir, true, ".*", "META-INF.*"); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	/**
+	 * Expand zip stream to dir
+	 *
+	 * @param in
+	 *            zip file input stream
+	 * @param destDir
+	 *            destination dir
+	 * @param include
+	 *            include regexp filter
+	 * @param exclude
+	 *            exclude regexp filter
+	 * @return dest dir
+	 */
+	static public File expandZip(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude) throws IOException
+	{
+		// patterns
+		final Pattern includePattern = include == null ? null : Pattern.compile(include);
+		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);
+
+		// create output directory is not exists
+		destDir.mkdir();
+
+		// buffer
+		final byte[] buffer = new byte[1024];
+
+		// read and expand entries
+		ZipInputStream zipIn = null;
+		try
+		{
+			zipIn = new ZipInputStream(in);
+
+			// loop through entries
+			for (ZipEntry zipEntry = zipIn.getNextEntry(); zipEntry != null; zipEntry = zipIn.getNextEntry())
+			{
+				String entryName = zipEntry.getName();
+				Log.d(Deploy.TAG, "Entry " + entryName); //$NON-NLS-1$
+
+				// include
+				if (includePattern != null)
+				{
+					if (!includePattern.matcher(entryName).matches())
+					{
+						zipIn.closeEntry();
+						continue;
+					}
+				}
+
+				// exclude
+				if (excludePattern != null)
+				{
+					if (excludePattern.matcher(entryName).matches())
+					{
+						zipIn.closeEntry();
+						continue;
+					}
+				}
+
+				// expand this entry
+				if (zipEntry.isDirectory())
+				{
+					// create dir if we don't flatten
+					if (!flat)
+					{
+						new File(destDir, entryName).mkdirs();
+					}
+				}
+				else
+				{
+					// flatten zip hierarchy
+					if (flat)
+					{
+						final int index = entryName.lastIndexOf('/');
+						if (index != -1)
+						{
+							entryName = entryName.substring(index + 1);
+						}
+					}
+
+					// create destination
+					final File destFile = new File(destDir, entryName);
+					Log.d(Deploy.TAG, "Unzip to " + destFile.getCanonicalPath()); //$NON-NLS-1$
+					destFile.createNewFile();
+
+					// copy
+					BufferedOutputStream bout = null;
+					try
+					{
+						bout = new BufferedOutputStream(new FileOutputStream(destFile));
+						for (int len = zipIn.read(buffer); len != -1; len = zipIn.read(buffer))
+						{
+							bout.write(buffer, 0, len);
+						}
+					}
+					finally
+					{
+						if (bout != null)
+						{
+							bout.close();
+						}
+					}
+				}
+			}
+			zipIn.closeEntry();
+		}
+		finally
+		{
+			if (zipIn != null)
+				zipIn.close();
+		}
+
+		return destDir;
+	}
+
+	/**
+	 * Extract tar.gz stream
+	 *
+	 * @param in
+	 *            input stream
+	 * @param destDir
+	 *            destination dir
+	 * @param flat
+	 *            flatten
+	 * @param include
+	 *            include regexp filter
+	 * @param exclude
+	 *            exclude regexp filter
+	 * @return dest dir
+	 * @throws IOException
+	 */
+	static public File extractTarGz(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude)
+			throws IOException
+	{
+		final Pattern includePattern = include == null ? null : Pattern.compile(include);
+		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);
+
+		// create output directory is not exists
+		destDir.mkdirs();
+
+		// buffer
+		final byte[] buffer = new byte[1024];
+
+		// input stream
+		TarArchiveInputStream tarIn = null;
+		try
+		{
+			tarIn = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(in)));
+
+			// loop through entries
+			for (TarArchiveEntry tarEntry = tarIn.getNextTarEntry(); tarEntry != null; tarEntry = tarIn.getNextTarEntry())
+			{
+				String entryName = tarEntry.getName();
+
+				// include
+				if (includePattern != null)
+				{
+					if (!includePattern.matcher(entryName).matches())
+					{
+						continue;
+					}
+				}
+
+				// exclude
+				if (excludePattern != null)
+				{
+					if (excludePattern.matcher(entryName).matches())
+					{
+						continue;
+					}
+				}
+
+				// expand this entry
+				if (tarEntry.isDirectory())
+				{
+					// create dir if we don't flatten
+					if (!flat)
+					{
+						new File(destDir, entryName).mkdirs();
+					}
+				}
+				else
+				{
+					// flatten tar hierarchy
+					if (flat)
+					{
+						final int index = entryName.lastIndexOf('/');
+						if (index != -1)
+						{
+							entryName = entryName.substring(index + 1);
+						}
+					}
+
+					// create destination file with same name as entry
+					final File destFile = new File(destDir, entryName);
+					Log.d(Deploy.TAG, "Untar to " + destFile.getCanonicalPath()); //$NON-NLS-1$
+					destFile.createNewFile();
+
+					// copy
+					BufferedOutputStream bout = null;
+					try
+					{
+						bout = new BufferedOutputStream(new FileOutputStream(destFile));
+						for (int len = tarIn.read(buffer); len != -1; len = tarIn.read(buffer))
+						{
+							bout.write(buffer, 0, len);
+						}
+					}
+					finally
+					{
+						if (bout != null)
+						{
+							bout.close();
+						}
+					}
+				}
+			}
+		}
+		finally
+		{
+			if (tarIn != null)
+			{
+				tarIn.close();
+			}
+		}
+		return destDir;
+	}
+}

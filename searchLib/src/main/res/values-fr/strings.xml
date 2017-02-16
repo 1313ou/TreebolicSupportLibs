@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- menu -->
+    <string name="title_search">Recherche</string>
+    <string name="title_search_run">Lancer recherche</string>
+    <string name="title_search_reset">Réinitialiser recherche</string>
+    <string name="title_search_settings">Paramètres de recherche</string>
+
+    <!-- settings -->
+    <string name="search_title">Paramètre de recherche</string>
+    <string name="item_description">Élement</string>
+
+    <!-- wheel1 -->
+    <string-array name="search_scope_labels">
+        <item>étiquette</item>
+        <item>id</item>
+        <item>contenu</item>
+        <item>lien</item>
+        <item>source</item>
+    </string-array>
+
+    <!-- wheel2 -->
+    <string-array name="search_mode_labels">
+        <item>égale</item>
+        <item>commence par</item>
+        <item>inclut</item>
+    </string-array>
+    <string-array name="search_source_labels">
+        <item>est</item>
+    </string-array>
+
+</resources>

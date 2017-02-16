@@ -1,0 +1,25 @@
+<resources>
+	
+    <string name="download">Download</string>
+
+    <!-- button -->
+    <string name="show">Show</string>
+
+    <!-- hint -->
+    <string name="src">[source]</string>
+    <string name="target">[target]</string>
+    <string name="expandArchive">expand archive</string>
+    
+    <!-- ok/error -->
+    <string name="ok_data">Data is available</string>
+    <string name="fail_data">Data is unavailable</string>
+    <string name="error_null_download_url">Null download URL (see Settings)</string>
+    
+    <!-- status -->
+    <string name="status_download_fail">Download failed!</string>
+    <string name="status_download_paused">Download paused!</string>
+    <string name="status_download_pending">Download pending!</string>
+    <string name="status_download_running">Download in progress!</string>
+    <string name="status_download_successful">Download complete!</string>
+    
+</resources>

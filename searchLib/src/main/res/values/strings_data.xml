@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- scope -->
+    <integer name="search_scope_default">0</integer>
+
+    <string-array name="search_scopes" translatable="false">
+        <item>LABEL</item>
+        <item>ID</item>
+        <item>CONTENT</item>
+        <item>LINK</item>
+        <item>SOURCE</item>
+    </string-array>
+
+    <integer name="search_scope_source_index">4</integer>
+
+    <!-- mode -->
+    <integer name="search_mode_default">1</integer>
+
+    <string-array name="search_modes" translatable="false">
+        <item>EQUALS</item>
+        <item>STARTSWITH</item>
+        <item>INCLUDES</item>
+    </string-array>
+    <string-array name="search_sources" translatable="false">
+        <item>IS</item>
+    </string-array>
+
+</resources>

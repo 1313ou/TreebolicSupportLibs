@@ -1,0 +1,139 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TableLayout style="@style/tips" >
+
+        <TableRow style="@style/tip" >
+
+            <ImageView
+                style="@style/tipHeader"
+                android:layout_span="3"
+                android:contentDescription="@string/tip_info"
+                android:src="@drawable/ic_tip_info" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_press" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_press"
+                android:src="@drawable/ic_tip_press" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_press" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_doubletap" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_doubletap"
+                android:src="@drawable/ic_tip_doubletap" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_doubletap" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_drag" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_drag"
+                android:src="@drawable/ic_tip_drag" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_drag" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_pinch_open_ne_sw" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_pinch_open_ne_sw"
+                android:src="@drawable/ic_tip_pinch_open_ne_sw" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_pinch_open_ne_sw" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_pinch_close_ne_sw" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_pinch_close_ne_sw"
+                android:src="@drawable/ic_tip_pinch_close_ne_sw" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_pinch_close_ne_sw" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_pinch_open_nw_se" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_pinch_open_nw_se"
+                android:src="@drawable/ic_tip_pinch_open_nw_se" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_pinch_open_nw_se" />
+        </TableRow>
+
+        <TableRow style="@style/tip" >
+
+            <TextView
+                style="@style/tipGesture"
+                android:text="@string/tip_gesture_pinch_close_nw_se" />
+
+            <ImageView
+                style="@style/tipImage"
+                android:contentDescription="@string/tip_gesture_pinch_close_nw_se"
+                android:src="@drawable/ic_tip_pinch_close_nw_se" />
+
+            <TextView
+                style="@style/tipEffect"
+                android:text="@string/tip_effect_pinch_close_nw_se" />
+        </TableRow>
+
+        <TableRow style="@style/tipButton" >
+
+            <ImageButton
+                android:id="@+id/tip_dismiss"
+                style="@style/tipButton"
+                android:contentDescription="@string/tip_dismiss"
+                android:src="@drawable/ic_action_close" />
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

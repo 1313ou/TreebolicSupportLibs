@@ -1,0 +1,83 @@
+package org.treebolic.colors;
+
+import org.treebolic.colors.view.ColorPanelView;
+import org.treebolic.colors.view.ColorPickerView;
+import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.graphics.PixelFormat;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+@SuppressLint("Registered")
+public class ColorPickerActivity extends Activity implements OnColorChangedListener, View.OnClickListener
+{
+	private ColorPickerView mColorPickerView;
+	private ColorPanelView mOldColorPanelView;
+	private ColorPanelView mNewColorPanelView;
+
+	private Button mOkButton;
+	private Button mCancelButton;
+
+	@Override
+	protected void onCreate(final Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		getWindow().setFormat(PixelFormat.RGBA_8888);
+
+		setContentView(R.layout.activity_color_picker);
+
+		init();
+	}
+
+	private void init()
+	{
+		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		final int initialColor = prefs.getInt("color_3", 0xFF000000); //$NON-NLS-1$
+
+		this.mColorPickerView = (ColorPickerView) findViewById(R.id.color_picker_view);
+		this.mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
+		this.mNewColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_new);
+
+		this.mOkButton = (Button) findViewById(R.id.okButton);
+		this.mCancelButton = (Button) findViewById(R.id.cancelButton);
+
+		((LinearLayout) this.mOldColorPanelView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0,
+				Math.round(this.mColorPickerView.getDrawingOffset()), 0);
+
+		this.mColorPickerView.setOnColorChangedListener(this);
+		this.mColorPickerView.setColor(initialColor, true);
+		this.mOldColorPanelView.setColor(initialColor);
+
+		this.mOkButton.setOnClickListener(this);
+		this.mCancelButton.setOnClickListener(this);
+
+	}
+
+	@Override
+	public void onColorChanged(final int newColor)
+	{
+		this.mNewColorPanelView.setColor(this.mColorPickerView.getColor());
+	}
+
+	@Override
+	public void onClick(final View v)
+	{
+		final int id = v.getId();
+		if (id == R.id.okButton)
+		{
+			final SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
+			edit.putInt("color_3", this.mColorPickerView.getColor()); //$NON-NLS-1$
+			edit.commit();
+			finish();
+		}
+		else if (id == R.id.cancelButton)
+		{
+			finish();
+		}
+	}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_tips">Tips</string>
+    <string name="tip_dismiss">Dismiss</string>
+    <string name="tip_info">Tips</string>
+    <!-- tips -->
+    <string name="tip_gesture_press">Press</string>
+    <string name="tip_effect_press">to select node</string>
+    <string name="tip_gesture_doubletap">Double-tap</string>
+    <string name="tip_effect_doubletap">to pop up\nnode\'s context menu</string>
+    <string name="tip_gesture_drag">Drag</string>
+    <string name="tip_effect_drag">to move node\nin hyperbolic space</string>
+    <string name="tip_gesture_pinch_open_ne_sw">Pinch\nopen\nNE-SW</string>
+    <string name="tip_effect_pinch_open_ne_sw">to scale up\nlabels and images</string>
+    <string name="tip_gesture_pinch_close_ne_sw">Pinch\nclose\nNE-SW</string>
+    <string name="tip_effect_pinch_close_ne_sw">to scale down\nlabels and images</string>
+    <string name="tip_gesture_pinch_open_nw_se">Pinch\nopen\nNW-SE</string>
+    <string name="tip_effect_pinch_open_nw_se">to zoom in\nlayout</string>
+    <string name="tip_gesture_pinch_close_nw_se">Pinch\nclose\nNW-SE</string>
+    <string name="tip_effect_pinch_close_nw_se">to zoom out\nlayout</string>
+
+</resources>
