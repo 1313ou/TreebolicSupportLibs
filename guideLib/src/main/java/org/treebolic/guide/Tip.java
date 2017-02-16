@@ -13,8 +13,7 @@ public class Tip extends DialogFragment
 {
 	public static Tip newInstance()
 	{
-		final Tip frag = new Tip();
-		return frag;
+		return new Tip();
 	}
 
 	@SuppressLint("InflateParams")
@@ -25,7 +24,11 @@ public class Tip extends DialogFragment
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.dialog_tips);
 
-		dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded);
+		final Window window = dialog.getWindow();
+		if (window != null)
+		{
+			window.setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded);
+		}
 
 		final ImageButton button = (ImageButton) dialog.findViewById(R.id.tip_dismiss);
 		button.setOnClickListener(new View.OnClickListener()

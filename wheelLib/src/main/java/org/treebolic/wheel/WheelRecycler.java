@@ -24,18 +24,18 @@
 
 package org.treebolic.wheel;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.view.View;
 import android.widget.LinearLayout;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Recycle stored spinnerwheel items to reuse.
  */
 public class WheelRecycler
 {
-	private static final String LOG_TAG = WheelRecycler.class.getName();
+	// private static final String TAG = WheelRecycler.class.getName();
 
 	// Cached items
 	private List<View> items;
@@ -44,7 +44,7 @@ public class WheelRecycler
 	private List<View> emptyItems;
 
 	// Wheel view
-	private AbstractWheel wheel;
+	private final AbstractWheel wheel;
 
 	/**
 	 * Constructor
@@ -141,7 +141,7 @@ public class WheelRecycler
 		List<View> cache = cache0;
 		if (cache == null)
 		{
-			cache = new LinkedList<View>();
+			cache = new LinkedList<>();
 		}
 
 		cache.add(view);
@@ -172,7 +172,6 @@ public class WheelRecycler
 			{
 				index = count + index;
 			}
-			index %= count;
 			this.items = addView(view, this.items);
 		}
 	}
@@ -180,13 +179,12 @@ public class WheelRecycler
 	/**
 	 * Gets view from specified cache.
 	 * 
-	 * @param cache0
+	 * @param cache
 	 *            the cache
 	 * @return the first view from cache.
 	 */
-	private static View getCachedView(List<View> cache0)
+	private static View getCachedView(final List<View> cache)
 	{
-		List<View> cache = cache0;
 		if (cache != null && cache.size() > 0)
 		{
 			View view = cache.get(0);

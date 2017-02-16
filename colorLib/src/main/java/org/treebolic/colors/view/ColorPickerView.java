@@ -29,9 +29,6 @@
 
 package org.treebolic.colors.view;
 
-import org.treebolic.colors.R;
-import org.treebolic.colors.drawable.AlphaPatternDrawable;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -52,6 +49,9 @@ import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import org.treebolic.colors.R;
+import org.treebolic.colors.drawable.AlphaPatternDrawable;
 
 /**
  * Displays a color picker to the user and allow them to select a color. A slider for the alpha channel is also available. Enable it by setting
@@ -406,6 +406,7 @@ public class ColorPickerView extends View
 
 		final RectF rect = this.mSatValRect;
 
+		//noinspection ConstantConditions
 		if (ColorPickerView.BORDER_WIDTH_PX > 0)
 		{
 			this.mBorderPaint.setColor(this.mBorderColor);
@@ -478,11 +479,9 @@ public class ColorPickerView extends View
 		/*
 		 * Drawn with hw acceleration, very fast.
 		 */
-
-		// long start = SystemClock.elapsedRealtime();
-
 		final RectF rect = this.mHueRect;
 
+		//noinspection ConstantConditions
 		if (ColorPickerView.BORDER_WIDTH_PX > 0)
 		{
 			this.mBorderPaint.setColor(this.mBorderColor);
@@ -510,8 +509,6 @@ public class ColorPickerView extends View
 		r.bottom = p.y + rectHeight;
 
 		canvas.drawRoundRect(r, 2, 2, this.mHueAlphaTrackerPaint);
-
-		// Log.d("mColorPicker", "Draw Time Hue: " + (SystemClock.elapsedRealtime() - start) + "ms");
 	}
 
 	private void drawAlphaPanel(final Canvas canvas)
@@ -525,6 +522,7 @@ public class ColorPickerView extends View
 
 		final RectF rect = this.mAlphaRect;
 
+		//noinspection ConstantConditions
 		if (ColorPickerView.BORDER_WIDTH_PX > 0)
 		{
 			this.mBorderPaint.setColor(this.mBorderColor);
@@ -926,7 +924,8 @@ public class ColorPickerView extends View
 
 				finalWidth = widthAllowed;
 			}
-			else if (heightMode == MeasureSpec.EXACTLY && widthMode != MeasureSpec.EXACTLY)
+			else //noinspection ConstantConditions
+				if (heightMode == MeasureSpec.EXACTLY && widthMode != MeasureSpec.EXACTLY)
 			{
 				// The height has been specified exactly, we need to stay within this height and adopt the width.
 
@@ -953,7 +952,7 @@ public class ColorPickerView extends View
 			{
 				// If we get here the dev has set the width and height to exact sizes. For example match_parent or 300dp.
 				// This will mean that the sat/val panel will not be square but it doesn't matter. It will work anyway.
-				// In all other senarios our goal is to make that panel square.
+				// In all other scenarios our goal is to make that panel square.
 
 				// We set the sizes to exactly what we were told.
 				finalWidth = widthAllowed;
@@ -1068,7 +1067,7 @@ public class ColorPickerView extends View
 	/**
 	 * Set a OnColorChangedListener to get notified when the color selected by the user has changed.
 	 *
-	 * @param listener
+	 * @param listener change listener
 	 */
 	public void setOnColorChangedListener(final OnColorChangedListener listener)
 	{
@@ -1142,7 +1141,7 @@ public class ColorPickerView extends View
 	/**
 	 * Set if the user is allowed to adjust the alpha panel. Default is false. If it is set to false no alpha will be set.
 	 *
-	 * @param visible
+	 * @param visible true if slider is to be visible
 	 */
 	public void setAlphaSliderVisible(final boolean visible)
 	{
@@ -1165,7 +1164,7 @@ public class ColorPickerView extends View
 	/**
 	 * Set the color of the tracker slider on the hue and alpha panel.
 	 *
-	 * @param color
+	 * @param color tracker color
 	 */
 	public void setSliderTrackerColor(final int color)
 	{
@@ -1187,7 +1186,7 @@ public class ColorPickerView extends View
 	/**
 	 * Set the color of the border surrounding all panels.
 	 *
-	 * @param color
+	 * @param color border color
 	 */
 	public void setBorderColor(final int color)
 	{

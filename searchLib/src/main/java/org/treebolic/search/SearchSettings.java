@@ -1,12 +1,5 @@
 package org.treebolic.search;
 
-import org.treebolic.wheel.AbstractWheel;
-import org.treebolic.wheel.OnWheelChangedListener;
-import org.treebolic.wheel.OnWheelScrollListener;
-import org.treebolic.wheel.WheelView;
-import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
-import org.treebolic.wheel.adapters.WheelViewAdapter;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -20,6 +13,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import org.treebolic.wheel.AbstractWheel;
+import org.treebolic.wheel.OnWheelChangedListener;
+import org.treebolic.wheel.OnWheelScrollListener;
+import org.treebolic.wheel.WheelView;
+import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
+import org.treebolic.wheel.adapters.WheelViewAdapter;
 
 public class SearchSettings extends DialogFragment
 {
@@ -49,8 +49,7 @@ public class SearchSettings extends DialogFragment
 
 	public static SearchSettings newInstance()
 	{
-		final SearchSettings fragment = new SearchSettings();
-		return fragment;
+		return new SearchSettings();
 	}
 
 	@SuppressLint("InflateParams")
@@ -117,6 +116,7 @@ public class SearchSettings extends DialogFragment
 		// wheel 1 events
 		this.scopeWheel.addChangingListener(new OnWheelChangedListener()
 		{
+			@SuppressLint("CommitPrefEdits")
 			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)
@@ -153,6 +153,7 @@ public class SearchSettings extends DialogFragment
 		// wheel 2 events
 		this.modeWheel.addChangingListener(new OnWheelChangedListener()
 		{
+			@SuppressLint("CommitPrefEdits")
 			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)

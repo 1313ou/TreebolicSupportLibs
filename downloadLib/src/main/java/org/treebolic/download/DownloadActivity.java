@@ -1,10 +1,5 @@
 package org.treebolic.download;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
@@ -24,6 +19,11 @@ import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Download activity
@@ -54,8 +54,6 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 
 	/**
 	 * Whether to process
-	 *
-	 * @throws IOException
 	 */
 	abstract protected boolean doProcessing();
 
@@ -65,10 +63,9 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	 * @param inputStream
 	 *            obtained input stream
 	 * @return true if file should be disposed of
-	 * @throws IOException
 	 */
 	@SuppressWarnings("static-method")
-	protected boolean process(final InputStream inputStream) throws IOException
+	protected boolean process(final InputStream inputStream)
 	{
 		return false;
 	}
@@ -106,11 +103,6 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	 * Downloads
 	 */
 	private Button downloadButton;
-
-	/**
-	 * Show downloads button
-	 */
-	private Button showDownloadButton;
 
 	/**
 	 * Progress bar
@@ -159,8 +151,9 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 		// components
 		this.downloadButton = (Button) findViewById(R.id.downloadButton);
 		this.downloadButton.setOnClickListener(this);
-		this.showDownloadButton = (Button) findViewById(R.id.showButton);
-		this.showDownloadButton.setOnClickListener(this);
+
+		final Button showDownloadButton = (Button) findViewById(R.id.showButton);
+		showDownloadButton.setOnClickListener(this);
 		this.progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		this.progressStatus = (TextView) findViewById(R.id.progressStatus);
 		this.src = (TextView) findViewById(R.id.src);
@@ -259,7 +252,6 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 			setResult(Activity.RESULT_OK, resultIntent);
 
 			finish();
-			return;
 		}
 	}
 
@@ -347,6 +339,7 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	 *
 	 * @return true if download has finished
 	 */
+	@SuppressWarnings("TryFinallyCanBeTryWithResources")
 	private boolean finished()
 	{
 		// query
@@ -383,6 +376,7 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	 *
 	 * @return status
 	 */
+	@SuppressWarnings("TryFinallyCanBeTryWithResources")
 	private boolean retrieve()
 	{
 		// query
@@ -408,6 +402,7 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 
 					// process
 					InputStream inputStream = null;
+					//noinspection TryWithIdenticalCatches
 					try
 					{
 						inputStream = DownloadActivity.this.getContentResolver().openInputStream(uri);
@@ -525,9 +520,9 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	/**
 	 * Get status message as per status returned by cursor
 	 *
-	 * @param cursor
-	 *            cursor
-	 * @return strng resource id
+	 * @param status
+	 *            status
+	 * @return string resource id
 	 */
 	private static int status2ResourceId(final int status)
 	{

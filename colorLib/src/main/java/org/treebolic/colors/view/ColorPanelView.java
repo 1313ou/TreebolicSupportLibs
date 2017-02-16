@@ -16,14 +16,14 @@
 
 package org.treebolic.colors.view;
 
-import org.treebolic.colors.drawable.AlphaPatternDrawable;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+
+import org.treebolic.colors.drawable.AlphaPatternDrawable;
 
 /**
  * This class draws a panel which which will be filled with a color which can be set. It can be used to show the currently selected color which you will get
@@ -137,6 +137,7 @@ public class ColorPanelView extends View
 	protected void onDraw(final Canvas canvas)
 	{
 		// border
+		//noinspection ConstantConditions
 		if (ColorPanelView.BORDER_WIDTH_PX > 0)
 		{
 			this.mBorderPaint.setColor(this.mBorderColor);

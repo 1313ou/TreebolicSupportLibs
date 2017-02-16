@@ -40,9 +40,8 @@ import com.nineoldandroids.animation.ObjectAnimator;
  */
 public abstract class AbstractWheelView extends AbstractWheel
 {
-	private final String LOG_TAG = AbstractWheelView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
-
-	private static int itemID = -1;
+	// private final String TAG = AbstractWheelView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	// private static int itemID = -1;
 
 	// ----------------------------------
 	// Default properties values

@@ -22,7 +22,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="6dp"
         android:layout_marginStart="6dp"
-        android:singleLine="true"
+        android:maxLines="1"
         android:textColor="#F000"
         android:textSize="20sp"
         android:textStyle="normal" />

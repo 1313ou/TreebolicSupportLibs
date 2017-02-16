@@ -8,7 +8,7 @@
        <!-- <item name="android:collapseColumns">1</item> -->
     </style>
 
-    <style name="tipHeader"></style>
+    <style name="tipHeader"/>
 
     <style name="tipButton">
         <item name="android:layout_width">wrap_content</item>

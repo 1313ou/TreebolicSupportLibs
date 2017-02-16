@@ -115,7 +115,7 @@ public class AutoEditTextPreference extends DialogPreference
 		if (this.editView != null)
 		{
 			// fill with value and possible values
-			final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(getContext(), android.R.layout.simple_dropdown_item_1line, this.values);
+			final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, this.values);
 			this.editView.setAdapter(adapter);
 			if (this.value != null)
 			{

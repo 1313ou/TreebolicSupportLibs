@@ -21,6 +21,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
@@ -63,7 +64,7 @@ public class AlphaPatternDrawable extends Drawable
 	@Override
 	public int getOpacity()
 	{
-		return 0;
+		return PixelFormat.UNKNOWN;
 	}
 
 	@Override
@@ -92,7 +93,7 @@ public class AlphaPatternDrawable extends Drawable
 	}
 
 	/**
-	 * This will generate a bitmap with the pattern as big as the rectangle we were allow to draw on. We do this to chache the bitmap so we don't need to
+	 * This will generate a bitmap with the pattern as big as the rectangle we were allow to draw on. We do this to cache the bitmap so we don't need to
 	 * recreate it each time draw() is called since it takes a few milliseconds.
 	 */
 	private void generatePatternBitmap()

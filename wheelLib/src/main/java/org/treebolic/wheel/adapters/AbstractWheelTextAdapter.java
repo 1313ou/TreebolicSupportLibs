@@ -46,9 +46,6 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	/** Default text color */
 	public static final int DEFAULT_TEXT_COLOR = 0xFF101010;
 
-	/** Default text color */
-	public static final int LABEL_COLOR = 0xFF700070;
-
 	/** Default text size */
 	public static final int DEFAULT_TEXT_SIZE = 24;
 
@@ -60,9 +57,9 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	private int textSize = DEFAULT_TEXT_SIZE;
 
 	// Current context
-	protected Context context;
+	protected final Context context;
 	// Layout inflater
-	protected LayoutInflater inflater;
+	protected final LayoutInflater inflater;
 
 	// Items resources
 	protected int itemResourceId;

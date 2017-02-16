@@ -85,7 +85,7 @@ public abstract class WheelScroller
 
 		public AnimationHandler(WheelScroller scroller0)
 		{
-			this.wheelScrollerRef = new WeakReference<WheelScroller>(scroller0);
+			this.wheelScrollerRef = new WeakReference<>(scroller0);
 		}
 
 		@SuppressWarnings("synthetic-access")
@@ -137,13 +137,13 @@ public abstract class WheelScroller
 	public static final int MIN_DELTA_FOR_SCROLLING = 1;
 
 	// Listener
-	private ScrollingListener listener;
+	private final ScrollingListener listener;
 
 	// Context
-	private Context context;
+	private final Context context;
 
 	// Scrolling
-	private GestureDetector gestureDetector;
+	private final GestureDetector gestureDetector;
 	protected Scroller scroller;
 	private int lastScrollPosition;
 	private float lastTouchedPosition;

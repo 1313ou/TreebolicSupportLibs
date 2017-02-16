@@ -1,13 +1,6 @@
 package org.treebolic.filechooser;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
@@ -29,11 +22,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * File chooser
  *
  * @author Bernard Bou
  */
+@SuppressLint("Registered")
 public class FileChooserActivity extends ListActivity implements OnItemLongClickListener
 {
 	// keys
@@ -82,16 +84,11 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		/**
 		 * Constructor
 		 *
-		 * @param name0
-		 *            name
-		 * @param data0
-		 *            data
-		 * @param path0
-		 *            path
-		 * @param folder0
-		 *            folder
-		 * @param parent0
-		 *            parent
+		 * @param name0   name
+		 * @param data0   data
+		 * @param path0   path
+		 * @param folder0 folder
+		 * @param parent0 parent
 		 */
 		public Entry(final String name0, final String data0, final String path0, final boolean folder0, final boolean parent0)
 		{
@@ -185,7 +182,9 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		public int compareTo(final Entry o)
 		{
 			if (this.name != null)
+			{
 				return this.name.compareToIgnoreCase(o.getName());
+			}
 			throw new IllegalArgumentException();
 		}
 	}
@@ -213,11 +212,9 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		/**
 		 * Constructor
 		 *
-		 * @param context0
-		 *            context
-		 * @param id0
-		 *            text view resource id
-		 * @param items0
+		 * @param context0 context
+		 * @param id0      text view resource id
+		 * @param items0   items
 		 */
 		public FileArrayAdapter(final Context context0, final int id0, final List<Entry> items0)
 		{
@@ -440,18 +437,21 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		super.onListItemClick(l, v, position, id);
 
 		final Entry entry = this.adapter.getItem(position);
-		if (entry.isFolder() || entry.isParent())
+		if (entry != null)
 		{
-			// if folder we move into it
-			this.currentDir = new File(entry.getPath());
-			fill(this.currentDir);
-		}
-		else
-		{
-			// select
-			if (!this.chooseDir || entry.isNone())
+			if (entry.isFolder() || entry.isParent())
 			{
-				select(entry);
+				// if folder we move into it
+				this.currentDir = new File(entry.getPath());
+				fill(this.currentDir);
+			}
+			else
+			{
+				// select
+				if (!this.chooseDir || entry.isNone())
+				{
+					select(entry);
+				}
 			}
 		}
 	}
@@ -465,11 +465,14 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 	public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, final long id)
 	{
 		final Entry entry = this.adapter.getItem(position);
-		if (this.chooseDir && (entry.isFolder() || entry.isParent()))
+		if (entry != null)
 		{
-			// select
-			select(entry);
-			return true;
+			if (this.chooseDir && (entry.isFolder() || entry.isParent()))
+			{
+				// select
+				select(entry);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -477,8 +480,7 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 	/**
 	 * Select and return entry
 	 *
-	 * @param entry
-	 *            entry
+	 * @param entry entry
 	 */
 	private void select(final Entry entry)
 	{
@@ -501,12 +503,11 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 	/**
 	 * Fill with entries from dir
 	 *
-	 * @param dirFile
-	 *            dir
+	 * @param dirFile dir
 	 */
 	private void fill(final File dirFile)
 	{
-		File[] items = null;
+		File[] items;
 		if (this.fileFilter != null)
 		{
 			items = dirFile.listFiles(this.fileFilter);
@@ -517,8 +518,8 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		}
 
 		this.setTitle(getString(R.string.currentDir) + ": " + dirFile.getName()); //$NON-NLS-1$
-		final List<Entry> dirs = new ArrayList<Entry>();
-		final List<Entry> files = new ArrayList<Entry>();
+		final List<Entry> dirs = new ArrayList<>();
+		final List<Entry> files = new ArrayList<>();
 		try
 		{
 			if (items != null)
@@ -564,6 +565,7 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		setListAdapter(this.adapter);
 	}
 
+	@SuppressLint("CommitPrefEdits")
 	static public void setFolder(final Context context, final String key, final String folder)
 	{
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -576,10 +578,14 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final String path = prefs.getString(key, null);
 		if (path == null)
+		{
 			return null;
+		}
 		final File dir = new File(path);
 		if (!dir.exists() || !dir.isDirectory())
+		{
 			return null;
+		}
 		return dir;
 	}
 }

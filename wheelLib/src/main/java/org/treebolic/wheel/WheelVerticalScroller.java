@@ -60,7 +60,7 @@ public class WheelVerticalScroller extends WheelScroller
 	@Override
 	protected float getMotionEventPosition(MotionEvent event)
 	{
-		// should be overriden
+		// should be overridden
 		return event.getY();
 	}
 

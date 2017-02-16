@@ -40,10 +40,8 @@ import android.widget.LinearLayout;
  */
 public class WheelVerticalView extends AbstractWheelView
 {
-
-	private final String LOG_TAG = WheelVerticalView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
-
-	private static int itemID = -1;
+	// private final String TAG = WheelVerticalView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	// private static int itemID = -1;
 
 	/**
 	 * The height of the selection divider.

@@ -16,24 +16,23 @@
 
 package org.treebolic.colors.dialog;
 
-import org.treebolic.colors.R;
-import org.treebolic.colors.view.ColorPanelView;
-import org.treebolic.colors.view.ColorPickerView;
-import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
+
+import org.treebolic.colors.R;
+import org.treebolic.colors.view.ColorPanelView;
+import org.treebolic.colors.view.ColorPickerView;
+import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
 
 public class ColorPickerDialog extends AlertDialog implements ColorPickerView.OnColorChangedListener
 {
 	private ColorPickerView mColorPicker;
-
-	private ColorPanelView mOldColor;
 
 	private ColorPanelView mNewColor;
 
@@ -55,7 +54,11 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 	private void init(final int color)
 	{
 		// to fight color branding.
-		getWindow().setFormat(PixelFormat.RGBA_8888);
+		final Window window = getWindow();
+		if (window != null)
+		{
+			window.setFormat(PixelFormat.RGBA_8888);
+		}
 		setUp(color);
 	}
 
@@ -79,13 +82,12 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		}
 
 		this.mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
-		this.mOldColor = (ColorPanelView) layout.findViewById(R.id.color_panel_old);
+		ColorPanelView mOldColor = (ColorPanelView) layout.findViewById(R.id.color_panel_old);
 		this.mNewColor = (ColorPanelView) layout.findViewById(R.id.color_panel_new);
 
 		if (!isLandscapeLayout)
 		{
-			((LinearLayout) this.mOldColor.getParent()).setPadding(Math.round(this.mColorPicker.getDrawingOffset()), 0,
-					Math.round(this.mColorPicker.getDrawingOffset()), 0);
+			((LinearLayout) mOldColor.getParent()).setPadding(Math.round(this.mColorPicker.getDrawingOffset()), 0, Math.round(this.mColorPicker.getDrawingOffset()), 0);
 		}
 		else
 		{
@@ -94,7 +96,7 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		}
 
 		this.mColorPicker.setOnColorChangedListener(this);
-		this.mOldColor.setColor(color);
+		mOldColor.setColor(color);
 		this.mColorPicker.setColor(color, true);
 	}
 

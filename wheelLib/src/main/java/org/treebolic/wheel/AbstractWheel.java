@@ -48,9 +48,8 @@ import java.util.List;
  */
 public abstract class AbstractWheel extends View
 {
-	private final String LOG_TAG = AbstractWheel.class.getName() + " #" + (++itemID); //$NON-NLS-1$
-
-	private static int itemID = -1;
+	// private final String TAG = AbstractWheel.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	// private static int itemID = -1;
 
 	// ----------------------------------
 	// Default properties values
@@ -94,12 +93,12 @@ public abstract class AbstractWheel extends View
 	protected int mLayoutWidth;
 
 	// Recycle
-	private WheelRecycler mRecycler = new WheelRecycler(this);
+	private final WheelRecycler mRecycler = new WheelRecycler(this);
 
 	// Listeners
-	private List<OnWheelChangedListener> changingListeners = new LinkedList<OnWheelChangedListener>();
-	private List<OnWheelScrollListener> scrollingListeners = new LinkedList<OnWheelScrollListener>();
-	private List<OnWheelClickedListener> clickingListeners = new LinkedList<OnWheelClickedListener>();
+	private final List<OnWheelChangedListener> changingListeners = new LinkedList<>();
+	private final List<OnWheelScrollListener> scrollingListeners = new LinkedList<>();
+	private final List<OnWheelClickedListener> clickingListeners = new LinkedList<>();
 
 	// XXX: I don't like listeners the way as they are now. -df
 
@@ -600,7 +599,7 @@ public abstract class AbstractWheel extends View
 	/**
 	 * Sets all items to have no dim and makes them visible
 	 *
-	 * @param isAllVisible
+	 * @param isAllVisible true if all items are to be visible
 	 */
 	public void setAllItemsVisible(boolean isAllVisible)
 	{
@@ -722,6 +721,7 @@ public abstract class AbstractWheel extends View
 	 *
 	 * @return true if spinnerwheel is cyclic
 	 */
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	public boolean isCyclic()
 	{
 		return this.mIsCyclic;
@@ -995,6 +995,7 @@ public abstract class AbstractWheel extends View
 	 *            the flag indicates if view should be first
 	 * @return true if corresponding item exists and is added
 	 */
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	private boolean addItemView(int index, boolean first)
 	{
 		View view = getItemView(index);

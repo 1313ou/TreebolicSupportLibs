@@ -1,11 +1,17 @@
 package org.treebolic.guide;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -14,6 +20,7 @@ import android.webkit.WebViewClient;
  *
  * @author Bernard Bou
  */
+@SuppressLint("Registered")
 public class HelpActivity extends Activity
 {
 	/**
@@ -34,29 +41,52 @@ public class HelpActivity extends Activity
 
 		// show the Up button in the action bar.
 		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		if (actionBar != null)
+		{
+			actionBar.setDisplayHomeAsUpEnabled(true);
+		}
 
 		// web view
 		final WebView webview = (WebView) findViewById(R.id.webView);
 		webview.setWebViewClient(new WebViewClient()
 		{
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onReceivedError(final WebView view, final int errorCode, final String description, final String failingUrl)
 			{
 				Log.e(HelpActivity.TAG, failingUrl + ':' + description + ',' + errorCode);
 			}
 
+			@TargetApi(Build.VERSION_CODES.N)
+			@Override
+			public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)
+			{
+				Log.e(HelpActivity.TAG, error.getDescription().toString() + ',' + error.getErrorCode());
+			}
+
+			@SuppressWarnings("deprecation")
 			@Override
 			public boolean shouldOverrideUrlLoading(final WebView view, final String url)
 			{
 				view.loadUrl(url);
 				return false;
 			}
+
+			@TargetApi(Build.VERSION_CODES.N)
+			public boolean shouldOverrideUrlLoading(final WebView view, final WebResourceRequest request)
+			{
+				final Uri uri = request.getUrl();
+				view.loadUrl(uri.toString());
+				return false;
+			}
 		});
-		final String lang = getString(R.string.lang_tag, ""); //$NON-NLS-1$
+
+		String lang = getString(R.string.lang_tag); //$NON-NLS-1$
 		String url = "file:///android_asset/help/"; //$NON-NLS-1$
-		if (lang != null && !lang.isEmpty())
+		if (!lang.isEmpty())
+		{
 			url += lang + '-';
+		}
 		url += "index.html"; //$NON-NLS-1$
 		webview.loadUrl(url);
 	}

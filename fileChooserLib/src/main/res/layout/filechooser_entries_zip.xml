@@ -13,7 +13,7 @@
     android:paddingRight="30dip"
     android:paddingStart="30dip"
     android:paddingTop="10dip"
-    android:singleLine="true"
+    android:maxLines="1"
     android:textSize="25sp"
     android:textStyle="normal" >
 

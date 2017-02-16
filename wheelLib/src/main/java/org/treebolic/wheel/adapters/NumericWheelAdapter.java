@@ -42,7 +42,7 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter
 	private int maxValue;
 
 	// format
-	private String format;
+	private final String format;
 
 	/**
 	 * Constructor

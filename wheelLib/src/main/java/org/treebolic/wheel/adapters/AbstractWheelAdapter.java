@@ -50,7 +50,7 @@ public abstract class AbstractWheelAdapter implements WheelViewAdapter
 	{
 		if (this.datasetObservers == null)
 		{
-			this.datasetObservers = new LinkedList<DataSetObserver>();
+			this.datasetObservers = new LinkedList<>();
 		}
 		this.datasetObservers.add(observer);
 	}

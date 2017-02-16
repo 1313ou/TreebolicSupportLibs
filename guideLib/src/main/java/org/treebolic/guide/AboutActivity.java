@@ -1,5 +1,6 @@
 package org.treebolic.guide;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
@@ -13,9 +14,10 @@ import android.view.MenuItem;
  *
  * @author Bernard Bou
  */
+@SuppressLint("Registered")
 public class AboutActivity extends Activity
 {
-	protected static final String TAG = "About activity"; //$NON-NLS-1$
+	// protected static final String TAG = "About activity"; //$NON-NLS-1$
 
 	/*
 	 * (non-Javadoc)
@@ -30,7 +32,10 @@ public class AboutActivity extends Activity
 
 		// show the Up button in the action bar.
 		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		if (actionBar != null)
+		{
+			actionBar.setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	/*

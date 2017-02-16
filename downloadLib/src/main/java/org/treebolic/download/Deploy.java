@@ -1,5 +1,11 @@
 package org.treebolic.download;
 
+import android.util.Log;
+
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -9,12 +15,6 @@ import java.io.InputStream;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-
-import android.util.Log;
 
 /**
  * Deployer
@@ -30,11 +30,9 @@ public class Deploy
 
 	/**
 	 * Copy stream to file
-	 * 
-	 * @param in
-	 *            input stream
-	 * @param toFile
-	 *            dest file
+	 *
+	 * @param in     input stream
+	 * @param toFile dest file
 	 * @throws IOException
 	 */
 	public static void copy(final InputStream in, final File toFile) throws IOException
@@ -54,19 +52,24 @@ public class Deploy
 		finally
 		{
 			if (out != null)
-				out.close();
+			{
+				try
+				{
+					out.close();
+				}
+				catch (IOException ignored)
+				{
+				}
+			}
 		}
 	}
 
 	/**
 	 * Expand archive stream to dir
-	 * 
-	 * @param in
-	 *            input stream
-	 * @param toDir
-	 *            to directory
-	 * @param asTarGz
-	 *            is tar gz type
+	 *
+	 * @param in      input stream
+	 * @param toDir   to directory
+	 * @param asTarGz is tar gz type
 	 * @throws IOException
 	 */
 	public static void expand(final InputStream in, final File toDir, boolean asTarGz) throws IOException
@@ -82,14 +85,10 @@ public class Deploy
 	/**
 	 * Expand zip stream to dir
 	 *
-	 * @param in
-	 *            zip file input stream
-	 * @param destDir
-	 *            destination dir
-	 * @param include
-	 *            include regexp filter
-	 * @param exclude
-	 *            exclude regexp filter
+	 * @param in      zip file input stream
+	 * @param destDir destination dir
+	 * @param include include regexp filter
+	 * @param exclude exclude regexp filter
 	 * @return dest dir
 	 */
 	static public File expandZip(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude) throws IOException
@@ -176,7 +175,14 @@ public class Deploy
 					{
 						if (bout != null)
 						{
-							bout.close();
+							try
+							{
+								bout.close();
+							}
+							catch (IOException ignored)
+							{
+							}
+
 						}
 					}
 				}
@@ -186,7 +192,15 @@ public class Deploy
 		finally
 		{
 			if (zipIn != null)
-				zipIn.close();
+			{
+				try
+				{
+					zipIn.close();
+				}
+				catch (IOException ignored)
+				{
+				}
+			}
 		}
 
 		return destDir;
@@ -195,21 +209,15 @@ public class Deploy
 	/**
 	 * Extract tar.gz stream
 	 *
-	 * @param in
-	 *            input stream
-	 * @param destDir
-	 *            destination dir
-	 * @param flat
-	 *            flatten
-	 * @param include
-	 *            include regexp filter
-	 * @param exclude
-	 *            exclude regexp filter
+	 * @param in      input stream
+	 * @param destDir destination dir
+	 * @param flat    flatten
+	 * @param include include regexp filter
+	 * @param exclude exclude regexp filter
 	 * @return dest dir
 	 * @throws IOException
 	 */
-	static public File extractTarGz(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude)
-			throws IOException
+	static public File extractTarGz(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude) throws IOException
 	{
 		final Pattern includePattern = include == null ? null : Pattern.compile(include);
 		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);
@@ -289,7 +297,14 @@ public class Deploy
 					{
 						if (bout != null)
 						{
-							bout.close();
+							try
+							{
+								bout.close();
+							}
+							catch (IOException ignored)
+							{
+							}
+
 						}
 					}
 				}
@@ -299,7 +314,14 @@ public class Deploy
 		{
 			if (tarIn != null)
 			{
-				tarIn.close();
+				try
+				{
+					tarIn.close();
+				}
+				catch (IOException ignored)
+				{
+				}
+
 			}
 		}
 		return destDir;
