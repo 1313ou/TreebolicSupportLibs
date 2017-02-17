@@ -38,7 +38,7 @@ public interface WheelViewAdapter
 	 * 
 	 * @return the count of spinnerwheel items
 	 */
-	public int getItemsCount();
+	int getItemsCount();
 
 	/**
 	 * Get a View that displays the data at the specified position in the data set
@@ -51,7 +51,7 @@ public interface WheelViewAdapter
 	 *            the parent that this view will eventually be attached to
 	 * @return the spinnerwheel item View
 	 */
-	public View getItem(int index, View convertView, ViewGroup parent);
+	View getItem(int index, View convertView, ViewGroup parent);
 
 	/**
 	 * Get a View that displays an empty spinnerwheel item placed before the first or after the last spinnerwheel item.
@@ -62,7 +62,7 @@ public interface WheelViewAdapter
 	 *            the parent that this view will eventually be attached to
 	 * @return the empty item View
 	 */
-	public View getEmptyItem(View convertView, ViewGroup parent);
+	View getEmptyItem(View convertView, ViewGroup parent);
 
 	/**
 	 * Register an observer that is called when changes happen to the data used by this adapter.
@@ -70,7 +70,7 @@ public interface WheelViewAdapter
 	 * @param observer
 	 *            the observer to be registered
 	 */
-	public void registerDataSetObserver(DataSetObserver observer);
+	void registerDataSetObserver(DataSetObserver observer);
 
 	/**
 	 * Unregister an observer that has previously been registered

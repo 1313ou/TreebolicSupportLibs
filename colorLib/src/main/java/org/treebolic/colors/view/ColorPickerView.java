@@ -66,7 +66,7 @@ public class ColorPickerView extends View
 	 */
 	public interface OnColorChangedListener
 	{
-		public void onColorChanged(int newColor);
+		void onColorChanged(int newColor);
 	}
 
 	// I N D I C E S

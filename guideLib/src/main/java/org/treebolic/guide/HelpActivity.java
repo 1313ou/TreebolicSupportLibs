@@ -59,7 +59,7 @@ public class HelpActivity extends Activity
 
 			@TargetApi(Build.VERSION_CODES.N)
 			@Override
-			public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)
+			public void onReceivedError(final WebView view, final WebResourceRequest request, final WebResourceError error)
 			{
 				Log.e(HelpActivity.TAG, error.getDescription().toString() + ',' + error.getErrorCode());
 			}

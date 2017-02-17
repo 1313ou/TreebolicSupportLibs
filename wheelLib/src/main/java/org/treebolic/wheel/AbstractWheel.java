@@ -344,6 +344,7 @@ public abstract class AbstractWheel extends View
 	abstract protected WheelScroller createScroller(WheelScroller.ScrollingListener scrollingListener);
 
 	/* These methods are not abstract, as we may want to override only some of them */
+	@SuppressWarnings("EmptyMethod")
 	protected void onScrollStarted()
 	{
 		//

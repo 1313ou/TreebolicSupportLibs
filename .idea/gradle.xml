@@ -14,6 +14,7 @@
             <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
             <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
             <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
+            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
             <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
           </set>
         </option>

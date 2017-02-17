@@ -55,6 +55,7 @@ public class AlphaPatternDrawable extends Drawable
 		this.mPaintGray.setColor(0xffcbcbcb);
 	}
 
+	@SuppressWarnings("NullableProblems")
 	@Override
 	public void draw(final Canvas canvas)
 	{

@@ -64,8 +64,8 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	 *            obtained input stream
 	 * @return true if file should be disposed of
 	 */
-	@SuppressWarnings("static-method")
-	protected boolean process(final InputStream inputStream)
+	@SuppressWarnings({"static-method", "RedundantThrows"})
+	protected boolean process(final InputStream inputStream) throws IOException
 	{
 		return false;
 	}
