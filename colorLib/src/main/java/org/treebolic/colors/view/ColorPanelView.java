@@ -128,11 +128,6 @@ public class ColorPanelView extends View
 		ColorPanelView.mDensity = getContext().getResources().getDisplayMetrics().density;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.view.View#onDraw(android.graphics.Canvas)
-	 */
 	@Override
 	protected void onDraw(final Canvas canvas)
 	{
@@ -156,11 +151,6 @@ public class ColorPanelView extends View
 		canvas.drawRect(rect, this.mColorPaint);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.view.View#onMeasure(int, int)
-	 */
 	@Override
 	protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec)
 	{
@@ -169,11 +159,6 @@ public class ColorPanelView extends View
 		setMeasuredDimension(width, height);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.view.View#onSizeChanged(int, int, int, int)
-	 */
 	@Override
 	protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh)
 	{

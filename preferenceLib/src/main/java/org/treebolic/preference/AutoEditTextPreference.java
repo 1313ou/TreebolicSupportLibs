@@ -100,11 +100,6 @@ public class AutoEditTextPreference extends DialogPreference
 		this.values = values0;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.preference.DialogPreference#onBindDialogView(android.view.View)
-	 */
 	@Override
 	protected void onBindDialogView(final View view)
 	{
@@ -125,11 +120,6 @@ public class AutoEditTextPreference extends DialogPreference
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.preference.DialogPreference#onDialogClosed(boolean)
-	 */
 	@Override
 	protected void onDialogClosed(final boolean positiveResult)
 	{
@@ -150,11 +140,6 @@ public class AutoEditTextPreference extends DialogPreference
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.preference.Preference#onSetInitialValue(boolean, java.lang.Object)
-	 */
 	@Override
 	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue0)
 	{
@@ -170,11 +155,6 @@ public class AutoEditTextPreference extends DialogPreference
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.preference.Preference#onGetDefaultValue(android.content.res.TypedArray, int)
-	 */
 	@Override
 	protected Object onGetDefaultValue(final TypedArray array, final int index)
 	{
@@ -216,11 +196,6 @@ public class AutoEditTextPreference extends DialogPreference
 			this.value = source.readString();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see android.view.AbsSavedState#writeToParcel(android.os.Parcel, int)
-		 */
 		@Override
 		public void writeToParcel(final Parcel dest, final int flags)
 		{
@@ -236,22 +211,12 @@ public class AutoEditTextPreference extends DialogPreference
 		@SuppressWarnings("hiding")
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see android.os.Parcelable.Creator#createFromParcel(android.os.Parcel)
-			 */
 			@Override
 			public SavedState createFromParcel(final Parcel in)
 			{
 				return new SavedState(in);
 			}
 
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see android.os.Parcelable.Creator#newArray(int)
-			 */
 			@Override
 			public SavedState[] newArray(final int size)
 			{
@@ -260,11 +225,6 @@ public class AutoEditTextPreference extends DialogPreference
 		};
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.preference.DialogPreference#onSaveInstanceState()
-	 */
 	@SuppressWarnings("synthetic-access")
 	@Override
 	protected Parcelable onSaveInstanceState()
@@ -284,11 +244,6 @@ public class AutoEditTextPreference extends DialogPreference
 		return state;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.preference.DialogPreference#onRestoreInstanceState(android.os.Parcelable)
-	 */
 	@SuppressWarnings("synthetic-access")
 	@Override
 	protected void onRestoreInstanceState(final Parcelable state0)

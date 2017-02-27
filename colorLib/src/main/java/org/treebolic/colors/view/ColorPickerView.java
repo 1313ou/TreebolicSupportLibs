@@ -379,11 +379,6 @@ public class ColorPickerView extends View
 		return hue;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.view.View#onDraw(android.graphics.Canvas)
-	 */
 	@Override
 	protected void onDraw(final Canvas canvas)
 	{

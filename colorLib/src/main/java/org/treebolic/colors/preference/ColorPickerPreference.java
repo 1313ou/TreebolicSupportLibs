@@ -1,9 +1,5 @@
 package org.treebolic.colors.preference;
 
-import org.treebolic.colors.R;
-import org.treebolic.colors.view.ColorPanelView;
-import org.treebolic.colors.view.ColorPickerView;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
@@ -12,6 +8,10 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import org.treebolic.colors.R;
+import org.treebolic.colors.view.ColorPanelView;
+import org.treebolic.colors.view.ColorPickerView;
 
 public class ColorPickerPreference extends DialogPreference implements ColorPickerView.OnColorChangedListener
 {
@@ -125,11 +125,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	// B I N D
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.Preference#onBindView(android.view.View)
-	 */
 	@Override
 	protected void onBindView(final View view)
 	{
@@ -142,11 +137,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.DialogPreference#onBindDialogView(android.view.View)
-	 */
 	@Override
 	protected void onBindDialogView(final View layout)
 	{
@@ -203,11 +193,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	// C L O S E
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.DialogPreference#onDialogClosed(boolean)
-	 */
 	@SuppressWarnings("boxing")
 	@Override
 	protected void onDialogClosed(final boolean positiveResult)
@@ -225,11 +210,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	// V A L U E S
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.Preference#onSetInitialValue(boolean, java.lang.Object)
-	 */
 	@SuppressWarnings("boxing")
 	@Override
 	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue)
@@ -246,11 +226,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.Preference#onGetDefaultValue(android.content.res.TypedArray, int)
-	 */
 	@SuppressWarnings("boxing")
 	@Override
 	protected Object onGetDefaultValue(final TypedArray a, final int index)
@@ -258,11 +233,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		return a.getInteger(index, 0xFF000000);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.treebolic.colors.view.ColorPickerView.OnColorChangedListener#onColorChanged(int)
-	 */
 	@Override
 	public void onColorChanged(final int newColor)
 	{
@@ -271,11 +241,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	// S A V E / R E S T O R E
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.DialogPreference#onSaveInstanceState()
-	 */
 	@Override
 	protected Parcelable onSaveInstanceState()
 	{
@@ -296,11 +261,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		return myState;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.DialogPreference#onRestoreInstanceState(android.os.Parcelable)
-	 */
 	@Override
 	protected void onRestoreInstanceState(final Parcelable state)
 	{

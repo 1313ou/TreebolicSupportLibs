@@ -1,8 +1,7 @@
 package org.treebolic.filechooser;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ListActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,7 +34,7 @@ import java.util.Locale;
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class FileChooserActivity extends ListActivity implements OnItemLongClickListener
+public class FileChooserActivity extends AppCompatActivity implements AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener
 {
 	// keys
 
@@ -173,11 +171,6 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 			return this.none;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see java.lang.Comparable#compareTo(java.lang.Object)
-		 */
 		@Override
 		public int compareTo(@SuppressWarnings("NullableProblems") final Entry o)
 		{
@@ -224,22 +217,12 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 			this.items = items0;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see android.widget.ArrayAdapter#getItem(int)
-		 */
 		@Override
 		public Entry getItem(final int i)
 		{
 			return this.items.get(i);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see android.widget.ArrayAdapter#getView(int, android.view.View, android.view.ViewGroup)
-		 */
 		@SuppressWarnings("NullableProblems")
 		@Override
 		public View getView(final int position, final View convertView, @SuppressWarnings("NullableProblems") final ViewGroup parent)
@@ -310,6 +293,11 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 	}
 
 	/**
+	 * List view
+	 */
+	private ListView listView;
+
+	/**
 	 * Current directory
 	 */
 	private File currentDir;
@@ -334,18 +322,20 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 	 */
 	private List<String> extensions;
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 
-		// long click listener
-		getListView().setOnItemLongClickListener(this);
+		// layout
+		setContentView(R.layout.activity_choose_file);
+
+		// list view
+		this.listView = (ListView) findViewById(android.R.id.list);
+
+		// click listeners
+		this.listView.setOnItemClickListener(this);
+		this.listView.setOnItemLongClickListener(this);
 
 		// default
 		this.currentDir = Environment.getExternalStorageDirectory();
@@ -376,11 +366,6 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 				this.extensions = Arrays.asList(extensionExtras);
 				this.fileFilter = new FileFilter()
 				{
-					/*
-					 * (non-Javadoc)
-					 *
-					 * @see java.io.FileFilter#accept(java.io.File)
-					 */
 					@SuppressWarnings("synthetic-access")
 					@Override
 					public boolean accept(final File file)
@@ -406,11 +391,6 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
-	 */
 	@Override
 	public boolean onKeyDown(final int keyCode, final KeyEvent event)
 	{
@@ -427,16 +407,9 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		return super.onKeyDown(keyCode, event);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.app.ListActivity#onListItemClick(android.widget.ListView, android.view.View, int, long)
-	 */
 	@Override
-	protected void onListItemClick(final ListView l, final View v, final int position, final long id)
+	public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id)
 	{
-		super.onListItemClick(l, v, position, id);
-
 		final Entry entry = this.adapter.getItem(position);
 		if (entry != null)
 		{
@@ -457,11 +430,6 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.widget.AdapterView.OnItemLongClickListener#onItemLongClick(android.widget.AdapterView, android.view.View, int, long)
-	 */
 	@Override
 	public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, final long id)
 	{
@@ -497,7 +465,7 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		{
 			resultIntent.setData(null);
 		}
-		setResult(Activity.RESULT_OK, resultIntent);
+		setResult(AppCompatActivity.RESULT_OK, resultIntent);
 		finish();
 	}
 
@@ -563,7 +531,7 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 
 		// adapter
 		this.adapter = new FileArrayAdapter(FileChooserActivity.this, R.layout.filechooser_entries_file, dirs);
-		setListAdapter(this.adapter);
+		this.listView.setAdapter(this.adapter);
 	}
 
 	@SuppressLint("CommitPrefEdits")

@@ -133,11 +133,6 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	 */
 	protected boolean expandArchive = false;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{
@@ -178,11 +173,6 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		// receiver
 		this.receiver = new BroadcastReceiver()
 		{
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see android.content.BroadcastReceiver#onReceive(android.content.Context, android.content.Intent)
-			 */
 			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onReceive(final Context context, final Intent intent)
@@ -214,11 +204,6 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		};
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onPostCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onPostCreate(final Bundle savedInstanceState)
 	{
@@ -227,11 +212,6 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		this.target.setText(this.destDir != null ? this.destDir.getAbsolutePath() : ""); //$NON-NLS-1$
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStart()
-	 */
 	@Override
 	protected void onStart()
 	{
@@ -254,11 +234,6 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStop()
-	 */
 	@Override
 	protected void onStop()
 	{
@@ -267,11 +242,6 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		super.onStop();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.view.View.OnClickListener#onClick(android.view.View)
-	 */
 	@Override
 	public void onClick(final View view)
 	{

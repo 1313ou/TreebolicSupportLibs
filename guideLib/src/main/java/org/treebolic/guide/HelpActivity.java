@@ -28,11 +28,6 @@ public class HelpActivity extends AppCompatActivity
 	 */
 	protected static final String TAG = "Help activity"; //$NON-NLS-1$
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{
@@ -92,10 +87,6 @@ public class HelpActivity extends AppCompatActivity
 	}
 
 	// /*
-	// * (non-Javadoc)
-	// *
-	// * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	// */
 	// @Override
 	// public boolean onCreateOptionsMenu(final Menu menu)
 	// {
@@ -104,11 +95,6 @@ public class HelpActivity extends AppCompatActivity
 	// return true;
 	// }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
-	 */
 	// @Override
 	// public boolean onOptionsItemSelected(final MenuItem item)
 	// {
