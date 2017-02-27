@@ -1,6 +1,5 @@
 package org.treebolic.download;
 
-import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
 import android.app.DownloadManager.Request;
@@ -11,6 +10,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,7 +30,7 @@ import java.io.InputStream;
  *
  * @author Bernard Bou
  */
-abstract public class DownloadActivity extends Activity implements View.OnClickListener
+abstract public class DownloadActivity extends AppCompatActivity implements View.OnClickListener
 {
 	/**
 	 * Log tag
@@ -60,8 +60,7 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	/**
 	 * Process obtained input stream: what to do once the file has been downloaded and opened as a stream
 	 *
-	 * @param inputStream
-	 *            obtained input stream
+	 * @param inputStream obtained input stream
 	 * @return true if file should be disposed of
 	 */
 	@SuppressWarnings({"static-method", "RedundantThrows"})
@@ -206,7 +205,7 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 						// return result
 						final Intent resultIntent = new Intent();
 						resultIntent.putExtra(DownloadActivity.RESULT_DOWNLOAD_DATA_AVAILABLE, true);
-						DownloadActivity.this.setResult(Activity.RESULT_OK, resultIntent);
+						DownloadActivity.this.setResult(AppCompatActivity.RESULT_OK, resultIntent);
 
 						finish();
 					}
@@ -249,7 +248,7 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 			// return result
 			final Intent resultIntent = new Intent();
 			resultIntent.putExtra(DownloadActivity.RESULT_DOWNLOAD_DATA_AVAILABLE, true);
-			setResult(Activity.RESULT_OK, resultIntent);
+			setResult(AppCompatActivity.RESULT_OK, resultIntent);
 
 			finish();
 		}
@@ -311,15 +310,15 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 			}
 
 			// @formatter: off
-//			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-//			{
-//				request.setAllowedOverMetered(false);
-//			}
-//			else
-//			{
-//				request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
-//			}
-//			request.setAllowedOverRoaming(false);
+			//			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+			//			{
+			//				request.setAllowedOverMetered(false);
+			//			}
+			//			else
+			//			{
+			//				request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
+			//			}
+			//			request.setAllowedOverRoaming(false);
 			// @formatter: on
 
 			request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
@@ -356,11 +355,11 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 				final int status = cursor.getInt(columnIndex);
 				switch (status)
 				{
-				case DownloadManager.STATUS_SUCCESSFUL:
-				case DownloadManager.STATUS_FAILED:
-					return true;
-				default:
-					break;
+					case DownloadManager.STATUS_SUCCESSFUL:
+					case DownloadManager.STATUS_FAILED:
+						return true;
+					default:
+						break;
 				}
 			}
 			return false;
@@ -398,7 +397,9 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 
 					// as is
 					if (!doProcessing())
+					{
 						return true;
+					}
 
 					// process
 					InputStream inputStream = null;
@@ -480,12 +481,12 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 						final int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
 						switch (status)
 						{
-						case DownloadManager.STATUS_FAILED:
-						case DownloadManager.STATUS_SUCCESSFUL:
-							downloading = false;
-							break;
-						default:
-							break;
+							case DownloadManager.STATUS_FAILED:
+							case DownloadManager.STATUS_SUCCESSFUL:
+								downloading = false;
+								break;
+							default:
+								break;
 						}
 
 						// update UI
@@ -520,26 +521,25 @@ abstract public class DownloadActivity extends Activity implements View.OnClickL
 	/**
 	 * Get status message as per status returned by cursor
 	 *
-	 * @param status
-	 *            status
+	 * @param status status
 	 * @return string resource id
 	 */
 	private static int status2ResourceId(final int status)
 	{
 		switch (status)
 		{
-		case DownloadManager.STATUS_FAILED:
-			return R.string.status_download_fail;
-		case DownloadManager.STATUS_PAUSED:
-			return R.string.status_download_paused;
-		case DownloadManager.STATUS_PENDING:
-			return R.string.status_download_pending;
-		case DownloadManager.STATUS_RUNNING:
-			return R.string.status_download_running;
-		case DownloadManager.STATUS_SUCCESSFUL:
-			return R.string.status_download_successful;
-		default:
-			return -1;
+			case DownloadManager.STATUS_FAILED:
+				return R.string.status_download_fail;
+			case DownloadManager.STATUS_PAUSED:
+				return R.string.status_download_paused;
+			case DownloadManager.STATUS_PENDING:
+				return R.string.status_download_pending;
+			case DownloadManager.STATUS_RUNNING:
+				return R.string.status_download_running;
+			case DownloadManager.STATUS_SUCCESSFUL:
+				return R.string.status_download_successful;
+			default:
+				return -1;
 		}
 	}
 

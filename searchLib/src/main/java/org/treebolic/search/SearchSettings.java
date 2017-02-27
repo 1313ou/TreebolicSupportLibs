@@ -1,9 +1,10 @@
 package org.treebolic.search;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatDialog;
+import android.support.v7.app.AppCompatDialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -21,7 +22,7 @@ import org.treebolic.wheel.WheelView;
 import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
 import org.treebolic.wheel.adapters.WheelViewAdapter;
 
-public class SearchSettings extends DialogFragment
+public class SearchSettings extends AppCompatDialogFragment
 {
 	protected static final String TAG = "SearchSettings"; //$NON-NLS-1$
 
@@ -52,9 +53,10 @@ public class SearchSettings extends DialogFragment
 		return new SearchSettings();
 	}
 
+	@NonNull
 	@SuppressLint("InflateParams")
 	@Override
-	public Dialog onCreateDialog(final Bundle savedInstanceState)
+	public AppCompatDialog onCreateDialog(final Bundle savedInstanceState)
 	{
 		final Context context = getActivity();
 		final Resources resources = context.getResources();
@@ -103,13 +105,14 @@ public class SearchSettings extends DialogFragment
 		}
 
 		// dialog
-		final Dialog dialog = new Dialog(getActivity());
+		final AppCompatDialog dialog = new AppCompatDialog(getActivity());
 		// dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setTitle(R.string.search_title);
 		dialog.setContentView(R.layout.search_settings);
 
 		// wheel 1
 		this.scopeWheel = (WheelView) dialog.findViewById(R.id.scope);
+		assert this.scopeWheel != null;
 		this.scopeWheel.setVisibleItems(4);
 		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.scope, scopeLabels, scopeIcons, this.scopes.length));
 
@@ -147,6 +150,7 @@ public class SearchSettings extends DialogFragment
 
 		// wheel 2
 		this.modeWheel = (WheelView) dialog.findViewById(R.id.mode);
+		assert this.modeWheel != null;
 		this.modeWheel.setVisibleItems(4);
 		this.modeWheel.setViewAdapter(new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length));
 
@@ -264,8 +268,7 @@ public class SearchSettings extends DialogFragment
 	 */
 	static public void show(final FragmentManager fragmentManager)
 	{
-		final DialogFragment newFragment = SearchSettings.newInstance();
-
+		final AppCompatDialogFragment newFragment = SearchSettings.newInstance();
 		newFragment.show(fragmentManager, "dialog"); //$NON-NLS-1$
 	}
 }

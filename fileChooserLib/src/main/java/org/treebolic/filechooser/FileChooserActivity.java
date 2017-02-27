@@ -179,7 +179,7 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		 * @see java.lang.Comparable#compareTo(java.lang.Object)
 		 */
 		@Override
-		public int compareTo(final Entry o)
+		public int compareTo(@SuppressWarnings("NullableProblems") final Entry o)
 		{
 			if (this.name != null)
 			{
@@ -240,8 +240,9 @@ public class FileChooserActivity extends ListActivity implements OnItemLongClick
 		 *
 		 * @see android.widget.ArrayAdapter#getView(int, android.view.View, android.view.ViewGroup)
 		 */
+		@SuppressWarnings("NullableProblems")
 		@Override
-		public View getView(final int position, final View convertView, final ViewGroup parent)
+		public View getView(final int position, final View convertView, @SuppressWarnings("NullableProblems") final ViewGroup parent)
 		{
 			View view = convertView;
 			if (view == null)

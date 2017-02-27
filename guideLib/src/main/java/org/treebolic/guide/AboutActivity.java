@@ -1,8 +1,8 @@
 package org.treebolic.guide;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.view.MenuItem;
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class AboutActivity extends Activity
+public class AboutActivity extends AppCompatActivity
 {
 	// protected static final String TAG = "About activity"; //$NON-NLS-1$
 
@@ -31,7 +31,7 @@ public class AboutActivity extends Activity
 		setContentView(R.layout.activity_about);
 
 		// show the Up button in the action bar.
-		final ActionBar actionBar = getActionBar();
+		final ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null)
 		{
 			actionBar.setDisplayHomeAsUpEnabled(true);

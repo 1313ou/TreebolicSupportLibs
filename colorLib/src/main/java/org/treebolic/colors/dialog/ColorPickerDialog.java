@@ -17,7 +17,7 @@
 package org.treebolic.colors.dialog;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.LayoutInflater;

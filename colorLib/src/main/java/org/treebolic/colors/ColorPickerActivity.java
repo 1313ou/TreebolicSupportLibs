@@ -1,7 +1,7 @@
 package org.treebolic.colors;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import org.treebolic.colors.view.ColorPickerView;
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
 
 @SuppressLint("Registered")
-public class ColorPickerActivity extends Activity implements OnColorChangedListener, View.OnClickListener
+public class ColorPickerActivity extends AppCompatActivity implements OnColorChangedListener, View.OnClickListener
 {
 	private ColorPickerView mColorPickerView;
 	private ColorPanelView mNewColorPanelView;
@@ -43,8 +43,7 @@ public class ColorPickerActivity extends Activity implements OnColorChangedListe
 		Button mOkButton = (Button) findViewById(R.id.okButton);
 		Button mCancelButton = (Button) findViewById(R.id.cancelButton);
 
-		((LinearLayout) mOldColorPanelView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0,
-				Math.round(this.mColorPickerView.getDrawingOffset()), 0);
+		((LinearLayout) mOldColorPanelView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0, Math.round(this.mColorPickerView.getDrawingOffset()), 0);
 
 		this.mColorPickerView.setOnColorChangedListener(this);
 		this.mColorPickerView.setColor(initialColor, true);
