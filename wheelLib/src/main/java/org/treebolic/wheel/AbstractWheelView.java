@@ -40,7 +40,7 @@ import com.nineoldandroids.animation.ObjectAnimator;
  */
 public abstract class AbstractWheelView extends AbstractWheel
 {
-	// private final String TAG = AbstractWheelView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	// private final String TAG = AbstractWheelView.class.getName() + " #" + (++itemID);
 	// private static int itemID = -1;
 
 	// ----------------------------------
@@ -108,12 +108,12 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * The property for setting the selector paint.
 	 */
-	protected static final String PROPERTY_SELECTOR_PAINT_COEFF = "selectorPaintCoeff"; //$NON-NLS-1$
+	protected static final String PROPERTY_SELECTOR_PAINT_COEFF = "selectorPaintCoeff";
 
 	/**
 	 * The property for setting the separators paint.
 	 */
-	protected static final String PROPERTY_SEPARATORS_PAINT_ALPHA = "separatorsPaintAlpha"; //$NON-NLS-1$
+	protected static final String PROPERTY_SEPARATORS_PAINT_ALPHA = "separatorsPaintAlpha";
 
 	protected Bitmap mSpinBitmap;
 	protected Bitmap mSeparatorsBitmap;

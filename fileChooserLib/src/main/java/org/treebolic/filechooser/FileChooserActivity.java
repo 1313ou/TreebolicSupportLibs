@@ -38,11 +38,11 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 {
 	// keys
 
-	static public final String ARG_FILECHOOSER_EXTENSION_FILTER = "filechooser.extension_filter"; //$NON-NLS-1$
+	static public final String ARG_FILECHOOSER_EXTENSION_FILTER = "filechooser.extension_filter";
 
-	static public final String ARG_FILECHOOSER_INITIAL_DIR = "filechooser.initial_dir"; //$NON-NLS-1$
+	static public final String ARG_FILECHOOSER_INITIAL_DIR = "filechooser.initial_dir";
 
-	static public final String ARG_FILECHOOSER_CHOOSE_DIR = "filechooser.choose_dir"; //$NON-NLS-1$
+	static public final String ARG_FILECHOOSER_CHOOSE_DIR = "filechooser.choose_dir";
 
 	/**
 	 * File entry
@@ -255,7 +255,7 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 				else
 				{
 					final String name = entry.getName().toLowerCase(Locale.getDefault());
-					if (name.endsWith(".zip")) //$NON-NLS-1$
+					if (name.endsWith(".zip"))
 					{
 						image.setImageResource(R.drawable.filechooser_zip);
 					}
@@ -349,7 +349,7 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 			if (initialDirExtra != null)
 			{
 				final Uri uri = Uri.parse(initialDirExtra);
-				if (uri != null && "file".equals(uri.getScheme())) //$NON-NLS-1$
+				if (uri != null && "file".equals(uri.getScheme()))
 				{
 					initialDirExtra = uri.getPath();
 				}
@@ -486,7 +486,7 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 			items = dirFile.listFiles();
 		}
 
-		this.setTitle(getString(R.string.currentDir) + ": " + dirFile.getName()); //$NON-NLS-1$
+		this.setTitle(getString(R.string.currentDir) + ": " + dirFile.getName());
 		final List<Entry> dirs = new ArrayList<>();
 		final List<Entry> files = new ArrayList<>();
 		try
@@ -503,7 +503,7 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 					{
 						if (!item.isHidden())
 						{
-							files.add(new Entry(item.getName(), getString(R.string.fileSize) + ": " + item.length(), item.getAbsolutePath(), false, false)); //$NON-NLS-1$
+							files.add(new Entry(item.getName(), getString(R.string.fileSize) + ": " + item.length(), item.getAbsolutePath(), false, false));
 						}
 					}
 				}
@@ -525,7 +525,7 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 		{
 			if (dirFile.getParentFile() != null)
 			{
-				dirs.add(0, new Entry(".. " + getString(R.string.parentDirectory), dirFile.getAbsolutePath(), dirFile.getParent(), false, true)); //$NON-NLS-1$
+				dirs.add(0, new Entry(".. " + getString(R.string.parentDirectory), dirFile.getAbsolutePath(), dirFile.getParent(), false, true));
 			}
 		}
 

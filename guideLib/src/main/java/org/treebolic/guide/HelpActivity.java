@@ -26,7 +26,7 @@ public class HelpActivity extends AppCompatActivity
 	/**
 	 * Log tag
 	 */
-	protected static final String TAG = "Help activity"; //$NON-NLS-1$
+	protected static final String TAG = "Help activity";
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
@@ -38,7 +38,7 @@ public class HelpActivity extends AppCompatActivity
 		final ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null)
 		{
-			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
 		}
 
 		// web view
@@ -76,13 +76,13 @@ public class HelpActivity extends AppCompatActivity
 			}
 		});
 
-		String lang = getString(R.string.lang_tag); //$NON-NLS-1$
-		String url = "file:///android_asset/help/"; //$NON-NLS-1$
+		String lang = getString(R.string.lang_tag);
+		String url = "file:///android_asset/help/";
 		if (!lang.isEmpty())
 		{
 			url += lang + '-';
 		}
-		url += "index.html"; //$NON-NLS-1$
+		url += "index.html";
 		webview.loadUrl(url);
 	}
 
@@ -100,7 +100,7 @@ public class HelpActivity extends AppCompatActivity
 	// {
 	// if (item.getItemId() == R.id.action_tips)
 	// {
-	// Tip.showTips(getFragmentManager());
+	// Tip.showTips(getSupportFragmentManager());
 	// return true;
 	// }
 	// else if (item.getItemId() == R.id.action_help)

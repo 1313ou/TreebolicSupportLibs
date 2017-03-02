@@ -252,7 +252,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 				CharSequence text = getItemText(index);
 				if (text == null)
 				{
-					text = ""; //$NON-NLS-1$
+					text = "";
 				}
 				textView.setText(text);
 				configureTextView(textView);
@@ -328,8 +328,8 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 		}
 		catch (ClassCastException e)
 		{
-			Log.e("AbstractWheelAdapter", "You must supply a resource ID for a TextView"); //$NON-NLS-1$ //$NON-NLS-2$
-			throw new IllegalStateException("AbstractWheelAdapter requires the resource ID to be a TextView", e); //$NON-NLS-1$
+			Log.e("AbstractWheelAdapter", "You must supply a resource ID for a TextView");
+			throw new IllegalStateException("AbstractWheelAdapter requires the resource ID to be a TextView", e);
 		}
 
 		return text;

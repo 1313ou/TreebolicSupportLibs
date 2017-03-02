@@ -48,7 +48,7 @@ import java.util.List;
  */
 public abstract class AbstractWheel extends View
 {
-	// private final String TAG = AbstractWheel.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	// private final String TAG = AbstractWheel.class.getName() + " #" + (++itemID);
 	// private static int itemID = -1;
 
 	// ----------------------------------

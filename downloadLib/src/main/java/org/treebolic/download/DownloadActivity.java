@@ -35,17 +35,17 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	/**
 	 * Log tag
 	 */
-	private static final String TAG = "Download"; //$NON-NLS-1$
+	private static final String TAG = "Download";
 
 	/**
 	 * Allow expanding of archive key
 	 */
-	public static final String ARG_ALLOW_EXPAND_ARCHIVE = "download_allow_expand_archive"; //$NON-NLS-1$
+	public static final String ARG_ALLOW_EXPAND_ARCHIVE = "download_allow_expand_archive";
 
 	/**
 	 * Result extra
 	 */
-	public static final String RESULT_DOWNLOAD_DATA_AVAILABLE = "download_data_available"; //$NON-NLS-1$
+	public static final String RESULT_DOWNLOAD_DATA_AVAILABLE = "download_data_available";
 
 	/**
 	 * Start download
@@ -209,7 +209,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	{
 		super.onPostCreate(savedInstanceState);
 		this.src.setText(this.downloadUrl);
-		this.target.setText(this.destDir != null ? this.destDir.getAbsolutePath() : ""); //$NON-NLS-1$
+		this.target.setText(this.destDir != null ? this.destDir.getAbsolutePath() : "");
 	}
 
 	@Override
@@ -390,11 +390,11 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 					}
 					catch (final FileNotFoundException e)
 					{
-						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e); //$NON-NLS-1$
+						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e);
 					}
 					catch (final IOException e)
 					{
-						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e); //$NON-NLS-1$
+						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e);
 					}
 					finally
 					{
@@ -461,7 +461,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 
 						// update UI
 						final int resStatus = DownloadActivity.status2ResourceId(status);
-						Log.d(DownloadActivity.TAG, getResources().getString(resStatus) + " at " + progress); //$NON-NLS-1$
+						Log.d(DownloadActivity.TAG, getResources().getString(resStatus) + " at " + progress);
 						runOnUiThread(new Runnable()
 						{
 							@Override

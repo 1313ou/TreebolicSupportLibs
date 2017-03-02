@@ -24,11 +24,11 @@ import org.treebolic.wheel.adapters.WheelViewAdapter;
 
 public class SearchSettings extends AppCompatDialogFragment
 {
-	protected static final String TAG = "SearchSettings"; //$NON-NLS-1$
+	protected static final String TAG = "SearchSettings";
 
-	static public final String PREF_SEARCH_SCOPE = "pref_search_scope"; //$NON-NLS-1$
+	static public final String PREF_SEARCH_SCOPE = "pref_search_scope";
 
-	static public final String PREF_SEARCH_MODE = "pref_search_mode"; //$NON-NLS-1$
+	static public final String PREF_SEARCH_MODE = "pref_search_mode";
 
 	private boolean scrolling = false;
 
@@ -124,7 +124,7 @@ public class SearchSettings extends AppCompatDialogFragment
 			@Override
 			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)
 			{
-				Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]); //$NON-NLS-1$
+				Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
 				sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]).commit();
 				if (!SearchSettings.this.scrolling)
 					updateWheel2(newValue);
@@ -165,12 +165,12 @@ public class SearchSettings extends AppCompatDialogFragment
 				WheelViewAdapter adapter = wheel.getViewAdapter();
 				if (adapter == SearchSettings.this.modeAdapter)
 				{
-					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]); //$NON-NLS-1$
+					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]);
 					sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]).commit();
 				}
 				else if (adapter == SearchSettings.this.sourceAdapter)
 				{
-					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]); //$NON-NLS-1$
+					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]);
 					sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]).commit();
 				}
 			}
@@ -269,6 +269,6 @@ public class SearchSettings extends AppCompatDialogFragment
 	static public void show(final FragmentManager fragmentManager)
 	{
 		final AppCompatDialogFragment newFragment = SearchSettings.newInstance();
-		newFragment.show(fragmentManager, "dialog"); //$NON-NLS-1$
+		newFragment.show(fragmentManager, "dialog");
 	}
 }

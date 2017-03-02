@@ -306,12 +306,12 @@ public class ColorPickerView extends View
 	private void init(final AttributeSet attrs)
 	{
 		// Load those if set in xml resource file.
-		final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
-		this.mShowAlphaPanel = a.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
-		this.mAlphaSliderText = a.getString(R.styleable.ColorPickerView_alphaChannelText);
-		this.mSliderTrackerColor = a.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, 0xFFBDBDBD);
-		this.mBorderColor = a.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, 0xFF6E6E6E);
-		a.recycle();
+		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
+		this.mShowAlphaPanel = array.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
+		this.mAlphaSliderText = array.getString(R.styleable.ColorPickerView_alphaChannelText);
+		this.mSliderTrackerColor = array.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, 0xFFBDBDBD);
+		this.mBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, 0xFF6E6E6E);
+		array.recycle();
 
 		ColorPickerView.mDensity = getContext().getResources().getDisplayMetrics().density;
 		this.PALETTE_CIRCLE_TRACKER_RADIUS *= ColorPickerView.mDensity;
@@ -537,7 +537,7 @@ public class ColorPickerView extends View
 
 		canvas.drawRect(rect, this.mAlphaPaint);
 
-		if (this.mAlphaSliderText != null && !this.mAlphaSliderText.equals("")) //$NON-NLS-1$
+		if (this.mAlphaSliderText != null && !this.mAlphaSliderText.equals(""))
 		{
 			canvas.drawText(this.mAlphaSliderText, rect.centerX(), rect.centerY() + 4 * ColorPickerView.mDensity, this.mAlphaTextPaint);
 		}

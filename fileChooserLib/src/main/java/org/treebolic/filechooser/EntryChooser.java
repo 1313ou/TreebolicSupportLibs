@@ -1,6 +1,6 @@
 package org.treebolic.filechooser;
 
-import android.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -130,7 +130,7 @@ public class EntryChooser
 	 */
 	static public void choose(final Context context, final File archive, final Callback callback) throws IOException
 	{
-		final List<String> list = EntryChooser.getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*"); //$NON-NLS-1$ //$NON-NLS-2$
+		final List<String> list = EntryChooser.getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*");
 		final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
 		{
 			@Override

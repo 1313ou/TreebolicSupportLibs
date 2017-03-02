@@ -66,7 +66,7 @@ public class AutoEditTextPreference extends DialogPreference
 	private void init(final Context context, final AttributeSet attrs)
 	{
 		// obtain default value
-		final int id = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", -1); //$NON-NLS-1$ //$NON-NLS-2$
+		final int id = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", -1);
 		this.defaultValue = id == -1 ? null : context.getResources().getString(id);
 
 		// obtain values through styled attributes

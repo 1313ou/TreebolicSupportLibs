@@ -34,7 +34,7 @@ public class ColorPickerActivity extends AppCompatActivity implements OnColorCha
 	private void init()
 	{
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		final int initialColor = prefs.getInt("color_3", 0xFF000000); //$NON-NLS-1$
+		final int initialColor = prefs.getInt("color_3", 0xFF000000);
 
 		this.mColorPickerView = (ColorPickerView) findViewById(R.id.color_picker_view);
 		ColorPanelView mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
@@ -68,7 +68,7 @@ public class ColorPickerActivity extends AppCompatActivity implements OnColorCha
 		if (id == R.id.okButton)
 		{
 			final SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
-			edit.putInt("color_3", this.mColorPickerView.getColor()); //$NON-NLS-1$
+			edit.putInt("color_3", this.mColorPickerView.getColor());
 			edit.commit();
 			finish();
 		}

@@ -40,7 +40,7 @@ import android.widget.LinearLayout;
  */
 public class WheelVerticalView extends AbstractWheelView
 {
-	// private final String TAG = WheelVerticalView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	// private final String TAG = WheelVerticalView.class.getName() + " #" + (++itemID);
 	// private static int itemID = -1;
 
 	/**

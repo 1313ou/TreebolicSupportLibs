@@ -71,13 +71,13 @@ public class AlphaPatternDrawable extends Drawable
 	@Override
 	public void setAlpha(final int alpha)
 	{
-		throw new UnsupportedOperationException("Alpha is not supported by this drawable."); //$NON-NLS-1$
+		throw new UnsupportedOperationException("Alpha is not supported by this drawable.");
 	}
 
 	@Override
 	public void setColorFilter(final ColorFilter cf)
 	{
-		throw new UnsupportedOperationException("ColorFilter is not supported by this drawable."); //$NON-NLS-1$
+		throw new UnsupportedOperationException("ColorFilter is not supported by this drawable.");
 	}
 
 	@Override

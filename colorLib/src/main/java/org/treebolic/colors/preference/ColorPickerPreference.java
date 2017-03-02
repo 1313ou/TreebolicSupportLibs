@@ -87,18 +87,18 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	private void init(final AttributeSet attrs)
 	{
 		// preference attributes
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerPreference);
-		this.showDialogTitle = a.getBoolean(R.styleable.ColorPickerPreference_showDialogTitle, false);
-		this.showPreviewSelectedColorInList = a.getBoolean(R.styleable.ColorPickerPreference_showSelectedColorInList, true);
-		a.recycle();
+		TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerPreference);
+		this.showDialogTitle = array.getBoolean(R.styleable.ColorPickerPreference_showDialogTitle, false);
+		this.showPreviewSelectedColorInList = array.getBoolean(R.styleable.ColorPickerPreference_showSelectedColorInList, true);
+		array.recycle();
 
 		// view attributes
-		a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
-		this.alphaChannelVisible = a.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
-		this.alphaChannelText = a.getString(R.styleable.ColorPickerView_alphaChannelText);
-		this.colorPickerSliderColor = a.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, -1);
-		this.colorPickerBorderColor = a.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, -1);
-		a.recycle();
+		array = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
+		this.alphaChannelVisible = array.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
+		this.alphaChannelText = array.getString(R.styleable.ColorPickerView_alphaChannelText);
+		this.colorPickerSliderColor = array.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, -1);
+		this.colorPickerBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, -1);
+		array.recycle();
 
 		// list
 		if (this.showPreviewSelectedColorInList)

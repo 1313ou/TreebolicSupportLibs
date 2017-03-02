@@ -51,6 +51,6 @@ public class Tip extends AppCompatDialogFragment
 	static public void show(final FragmentManager fragmentManager)
 	{
 		final AppCompatDialogFragment newFragment = Tip.newInstance();
-		newFragment.show(fragmentManager, "dialog"); //$NON-NLS-1$
+		newFragment.show(fragmentManager, "dialog");
 	}
 }

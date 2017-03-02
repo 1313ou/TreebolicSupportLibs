@@ -17,7 +17,7 @@ import android.view.MenuItem;
 @SuppressLint("Registered")
 public class AboutActivity extends AppCompatActivity
 {
-	// protected static final String TAG = "About activity"; //$NON-NLS-1$
+	// protected static final String TAG = "About activity";
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
@@ -29,7 +29,7 @@ public class AboutActivity extends AppCompatActivity
 		final ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null)
 		{
-			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
 		}
 	}
 

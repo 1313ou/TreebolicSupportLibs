@@ -45,7 +45,7 @@ import android.widget.LinearLayout;
 public class WheelHorizontalView extends AbstractWheelView
 {
 
-	private final String LOG_TAG = WheelVerticalView.class.getName() + " #" + (++itemID); //$NON-NLS-1$
+	private final String LOG_TAG = WheelVerticalView.class.getName() + " #" + (++itemID);
 
 	private static int itemID = -1;
 
@@ -233,15 +233,15 @@ public class WheelHorizontalView extends AbstractWheelView
 		super.onScrollTouchedUp();
 		int cnt = this.mItemsLayout.getChildCount();
 		View itm;
-		Log.e(this.LOG_TAG, " ----- layout: " + this.mItemsLayout.getMeasuredWidth() + this.mItemsLayout.getMeasuredHeight()); //$NON-NLS-1$
-		Log.e(this.LOG_TAG, " -------- dumping " + cnt + " items"); //$NON-NLS-1$ //$NON-NLS-2$
+		Log.e(this.LOG_TAG, " ----- layout: " + this.mItemsLayout.getMeasuredWidth() + this.mItemsLayout.getMeasuredHeight());
+		Log.e(this.LOG_TAG, " -------- dumping " + cnt + " items");
 		for (int i = 0; i < cnt; i++)
 		{
 			itm = this.mItemsLayout.getChildAt(i);
-			Log.e(this.LOG_TAG, " item #" + i + ": " + itm.getWidth() + "x" + itm.getHeight()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			Log.e(this.LOG_TAG, " item #" + i + ": " + itm.getWidth() + "x" + itm.getHeight());
 			itm.forceLayout(); // forcing layout without re-rendering parent
 		}
-		Log.e(this.LOG_TAG, " ---------- dumping finished "); //$NON-NLS-1$
+		Log.e(this.LOG_TAG, " ---------- dumping finished ");
 	}
 
 	// --------------------------------------------------------------------------

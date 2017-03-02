@@ -24,17 +24,17 @@ import java.util.zip.ZipInputStream;
 
 public class Storage
 {
-	private static final String TAG = "Storage"; //$NON-NLS-1$
+	private static final String TAG = "Storage";
 
 	/**
 	 * Treebolic storage preference name
 	 */
-	public static final String PREF_TREEBOLIC_STORAGE = "pref_storage"; //$NON-NLS-1$
+	public static final String PREF_TREEBOLIC_STORAGE = "pref_storage";
 
 	/**
 	 * Treebolic sub directory
 	 */
-	private static final String TREEBOLICDIR = "treebolic" + '/'; //$NON-NLS-1$
+	private static final String TREEBOLICDIR = "treebolic" + '/';
 
 	/**
 	 * Cached treebolic storage
@@ -89,7 +89,7 @@ public class Storage
 		// S E C O N D A R Y
 
 		// all secondary sdcards (all exclude primary) separated by ":"
-		final String secondaryStoragesStr = System.getenv("SECONDARY_STORAGE"); //$NON-NLS-1$
+		final String secondaryStoragesStr = System.getenv("SECONDARY_STORAGE");
 
 		// add all secondary storages
 		if (secondaryStoragesStr != null && !secondaryStoragesStr.isEmpty())
@@ -105,14 +105,14 @@ public class Storage
 		// P R I M A R Y E M U L A T E D
 
 		// primary emulated sdcard
-		final String emulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET"); //$NON-NLS-1$
+		final String emulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET");
 		if (emulatedStorageTarget != null && !emulatedStorageTarget.isEmpty())
 		{
 			// device has emulated extStorage; external extStorage paths should have userId burned into them.
 			final String userId;
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)
 			{
-				userId = ""; //$NON-NLS-1$
+				userId = "";
 			}
 			else
 			{
@@ -130,7 +130,7 @@ public class Storage
 				{
 					//
 				}
-				userId = isDigit ? lastFolder : ""; //$NON-NLS-1$
+				userId = isDigit ? lastFolder : "";
 			}
 
 			// /extStorage/emulated/0[1,2,...]
@@ -144,7 +144,7 @@ public class Storage
 		// P R I M A R Y N O N E M U L A T E D
 
 		// primary physical sdcard (not emulated)
-		final String externalStorage = System.getenv("EXTERNAL_STORAGE"); //$NON-NLS-1$
+		final String externalStorage = System.getenv("EXTERNAL_STORAGE");
 
 		// device has physical external extStorage; use plain paths.
 		if (externalStorage != null && !externalStorage.isEmpty())
@@ -179,14 +179,14 @@ public class Storage
 		// P R I M A R Y
 
 		// primary emulated sdcard
-		final String emulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET"); //$NON-NLS-1$
+		final String emulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET");
 		if (emulatedStorageTarget != null && !emulatedStorageTarget.isEmpty())
 		{
 			// device has emulated extStorage; external extStorage paths should have userId burned into them.
 			final String userId;
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)
 			{
-				userId = ""; //$NON-NLS-1$
+				userId = "";
 			}
 			else
 			{
@@ -204,7 +204,7 @@ public class Storage
 				{
 					//
 				}
-				userId = isDigit ? lastFolder : ""; //$NON-NLS-1$
+				userId = isDigit ? lastFolder : "";
 			}
 			// /extStorage/emulated/0[1,2,...]
 			if (userId == null || userId.isEmpty())
@@ -219,7 +219,7 @@ public class Storage
 		else
 		{
 			// primary physical sdcard (not emulated)
-			final String externalStorage = System.getenv("EXTERNAL_STORAGE"); //$NON-NLS-1$
+			final String externalStorage = System.getenv("EXTERNAL_STORAGE");
 
 			// device has physical external extStorage; use plain paths
 			if (externalStorage != null && !externalStorage.isEmpty())
@@ -229,14 +229,14 @@ public class Storage
 			else
 			{
 				// EXTERNAL_STORAGE undefined; falling back to default.
-				dirs.put(StorageType.PRIMARY_EMULATED, new String[]{"/extStorage/sdcard0"}); //$NON-NLS-1$
+				dirs.put(StorageType.PRIMARY_EMULATED, new String[]{"/extStorage/sdcard0"});
 			}
 		}
 
 		// S E C O N D A R Y
 
 		// all secondary sdcards (all exclude primary) separated by ":"
-		final String secondaryStoragesStr = System.getenv("SECONDARY_STORAGE"); //$NON-NLS-1$
+		final String secondaryStoragesStr = System.getenv("SECONDARY_STORAGE");
 
 		// add all secondary storages
 		if (secondaryStoragesStr != null && !secondaryStoragesStr.isEmpty())
@@ -345,7 +345,7 @@ public class Storage
 			//
 		}
 
-		dir = context.getExternalFilesDir("Documents"); //$NON-NLS-1$
+		dir = context.getExternalFilesDir("Documents");
 		if (Storage.qualifies(dir))
 		{
 			return dir;
@@ -405,7 +405,7 @@ public class Storage
 		// log
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 		{
-			Log.d(Storage.TAG, "storage state of " + dir + ": " + Environment.getExternalStorageState(dir)); //$NON-NLS-1$ //$NON-NLS-2$
+			Log.d(Storage.TAG, "storage state of " + dir + ": " + Environment.getExternalStorageState(dir));
 		}
 
 		// either mkdirs() creates dir or it is already a dir
@@ -658,7 +658,7 @@ public class Storage
 				if (!entry.isDirectory())
 				{
 					final String entryName = entry.getName();
-					if (!entryName.endsWith("MANIFEST.MF")) //$NON-NLS-1$
+					if (!entryName.endsWith("MANIFEST.MF"))
 					{
 						if (pathPrefixFilter == null || pathPrefixFilter.isEmpty() || entryName.startsWith(pathPrefixFilter))
 						{

@@ -26,7 +26,7 @@ public class Deploy
 	/**
 	 * Log tag
 	 */
-	private static final String TAG = "Deploy"; //$NON-NLS-1$
+	private static final String TAG = "Deploy";
 
 	/**
 	 * Copy stream to file
@@ -76,10 +76,10 @@ public class Deploy
 	{
 		if (asTarGz)
 		{
-			extractTarGz(in, toDir, true, ".*", null); //$NON-NLS-1$
+			extractTarGz(in, toDir, true, ".*", null);
 			return;
 		}
-		expandZip(in, toDir, true, ".*", "META-INF.*"); //$NON-NLS-1$ //$NON-NLS-2$
+		expandZip(in, toDir, true, ".*", "META-INF.*");
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class Deploy
 			for (ZipEntry zipEntry = zipIn.getNextEntry(); zipEntry != null; zipEntry = zipIn.getNextEntry())
 			{
 				String entryName = zipEntry.getName();
-				Log.d(Deploy.TAG, "Entry " + entryName); //$NON-NLS-1$
+				Log.d(Deploy.TAG, "Entry " + entryName);
 
 				// include
 				if (includePattern != null)
@@ -158,7 +158,7 @@ public class Deploy
 
 					// create destination
 					final File destFile = new File(destDir, entryName);
-					Log.d(Deploy.TAG, "Unzip to " + destFile.getCanonicalPath()); //$NON-NLS-1$
+					Log.d(Deploy.TAG, "Unzip to " + destFile.getCanonicalPath());
 					destFile.createNewFile();
 
 					// copy
@@ -280,7 +280,7 @@ public class Deploy
 
 					// create destination file with same name as entry
 					final File destFile = new File(destDir, entryName);
-					Log.d(Deploy.TAG, "Untar to " + destFile.getCanonicalPath()); //$NON-NLS-1$
+					Log.d(Deploy.TAG, "Untar to " + destFile.getCanonicalPath());
 					destFile.createNewFile();
 
 					// copy
