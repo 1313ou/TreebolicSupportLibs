@@ -1,0 +1,3 @@
+<resources>
+	<attr name="treebolic_actionbar_icon_color" format="reference"/>
+</resources>

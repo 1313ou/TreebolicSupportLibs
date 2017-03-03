@@ -22,6 +22,11 @@ import org.treebolic.wheel.WheelView;
 import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
 import org.treebolic.wheel.adapters.WheelViewAdapter;
 
+/**
+ * Search settings
+ *
+ * @author Bernard Bou
+ */
 public class SearchSettings extends AppCompatDialogFragment
 {
 	protected static final String TAG = "SearchSettings";
