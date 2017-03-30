@@ -77,14 +77,14 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	/**
 	 * Download uri
 	 */
-	protected final String downloadUrl;
+	protected String downloadUrl;
 
 	protected Uri downloadUri;
 
 	/**
 	 * Destination uri
 	 */
-	protected final File destDir;
+	protected File destDir;
 
 	protected Uri destUri;
 
