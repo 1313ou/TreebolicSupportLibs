@@ -5,8 +5,7 @@
     tools:context="org.treebolic.guide.AboutActivity" >
 
     <LinearLayout
-        android:id="@+id/treebolic"
-        android:layout_width="wrap_content"
+	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="16dp"
@@ -15,16 +14,14 @@
         android:paddingTop="16dp" >
 
         <ImageView
-            android:id="@+id/treebolicImage"
-            android:layout_width="wrap_content"
+	        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/about_treebolic_label"
             android:src="@drawable/ic_treebolic_logo" />
 
         <TextView
-            android:id="@+id/treebolicLabel"
-            android:layout_width="wrap_content"
+	        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/about_treebolic_label"
@@ -32,24 +29,21 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/treebolicText"
-            android:layout_width="wrap_content"
+	        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:text="@string/about_treebolic_text" />
 
         <TextView
-            android:id="@+id/treebolicAuthor"
-            android:layout_width="wrap_content"
+	        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/about_treebolic_author"
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/treebolicCopyright"
-            android:layout_width="wrap_content"
+	        android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/about_treebolic_copyright" />

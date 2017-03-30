@@ -60,7 +60,7 @@ public class ColorPickerActivity extends AppCompatActivity implements OnColorCha
 		this.mNewColorPanelView.setColor(this.mColorPickerView.getColor());
 	}
 
-	@SuppressLint("CommitPrefEdits")
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	@Override
 	public void onClick(final View v)
 	{

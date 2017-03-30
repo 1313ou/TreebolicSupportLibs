@@ -534,7 +534,7 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 		this.listView.setAdapter(this.adapter);
 	}
 
-	@SuppressLint("CommitPrefEdits")
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	static public void setFolder(final Context context, final String key, final String folder)
 	{
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

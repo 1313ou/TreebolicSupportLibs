@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Pair;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +18,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -47,6 +50,95 @@ public class Storage
 	private static String extStorage = null;
 
 	/**
+	 * Storage types
+	 */
+	enum StorageType
+	{
+		PRIMARY_EMULATED, PRIMARY_PHYSICAL, SECONDARY
+	}
+
+	/**
+	 * Directory type
+	 *
+	 * @author <a href="mailto:1313ou@gmail.com">Bernard Bou</a>
+	 */
+	public enum DirType
+	{
+		AUTO, APP_EXTERNAL_SECONDARY, APP_EXTERNAL_PRIMARY, PUBLIC_EXTERNAL_SECONDARY, PUBLIC_EXTERNAL_PRIMARY, APP_INTERNAL;
+
+		/**
+		 * Compare (sort by preference)
+		 *
+		 * @param type1 type 1
+		 * @param type2 type 2
+		 * @return order
+		 */
+		static public int compare(final DirType type1, final DirType type2)
+		{
+			int i1 = type1.ordinal();
+			int i2 = type2.ordinal();
+			return i1 < i2 ? -1 : (i1 == i2 ? 0 : 1);
+		}
+
+		public String toDisplay()
+		{
+			switch (this)
+			{
+				case AUTO:
+					return "auto (internal or adopted)";
+				case APP_EXTERNAL_SECONDARY:
+					return "secondary";
+				case APP_EXTERNAL_PRIMARY:
+					return "primary";
+				case PUBLIC_EXTERNAL_PRIMARY:
+					return "public primary";
+				case PUBLIC_EXTERNAL_SECONDARY:
+					return "public secondary";
+				case APP_INTERNAL:
+					return "internal";
+			}
+			return null;
+		}
+	}
+
+	/**
+	 * Directory with type
+	 *
+	 * @author <a href="mailto:1313ou@gmail.com">Bernard Bou</a>
+	 */
+	static public class Directory
+	{
+		private final File file;
+
+		private final DirType type;
+
+		Directory(final File file, final DirType type)
+		{
+			this.file = file;
+			this.type = type;
+		}
+
+		DirType getType()
+		{
+			return this.type;
+		}
+
+		CharSequence getValue()
+		{
+			if (DirType.AUTO == this.type)
+			{
+				return DirType.AUTO.toString();
+			}
+			return this.file.getAbsolutePath();
+		}
+
+		public File getFile()
+		{
+			return this.file;
+		}
+	}
+
+	/**
 	 * Get data cache
 	 *
 	 * @param context context
@@ -74,7 +166,7 @@ public class Storage
 	{
 		if (Storage.extStorage == null)
 		{
-			Storage.extStorage = Storage.discoverStorage();
+			Storage.extStorage = Storage.discoverExternalStorage();
 		}
 		return Storage.extStorage;
 	}
@@ -84,7 +176,7 @@ public class Storage
 	 *
 	 * @return (cached) external storage directory
 	 */
-	static private String discoverStorage()
+	static private String discoverExternalStorage()
 	{
 		// S E C O N D A R Y
 
@@ -156,14 +248,6 @@ public class Storage
 		// return "/extStorage/sdcard0";
 
 		return null;
-	}
-
-	/**
-	 * Storage types
-	 */
-	public enum StorageType
-	{
-		PRIMARY_EMULATED, PRIMARY_PHYSICAL, SECONDARY
 	}
 
 	/**
@@ -257,7 +341,7 @@ public class Storage
 	 *
 	 * @return treebolic storage directory
 	 */
-	@SuppressLint("CommitPrefEdits")
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	static public File getTreebolicStorage(final Context context)
 	{
 		// if cached return cache
@@ -541,7 +625,7 @@ public class Storage
 	 *
 	 * @param in  instream
 	 * @param out outstream
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	public static void copyFile(final InputStream in, final OutputStream out) throws IOException
 	{
@@ -717,5 +801,220 @@ public class Storage
 		}
 
 		return destDir;
+	}
+
+	/**
+	 * Get directories as types and values
+	 *
+	 * @param context context
+	 * @return pair of types and values
+	 */
+	static public Pair<CharSequence[], CharSequence[]> getDirectoriesTypesValues(final Context context)
+	{
+		final List<CharSequence> types = new ArrayList<>();
+		final List<CharSequence> values = new ArrayList<>();
+		final List<Directory> dirs = Storage.getDirectories(context);
+		for (Directory dir : dirs)
+		{
+			// types
+			types.add(dir.getType().toDisplay());
+
+			// value
+			values.add(dir.getFile().getAbsolutePath());
+		}
+		return new Pair<>(types.toArray(new CharSequence[0]), values.toArray(new CharSequence[0]));
+	}
+
+	/**
+	 * Get list of directories
+	 *
+	 * @param context context
+	 * @return list of storage directories
+	 */
+	@TargetApi(Build.VERSION_CODES.KITKAT)
+	static private List<Directory> getDirectories(final Context context)
+	{
+		final String[] tags = {Environment.DIRECTORY_PODCASTS, Environment.DIRECTORY_RINGTONES, Environment.DIRECTORY_ALARMS, Environment.DIRECTORY_NOTIFICATIONS, Environment.DIRECTORY_PICTURES, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_DOWNLOADS, Environment.DIRECTORY_DCIM, Environment.DIRECTORY_DOCUMENTS};
+
+		final List<Directory> result = new ArrayList<>();
+		File dir;
+
+		// P U B L I C
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+		{
+			final File[] externalMediaDirs = context.getExternalMediaDirs();
+			if (externalMediaDirs != null)
+			{
+				for (File mediaStorage : externalMediaDirs)
+				{
+					//result.add(new Directory(mediaStorage, DirType.PUBLIC_EXTERNAL_SECONDARY));
+				}
+			}
+		}
+
+		// top-level public external storage directory
+		for (String tag : tags)
+		{
+			dir = Environment.getExternalStoragePublicDirectory(tag);
+			if (dir.exists())
+			{
+				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
+			}
+		}
+
+		// top-level public in external
+		dir = Environment.getExternalStorageDirectory();
+		if (dir != null)
+		{
+			if (dir.exists())
+			{
+				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
+			}
+		}
+
+		// S E C O N D A R Y
+
+		// all secondary sdcards split into array
+		final File[] secondaries = discoverSecondaryExternalStorage();
+		if (secondaries != null)
+		{
+			for (File secondary : secondaries)
+			{
+				dir = secondary;
+				if (dir.exists())
+				{
+					result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_SECONDARY));
+				}
+			}
+		}
+
+		// P R I M A R Y
+
+		// primary emulated sdcard
+		dir = discoverPrimaryEmulatedExternalStorage();
+		if (dir != null)
+		{
+			if (dir.exists())
+			{
+				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
+			}
+		}
+
+		dir = discoverPrimaryPhysicalExternalStorage();
+		if (dir != null)
+		{
+			if (dir.exists())
+			{
+				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
+			}
+		}
+
+		result.add(new Directory(new File("/storage"), DirType.PUBLIC_EXTERNAL_PRIMARY));
+		return result;
+	}
+
+	/**
+	 * Discover primary emulated external storage directory
+	 *
+	 * @return primary emulated external storage directory
+	 */
+	static private File discoverPrimaryEmulatedExternalStorage()
+	{
+		// primary emulated sdcard
+		final String emulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET");
+		if (emulatedStorageTarget != null && !emulatedStorageTarget.isEmpty())
+		{
+			// device has emulated extStorage
+			// external extStorage paths should have userId burned into them
+			final String userId = getUserId();
+
+			// /extStorage/emulated/0[1,2,...]
+			if (userId == null || userId.isEmpty())
+			{
+				return new File(emulatedStorageTarget);
+			}
+			else
+			{
+				return new File(emulatedStorageTarget + File.separatorChar + userId);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Discover primary physical external storage directory
+	 *
+	 * @return primary physical external storage directory
+	 */
+	static private File discoverPrimaryPhysicalExternalStorage()
+	{
+		final String externalStorage = System.getenv("EXTERNAL_STORAGE");
+		// device has physical external extStorage; use plain paths.
+		if (externalStorage != null && !externalStorage.isEmpty())
+		{
+			return new File(externalStorage);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Discover secondary external storage directories
+	 *
+	 * @return secondary external storage directories
+	 */
+	static private File[] discoverSecondaryExternalStorage()
+	{
+		// all secondary sdcards (all except primary) separated by ":"
+		String secondaryStoragesEnv = System.getenv("SECONDARY_STORAGE");
+		if ((secondaryStoragesEnv == null) || secondaryStoragesEnv.isEmpty())
+		{
+			secondaryStoragesEnv = System.getenv("EXTERNAL_SDCARD_STORAGE");
+		}
+
+		// addItem all secondary storages
+		if (secondaryStoragesEnv != null && !secondaryStoragesEnv.isEmpty())
+		{
+			// all secondary sdcards split into array
+			final String[] paths = secondaryStoragesEnv.split(File.pathSeparator);
+			final List<File> dirs = new ArrayList<>();
+			for (String path : paths)
+			{
+				final File dir = new File(path);
+				if (dir.exists())
+				{
+					dirs.add(dir);
+				}
+			}
+			return dirs.toArray(new File[0]);
+		}
+		return null;
+	}
+
+	// U S E R I D
+
+	/**
+	 * User id
+	 *
+	 * @return user id
+	 */
+	static private String getUserId()
+	{
+		final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+		final String[] folders = path.split(File.separator);
+		final String lastFolder = folders[folders.length - 1];
+		boolean isDigit = false;
+		try
+		{
+			//noinspection ResultOfMethodCallIgnored
+			Integer.valueOf(lastFolder);
+			isDigit = true;
+		}
+		catch (final NumberFormatException ignored)
+		{
+			//
+		}
+		return isDigit ? lastFolder : "";
 	}
 }

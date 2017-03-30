@@ -33,7 +33,7 @@ public class Deploy
 	 *
 	 * @param in     input stream
 	 * @param toFile dest file
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	public static void copy(final InputStream in, final File toFile) throws IOException
 	{
@@ -70,7 +70,7 @@ public class Deploy
 	 * @param in      input stream
 	 * @param toDir   to directory
 	 * @param asTarGz is tar gz type
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	public static void expand(final InputStream in, final File toDir, boolean asTarGz) throws IOException
 	{
@@ -215,7 +215,7 @@ public class Deploy
 	 * @param include include regexp filter
 	 * @param exclude exclude regexp filter
 	 * @return dest dir
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	static public File extractTarGz(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude) throws IOException
 	{

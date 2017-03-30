@@ -124,7 +124,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		// wheel 1 events
 		this.scopeWheel.addChangingListener(new OnWheelChangedListener()
 		{
-			@SuppressLint("CommitPrefEdits")
+			@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)
@@ -162,7 +162,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		// wheel 2 events
 		this.modeWheel.addChangingListener(new OnWheelChangedListener()
 		{
-			@SuppressLint("CommitPrefEdits")
+			@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)

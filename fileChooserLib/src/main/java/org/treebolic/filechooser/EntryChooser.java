@@ -80,7 +80,7 @@ public class EntryChooser
 	 * @param negativeFilter negative filter
 	 * @param positiveFilter positive filter
 	 * @return list of entries
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	static private List<String> getZipEntries(final File archive, final String negativeFilter, final String positiveFilter) throws IOException
 	{
@@ -126,7 +126,7 @@ public class EntryChooser
 	 * @param context  context
 	 * @param archive  zip archive
 	 * @param callback select callback
-	 * @throws IOException
+	 * @throws IOException io exception
 	 */
 	static public void choose(final Context context, final File archive, final Callback callback) throws IOException
 	{
