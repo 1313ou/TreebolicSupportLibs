@@ -2,8 +2,6 @@ package org.treebolic.guide;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,7 +32,11 @@ public class HelpActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
 
-		// show the Up button in the action bar.
+		// toolbar
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+
+		// set up the action bar
 		final ActionBar actionBar = getSupportActionBar();
 		if (actionBar != null)
 		{

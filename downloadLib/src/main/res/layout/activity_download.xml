@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context="org.treebolic.download.DownloadActivity" >
 
+    <include layout="@layout/toolbar"/>
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"

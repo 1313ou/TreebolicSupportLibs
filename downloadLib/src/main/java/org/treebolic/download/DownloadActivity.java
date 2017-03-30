@@ -10,7 +10,6 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -138,9 +137,21 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	{
 		super.onCreate(savedInstanceState);
 
-		this.downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-
 		setContentView(R.layout.activity_download);
+
+		// toolbar
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+
+		// set up the action bar
+		final ActionBar actionBar = getSupportActionBar();
+		if (actionBar != null)
+		{
+			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
+		}
+
+		// download manager
+		this.downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
 		// components
 		this.downloadButton = (Button) findViewById(R.id.downloadButton);

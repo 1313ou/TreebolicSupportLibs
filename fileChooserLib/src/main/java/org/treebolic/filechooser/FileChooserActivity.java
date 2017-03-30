@@ -1,7 +1,6 @@
 package org.treebolic.filechooser;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -329,6 +328,17 @@ public class FileChooserActivity extends AppCompatActivity implements AdapterVie
 
 		// layout
 		setContentView(R.layout.activity_choose_file);
+
+		// toolbar
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+
+		// set up the action bar
+		final ActionBar actionBar = getSupportActionBar();
+		if (actionBar != null)
+		{
+			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
+		}
 
 		// list view
 		this.listView = (ListView) findViewById(android.R.id.list);
