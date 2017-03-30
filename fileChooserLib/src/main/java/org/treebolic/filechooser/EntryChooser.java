@@ -3,6 +3,7 @@ package org.treebolic.filechooser;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
 
 import java.io.File;
