@@ -33,6 +33,8 @@ public class HelpActivity extends AppCompatActivity
 	protected void onCreate(final Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		// layout
 		setContentView(R.layout.activity_help);
 
 		// toolbar

@@ -140,6 +140,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	{
 		super.onCreate(savedInstanceState);
 
+		// layout
 		setContentView(R.layout.activity_download);
 
 		// toolbar
