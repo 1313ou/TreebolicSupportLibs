@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,7 +67,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	 * @return true if file should be disposed of
 	 */
 	@SuppressWarnings({"static-method", "RedundantThrows"})
-	protected boolean process(final InputStream inputStream) throws IOException
+	protected boolean process(@SuppressWarnings("UnusedParameters") final InputStream inputStream) throws IOException
 	{
 		return false;
 	}
@@ -101,9 +102,9 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	private BroadcastReceiver receiver;
 
 	/**
-	 * Downloads
+	 * Download button
 	 */
-	private Button downloadButton;
+	private ImageButton downloadButton;
 
 	/**
 	 * Progress bar
@@ -158,7 +159,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		this.downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
 		// components
-		this.downloadButton = (Button) findViewById(R.id.downloadButton);
+		this.downloadButton = (ImageButton) findViewById(R.id.downloadButton);
 		this.downloadButton.setOnClickListener(this);
 
 		final Button showDownloadButton = (Button) findViewById(R.id.showButton);
@@ -201,7 +202,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 						final boolean success = retrieve();
 
 						// progress
-						DownloadActivity.this.progressBar.setVisibility(View.GONE);
+						DownloadActivity.this.progressBar.setProgress(success ? 100 : 0);
 						DownloadActivity.this.progressStatus.setText(success ? R.string.status_download_successful : R.string.status_download_fail);
 
 						// toast
@@ -295,15 +296,15 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 			}
 
 			// @formatter: off
-			//			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-			//			{
-			//				request.setAllowedOverMetered(false);
-			//			}
-			//			else
-			//			{
-			//				request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
-			//			}
-			//			request.setAllowedOverRoaming(false);
+			//  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+			//  {
+			// 	    request.setAllowedOverMetered(false);
+			//	}
+			//	else
+			//	{
+			//		request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
+			//	}
+			//	request.setAllowedOverRoaming(false);
 			// @formatter: on
 
 			request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);

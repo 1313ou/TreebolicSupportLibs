@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.FloatingActionButton
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/downloadButton"
+	android:layout_width="@dimen/action_button_size"
+	android:layout_height="@dimen/action_button_size"
+	android:layout_centerHorizontal="true"
+	android:layout_centerVertical="true"
+	android:layout_gravity="center|center"
+	android:layout_marginBottom="@dimen/action_button_margin"
+	android:contentDescription="@string/download"
+	android:onClick="onClick"
+	android:visibility="visible"
+	app:srcCompat="@drawable/ic_download"/>

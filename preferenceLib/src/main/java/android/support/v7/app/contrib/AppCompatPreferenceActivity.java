@@ -28,6 +28,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.treebolic.preference.R;
+
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls to be used with AppCompat.
  */
@@ -86,6 +88,19 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity
 	}
 
 	// A C T I O N   B A R
+
+	protected void setupToolbar(int toolbarLayout, int toolbarId)
+	{
+		final ViewGroup rootView = (ViewGroup)findViewById(R.id.action_bar_root); //id from appcompat
+		if (rootView != null)
+		{
+			final View view = getLayoutInflater().inflate(toolbarLayout, rootView, false);
+			rootView.addView(view, 0);
+
+			final Toolbar toolbar = (Toolbar)findViewById(toolbarId);
+			setSupportActionBar(toolbar);
+		}
+	}
 
 	public ActionBar getSupportActionBar()
 	{
