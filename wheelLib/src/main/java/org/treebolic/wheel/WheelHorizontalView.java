@@ -44,7 +44,6 @@ import android.widget.LinearLayout;
  */
 public class WheelHorizontalView extends AbstractWheelView
 {
-
 	private final String LOG_TAG = WheelVerticalView.class.getName() + " #" + (++itemID);
 
 	private static int itemID = -1;
