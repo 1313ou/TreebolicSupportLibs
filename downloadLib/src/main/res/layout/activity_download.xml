@@ -83,7 +83,7 @@
 		android:layout_below="@+id/target"
 		android:layout_centerHorizontal="true"
 		android:text="@string/expandArchive"
-		android:visibility="visible"/>
+		android:visibility="invisible"/>
 
 	<Button
 		android:id="@+id/showButton"

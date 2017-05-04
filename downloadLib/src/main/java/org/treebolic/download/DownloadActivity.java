@@ -129,7 +129,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	/**
 	 * Expand archive checkbox
 	 */
-	private CheckBox expandArchiveCheckbox;
+	protected CheckBox expandArchiveCheckbox;
 
 	/**
 	 * Whether to expand archive

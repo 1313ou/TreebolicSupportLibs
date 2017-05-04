@@ -841,6 +841,7 @@ public class Storage
 
 		// P U B L I C
 
+		/*
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 		{
 			final File[] externalMediaDirs = context.getExternalMediaDirs();
@@ -852,6 +853,7 @@ public class Storage
 				}
 			}
 		}
+  	    */
 
 		// top-level public external storage directory
 		for (String tag : tags)
