@@ -35,6 +35,24 @@ public class SearchSettings extends AppCompatDialogFragment
 
 	static public final String PREF_SEARCH_MODE = "pref_search_mode";
 
+	static public final String SCOPE_SOURCE = "SOURCE";
+
+	static public final String SCOPE_LABEL = "LABEL";
+
+	static public final String SCOPE_CONTENT = "CONTENT";
+
+	static public final String SCOPE_LINK = "LINK";
+
+	static public final String SCOPE_ID = "ID";
+
+	static public final String MODE_STARTSWITH = "STARTSWITH";
+
+	static public final String MODE_EQUALS = "EQUALS";
+
+	static public final String MODE_INCLUDES = "INCLUDES";
+
+	static public final String MODE_IS = "IS";
+
 	private boolean scrolling = false;
 
 	private WheelView scopeWheel;
@@ -79,9 +97,9 @@ public class SearchSettings extends AppCompatDialogFragment
 		final int defaultModeIndex = resources.getInteger(R.integer.search_mode_default);
 
 		// get icons
-		final int[] scopeIcons = new int[] { R.drawable.ic_search_label, R.drawable.ic_search_id, R.drawable.ic_search_content, R.drawable.ic_search_link, R.drawable.ic_search_source };
-		final int[] modeIcons = new int[] { R.drawable.ic_search_equals, R.drawable.ic_search_startswith, R.drawable.ic_search_includes };
-		final int[] sourceIcons = new int[] { R.drawable.ic_search_equals };
+		final int[] scopeIcons = new int[]{R.drawable.ic_search_label, R.drawable.ic_search_id, R.drawable.ic_search_content, R.drawable.ic_search_link, R.drawable.ic_search_source};
+		final int[] modeIcons = new int[]{R.drawable.ic_search_equals, R.drawable.ic_search_startswith, R.drawable.ic_search_includes};
+		final int[] sourceIcons = new int[]{R.drawable.ic_search_equals};
 
 		// wheel2 adapter
 		this.modeAdapter = new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length);
@@ -91,22 +109,30 @@ public class SearchSettings extends AppCompatDialogFragment
 		int scopeIndex = defaultScopeIndex;
 		final String scope = sharedPref.getString(PREF_SEARCH_SCOPE, null);
 		if (scope != null)
+		{
 			for (int i = 0; i < this.scopes.length; i++)
 			{
 				if (scope.equals(this.scopes[i]))
+				{
 					scopeIndex = i;
+				}
 			}
+		}
 		int modeIndex = defaultModeIndex;
 		if (scopeIndex < this.scopes.length - 1)
 		{
 			modeIndex = 1;
 			final String mode = sharedPref.getString(PREF_SEARCH_MODE, null);
 			if (mode != null)
+			{
 				for (int i = 0; i < this.modes.length; i++)
 				{
 					if (mode.equals(this.modes[i]))
+					{
 						modeIndex = i;
+					}
 				}
+			}
 		}
 
 		// dialog
@@ -132,7 +158,9 @@ public class SearchSettings extends AppCompatDialogFragment
 				Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
 				sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]).commit();
 				if (!SearchSettings.this.scrolling)
+				{
 					updateWheel2(newValue);
+				}
 			}
 		});
 		this.scopeWheel.addScrollingListener(new OnWheelScrollListener()

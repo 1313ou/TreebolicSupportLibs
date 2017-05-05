@@ -3,8 +3,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/downloadButton"
-	android:layout_width="@dimen/action_button_size"
-	android:layout_height="@dimen/action_button_size"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
 	android:layout_centerHorizontal="true"
 	android:layout_centerVertical="true"
 	android:layout_gravity="center|center"
@@ -12,4 +12,5 @@
 	android:contentDescription="@string/download"
 	android:onClick="onClick"
 	android:visibility="visible"
+	app:fabSize="normal"
 	app:srcCompat="@drawable/ic_download"/>
