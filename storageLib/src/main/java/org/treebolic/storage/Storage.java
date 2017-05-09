@@ -416,17 +416,13 @@ public class Storage
 			return dir;
 		}
 
-		try
+		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
 		{
 			dir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
 			if (Storage.qualifies(dir))
 			{
 				return dir;
 			}
-		}
-		catch (final NoSuchFieldError e)
-		{
-			//
 		}
 
 		dir = context.getExternalFilesDir("Documents");
@@ -437,17 +433,13 @@ public class Storage
 
 		// top-level public external storage directory (KITKAT for DIRECTORY_DOCUMENTS)
 
-		try
+		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
 		{
 			dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
 			if (Storage.qualifies(dir))
 			{
 				return dir;
 			}
-		}
-		catch (final Throwable e)
-		{
-			//
 		}
 
 		// top-level public in external
@@ -834,7 +826,7 @@ public class Storage
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static private List<Directory> getDirectories(final Context context)
 	{
-		final String[] tags = {Environment.DIRECTORY_PODCASTS, Environment.DIRECTORY_RINGTONES, Environment.DIRECTORY_ALARMS, Environment.DIRECTORY_NOTIFICATIONS, Environment.DIRECTORY_PICTURES, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_DOWNLOADS, Environment.DIRECTORY_DCIM, Environment.DIRECTORY_DOCUMENTS};
+		final String[] tags = {Environment.DIRECTORY_PODCASTS, Environment.DIRECTORY_RINGTONES, Environment.DIRECTORY_ALARMS, Environment.DIRECTORY_NOTIFICATIONS, Environment.DIRECTORY_PICTURES, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_DOWNLOADS, Environment.DIRECTORY_DCIM};
 
 		final List<Directory> result = new ArrayList<>();
 		File dir;
@@ -859,6 +851,14 @@ public class Storage
 		for (String tag : tags)
 		{
 			dir = Environment.getExternalStoragePublicDirectory(tag);
+			if (dir.exists())
+			{
+				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
+			}
+		}
+		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+		{
+			dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
 			if (dir.exists())
 			{
 				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
