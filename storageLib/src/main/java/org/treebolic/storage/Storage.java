@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
 
@@ -149,11 +150,11 @@ public class Storage
 		@Override
 		public boolean equals(Object d2)
 		{
-			return this.getType().equals(((Directory) d2).getType());
+			return d2 instanceof Directory && this.getType().equals(((Directory) d2).getType());
 		}
 
 		@Override
-		public int compareTo(Directory d2)
+		public int compareTo(@NonNull Directory d2)
 		{
 			int t = DirType.compare(this.getType(), d2.getType());
 			if (t != 0)

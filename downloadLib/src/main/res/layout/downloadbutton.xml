@@ -6,8 +6,6 @@
 	android:id="@+id/downloadButton"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:layout_centerHorizontal="true"
-	android:layout_centerVertical="true"
 	android:layout_gravity="center|center"
 	android:elevation="4dp"
 	android:layout_marginBottom="@dimen/action_button_margin"

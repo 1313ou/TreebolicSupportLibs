@@ -101,7 +101,8 @@
 		android:layout_marginRight="25dp"
 		android:layout_marginEnd="25dp"
 		android:text="@string/expandArchive"
-		android:visibility="visible"/>
+		android:visibility="visible"
+		tools:ignore="RelativeOverlap"/>
 
 	<Button
 		android:id="@+id/showButton"
