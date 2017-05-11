@@ -173,7 +173,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 		{
 			@SuppressWarnings("synthetic-access")
 			@Override
-			public void onClick(View v)
+			public void onClick(final View v)
 			{
 				DownloadActivity.this.expandArchive = DownloadActivity.this.expandArchiveCheckbox.isChecked();
 			}

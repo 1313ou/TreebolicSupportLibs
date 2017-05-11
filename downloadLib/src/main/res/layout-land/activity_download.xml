@@ -6,41 +6,55 @@
 
 	<include layout="@layout/toolbar"/>
 
-	<LinearLayout
-		android:id="@+id/linearLayout"
+	<FrameLayout
+		android:id="@+id/mid"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_centerVertical="true"
-		android:orientation="vertical">
+		android:layout_centerVertical="true">
 
-		<ProgressBar
-			android:id="@+id/progressBar"
-			style="@android:style/Widget.ProgressBar.Horizontal"
-			android:layout_width="wrap_content"
+		<LinearLayout
+			android:id="@+id/progressGroup"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:indeterminate="false"
-			android:max="100"
-			android:progress="0"
-			android:visibility="invisible"/>
+			android:orientation="vertical">
 
-		<TextView
-			android:id="@+id/progressStatus"
-			android:layout_width="wrap_content"
+			<ProgressBar
+				android:id="@+id/progressBar"
+				style="@android:style/Widget.ProgressBar.Horizontal"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:indeterminate="false"
+				android:max="100"
+				android:progress="0"
+				android:visibility="invisible"/>
+
+			<TextView
+				android:id="@+id/progressStatus"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:text="@string/download"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:visibility="invisible"/>
+
+		</LinearLayout>
+
+		<include
+			android:id="@+id/downloadButton"
+			layout="@layout/downloadbutton"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:text="@string/download"
-			android:textAppearance="?android:attr/textAppearanceSmall"
-			android:visibility="invisible"/>
-	</LinearLayout>
+			android:layout_gravity="center"/>
 
-	<include layout="@layout/downloadbutton"/>
+	</FrameLayout>
 
 	<TextView
 		android:id="@+id/src"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_above="@+id/downloadButton"
+		android:layout_above="@+id/mid"
 		android:layout_centerHorizontal="true"
 		android:layout_marginBottom="10dp"
 		android:layout_marginLeft="10dp"
@@ -60,7 +74,7 @@
 		android:id="@+id/target"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/linearLayout"
+		android:layout_below="@+id/mid"
 		android:layout_centerHorizontal="true"
 		android:layout_marginLeft="10dp"
 		android:layout_marginRight="10dp"

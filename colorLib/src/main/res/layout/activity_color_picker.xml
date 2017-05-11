@@ -50,6 +50,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="0.5" />
         </LinearLayout>
+
     </RelativeLayout>
 
     <LinearLayout

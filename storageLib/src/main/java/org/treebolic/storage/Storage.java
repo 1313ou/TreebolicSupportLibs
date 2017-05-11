@@ -19,9 +19,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -106,7 +109,7 @@ public class Storage
 	 *
 	 * @author <a href="mailto:1313ou@gmail.com">Bernard Bou</a>
 	 */
-	static public class Directory
+	static public class Directory implements Comparable<Directory>
 	{
 		private final File file;
 
@@ -135,6 +138,29 @@ public class Storage
 		public File getFile()
 		{
 			return this.file;
+		}
+
+		@Override
+		public int hashCode()
+		{
+			return getType().hashCode() * 7 + getValue().hashCode() * 13;
+		}
+
+		@Override
+		public boolean equals(Object d2)
+		{
+			return this.getType().equals(((Directory) d2).getType());
+		}
+
+		@Override
+		public int compareTo(Directory d2)
+		{
+			int t = DirType.compare(this.getType(), d2.getType());
+			if (t != 0)
+			{
+				return t;
+			}
+			return this.getValue().toString().compareTo(d2.getValue().toString());
 		}
 	}
 
@@ -416,7 +442,7 @@ public class Storage
 			return dir;
 		}
 
-		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
 		{
 			dir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
 			if (Storage.qualifies(dir))
@@ -433,7 +459,7 @@ public class Storage
 
 		// top-level public external storage directory (KITKAT for DIRECTORY_DOCUMENTS)
 
-		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
 		{
 			dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
 			if (Storage.qualifies(dir))
@@ -805,7 +831,7 @@ public class Storage
 	{
 		final List<CharSequence> types = new ArrayList<>();
 		final List<CharSequence> values = new ArrayList<>();
-		final List<Directory> dirs = Storage.getDirectories(context);
+		final Collection<Directory> dirs = Storage.getDirectories(context);
 		for (Directory dir : dirs)
 		{
 			// types
@@ -824,11 +850,11 @@ public class Storage
 	 * @return list of storage directories
 	 */
 	@TargetApi(Build.VERSION_CODES.KITKAT)
-	static private List<Directory> getDirectories(final Context context)
+	static private Collection<Directory> getDirectories(final Context context)
 	{
 		final String[] tags = {Environment.DIRECTORY_PODCASTS, Environment.DIRECTORY_RINGTONES, Environment.DIRECTORY_ALARMS, Environment.DIRECTORY_NOTIFICATIONS, Environment.DIRECTORY_PICTURES, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_DOWNLOADS, Environment.DIRECTORY_DCIM};
 
-		final List<Directory> result = new ArrayList<>();
+		final Set<Directory> result = new TreeSet<>();
 		File dir;
 
 		// P U B L I C
@@ -856,7 +882,7 @@ public class Storage
 				result.add(new Directory(dir, DirType.PUBLIC_EXTERNAL_PRIMARY));
 			}
 		}
-		if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
 		{
 			dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
 			if (dir.exists())

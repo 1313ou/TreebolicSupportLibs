@@ -7,6 +7,6 @@
     <string name="currentDir">Directory</string>
     <string name="type">Type</string>
     <string name="selected">Selected</string>
-    <string name="howToSelect">Long press to select directory</string>
+    <string name="howToSelect">Long-press to select directory</string>
     
 </resources>

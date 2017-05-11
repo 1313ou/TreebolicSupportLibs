@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="none">Sélectionner aucun</string>
-    <string name="cancel">Annuler</string>
+	<string name="none">Sélectionner aucun</string>
+	<string name="cancel">Annuler</string>
 </resources>

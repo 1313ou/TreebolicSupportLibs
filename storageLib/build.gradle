@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
-//noinspection GroovyMissingReturnStatement
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
 
-    //noinspection GroovyMissingReturnStatement
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
