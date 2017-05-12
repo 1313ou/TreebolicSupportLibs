@@ -9,7 +9,8 @@
     <string name="src">[source]</string>
     <string name="target">[target]</string>
     <string name="expandArchive">expand archive</string>
-    
+    <string name="internal">[internal]</string>
+
     <!-- ok/error -->
     <string name="ok_data">Data is available</string>
     <string name="fail_data">Data is unavailable</string>

@@ -225,7 +225,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 	{
 		super.onPostCreate(savedInstanceState);
 		this.src.setText(this.downloadUrl);
-		this.target.setText(this.destDir != null ? this.destDir.getAbsolutePath() : "");
+		this.target.setText(this.destDir != null ? this.destDir.getAbsolutePath() : getString(R.string.internal));
 	}
 
 	@Override
