@@ -46,7 +46,8 @@
 			layout="@layout/downloadbutton"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"/>
+			android:layout_gravity="center"
+			android:layout_margin="@dimen/action_button_margin"/>
 
 	</FrameLayout>
 
@@ -59,6 +60,7 @@
 		android:layout_marginBottom="10dp"
 		android:layout_marginLeft="10dp"
 		android:layout_marginRight="10dp"
+		android:gravity="center_horizontal"
 		android:drawablePadding="5dp"
 		android:drawableTop="@drawable/ic_download_source"
 		android:ellipsize="marquee"
@@ -79,6 +81,7 @@
 		android:layout_marginLeft="10dp"
 		android:layout_marginRight="10dp"
 		android:layout_marginTop="10dp"
+		android:gravity="center_horizontal"
 		android:drawableBottom="@drawable/ic_download_dest"
 		android:drawablePadding="5dp"
 		android:ellipsize="marquee"
@@ -95,11 +98,11 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
-		android:layout_alignParentRight="true"
 		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
 		android:layout_marginBottom="25dp"
-		android:layout_marginRight="25dp"
 		android:layout_marginEnd="25dp"
+		android:layout_marginRight="25dp"
 		android:text="@string/expandArchive"
 		android:visibility="visible"
 		tools:ignore="RelativeOverlap"/>
