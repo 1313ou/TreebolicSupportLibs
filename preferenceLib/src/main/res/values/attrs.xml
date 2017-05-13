@@ -1,7 +1,13 @@
 <resources>
+	<attr name="values" format="reference"/>
 
-    <declare-styleable name="AutoEditTextPreference">
-        <attr name="values" format="reference" />
-    </declare-styleable>
+	<declare-styleable name="OpenEditTextPreference">
+		<attr name="values"/>
+		<attr name="labels" format="reference"/>
+	</declare-styleable>
+
+	<declare-styleable name="AutoEditTextPreference">
+		<attr name="values"/>
+	</declare-styleable>
 
 </resources>
