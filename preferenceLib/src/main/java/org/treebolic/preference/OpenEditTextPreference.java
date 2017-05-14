@@ -26,9 +26,14 @@ public class OpenEditTextPreference extends DialogPreference
 	private CharSequence[] values;
 
 	/**
-	 * Possible Labels
+	 * Possible labels
 	 */
 	private CharSequence[] labels;
+
+	/**
+	 * Possible entry enable
+	 */
+	private boolean[] enable;
 
 	/**
 	 * Default value
@@ -93,6 +98,13 @@ public class OpenEditTextPreference extends DialogPreference
 		{
 			this.labels = new CharSequence[0];
 		}
+
+		// enable all
+		this.enable = new boolean[this.values.length];
+		for (int i = 0; i < this.enable.length; i++)
+		{
+			this.enable[i] = true;
+		}
 	}
 
 	/**
@@ -135,6 +147,16 @@ public class OpenEditTextPreference extends DialogPreference
 		this.values = labels0;
 	}
 
+	/**
+	 * Enable Setter
+	 *
+	 * @param enable0 enable flags
+	 */
+	public void setEnables(boolean[] enable0)
+	{
+		this.enable = enable0;
+	}
+
 	@Override
 	protected void onBindDialogView(final View view)
 	{
@@ -158,14 +180,16 @@ public class OpenEditTextPreference extends DialogPreference
 			// populate
 			final Context context = getContext();
 			this.optionsView.removeAllViews();
-			for (int i = 0; i < values.length && i < labels.length; i++)
+			for (int i = 0; i < this.values.length && i < this.labels.length && i < this.enable.length; i++)
 			{
-				final CharSequence value = values[i];
-				final CharSequence label = labels[i];
+				final CharSequence value = this.values[i];
+				final CharSequence label = this.labels[i];
+				final boolean enable = this.enable[i];
 
 				final RadioButton radioButton = new RadioButton(context);
 				radioButton.setText(label);
 				radioButton.setTag(value);
+				radioButton.setEnabled(enable);
 				this.optionsView.addView(radioButton);
 			}
 
