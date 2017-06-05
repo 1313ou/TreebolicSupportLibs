@@ -31,7 +31,10 @@ public class Tint
 		{
 			final MenuItem menuItem = menu.findItem(menuItemId);
 			final Drawable drawable = menuItem.getIcon();
-			tint(drawable, iconTint);
+			if (drawable != null)
+			{
+				tint(drawable, iconTint);
+			}
 		}
 	}
 
