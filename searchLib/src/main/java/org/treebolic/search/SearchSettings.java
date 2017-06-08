@@ -102,12 +102,13 @@ public class SearchSettings extends AppCompatDialogFragment
 		final int[] sourceIcons = new int[]{R.drawable.ic_search_equals};
 
 		// wheel2 adapter
-		this.modeAdapter = new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length);
-		this.sourceAdapter = new Adapter(context, R.layout.mode, sourceLabels, sourceIcons, this.sources.length);
+		this.modeAdapter = new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE);
+		this.sourceAdapter = new Adapter(context, R.layout.mode, sourceLabels, sourceIcons, this.sources.length, Adapter.Type.SOURCE);
 
 		// initial values
 		int scopeIndex = defaultScopeIndex;
 		final String scope = sharedPref.getString(PREF_SEARCH_SCOPE, null);
+		Log.d(TAG, "Scope " + scope);
 		if (scope != null)
 		{
 			for (int i = 0; i < this.scopes.length; i++)
@@ -115,14 +116,20 @@ public class SearchSettings extends AppCompatDialogFragment
 				if (scope.equals(this.scopes[i]))
 				{
 					scopeIndex = i;
+					break;
 				}
 			}
+		}
+		else
+		{
+			sharedPref.edit().putString(PREF_SEARCH_SCOPE, this.scopes[defaultScopeIndex]);
 		}
 		int modeIndex = defaultModeIndex;
 		if (scopeIndex < this.scopes.length - 1)
 		{
 			modeIndex = 1;
 			final String mode = sharedPref.getString(PREF_SEARCH_MODE, null);
+			Log.d(TAG, "Mode " + mode);
 			if (mode != null)
 			{
 				for (int i = 0; i < this.modes.length; i++)
@@ -130,9 +137,14 @@ public class SearchSettings extends AppCompatDialogFragment
 					if (mode.equals(this.modes[i]))
 					{
 						modeIndex = i;
+						break;
 					}
 				}
 			}
+		}
+		else
+		{
+			sharedPref.edit().putString(PREF_SEARCH_MODE, this.modes[defaultModeIndex]);
 		}
 
 		// dialog
@@ -145,7 +157,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.scopeWheel = (WheelView) dialog.findViewById(R.id.scope);
 		assert this.scopeWheel != null;
 		this.scopeWheel.setVisibleItems(4);
-		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.scope, scopeLabels, scopeIcons, this.scopes.length));
+		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
 
 		// wheel 1 events
 		this.scopeWheel.addChangingListener(new OnWheelChangedListener()
@@ -185,7 +197,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeWheel = (WheelView) dialog.findViewById(R.id.mode);
 		assert this.modeWheel != null;
 		this.modeWheel.setVisibleItems(4);
-		this.modeWheel.setViewAdapter(new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length));
+		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
 
 		// wheel 2 events
 		this.modeWheel.addChangingListener(new OnWheelChangedListener()
@@ -195,13 +207,14 @@ public class SearchSettings extends AppCompatDialogFragment
 			@Override
 			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)
 			{
-				WheelViewAdapter adapter = wheel.getViewAdapter();
-				if (adapter == SearchSettings.this.modeAdapter)
+				WheelViewAdapter wheelViewAdapter = wheel.getViewAdapter();
+				Adapter adapter = (Adapter) wheelViewAdapter;
+				if (adapter.getType() == Adapter.Type.MODE)
 				{
 					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]);
 					sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]).commit();
 				}
-				else if (adapter == SearchSettings.this.sourceAdapter)
+				else if (adapter.getType() == Adapter.Type.SOURCE)
 				{
 					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]);
 					sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]).commit();
@@ -251,31 +264,40 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeWheel.setCurrentItem(modeIndex);
 	}
 
+
 	/**
 	 * Adapter for scopes
 	 */
-	private class Adapter extends AbstractWheelTextAdapter
+	static private class Adapter extends AbstractWheelTextAdapter
 	{
+		public enum Type
+		{
+			SCOPE, MODE, SOURCE
+		}
+
 		final String[] labels;
 
 		final int[] icons;
 
 		final int len;
 
+		final Type type;
+
 		/**
 		 * Constructor
 		 */
-		protected Adapter(Context context0, int layout0, String[] texts0, int[] icons0, int len0)
+		protected Adapter(final Context context0, final int layout0, final String[] texts0, final int[] icons0, final int len0, final Type type0)
 		{
 			super(context0, layout0, NO_RESOURCE);
 			this.labels = texts0;
 			this.icons = icons0;
 			this.len = len0;
+			this.type = type0;
 			setItemTextResource(R.id.wheel_name);
 		}
 
 		@Override
-		public View getItem(int index, View cachedView, ViewGroup parent)
+		public View getItem(final int index, final View cachedView, final ViewGroup parent)
 		{
 			View view = super.getItem(index, cachedView, parent);
 			ImageView img = (ImageView) view.findViewById(R.id.wheel_icon);
@@ -293,6 +315,11 @@ public class SearchSettings extends AppCompatDialogFragment
 		protected CharSequence getItemText(int index)
 		{
 			return this.labels[index];
+		}
+
+		public Type getType()
+		{
+			return this.type;
 		}
 	}
 
