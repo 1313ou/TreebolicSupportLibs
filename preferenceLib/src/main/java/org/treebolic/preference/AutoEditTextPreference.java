@@ -70,9 +70,9 @@ public class AutoEditTextPreference extends DialogPreference
 		this.defaultValue = id == -1 ? null : context.getResources().getString(id);
 
 		// obtain values through styled attributes
-		final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference);
-		this.values = a.getTextArray(R.styleable.AutoEditTextPreference_values);
-		a.recycle();
+		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference);
+		this.values = array.getTextArray(R.styleable.AutoEditTextPreference_values);
+		array.recycle();
 
 		// ensure not null
 		if (this.values == null)

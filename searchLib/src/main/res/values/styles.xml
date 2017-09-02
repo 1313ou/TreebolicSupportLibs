@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-	<!-- BASE application theme, dependent on API level. This theme is replaced by AppBaseTheme from res/values-vXX/styles-app.xml on newer devices. -->
-	<style name="CompatAppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-	</style>
-
-</resources>

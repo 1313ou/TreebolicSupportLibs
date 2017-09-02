@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="MyDefaultTheme" parent="MyDarkBaseTheme">
+
+		<item name="colorPrimary">@color/set0_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/set0_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/set0_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+
+		<item name="colorPrimaryLight">@color/set0_primaryLightColor</item>
+		<item name="colorSecondary">@color/set0_secondaryColor</item>
+		<item name="colorSecondaryLight">@color/set0_secondaryLightColor</item>
+		<item name="colorSecondaryDark">@color/set0_secondaryDarkColor</item>
+
+		<item name="colorForePrimary">@color/set0_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/set0_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/set0_tertiaryForeColor</item>
+
+	</style>
+
+	<style name="MyIrishDarkTheme" parent="MyDarkBaseTheme">
+
+		<item name="colorPrimary">@color/set1_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/set1_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/set1_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+
+		<item name="colorPrimaryLight">@color/set1_primaryLightColor</item>
+		<item name="colorSecondary">@color/set1_secondaryColor</item>
+		<item name="colorSecondaryLight">@color/set1_secondaryLightColor</item>
+		<item name="colorSecondaryDark">@color/set1_secondaryDarkColor</item>
+
+		<item name="colorForePrimary">@color/set1_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/set1_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/set1_tertiaryForeColor</item>
+
+	</style>
+
+	<style name="MyIrishLightTheme" parent="MyLightBaseTheme">
+
+		<item name="colorPrimary">@color/set1_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/set1_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/set1_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+
+		<item name="colorPrimaryLight">@color/set1_primaryLightColor</item>
+		<item name="colorSecondary">@color/set1_secondaryColor</item>
+		<item name="colorSecondaryLight">@color/set1_secondaryLightColor</item>
+		<item name="colorSecondaryDark">@color/set1_secondaryDarkColor</item>
+
+		<item name="colorForePrimary">@color/set1_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/set1_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/set1_tertiaryForeColor</item>
+
+	</style>
+
+	<style name="MySpanishLightTheme" parent="MyLightBaseTheme">
+
+		<item name="colorPrimary">@color/set3_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/set3_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/set3_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+
+		<item name="colorPrimaryLight">@color/set3_primaryLightColor</item>
+		<item name="colorSecondary">@color/set3_secondaryColor</item>
+		<item name="colorSecondaryLight">@color/set3_secondaryLightColor</item>
+		<item name="colorSecondaryDark">@color/set3_secondaryDarkColor</item>
+
+		<item name="colorForePrimary">@color/set3_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/set3_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/set3_tertiaryForeColor</item>
+
+	</style>
+
+	<style name="MyTheme" parent="MySpanishLightTheme">
+	</style>
+
+</resources>

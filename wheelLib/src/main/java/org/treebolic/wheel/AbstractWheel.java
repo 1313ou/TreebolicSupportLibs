@@ -144,12 +144,12 @@ public abstract class AbstractWheel extends View
 	 */
 	protected void initAttributes(AttributeSet attrs, int defStyle)
 	{
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
-		this.mVisibleItems = a.getInt(R.styleable.AbstractWheelView_visibleItems, DEF_VISIBLE_ITEMS);
-		this.mIsAllVisible = a.getBoolean(R.styleable.AbstractWheelView_isAllVisible, false);
-		this.mIsCyclic = a.getBoolean(R.styleable.AbstractWheelView_isCyclic, DEF_IS_CYCLIC);
+		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
+		this.mVisibleItems = array.getInt(R.styleable.AbstractWheelView_visibleItems, DEF_VISIBLE_ITEMS);
+		this.mIsAllVisible = array.getBoolean(R.styleable.AbstractWheelView_isAllVisible, false);
+		this.mIsCyclic = array.getBoolean(R.styleable.AbstractWheelView_isCyclic, DEF_IS_CYCLIC);
 
-		a.recycle();
+		array.recycle();
 	}
 
 	/**

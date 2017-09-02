@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.treebolic.AppCompatCommonActivity;
 
 /**
  * About activity
@@ -16,7 +17,7 @@ import android.view.MenuItem;
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class AboutActivity extends AppCompatActivity
+public class AboutActivity extends AppCompatCommonActivity
 {
 	// protected static final String TAG = "About activity";
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- BASE application theme with v21 possible hook -->
+	<style name="MyCompatTheme" parent="MyBaseTheme">
+
+	</style>
+
+</resources>

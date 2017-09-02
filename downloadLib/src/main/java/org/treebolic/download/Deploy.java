@@ -98,6 +98,7 @@ public class Deploy
 		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);
 
 		// create output directory is not exists
+		//noinspection ResultOfMethodCallIgnored
 		destDir.mkdir();
 
 		// buffer
@@ -141,6 +142,7 @@ public class Deploy
 					// create dir if we don't flatten
 					if (!flat)
 					{
+						//noinspection ResultOfMethodCallIgnored
 						new File(destDir, entryName).mkdirs();
 					}
 				}
@@ -159,6 +161,7 @@ public class Deploy
 					// create destination
 					final File destFile = new File(destDir, entryName);
 					Log.d(Deploy.TAG, "Unzip to " + destFile.getCanonicalPath());
+					//noinspection ResultOfMethodCallIgnored
 					destFile.createNewFile();
 
 					// copy
@@ -223,6 +226,7 @@ public class Deploy
 		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);
 
 		// create output directory is not exists
+		//noinspection ResultOfMethodCallIgnored
 		destDir.mkdirs();
 
 		// buffer
@@ -263,6 +267,7 @@ public class Deploy
 					// create dir if we don't flatten
 					if (!flat)
 					{
+						//noinspection ResultOfMethodCallIgnored
 						new File(destDir, entryName).mkdirs();
 					}
 				}
@@ -281,6 +286,7 @@ public class Deploy
 					// create destination file with same name as entry
 					final File destFile = new File(destDir, entryName);
 					Log.d(Deploy.TAG, "Untar to " + destFile.getCanonicalPath());
+					//noinspection ResultOfMethodCallIgnored
 					destFile.createNewFile();
 
 					// copy

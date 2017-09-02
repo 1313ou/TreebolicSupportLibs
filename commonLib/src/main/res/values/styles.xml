@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+	<!-- Overlay -->
+	<style name="MyDarkOverlay" parent="ThemeOverlay.AppCompat.Dark"> <!-- DARK -->
+		<item name="android:background">?attr/colorPrimary</item>
+		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
+	</style>
+
+	<style name="MyLightOverlay" parent="ThemeOverlay.AppCompat.Light"> <!-- LIGHT -->
+		<item name="android:background">?attr/colorPrimary</item>
+		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
+	</style>
+
+	<!-- Action bar -->
+	<style name="MyDarkActionBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"> <!-- DARK -->
+		<item name="android:background">?attr/colorPrimary</item>
+		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
+	</style>
+
+	<style name="MyLightActionBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar"> <!-- LIGHT -->
+		<item name="android:background">?attr/colorPrimary</item>
+		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
+	</style>
+
+	<!-- Action bar -->
+	<style name="MyActionBar" parent="Widget.AppCompat.ActionBar">
+		<item name="android:background">?attr/colorPrimary</item>
+	</style>
+
+	<!-- Dropdown list -->
+	<style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
+		<item name="android:background">?attr/colorPrimary</item>
+	</style>
+
+	<!-- Dropdown item -->
+	<style name="MyDropDownItemStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+		<item name="android:background">?attr/colorPrimary</item>
+		<item name="android:textSize">14sp</item>
+	</style>
+
+	<!-- BASE application theme -->
+	<style name="MyBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"> <!-- LIGHT -->
+
+		<!-- toolbar/action bar
+		<item name="android:toolbarStyle">@style/MyActionBar</item>-->
+		<item name="android:actionBarStyle">@style/MyActionBar</item>
+
+		<!-- dropdowns -->
+		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
+		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
+
+		<!-- TREEBOLIC attributes -->
+
+		<!-- treebolic colors -->
+		<item name="treebolic_toolbar_background">?attr/colorPrimary</item>
+		<item name="treebolic_toolbar_icon_color">?attr/colorForeSecondary</item>
+
+		<item name="treebolic_statusbar_background">?attr/colorPrimaryDark</item>
+		<item name="treebolic_statusbar_foreground">?attr/colorForeSecondary</item>
+		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
+		<item name="treebolic_statusbar_icon_color">?attr/colorForePrimary</item>
+
+		<item name="treebolic_dialog_background">?attr/colorPrimaryDark</item>
+		<item name="treebolic_dialog_foreground">?attr/colorForeSecondary</item>
+		<item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
+		<item name="treebolic_dialog_icon_color">?attr/colorForePrimary</item>
+
+		<item name="treebolic_splitbar_color">?attr/colorPrimaryDark</item>
+		<item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
+
+		<!-- treebolic search settings colors -->
+		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>
+		<item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
+
+	</style>
+
+	<!-- Dark BASE application theme. -->
+	<style name="MyDarkBaseTheme" parent="MyCompatTheme">
+
+		<!-- theme UI controls action bar -->
+		<item name="actionBarTheme">@style/MyDarkActionBarOverlay</item>
+
+		<!-- theme UI controls pop ups -->
+		<item name="actionBarPopupTheme">@style/MyDarkOverlay</item>
+
+		<!-- toolbar/action bar -->
+		<item name="android:actionBarStyle">@style/MyActionBar</item>
+
+	</style>
+
+	<!-- Light BASE application theme. -->
+	<style name="MyLightBaseTheme" parent="MyCompatTheme">
+
+		<!-- theme UI controls action bar -->
+		<item name="actionBarTheme">@style/MyLightActionBarOverlay</item>
+
+		<!-- theme UI controls pop ups -->
+		<item name="actionBarPopupTheme">@style/MyLightOverlay</item>
+
+		<!-- toolbar/action bar -->
+		<item name="android:actionBarStyle">@style/MyActionBar</item>
+
+	</style>
+
+</resources>

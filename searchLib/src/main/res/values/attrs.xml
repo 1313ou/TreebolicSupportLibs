@@ -1,3 +1,4 @@
 <resources>
-	<attr name="treebolic_actionbar_icon_color" format="reference"/>
+	<attr name="treebolic_search_settings_background" format="reference"/>
+	<attr name="treebolic_search_settings_foreground" format="reference"/>
 </resources>

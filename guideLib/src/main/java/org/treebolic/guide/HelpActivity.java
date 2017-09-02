@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.webkit.WebResourceError;
@@ -16,13 +15,15 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import org.treebolic.AppCompatCommonActivity;
+
 /**
  * Help activity
  *
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class HelpActivity extends AppCompatActivity
+public class HelpActivity extends AppCompatCommonActivity
 {
 	/**
 	 * Log tag

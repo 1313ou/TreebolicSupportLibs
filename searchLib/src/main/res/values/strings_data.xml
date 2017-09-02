@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- scope -->
+    <!-- item_scope -->
     <integer name="search_scope_default">0</integer>
 
     <string-array name="search_scopes" translatable="false">
@@ -14,7 +14,7 @@
 
     <integer name="search_scope_source_index">4</integer>
 
-    <!-- mode -->
+    <!-- item_mode -->
     <integer name="search_mode_default">1</integer>
 
     <string-array name="search_modes" translatable="false">

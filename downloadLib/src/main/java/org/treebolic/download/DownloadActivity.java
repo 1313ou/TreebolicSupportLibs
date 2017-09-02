@@ -23,6 +23,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.treebolic.AppCompatCommonActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,7 +35,7 @@ import java.io.InputStream;
  *
  * @author Bernard Bou
  */
-abstract public class DownloadActivity extends AppCompatActivity implements View.OnClickListener
+abstract public class DownloadActivity extends AppCompatCommonActivity implements View.OnClickListener
 {
 	/**
 	 * Log tag
@@ -399,6 +401,7 @@ abstract public class DownloadActivity extends AppCompatActivity implements View
 						{
 							// dispose
 							final File file = new File(this.destDir, uri.getLastPathSegment());
+							//noinspection ResultOfMethodCallIgnored
 							file.delete();
 						}
 

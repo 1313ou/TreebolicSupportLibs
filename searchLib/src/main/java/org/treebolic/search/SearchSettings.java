@@ -1,6 +1,7 @@
 package org.treebolic.search;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -8,11 +9,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 
 import org.treebolic.wheel.AbstractWheel;
@@ -77,9 +78,9 @@ public class SearchSettings extends AppCompatDialogFragment
 	}
 
 	@NonNull
-	@SuppressLint("InflateParams")
+	@SuppressLint({"InflateParams", "ApplySharedPref"})
 	@Override
-	public AppCompatDialog onCreateDialog(final Bundle savedInstanceState)
+	public Dialog onCreateDialog(final Bundle savedInstanceState)
 	{
 		final Context context = getActivity();
 		final Resources resources = context.getResources();
@@ -102,8 +103,8 @@ public class SearchSettings extends AppCompatDialogFragment
 		final int[] sourceIcons = new int[]{R.drawable.ic_search_equals};
 
 		// wheel2 adapter
-		this.modeAdapter = new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE);
-		this.sourceAdapter = new Adapter(context, R.layout.mode, sourceLabels, sourceIcons, this.sources.length, Adapter.Type.SOURCE);
+		this.modeAdapter = new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE);
+		this.sourceAdapter = new Adapter(context, R.layout.item_mode, sourceLabels, sourceIcons, this.sources.length, Adapter.Type.SOURCE);
 
 		// initial values
 		int scopeIndex = defaultScopeIndex;
@@ -122,7 +123,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		}
 		else
 		{
-			sharedPref.edit().putString(PREF_SEARCH_SCOPE, this.scopes[defaultScopeIndex]);
+			sharedPref.edit().putString(PREF_SEARCH_SCOPE, this.scopes[defaultScopeIndex]).commit();
 		}
 		int modeIndex = defaultModeIndex;
 		if (scopeIndex < this.scopes.length - 1)
@@ -144,20 +145,20 @@ public class SearchSettings extends AppCompatDialogFragment
 		}
 		else
 		{
-			sharedPref.edit().putString(PREF_SEARCH_MODE, this.modes[defaultModeIndex]);
+			sharedPref.edit().putString(PREF_SEARCH_MODE, this.modes[defaultModeIndex]).commit();
 		}
 
 		// dialog
-		final AppCompatDialog dialog = new AppCompatDialog(getActivity());
-		// dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setTitle(R.string.search_title);
-		dialog.setContentView(R.layout.search_settings);
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		// dialog.setTitle(R.string.search_title);
+		dialog.setContentView(R.layout.dialog_search_settings);
 
 		// wheel 1
 		this.scopeWheel = (WheelView) dialog.findViewById(R.id.scope);
 		assert this.scopeWheel != null;
 		this.scopeWheel.setVisibleItems(4);
-		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
+		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
 
 		// wheel 1 events
 		this.scopeWheel.addChangingListener(new OnWheelChangedListener()
@@ -197,7 +198,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeWheel = (WheelView) dialog.findViewById(R.id.mode);
 		assert this.modeWheel != null;
 		this.modeWheel.setVisibleItems(4);
-		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
+		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
 
 		// wheel 2 events
 		this.modeWheel.addChangingListener(new OnWheelChangedListener()
@@ -241,7 +242,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	}
 
 	/**
-	 * Updates mode wheel depending on scope
+	 * Updates item_mode wheel depending on item_scope
 	 */
 	private int oldModeIndex = 1;
 
@@ -249,12 +250,12 @@ public class SearchSettings extends AppCompatDialogFragment
 	{
 		int modeIndex;
 		Adapter adapter;
-		if (scopeIndex < this.sourceModeIndex) // scope != source
+		if (scopeIndex < this.sourceModeIndex) // item_scope != source
 		{
 			modeIndex = this.oldModeIndex;
 			adapter = this.modeAdapter;
 		}
-		else // scope == source
+		else // item_scope == source
 		{
 			modeIndex = 0;
 			adapter = this.sourceAdapter;

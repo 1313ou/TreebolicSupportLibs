@@ -112,9 +112,9 @@ public class WheelHorizontalView extends AbstractWheelView
 	{
 		super.initAttributes(attrs, defStyle);
 
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0);
-		this.mSelectionDividerWidth = a.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE);
-		a.recycle();
+		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0);
+		this.mSelectionDividerWidth = array.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE);
+		array.recycle();
 	}
 
 	public void setSelectionDividerWidth(int selectionDividerWidth)

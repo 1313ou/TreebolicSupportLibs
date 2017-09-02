@@ -84,10 +84,10 @@ public class OpenEditTextPreference extends DialogPreference
 		this.defaultValue = id == -1 ? null : context.getResources().getString(id);
 
 		// obtain values through styled attributes
-		final TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference);
-		this.values = a.getTextArray(R.styleable.OpenEditTextPreference_values);
-		this.labels = a.getTextArray(R.styleable.OpenEditTextPreference_labels);
-		a.recycle();
+		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference);
+		this.values = array.getTextArray(R.styleable.OpenEditTextPreference_values);
+		this.labels = array.getTextArray(R.styleable.OpenEditTextPreference_labels);
+		array.recycle();
 
 		// ensure not null
 		if (this.values == null)

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<attr name="colorPrimaryLight" format="reference"/>
+	<attr name="colorSecondary" format="reference"/>
+	<attr name="colorSecondaryDark" format="reference"/>
+	<attr name="colorSecondaryLight" format="reference"/>
+
+	<attr name="colorForePrimary" format="reference"/>
+	<attr name="colorForeSecondary" format="reference"/>
+	<attr name="colorForeTertiary" format="reference"/>
+
+	<!-- treebolic -->
+
+	<attr name="treebolic_toolbar_background" format="reference"/>
+	<attr name="treebolic_toolbar_icon_color" format="reference"/>
+
+	<attr name="treebolic_statusbar_background" format="reference"/>
+	<attr name="treebolic_statusbar_foreground" format="reference"/>
+	<attr name="treebolic_statusbar_foreground_enhanced" format="reference"/>
+	<attr name="treebolic_statusbar_icon_color" format="reference"/>
+
+	<attr name="treebolic_dialog_background" format="reference"/>
+	<attr name="treebolic_dialog_foreground" format="reference"/>
+	<attr name="treebolic_dialog_foreground_enhanced" format="reference"/>
+	<attr name="treebolic_dialog_icon_color" format="reference"/>
+
+	<attr name="treebolic_splitbar_color" format="reference"/>
+	<attr name="treebolic_splitbar_drag_color" format="reference"/>
+
+	<attr name="treebolic_search_settings_background" format="reference"/>
+	<attr name="treebolic_search_settings_foreground" format="reference"/>
+
+</resources>

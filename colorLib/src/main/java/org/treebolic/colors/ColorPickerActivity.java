@@ -5,17 +5,17 @@ import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import org.treebolic.AppCompatCommonActivity;
 import org.treebolic.colors.view.ColorPanelView;
 import org.treebolic.colors.view.ColorPickerView;
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
 
 @SuppressLint("Registered")
-public class ColorPickerActivity extends AppCompatActivity implements OnColorChangedListener, View.OnClickListener
+public class ColorPickerActivity extends AppCompatCommonActivity implements OnColorChangedListener, View.OnClickListener
 {
 	private ColorPickerView mColorPickerView;
 	private ColorPanelView mNewColorPanelView;

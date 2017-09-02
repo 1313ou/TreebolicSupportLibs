@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package android.support.v7.app.contrib;
+package android.support.v7app.contrib;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -28,13 +28,13 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.treebolic.preference.R;
+import org.treebolic.common.R;
 
 /**
- * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls to be used with AppCompat.
+ * A {@link PreferenceActivity} which implements and proxies the necessary calls to be used with AppCompat.
  */
 @SuppressWarnings("unused")
-public abstract class AppCompatPreferenceActivity extends PreferenceActivity
+public class AppCompatPreferenceActivity extends PreferenceActivity
 {
 	// D E L E G A T E
 
