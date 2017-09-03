@@ -6,6 +6,12 @@
 		<item name="android:colorPrimary">?attr/colorPrimary</item> <!-- app branding color for the app bar -->
 		<item name="android:colorPrimaryDark">?attr/colorPrimaryDark</item> <!-- darker variant for the status bar and contextual app bars -->
 		<item name="android:colorAccent">?attr/colorAccent</item> <!-- theme UI controls like checkboxes and text fields -->
+
+		<!-- toolbar bar
+		<item name="android:toolbarStyle">@style/MyActionBar</item>-->
+		<!-- search view
+		<item name="android:searchViewStyle">@style/MySearchView</item> -->
+
 	</style>
 
 </resources>

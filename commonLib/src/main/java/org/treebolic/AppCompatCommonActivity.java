@@ -6,10 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 public class AppCompatCommonActivity extends AppCompatActivity
 {
-	static private final String PREF_THEME = "pref_theme";
-
-	static private final int NO_THEME = -1;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{

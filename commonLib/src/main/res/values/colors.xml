@@ -19,43 +19,4 @@
 	<color name="set0_secondaryForeColor">#c0c0d0</color>
 	<color name="set0_tertiaryForeColor">#e0e0e0</color>
 
-	<!-- set1 -->
-
-	<color name="set1_primaryColor">#c3bb97</color>
-	<color name="set1_primaryLightColor">#f4ebc7</color>
-	<color name="set1_primaryDarkColor">#958E6E</color>
-	<color name="set1_secondaryColor">#1de9b6</color>
-	<color name="set1_secondaryLightColor">#6effe8</color>
-	<color name="set1_secondaryDarkColor">#00b686</color>
-
-	<color name="set1_primaryForeColor">#000000</color>
-	<color name="set1_secondaryForeColor">#606060</color>
-	<color name="set1_tertiaryForeColor">#6060A0</color>
-
-	<!-- set2 -->
-
-	<color name="set2_primaryColor">#607d8b</color>
-	<color name="set2_primaryLightColor">#8eacbb</color>
-	<color name="set2_primaryDarkColor">#34515e</color>
-	<color name="set2_secondaryColor">#d500f9</color>
-	<color name="set2_secondaryLightColor">#ff5bff</color>
-	<color name="set2_secondaryDarkColor">#9e00c5</color>
-
-	<color name="set2_primaryForeColor">#ffffff</color>
-	<color name="set2_secondaryForeColor">#c0c0d0</color>
-	<color name="set2_tertiaryForeColor">#e0e0e0</color>
-
-	<!-- set3 -->
-
-	<color name="set3_primaryColor">#fff59d</color>
-	<color name="set3_primaryLightColor">#ffffcf</color>
-	<color name="set3_primaryDarkColor">#cbc26d</color>
-	<color name="set3_secondaryColor">#ef6c00</color>
-	<color name="set3_secondaryLightColor">#ff9d3f</color>
-	<color name="set3_secondaryDarkColor">#b53d00</color>
-
-	<color name="set3_primaryForeColor">@android:color/black</color>
-	<color name="set3_secondaryForeColor">#808080</color>
-	<color name="set3_tertiaryForeColor">#ffffff</color>
-
 </resources>

@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 
 public class AppCompatCommonUtils
 {
-	static private final String PREF_THEME = "pref_theme";
+	static public final String PREF_THEME = "pref_theme";
 
 	static private final int NO_THEME = -1;
 

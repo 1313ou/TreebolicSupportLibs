@@ -43,8 +43,7 @@
 	<!-- BASE application theme -->
 	<style name="MyBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"> <!-- LIGHT -->
 
-		<!-- toolbar/action bar
-		<item name="android:toolbarStyle">@style/MyActionBar</item>-->
+		<!-- action bar -->
 		<item name="android:actionBarStyle">@style/MyActionBar</item>
 
 		<!-- dropdowns -->
@@ -73,6 +72,14 @@
 		<!-- treebolic search settings colors -->
 		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>
 		<item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
+
+		<!-- treebolic widget colors -->
+		<item name="treebolic_back_color">#adc1cc</item> <!-- #f3f1e2 #9eb0ba -->
+		<item name="treebolic_tree_edge_color">#888888</item>
+		<item name="treebolic_root_background_color">#0000ff</item>
+		<item name="treebolic_root_foreground_color">#ffffff</item>
+		<item name="treebolic_node_background_color">#ffffff</item>
+		<item name="treebolic_node_foreground_color">#000000</item>
 
 	</style>
 

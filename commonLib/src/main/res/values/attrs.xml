@@ -31,4 +31,11 @@
 	<attr name="treebolic_search_settings_background" format="reference"/>
 	<attr name="treebolic_search_settings_foreground" format="reference"/>
 
+	<attr name="treebolic_back_color" format="color"/>
+	<attr name="treebolic_tree_edge_color" format="color"/>
+	<attr name="treebolic_root_background_color" format="color"/>
+	<attr name="treebolic_root_foreground_color" format="color"/>
+	<attr name="treebolic_node_background_color" format="color"/>
+	<attr name="treebolic_node_foreground_color" format="color"/>
+
 </resources>
