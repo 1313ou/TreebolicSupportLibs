@@ -20,5 +20,6 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile files('libs/nineoldandroids-2.2.0.jar')
 }
