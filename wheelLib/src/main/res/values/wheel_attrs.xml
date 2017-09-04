@@ -8,6 +8,7 @@
         <attr name="itemsPadding" format="dimension" />
         <attr name="selectionDividerDimmedAlpha" format="integer" />
         <attr name="selectionDividerActiveAlpha" format="integer" />
+        <attr name="selectionDividerTint" format="integer" />
         <attr name="selectionDivider" format="reference" />
         <attr name="itemsDimmedAlpha" format="integer" />
         <attr name="isCyclic" format="boolean" />

@@ -21,6 +21,7 @@
 			app:selectionDividerActiveAlpha="100"
 			app:selectionDividerDimmedAlpha="255"
 			app:selectionDividerHeight="2dp"
+			app:selectionDividerTint="?attr/colorAccent"
 			app:visibleItems="4"/>
 
 		<org.treebolic.wheel.WheelView
@@ -35,6 +36,7 @@
 			app:selectionDividerActiveAlpha="100"
 			app:selectionDividerDimmedAlpha="255"
 			app:selectionDividerHeight="2dp"
+			app:selectionDividerTint="?attr/colorAccent"
 			app:visibleItems="4"/>
 	</TableRow>
 

@@ -28,6 +28,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -59,6 +61,8 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 	protected static final int DEF_SELECTION_DIVIDER_SIZE = 2;
 
+	protected static final int DEF_SELECTION_DIVIDER_TINT = 0;
+
 	// ----------------------------------
 	// Class properties
 	// ----------------------------------
@@ -73,6 +77,9 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 	/** The alpha of separators when they are is dimmed. */
 	protected int mSelectionDividerDimmedAlpha;
+
+	/** The tint of separators. */
+	protected int mSelectionDividerTint;
 
 	/** Top and bottom items offset */
 	protected int mItemOffsetPercent;
@@ -144,10 +151,12 @@ public abstract class AbstractWheelView extends AbstractWheel
 		this.mItemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA);
 		this.mSelectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA);
 		this.mSelectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA);
+		this.mSelectionDividerTint = array.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT);
 		this.mItemOffsetPercent = array.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT);
 		this.mItemsPadding = array.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING);
 		this.mSelectionDivider = array.getDrawable(R.styleable.AbstractWheelView_selectionDivider);
 		array.recycle();
+		//this.mSelectionDivider.setTint(this.mSelectionDividerTint);
 	}
 
 	@Override
@@ -168,6 +177,16 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 		this.mSelectorWheelPaint = new Paint();
 		this.mSelectorWheelPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+
+		// drawable tint
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+		{
+			this.mSelectionDivider.setTint(this.mSelectionDividerTint);
+		}
+		else
+		{
+			DrawableCompat.setTint(DrawableCompat.wrap(this.mSelectionDivider), this.mSelectionDividerTint);
+		}
 	}
 
 	/**
@@ -209,6 +228,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	public void setSelectionDivider(Drawable selectionDivider)
 	{
 		this.mSelectionDivider = selectionDivider;
+		//this.mSelectionDivider.setTint(this.mSelectionDividerTint);
 	}
 
 	// --------------------------------------------------------------------------
