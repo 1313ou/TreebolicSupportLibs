@@ -145,9 +145,10 @@ public class Tint
 		try
 		{
 			final Drawable drawable = style.getDrawable(0);
+			Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + drawable);
 			for (int i = 1; i < attrs.length; i++)
 			{
-				final int intColor = style.getColor(i /* index */, (int) 0xCCCCCCCC /* defaultVal */);
+				final int intColor = style.getColor(i /* index */, 0xCCCCCCCC /* defaultVal */);
 				Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[i]) + " value=" + Integer.toHexString(intColor));
 			}
 		}

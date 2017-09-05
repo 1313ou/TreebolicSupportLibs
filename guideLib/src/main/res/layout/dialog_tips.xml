@@ -29,6 +29,9 @@
 					android:layout_alignParentRight="true"
 					android:layout_gravity="center_horizontal|top"
 					android:paddingRight="10dp"
+					android:paddingEnd="10dp"
+					android:paddingLeft="1dp"
+					android:paddingStart="1dp"
 					android:contentDescription="@string/tip_dismiss"
 					android:src="@drawable/ic_action_close"/>
 
