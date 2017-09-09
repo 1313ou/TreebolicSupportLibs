@@ -79,6 +79,16 @@ public class ColorPanelView extends View
 	private AlphaPatternDrawable mAlphaPattern;
 
 	/**
+	 * IsNull
+	 */
+	private boolean mIsNull;
+
+	/**
+	 * IsIllegal
+	 */
+	private boolean mIsCrossed;
+
+	/**
 	 * Constructor
 	 *
 	 * @param context context
@@ -140,9 +150,19 @@ public class ColorPanelView extends View
 		}
 
 		// color
-		this.mColorPaint.setColor(this.mColor);
-		final RectF rect = this.mColorRect;
-		canvas.drawRect(rect, this.mColorPaint);
+		if (!this.mIsNull)
+		{
+			this.mColorPaint.setColor(this.mColor);
+			final RectF rect = this.mColorRect;
+			canvas.drawRect(rect, this.mColorPaint);
+		}
+
+		// illegal
+		if (!this.mIsCrossed)
+		{
+			canvas.drawLine(this.mDrawingRect.left, this.mDrawingRect.top, this.mDrawingRect.right, this.mDrawingRect.bottom, this.mBorderPaint);
+			canvas.drawLine(this.mDrawingRect.right, this.mDrawingRect.top, this.mDrawingRect.left, this.mDrawingRect.bottom, this.mBorderPaint);
+		}
 	}
 
 	@Override
@@ -180,6 +200,7 @@ public class ColorPanelView extends View
 		this.mColorRect = new RectF(left, top, right, bottom);
 		this.mAlphaPattern = new AlphaPatternDrawable((int) (5 * ColorPanelView.mDensity));
 		this.mAlphaPattern.setBounds(Math.round(this.mColorRect.left), Math.round(this.mColorRect.top), Math.round(this.mColorRect.right), Math.round(this.mColorRect.bottom));
+		this.mIsCrossed = false;
 	}
 
 	/**
@@ -189,7 +210,14 @@ public class ColorPanelView extends View
 	 */
 	public void setValue(final Integer color)
 	{
-		setColor(color == null ? 0x00ffffff : color);
+		if (color == null)
+		{
+			this.mIsNull = true;
+			this.mColor = 0x00ffffff;
+			invalidate();
+			return;
+		}
+		setColor(color);
 	}
 
 	/**
@@ -199,8 +227,19 @@ public class ColorPanelView extends View
 	 */
 	public void setColor(final int color)
 	{
+		this.mIsNull = false;
 		this.mColor = color;
 		invalidate();
+	}
+
+	/**
+	 * Set crossed flag
+	 *
+	 * @param isCrossed whether the display is crossed
+	 */
+	public void setCrossed(final boolean isCrossed)
+	{
+		this.mIsCrossed = isCrossed;
 	}
 
 	/**
