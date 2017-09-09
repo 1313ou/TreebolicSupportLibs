@@ -16,6 +16,7 @@ import org.treebolic.colors.view.ColorPickerView;
 public class ColorPickerPreference extends DialogPreference implements ColorPickerView.OnColorChangedListener
 {
 	// V I E W S
+
 	/**
 	 * Picker view
 	 */

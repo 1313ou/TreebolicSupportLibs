@@ -81,8 +81,7 @@ public class ColorPanelView extends View
 	/**
 	 * Constructor
 	 *
-	 * @param context
-	 *            context
+	 * @param context context
 	 */
 	public ColorPanelView(final Context context)
 	{
@@ -92,10 +91,8 @@ public class ColorPanelView extends View
 	/**
 	 * Constructor
 	 *
-	 * @param context
-	 *            context
-	 * @param attrs
-	 *            attributes
+	 * @param context context
+	 * @param attrs   attributes
 	 */
 	public ColorPanelView(final Context context, final AttributeSet attrs)
 	{
@@ -105,12 +102,9 @@ public class ColorPanelView extends View
 	/**
 	 * Constructor
 	 *
-	 * @param context
-	 *            context
-	 * @param attrs
-	 *            attributes
-	 * @param defStyle
-	 *            style
+	 * @param context  context
+	 * @param attrs    attributes
+	 * @param defStyle style
 	 */
 	public ColorPanelView(final Context context, final AttributeSet attrs, final int defStyle)
 	{
@@ -185,15 +179,23 @@ public class ColorPanelView extends View
 
 		this.mColorRect = new RectF(left, top, right, bottom);
 		this.mAlphaPattern = new AlphaPatternDrawable((int) (5 * ColorPanelView.mDensity));
-		this.mAlphaPattern.setBounds(Math.round(this.mColorRect.left), Math.round(this.mColorRect.top), Math.round(this.mColorRect.right),
-				Math.round(this.mColorRect.bottom));
+		this.mAlphaPattern.setBounds(Math.round(this.mColorRect.left), Math.round(this.mColorRect.top), Math.round(this.mColorRect.right), Math.round(this.mColorRect.bottom));
+	}
+
+	/**
+	 * Set value
+	 *
+	 * @param color may be null
+	 */
+	public void setValue(final Integer color)
+	{
+		setColor(color == null ? 0x00ffffff : color);
 	}
 
 	/**
 	 * Set the color that should be shown by this view.
 	 *
-	 * @param color
-	 *            color
+	 * @param color color
 	 */
 	public void setColor(final int color)
 	{
@@ -214,8 +216,7 @@ public class ColorPanelView extends View
 	/**
 	 * Set the color of the border surrounding the panel.
 	 *
-	 * @param color
-	 *            border color
+	 * @param color border color
 	 */
 	public void setBorderColor(final int color)
 	{
