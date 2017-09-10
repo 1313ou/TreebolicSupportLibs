@@ -18,6 +18,7 @@ package org.treebolic.colors.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -52,6 +53,26 @@ public class ColorPanelView extends View
 	 * Color
 	 */
 	private int mColor = 0xff000000;
+
+	/**
+	 * Back paint
+	 */
+	static private Paint mBackPaint = new Paint();
+
+	static
+	{
+		mBackPaint.setColor(Color.WHITE);
+	}
+
+	/**
+	 * Draw paint
+	 */
+	static private Paint mDrawPaint = new Paint();
+
+	static
+	{
+		mDrawPaint.setColor(Color.GRAY);
+	}
 
 	/**
 	 * Border paint
@@ -127,8 +148,8 @@ public class ColorPanelView extends View
 	 */
 	private void init()
 	{
-		this.mBorderPaint = new Paint();
 		this.mColorPaint = new Paint();
+		this.mBorderPaint = new Paint();
 		ColorPanelView.mDensity = getContext().getResources().getDisplayMetrics().density;
 	}
 
@@ -143,6 +164,16 @@ public class ColorPanelView extends View
 			canvas.drawRect(this.mDrawingRect, this.mBorderPaint);
 		}
 
+		// crossed
+		if (this.mIsCrossed)
+		{
+			canvas.drawRect(this.mColorRect, mBackPaint);
+
+			canvas.drawLine(this.mDrawingRect.left, this.mDrawingRect.top, this.mDrawingRect.right, this.mDrawingRect.bottom, mDrawPaint);
+			canvas.drawLine(this.mDrawingRect.right, this.mDrawingRect.top, this.mDrawingRect.left, this.mDrawingRect.bottom, mDrawPaint);
+			return;
+		}
+
 		// pattern
 		if (this.mAlphaPattern != null)
 		{
@@ -155,13 +186,6 @@ public class ColorPanelView extends View
 			this.mColorPaint.setColor(this.mColor);
 			final RectF rect = this.mColorRect;
 			canvas.drawRect(rect, this.mColorPaint);
-		}
-
-		// illegal
-		if (!this.mIsCrossed)
-		{
-			canvas.drawLine(this.mDrawingRect.left, this.mDrawingRect.top, this.mDrawingRect.right, this.mDrawingRect.bottom, this.mBorderPaint);
-			canvas.drawLine(this.mDrawingRect.right, this.mDrawingRect.top, this.mDrawingRect.left, this.mDrawingRect.bottom, this.mBorderPaint);
 		}
 	}
 
@@ -233,16 +257,6 @@ public class ColorPanelView extends View
 	}
 
 	/**
-	 * Set crossed flag
-	 *
-	 * @param isCrossed whether the display is crossed
-	 */
-	public void setCrossed(final boolean isCrossed)
-	{
-		this.mIsCrossed = isCrossed;
-	}
-
-	/**
 	 * Get the color currently shown by this view.
 	 *
 	 * @return color
@@ -271,5 +285,15 @@ public class ColorPanelView extends View
 	public int getBorderColor()
 	{
 		return this.mBorderColor;
+	}
+
+	/**
+	 * Set crossed flag
+	 *
+	 * @param isCrossed whether the display is crossed
+	 */
+	public void setCrossed(final boolean isCrossed)
+	{
+		this.mIsCrossed = isCrossed;
 	}
 }
