@@ -38,20 +38,20 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 
 	private final OnColorChangedListener mListener;
 
-	public ColorPickerDialog(final Context context, final int initialColor)
+	public ColorPickerDialog(final Context context, final Integer initialColor)
 	{
 		this(context, initialColor, null);
 		init(initialColor);
 	}
 
-	public ColorPickerDialog(final Context context, final int initialColor, final OnColorChangedListener listener)
+	public ColorPickerDialog(final Context context, final Integer initialColor, final OnColorChangedListener listener)
 	{
 		super(context);
 		this.mListener = listener;
 		init(initialColor);
 	}
 
-	private void init(final int color)
+	private void init(final Integer color)
 	{
 		// to fight color branding.
 		final Window window = getWindow();
@@ -63,7 +63,7 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 	}
 
 	@SuppressLint("InflateParams")
-	private void setUp(final int color)
+	private void setUp(final Integer color)
 	{
 		boolean isLandscapeLayout = false;
 
@@ -96,8 +96,12 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		}
 
 		this.mColorPicker.setOnColorChangedListener(this);
-		mOldColor.setColor(color);
-		this.mColorPicker.setColor(color, true);
+
+		if (color != null)
+		{
+			mOldColor.setColor(color);
+			this.mColorPicker.setColor(color, true);
+		}
 	}
 
 	@Override
