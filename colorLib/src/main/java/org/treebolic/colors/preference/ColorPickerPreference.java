@@ -2,6 +2,7 @@ package org.treebolic.colors.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
@@ -52,10 +53,8 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	/**
 	 * Constructor
 	 *
-	 * @param context
-	 *            context
-	 * @param attrs
-	 *            attributes
+	 * @param context context
+	 * @param attrs   attributes
 	 */
 	public ColorPickerPreference(final Context context, final AttributeSet attrs)
 	{
@@ -66,12 +65,9 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	/**
 	 * Constructor
 	 *
-	 * @param context
-	 *            context
-	 * @param attrs
-	 *            attributes
-	 * @param defStyle
-	 *            def style
+	 * @param context  context
+	 * @param attrs    attributes
+	 * @param defStyle def style
 	 */
 	public ColorPickerPreference(final Context context, final AttributeSet attrs, final int defStyle)
 	{
@@ -82,8 +78,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	/**
 	 * Initialize
 	 *
-	 * @param attrs
-	 *            attributes
+	 * @param attrs attributes
 	 */
 	private void init(final AttributeSet attrs)
 	{
@@ -156,8 +151,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		}
 		if (!isLandscapeLayout)
 		{
-			((LinearLayout) this.mOldColorView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0,
-					Math.round(this.mColorPickerView.getDrawingOffset()), 0);
+			((LinearLayout) this.mOldColorView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0, Math.round(this.mColorPickerView.getDrawingOffset()), 0);
 		}
 		else
 		{
@@ -182,14 +176,20 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		// listener
 		this.mColorPickerView.setOnColorChangedListener(this);
 
-		// Log.d("mColorPicker", "setting initial color!");
-		int color0 = this.mColor;
+		// Dialog old color
+		this.mOldColorView.setColor(this.mColor);
+
+		// Dialog new color
+		int newColor = this.mColor;
+		if (newColor == 0) // unset value (=transparent black)
+		{
+			newColor = Color.GRAY;
+		}
 		if (!this.alphaChannelVisible)
 		{
-			color0 |= 0xFF000000;
+			newColor |= 0xFF000000;
 		}
-		this.mOldColorView.setColor(this.mColor);
-		this.mColorPickerView.setColor(color0, true);
+		this.mColorPickerView.setColor(newColor, true);
 	}
 
 	// C L O S E
@@ -211,13 +211,15 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	// V A L U E S
 
+	static private final int DEFAULTCOLOR = 0xFF000000;
+
 	@SuppressWarnings("boxing")
 	@Override
 	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue)
 	{
 		if (restorePersistedValue)
 		{
-			this.mColor = getPersistedInt(0xFF000000);
+			this.mColor = getPersistedInt(DEFAULTCOLOR);
 			// Log.d("mColorPicker", "Load saved color: " + mColor);
 		}
 		else
@@ -231,7 +233,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	@Override
 	protected Object onGetDefaultValue(final TypedArray a, final int index)
 	{
-		return a.getInteger(index, 0xFF000000);
+		return a.getInteger(index, DEFAULTCOLOR);
 	}
 
 	@Override
