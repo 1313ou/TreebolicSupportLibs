@@ -14,7 +14,6 @@
 		android:contentDescription="@string/item_description"
 		android:cropToPadding="true"
 		android:padding="2dp"
-		android:tint="?attr/colorAccent"
 		android:scaleType="fitXY"/>
 
 	<TextView

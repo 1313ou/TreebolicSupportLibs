@@ -14,8 +14,7 @@
     <!-- ok/error -->
     <string name="ok_data">Data is available</string>
     <string name="fail_data">Data is unavailable</string>
-    <string name="error_null_download_url">Null download URL (see Settings)</string>
-    
+
     <!-- status -->
     <string name="status_download_fail">Download failed!</string>
     <string name="status_download_paused">Download paused!</string>

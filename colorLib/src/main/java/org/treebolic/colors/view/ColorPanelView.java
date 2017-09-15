@@ -57,7 +57,7 @@ public class ColorPanelView extends View
 	/**
 	 * Back paint
 	 */
-	static private Paint mBackPaint = new Paint();
+	static private final Paint mBackPaint = new Paint();
 
 	static
 	{
@@ -67,7 +67,7 @@ public class ColorPanelView extends View
 	/**
 	 * Draw paint
 	 */
-	static private Paint mDrawPaint = new Paint();
+	static private final Paint mDrawPaint = new Paint();
 
 	static
 	{

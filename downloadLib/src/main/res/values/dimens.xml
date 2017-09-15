@@ -1,6 +1,0 @@
-<resources>
-
-    <!-- Action button -->
-    <dimen name="download_action_button_group_margin">50dp</dimen>
-
-</resources>

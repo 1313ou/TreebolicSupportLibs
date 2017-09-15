@@ -26,7 +26,6 @@
 		android:contentDescription="@string/item_description"
 		android:cropToPadding="true"
 		android:padding="2dp"
-		android:scaleType="fitXY"
-		android:tint="?attr/colorAccent"/>
+		android:scaleType="fitXY"/>
 
 </LinearLayout>

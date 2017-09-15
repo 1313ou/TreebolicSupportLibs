@@ -82,6 +82,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Download uri
 	 */
+	@SuppressWarnings("CanBeFinal")
 	protected String downloadUrl;
 
 	protected Uri downloadUri;
@@ -89,6 +90,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Destination uri
 	 */
+	@SuppressWarnings("CanBeFinal")
 	protected File destDir;
 
 	protected Uri destUri;

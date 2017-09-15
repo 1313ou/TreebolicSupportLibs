@@ -14,8 +14,7 @@
     <!-- ok/error -->
     <string name="ok_data">Données disponibles</string>
     <string name="fail_data">Données non disponibles</string>
-    <string name="error_null_download_url">URL de téléchargment vide (voir Paramètres)</string>
-    
+
     <!-- status -->
     <string name="status_download_fail">Échec du téléchargement!</string>
     <string name="status_download_paused">Téléchargement en pause!</string>
