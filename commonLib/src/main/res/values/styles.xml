@@ -92,9 +92,6 @@
 		<!-- theme UI controls pop ups -->
 		<item name="actionBarPopupTheme">@style/MyDarkOverlay</item>
 
-		<!-- toolbar/action bar -->
-		<item name="android:actionBarStyle">@style/MyActionBar</item>
-
 	</style>
 
 	<!-- Light BASE application theme. -->
@@ -105,9 +102,6 @@
 
 		<!-- theme UI controls pop ups -->
 		<item name="actionBarPopupTheme">@style/MyLightOverlay</item>
-
-		<!-- toolbar/action bar -->
-		<item name="android:actionBarStyle">@style/MyActionBar</item>
 
 	</style>
 

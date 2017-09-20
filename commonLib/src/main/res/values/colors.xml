@@ -6,17 +6,4 @@
 	<!-- gray -->
 	<color name="light_gray">#ffB0B0B0</color>
 
-	<!-- set0 -->
-
-	<color name="set0_primaryColor">#4251bd</color>
-	<color name="set0_primaryLightColor">#797df0</color>
-	<color name="set0_primaryDarkColor">#00298c</color>
-	<color name="set0_secondaryColor">#ef2063</color>
-	<color name="set0_secondaryLightColor">#ff6290</color>
-	<color name="set0_secondaryDarkColor">#b6003a</color>
-
-	<color name="set0_primaryForeColor">#ffffff</color>
-	<color name="set0_secondaryForeColor">#c0c0d0</color>
-	<color name="set0_tertiaryForeColor">#e0e0e0</color>
-
 </resources>

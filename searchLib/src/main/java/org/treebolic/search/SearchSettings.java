@@ -98,9 +98,9 @@ public class SearchSettings extends AppCompatDialogFragment
 		final int defaultModeIndex = resources.getInteger(R.integer.search_mode_default);
 
 		// get icons
-		final int[] scopeIcons = new int[]{R.drawable.ic_search_label, R.drawable.ic_search_id, R.drawable.ic_search_content, R.drawable.ic_search_link, R.drawable.ic_search_source};
-		final int[] modeIcons = new int[]{R.drawable.ic_search_equals, R.drawable.ic_search_startswith, R.drawable.ic_search_includes};
-		final int[] sourceIcons = new int[]{R.drawable.ic_search_equals};
+		final int[] scopeIcons = new int[]{R.drawable.ic_search_scope_label, R.drawable.ic_search_scope_id, R.drawable.ic_search_scope_content, R.drawable.ic_search_scope_link, R.drawable.ic_search_scope_source};
+		final int[] modeIcons = new int[]{R.drawable.ic_search_mode_equals, R.drawable.ic_search_mode_startswith, R.drawable.ic_search_mode_includes};
+		final int[] sourceIcons = new int[]{R.drawable.ic_search_mode_equals};
 
 		// wheel2 adapter
 		this.modeAdapter = new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE);

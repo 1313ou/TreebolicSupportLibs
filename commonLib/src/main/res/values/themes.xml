@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<color name="default_primaryColor">#4251bd</color>
+	<color name="default_primaryLightColor">#797df0</color>
+	<color name="default_primaryDarkColor">#00298c</color>
+	<color name="default_secondaryColor">#ef2063</color>
+	<color name="default_secondaryLightColor">#ff6290</color>
+	<color name="default_secondaryDarkColor">#b6003a</color>
+
+	<color name="default_primaryForeColor">#ffffff</color>
+	<color name="default_secondaryForeColor">#c0c0d0</color>
+	<color name="default_tertiaryForeColor">#e0e0e0</color>
+
 	<style name="MyDefaultTheme" parent="MyDarkBaseTheme">
 
-		<item name="colorPrimary">@color/set0_primaryColor</item><!-- app branding color for the app bar -->
-		<item name="colorPrimaryDark">@color/set0_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
-		<item name="colorAccent">@color/set0_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/default_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
 
-		<item name="colorPrimaryLight">@color/set0_primaryLightColor</item>
-		<item name="colorSecondary">@color/set0_secondaryColor</item>
-		<item name="colorSecondaryLight">@color/set0_secondaryLightColor</item>
-		<item name="colorSecondaryDark">@color/set0_secondaryDarkColor</item>
+		<item name="colorPrimaryLight">@color/default_primaryLightColor</item>
+		<item name="colorSecondary">@color/default_secondaryColor</item>
+		<item name="colorSecondaryLight">@color/default_secondaryLightColor</item>
+		<item name="colorSecondaryDark">@color/default_secondaryDarkColor</item>
 
-		<item name="colorForePrimary">@color/set0_primaryForeColor</item>
-		<item name="colorForeSecondary">@color/set0_secondaryForeColor</item>
-		<item name="colorForeTertiary">@color/set0_tertiaryForeColor</item>
+		<item name="colorForePrimary">@color/default_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
 
 	</style>
 

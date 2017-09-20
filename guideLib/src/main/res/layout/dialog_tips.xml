@@ -33,7 +33,7 @@
 					android:paddingLeft="1dp"
 					android:paddingStart="1dp"
 					android:contentDescription="@string/tip_dismiss"
-					android:src="@drawable/ic_action_close"/>
+					android:src="@drawable/ic_tip_close"/>
 
 			</RelativeLayout>
 

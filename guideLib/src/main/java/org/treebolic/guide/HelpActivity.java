@@ -51,6 +51,10 @@ public class HelpActivity extends AppCompatCommonActivity
 
 		// web view
 		final WebView webview = (WebView) findViewById(R.id.webView);
+		webview.clearCache(true);
+		webview.clearHistory();
+		//webview.getSettings().setJavaScriptEnabled(true);
+		//webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		webview.setWebViewClient(new WebViewClient()
 		{
 			@SuppressWarnings("deprecation")
