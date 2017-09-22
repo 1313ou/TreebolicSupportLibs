@@ -539,8 +539,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 */
 	public void showDownload()
 	{
-		final Intent intent = new Intent();
-		intent.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
+		final Intent intent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
 		startActivity(intent);
 	}
 }

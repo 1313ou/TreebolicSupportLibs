@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_activity_about">À propos</string>
-    <string name="about_treebolic_text">Treebolic est un composant destiné à visualiser des données hiérarchisées avec un rendu hyperbolique.</string>
+	<string name="title_about">À propos</string>
+	<string name="title_activity_about">À propos</string>
+	<string name="about_treebolic_text">Treebolic est un composant destiné à visualiser des données hiérarchisées avec un rendu hyperbolique.</string>
 
 </resources>

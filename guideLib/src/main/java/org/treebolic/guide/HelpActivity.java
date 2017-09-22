@@ -2,7 +2,6 @@ package org.treebolic.guide;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -10,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -98,38 +99,28 @@ public class HelpActivity extends AppCompatCommonActivity
 		webview.loadUrl(url);
 	}
 
-	// /*
-	// @Override
-	// public boolean onCreateOptionsMenu(final Menu menu)
-	// {
-	// // Inflate the menu; this adds items to the action bar if it is present.
-	// getMenuInflater().inflate(R.menu.help, menu);
-	// return true;
-	// }
-
-	// @Override
-	// public boolean onOptionsItemSelected(final MenuItem item)
-	// {
-	// if (item.getItemId() == R.id.action_tips)
-	// {
-	// Tip.showTips(getSupportFragmentManager());
-	// return true;
-	// }
-	// else if (item.getItemId() == R.id.action_help)
-	// {
-	// HelpActivity.start(this);
-	// return true;
-	// }
-	//
-	// return super.onOptionsItemSelected(item);
-	// }
-
-	/**
-	 * Show help
-	 */
-	static public void start(final Context context)
+	@Override
+	public boolean onCreateOptionsMenu(final Menu menu)
 	{
-		final Intent intent = new Intent(context, HelpActivity.class);
-		context.startActivity(intent);
+		getMenuInflater().inflate(R.menu.help, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item)
+	{
+		if (item.getItemId() == R.id.action_tips)
+		{
+			Tip.show(getSupportFragmentManager());
+			return true;
+		}
+		else if (item.getItemId() == R.id.action_about)
+		{
+			final Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 }

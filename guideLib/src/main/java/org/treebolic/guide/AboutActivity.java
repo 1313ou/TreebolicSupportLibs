@@ -1,7 +1,6 @@
 package org.treebolic.guide;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -52,18 +51,10 @@ public class AboutActivity extends AppCompatCommonActivity
 	{
 		if (item.getItemId() == R.id.action_help)
 		{
-			HelpActivity.start(this);
+			final Intent intent = new Intent(this, HelpActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	/**
-	 * Show about
-	 */
-	static public void start(final Context context)
-	{
-		final Intent intent = new Intent(context, AboutActivity.class);
-		context.startActivity(intent);
 	}
 }

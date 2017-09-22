@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="about_treebolic_label" translatable="false">Treebolic</string>
-    <string name="about_treebolic_author" translatable="false">Bernard Bou</string>
-    <string name="about_treebolic_copyright" translatable="false">&#169; 2003&#8211;2017 Bernard Bou</string>
-    <string name="about_treebolic_url" translatable="false">http://treebolic.sourceforge.net</string>
+	<string name="about_treebolic_label" translatable="false">Treebolic</string>
+	<string name="about_treebolic_author" translatable="false">Bernard Bou</string>
+	<string name="about_treebolic_copyright" translatable="false">&#169; 2003&#8211;2017 Bernard Bou</string>
+	<string name="about_treebolic_url" translatable="false">http://treebolic.sourceforge.net</string>
 
 </resources>
