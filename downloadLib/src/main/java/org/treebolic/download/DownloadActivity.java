@@ -35,6 +35,7 @@ import java.io.InputStream;
  *
  * @author Bernard Bou
  */
+@SuppressWarnings("ALL")
 abstract public class DownloadActivity extends AppCompatCommonActivity implements View.OnClickListener
 {
 	/**
@@ -45,6 +46,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Allow expanding of archive key
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public static final String ARG_ALLOW_EXPAND_ARCHIVE = "download_allow_expand_archive";
 
 	/**
@@ -77,6 +79,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Download id
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected long downloadId = -1;
 
 	/**
@@ -85,6 +88,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	@SuppressWarnings("CanBeFinal")
 	protected String downloadUrl;
 
+	@SuppressWarnings("WeakerAccess")
 	protected Uri downloadUri;
 
 	/**
@@ -133,7 +137,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Expand archive checkbox
 	 */
-	protected CheckBox expandArchiveCheckbox;
+	private CheckBox expandArchiveCheckbox;
 
 	/**
 	 * Whether to expand archive

@@ -27,6 +27,7 @@ package org.treebolic.wheel;
 /**
  * Range for visible items.
  */
+@SuppressWarnings("WeakerAccess")
 public class ItemsRange
 {
 	// First item number

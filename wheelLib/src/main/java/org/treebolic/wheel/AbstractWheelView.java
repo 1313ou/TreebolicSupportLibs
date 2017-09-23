@@ -49,18 +49,25 @@ public abstract class AbstractWheelView extends AbstractWheel
 	// Default properties values
 	// ----------------------------------
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_ITEMS_DIMMED_ALPHA = 50; // 60 in ICS
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_SELECTION_DIVIDER_ACTIVE_ALPHA = 70;
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_SELECTION_DIVIDER_DIMMED_ALPHA = 70;
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_ITEM_OFFSET_PERCENT = 10;
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_ITEM_PADDING = 10;
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_SELECTION_DIVIDER_SIZE = 2;
 
+	@SuppressWarnings("WeakerAccess")
 	protected static final int DEF_SELECTION_DIVIDER_TINT = 0;
 
 	// ----------------------------------
@@ -70,24 +77,31 @@ public abstract class AbstractWheelView extends AbstractWheel
 	// configurable properties
 
 	/** The alpha of the selector spinnerwheel when it is dimmed. */
+	@SuppressWarnings("WeakerAccess")
 	protected int mItemsDimmedAlpha;
 
 	/** The alpha of separators spinnerwheel when they are shown. */
+	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerActiveAlpha;
 
 	/** The alpha of separators when they are is dimmed. */
+	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerDimmedAlpha;
 
 	/** The tint of separators. */
+	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerTint;
 
 	/** Top and bottom items offset */
+	@SuppressWarnings("WeakerAccess")
 	protected int mItemOffsetPercent;
 
 	/** Left and right padding value */
+	@SuppressWarnings("WeakerAccess")
 	protected int mItemsPadding;
 
 	/** Divider for showing item to be selected while scrolling */
+	@SuppressWarnings("WeakerAccess")
 	protected Drawable mSelectionDivider;
 
 	// the rest
@@ -95,34 +109,42 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * The {@link android.graphics.Paint} for drawing the selector.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected Paint mSelectorWheelPaint;
 
 	/**
 	 * The {@link android.graphics.Paint} for drawing the separators.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected Paint mSeparatorsPaint;
 
 	/**
 	 * {@link com.nineoldandroids.animation.Animator} for dimming the selector spinnerwheel.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected Animator mDimSelectorWheelAnimator;
 
 	/**
 	 * {@link com.nineoldandroids.animation.Animator} for dimming the selector spinnerwheel.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected Animator mDimSeparatorsAnimator;
 
 	/**
 	 * The property for setting the selector paint.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected static final String PROPERTY_SELECTOR_PAINT_COEFF = "selectorPaintCoeff";
 
 	/**
 	 * The property for setting the separators paint.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected static final String PROPERTY_SEPARATORS_PAINT_ALPHA = "separatorsPaintAlpha";
 
+	@SuppressWarnings("WeakerAccess")
 	protected Bitmap mSpinBitmap;
+	@SuppressWarnings("WeakerAccess")
 	protected Bitmap mSeparatorsBitmap;
 
 	// --------------------------------------------------------------------------
@@ -211,6 +233,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	 * @param alpha
 	 *            alpha value from 0 to 255
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public void setSeparatorsPaintAlpha(int alpha)
 	{
 		this.mSeparatorsPaint.setAlpha(alpha);
@@ -223,6 +246,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	 * @param coeff
 	 *            Coefficient from 0 (selector is passive) to 1 (selector is active)
 	 */
+	@SuppressWarnings("WeakerAccess")
 	abstract public void setSelectorPaintCoeff(float coeff);
 
 	public void setSelectionDivider(Drawable selectionDivider)

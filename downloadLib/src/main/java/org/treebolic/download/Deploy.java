@@ -91,7 +91,8 @@ public class Deploy
 	 * @param exclude exclude regexp filter
 	 * @return dest dir
 	 */
-	static public File expandZip(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude) throws IOException
+	@SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
+	static public File expandZip(final InputStream in, final File destDir, @SuppressWarnings("SameParameterValue") final boolean flat, @SuppressWarnings("SameParameterValue") final String include, @SuppressWarnings("SameParameterValue") final String exclude) throws IOException
 	{
 		// patterns
 		final Pattern includePattern = include == null ? null : Pattern.compile(include);
@@ -220,7 +221,7 @@ public class Deploy
 	 * @return dest dir
 	 * @throws IOException io exception
 	 */
-	static public File extractTarGz(final InputStream in, final File destDir, final boolean flat, final String include, final String exclude) throws IOException
+	static public File extractTarGz(final InputStream in, final File destDir, @SuppressWarnings("SameParameterValue") final boolean flat, final String include, final String exclude) throws IOException
 	{
 		final Pattern includePattern = include == null ? null : Pattern.compile(include);
 		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);

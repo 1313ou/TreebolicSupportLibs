@@ -81,6 +81,7 @@ public abstract class AbstractWheelAdapter implements WheelViewAdapter
 	/**
 	 * Notifies observers about invalidating data
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void notifyDataInvalidatedEvent()
 	{
 		if (this.datasetObservers != null)

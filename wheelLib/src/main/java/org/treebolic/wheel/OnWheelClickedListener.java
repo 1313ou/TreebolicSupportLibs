@@ -30,6 +30,7 @@ package org.treebolic.wheel;
  * <li> New Wheel position is set
  * <li> Wheel view is scrolled
  */
+@SuppressWarnings("WeakerAccess")
 public interface OnWheelClickedListener {
     /**
      * Callback method to be invoked when current item clicked

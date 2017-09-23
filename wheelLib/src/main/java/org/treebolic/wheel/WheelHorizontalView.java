@@ -51,6 +51,7 @@ public class WheelHorizontalView extends AbstractWheelView
 	/**
 	 * The width of the selection divider.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerWidth;
 
 	// Item width

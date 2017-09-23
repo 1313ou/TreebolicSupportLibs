@@ -29,7 +29,7 @@ public class HelpActivity extends AppCompatCommonActivity
 	/**
 	 * Log tag
 	 */
-	protected static final String TAG = "Help activity";
+	private static final String TAG = "Help activity";
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)

@@ -30,7 +30,7 @@ import org.treebolic.wheel.adapters.WheelViewAdapter;
  */
 public class SearchSettings extends AppCompatDialogFragment
 {
-	protected static final String TAG = "SearchSettings";
+	private static final String TAG = "SearchSettings";
 
 	static public final String PREF_SEARCH_SCOPE = "pref_search_scope";
 
@@ -72,6 +72,7 @@ public class SearchSettings extends AppCompatDialogFragment
 
 	private int sourceModeIndex;
 
+	@SuppressWarnings("WeakerAccess")
 	public static SearchSettings newInstance()
 	{
 		return new SearchSettings();
@@ -287,6 +288,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		/**
 		 * Constructor
 		 */
+		@SuppressWarnings("WeakerAccess")
 		protected Adapter(final Context context0, final int layout0, final String[] texts0, final int[] icons0, final int len0, final Type type0)
 		{
 			super(context0, layout0, NO_RESOURCE);

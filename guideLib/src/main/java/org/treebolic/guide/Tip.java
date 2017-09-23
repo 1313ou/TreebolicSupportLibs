@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 
 public class Tip extends AppCompatDialogFragment
 {
+	@SuppressWarnings("WeakerAccess")
 	public static Tip newInstance()
 	{
 		return new Tip();

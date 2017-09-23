@@ -33,6 +33,7 @@ public class Tint
 		}
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	static public void tint(int iconTint, final Drawable drawable)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -79,7 +80,8 @@ public class Tint
 	 * @param colorAttrId attr id (ex: R.attr.editTextColor)
 	 * @return color
 	 */
-	static public int getColorFromTheme(final Context context, int styleId, int colorAttrId)
+	@SuppressWarnings("WeakerAccess")
+	static public int getColorFromTheme(final Context context, int styleId, @SuppressWarnings("SameParameterValue") int colorAttrId)
 	{
 		final Resources.Theme theme = context.getTheme();
 		// theme.dump(Log.DEBUG, TAG, "theme");

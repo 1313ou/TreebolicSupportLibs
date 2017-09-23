@@ -65,31 +65,43 @@ public abstract class AbstractWheel extends View
 	// Class properties
 	// ----------------------------------
 
+	@SuppressWarnings("WeakerAccess")
 	protected int mCurrentItemIdx = 0;
 
 	// Count of visible items
+	@SuppressWarnings("WeakerAccess")
 	protected int mVisibleItems;
 
 	// Should all items be visible
+	@SuppressWarnings("WeakerAccess")
 	protected boolean mIsAllVisible;
 
+	@SuppressWarnings("WeakerAccess")
 	protected boolean mIsCyclic;
 
 	// Scrolling
+	@SuppressWarnings("WeakerAccess")
 	protected WheelScroller mScroller;
+	@SuppressWarnings("WeakerAccess")
 	protected boolean mIsScrollingPerformed;
+	@SuppressWarnings("WeakerAccess")
 	protected int mScrollingOffset;
 
 	// Items layout
+	@SuppressWarnings("WeakerAccess")
 	protected LinearLayout mItemsLayout;
 
 	// The number of first item in layout
+	@SuppressWarnings("WeakerAccess")
 	protected int mFirstItemIdx;
 
 	// View adapter
+	@SuppressWarnings("WeakerAccess")
 	protected WheelViewAdapter mViewAdapter;
 
+	@SuppressWarnings("WeakerAccess")
 	protected int mLayoutHeight;
+	@SuppressWarnings("WeakerAccess")
 	protected int mLayoutWidth;
 
 	// Recycle
@@ -142,6 +154,7 @@ public abstract class AbstractWheel extends View
 	 * @param defStyle
 	 *            The default style to apply to this view.
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void initAttributes(AttributeSet attrs, int defStyle)
 	{
 		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
@@ -158,6 +171,7 @@ public abstract class AbstractWheel extends View
 	 * @param context
 	 *            the context
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void initData(Context context)
 	{
 
@@ -344,22 +358,25 @@ public abstract class AbstractWheel extends View
 	abstract protected WheelScroller createScroller(WheelScroller.ScrollingListener scrollingListener);
 
 	/* These methods are not abstract, as we may want to override only some of them */
-	@SuppressWarnings("EmptyMethod")
+	@SuppressWarnings({"EmptyMethod", "WeakerAccess"})
 	protected void onScrollStarted()
 	{
 		//
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	protected void onScrollTouched()
 	{
 		//
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	protected void onScrollTouchedUp()
 	{
 		//
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	protected void onScrollFinished()
 	{
 		//
@@ -392,7 +409,8 @@ public abstract class AbstractWheel extends View
 	 * @param time
 	 *            scrolling duration
 	 */
-	public void scroll(int itemsToScroll, int time)
+	@SuppressWarnings("WeakerAccess")
+	public void scroll(int itemsToScroll, @SuppressWarnings("SameParameterValue") int time)
 	{
 		int distance = itemsToScroll * getItemDimension() - this.mScrollingOffset;
 		onScrollTouched(); // we have to emulate touch when scrolling spinnerwheel programmatically to light up stuff
@@ -550,6 +568,7 @@ public abstract class AbstractWheel extends View
 	 * @param clearCaches
 	 *            if true then cached views will be cleared
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public void invalidateItemsLayout(boolean clearCaches)
 	{
 		if (clearCaches)
@@ -592,7 +611,7 @@ public abstract class AbstractWheel extends View
 	 * @param count
 	 *            the desired count for visible items
 	 */
-	public void setVisibleItems(int count)
+	public void setVisibleItems(@SuppressWarnings("SameParameterValue") int count)
 	{
 		this.mVisibleItems = count;
 	}
@@ -656,7 +675,8 @@ public abstract class AbstractWheel extends View
 	 * @param animated
 	 *            the animation flag
 	 */
-	public void setCurrentItem(int index0, boolean animated)
+	@SuppressWarnings("WeakerAccess")
+	public void setCurrentItem(int index0, @SuppressWarnings("SameParameterValue") boolean animated)
 	{
 		int index = index0;
 		if (this.mViewAdapter == null || this.mViewAdapter.getItemsCount() == 0)
@@ -776,6 +796,7 @@ public abstract class AbstractWheel extends View
 	 * @param newValue
 	 *            the new spinnerwheel value
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void notifyChangingListeners(int oldValue, int newValue)
 	{
 		for (OnWheelChangedListener listener : this.changingListeners)
@@ -809,6 +830,7 @@ public abstract class AbstractWheel extends View
 	/**
 	 * Notifies listeners about starting scrolling
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void notifyScrollingListenersAboutStart()
 	{
 		for (OnWheelScrollListener listener : this.scrollingListeners)
@@ -820,6 +842,7 @@ public abstract class AbstractWheel extends View
 	/**
 	 * Notifies listeners about ending scrolling
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void notifyScrollingListenersAboutEnd()
 	{
 		for (OnWheelScrollListener listener : this.scrollingListeners)
@@ -856,6 +879,7 @@ public abstract class AbstractWheel extends View
 	 * @param item
 	 *            clicked item
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void notifyClickListenersAboutClick(int item)
 	{
 		for (OnWheelClickedListener listener : this.clickingListeners)
@@ -875,6 +899,7 @@ public abstract class AbstractWheel extends View
 	 *
 	 * @return true if items are rebuilt
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected boolean rebuildItems()
 	{
 		boolean updated;
@@ -977,6 +1002,7 @@ public abstract class AbstractWheel extends View
 	 *            the item index
 	 * @return true if item index is not out of bounds or the spinnerwheel is cyclic
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected boolean isValidItemIndex(int index)
 	{
 		return (this.mViewAdapter != null) && (this.mViewAdapter.getItemsCount() > 0)

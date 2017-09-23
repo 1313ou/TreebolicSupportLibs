@@ -34,7 +34,7 @@ import org.treebolic.common.R;
  * A {@link PreferenceActivity} which implements and proxies the necessary calls to be used with AppCompat.
  */
 @SuppressWarnings("unused")
-public class AppCompatPreferenceActivity extends PreferenceActivity
+public abstract class AppCompatPreferenceActivity extends PreferenceActivity
 {
 	// D E L E G A T E
 

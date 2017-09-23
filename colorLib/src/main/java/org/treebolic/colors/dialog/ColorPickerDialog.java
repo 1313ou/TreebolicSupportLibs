@@ -44,7 +44,8 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		init(initialColor);
 	}
 
-	public ColorPickerDialog(final Context context, final Integer initialColor, final OnColorChangedListener listener)
+	@SuppressWarnings("WeakerAccess")
+	public ColorPickerDialog(final Context context, final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
 	{
 		super(context);
 		this.mListener = listener;
@@ -115,7 +116,7 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		}
 	}
 
-	public void setAlphaSliderVisible(final boolean visible)
+	public void setAlphaSliderVisible(@SuppressWarnings("SameParameterValue") final boolean visible)
 	{
 		this.mColorPicker.setAlphaSliderVisible(visible);
 	}

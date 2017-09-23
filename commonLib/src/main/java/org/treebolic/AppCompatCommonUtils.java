@@ -1,5 +1,6 @@
 package org.treebolic;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -9,14 +10,13 @@ public class AppCompatCommonUtils
 {
 	static public final String PREF_THEME = "pref_theme";
 
-	static private final int NO_THEME = -1;
-
 	/**
 	 * Set theme preference
 	 *
 	 * @param context  context
 	 * @param themeIdx theme idx
 	 */
+	@SuppressLint("ApplySharedPref")
 	public static void setThemePref(final Context context, int themeIdx)
 	{
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);

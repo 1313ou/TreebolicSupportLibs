@@ -144,6 +144,7 @@ public abstract class WheelScroller
 
 	// Scrolling
 	private final GestureDetector gestureDetector;
+	@SuppressWarnings("WeakerAccess")
 	protected Scroller scroller;
 	private int lastScrollPosition;
 	private float lastTouchedPosition;
@@ -157,6 +158,7 @@ public abstract class WheelScroller
 	 * @param listener0
 	 *            the scrolling listener
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public WheelScroller(Context context0, ScrollingListener listener0)
 	{
 		this.gestureDetector = new GestureDetector(context0, new SimpleOnGestureListener()
@@ -234,6 +236,7 @@ public abstract class WheelScroller
 	 *            the motion event
 	 * @return true if the event was handled, false otherwise.
 	 */
+	@SuppressWarnings("SameReturnValue")
 	public boolean onTouchEvent(MotionEvent event)
 	{
 		switch (event.getAction())
@@ -301,6 +304,7 @@ public abstract class WheelScroller
 	/**
 	 * Justifies spinnerwheel
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public void justify()
 	{
 		this.listener.onJustify();
@@ -322,6 +326,7 @@ public abstract class WheelScroller
 	/**
 	 * Finishes scrolling
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void finishScrolling()
 	{
 		if (this.isScrollingPerformed)

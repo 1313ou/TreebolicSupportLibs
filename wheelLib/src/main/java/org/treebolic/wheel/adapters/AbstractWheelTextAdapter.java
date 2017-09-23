@@ -38,15 +38,18 @@ import android.widget.TextView;
 public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 {
 	/** Text view resource. Used as a default view for adapter. */
+	@SuppressWarnings("WeakerAccess")
 	public static final int TEXT_VIEW_ITEM_RESOURCE = -1;
 
 	/** No resource constant. */
 	protected static final int NO_RESOURCE = 0;
 
 	/** Default text color */
+	@SuppressWarnings("WeakerAccess")
 	public static final int DEFAULT_TEXT_COLOR = 0xFF101010;
 
 	/** Default text size */
+	@SuppressWarnings("WeakerAccess")
 	public static final int DEFAULT_TEXT_SIZE = 24;
 
 	// / Custom text typeface
@@ -57,15 +60,21 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	private int textSize = DEFAULT_TEXT_SIZE;
 
 	// Current context
+	@SuppressWarnings("WeakerAccess")
 	protected final Context context;
+
 	// Layout inflater
+	@SuppressWarnings("WeakerAccess")
 	protected final LayoutInflater inflater;
 
 	// Items resources
+	@SuppressWarnings("WeakerAccess")
 	protected int itemResourceId;
+	@SuppressWarnings("WeakerAccess")
 	protected int itemTextResourceId;
 
 	// Empty items resources
+	@SuppressWarnings("WeakerAccess")
 	protected int emptyItemResourceId;
 
 	/**
@@ -284,6 +293,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	 * @param view
 	 *            the text view to be configured
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected void configureTextView(TextView view)
 	{
 		if (this.itemResourceId == TEXT_VIEW_ITEM_RESOURCE)

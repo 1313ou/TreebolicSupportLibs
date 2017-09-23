@@ -33,6 +33,7 @@ import java.util.List;
 /**
  * Recycle stored spinnerwheel items to reuse.
  */
+@SuppressWarnings("WeakerAccess")
 public class WheelRecycler
 {
 	// private static final String TAG = WheelRecycler.class.getName();

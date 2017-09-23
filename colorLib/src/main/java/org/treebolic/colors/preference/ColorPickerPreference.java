@@ -21,16 +21,19 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	/**
 	 * Picker view
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected ColorPickerView mColorPickerView;
 
 	/**
 	 * Old color view
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected ColorPanelView mOldColorView;
 
 	/**
 	 * New color view
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected ColorPanelView mNewColorView;
 
 	// C O L O R
@@ -43,11 +46,17 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	/**
 	 * S E T T I N G S
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected boolean alphaChannelVisible = false;
+	@SuppressWarnings("WeakerAccess")
 	protected String alphaChannelText = null;
+	@SuppressWarnings("WeakerAccess")
 	protected boolean showDialogTitle = false;
+	@SuppressWarnings("WeakerAccess")
 	protected boolean showPreviewSelectedColorInList = true;
+	@SuppressWarnings("WeakerAccess")
 	protected int colorPickerSliderColor = -1;
+	@SuppressWarnings("WeakerAccess")
 	protected int colorPickerBorderColor = -1;
 
 	/**
@@ -56,6 +65,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	 * @param context context
 	 * @param attrs   attributes
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public ColorPickerPreference(final Context context, final AttributeSet attrs)
 	{
 		super(context, attrs);
@@ -69,6 +79,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	 * @param attrs    attributes
 	 * @param defStyle def style
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public ColorPickerPreference(final Context context, final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
