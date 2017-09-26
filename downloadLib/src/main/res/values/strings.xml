@@ -8,12 +8,13 @@
     <!-- hint -->
     <string name="src">[source]</string>
     <string name="target">[target]</string>
-    <string name="expandArchive">expand archive</string>
+    <string name="expandArchive">Expand archive</string>
     <string name="internal">[internal]</string>
 
     <!-- ok/error -->
     <string name="ok_data">Data is available</string>
     <string name="fail_data">Data is unavailable</string>
+    <string name="error_null_download_url">Null download URL</string>
 
     <!-- status -->
     <string name="status_download_fail">Download failed!</string>

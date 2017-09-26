@@ -109,12 +109,13 @@ public class HelpActivity extends AppCompatCommonActivity
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item)
 	{
-		if (item.getItemId() == R.id.action_tips)
+		final int itemId = item.getItemId();
+		if (itemId == R.id.action_tips)
 		{
 			Tip.show(getSupportFragmentManager());
 			return true;
 		}
-		else if (item.getItemId() == R.id.action_about)
+		else if (itemId == R.id.action_about)
 		{
 			final Intent intent = new Intent(this, AboutActivity.class);
 			startActivity(intent);

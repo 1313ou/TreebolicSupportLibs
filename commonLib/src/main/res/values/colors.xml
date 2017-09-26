@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!-- R A W -->
-
 	<!-- gray -->
-	<color name="light_gray">#ffB0B0B0</color>
+	<color name="light_gray">#ffb0b0b0</color>
 
 </resources>

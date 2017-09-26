@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package android.support.v7app.contrib;
+package android.support.v7.app.contrib;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

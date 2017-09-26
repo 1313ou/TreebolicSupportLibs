@@ -1,7 +1,7 @@
 package org.treebolic;
 
 import android.os.Bundle;
-import android.support.v7app.contrib.AppCompatPreferenceActivity;
+import android.support.v7.app.contrib.AppCompatPreferenceActivity;
 
 public abstract class AppCompatCommonPreferenceActivity extends AppCompatPreferenceActivity
 {

@@ -22,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.treebolic.AppCompatCommonActivity;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
@@ -36,7 +38,7 @@ import java.util.Locale;
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class FileChooserActivity extends AppCompatActivity implements AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener
+public class FileChooserActivity extends AppCompatCommonActivity implements AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener
 {
 	// keys
 

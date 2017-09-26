@@ -49,7 +49,8 @@ public class AboutActivity extends AppCompatCommonActivity
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item)
 	{
-		if (item.getItemId() == R.id.action_help)
+		final int itemId = item.getItemId();
+		if (itemId == R.id.action_help)
 		{
 			final Intent intent = new Intent(this, HelpActivity.class);
 			startActivity(intent);

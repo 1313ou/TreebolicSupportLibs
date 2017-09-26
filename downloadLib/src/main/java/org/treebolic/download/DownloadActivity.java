@@ -137,7 +137,8 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Expand archive checkbox
 	 */
-	private CheckBox expandArchiveCheckbox;
+	@SuppressWarnings("WeakerAccess")
+	protected CheckBox expandArchiveCheckbox;
 
 	/**
 	 * Whether to expand archive
