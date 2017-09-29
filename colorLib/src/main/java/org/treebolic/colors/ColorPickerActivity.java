@@ -33,8 +33,8 @@ public class ColorPickerActivity extends AppCompatCommonActivity implements OnCo
 
 	private void init()
 	{
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		final int initialColor = prefs.getInt("color_3", 0xFF000000);
+		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+		final int initialColor = sharedPrefs.getInt("color_3", 0xFF000000);
 
 		this.mColorPickerView = (ColorPickerView) findViewById(R.id.color_picker_view);
 		ColorPanelView mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);

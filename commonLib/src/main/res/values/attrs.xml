@@ -42,7 +42,7 @@
 	<attr name="treebolic_node_background_color" format="color|reference"/>
 	<attr name="treebolic_node_foreground_color" format="color|reference"/>
 
-	<!-- treebolic search tool (see searchlib, but this module has no deps) -->
+	<!-- treebolic search tool (see searchLib, but this module has no deps) -->
 	<attr name="treebolic_search_settings_background" format="color|reference"/>
 	<attr name="treebolic_search_settings_foreground" format="color|reference"/>
 

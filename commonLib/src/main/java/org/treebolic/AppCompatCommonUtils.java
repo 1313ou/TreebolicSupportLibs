@@ -19,8 +19,8 @@ public class AppCompatCommonUtils
 	@SuppressLint("ApplySharedPref")
 	public static void setThemePref(final Context context, int themeIdx)
 	{
-		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-		final SharedPreferences.Editor editor = sharedPref.edit();
+		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+		final SharedPreferences.Editor editor = sharedPrefs.edit();
 		editor.putString(PREF_THEME, Integer.toString(themeIdx));
 		editor.commit();
 	}
@@ -34,8 +34,8 @@ public class AppCompatCommonUtils
 	@SuppressWarnings("boxing")
 	static public Integer getThemePref(final Context context)
 	{
-		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-		final String value = sharedPref.getString(PREF_THEME, null);
+		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+		final String value = sharedPrefs.getString(PREF_THEME, null);
 		return value == null ? null : Integer.parseInt(value);
 	}
 }
