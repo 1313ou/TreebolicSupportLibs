@@ -66,7 +66,8 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter
 	 * @param maxValue0
 	 *            the spinnerwheel max value
 	 */
-	public NumericWheelAdapter(Context context0, int minValue0, int maxValue0)
+	@SuppressWarnings("WeakerAccess")
+	public NumericWheelAdapter(Context context0, @SuppressWarnings("SameParameterValue") int minValue0, @SuppressWarnings("SameParameterValue") int maxValue0)
 	{
 		this(context0, minValue0, maxValue0, null);
 	}
@@ -83,7 +84,8 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter
 	 * @param format0
 	 *            the format string
 	 */
-	public NumericWheelAdapter(Context context0, int minValue0, int maxValue0, String format0)
+	@SuppressWarnings("WeakerAccess")
+	public NumericWheelAdapter(Context context0, int minValue0, int maxValue0, @SuppressWarnings("SameParameterValue") String format0)
 	{
 		super(context0);
 

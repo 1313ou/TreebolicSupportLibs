@@ -99,6 +99,7 @@ public class HelpActivity extends AppCompatCommonActivity
 		webview.loadUrl(url);
 	}
 
+	@SuppressWarnings("SameReturnValue")
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu)
 	{

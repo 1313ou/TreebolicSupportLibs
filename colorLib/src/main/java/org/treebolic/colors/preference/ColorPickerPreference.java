@@ -41,6 +41,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	/**
 	 * Color
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected int mColor;
 
 	/**

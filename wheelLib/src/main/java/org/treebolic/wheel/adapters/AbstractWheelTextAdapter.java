@@ -83,6 +83,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	 * @param context0
 	 *            the current context
 	 */
+	@SuppressWarnings("WeakerAccess")
 	protected AbstractWheelTextAdapter(Context context0)
 	{
 		this(context0, TEXT_VIEW_ITEM_RESOURCE);
@@ -96,7 +97,8 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	 * @param itemResource
 	 *            the resource ID for a layout file containing a TextView to use when instantiating items views
 	 */
-	protected AbstractWheelTextAdapter(Context context0, int itemResource)
+	@SuppressWarnings("WeakerAccess")
+	protected AbstractWheelTextAdapter(Context context0, @SuppressWarnings("SameParameterValue") int itemResource)
 	{
 		this(context0, itemResource, NO_RESOURCE);
 	}
@@ -111,7 +113,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	 * @param itemTextResource
 	 *            the resource ID for a text view in the item layout
 	 */
-	protected AbstractWheelTextAdapter(Context context0, int itemResource, int itemTextResource)
+	protected AbstractWheelTextAdapter(Context context0, int itemResource, @SuppressWarnings("SameParameterValue") int itemTextResource)
 	{
 		this.context = context0;
 		this.itemResourceId = itemResource;

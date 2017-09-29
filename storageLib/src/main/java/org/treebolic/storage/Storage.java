@@ -36,6 +36,7 @@ public class Storage
 	/**
 	 * Treebolic storage preference name
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public static final String PREF_TREEBOLIC_STORAGE = "pref_storage";
 
 	/**
@@ -189,6 +190,7 @@ public class Storage
 	 *
 	 * @return external storage directory
 	 */
+	@SuppressWarnings("WeakerAccess")
 	static public String getExternalStorage()
 	{
 		if (Storage.extStorage == null)
@@ -368,6 +370,7 @@ public class Storage
 	 *
 	 * @return treebolic storage directory
 	 */
+	@SuppressWarnings("WeakerAccess")
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	static public File getTreebolicStorage(final Context context)
 	{
@@ -404,6 +407,7 @@ public class Storage
 	 * @param context context
 	 * @return Treebolic storage
 	 */
+	@SuppressWarnings("WeakerAccess")
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static public File discoverTreebolicStorage(final Context context)
 	{
@@ -529,6 +533,7 @@ public class Storage
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
+		//noinspection ResultOfMethodCallIgnored
 		dir.mkdirs();
 		final File file = new File(dir, fileName);
 		if (Storage.copyAsset(assetManager, fileName, file.getAbsolutePath()))
@@ -553,6 +558,7 @@ public class Storage
 		try
 		{
 			in = assetManager.open(assetPath);
+			//noinspection ResultOfMethodCallIgnored
 			new File(toPath).createNewFile();
 			out = new FileOutputStream(toPath);
 			Storage.copyFile(in, out);
@@ -603,6 +609,7 @@ public class Storage
 		try
 		{
 			in = new FileInputStream(fromPath);
+			//noinspection ResultOfMethodCallIgnored
 			new File(toPath).createNewFile();
 			out = new FileOutputStream(toPath);
 			Storage.copyFile(in, out);
@@ -646,6 +653,7 @@ public class Storage
 	 * @param out outstream
 	 * @throws IOException io exception
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public static void copyFile(final InputStream in, final OutputStream out) throws IOException
 	{
 		final byte[] buffer = new byte[1024];
@@ -668,6 +676,7 @@ public class Storage
 		final File dir = Storage.getTreebolicStorage(context);
 		for (final File file : dir.listFiles())
 		{
+			//noinspection ResultOfMethodCallIgnored
 			file.delete();
 		}
 	}
@@ -684,6 +693,7 @@ public class Storage
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
+		//noinspection ResultOfMethodCallIgnored
 		dir.mkdirs();
 		if (Storage.expandZipAsset(assetManager, fileName, dir.getAbsolutePath()))
 		{
@@ -737,7 +747,8 @@ public class Storage
 	 * @param destDir           destination dir
 	 * @return dest dir
 	 */
-	static private File expandZip(final InputStream in, final String pathPrefixFilter0, final File destDir) throws IOException
+	@SuppressWarnings("UnusedReturnValue")
+	static private File expandZip(final InputStream in, @SuppressWarnings("SameParameterValue") final String pathPrefixFilter0, final File destDir) throws IOException
 	{
 		// prefix
 		String pathPrefixFilter = pathPrefixFilter0;
@@ -747,6 +758,7 @@ public class Storage
 		}
 
 		// create output directory if not exists
+		//noinspection ResultOfMethodCallIgnored
 		destDir.mkdir();
 
 		// read and expand entries
@@ -769,6 +781,7 @@ public class Storage
 							final File outFile = new File(destDir + File.separator + new File(entryName).getName());
 
 							// create all non exists folders else you will hit FileNotFoundException for compressed folder
+							//noinspection ResultOfMethodCallIgnored
 							new File(outFile.getParent()).mkdirs();
 
 							// output
@@ -825,14 +838,13 @@ public class Storage
 	/**
 	 * Get directories as types and values
 	 *
-	 * @param context context
 	 * @return pair of types and values
 	 */
-	static public Pair<CharSequence[], CharSequence[]> getDirectoriesTypesValues(final Context context)
+	static public Pair<CharSequence[], CharSequence[]> getDirectoriesTypesValues()
 	{
 		final List<CharSequence> types = new ArrayList<>();
 		final List<CharSequence> values = new ArrayList<>();
-		final Collection<Directory> dirs = Storage.getDirectories(context);
+		final Collection<Directory> dirs = Storage.getDirectories();
 		for (Directory dir : dirs)
 		{
 			// types
@@ -847,11 +859,10 @@ public class Storage
 	/**
 	 * Get list of directories
 	 *
-	 * @param context context
 	 * @return list of storage directories
 	 */
 	@TargetApi(Build.VERSION_CODES.KITKAT)
-	static private Collection<Directory> getDirectories(final Context context)
+	static private Collection<Directory> getDirectories()
 	{
 		final String[] tags = {Environment.DIRECTORY_PODCASTS, Environment.DIRECTORY_RINGTONES, Environment.DIRECTORY_ALARMS, Environment.DIRECTORY_NOTIFICATIONS, Environment.DIRECTORY_PICTURES, Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_DOWNLOADS, Environment.DIRECTORY_DCIM};
 

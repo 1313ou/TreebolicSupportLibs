@@ -19,6 +19,7 @@ import java.util.zip.ZipFile;
  *
  * @author Bernard Bou
  */
+@SuppressWarnings("WeakerAccess")
 public class EntryChooser
 {
 	/**
@@ -51,6 +52,7 @@ public class EntryChooser
 	 * @param list0     list of entries
 	 * @param listener0 click listener
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public EntryChooser(final Context context0, final List<String> list0, final OnClickListener listener0)
 	{
 		super();
@@ -62,6 +64,7 @@ public class EntryChooser
 	/**
 	 * Show dialog
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public void show()
 	{
 		final ArrayAdapter<String> adapter = new ArrayAdapter<>(this.context, R.layout.filechooser_entries_zip, this.list);
@@ -82,7 +85,7 @@ public class EntryChooser
 	 * @return list of entries
 	 * @throws IOException io exception
 	 */
-	static private List<String> getZipEntries(final File archive, final String negativeFilter, final String positiveFilter) throws IOException
+	static private List<String> getZipEntries(final File archive, @SuppressWarnings("SameParameterValue") final String negativeFilter, @SuppressWarnings("SameParameterValue") final String positiveFilter) throws IOException
 	{
 		ZipFile zipFile = null;
 		try

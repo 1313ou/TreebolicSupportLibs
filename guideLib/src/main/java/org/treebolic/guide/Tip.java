@@ -21,7 +21,7 @@ public class Tip extends AppCompatDialogFragment
 	@NonNull
 	@SuppressLint("InflateParams")
 	@Override
-	public AppCompatDialog onCreateDialog(final Bundle savedInstanceState)
+	public AppCompatDialog onCreateDialog(@SuppressWarnings("UnusedParameters") final Bundle savedInstanceState)
 	{
 		final AppCompatDialog dialog = new AppCompatDialog(getActivity());
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

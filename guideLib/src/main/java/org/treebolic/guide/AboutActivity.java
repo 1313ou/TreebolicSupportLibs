@@ -38,6 +38,7 @@ public class AboutActivity extends AppCompatCommonActivity
 		}
 	}
 
+	@SuppressWarnings("SameReturnValue")
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu)
 	{

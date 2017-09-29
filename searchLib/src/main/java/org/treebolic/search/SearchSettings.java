@@ -32,8 +32,10 @@ public class SearchSettings extends AppCompatDialogFragment
 {
 	private static final String TAG = "SearchSettings";
 
+	@SuppressWarnings("WeakerAccess")
 	static public final String PREF_SEARCH_SCOPE = "pref_search_scope";
 
+	@SuppressWarnings("WeakerAccess")
 	static public final String PREF_SEARCH_MODE = "pref_search_mode";
 
 	static public final String SCOPE_SOURCE = "SOURCE";
@@ -81,7 +83,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	@NonNull
 	@SuppressLint({"InflateParams", "ApplySharedPref"})
 	@Override
-	public Dialog onCreateDialog(final Bundle savedInstanceState)
+	public Dialog onCreateDialog(@SuppressWarnings("UnusedParameters") final Bundle savedInstanceState)
 	{
 		final Context context = getActivity();
 		final Resources resources = context.getResources();
