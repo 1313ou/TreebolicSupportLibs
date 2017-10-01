@@ -1,7 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EntryPointsManager">
-    <entry_points version="2.0" />
+    <entry_points version="2.0">
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void removeClickingListener(org.treebolic.wheel.OnWheelClickedListener listener)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void addClickingListener(org.treebolic.wheel.OnWheelClickedListener listener)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void removeScrollingListener(org.treebolic.wheel.OnWheelScrollListener listener)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void removeChangingListener(org.treebolic.wheel.OnWheelChangedListener listener)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void setCyclic(boolean isCyclic)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void setAllItemsVisible(boolean isAllVisible)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel int getVisibleItems()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void setInterpolator(android.view.animation.Interpolator interpolator)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel void stopScrolling()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheel AbstractWheel(android.content.Context context, android.util.AttributeSet attrs, int defStyle)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.wheel.AbstractWheel" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheelView void setSelectionDivider(android.graphics.drawable.Drawable selectionDivider)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.AbstractWheelView AbstractWheelView(android.content.Context context, android.util.AttributeSet attrs, int defStyle)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.wheel.AbstractWheelView" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.WheelHorizontalView void setSelectionDividerWidth(int selectionDividerWidth)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.WheelHorizontalView WheelHorizontalView(android.content.Context context)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.WheelHorizontalView WheelHorizontalView(android.content.Context context, android.util.AttributeSet attrs)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.WheelHorizontalView WheelHorizontalView(android.content.Context context, android.util.AttributeSet attrs, int defStyle)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.wheel.WheelHorizontalView" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.wheel.adapters.AbstractWheelAdapter" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter AbstractWheelTextAdapter(android.content.Context context0, int itemResource, int itemTextResource)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter AbstractWheelTextAdapter(android.content.Context context0, int itemResource)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter AbstractWheelTextAdapter(android.content.Context context0)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.ArrayWheelAdapter ArrayWheelAdapter(android.content.Context context0, T[] items0)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.wheel.adapters.ArrayWheelAdapter" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter NumericWheelAdapter(android.content.Context context0, int minValue0, int maxValue0, java.lang.String format0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter NumericWheelAdapter(android.content.Context context0, int minValue0, int maxValue0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter NumericWheelAdapter(android.content.Context context0)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage android.util.Pair&lt;java.lang.CharSequence[],java.lang.CharSequence[]&gt; getDirectoriesTypesValues()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage android.net.Uri expandZipAssetFile(android.content.Context context, java.lang.String fileName)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage void cleanup(android.content.Context context)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage boolean copyFile(java.lang.String fromPath, java.lang.String toPath)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage android.net.Uri copyAssetFile(android.content.Context context, java.lang.String fileName)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage java.util.Map&lt;org.treebolic.storage.Storage.StorageType,java.lang.String[]&gt; getStorageDirectories()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage java.io.File getCacheDir(android.content.Context context)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.storage.Storage.Directory Directory(java.io.File file, org.treebolic.storage.Storage.DirType type)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.storage.Storage.Directory" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.storage.Storage" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.search.SearchSettings void show(android.support.v4.app.FragmentManager fragmentManager)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.search.SearchSettings.Adapter Adapter(android.content.Context context0, int layout0, java.lang.String[] texts0, int[] icons0, int len0, org.treebolic.search.SearchSettings.Adapter.Type type0)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.search.SearchSettings.Adapter" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings MODE_IS" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings MODE_INCLUDES" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings MODE_EQUALS" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings MODE_STARTSWITH" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings SCOPE_ID" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings SCOPE_LINK" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings SCOPE_CONTENT" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings SCOPE_LABEL" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.search.SearchSettings SCOPE_SOURCE" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.search.SearchSettings" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.filechooser.EntryChooser void choose(android.content.Context context, java.io.File archive, org.treebolic.filechooser.EntryChooser.Callback callback)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.filechooser.EntryChooser EntryChooser(android.content.Context context0, java.util.List&lt;java.lang.String&gt; list0, android.content.DialogInterface.OnClickListener listener0)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.filechooser.EntryChooser.Callback" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.filechooser.EntryChooser" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.filechooser.FileChooserActivity java.io.File getFolder(android.content.Context context, java.lang.String key)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.filechooser.FileChooserActivity void setFolder(android.content.Context context, java.lang.String key, java.lang.String folder)" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.filechooser.FileChooserActivity" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.download.Deploy void expand(java.io.InputStream in, java.io.File toDir, boolean asTarGz)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.download.Deploy void copy(java.io.InputStream in, java.io.File toFile)" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.download.Deploy" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.dialog.ColorPickerDialog ColorPickerDialog(android.content.Context context, java.lang.Integer initialColor, org.treebolic.colors.view.ColorPickerView.OnColorChangedListener listener)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.dialog.ColorPickerDialog ColorPickerDialog(android.content.Context context, java.lang.Integer initialColor)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.colors.dialog.ColorPickerDialog" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView void setCrossed(boolean isCrossed)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView int getBorderColor()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView void setBorderColor(int color)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView int getColor()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView void setValue(java.lang.Integer color)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView ColorPanelView(android.content.Context context)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView ColorPanelView(android.content.Context context, android.util.AttributeSet attrs)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPanelView ColorPanelView(android.content.Context context, android.util.AttributeSet attrs, int defStyle)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.colors.view.ColorPanelView" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView java.lang.String getAlphaSliderText()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView void setAlphaSliderText(int res)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView int getBorderColor()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView int getSliderTrackerColor()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView void setColor(int color)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView ColorPickerView(android.content.Context context)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView ColorPickerView(android.content.Context context, android.util.AttributeSet attrs)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.view.ColorPickerView ColorPickerView(android.content.Context context, android.util.AttributeSet attrs, int defStyle)" />
+      <entry_point TYPE="class" FQNAME="org.treebolic.colors.view.ColorPickerView" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.dialog.ColorPickerDialog int getColor()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.colors.dialog.ColorPickerDialog void setAlphaSliderVisible(boolean visible)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter void setEmptyItemResource(int emptyItemResourceId0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter int getEmptyItemResource()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter int getItemTextResource()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter void setItemResource(int itemResourceId0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter int getItemResource()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter void setTextSize(int textSize0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter int getTextSize()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter void setTextTypeface(android.graphics.Typeface typeface)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter void setTextColor(int textColor0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelTextAdapter int getTextColor()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter void setMaxValue(int maxValue0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter void setMinValue(int minValue0)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelAdapter void notifyDataChangedEvent()" />
+    </entry_points>
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
