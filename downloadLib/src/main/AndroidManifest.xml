@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.treebolic.download">
+<manifest package="org.treebolic.download"
+		xmlns:android="http://schemas.android.com/apk/res/android">
+
+		<application>
+
+			<!-- abstract -->
+			<!--
+			<activity
+				android:name="org.treebolic.download.DownloadActivity"
+				android:label="@string/title_activity_download">
+			</activity>
+			-->
+
+		</application>
+
 </manifest>

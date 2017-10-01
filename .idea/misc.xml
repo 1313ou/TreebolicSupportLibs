@@ -101,6 +101,15 @@
       <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter void setMaxValue(int maxValue0)" />
       <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.NumericWheelAdapter void setMinValue(int minValue0)" />
       <entry_point TYPE="method" FQNAME="org.treebolic.wheel.adapters.AbstractWheelAdapter void notifyDataChangedEvent()" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.colors.ColorPickerActivity" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.filechooser.FileChooserActivity boolean onKeyDown(int keyCode, android.view.KeyEvent event)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.guide.AboutActivity boolean onCreateOptionsMenu(android.view.Menu menu)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.guide.AboutActivity boolean onOptionsItemSelected(android.view.MenuItem item)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.guide.HelpActivity boolean onCreateOptionsMenu(android.view.Menu menu)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.guide.HelpActivity boolean onOptionsItemSelected(android.view.MenuItem item)" />
+      <entry_point TYPE="implicit.constructor" FQNAME="org.treebolic.guide.Tip" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.search.SearchSettings android.app.Dialog onCreateDialog(android.os.Bundle savedInstanceState)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.guide.Tip AppCompatDialog onCreateDialog(android.os.Bundle savedInstanceState)" />
     </entry_points>
   </component>
   <component name="NullableNotNullManager">

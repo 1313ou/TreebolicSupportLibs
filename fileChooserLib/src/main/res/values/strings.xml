@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+	<string name="title_activity_choose">Chooser</string>
+
 	<string name="none">Select none</string>
 	<string name="cancel">Cancel</string>
+
 </resources>

@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.treebolic.guide">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.treebolic.guide">
+
+	<application>
+
+		<activity
+			android:name="org.treebolic.guide.AboutActivity"
+			android:label="@string/title_activity_about">
+		</activity>
+
+		<activity
+			android:name="org.treebolic.guide.HelpActivity"
+			android:label="@string/title_activity_help">
+		</activity>
+
+	</application>
+
 </manifest>

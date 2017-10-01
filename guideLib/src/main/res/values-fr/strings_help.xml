@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_help">Aide</string>
     <string name="title_activity_help">Aide</string>
+
+    <string name="title_help">Aide</string>
     <string name="lang_tag">fr</string>
     
 </resources>

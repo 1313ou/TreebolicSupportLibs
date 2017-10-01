@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.treebolic.filechooser">
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.treebolic.filechooser">
+
+	<application>
+
+		<activity
+			android:name="org.treebolic.filechooser.FileChooserActivity"
+			android:label="@string/title_activity_choose">
+		</activity>
+
+	</application>
+
 </manifest>
