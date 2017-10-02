@@ -43,6 +43,19 @@
 	<!-- BASE application theme -->
 	<style name="MyBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"> <!-- LIGHT -->
 
+		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/default_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+
+		<item name="colorPrimaryLight">@color/default_primaryLightColor</item>
+		<item name="colorSecondary">@color/default_secondaryColor</item>
+		<item name="colorSecondaryLight">@color/default_secondaryLightColor</item>
+		<item name="colorSecondaryDark">@color/default_secondaryDarkColor</item>
+
+		<item name="colorForePrimary">@color/default_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
+
 		<!-- action bar -->
 		<item name="android:actionBarStyle">@style/MyActionBar</item>
 
@@ -56,18 +69,21 @@
 		<item name="treebolic_toolbar_background">?attr/colorPrimary</item>
 		<item name="treebolic_toolbar_foreground_icon">?attr/colorForeSecondary</item>
 
-		<item name="treebolic_statusbar_background">?attr/colorPrimaryDark</item>
+		<item name="treebolic_statusbar_background">?attr/colorPrimary</item>
 		<item name="treebolic_statusbar_foreground">?attr/colorForeSecondary</item>
 		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
 		<item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
 
-		<item name="treebolic_dialog_background">?attr/colorPrimaryDark</item>
+		<item name="treebolic_dialog_background">?attr/colorPrimary</item>
 		<item name="treebolic_dialog_foreground">?attr/colorForeSecondary</item>
 		<item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
 		<item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
 
-		<item name="treebolic_splitbar_color">?attr/colorPrimary</item>
+		<item name="treebolic_splitbar_color">?attr/colorPrimaryDark</item>
 		<item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
+
+		<item name="treebolic_splash_background">?attr/colorPrimary</item>
+		<item name="treebolic_splash_foreground">?attr/colorForePrimary</item>
 
 		<!-- treebolic search settings colors -->
 		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>
@@ -75,7 +91,7 @@
 
 		<!-- treebolic widget colors -->
 		<item name="treebolic_back_color">#adc1cc</item> <!-- #f3f1e2 #9eb0ba -->
-		<item name="treebolic_tree_edge_color">#888888</item>
+		<item name="treebolic_tree_edge_color">#cccccc</item>
 		<item name="treebolic_root_background_color">#0000ff</item>
 		<item name="treebolic_root_foreground_color">#ffffff</item>
 		<item name="treebolic_node_background_color">#ffffff</item>

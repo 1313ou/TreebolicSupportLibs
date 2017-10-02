@@ -15,23 +15,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/misc.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/workspace.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/colorLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/colorLib.iml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/commonLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/commonLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/res/values/attrs.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/res/values/attrs.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/res/values/styles.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/res/values/themes.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/res/values/themes.xml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/downloadLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/downloadLib.iml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/AndroidManifest.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values-fr/strings.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values-fr/strings.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values/strings.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/fileChooserLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/fileChooserLib.iml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/AndroidManifest.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values-fr/strings.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values-fr/strings.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values/strings.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/guideLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/guideLib.iml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/AndroidManifest.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values-fr/strings_about.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values-fr/strings_about.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values-fr/strings_help.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values-fr/strings_help.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values/strings_about.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values/strings_about.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values/strings_help.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/values/strings_help.xml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/preferenceLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/preferenceLib.iml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/searchLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/searchLib.iml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/storageLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/storageLib.iml" />
@@ -8314,8 +8306,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -8326,7 +8317,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -8884,7 +8876,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506850355905</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="manifest merging">
+      <created>1506875852016</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1506875852016</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -8907,19 +8906,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.19595315" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3069909" sideWeight="0.5548456" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3069909" sideWeight="0.5548456" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1315229" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1315229" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -8949,7 +8948,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="popup color" />
     <MESSAGE value="download minor fixes" />
     <MESSAGE value="fixes fab" />
     <MESSAGE value="fixes fab shadow" />
@@ -8974,7 +8972,8 @@
     <MESSAGE value="lint&#10;add color utils" />
     <MESSAGE value="commonlib check for theme existence" />
     <MESSAGE value="lint" />
-    <option name="LAST_COMMIT_MESSAGE" value="lint" />
+    <MESSAGE value="manifest merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="manifest merging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -9265,7 +9264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -9273,7 +9271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -9281,9 +9278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4147">
           <caret line="340" column="14" selection-start-line="340" selection-start-column="14" selection-end-line="340" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -9291,7 +9285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="842" column="81" selection-start-line="842" selection-start-column="81" selection-end-line="842" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
