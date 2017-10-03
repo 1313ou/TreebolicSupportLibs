@@ -37,6 +37,7 @@
 	<!-- treebolic splash (see GLUE, but this module has no deps) -->
 	<attr name="treebolic_splash_background" format="color|reference"/>
 	<attr name="treebolic_splash_foreground" format="color|reference"/>
+	<attr name="treebolic_splash_progress" format="color|reference"/>
 
 	<!-- treebolic graph (see GLUE, but this module has no deps)-->
 	<attr name="treebolic_back_color" format="color|reference"/>

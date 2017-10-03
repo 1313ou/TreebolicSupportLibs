@@ -73,7 +73,7 @@ public class Deploy
 	 * @param asTarGz is tar gz type
 	 * @throws IOException io exception
 	 */
-	public static void expand(final InputStream in, final File toDir, boolean asTarGz) throws IOException
+	public static void expand(final InputStream in, final File toDir, @SuppressWarnings("SameParameterValue") boolean asTarGz) throws IOException
 	{
 		if (asTarGz)
 		{

@@ -84,6 +84,7 @@
 
 		<item name="treebolic_splash_background">?attr/colorPrimary</item>
 		<item name="treebolic_splash_foreground">?attr/colorForePrimary</item>
+		<item name="treebolic_splash_progress">?attr/colorSecondary</item>
 
 		<!-- treebolic search settings colors -->
 		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>

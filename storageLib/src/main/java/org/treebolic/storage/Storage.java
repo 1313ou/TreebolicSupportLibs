@@ -688,7 +688,7 @@ public class Storage
 	 * @param fileName zip file in assets
 	 * @return uri of dest dir
 	 */
-	@SuppressWarnings("resource")
+	@SuppressWarnings({"resource", "UnusedReturnValue"})
 	public static Uri expandZipAssetFile(final Context context, final String fileName)
 	{
 		final AssetManager assetManager = context.getAssets();

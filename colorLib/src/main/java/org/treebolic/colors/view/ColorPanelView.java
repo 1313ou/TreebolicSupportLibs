@@ -271,7 +271,7 @@ public class ColorPanelView extends View
 	 *
 	 * @param color border color
 	 */
-	public void setBorderColor(final int color)
+	public void setBorderColor(@SuppressWarnings("SameParameterValue") final int color)
 	{
 		this.mBorderColor = color;
 		invalidate();
