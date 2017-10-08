@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="title_activity_download">Download</string>
+    <string name="title_activity_download" tools:ignore="UnusedResources">Download</string>
 
     <string name="download">Download</string>
 

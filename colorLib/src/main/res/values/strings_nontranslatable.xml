@@ -16,7 +16,7 @@
 -->
 <resources>
 
-    <string name="right_arrow" translatable="false">→</string>
-    <string name="down_arrow" translatable="false">↓</string>
+	<string name="right_arrow" translatable="false">→</string>
+	<string name="down_arrow" translatable="false">↓</string>
 
 </resources>

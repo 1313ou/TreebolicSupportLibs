@@ -100,7 +100,9 @@ public class AlphaPatternDrawable extends Drawable
 	private void generatePatternBitmap()
 	{
 		if (getBounds().width() <= 0 || getBounds().height() <= 0)
+		{
 			return;
+		}
 
 		this.mBitmap = Bitmap.createBitmap(getBounds().width(), getBounds().height(), Config.ARGB_8888);
 		final Canvas canvas = new Canvas(this.mBitmap);

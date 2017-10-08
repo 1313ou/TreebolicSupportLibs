@@ -16,6 +16,6 @@
 -->
 <resources>
 
-    <string name="dialog_title">Pick a Color</string>
+	<string name="dialog_title">Pick a Color</string>
 
 </resources>
