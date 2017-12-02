@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
-import android.support.annotation.IdRes;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -163,7 +162,7 @@ public class OpenEditTextPreference extends DialogPreference
 		super.onBindDialogView(view);
 
 		// edit text
-		this.editView = (EditText) view.findViewById(R.id.edit);
+		this.editView = view.findViewById(R.id.edit);
 		if (this.editView != null)
 		{
 			if (this.value != null)
@@ -174,7 +173,7 @@ public class OpenEditTextPreference extends DialogPreference
 		}
 
 		// options
-		this.optionsView = (RadioGroup) view.findViewById(R.id.options);
+		this.optionsView = view.findViewById(R.id.options);
 		if (this.optionsView != null)
 		{
 			// populate
@@ -197,7 +196,7 @@ public class OpenEditTextPreference extends DialogPreference
 			this.optionsView.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
 			{
 				@Override
-				public void onCheckedChanged(final RadioGroup group, @IdRes int checkedId)
+				public void onCheckedChanged(final RadioGroup group, int checkedId)
 				{
 					if (checkedId == -1)
 					{
@@ -205,7 +204,7 @@ public class OpenEditTextPreference extends DialogPreference
 					}
 					else
 					{
-						final RadioButton radioButton = (RadioButton) OpenEditTextPreference.this.optionsView.findViewById(checkedId);
+						final RadioButton radioButton = OpenEditTextPreference.this.optionsView.findViewById(checkedId);
 						final String tag = radioButton.getTag().toString();
 						OpenEditTextPreference.this.editView.setText(tag);
 						OpenEditTextPreference.this.editView.setSelection(tag.length());

@@ -40,7 +40,7 @@ public class HelpActivity extends AppCompatCommonActivity
 		setContentView(R.layout.activity_help);
 
 		// toolbar
-		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		final Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		// set up the action bar
@@ -51,7 +51,7 @@ public class HelpActivity extends AppCompatCommonActivity
 		}
 
 		// web view
-		final WebView webview = (WebView) findViewById(R.id.webView);
+		final WebView webview = findViewById(R.id.webView);
 		webview.clearCache(true);
 		webview.clearHistory();
 		//webview.getSettings().setJavaScriptEnabled(true);

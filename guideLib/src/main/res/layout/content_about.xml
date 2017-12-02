@@ -60,7 +60,8 @@
 			android:autoLink="web"
 			android:clickable="true"
 			android:linksClickable="true"
-			android:textIsSelectable="false"/>
+			android:textIsSelectable="false"
+			android:focusable="true"/>
 
 	</LinearLayout>
 

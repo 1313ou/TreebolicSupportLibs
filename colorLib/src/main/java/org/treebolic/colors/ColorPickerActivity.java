@@ -36,12 +36,12 @@ public class ColorPickerActivity extends AppCompatCommonActivity implements OnCo
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		final int initialColor = sharedPrefs.getInt("color_3", 0xFF000000);
 
-		this.mColorPickerView = (ColorPickerView) findViewById(R.id.color_picker_view);
-		ColorPanelView mOldColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_old);
-		this.mNewColorPanelView = (ColorPanelView) findViewById(R.id.color_panel_new);
+		this.mColorPickerView = findViewById(R.id.color_picker_view);
+		ColorPanelView mOldColorPanelView = findViewById(R.id.color_panel_old);
+		this.mNewColorPanelView = findViewById(R.id.color_panel_new);
 
-		Button mOkButton = (Button) findViewById(R.id.okButton);
-		Button mCancelButton = (Button) findViewById(R.id.cancelButton);
+		Button mOkButton = findViewById(R.id.okButton);
+		Button mCancelButton = findViewById(R.id.cancelButton);
 
 		((LinearLayout) mOldColorPanelView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0, Math.round(this.mColorPickerView.getDrawingOffset()), 0);
 

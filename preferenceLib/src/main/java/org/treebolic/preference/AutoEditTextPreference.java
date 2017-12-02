@@ -106,7 +106,7 @@ public class AutoEditTextPreference extends DialogPreference
 		super.onBindDialogView(view);
 
 		// get editView
-		this.editView = (AutoCompleteTextView) view.findViewById(R.id.autoedittext);
+		this.editView = view.findViewById(R.id.autoedittext);
 		if (this.editView != null)
 		{
 			// fill with value and possible values

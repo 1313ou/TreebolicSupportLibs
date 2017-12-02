@@ -70,21 +70,22 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 
 		// custom view
 		final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		assert inflater != null;
 		final View layout = inflater.inflate(R.layout.dialog_color_picker, null);
 		setView(layout);
 
 		setTitle(R.string.dialog_title);
 		// setIcon(android.R.drawable.ic_dialog_info);
 
-		final LinearLayout landscapeLayout = (LinearLayout) layout.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
+		final LinearLayout landscapeLayout = layout.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
 		if (landscapeLayout != null)
 		{
 			isLandscapeLayout = true;
 		}
 
-		this.mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
-		ColorPanelView mOldColor = (ColorPanelView) layout.findViewById(R.id.color_panel_old);
-		this.mNewColor = (ColorPanelView) layout.findViewById(R.id.color_panel_new);
+		this.mColorPicker = layout.findViewById(R.id.color_picker_view);
+		ColorPanelView mOldColor = layout.findViewById(R.id.color_panel_old);
+		this.mNewColor = layout.findViewById(R.id.color_panel_new);
 
 		if (!isLandscapeLayout)
 		{

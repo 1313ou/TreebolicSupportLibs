@@ -155,7 +155,7 @@ public class Storage
 		}
 
 		@Override
-		public int compareTo(@NonNull Directory d2)
+		public int compareTo(@NonNull final Directory d2)
 		{
 			int t = DirType.compare(this.getType(), d2.getType());
 			if (t != 0)

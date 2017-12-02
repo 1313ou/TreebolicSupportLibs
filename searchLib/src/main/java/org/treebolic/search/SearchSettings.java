@@ -1,6 +1,7 @@
 package org.treebolic.search;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -86,6 +87,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	public Dialog onCreateDialog(@SuppressWarnings("UnusedParameters") final Bundle savedInstanceState)
 	{
 		final Context context = getActivity();
+		assert context != null;
 		final Resources resources = context.getResources();
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
@@ -152,13 +154,15 @@ public class SearchSettings extends AppCompatDialogFragment
 		}
 
 		// dialog
-		final Dialog dialog = new Dialog(getActivity());
+		final Activity activity = getActivity();
+		assert activity != null;
+		final Dialog dialog = new Dialog(activity);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// dialog.setTitle(R.string.search_title);
 		dialog.setContentView(R.layout.dialog_search_settings);
 
 		// wheel 1
-		this.scopeWheel = (WheelView) dialog.findViewById(R.id.scope);
+		this.scopeWheel = dialog.findViewById(R.id.scope);
 		assert this.scopeWheel != null;
 		this.scopeWheel.setVisibleItems(4);
 		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
@@ -198,7 +202,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		});
 
 		// wheel 2
-		this.modeWheel = (WheelView) dialog.findViewById(R.id.mode);
+		this.modeWheel = dialog.findViewById(R.id.mode);
 		assert this.modeWheel != null;
 		this.modeWheel.setVisibleItems(4);
 		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
@@ -305,7 +309,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		public View getItem(final int index, final View cachedView, final ViewGroup parent)
 		{
 			View view = super.getItem(index, cachedView, parent);
-			ImageView img = (ImageView) view.findViewById(R.id.wheel_icon);
+			ImageView img = view.findViewById(R.id.wheel_icon);
 			img.setImageResource(this.icons[index]);
 			return view;
 		}

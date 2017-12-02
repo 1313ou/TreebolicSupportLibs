@@ -237,15 +237,16 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			View view = convertView;
 			if (view == null)
 			{
-				final LayoutInflater vi = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				view = vi.inflate(this.id, null);
+				final LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				assert inflater != null;
+				view = inflater.inflate(this.id, null);
 			}
 			final Entry entry = this.items.get(position);
 			if (entry != null)
 			{
-				final ImageView image = (ImageView) view.findViewById(R.id.typeImage);
-				final TextView containerLabel = (TextView) view.findViewById(R.id.containerLabel);
-				final TextView containerName = (TextView) view.findViewById(R.id.containerName);
+				final ImageView image = view.findViewById(R.id.typeImage);
+				final TextView containerLabel = view.findViewById(R.id.containerLabel);
+				final TextView containerName = view.findViewById(R.id.containerName);
 
 				if (entry.isNone())
 				{
@@ -338,7 +339,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		setContentView(R.layout.activity_choose_file);
 
 		// toolbar
-		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		final Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		// set up the action bar
@@ -349,7 +350,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		}
 
 		// list view
-		this.listView = (ListView) findViewById(android.R.id.list);
+		this.listView = findViewById(android.R.id.list);
 
 		// click listeners
 		this.listView.setOnItemClickListener(this);

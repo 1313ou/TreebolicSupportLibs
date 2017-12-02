@@ -9,7 +9,6 @@
 	android:layout_gravity="center|center"
 	android:contentDescription="@string/download"
 	android:elevation="4dp"
-	android:onClick="onClick"
 	android:visibility="visible"
 	app:fabSize="normal"
 	app:useCompatPadding="true"

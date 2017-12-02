@@ -27,7 +27,7 @@ public class AboutActivity extends AppCompatCommonActivity
 		setContentView(R.layout.activity_about);
 
 		// toolbar
-		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		final Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		// set up the action bar.

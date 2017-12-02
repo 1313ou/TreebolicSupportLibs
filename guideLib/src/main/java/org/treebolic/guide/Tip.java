@@ -33,7 +33,7 @@ public class Tip extends AppCompatDialogFragment
 			window.setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded);
 		}
 
-		final ImageButton button = (ImageButton) dialog.findViewById(R.id.tip_dismiss);
+		final ImageButton button = dialog.findViewById(R.id.tip_dismiss);
 		assert button != null;
 		button.setOnClickListener(new View.OnClickListener()
 		{
