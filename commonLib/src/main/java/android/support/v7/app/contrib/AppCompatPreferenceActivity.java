@@ -91,7 +91,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity
 
 	protected void setupToolbar(int toolbarLayout, int toolbarId)
 	{
-		// TODO
+		// TODO hacked dependency on R.id.action_bar_root
 		final ViewGroup rootView = findViewById(R.id.action_bar_root); //id from appcompat
 		if (rootView != null)
 		{
