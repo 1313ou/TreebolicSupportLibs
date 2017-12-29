@@ -21,6 +21,13 @@ public class ColorUtils
 {
 	// static private final String TAG = "ColorUtils";
 
+	/**
+	 * Tint menu items
+	 *
+	 * @param iconTint    tint
+	 * @param menu        menu
+	 * @param menuItemIds menu item ids
+	 */
 	static public void tint(final int iconTint, final Menu menu, final int... menuItemIds)
 	{
 		for (int menuItemId : menuItemIds)
@@ -34,6 +41,12 @@ public class ColorUtils
 		}
 	}
 
+	/**
+	 * Tint drawable
+	 *
+	 * @param iconTint tint
+	 * @param drawable drawable
+	 */
 	@SuppressWarnings("WeakerAccess")
 	static public void tint(int iconTint, final Drawable drawable)
 	{
@@ -47,6 +60,83 @@ public class ColorUtils
 		}
 	}
 
+	/**
+	 * Get drawable
+	 *
+	 * @param context context
+	 * @param resId   drawable id
+	 * @return drawable
+	 */
+	@SuppressWarnings("WeakerAccess")
+	static public Drawable getDrawable(final Context context, int resId)
+	{
+		final Resources resources = context.getResources();
+		Drawable drawable;
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+		{
+			final Resources.Theme theme = context.getTheme();
+			drawable = resources.getDrawable(resId, theme);
+		}
+		else
+		{
+			drawable = resources.getDrawable(resId);
+		}
+		return drawable;
+	}
+
+	/*
+	 * Get drawables
+	 *
+	 * @param context context
+	 * @param resIds  drawable ids
+	 * @return drawables
+	 */
+	/*
+	static public Drawable[] getDrawables(final Context context, int... resIds)
+	{
+		final Resources resources = context.getResources();
+		Drawable[] drawables = new Drawable[resIds.length];
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+		{
+			final Resources.Theme theme = context.getTheme();
+			for (int i = 0; i < resIds.length; i++)
+			{
+				drawables[i] = resources.getDrawable(resIds[i], theme);
+			}
+		}
+		else
+		{
+			for (int i = 0; i < resIds.length; i++)
+			{
+				drawables[i] = resources.getDrawable(resIds[i]);
+			}
+		}
+		return drawables;
+	}
+	*/
+
+	/**
+	 * Get tinted drawable
+	 *
+	 * @param context  context
+	 * @param resId    drawable id
+	 * @param iconTint tint
+	 * @return tinted drawable
+	 */
+	static public Drawable getTintedDrawable(final Context context, final int resId, final int iconTint)
+	{
+		Drawable drawable = getDrawable(context, resId);
+		ColorUtils.tint(iconTint, drawable);
+		return drawable;
+	}
+
+	/**
+	 * Fetch color from theme
+	 *
+	 * @param context context
+	 * @param attr    color attr
+	 * @return color
+	 */
 	static public int fetchColor(final Context context, int attr)
 	{
 		final Resources.Theme theme = context.getTheme();
