@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import org.treebolic.colors.R;
 import org.treebolic.colors.view.ColorPanelView;
 import org.treebolic.colors.view.ColorPickerView;
 

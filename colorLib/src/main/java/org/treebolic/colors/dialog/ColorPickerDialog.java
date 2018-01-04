@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
+import org.treebolic.colors.R;
 import org.treebolic.colors.view.ColorPanelView;
 import org.treebolic.colors.view.ColorPickerView;
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
