@@ -67,7 +67,7 @@ public class ColorUtils
 	 * @param resId   drawable id
 	 * @return drawable
 	 */
-	@SuppressWarnings("WeakerAccess")
+	@SuppressWarnings({"WeakerAccess", "deprecation"})
 	static public Drawable getDrawable(final Context context, int resId)
 	{
 		final Resources resources = context.getResources();
