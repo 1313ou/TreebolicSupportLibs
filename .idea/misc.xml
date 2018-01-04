@@ -115,6 +115,14 @@
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.OpenEditTextPreference.SavedState CREATOR" />
       <entry_point TYPE="field" FQNAME="org.treebolic.wheel.AbstractWheel.SavedState CREATOR" />
     </entry_points>
+    <pattern value="org.treebolic.AppCompatCommonUtils" method="setThemePref" />
+    <pattern value="org.treebolic.ColorUtils" method="getActionBarForegroundColorFromTheme" />
+    <pattern value="org.treebolic.ColorUtils" method="fetchColorFromStyle" />
+    <pattern value="org.treebolic.ColorUtils" method="fetchColor" />
+    <pattern value="org.treebolic.ColorUtils" method="getTintedDrawable" />
+    <pattern value="org.treebolic.ColorUtils" method="tint" />
+    <pattern value="org.treebolic.ColorUtils" />
+    <pattern value="org.treebolic.AppCompatCommonUtils" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
@@ -140,7 +148,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

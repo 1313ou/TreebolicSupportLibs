@@ -50,7 +50,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.treebolic.colors.R;
 import org.treebolic.colors.drawable.AlphaPatternDrawable;
 
 /**

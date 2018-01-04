@@ -11,6 +11,7 @@ public class AppCompatCommonUtils
 {
 	static private final String TAG = "AppCompatCommonUtils";
 
+	@SuppressWarnings("WeakerAccess")
 	static public final String PREF_THEME = "pref_theme";
 
 	/**

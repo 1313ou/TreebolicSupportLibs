@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.treebolic.search">
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.treebolic.search">
+
 	<application android:supportsRtl="true"/>
+
 </manifest>
