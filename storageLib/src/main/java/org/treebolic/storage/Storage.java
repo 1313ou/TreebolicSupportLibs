@@ -432,7 +432,7 @@ public class Storage
 				}
 			}
 		}
-		catch (final Throwable e)
+		catch (final Throwable ignored)
 		{
 			//
 		}
@@ -486,7 +486,7 @@ public class Storage
 				}
 			}
 		}
-		catch (final Throwable e)
+		catch (final Throwable ignored)
 		{
 			//
 		}
@@ -564,7 +564,7 @@ public class Storage
 			Storage.copyFile(in, out);
 			return true;
 		}
-		catch (final Exception e)
+		catch (final Exception ignored)
 		{
 			return false;
 		}
@@ -576,7 +576,7 @@ public class Storage
 				{
 					out.close();
 				}
-				catch (final IOException e)
+				catch (final IOException ignored)
 				{
 					//
 				}
@@ -587,7 +587,7 @@ public class Storage
 				{
 					in.close();
 				}
-				catch (final IOException e)
+				catch (final IOException ignored)
 				{
 					//
 				}
@@ -615,7 +615,7 @@ public class Storage
 			Storage.copyFile(in, out);
 			return true;
 		}
-		catch (final Exception e)
+		catch (final Exception ignored)
 		{
 			return false;
 		}
@@ -627,7 +627,7 @@ public class Storage
 				{
 					out.close();
 				}
-				catch (final IOException e)
+				catch (final IOException ignored)
 				{
 					//
 				}
@@ -638,7 +638,7 @@ public class Storage
 				{
 					in.close();
 				}
-				catch (final IOException e)
+				catch (final IOException ignored)
 				{
 					//
 				}
@@ -719,7 +719,7 @@ public class Storage
 			Storage.expandZip(in, null, new File(toPath));
 			return true;
 		}
-		catch (final Exception e)
+		catch (final Exception ignored)
 		{
 			return false;
 		}
@@ -731,7 +731,7 @@ public class Storage
 				{
 					in.close();
 				}
-				catch (final IOException e)
+				catch (final IOException ignored)
 				{
 					//
 				}

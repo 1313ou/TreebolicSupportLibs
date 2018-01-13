@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             versionNameSuffix 'signed'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

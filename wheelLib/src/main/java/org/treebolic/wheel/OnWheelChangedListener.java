@@ -43,5 +43,5 @@ public interface OnWheelChangedListener
 	 * @param newValue
 	 *            the new value of current item
 	 */
-	void onChanged(AbstractWheel wheel, @SuppressWarnings("UnusedParameters") int oldValue, int newValue);
+	void onChanged(AbstractWheel wheel, int oldValue, int newValue);
 }

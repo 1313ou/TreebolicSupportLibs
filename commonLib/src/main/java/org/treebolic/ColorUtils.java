@@ -47,7 +47,7 @@ public class ColorUtils
 	 * @param iconTint tint
 	 * @param drawable drawable
 	 */
-	@SuppressWarnings("WeakerAccess")
+	@SuppressWarnings({"WeakerAccess", "deprecation"})
 	static public void tint(int iconTint, final Drawable drawable)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -92,6 +92,7 @@ public class ColorUtils
 	 * @return drawables
 	 */
 	/*
+	@SuppressWarnings({"WeakerAccess", "deprecation"})
 	static public Drawable[] getDrawables(final Context context, int... resIds)
 	{
 		final Resources resources = context.getResources();
@@ -186,7 +187,7 @@ public class ColorUtils
 		final int[] attrs = new int[]{colorAttrId};
 		final TypedArray style = theme.obtainStyledAttributes(resId, attrs);
 
-		//
+		// get color
 		try
 		{
 			// Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + Integer.toHexString(intColor));

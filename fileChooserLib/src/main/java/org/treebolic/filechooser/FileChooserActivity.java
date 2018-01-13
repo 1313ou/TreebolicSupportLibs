@@ -383,19 +383,14 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			if (extensionExtras != null && extensionExtras.length > 0)
 			{
 				this.extensions = Arrays.asList(extensionExtras);
-				this.fileFilter = new FileFilter()
+				this.fileFilter = file ->
 				{
-					@SuppressWarnings("synthetic-access")
-					@Override
-					public boolean accept(final File file)
-					{
-						final String name = file.getName();
-						final int dot = name.lastIndexOf('.');
-						return file.isDirectory() //
-								|| FileChooserActivity.this.extensions == null //
-								|| dot == -1 //
-								|| FileChooserActivity.this.extensions.contains(name.substring(dot + 1));
-					}
+					final String name = file.getName();
+					final int dot = name.lastIndexOf('.');
+					return file.isDirectory() //
+							|| FileChooserActivity.this.extensions == null //
+							|| dot == -1 //
+							|| FileChooserActivity.this.extensions.contains(name.substring(dot + 1));
 				};
 			}
 		}
@@ -528,7 +523,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 				}
 			}
 		}
-		catch (final Exception e)
+		catch (final Exception ignored)
 		{
 			//
 		}

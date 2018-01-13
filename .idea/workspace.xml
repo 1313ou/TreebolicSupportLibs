@@ -13,15 +13,73 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="new gradle tool">
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/lint.xml" />
+      <change type="NEW" beforePath="" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/lint.xml" />
+      <change type="NEW" beforePath="" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/lint.xml" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_animated_vector_drawable_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_appcompat_v7_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_design_25_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_recyclerview_v7_25_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_annotations_27_0_1_jar.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_compat_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_core_ui_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_core_utils_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_fragment_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_media_compat_25_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_media_compat_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_v13_25_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_v13_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_v4_25_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_v4_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_support_vector_drawable_27_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/libraries/com_android_support_transition_25_3_1.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/misc.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/workspace.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/TreebolicSupportLibs.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/TreebolicSupportLibs.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/colorLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/colorLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/java/org/treebolic/colors/preference/ColorPickerPreference.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/java/org/treebolic/colors/preference/ColorPickerPreference.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/commonLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/commonLib.iml" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/java/org/treebolic/ColorUtils.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/java/org/treebolic/ColorUtils.java" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/build.gradle" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/downloadLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/downloadLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/build.gradle" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/fileChooserLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/fileChooserLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/lint.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/lint.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/java/org/treebolic/filechooser/EntryChooser.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/java/org/treebolic/filechooser/EntryChooser.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/java/org/treebolic/filechooser/FileChooserActivity.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/java/org/treebolic/filechooser/FileChooserActivity.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values-fr/strings_filechooser.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values-fr/strings_filechooser.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values/strings_filechooser.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/values/strings_filechooser.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/guideLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/guideLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/lint.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/lint.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/java/org/treebolic/guide/Tip.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/java/org/treebolic/guide/Tip.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/build.gradle" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/preferenceLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/preferenceLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/java/org/treebolic/preference/AutoEditTextPreference.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/java/org/treebolic/preference/AutoEditTextPreference.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/java/org/treebolic/preference/OpenEditTextPreference.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/java/org/treebolic/preference/OpenEditTextPreference.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/res/layout/dialog_openedittext_pref.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/res/layout/dialog_openedittext_pref.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/lint.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/lint.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/searchLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/searchLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/java/org/treebolic/search/SearchSettings.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/java/org/treebolic/search/SearchSettings.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/src/main/java/org/treebolic/storage/Storage.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/src/main/java/org/treebolic/storage/Storage.java" />
       <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/storageLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/storageLib.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/build.gradle" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/java/org/treebolic/wheel/OnWheelChangedListener.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/java/org/treebolic/wheel/OnWheelChangedListener.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/java/org/treebolic/wheel/OnWheelScrollListener.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/java/org/treebolic/wheel/OnWheelScrollListener.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/java/org/treebolic/wheel/WheelScroller.java" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/java/org/treebolic/wheel/WheelScroller.java" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/res/values/wheel_attrs.xml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/res/values/wheel_attrs.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/wheelLib.iml" afterPath="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/wheelLib.iml" />
     </list>
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -166,6 +224,7 @@
     <ignored path="../../../../mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/build/" />
     <ignored path="../../../../mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build/generated/mockable-android-25.jar" />
     <ignored path="../../../../mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build/" />
+    <ignored path="../../../../mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build/android-profile/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +244,23 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="TreebolicSupportLibs" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+            </PATH>
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -193,7 +268,18 @@
     <favorites_list name="TreebolicSupportLibs" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -321,6 +407,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
@@ -677,6 +767,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -886,6 +980,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -999,6 +1097,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
@@ -1350,6 +1452,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -1554,6 +1660,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -1667,6 +1777,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
@@ -2018,6 +2132,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -2222,6 +2340,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -2335,6 +2457,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
@@ -2686,6 +2812,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -2890,6 +3020,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -3003,6 +3137,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
@@ -3354,6 +3492,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -3558,6 +3700,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -3671,6 +3817,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
@@ -4022,6 +4172,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -4226,6 +4380,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -4339,6 +4497,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
@@ -4690,6 +4852,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -4894,6 +5060,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -5007,6 +5177,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
@@ -5358,6 +5532,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -5562,6 +5740,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -5675,6 +5857,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
@@ -6026,6 +6212,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -6230,6 +6420,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
                 <option name="name" value="mergeReleaseAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -6343,6 +6537,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
                 <option name="name" value="mergeReleaseConsumerProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
+                <option name="name" value="extractTryWithResourcesSupportJarDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
@@ -6694,6 +6892,10 @@
                 <option name="name" value="processDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
+                <option name="name" value="transformClassesWithDesugarForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
                 <option name="name" value="extractReleaseAnnotations" />
@@ -6895,6 +7097,10 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
                 <option name="name" value="transformResourcesWithMergeJavaResForDebugUnitTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
+                <option name="name" value="transformClassesWithStackFramesFixerForDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
@@ -7947,8 +8153,6 @@
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/layout-v21/toolbar.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/layout-v21/toolbar.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/layout-v21/toolbar.xml" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/build.gradle" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/build.gradle" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/AndroidManifest.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/search_settings.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/res/values/attrs.xml" />
@@ -7964,13 +8168,7 @@
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/layout/toolbar.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values/strings.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values-fr/strings.xml" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/build.gradle" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/build.gradle" />
         <option value="$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/d43889f87c530a237fc259d51ce6554e/res/values-v26/values-v26.xml" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/build.gradle" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/build.gradle" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/build.gradle" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/layout/content_about.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/layout/downloadbutton.xml" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/src/main/java/org/treebolic/storage/Storage.java" />
@@ -7984,10 +8182,19 @@
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/java/org/treebolic/download/DownloadActivity.java" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/src/main/java/org/treebolic/preference/OpenEditTextPreference.java" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/java/org/treebolic/filechooser/FileChooserActivity.java" />
-        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/build.gradle" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/java/org/treebolic/colors/preference/ColorPickerPreference.java" />
         <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/src/main/java/org/treebolic/ColorUtils.java" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/build.gradle" />
+        <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle" />
       </list>
     </option>
   </component>
@@ -8009,7 +8216,7 @@
       <hideEmptyPackages />
       <abbreviatePackageNames />
       <autoscrollToSource />
-      <autoscrollFromSource AndroidView="false" Scope="true" />
+      <autoscrollFromSource AndroidView="true" Scope="true" />
       <sortByType />
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
@@ -8025,6 +8232,21 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TreebolicSupportLibs" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -8035,60 +8257,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TreebolicSupportLibs" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commonLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TreebolicSupportLibs" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commonLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="treebolic" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TreebolicSupportLibs" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commonLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="android.project.structure.last.selected" value="commonLib" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.typerenderers" />
+    <property name="android.project.structure.last.selected" value="colorLib" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
@@ -8183,7 +8357,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515055224947" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515834214042" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -8231,7 +8405,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515055224947" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515834214042" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -8380,6 +8554,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="" />
@@ -8387,34 +8564,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
-    </task>
-    <task id="LOCAL-00002" summary="fixes and enhancements">
-      <created>1493732738365</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1493732738365</updated>
-    </task>
-    <task id="LOCAL-00003" summary="lint">
-      <created>1493883165198</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1493883165199</updated>
-    </task>
-    <task id="LOCAL-00004" summary="tint">
-      <created>1493977476042</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1493977476042</updated>
-    </task>
-    <task id="LOCAL-00005" summary="trim and fixes">
-      <created>1494323973048</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1494323973048</updated>
     </task>
     <task id="LOCAL-00006" summary="trim and fixes 2">
       <created>1494519198678</created>
@@ -8731,7 +8880,35 @@
       <option name="project" value="LOCAL" />
       <updated>1515052066161</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="new gradle tool">
+      <created>1515055353190</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1515055353190</updated>
+    </task>
+    <task id="LOCAL-00052" summary="new build chain">
+      <created>1515316818362</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1515316818362</updated>
+    </task>
+    <task id="LOCAL-00053" summary="lint">
+      <created>1515834181704</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1515834181704</updated>
+    </task>
+    <task id="LOCAL-00054" summary="lint">
+      <created>1515834197096</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1515834197096</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -8747,40 +8924,40 @@
     <frame x="51" y="27" width="1869" height="1173" extended-state="0" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.19595315" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.79419816" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.49808428" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3" sideWeight="0.4958949" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30294117" sideWeight="0.515052" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3" sideWeight="0.5041051" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.52764094" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32843137" sideWeight="0.20580186" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15763547" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.2846196" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15708812" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.79419816" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28434506" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327451" sideWeight="0.6560264" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -8800,7 +8977,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="rebuild&#10;guard against null drawable in Tint" />
     <MESSAGE value="fixes search settings initial bug on wheel 2 that won't take changes" />
     <MESSAGE value="common lib&#10;search lib" />
     <MESSAGE value="adjust" />
@@ -8819,26 +8995,20 @@
     <MESSAGE value="commonlib check for theme existence" />
     <MESSAGE value="manifest merging" />
     <MESSAGE value="theming simplication" />
-    <MESSAGE value="lint" />
     <MESSAGE value="reformatted" />
     <MESSAGE value="new tools" />
     <MESSAGE value="minor" />
     <MESSAGE value="enhanced color utils" />
     <MESSAGE value="new gradle tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="new gradle tool" />
+    <MESSAGE value="new build chain" />
+    <MESSAGE value="lint" />
+    <option name="LAST_COMMIT_MESSAGE" value="lint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/src/main/res/values/wheel_attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/drawable/divider1.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -8868,53 +9038,53 @@
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/layout/toolbar.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
         </state>
       </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/layout/toolbar.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/layout/toolbar.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
           <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="39" />
         </state>
       </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/dialog_search_settings.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/dialog_search_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="469">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/item_scope.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/item_scope.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="28" column="33" lean-forward="false" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
         </state>
       </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/item_mode.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/src/main/res/layout/item_mode.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/values/dimens.xml" />
@@ -8940,30 +9110,29 @@
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/res/layout/activity_color_picker.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/src/main/res/layout/preference_preview_layout.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -8974,40 +9143,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <element signature="e#257#288#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/res/layout/content_about.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="461">
           <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
         </state>
       </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/layout/downloadbutton.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/src/main/res/layout/downloadbutton.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/layout/toolbar.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/res/layout/toolbar.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="65">
           <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/src/main/java/org/treebolic/filechooser/EntryChooser.java">
@@ -9081,14 +9247,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/d43889f87c530a237fc259d51ce6554e/res/values-v26/values-v26.xml" />
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
@@ -9096,7 +9254,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
           <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -9107,7 +9264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -9115,95 +9271,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="22" column="50" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/colorLib.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/colorLib.iml" />
     <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -9211,9 +9286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3354">
           <caret line="301" column="71" lean-forward="false" selection-start-line="301" selection-start-column="71" selection-end-line="301" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -9221,9 +9293,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1248">
           <caret line="97" column="65" lean-forward="false" selection-start-line="97" selection-start-column="65" selection-end-line="97" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -9231,7 +9300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -9239,9 +9307,97 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="77" column="59" lean-forward="false" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
           <folding>
-            <element signature="e#1426#1476#0" expanded="true" />
+            <marker date="1515482922619" expanded="true" signature="45:636" ph="{...}" />
+            <marker date="1515482922619" expanded="true" signature="523:634" ph="{...}" />
+            <marker date="1515482922619" expanded="true" signature="651:774" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

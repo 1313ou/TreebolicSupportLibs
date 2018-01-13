@@ -208,7 +208,6 @@ public class AutoEditTextPreference extends DialogPreference
 		/**
 		 * Standard creator object using an instance of this class
 		 */
-		@SuppressWarnings("hiding")
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
 			@Override
@@ -225,7 +224,6 @@ public class AutoEditTextPreference extends DialogPreference
 		};
 	}
 
-	@SuppressWarnings("synthetic-access")
 	@Override
 	protected Parcelable onSaveInstanceState()
 	{
@@ -244,7 +242,6 @@ public class AutoEditTextPreference extends DialogPreference
 		return state;
 	}
 
-	@SuppressWarnings("synthetic-access")
 	@Override
 	protected void onRestoreInstanceState(final Parcelable state0)
 	{

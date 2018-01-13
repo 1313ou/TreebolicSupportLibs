@@ -18,7 +18,6 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import org.treebolic.wheel.AbstractWheel;
-import org.treebolic.wheel.OnWheelChangedListener;
 import org.treebolic.wheel.OnWheelScrollListener;
 import org.treebolic.wheel.WheelView;
 import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
@@ -84,7 +83,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	@NonNull
 	@SuppressLint({"InflateParams", "ApplySharedPref"})
 	@Override
-	public Dialog onCreateDialog(@SuppressWarnings("UnusedParameters") final Bundle savedInstanceState)
+	public Dialog onCreateDialog(final Bundle savedInstanceState)
 	{
 		final Context context = getActivity();
 		assert context != null;
@@ -168,31 +167,23 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
 
 		// wheel 1 events
-		this.scopeWheel.addChangingListener(new OnWheelChangedListener()
+		this.scopeWheel.addChangingListener((wheel, oldValue, newValue) ->
 		{
-			@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
-			@SuppressWarnings("synthetic-access")
-			@Override
-			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)
+			Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
+			sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]).commit();
+			if (!SearchSettings.this.scrolling)
 			{
-				Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
-				sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]).commit();
-				if (!SearchSettings.this.scrolling)
-				{
-					updateWheel2(newValue);
-				}
+				updateWheel2(newValue);
 			}
 		});
 		this.scopeWheel.addScrollingListener(new OnWheelScrollListener()
 		{
 			@Override
-			@SuppressWarnings("synthetic-access")
 			public void onScrollingStarted(AbstractWheel wheel)
 			{
 				SearchSettings.this.scrolling = true;
 			}
 
-			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onScrollingFinished(AbstractWheel wheel)
 			{
@@ -208,25 +199,19 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
 
 		// wheel 2 events
-		this.modeWheel.addChangingListener(new OnWheelChangedListener()
+		this.modeWheel.addChangingListener((wheel, oldValue, newValue) ->
 		{
-			@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
-			@SuppressWarnings("synthetic-access")
-			@Override
-			public void onChanged(AbstractWheel wheel, int oldValue, int newValue)
+			WheelViewAdapter wheelViewAdapter = wheel.getViewAdapter();
+			Adapter adapter = (Adapter) wheelViewAdapter;
+			if (adapter.getType() == Adapter.Type.MODE)
 			{
-				WheelViewAdapter wheelViewAdapter = wheel.getViewAdapter();
-				Adapter adapter = (Adapter) wheelViewAdapter;
-				if (adapter.getType() == Adapter.Type.MODE)
-				{
-					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]);
-					sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]).commit();
-				}
-				else if (adapter.getType() == Adapter.Type.SOURCE)
-				{
-					Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]);
-					sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]).commit();
-				}
+				Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]);
+				sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]).commit();
+			}
+			else if (adapter.getType() == Adapter.Type.SOURCE)
+			{
+				Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]);
+				sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]).commit();
 			}
 		});
 

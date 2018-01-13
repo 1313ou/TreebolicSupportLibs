@@ -32,11 +32,11 @@ public interface OnWheelScrollListener {
 	 * Callback method to be invoked when scrolling started.
 	 * @param wheel the spinnerwheel view whose state has changed.
 	 */
-	void onScrollingStarted(@SuppressWarnings("UnusedParameters") AbstractWheel wheel);
+	void onScrollingStarted(AbstractWheel wheel);
 	
 	/**
 	 * Callback method to be invoked when scrolling ended.
 	 * @param wheel the spinnerwheel view whose state has changed.
 	 */
-	void onScrollingFinished(@SuppressWarnings("UnusedParameters") AbstractWheel wheel);
+	void onScrollingFinished(AbstractWheel wheel);
 }

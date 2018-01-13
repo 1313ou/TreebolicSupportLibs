@@ -88,7 +88,6 @@ public abstract class WheelScroller
 			this.wheelScrollerRef = new WeakReference<>(scroller0);
 		}
 
-		@SuppressWarnings("synthetic-access")
 		@Override
 		public void handleMessage(Message msg)
 		{
@@ -171,7 +170,6 @@ public abstract class WheelScroller
 				return true;
 			}
 
-			@SuppressWarnings("synthetic-access")
 			@Override
 			public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
 			{

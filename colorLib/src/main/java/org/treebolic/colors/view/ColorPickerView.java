@@ -385,7 +385,6 @@ public class ColorPickerView extends View
 		drawAlphaPanel(canvas);
 	}
 
-	@SuppressWarnings("synthetic-access")
 	private void drawSatValPanel(final Canvas canvas)
 	{
 		/*

@@ -6,7 +6,6 @@
     <string name="fileSize">Taille</string>
     <string name="currentDir">Dossier</string>
     <string name="type">Type</string>
-    <string name="selected">Sélectionné</string>
     <string name="howToSelect">Appuyer longuement pour sélectionner un dossier</string>
 
 </resources>

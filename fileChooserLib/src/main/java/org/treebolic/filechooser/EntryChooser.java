@@ -134,14 +134,10 @@ public class EntryChooser
 	static public void choose(final Context context, final File archive, final Callback callback) throws IOException
 	{
 		final List<String> list = EntryChooser.getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*");
-		final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
+		final DialogInterface.OnClickListener listener = (dialog, which) ->
 		{
-			@Override
-			public void onClick(final DialogInterface dialog, final int which)
-			{
-				// The 'which' argument contains the index position of the selected item
-				callback.onSelect(list.get(which));
-			}
+			// The 'which' argument contains the index position of the selected item
+			callback.onSelect(list.get(which));
 		};
 		new EntryChooser(context, list, listener).show();
 	}

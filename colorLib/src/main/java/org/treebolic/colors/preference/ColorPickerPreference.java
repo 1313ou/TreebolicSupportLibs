@@ -225,7 +225,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	static private final int DEFAULTCOLOR = 0xFF000000;
 
-	@SuppressWarnings("boxing")
 	@Override
 	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue)
 	{
@@ -325,7 +324,6 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		}
 
 		// Standard creator object using an instance of this class
-		@SuppressWarnings("hiding")
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
 			@Override

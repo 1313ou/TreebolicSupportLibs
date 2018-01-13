@@ -193,22 +193,18 @@ public class OpenEditTextPreference extends DialogPreference
 			}
 
 			// check listener
-			this.optionsView.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+			this.optionsView.setOnCheckedChangeListener((group, checkedId) ->
 			{
-				@Override
-				public void onCheckedChanged(final RadioGroup group, int checkedId)
+				if (checkedId == -1)
 				{
-					if (checkedId == -1)
-					{
-						OpenEditTextPreference.this.editView.setText("");
-					}
-					else
-					{
-						final RadioButton radioButton = OpenEditTextPreference.this.optionsView.findViewById(checkedId);
-						final String tag = radioButton.getTag().toString();
-						OpenEditTextPreference.this.editView.setText(tag);
-						OpenEditTextPreference.this.editView.setSelection(tag.length());
-					}
+					OpenEditTextPreference.this.editView.setText("");
+				}
+				else
+				{
+					final RadioButton radioButton = OpenEditTextPreference.this.optionsView.findViewById(checkedId);
+					final String tag = radioButton.getTag().toString();
+					OpenEditTextPreference.this.editView.setText(tag);
+					OpenEditTextPreference.this.editView.setSelection(tag.length());
 				}
 			});
 		}
@@ -300,7 +296,6 @@ public class OpenEditTextPreference extends DialogPreference
 		/**
 		 * Standard creator object using an instance of this class
 		 */
-		@SuppressWarnings("hiding")
 		public static final Creator<SavedState> CREATOR = new Creator<SavedState>()
 		{
 			@Override
@@ -317,7 +312,6 @@ public class OpenEditTextPreference extends DialogPreference
 		};
 	}
 
-	@SuppressWarnings("synthetic-access")
 	@Override
 	protected Parcelable onSaveInstanceState()
 	{
@@ -338,7 +332,6 @@ public class OpenEditTextPreference extends DialogPreference
 		return state;
 	}
 
-	@SuppressWarnings("synthetic-access")
 	@Override
 	protected void onRestoreInstanceState(final Parcelable state0)
 	{
