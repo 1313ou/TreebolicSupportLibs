@@ -24,12 +24,13 @@
 package org.treebolic.wheel.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * The simple Array spinnerwheel adapter
- * 
- * @param <T>
- *            the element type
+ *
+ * @param <T> the element type
  */
 public class ArrayWheelAdapter<T> extends AbstractWheelTextAdapter
 {
@@ -38,13 +39,11 @@ public class ArrayWheelAdapter<T> extends AbstractWheelTextAdapter
 
 	/**
 	 * Constructor
-	 * 
-	 * @param context0
-	 *            the current context
-	 * @param items0
-	 *            the items
+	 *
+	 * @param context0 the current context
+	 * @param items0   the items
 	 */
-	public ArrayWheelAdapter(Context context0, T items0[])
+	public ArrayWheelAdapter(@NonNull Context context0, T items0[])
 	{
 		super(context0);
 
@@ -52,6 +51,7 @@ public class ArrayWheelAdapter<T> extends AbstractWheelTextAdapter
 		this.items = items0;
 	}
 
+	@Nullable
 	@Override
 	public CharSequence getItemText(int index)
 	{

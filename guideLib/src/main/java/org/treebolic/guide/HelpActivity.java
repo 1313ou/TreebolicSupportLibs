@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -67,21 +68,21 @@ public class HelpActivity extends AppCompatCommonActivity
 
 			@TargetApi(Build.VERSION_CODES.N)
 			@Override
-			public void onReceivedError(final WebView view, final WebResourceRequest request, final WebResourceError error)
+			public void onReceivedError(final WebView view, final WebResourceRequest request, @NonNull final WebResourceError error)
 			{
 				Log.e(HelpActivity.TAG, error.getDescription().toString() + ',' + error.getErrorCode());
 			}
 
 			@SuppressWarnings("deprecation")
 			@Override
-			public boolean shouldOverrideUrlLoading(final WebView view, final String url)
+			public boolean shouldOverrideUrlLoading(@NonNull final WebView view, final String url)
 			{
 				view.loadUrl(url);
 				return false;
 			}
 
 			@TargetApi(Build.VERSION_CODES.N)
-			public boolean shouldOverrideUrlLoading(final WebView view, final WebResourceRequest request)
+			public boolean shouldOverrideUrlLoading(@NonNull final WebView view, @NonNull final WebResourceRequest request)
 			{
 				final Uri uri = request.getUrl();
 				view.loadUrl(uri.toString());
@@ -108,7 +109,7 @@ public class HelpActivity extends AppCompatCommonActivity
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(final MenuItem item)
+	public boolean onOptionsItemSelected(@NonNull final MenuItem item)
 	{
 		final int itemId = item.getItemId();
 		if (itemId == R.id.action_tips)

@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -49,6 +51,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	 */
 	@SuppressWarnings("WeakerAccess")
 	protected boolean alphaChannelVisible = false;
+	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	protected String alphaChannelText = null;
 	@SuppressWarnings("WeakerAccess")
@@ -134,7 +137,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	// B I N D
 
 	@Override
-	protected void onBindView(final View view)
+	protected void onBindView(@NonNull final View view)
 	{
 		super.onBindView(view);
 
@@ -146,7 +149,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	}
 
 	@Override
-	protected void onBindDialogView(final View layout)
+	protected void onBindDialogView(@NonNull final View layout)
 	{
 		super.onBindDialogView(layout);
 
@@ -242,7 +245,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	@SuppressWarnings("boxing")
 	@Override
-	protected Object onGetDefaultValue(final TypedArray a, final int index)
+	protected Object onGetDefaultValue(@NonNull final TypedArray a, final int index)
 	{
 		return a.getInteger(index, DEFAULTCOLOR);
 	}
@@ -255,6 +258,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	// S A V E / R E S T O R E
 
+	@NonNull
 	@Override
 	protected Parcelable onSaveInstanceState()
 	{
@@ -276,7 +280,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	}
 
 	@Override
-	protected void onRestoreInstanceState(final Parcelable state)
+	protected void onRestoreInstanceState(@Nullable final Parcelable state)
 	{
 		// Check whether we saved the state in onSaveInstanceState
 		if (state == null || !state.getClass().equals(SavedState.class))
@@ -308,7 +312,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 			super(superState);
 		}
 
-		public SavedState(final Parcel source)
+		public SavedState(@NonNull final Parcel source)
 		{
 			super(source);
 			// Get the current preference's value
@@ -316,7 +320,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		}
 
 		@Override
-		public void writeToParcel(final Parcel dest, final int flags)
+		public void writeToParcel(@NonNull final Parcel dest, final int flags)
 		{
 			super.writeToParcel(dest, flags);
 			// Write the preference's value
@@ -327,7 +331,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
 			@Override
-			public SavedState createFromParcel(final Parcel in)
+			public SavedState createFromParcel(@NonNull final Parcel in)
 			{
 				return new SavedState(in);
 			}

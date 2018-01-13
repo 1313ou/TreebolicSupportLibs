@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -28,7 +29,7 @@ public class ColorUtils
 	 * @param menu        menu
 	 * @param menuItemIds menu item ids
 	 */
-	static public void tint(final int iconTint, final Menu menu, final int... menuItemIds)
+	static public void tint(final int iconTint, @NonNull final Menu menu, @NonNull final int... menuItemIds)
 	{
 		for (int menuItemId : menuItemIds)
 		{
@@ -48,7 +49,7 @@ public class ColorUtils
 	 * @param drawable drawable
 	 */
 	@SuppressWarnings({"WeakerAccess", "deprecation"})
-	static public void tint(int iconTint, final Drawable drawable)
+	static public void tint(int iconTint, @NonNull final Drawable drawable)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 		{
@@ -68,7 +69,7 @@ public class ColorUtils
 	 * @return drawable
 	 */
 	@SuppressWarnings({"WeakerAccess", "deprecation"})
-	static public Drawable getDrawable(final Context context, int resId)
+	static public Drawable getDrawable(@NonNull final Context context, int resId)
 	{
 		final Resources resources = context.getResources();
 		Drawable drawable;
@@ -124,7 +125,7 @@ public class ColorUtils
 	 * @param iconTint tint
 	 * @return tinted drawable
 	 */
-	static public Drawable getTintedDrawable(final Context context, final int resId, final int iconTint)
+	static public Drawable getTintedDrawable(@NonNull final Context context, final int resId, final int iconTint)
 	{
 		Drawable drawable = getDrawable(context, resId);
 		ColorUtils.tint(iconTint, drawable);
@@ -138,7 +139,7 @@ public class ColorUtils
 	 * @param attr    color attr
 	 * @return color
 	 */
-	static public int fetchColor(final Context context, int attr)
+	static public int fetchColor(@NonNull final Context context, int attr)
 	{
 		final Resources.Theme theme = context.getTheme();
 		final TypedValue typedValue = new TypedValue();
@@ -154,7 +155,7 @@ public class ColorUtils
 	 * @param attr    attr id (R.attr.editTextColor)
 	 * @return color
 	 */
-	static public int fetchColorFromStyle(final Context context, int styleId, int attr)
+	static public int fetchColorFromStyle(@NonNull final Context context, int styleId, int attr)
 	{
 		final TypedArray array = context.getTheme().obtainStyledAttributes(styleId, new int[]{attr});
 		int intColor = array.getColor(0 /* index */, 0 /* defaultVal */);
@@ -172,7 +173,7 @@ public class ColorUtils
 	 * @return color
 	 */
 	@SuppressWarnings("WeakerAccess")
-	static public int getColorFromTheme(final Context context, int styleId, @SuppressWarnings("SameParameterValue") int colorAttrId)
+	static public int getColorFromTheme(@NonNull final Context context, int styleId, @SuppressWarnings("SameParameterValue") int colorAttrId)
 	{
 		final Resources.Theme theme = context.getTheme();
 		// theme.dump(Log.DEBUG, TAG, "theme");
@@ -205,7 +206,7 @@ public class ColorUtils
 	 * @param context context
 	 * @return color
 	 */
-	static public int getActionBarForegroundColorFromTheme(final Context context)
+	static public int getActionBarForegroundColorFromTheme(@NonNull final Context context)
 	{
 		// Log.d(TAG, "getActionBarForegroundColorFromTheme=0x" + Integer.toHexString(color));
 		return getColorFromTheme(context, R.attr.actionBarTheme, android.R.attr.textColorPrimary);

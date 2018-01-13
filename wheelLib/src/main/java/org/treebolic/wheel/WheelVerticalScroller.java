@@ -25,6 +25,7 @@
 package org.treebolic.wheel;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 
 /**
@@ -34,11 +35,9 @@ public class WheelVerticalScroller extends WheelScroller
 {
 	/**
 	 * Constructor
-	 * 
-	 * @param context
-	 *            the current context
-	 * @param listener
-	 *            the scrolling listener
+	 *
+	 * @param context  the current context
+	 * @param listener the scrolling listener
 	 */
 	public WheelVerticalScroller(Context context, ScrollingListener listener)
 	{
@@ -58,7 +57,7 @@ public class WheelVerticalScroller extends WheelScroller
 	}
 
 	@Override
-	protected float getMotionEventPosition(MotionEvent event)
+	protected float getMotionEventPosition(@NonNull MotionEvent event)
 	{
 		// should be overridden
 		return event.getY();

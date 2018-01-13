@@ -46,11 +46,9 @@ public class ItemsRange
 
 	/**
 	 * Constructor
-	 * 
-	 * @param first0
-	 *            the number of first item
-	 * @param count0
-	 *            the count of items
+	 *
+	 * @param first0 the number of first item
+	 * @param count0 the count of items
 	 */
 	public ItemsRange(int first0, int count0)
 	{
@@ -60,7 +58,7 @@ public class ItemsRange
 
 	/**
 	 * Gets number of first item
-	 * 
+	 *
 	 * @return the number of the first item
 	 */
 	public int getFirst()
@@ -70,7 +68,7 @@ public class ItemsRange
 
 	/**
 	 * Gets number of last item
-	 * 
+	 *
 	 * @return the number of last item
 	 */
 	public int getLast()
@@ -80,7 +78,7 @@ public class ItemsRange
 
 	/**
 	 * Get items count
-	 * 
+	 *
 	 * @return the count of items
 	 */
 	public int getCount()
@@ -90,9 +88,8 @@ public class ItemsRange
 
 	/**
 	 * Tests whether item is contained by range
-	 * 
-	 * @param index
-	 *            the item number
+	 *
+	 * @param index the item number
 	 * @return true if item is contained
 	 */
 	public boolean contains(int index)

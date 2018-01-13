@@ -19,6 +19,8 @@ package org.treebolic.colors.dialog;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,14 +40,14 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 
 	private final OnColorChangedListener mListener;
 
-	public ColorPickerDialog(final Context context, final Integer initialColor)
+	public ColorPickerDialog(@NonNull final Context context, final Integer initialColor)
 	{
 		this(context, initialColor, null);
 		init(initialColor);
 	}
 
 	@SuppressWarnings("WeakerAccess")
-	public ColorPickerDialog(final Context context, final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
+	public ColorPickerDialog(@NonNull final Context context, final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
 	{
 		super(context);
 		this.mListener = listener;
@@ -64,7 +66,7 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 	}
 
 	@SuppressLint("InflateParams")
-	private void setUp(final Integer color)
+	private void setUp(@Nullable final Integer color)
 	{
 		boolean isLandscapeLayout = false;
 

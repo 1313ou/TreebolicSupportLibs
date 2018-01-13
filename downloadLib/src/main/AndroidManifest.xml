@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="org.treebolic.download">
 
-		<application>
+	<application>
 
-			<!-- abstract -->
-			<!--
-			<activity
-				android:name="org.treebolic.download.DownloadActivity"
-				android:label="@string/title_activity_download">
-			</activity>
-			-->
+		<!-- abstract -->
+		<!--
+		<activity
+			android:name="org.treebolic.download.DownloadActivity"
+			android:label="@string/title_activity_download">
+		</activity>
+		-->
 
-		</application>
+	</application>
 
 </manifest>

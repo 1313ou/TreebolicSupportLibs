@@ -41,7 +41,7 @@ public class Tip extends AppCompatDialogFragment
 	/**
 	 * Show tips
 	 */
-	static public void show(final FragmentManager fragmentManager)
+	static public void show(@NonNull final FragmentManager fragmentManager)
 	{
 		final AppCompatDialogFragment newFragment = Tip.newInstance();
 		newFragment.show(fragmentManager, "dialog");

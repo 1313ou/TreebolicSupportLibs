@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 public class AppCompatCommonUtils
@@ -36,7 +37,7 @@ public class AppCompatCommonUtils
 	 * @return value (null if node)
 	 */
 	@SuppressWarnings("boxing")
-	static public Integer getThemePref(final Context context)
+	static public Integer getThemePref(@NonNull final Context context)
 	{
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final String value = sharedPrefs.getString(PREF_THEME, null);

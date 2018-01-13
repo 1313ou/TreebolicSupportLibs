@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -62,7 +63,7 @@ public class ColorPickerActivity extends AppCompatCommonActivity implements OnCo
 
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	@Override
-	public void onClick(final View v)
+	public void onClick(@NonNull final View v)
 	{
 		final int id = v.getId();
 		if (id == R.id.okButton)

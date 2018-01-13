@@ -1,5 +1,7 @@
 package org.treebolic.download;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
@@ -36,7 +38,7 @@ public class Deploy
 	 * @param toFile dest file
 	 * @throws IOException io exception
 	 */
-	public static void copy(final InputStream in, final File toFile) throws IOException
+	public static void copy(@NonNull final InputStream in, @NonNull final File toFile) throws IOException
 	{
 		FileOutputStream out = null;
 		try
@@ -73,7 +75,7 @@ public class Deploy
 	 * @param asTarGz is tar gz type
 	 * @throws IOException io exception
 	 */
-	public static void expand(final InputStream in, final File toDir, @SuppressWarnings("SameParameterValue") boolean asTarGz) throws IOException
+	public static void expand(@NonNull final InputStream in, @NonNull final File toDir, @SuppressWarnings("SameParameterValue") boolean asTarGz) throws IOException
 	{
 		if (asTarGz)
 		{
@@ -92,8 +94,9 @@ public class Deploy
 	 * @param exclude exclude regexp filter
 	 * @return dest dir
 	 */
+	@NonNull
 	@SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
-	static public File expandZip(final InputStream in, final File destDir, @SuppressWarnings("SameParameterValue") final boolean flat, @SuppressWarnings("SameParameterValue") final String include, @SuppressWarnings("SameParameterValue") final String exclude) throws IOException
+	static public File expandZip(final InputStream in, @NonNull final File destDir, @SuppressWarnings("SameParameterValue") final boolean flat, @Nullable @SuppressWarnings("SameParameterValue") final String include, @Nullable @SuppressWarnings("SameParameterValue") final String exclude) throws IOException
 	{
 		// patterns
 		final Pattern includePattern = include == null ? null : Pattern.compile(include);
@@ -222,8 +225,9 @@ public class Deploy
 	 * @return dest dir
 	 * @throws IOException io exception
 	 */
+	@NonNull
 	@SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
-	static public File extractTarGz(final InputStream in, final File destDir, @SuppressWarnings("SameParameterValue") final boolean flat, @SuppressWarnings("SameParameterValue") final String include, @SuppressWarnings("SameParameterValue") final String exclude) throws IOException
+	static public File extractTarGz(@NonNull final InputStream in, @NonNull final File destDir, @SuppressWarnings("SameParameterValue") final boolean flat, @Nullable @SuppressWarnings("SameParameterValue") final String include, @Nullable @SuppressWarnings("SameParameterValue") final String exclude) throws IOException
 	{
 		final Pattern includePattern = include == null ? null : Pattern.compile(include);
 		final Pattern excludePattern = exclude == null ? null : Pattern.compile(exclude);

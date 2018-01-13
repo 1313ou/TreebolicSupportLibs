@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -59,16 +61,19 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		/**
 		 * Entry name
 		 */
+		@Nullable
 		private final String name;
 
 		/**
 		 * Entry data
 		 */
+		@Nullable
 		private final String data;
 
 		/**
 		 * Entry path
 		 */
+		@Nullable
 		private final String path;
 
 		/**
@@ -95,7 +100,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 * @param folder0 folder
 		 * @param parent0 parent
 		 */
-		public Entry(final String name0, final String data0, final String path0, final boolean folder0, final boolean parent0)
+		public Entry(@Nullable final String name0, @Nullable final String data0, @Nullable final String path0, final boolean folder0, final boolean parent0)
 		{
 			this.name = name0;
 			this.data = data0;
@@ -123,6 +128,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return name
 		 */
+		@Nullable
 		public String getName()
 		{
 			return this.name;
@@ -133,6 +139,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return data
 		 */
+		@Nullable
 		public String getData()
 		{
 			return this.data;
@@ -143,6 +150,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return path
 		 */
+		@Nullable
 		public String getPath()
 		{
 			return this.path;
@@ -197,6 +205,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		/**
 		 * Context
 		 */
+		@NonNull
 		private final Context context;
 
 		/**
@@ -207,6 +216,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		/**
 		 * List of entries
 		 */
+		@NonNull
 		private final List<Entry> items;
 
 		/**
@@ -216,7 +226,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 * @param id0      text view resource id
 		 * @param items0   items
 		 */
-		public FileArrayAdapter(final Context context0, final int id0, final List<Entry> items0)
+		public FileArrayAdapter(@NonNull final Context context0, final int id0, @NonNull final List<Entry> items0)
 		{
 			super(context0, id0, items0);
 			this.context = context0;
@@ -230,6 +240,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			return this.items.get(i);
 		}
 
+		@NonNull
 		@SuppressWarnings("NullableProblems")
 		@Override
 		public View getView(final int position, final View convertView, @SuppressWarnings("NullableProblems") final ViewGroup parent)
@@ -262,14 +273,18 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 				}
 				else
 				{
-					final String name = entry.getName().toLowerCase(Locale.getDefault());
-					if (name.endsWith(".zip"))
+					String name = entry.getName();
+					if (name != null)
 					{
-						image.setImageResource(R.drawable.filechooser_zip);
-					}
-					else
-					{
-						image.setImageResource(R.drawable.filechooser_file);
+						name = name.toLowerCase(Locale.getDefault());
+						if (name.endsWith(".zip"))
+						{
+							image.setImageResource(R.drawable.filechooser_zip);
+						}
+						else
+						{
+							image.setImageResource(R.drawable.filechooser_file);
+						}
 					}
 				}
 
@@ -308,6 +323,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	/**
 	 * Current directory
 	 */
+	@Nullable
 	private File currentDir;
 
 	/**
@@ -358,6 +374,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 
 		// default
 		this.currentDir = Environment.getExternalStorageDirectory();
+		assert this.currentDir != null;
 
 		// extras
 		final Bundle extras = getIntent().getExtras();
@@ -410,6 +427,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	{
 		if (keyCode == KeyEvent.KEYCODE_BACK)
 		{
+			assert this.currentDir != null;
 			if (// !this.currentDir.getName().equals(ROOT) &&
 					this.currentDir.getParentFile() != null)
 			{
@@ -430,8 +448,12 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			if (entry.isFolder() || entry.isParent())
 			{
 				// if folder we move into it
-				this.currentDir = new File(entry.getPath());
-				fill(this.currentDir);
+				final String path = entry.getPath();
+				if (path != null)
+				{
+					this.currentDir = new File(path);
+					fill(this.currentDir);
+				}
 			}
 			else
 			{
@@ -465,12 +487,12 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	 *
 	 * @param entry entry
 	 */
-	private void select(final Entry entry)
+	private void select(@NonNull final Entry entry)
 	{
 		// select
 		// Toast.makeText(this, getResources().getText(R.string.selected) + " " + entry.getName(), Toast.LENGTH_SHORT).show();
 		final Intent resultIntent = new Intent();
-		if (!entry.isNone())
+		if (!entry.isNone() && entry.getPath() != null)
 		{
 			final Uri fileUri = Uri.fromFile(new File(entry.getPath()));
 			resultIntent.setDataAndType(fileUri, getContentResolver().getType(fileUri));
@@ -488,7 +510,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	 *
 	 * @param dirFile dir
 	 */
-	private void fill(final File dirFile)
+	private void fill(@NonNull final File dirFile)
 	{
 		File[] items;
 		if (this.fileFilter != null)
@@ -523,7 +545,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 				}
 			}
 		}
-		catch (final Exception ignored)
+		catch (@NonNull final Exception ignored)
 		{
 			//
 		}

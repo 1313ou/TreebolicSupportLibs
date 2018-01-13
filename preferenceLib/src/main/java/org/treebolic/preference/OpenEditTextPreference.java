@@ -5,6 +5,8 @@ import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,11 +39,13 @@ public class OpenEditTextPreference extends DialogPreference
 	/**
 	 * Default value
 	 */
+	@Nullable
 	private String defaultValue;
 
 	/**
 	 * Value
 	 */
+	@Nullable
 	private String value;
 
 	/**
@@ -60,7 +64,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 * @param context context
 	 * @param attrs   attributes
 	 */
-	public OpenEditTextPreference(final Context context, final AttributeSet attrs)
+	public OpenEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		super(context, attrs);
 		init(context, attrs);
@@ -76,7 +80,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 *
 	 * @param attrs attributes
 	 */
-	private void init(final Context context, final AttributeSet attrs)
+	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		// obtain default value
 		final int id = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", -1);
@@ -157,7 +161,7 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onBindDialogView(final View view)
+	protected void onBindDialogView(@NonNull final View view)
 	{
 		super.onBindDialogView(view);
 
@@ -245,8 +249,9 @@ public class OpenEditTextPreference extends DialogPreference
 		}
 	}
 
+	@Nullable
 	@Override
-	protected Object onGetDefaultValue(final TypedArray array, final int index)
+	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
 	{
 		return array.getString(index);
 	}
@@ -259,6 +264,7 @@ public class OpenEditTextPreference extends DialogPreference
 	private static class SavedState extends BaseSavedState
 	{
 		// member that holds the setting's value
+		@Nullable
 		private String value;
 
 		/**
@@ -276,7 +282,7 @@ public class OpenEditTextPreference extends DialogPreference
 		 *
 		 * @param source source parcel
 		 */
-		public SavedState(final Parcel source)
+		public SavedState(@NonNull final Parcel source)
 		{
 			super(source);
 
@@ -285,7 +291,7 @@ public class OpenEditTextPreference extends DialogPreference
 		}
 
 		@Override
-		public void writeToParcel(final Parcel dest, final int flags)
+		public void writeToParcel(@NonNull final Parcel dest, final int flags)
 		{
 			super.writeToParcel(dest, flags);
 
@@ -299,7 +305,7 @@ public class OpenEditTextPreference extends DialogPreference
 		public static final Creator<SavedState> CREATOR = new Creator<SavedState>()
 		{
 			@Override
-			public SavedState createFromParcel(final Parcel in)
+			public SavedState createFromParcel(@NonNull final Parcel in)
 			{
 				return new SavedState(in);
 			}
@@ -333,7 +339,7 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onRestoreInstanceState(final Parcelable state0)
+	protected void onRestoreInstanceState(@Nullable final Parcelable state0)
 	{
 		// check whether we saved the state in onSaveInstanceState
 		if (state0 == null || !state0.getClass().equals(SavedState.class))

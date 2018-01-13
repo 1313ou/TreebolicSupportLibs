@@ -46,6 +46,8 @@ import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -154,21 +156,25 @@ public class ColorPickerView extends View
 	/**
 	 * Value shader
 	 */
+	@Nullable
 	private Shader mValShader;
 
 	/**
 	 * Saturation shader
 	 */
+	@Nullable
 	private Shader mSatShader;
 
 	/**
 	 * Hue shader
 	 */
+	@Nullable
 	private Shader mHueShader;
 
 	/**
 	 * Alpha shader
 	 */
+	@Nullable
 	private Shader mAlphaShader;
 
 	/*
@@ -187,6 +193,7 @@ public class ColorPickerView extends View
 	/**
 	 * Alpha slider text
 	 */
+	@Nullable
 	private String mAlphaSliderText = null;
 
 	/**
@@ -214,6 +221,7 @@ public class ColorPickerView extends View
 	/**
 	 * Start touch point
 	 */
+	@Nullable
 	private Point mStartTouchPoint = null;
 
 	/**
@@ -359,6 +367,7 @@ public class ColorPickerView extends View
 		return (int) (offset * 1.5f);
 	}
 
+	@NonNull
 	private static int[] buildHueColorArray()
 	{
 		final int[] hue = new int[361];
@@ -373,7 +382,7 @@ public class ColorPickerView extends View
 	}
 
 	@Override
-	protected void onDraw(final Canvas canvas)
+	protected void onDraw(@NonNull final Canvas canvas)
 	{
 		if (this.mDrawingRect.width() <= 0 || this.mDrawingRect.height() <= 0)
 		{
@@ -385,7 +394,7 @@ public class ColorPickerView extends View
 		drawAlphaPanel(canvas);
 	}
 
-	private void drawSatValPanel(final Canvas canvas)
+	private void drawSatValPanel(@NonNull final Canvas canvas)
 	{
 		/*
 		 * Draw time for this code without using bitmap cache and hardware acceleration was around 20ms. Now with the bitmap cache and the ability to use
@@ -461,7 +470,7 @@ public class ColorPickerView extends View
 		canvas.drawCircle(p.x, p.y, this.PALETTE_CIRCLE_TRACKER_RADIUS, this.mSatValTrackerPaint);
 	}
 
-	private void drawHuePanel(final Canvas canvas)
+	private void drawHuePanel(@NonNull final Canvas canvas)
 	{
 		/*
 		 * Drawn with hw acceleration, very fast.
@@ -497,7 +506,7 @@ public class ColorPickerView extends View
 		canvas.drawRoundRect(r, 2, 2, this.mHueAlphaTrackerPaint);
 	}
 
-	private void drawAlphaPanel(final Canvas canvas)
+	private void drawAlphaPanel(@NonNull final Canvas canvas)
 	{
 		/*
 		 * Will be drawn with hw acceleration, very fast.
@@ -547,6 +556,7 @@ public class ColorPickerView extends View
 		canvas.drawRoundRect(r, 2, 2, this.mHueAlphaTrackerPaint);
 	}
 
+	@NonNull
 	private Point hueToPoint(final float hue)
 	{
 		final RectF rect = this.mHueRect;
@@ -560,6 +570,7 @@ public class ColorPickerView extends View
 		return p;
 	}
 
+	@NonNull
 	private Point satValToPoint(final float sat, final float val)
 	{
 		final RectF rect = this.mSatValRect;
@@ -574,6 +585,7 @@ public class ColorPickerView extends View
 		return p;
 	}
 
+	@NonNull
 	private Point alphaToPoint(final int alpha)
 	{
 
@@ -588,6 +600,7 @@ public class ColorPickerView extends View
 		return p;
 	}
 
+	@NonNull
 	private float[] pointToSatVal(final float x0, final float y0)
 	{
 		float x = x0;
@@ -676,7 +689,7 @@ public class ColorPickerView extends View
 	}
 
 	@Override
-	public boolean onTrackballEvent(final MotionEvent event)
+	public boolean onTrackballEvent(@NonNull final MotionEvent event)
 	{
 		final float x = event.getX();
 		final float y = event.getY();
@@ -787,7 +800,7 @@ public class ColorPickerView extends View
 
 	@SuppressLint("ClickableViewAccessibility")
 	@Override
-	public boolean onTouchEvent(final MotionEvent event)
+	public boolean onTouchEvent(@NonNull final MotionEvent event)
 	{
 		boolean update = false;
 
@@ -827,7 +840,7 @@ public class ColorPickerView extends View
 		return super.onTouchEvent(event);
 	}
 
-	private boolean moveTrackersIfNeeded(final MotionEvent event)
+	private boolean moveTrackersIfNeeded(@NonNull final MotionEvent event)
 	{
 		if (this.mStartTouchPoint == null)
 		{
@@ -1215,6 +1228,7 @@ public class ColorPickerView extends View
 	 *
 	 * @return alpha slider text
 	 */
+	@Nullable
 	public String getAlphaSliderText()
 	{
 		return this.mAlphaSliderText;

@@ -5,6 +5,8 @@ import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -26,11 +28,13 @@ public class AutoEditTextPreference extends DialogPreference
 	/**
 	 * Default value
 	 */
+	@Nullable
 	private String defaultValue;
 
 	/**
 	 * Value
 	 */
+	@Nullable
 	private String value;
 
 	/**
@@ -41,12 +45,10 @@ public class AutoEditTextPreference extends DialogPreference
 	/**
 	 * Constructor
 	 *
-	 * @param context
-	 *            context
-	 * @param attrs
-	 *            attributes
+	 * @param context context
+	 * @param attrs   attributes
 	 */
-	public AutoEditTextPreference(final Context context, final AttributeSet attrs)
+	public AutoEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		super(context, attrs);
 		init(context, attrs);
@@ -60,10 +62,9 @@ public class AutoEditTextPreference extends DialogPreference
 	/**
 	 * Initialize
 	 *
-	 * @param attrs
-	 *            attributes
+	 * @param attrs attributes
 	 */
-	private void init(final Context context, final AttributeSet attrs)
+	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		// obtain default value
 		final int id = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", -1);
@@ -76,12 +77,14 @@ public class AutoEditTextPreference extends DialogPreference
 
 		// ensure not null
 		if (this.values == null)
+		{
 			this.values = new CharSequence[0];
+		}
 	}
 
 	/**
 	 * Values Getter
-	 * 
+	 *
 	 * @return values
 	 */
 	public CharSequence[] getValues()
@@ -91,9 +94,8 @@ public class AutoEditTextPreference extends DialogPreference
 
 	/**
 	 * Values Setter
-	 * 
-	 * @param values0
-	 *            values
+	 *
+	 * @param values0 values
 	 */
 	public void setValues(CharSequence[] values0)
 	{
@@ -101,7 +103,7 @@ public class AutoEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onBindDialogView(final View view)
+	protected void onBindDialogView(@NonNull final View view)
 	{
 		super.onBindDialogView(view);
 
@@ -155,8 +157,9 @@ public class AutoEditTextPreference extends DialogPreference
 		}
 	}
 
+	@Nullable
 	@Override
-	protected Object onGetDefaultValue(final TypedArray array, final int index)
+	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
 	{
 		return array.getString(index);
 	}
@@ -169,13 +172,13 @@ public class AutoEditTextPreference extends DialogPreference
 	private static class SavedState extends BaseSavedState
 	{
 		// member that holds the setting's value
+		@Nullable
 		private String value;
 
 		/**
 		 * Constructor from superstate
 		 *
-		 * @param superState
-		 *            superstate
+		 * @param superState superstate
 		 */
 		public SavedState(final Parcelable superState)
 		{
@@ -185,10 +188,9 @@ public class AutoEditTextPreference extends DialogPreference
 		/**
 		 * Constructor from parcel
 		 *
-		 * @param source
-		 *            source parcel
+		 * @param source source parcel
 		 */
-		public SavedState(final Parcel source)
+		public SavedState(@NonNull final Parcel source)
 		{
 			super(source);
 
@@ -197,7 +199,7 @@ public class AutoEditTextPreference extends DialogPreference
 		}
 
 		@Override
-		public void writeToParcel(final Parcel dest, final int flags)
+		public void writeToParcel(@NonNull final Parcel dest, final int flags)
 		{
 			super.writeToParcel(dest, flags);
 
@@ -211,7 +213,7 @@ public class AutoEditTextPreference extends DialogPreference
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
 			@Override
-			public SavedState createFromParcel(final Parcel in)
+			public SavedState createFromParcel(@NonNull final Parcel in)
 			{
 				return new SavedState(in);
 			}
@@ -231,8 +233,10 @@ public class AutoEditTextPreference extends DialogPreference
 
 		// check whether this Preference is persistent (continually saved)
 		if (isPersistent())
-			// no need to save instance state since it's persistent, use superclass state
+		// no need to save instance state since it's persistent, use superclass state
+		{
 			return superState;
+		}
 
 		// create instance of custom BaseSavedState
 		final SavedState state = new SavedState(superState);
@@ -243,7 +247,7 @@ public class AutoEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onRestoreInstanceState(final Parcelable state0)
+	protected void onRestoreInstanceState(@Nullable final Parcelable state0)
 	{
 		// check whether we saved the state in onSaveInstanceState
 		if (state0 == null || !state0.getClass().equals(SavedState.class))

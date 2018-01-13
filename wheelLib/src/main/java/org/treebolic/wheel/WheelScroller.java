@@ -24,16 +24,17 @@
 
 package org.treebolic.wheel;
 
-import java.lang.ref.WeakReference;
-
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Scroller class handles scrolling events and updates the spinnerwheel
@@ -47,9 +48,8 @@ public abstract class WheelScroller
 	{
 		/**
 		 * Scrolling callback called when scrolling is performed.
-		 * 
-		 * @param distance
-		 *            the distance to scroll
+		 *
+		 * @param distance the distance to scroll
 		 */
 		void onScroll(int distance);
 
@@ -81,6 +81,7 @@ public abstract class WheelScroller
 
 	private static class AnimationHandler extends Handler
 	{
+		@NonNull
 		private final WeakReference<WheelScroller> wheelScrollerRef;
 
 		public AnimationHandler(WheelScroller scroller0)
@@ -89,7 +90,7 @@ public abstract class WheelScroller
 		}
 
 		@Override
-		public void handleMessage(Message msg)
+		public void handleMessage(@NonNull Message msg)
 		{
 			final WheelScroller wheelScroller = this.wheelScrollerRef.get();
 			if (wheelScroller != null)
@@ -126,13 +127,19 @@ public abstract class WheelScroller
 		}
 	}
 
-	/** Animation handler */
+	/**
+	 * Animation handler
+	 */
 	private final Handler animationHandler = new AnimationHandler(this);
 
-	/** Scrolling duration */
+	/**
+	 * Scrolling duration
+	 */
 	private static final int SCROLLING_DURATION = 400;
 
-	/** Minimum delta for scrolling */
+	/**
+	 * Minimum delta for scrolling
+	 */
 	public static final int MIN_DELTA_FOR_SCROLLING = 1;
 
 	// Listener
@@ -142,6 +149,7 @@ public abstract class WheelScroller
 	private final Context context;
 
 	// Scrolling
+	@NonNull
 	private final GestureDetector gestureDetector;
 	@SuppressWarnings("WeakerAccess")
 	protected Scroller scroller;
@@ -151,11 +159,9 @@ public abstract class WheelScroller
 
 	/**
 	 * Constructor
-	 * 
-	 * @param context0
-	 *            the current context
-	 * @param listener0
-	 *            the scrolling listener
+	 *
+	 * @param context0  the current context
+	 * @param listener0 the scrolling listener
 	 */
 	@SuppressWarnings("WeakerAccess")
 	public WheelScroller(Context context0, ScrollingListener listener0)
@@ -192,9 +198,8 @@ public abstract class WheelScroller
 
 	/**
 	 * Set the the specified scrolling interpolator
-	 * 
-	 * @param interpolator
-	 *            the interpolator
+	 *
+	 * @param interpolator the interpolator
 	 */
 	public void setInterpolator(Interpolator interpolator)
 	{
@@ -204,11 +209,9 @@ public abstract class WheelScroller
 
 	/**
 	 * Scroll the spinnerwheel
-	 * 
-	 * @param distance
-	 *            the scrolling distance
-	 * @param time
-	 *            the scrolling duration
+	 *
+	 * @param distance the scrolling distance
+	 * @param time     the scrolling duration
 	 */
 	public void scroll(int distance, int time)
 	{
@@ -229,41 +232,42 @@ public abstract class WheelScroller
 
 	/**
 	 * Handles Touch event
-	 * 
-	 * @param event
-	 *            the motion event
+	 *
+	 * @param event the motion event
 	 * @return true if the event was handled, false otherwise.
 	 */
 	@SuppressWarnings("SameReturnValue")
-	public boolean onTouchEvent(MotionEvent event)
+	public boolean onTouchEvent(@NonNull MotionEvent event)
 	{
 		switch (event.getAction())
 		{
-		case MotionEvent.ACTION_DOWN:
-			this.lastTouchedPosition = getMotionEventPosition(event);
-			this.scroller.forceFinished(true);
-			clearMessages();
-			this.listener.onTouch();
-			break;
-
-		case MotionEvent.ACTION_UP:
-			if (this.scroller.isFinished())
-				this.listener.onTouchUp();
-			break;
-
-		case MotionEvent.ACTION_MOVE:
-			// perform scrolling
-			int distance = (int) (getMotionEventPosition(event) - this.lastTouchedPosition);
-			if (distance != 0)
-			{
-				startScrolling();
-				this.listener.onScroll(distance);
+			case MotionEvent.ACTION_DOWN:
 				this.lastTouchedPosition = getMotionEventPosition(event);
-			}
-			break;
+				this.scroller.forceFinished(true);
+				clearMessages();
+				this.listener.onTouch();
+				break;
 
-		default:
-			break;
+			case MotionEvent.ACTION_UP:
+				if (this.scroller.isFinished())
+				{
+					this.listener.onTouchUp();
+				}
+				break;
+
+			case MotionEvent.ACTION_MOVE:
+				// perform scrolling
+				int distance = (int) (getMotionEventPosition(event) - this.lastTouchedPosition);
+				if (distance != 0)
+				{
+					startScrolling();
+					this.listener.onScroll(distance);
+					this.lastTouchedPosition = getMotionEventPosition(event);
+				}
+				break;
+
+			default:
+				break;
 		}
 
 		if (!this.gestureDetector.onTouchEvent(event) && event.getAction() == MotionEvent.ACTION_UP)
@@ -280,9 +284,8 @@ public abstract class WheelScroller
 
 	/**
 	 * Set next message to queue. Clears queue before.
-	 * 
-	 * @param message
-	 *            the message to set
+	 *
+	 * @param message the message to set
 	 */
 	private void setNextMessage(int message)
 	{

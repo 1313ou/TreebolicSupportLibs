@@ -3,6 +3,7 @@ package org.treebolic.guide;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -48,7 +49,7 @@ public class AboutActivity extends AppCompatCommonActivity
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(final MenuItem item)
+	public boolean onOptionsItemSelected(@NonNull final MenuItem item)
 	{
 		final int itemId = item.getItemId();
 		if (itemId == R.id.action_help)

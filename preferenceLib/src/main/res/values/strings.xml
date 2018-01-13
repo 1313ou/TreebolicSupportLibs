@@ -1,6 +1,6 @@
 <resources>
-	
-    <!-- hint -->
-    <string name="hints">Hints</string>
-    
+
+	<!-- hint -->
+	<string name="hints">Hints</string>
+
 </resources>

@@ -10,6 +10,8 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -102,11 +104,13 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Download manager
 	 */
+	@Nullable
 	private DownloadManager downloadManager;
 
 	/**
 	 * Done receiver
 	 */
+	@Nullable
 	private BroadcastReceiver receiver;
 
 	/**
@@ -200,7 +204,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		{
 			@SuppressWarnings("synthetic-access")
 			@Override
-			public void onReceive(final Context context, final Intent intent)
+			public void onReceive(final Context context, @NonNull final Intent intent)
 			{
 				final String action = intent.getAction();
 				if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action))
@@ -268,7 +272,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	}
 
 	@Override
-	public void onClick(final View view)
+	public void onClick(@NonNull final View view)
 	{
 		final int id = view.getId();
 		if (id == R.id.downloadButton)
@@ -414,11 +418,11 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 
 						return true;
 					}
-					catch (final FileNotFoundException e)
+					catch (@NonNull final FileNotFoundException e)
 					{
 						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e);
 					}
-					catch (final IOException e)
+					catch (@NonNull final IOException e)
 					{
 						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e);
 					}
@@ -430,7 +434,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 							{
 								inputStream.close();
 							}
-							catch (final IOException e)
+							catch (@NonNull final IOException e)
 							{
 								//
 							}
@@ -505,7 +509,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 					{
 						Thread.sleep(2000);
 					}
-					catch (final InterruptedException e)
+					catch (@NonNull final InterruptedException e)
 					{
 						//
 					}

@@ -25,17 +25,23 @@
 package org.treebolic.wheel.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * Numeric Wheel adapter.
  */
 public class NumericWheelAdapter extends AbstractWheelTextAdapter
 {
-	/** The default min value */
+	/**
+	 * The default min value
+	 */
 	@SuppressWarnings("WeakerAccess")
 	public static final int DEFAULT_MAX_VALUE = 9;
 
-	/** The default max value */
+	/**
+	 * The default max value
+	 */
 	private static final int DEFAULT_MIN_VALUE = 0;
 
 	// Values
@@ -47,45 +53,37 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter
 
 	/**
 	 * Constructor
-	 * 
-	 * @param context0
-	 *            the current context
+	 *
+	 * @param context0 the current context
 	 */
-	public NumericWheelAdapter(Context context0)
+	public NumericWheelAdapter(@NonNull Context context0)
 	{
 		this(context0, DEFAULT_MIN_VALUE, DEFAULT_MAX_VALUE);
 	}
 
 	/**
 	 * Constructor
-	 * 
-	 * @param context0
-	 *            the current context
-	 * @param minValue0
-	 *            the spinnerwheel min value
-	 * @param maxValue0
-	 *            the spinnerwheel max value
+	 *
+	 * @param context0  the current context
+	 * @param minValue0 the spinnerwheel min value
+	 * @param maxValue0 the spinnerwheel max value
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public NumericWheelAdapter(Context context0, @SuppressWarnings("SameParameterValue") int minValue0, @SuppressWarnings("SameParameterValue") int maxValue0)
+	public NumericWheelAdapter(@NonNull Context context0, @SuppressWarnings("SameParameterValue") int minValue0, @SuppressWarnings("SameParameterValue") int maxValue0)
 	{
 		this(context0, minValue0, maxValue0, null);
 	}
 
 	/**
 	 * Constructor
-	 * 
-	 * @param context0
-	 *            the current context
-	 * @param minValue0
-	 *            the spinnerwheel min value
-	 * @param maxValue0
-	 *            the spinnerwheel max value
-	 * @param format0
-	 *            the format string
+	 *
+	 * @param context0  the current context
+	 * @param minValue0 the spinnerwheel min value
+	 * @param maxValue0 the spinnerwheel max value
+	 * @param format0   the format string
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public NumericWheelAdapter(Context context0, int minValue0, int maxValue0, @SuppressWarnings("SameParameterValue") String format0)
+	public NumericWheelAdapter(@NonNull Context context0, int minValue0, int maxValue0, @SuppressWarnings("SameParameterValue") String format0)
 	{
 		super(context0);
 
@@ -106,6 +104,7 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter
 		notifyDataInvalidatedEvent();
 	}
 
+	@Nullable
 	@SuppressWarnings("boxing")
 	@Override
 	public CharSequence getItemText(int index)

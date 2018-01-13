@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="folder">Dossier</string>
-    <string name="parentDirectory">Parent</string>
-    <string name="fileSize">Taille</string>
-    <string name="currentDir">Dossier</string>
-    <string name="type">Type</string>
-    <string name="howToSelect">Appuyer longuement pour sélectionner un dossier</string>
+	<string name="folder">Dossier</string>
+	<string name="parentDirectory">Parent</string>
+	<string name="fileSize">Taille</string>
+	<string name="currentDir">Dossier</string>
+	<string name="type">Type</string>
+	<string name="howToSelect">Appuyer longuement pour sélectionner un dossier</string>
 
 </resources>

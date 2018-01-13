@@ -24,6 +24,8 @@
 
 package org.treebolic.wheel;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -49,9 +51,8 @@ public class WheelRecycler
 
 	/**
 	 * Constructor
-	 * 
-	 * @param wheel0
-	 *            the spinnerwheel view
+	 *
+	 * @param wheel0 the spinnerwheel view
 	 */
 	public WheelRecycler(AbstractWheel wheel0)
 	{
@@ -61,19 +62,16 @@ public class WheelRecycler
 	/**
 	 * Recycles items from specified layout. There are saved only items not included to specified range. All the cached items are removed from original layout.
 	 *
-	 * @param layout
-	 *            the layout containing items to be cached
-	 * @param firstItem0
-	 *            the number of first item in layout
-	 * @param range
-	 *            the range of current spinnerwheel items
+	 * @param layout     the layout containing items to be cached
+	 * @param firstItem0 the number of first item in layout
+	 * @param range      the range of current spinnerwheel items
 	 * @return the new value of first item number
 	 */
-	public int recycleItems(LinearLayout layout, int firstItem0, ItemsRange range)
+	public int recycleItems(@NonNull LinearLayout layout, int firstItem0, @NonNull ItemsRange range)
 	{
 		int firstItem = firstItem0;
 		int index = firstItem;
-		for (int i = 0; i < layout.getChildCount();)
+		for (int i = 0; i < layout.getChildCount(); )
 		{
 			if (!range.contains(index))
 			{
@@ -95,9 +93,10 @@ public class WheelRecycler
 
 	/**
 	 * Gets item view
-	 * 
+	 *
 	 * @return the cached view
 	 */
+	@Nullable
 	public View getItem()
 	{
 		return getCachedView(this.items);
@@ -105,9 +104,10 @@ public class WheelRecycler
 
 	/**
 	 * Gets empty item view
-	 * 
+	 *
 	 * @return the cached empty view
 	 */
+	@Nullable
 	public View getEmptyItem()
 	{
 		return getCachedView(this.emptyItems);
@@ -130,11 +130,9 @@ public class WheelRecycler
 
 	/**
 	 * Adds view to specified cache. Creates a cache list if it is null.
-	 * 
-	 * @param view
-	 *            the view to be cached
-	 * @param cache0
-	 *            the cache list
+	 *
+	 * @param view   the view to be cached
+	 * @param cache0 the cache list
 	 * @return the cache list
 	 */
 	private static List<View> addView(View view, List<View> cache0)
@@ -151,11 +149,9 @@ public class WheelRecycler
 
 	/**
 	 * Adds view to cache. Determines view type (item view or empty one) by index.
-	 * 
-	 * @param view
-	 *            the view to be cached
-	 * @param index0
-	 *            the index of view
+	 *
+	 * @param view   the view to be cached
+	 * @param index0 the index of view
 	 */
 	private void recycleView(View view, int index0)
 	{
@@ -179,12 +175,12 @@ public class WheelRecycler
 
 	/**
 	 * Gets view from specified cache.
-	 * 
-	 * @param cache
-	 *            the cache
+	 *
+	 * @param cache the cache
 	 * @return the first view from cache.
 	 */
-	private static View getCachedView(final List<View> cache)
+	@Nullable
+	private static View getCachedView(@Nullable final List<View> cache)
 	{
 		if (cache != null && cache.size() > 0)
 		{

@@ -1,28 +1,28 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="title_activity_download" tools:ignore="UnusedResources">Téléchargement</string>
+	<string name="title_activity_download" tools:ignore="UnusedResources">Téléchargement</string>
 
-    <string name="download">Téléchargement</string>
+	<string name="download">Téléchargement</string>
 
-    <!-- button -->
-    <string name="show">Montrer</string>
+	<!-- button -->
+	<string name="show">Montrer</string>
 
-    <!-- hint -->
-    <string name="src">[source]</string>
-    <string name="target">[cible]</string>
-    <string name="expandArchive">Décompresser archive</string>
-    <string name="internal">[interne]</string>
+	<!-- hint -->
+	<string name="src">[source]</string>
+	<string name="target">[cible]</string>
+	<string name="expandArchive">Décompresser archive</string>
+	<string name="internal">[interne]</string>
 
-    <!-- ok/error -->
-    <string name="ok_data">Données disponibles</string>
-    <string name="fail_data">Données non disponibles</string>
-    <string name="error_null_download_url" tools:ignore="UnusedResources">URL de téléchargement nulle</string>
+	<!-- ok/error -->
+	<string name="ok_data">Données disponibles</string>
+	<string name="fail_data">Données non disponibles</string>
+	<string name="error_null_download_url" tools:ignore="UnusedResources">URL de téléchargement nulle</string>
 
 	<!-- status -->
-    <string name="status_download_fail">Échec du téléchargement!</string>
-    <string name="status_download_paused">Téléchargement en pause!</string>
-    <string name="status_download_pending">Téléchargement lancé!</string>
-    <string name="status_download_running">Téléchargement en cours!</string>
-    <string name="status_download_successful">Téléchargement terminé!</string>
-    
+	<string name="status_download_fail">Échec du téléchargement!</string>
+	<string name="status_download_paused">Téléchargement en pause!</string>
+	<string name="status_download_pending">Téléchargement lancé!</string>
+	<string name="status_download_running">Téléchargement en cours!</string>
+	<string name="status_download_successful">Téléchargement terminé!</string>
+
 </resources>

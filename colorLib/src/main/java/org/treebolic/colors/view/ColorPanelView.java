@@ -21,6 +21,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -154,7 +156,7 @@ public class ColorPanelView extends View
 	}
 
 	@Override
-	protected void onDraw(final Canvas canvas)
+	protected void onDraw(@NonNull final Canvas canvas)
 	{
 		// border
 		//noinspection ConstantConditions
@@ -232,7 +234,7 @@ public class ColorPanelView extends View
 	 *
 	 * @param color may be null
 	 */
-	public void setValue(final Integer color)
+	public void setValue(@Nullable final Integer color)
 	{
 		if (color == null)
 		{

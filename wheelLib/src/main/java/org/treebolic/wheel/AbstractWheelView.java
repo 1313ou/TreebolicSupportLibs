@@ -33,6 +33,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 
@@ -81,31 +82,46 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 	// configurable properties
 
-	/** The alpha of the selector spinnerwheel when it is dimmed. */
+	/**
+	 * The alpha of the selector spinnerwheel when it is dimmed.
+	 */
 	@SuppressWarnings("WeakerAccess")
 	protected int mItemsDimmedAlpha;
 
-	/** The alpha of separators spinnerwheel when they are shown. */
+	/**
+	 * The alpha of separators spinnerwheel when they are shown.
+	 */
 	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerActiveAlpha;
 
-	/** The alpha of separators when they are is dimmed. */
+	/**
+	 * The alpha of separators when they are is dimmed.
+	 */
 	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerDimmedAlpha;
 
-	/** The tint of separators. */
+	/**
+	 * The tint of separators.
+	 */
 	@SuppressWarnings("WeakerAccess")
 	protected int mSelectionDividerTint;
 
-	/** Top and bottom items offset */
+	/**
+	 * Top and bottom items offset
+	 */
 	@SuppressWarnings("WeakerAccess")
 	protected int mItemOffsetPercent;
 
-	/** Left and right padding value */
+	/**
+	 * Left and right padding value
+	 */
 	@SuppressWarnings("WeakerAccess")
 	protected int mItemsPadding;
 
-	/** Divider for showing item to be selected while scrolling */
+	/**
+	 * Divider for showing item to be selected while scrolling
+	 */
+	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	protected Drawable mSelectionDivider;
 
@@ -194,8 +210,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 		// creating animators
 		this.mDimSelectorWheelAnimator = ObjectAnimator.ofFloat(this, PROPERTY_SELECTOR_PAINT_COEFF, 1, 0);
 
-		this.mDimSeparatorsAnimator = ObjectAnimator.ofInt(this, PROPERTY_SEPARATORS_PAINT_ALPHA, this.mSelectionDividerActiveAlpha,
-				this.mSelectionDividerDimmedAlpha);
+		this.mDimSeparatorsAnimator = ObjectAnimator.ofInt(this, PROPERTY_SEPARATORS_PAINT_ALPHA, this.mSelectionDividerActiveAlpha, this.mSelectionDividerDimmedAlpha);
 
 		// creating paints
 		this.mSeparatorsPaint = new Paint();
@@ -206,6 +221,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 		this.mSelectorWheelPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
 
 		// drawable tint
+		assert this.mSelectionDivider != null;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 		{
 			this.mSelectionDivider.setTint(this.mSelectionDividerTint);
@@ -219,10 +235,8 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * Recreates assets (like bitmaps) when layout size has been changed
 	 *
-	 * @param width
-	 *            New spinnerwheel width
-	 * @param height
-	 *            New spinnerwheel height
+	 * @param width  New spinnerwheel width
+	 * @param height New spinnerwheel height
 	 */
 	@Override
 	protected void recreateAssets(int width, int height)
@@ -234,9 +248,8 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 	/**
 	 * Sets the <code>alpha</code> of the {@link Paint} for drawing separators spinnerwheel.
-	 * 
-	 * @param alpha
-	 *            alpha value from 0 to 255
+	 *
+	 * @param alpha alpha value from 0 to 255
 	 */
 	@SuppressWarnings("WeakerAccess")
 	public void setSeparatorsPaintAlpha(int alpha)
@@ -248,8 +261,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * Sets the <code>coeff</code> of the {@link Paint} for drawing the selector spinnerwheel.
 	 *
-	 * @param coeff
-	 *            Coefficient from 0 (selector is passive) to 1 (selector is active)
+	 * @param coeff Coefficient from 0 (selector is passive) to 1 (selector is active)
 	 */
 	@SuppressWarnings("WeakerAccess")
 	abstract public void setSelectorPaintCoeff(float coeff);
@@ -297,8 +309,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * Fade the selector spinnerwheel via an animation.
 	 *
-	 * @param animationDuration
-	 *            The duration of the animation.
+	 * @param animationDuration The duration of the animation.
 	 */
 	private void fadeSelectorWheel(long animationDuration)
 	{
@@ -309,8 +320,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * Fade the selector spinnerwheel via an animation.
 	 *
-	 * @param animationDuration
-	 *            The duration of the animation.
+	 * @param animationDuration The duration of the animation.
 	 */
 	private void lightSeparators(long animationDuration)
 	{
@@ -354,8 +364,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	/**
 	 * Draws items on specified canvas
 	 *
-	 * @param canvas
-	 *            the canvas for drawing
+	 * @param canvas the canvas for drawing
 	 */
 	abstract protected void drawItems(Canvas canvas);
 }

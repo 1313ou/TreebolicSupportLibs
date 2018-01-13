@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.util.Log;
@@ -62,8 +63,10 @@ public class SearchSettings extends AppCompatDialogFragment
 
 	private WheelView modeWheel;
 
+	@Nullable
 	private Adapter modeAdapter;
 
+	@Nullable
 	private Adapter sourceAdapter;
 
 	private String[] modes;
@@ -280,7 +283,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		 * Constructor
 		 */
 		@SuppressWarnings("WeakerAccess")
-		protected Adapter(final Context context0, final int layout0, final String[] texts0, final int[] icons0, final int len0, final Type type0)
+		protected Adapter(@NonNull final Context context0, final int layout0, final String[] texts0, final int[] icons0, final int len0, final Type type0)
 		{
 			super(context0, layout0, NO_RESOURCE);
 			this.labels = texts0;
@@ -290,10 +293,12 @@ public class SearchSettings extends AppCompatDialogFragment
 			setItemTextResource(R.id.wheel_name);
 		}
 
+		@Nullable
 		@Override
 		public View getItem(final int index, final View cachedView, final ViewGroup parent)
 		{
 			View view = super.getItem(index, cachedView, parent);
+			assert view != null;
 			ImageView img = view.findViewById(R.id.wheel_icon);
 			img.setImageResource(this.icons[index]);
 			return view;
@@ -320,7 +325,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	/**
 	 * Show
 	 */
-	static public void show(final FragmentManager fragmentManager)
+	static public void show(@NonNull final FragmentManager fragmentManager)
 	{
 		final AppCompatDialogFragment newFragment = SearchSettings.newInstance();
 		newFragment.show(fragmentManager, "dialog");

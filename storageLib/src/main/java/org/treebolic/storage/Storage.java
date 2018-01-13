@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.Pair;
 
@@ -47,11 +48,13 @@ public class Storage
 	/**
 	 * Cached treebolic storage
 	 */
+	@Nullable
 	private static File treebolicStorage = null;
 
 	/**
 	 * Cached external storage
 	 */
+	@Nullable
 	private static String extStorage = null;
 
 	/**
@@ -78,7 +81,7 @@ public class Storage
 		 * @param type2 type 2
 		 * @return order
 		 */
-		static public int compare(final DirType type1, final DirType type2)
+		static public int compare(@NonNull final DirType type1, @NonNull final DirType type2)
 		{
 			int i1 = type1.ordinal();
 			int i2 = type2.ordinal();
@@ -172,7 +175,7 @@ public class Storage
 	 * @param context context
 	 * @return data cache
 	 */
-	static public File getCacheDir(final Context context)
+	static public File getCacheDir(@NonNull final Context context)
 	{
 		// external is first choice
 		File cache = context.getExternalCacheDir();
@@ -190,6 +193,7 @@ public class Storage
 	 *
 	 * @return external storage directory
 	 */
+	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	static public String getExternalStorage()
 	{
@@ -247,7 +251,7 @@ public class Storage
 					Integer.valueOf(lastFolder);
 					isDigit = true;
 				}
-				catch (final NumberFormatException ignored)
+				catch (@NonNull final NumberFormatException ignored)
 				{
 					//
 				}
@@ -284,6 +288,7 @@ public class Storage
 	 *
 	 * @return map per type of of external storage directories
 	 */
+	@NonNull
 	public static Map<StorageType, String[]> getStorageDirectories()
 	{
 		// result set of paths
@@ -313,7 +318,7 @@ public class Storage
 					Integer.valueOf(lastFolder);
 					isDigit = true;
 				}
-				catch (final NumberFormatException ignored)
+				catch (@NonNull final NumberFormatException ignored)
 				{
 					//
 				}
@@ -370,9 +375,10 @@ public class Storage
 	 *
 	 * @return treebolic storage directory
 	 */
+	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
-	static public File getTreebolicStorage(final Context context)
+	static public File getTreebolicStorage(@NonNull final Context context)
 	{
 		// if cached return cache
 		if (Storage.treebolicStorage != null)
@@ -394,9 +400,11 @@ public class Storage
 
 		// discover
 		Storage.treebolicStorage = Storage.discoverTreebolicStorage(context);
+		assert treebolicStorage != null;
+		String path = treebolicStorage.getAbsolutePath();
 
 		// flag as discovered
-		sharedPref.edit().putString(Storage.PREF_TREEBOLIC_STORAGE, Storage.treebolicStorage.getAbsolutePath()).commit();
+		sharedPref.edit().putString(Storage.PREF_TREEBOLIC_STORAGE, path).commit();
 
 		return Storage.treebolicStorage;
 	}
@@ -407,9 +415,10 @@ public class Storage
 	 * @param context context
 	 * @return Treebolic storage
 	 */
+	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	@TargetApi(Build.VERSION_CODES.KITKAT)
-	static public File discoverTreebolicStorage(final Context context)
+	static public File discoverTreebolicStorage(@NonNull final Context context)
 	{
 		// application-specific secondary storage or primary (KITKAT)
 		try
@@ -432,7 +441,7 @@ public class Storage
 				}
 			}
 		}
-		catch (final Throwable ignored)
+		catch (@NonNull final Throwable ignored)
 		{
 			//
 		}
@@ -486,7 +495,7 @@ public class Storage
 				}
 			}
 		}
-		catch (final Throwable ignored)
+		catch (@NonNull final Throwable ignored)
 		{
 			//
 		}
@@ -502,7 +511,7 @@ public class Storage
 	 * @return true if it qualifies
 	 */
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-	private static boolean qualifies(final File dir)
+	private static boolean qualifies(@Nullable final File dir)
 	{
 		if (dir == null)
 		{
@@ -529,10 +538,11 @@ public class Storage
 	 * @return uri of copied file
 	 */
 	@SuppressWarnings("resource")
-	public static Uri copyAssetFile(final Context context, final String fileName)
+	public static Uri copyAssetFile(@NonNull final Context context, @NonNull final String fileName)
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
+		assert dir != null;
 		//noinspection ResultOfMethodCallIgnored
 		dir.mkdirs();
 		final File file = new File(dir, fileName);
@@ -551,7 +561,7 @@ public class Storage
 	 * @param toPath       destination path
 	 * @return true if successful
 	 */
-	private static boolean copyAsset(final AssetManager assetManager, final String assetPath, final String toPath)
+	private static boolean copyAsset(@NonNull final AssetManager assetManager, final String assetPath, @NonNull final String toPath)
 	{
 		InputStream in = null;
 		OutputStream out = null;
@@ -564,7 +574,7 @@ public class Storage
 			Storage.copyFile(in, out);
 			return true;
 		}
-		catch (final Exception ignored)
+		catch (@NonNull final Exception ignored)
 		{
 			return false;
 		}
@@ -576,7 +586,7 @@ public class Storage
 				{
 					out.close();
 				}
-				catch (final IOException ignored)
+				catch (@NonNull final IOException ignored)
 				{
 					//
 				}
@@ -587,7 +597,7 @@ public class Storage
 				{
 					in.close();
 				}
-				catch (final IOException ignored)
+				catch (@NonNull final IOException ignored)
 				{
 					//
 				}
@@ -602,7 +612,7 @@ public class Storage
 	 * @param toPath   destination path
 	 * @return true if successful
 	 */
-	public static boolean copyFile(final String fromPath, final String toPath)
+	public static boolean copyFile(@NonNull final String fromPath, @NonNull final String toPath)
 	{
 		InputStream in = null;
 		OutputStream out = null;
@@ -615,7 +625,7 @@ public class Storage
 			Storage.copyFile(in, out);
 			return true;
 		}
-		catch (final Exception ignored)
+		catch (@NonNull final Exception ignored)
 		{
 			return false;
 		}
@@ -627,7 +637,7 @@ public class Storage
 				{
 					out.close();
 				}
-				catch (final IOException ignored)
+				catch (@NonNull final IOException ignored)
 				{
 					//
 				}
@@ -638,7 +648,7 @@ public class Storage
 				{
 					in.close();
 				}
-				catch (final IOException ignored)
+				catch (@NonNull final IOException ignored)
 				{
 					//
 				}
@@ -654,7 +664,7 @@ public class Storage
 	 * @throws IOException io exception
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public static void copyFile(final InputStream in, final OutputStream out) throws IOException
+	public static void copyFile(@NonNull final InputStream in, @NonNull final OutputStream out) throws IOException
 	{
 		final byte[] buffer = new byte[1024];
 		int read;
@@ -671,9 +681,10 @@ public class Storage
 	 *
 	 * @param context context
 	 */
-	public static void cleanup(final Context context)
+	public static void cleanup(@NonNull final Context context)
 	{
 		final File dir = Storage.getTreebolicStorage(context);
+		assert dir != null;
 		for (final File file : dir.listFiles())
 		{
 			//noinspection ResultOfMethodCallIgnored
@@ -689,10 +700,11 @@ public class Storage
 	 * @return uri of dest dir
 	 */
 	@SuppressWarnings({"resource", "UnusedReturnValue"})
-	public static Uri expandZipAssetFile(final Context context, final String fileName)
+	public static Uri expandZipAssetFile(@NonNull final Context context, final String fileName)
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
+		assert dir != null;
 		//noinspection ResultOfMethodCallIgnored
 		dir.mkdirs();
 		if (Storage.expandZipAsset(assetManager, fileName, dir.getAbsolutePath()))
@@ -710,7 +722,7 @@ public class Storage
 	 * @param toPath       destination path
 	 * @return true if successful
 	 */
-	private static boolean expandZipAsset(final AssetManager assetManager, final String assetPath, final String toPath)
+	private static boolean expandZipAsset(@NonNull final AssetManager assetManager, final String assetPath, @NonNull final String toPath)
 	{
 		InputStream in = null;
 		try
@@ -719,7 +731,7 @@ public class Storage
 			Storage.expandZip(in, null, new File(toPath));
 			return true;
 		}
-		catch (final Exception ignored)
+		catch (@NonNull final Exception ignored)
 		{
 			return false;
 		}
@@ -731,7 +743,7 @@ public class Storage
 				{
 					in.close();
 				}
-				catch (final IOException ignored)
+				catch (@NonNull final IOException ignored)
 				{
 					//
 				}
@@ -747,8 +759,9 @@ public class Storage
 	 * @param destDir           destination dir
 	 * @return dest dir
 	 */
+	@NonNull
 	@SuppressWarnings("UnusedReturnValue")
-	static private File expandZip(final InputStream in, @SuppressWarnings("SameParameterValue") final String pathPrefixFilter0, final File destDir) throws IOException
+	static private File expandZip(@NonNull final InputStream in, @SuppressWarnings("SameParameterValue") final String pathPrefixFilter0, @NonNull final File destDir) throws IOException
 	{
 		// prefix
 		String pathPrefixFilter = pathPrefixFilter0;
@@ -861,6 +874,7 @@ public class Storage
 	 *
 	 * @return list of storage directories
 	 */
+	@NonNull
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static private Collection<Directory> getDirectories()
 	{
@@ -970,7 +984,7 @@ public class Storage
 			final String userId = getUserId();
 
 			// /extStorage/emulated/0[1,2,...]
-			if (userId == null || userId.isEmpty())
+			if (/*userId == null ||*/ userId.isEmpty())
 			{
 				return new File(emulatedStorageTarget);
 			}
@@ -1039,6 +1053,7 @@ public class Storage
 	 *
 	 * @return user id
 	 */
+	@NonNull
 	static private String getUserId()
 	{
 		final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -1051,7 +1066,7 @@ public class Storage
 			Integer.valueOf(lastFolder);
 			isDigit = true;
 		}
-		catch (final NumberFormatException ignored)
+		catch (@NonNull final NumberFormatException ignored)
 		{
 			//
 		}

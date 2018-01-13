@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="chooseEntry">Choisir une entrée</string>
+	<string name="chooseEntry">Choisir une entrée</string>
 
 </resources>

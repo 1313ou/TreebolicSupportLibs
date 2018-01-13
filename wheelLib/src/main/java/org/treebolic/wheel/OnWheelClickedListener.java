@@ -31,11 +31,13 @@ package org.treebolic.wheel;
  * <li> Wheel view is scrolled
  */
 @SuppressWarnings("WeakerAccess")
-public interface OnWheelClickedListener {
-    /**
-     * Callback method to be invoked when current item clicked
-     * @param wheel the spinnerwheel view
-     * @param itemIndex the index of clicked item
-     */
-    void onItemClicked(AbstractWheel wheel, int itemIndex);
+public interface OnWheelClickedListener
+{
+	/**
+	 * Callback method to be invoked when current item clicked
+	 *
+	 * @param wheel     the spinnerwheel view
+	 * @param itemIndex the index of clicked item
+	 */
+	void onItemClicked(AbstractWheel wheel, int itemIndex);
 }

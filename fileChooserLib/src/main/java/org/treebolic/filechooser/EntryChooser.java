@@ -3,6 +3,8 @@ package org.treebolic.filechooser;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
 
@@ -85,7 +87,8 @@ public class EntryChooser
 	 * @return list of entries
 	 * @throws IOException io exception
 	 */
-	static private List<String> getZipEntries(final File archive, @SuppressWarnings("SameParameterValue") final String negativeFilter, @SuppressWarnings("SameParameterValue") final String positiveFilter) throws IOException
+	@NonNull
+	static private List<String> getZipEntries(final File archive, @Nullable @SuppressWarnings("SameParameterValue") final String negativeFilter, @Nullable @SuppressWarnings("SameParameterValue") final String positiveFilter) throws IOException
 	{
 		ZipFile zipFile = null;
 		try
@@ -131,7 +134,7 @@ public class EntryChooser
 	 * @param callback select callback
 	 * @throws IOException io exception
 	 */
-	static public void choose(final Context context, final File archive, final Callback callback) throws IOException
+	static public void choose(final Context context, final File archive, @NonNull final Callback callback) throws IOException
 	{
 		final List<String> list = EntryChooser.getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*");
 		final DialogInterface.OnClickListener listener = (dialog, which) ->
