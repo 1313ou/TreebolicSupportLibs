@@ -63,7 +63,7 @@ public class AppCompatCommonUtils
 				return intValue;
 			}
 		}
-		catch (Resources.NotFoundException e)
+		catch (Resources.NotFoundException ignored)
 		{
 			final SharedPreferences.Editor editor = sharedPrefs.edit();
 			editor.remove(PREF_THEME);
