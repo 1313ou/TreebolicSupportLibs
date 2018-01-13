@@ -157,10 +157,10 @@ public abstract class AbstractWheel extends View
 	@SuppressWarnings("WeakerAccess")
 	protected void initAttributes(AttributeSet attrs, int defStyle)
 	{
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
-		this.mVisibleItems = array.getInt(R.styleable.AbstractWheelView_visibleItems, DEF_VISIBLE_ITEMS);
-		this.mIsAllVisible = array.getBoolean(R.styleable.AbstractWheelView_isAllVisible, false);
-		this.mIsCyclic = array.getBoolean(R.styleable.AbstractWheelView_isCyclic, DEF_IS_CYCLIC);
+		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheel, defStyle, 0);
+		this.mVisibleItems = array.getInt(R.styleable.AbstractWheel_visibleItems, DEF_VISIBLE_ITEMS);
+		this.mIsAllVisible = array.getBoolean(R.styleable.AbstractWheel_isAllVisible, false);
+		this.mIsCyclic = array.getBoolean(R.styleable.AbstractWheel_isCyclic, DEF_IS_CYCLIC);
 
 		array.recycle();
 	}
@@ -215,7 +215,6 @@ public abstract class AbstractWheel extends View
 					onScrollTouchedUp(); // if scrolling IS performed, whe should use onFinished instead
 			}
 
-			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onScroll(int distance)
 			{
@@ -289,14 +288,7 @@ public abstract class AbstractWheel extends View
 		this.mCurrentItemIdx = ss.currentItem;
 
 		// dirty hack to re-draw child items correctly
-		postDelayed(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				invalidateItemsLayout(false);
-			}
-		}, 100);
+		postDelayed(() -> invalidateItemsLayout(false), 100);
 	}
 
 	static class SavedState extends BaseSavedState
@@ -322,10 +314,8 @@ public abstract class AbstractWheel extends View
 		}
 
 		// required field that makes Parcelables from a Parcel
-		@SuppressWarnings("hiding")
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
-			@SuppressWarnings("synthetic-access")
 			@Override
 			public SavedState createFromParcel(Parcel in)
 			{
