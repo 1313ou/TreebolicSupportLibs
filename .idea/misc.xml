@@ -123,6 +123,8 @@
     <pattern value="org.treebolic.ColorUtils" method="tint" />
     <pattern value="org.treebolic.ColorUtils" />
     <pattern value="org.treebolic.AppCompatCommonUtils" />
+    <pattern value="org.treebolic.wheel.OnWheelScrollListener" method="onScrollingStarted" />
+    <pattern value="org.treebolic.wheel.OnWheelScrollListener" method="onScrollingFinished" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />

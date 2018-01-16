@@ -87,6 +87,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Download uri
 	 */
+	@Nullable
 	@SuppressWarnings("CanBeFinal")
 	protected String downloadUrl;
 

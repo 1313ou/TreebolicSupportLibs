@@ -29,7 +29,6 @@
 
 package org.treebolic.colors.view;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -798,7 +797,6 @@ public class ColorPickerView extends View
 		return super.onTrackballEvent(event);
 	}
 
-	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouchEvent(@NonNull final MotionEvent event)
 	{
@@ -838,6 +836,12 @@ public class ColorPickerView extends View
 		}
 
 		return super.onTouchEvent(event);
+	}
+
+	@Override
+	public boolean performClick()
+	{
+		return super.performClick();
 	}
 
 	private boolean moveTrackersIfNeeded(@NonNull final MotionEvent event)
