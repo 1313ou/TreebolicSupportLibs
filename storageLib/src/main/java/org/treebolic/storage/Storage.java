@@ -48,7 +48,6 @@ public class Storage
 	/**
 	 * Cached treebolic storage
 	 */
-	@Nullable
 	private static File treebolicStorage = null;
 
 	/**
@@ -375,9 +374,9 @@ public class Storage
 	 *
 	 * @return treebolic storage directory
 	 */
-	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
+	@NonNull
 	static public File getTreebolicStorage(@NonNull final Context context)
 	{
 		// if cached return cache
@@ -400,8 +399,8 @@ public class Storage
 
 		// discover
 		Storage.treebolicStorage = Storage.discoverTreebolicStorage(context);
-		assert treebolicStorage != null;
-		String path = treebolicStorage.getAbsolutePath();
+		assert Storage.treebolicStorage != null;
+		String path = Storage.treebolicStorage.getAbsolutePath();
 
 		// flag as discovered
 		sharedPref.edit().putString(Storage.PREF_TREEBOLIC_STORAGE, path).commit();
@@ -538,11 +537,12 @@ public class Storage
 	 * @return uri of copied file
 	 */
 	@SuppressWarnings("resource")
+	@Nullable
 	public static Uri copyAssetFile(@NonNull final Context context, @NonNull final String fileName)
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
-		assert dir != null;
+
 		//noinspection ResultOfMethodCallIgnored
 		dir.mkdirs();
 		final File file = new File(dir, fileName);
@@ -684,7 +684,6 @@ public class Storage
 	public static void cleanup(@NonNull final Context context)
 	{
 		final File dir = Storage.getTreebolicStorage(context);
-		assert dir != null;
 		for (final File file : dir.listFiles())
 		{
 			//noinspection ResultOfMethodCallIgnored
@@ -704,7 +703,6 @@ public class Storage
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
-		assert dir != null;
 		//noinspection ResultOfMethodCallIgnored
 		dir.mkdirs();
 		if (Storage.expandZipAsset(assetManager, fileName, dir.getAbsolutePath()))

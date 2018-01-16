@@ -838,11 +838,13 @@ public class ColorPickerView extends View
 		return super.onTouchEvent(event);
 	}
 
+	/*
 	@Override
 	public boolean performClick()
 	{
 		return super.performClick();
 	}
+	*/
 
 	private boolean moveTrackersIfNeeded(@NonNull final MotionEvent event)
 	{
