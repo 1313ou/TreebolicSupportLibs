@@ -2,9 +2,9 @@
 
 source "../../../make-artwork-lib.sh"
 
-button_list="ic_download.svg"
-icon_list="ic_download_*.svg"
+button="ic_download.svg"
+icon="ic_download_*.svg"
 
-make_res "${button_list}" 64
-make_res "${icon_list}" 48
+make_res "${button}" 64
+make_res "${icon}" 48
 
