@@ -2,9 +2,9 @@
 
 source "../../../make-artwork-lib.sh"
 
-help_list="menu*.svg search*.svg tip*.svg toolbar*.svg"
-splash_list="splash*.svg"
+help="menu*.svg search*.svg tip*.svg toolbar*.svg"
+splash="splash*.svg"
 
-make_assets "${help_list}" 48
-make_assets "${splash_list}" 150
+make_assets "${help}" 48
+make_assets "${splash}" 150
 
