@@ -114,6 +114,28 @@
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.AutoEditTextPreference.SavedState CREATOR" />
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.OpenEditTextPreference.SavedState CREATOR" />
       <entry_point TYPE="field" FQNAME="org.treebolic.wheel.AbstractWheel.SavedState CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity ARG_ALLOW_EXPAND_ARCHIVE" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity destDir" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity destUri" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity downloadButton" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity downloadId" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity downloadManager" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity downloadUri" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity downloadUrl" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity expandArchive" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity expandArchiveCheckbox" />
+      <entry_point TYPE="field" FQNAME="android.support.v7.app.contrib.AppCompatPreferenceActivity mDelegate" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.download.DownloadActivity$1 void onClick(android.view.View v)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.download.DownloadActivity$2 void onReceive(android.content.Context context, android.content.Intent intent)" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity progressBar" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity progressStatus" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity receiver" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity RESULT_DOWNLOAD_DATA_AVAILABLE" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.download.DownloadActivity$4 void run()" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.download.DownloadActivity$4$1 void run()" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity src" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity TAG" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity target" />
     </entry_points>
     <pattern value="org.treebolic.AppCompatCommonUtils" method="setThemePref" />
     <pattern value="org.treebolic.ColorUtils" method="getActionBarForegroundColorFromTheme" />
@@ -125,32 +147,291 @@
     <pattern value="org.treebolic.AppCompatCommonUtils" />
     <pattern value="org.treebolic.wheel.OnWheelScrollListener" method="onScrollingStarted" />
     <pattern value="org.treebolic.wheel.OnWheelScrollListener" method="onScrollingFinished" />
+    <pattern value="org.treebolic.guide.AboutActivity" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="AbstractWheel" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelAdapter" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="AbstractWheelTextAdapter" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="AbstractWheelView" />
+    <pattern value="org.treebolic.search.SearchSettings.Adapter" />
+    <pattern value="org.treebolic.search.SearchSettings.Adapter" method="Adapter" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="addClickingListener" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="addContentView" />
+    <pattern value="org.treebolic.colors.drawable.AlphaPatternDrawable" />
+    <pattern value="org.treebolic.colors.drawable.AlphaPatternDrawable" method="AlphaPatternDrawable" />
+    <pattern value="org.treebolic.AppCompatCommonPreferenceActivity" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" />
+    <pattern value="org.treebolic.wheel.adapters.ArrayWheelAdapter" />
+    <pattern value="org.treebolic.wheel.adapters.ArrayWheelAdapter" method="ArrayWheelAdapter" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="AutoEditTextPreference" />
+    <pattern value="org.treebolic.filechooser.EntryChooser.Callback" />
+    <pattern value="org.treebolic.filechooser.EntryChooser" method="choose" />
+    <pattern value="org.treebolic.storage.Storage" method="cleanup" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="ColorPanelView" />
+    <pattern value="org.treebolic.colors.ColorPickerActivity" />
+    <pattern value="org.treebolic.colors.dialog.ColorPickerDialog" />
+    <pattern value="org.treebolic.colors.dialog.ColorPickerDialog" method="ColorPickerDialog" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="ColorPickerPreference" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="ColorPickerView" />
+    <pattern value="org.treebolic.storage.Storage.Directory" method="compareTo" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity.Entry" method="compareTo" />
+    <pattern value="org.treebolic.download.Deploy" method="copy" />
+    <pattern value="org.treebolic.storage.Storage" method="copyAssetFile" />
+    <pattern value="org.treebolic.storage.Storage" method="copyFile" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="createItemsLayout" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="createItemsLayout" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="createScroller" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="createScroller" />
+    <pattern value="org.treebolic.download.Deploy" />
+    <pattern value="org.treebolic.storage.Storage.Directory" />
+    <pattern value="org.treebolic.storage.Storage.Directory" method="Directory" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="doItemsLayout" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="doItemsLayout" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="doProcessing" />
+    <pattern value="org.treebolic.download.DownloadActivity" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="drawItems" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="drawItems" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity.Entry" />
+    <pattern value="org.treebolic.filechooser.EntryChooser" />
+    <pattern value="org.treebolic.filechooser.EntryChooser" method="EntryChooser" />
+    <pattern value="org.treebolic.storage.Storage.Directory" method="equals" />
+    <pattern value="org.treebolic.download.Deploy" method="expand" />
+    <pattern value="org.treebolic.storage.Storage" method="expandZipAssetFile" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity.FileArrayAdapter" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="finished" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="getAlphaSliderText" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="getBorderColor" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="getBorderColor" />
+    <pattern value="org.treebolic.storage.Storage" method="getCacheDir" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="getColor" />
+    <pattern value="org.treebolic.colors.dialog.ColorPickerDialog" method="getColor" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="getCurrentScrollerPosition" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="getCurrentScrollerPosition" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="getDelegate" />
+    <pattern value="org.treebolic.storage.Storage" method="getDirectoriesTypesValues" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelAdapter" method="getEmptyItem" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="getEmptyItem" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="getEmptyItemResource" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="getFinalScrollerPosition" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="getFinalScrollerPosition" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" method="getFolder" />
+    <pattern value="org.treebolic.search.SearchSettings.Adapter" method="getItem" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="getItemResource" />
+    <pattern value="org.treebolic.wheel.adapters.ArrayWheelAdapter" method="getItemsCount" />
+    <pattern value="org.treebolic.search.SearchSettings.Adapter" method="getItemsCount" />
+    <pattern value="org.treebolic.wheel.adapters.ArrayWheelAdapter" method="getItemText" />
+    <pattern value="org.treebolic.wheel.adapters.NumericWheelAdapter" method="getItemText" />
+    <pattern value="org.treebolic.search.SearchSettings.Adapter" method="getItemText" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="getItemTextResource" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="getLabels" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="getMenuInflater" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="getMotionEventPosition" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="getMotionEventPosition" />
+    <pattern value="org.treebolic.colors.drawable.AlphaPatternDrawable" method="getOpacity" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="getSliderTrackerColor" />
+    <pattern value="org.treebolic.storage.Storage" method="getStorageDirectories" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="getSupportActionBar" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="getTextColor" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="getTextSize" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="getValues" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="getValues" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity.FileArrayAdapter" method="getView" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="getVisibleItems" />
+    <pattern value="org.treebolic.storage.Storage.Directory" method="hashCode" />
+    <pattern value="org.treebolic.guide.HelpActivity" />
+    <pattern value="org.treebolic.search.SearchSettings" />
+    <pattern value="org.treebolic.storage.Storage" />
+    <pattern value="org.treebolic.guide.Tip" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="initAttributes" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="initAttributes" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="initData" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="initData" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="invalidateOptionsMenu" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="measureLayout" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="measureLayout" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelAdapter" method="notifyDataChangedEvent" />
+    <pattern value="org.treebolic.wheel.adapters.NumericWheelAdapter" />
+    <pattern value="org.treebolic.wheel.adapters.NumericWheelAdapter" method="NumericWheelAdapter" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onBindDialogView" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onBindDialogView" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onBindDialogView" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onBindView" />
+    <pattern value="org.treebolic.colors.drawable.AlphaPatternDrawable" method="onBoundsChange" />
+    <pattern value="org.treebolic.colors.ColorPickerActivity" method="onClick" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="onClick" />
+    <pattern value="org.treebolic.colors.ColorPickerActivity" method="onColorChanged" />
+    <pattern value="org.treebolic.colors.dialog.ColorPickerDialog" method="onColorChanged" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onColorChanged" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onConfigurationChanged" />
+    <pattern value="org.treebolic.guide.AboutActivity" method="onCreate" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onCreate" />
+    <pattern value="org.treebolic.colors.ColorPickerActivity" method="onCreate" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="onCreate" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" method="onCreate" />
+    <pattern value="org.treebolic.guide.HelpActivity" method="onCreate" />
+    <pattern value="org.treebolic.search.SearchSettings" method="onCreateDialog" />
+    <pattern value="org.treebolic.guide.Tip" method="onCreateDialog" />
+    <pattern value="org.treebolic.guide.AboutActivity" method="onCreateOptionsMenu" />
+    <pattern value="org.treebolic.guide.HelpActivity" method="onCreateOptionsMenu" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onDestroy" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onDialogClosed" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onDialogClosed" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onDialogClosed" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="onDraw" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="onDraw" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="onDraw" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onGetDefaultValue" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onGetDefaultValue" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onGetDefaultValue" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" method="onItemClick" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" method="onItemLongClick" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" method="onKeyDown" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="onLayout" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="onMeasure" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="onMeasure" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="onMeasure" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="onMeasure" />
+    <pattern value="org.treebolic.guide.AboutActivity" method="onOptionsItemSelected" />
+    <pattern value="org.treebolic.guide.HelpActivity" method="onOptionsItemSelected" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onPostCreate" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="onPostCreate" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onPostResume" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="onRestoreInstanceState" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onRestoreInstanceState" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onRestoreInstanceState" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onRestoreInstanceState" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="onSaveInstanceState" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onSaveInstanceState" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onSaveInstanceState" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onSaveInstanceState" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="onScrollFinished" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="onScrollTouched" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="onScrollTouchedUp" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onSetInitialValue" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onSetInitialValue" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onSetInitialValue" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="onSizeChanged" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="onSizeChanged" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="onStart" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onStop" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="onStop" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="onTitleChanged" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="onTouchEvent" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="onTouchEvent" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="onTrackballEvent" />
+    <pattern value="org.treebolic.wheel.OnWheelScrollListener" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="OpenEditTextPreference" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="process" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="recreateAssets" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelAdapter" method="registerDataSetObserver" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="removeChangingListener" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="removeClickingListener" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="removeScrollingListener" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="retrieve" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.SavedState" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.SavedState" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference.SavedState" />
+    <pattern value="org.treebolic.wheel.AbstractWheel.SavedState" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="scrollerStartScroll" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="scrollerStartScroll" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="setAllItemsVisible" />
+    <pattern value="org.treebolic.colors.drawable.AlphaPatternDrawable" method="setAlpha" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="setAlphaSliderText" />
+    <pattern value="org.treebolic.colors.dialog.ColorPickerDialog" method="setAlphaSliderVisible" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="setBorderColor" />
+    <pattern value="org.treebolic.colors.view.ColorPickerView" method="setColor" />
+    <pattern value="org.treebolic.colors.drawable.AlphaPatternDrawable" method="setColorFilter" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="setContentView" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="setCrossed" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="setCyclic" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="setEmptyItemResource" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="setEnables" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity" method="setFolder" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="setInterpolator" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="setItemResource" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="setLabels" />
+    <pattern value="org.treebolic.wheel.adapters.NumericWheelAdapter" method="setMaxValue" />
+    <pattern value="org.treebolic.wheel.adapters.NumericWheelAdapter" method="setMinValue" />
+    <pattern value="org.treebolic.wheel.AbstractWheelView" method="setSelectionDivider" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="setSelectionDividerWidth" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="setSelectorPaintCoeff" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="setSelectorPaintCoeff" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="setSupportActionBar" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="setTextColor" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="setTextSize" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelTextAdapter" method="setTextTypeface" />
+    <pattern value="android.support.v7.app.contrib.AppCompatPreferenceActivity" method="setupToolbar" />
+    <pattern value="org.treebolic.colors.view.ColorPanelView" method="setValue" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="setValues" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="setValues" />
+    <pattern value="org.treebolic.search.SearchSettings" method="show" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="showDownload" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="start" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="startProgress" />
+    <pattern value="org.treebolic.download.DownloadActivity" method="status2ResourceId" />
+    <pattern value="org.treebolic.wheel.AbstractWheel" method="stopScrolling" />
+    <pattern value="org.treebolic.wheel.adapters.AbstractWheelAdapter" method="unregisterDataSetObserver" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalView" method="WheelHorizontalView" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" />
+    <pattern value="org.treebolic.wheel.WheelView" />
+    <pattern value="org.treebolic.wheel.WheelView" method="WheelView" />
+    <pattern value="org.treebolic.wheel.AbstractWheel.SavedState" method="writeToParcel" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.SavedState" method="writeToParcel" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.SavedState" method="writeToParcel" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference.SavedState" method="writeToParcel" />
+    <pattern value="org.treebolic.AppCompatCommonPreferenceActivity" method="onCreate" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="getMotionEventPosition" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="scrollerFling" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="getMotionEventPosition" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="scrollerFling" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="4">
+        <list size="10">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
           <item index="3" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
+          <item index="4" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
+          <item index="6" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
+          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
+          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
+          <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="4">
+        <list size="9">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
           <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
+          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
+          <item index="6" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
+          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
+          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
         </list>
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

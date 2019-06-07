@@ -43,7 +43,7 @@ public class ArrayWheelAdapter<T> extends AbstractWheelTextAdapter
 	 * @param context0 the current context
 	 * @param items0   the items
 	 */
-	public ArrayWheelAdapter(@NonNull Context context0, T items0[])
+	public ArrayWheelAdapter(@NonNull Context context0, T[] items0)
 	{
 		super(context0);
 

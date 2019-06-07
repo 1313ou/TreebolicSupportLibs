@@ -128,6 +128,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return name
 		 */
+		@SuppressWarnings("WeakerAccess")
 		@Nullable
 		public String getName()
 		{
@@ -139,6 +140,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return data
 		 */
+		@SuppressWarnings("WeakerAccess")
 		@Nullable
 		public String getData()
 		{
@@ -150,6 +152,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return path
 		 */
+		@SuppressWarnings("WeakerAccess")
 		@Nullable
 		public String getPath()
 		{
@@ -161,6 +164,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return true if entry is folder
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public boolean isFolder()
 		{
 			return this.folder;
@@ -171,6 +175,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return true if entry is parent
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public boolean isParent()
 		{
 			return this.parent;
@@ -181,17 +186,21 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return true if entry is parent
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public boolean isNone()
 		{
 			return this.none;
 		}
 
 		@Override
-		public int compareTo(@SuppressWarnings("NullableProblems") final Entry o)
+		public int compareTo(final Entry o)
 		{
 			if (this.name != null)
 			{
-				return this.name.compareToIgnoreCase(o.getName());
+				final String name2 = o.getName();
+				if(name2 == null)
+					return 1;
+				return this.name.compareToIgnoreCase(name2);
 			}
 			throw new IllegalArgumentException();
 		}
@@ -234,6 +243,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			this.items = items0;
 		}
 
+		@SuppressWarnings("WeakerAccess")
 		@Override
 		public Entry getItem(final int i)
 		{

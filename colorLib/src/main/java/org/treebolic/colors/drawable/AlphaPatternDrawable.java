@@ -34,7 +34,7 @@ import android.support.annotation.NonNull;
  */
 public class AlphaPatternDrawable extends Drawable
 {
-	private int mRectangleSize = 10;
+	private final int mRectangleSize;
 
 	private final Paint mPaint = new Paint();
 	private final Paint mPaintWhite = new Paint();
@@ -63,6 +63,7 @@ public class AlphaPatternDrawable extends Drawable
 		canvas.drawBitmap(this.mBitmap, null, getBounds(), this.mPaint);
 	}
 
+	@SuppressWarnings("SameReturnValue")
 	@Override
 	public int getOpacity()
 	{
@@ -88,8 +89,8 @@ public class AlphaPatternDrawable extends Drawable
 
 		final int height = bounds.height();
 		final int width = bounds.width();
-		this.numRectanglesHorizontal = (int) Math.ceil(width / this.mRectangleSize);
-		this.numRectanglesVertical = (int) Math.ceil(height / this.mRectangleSize);
+		this.numRectanglesHorizontal = (int) Math.ceil((float) width / this.mRectangleSize);
+		this.numRectanglesVertical = (int) Math.ceil((float) height / this.mRectangleSize);
 
 		generatePatternBitmap();
 	}

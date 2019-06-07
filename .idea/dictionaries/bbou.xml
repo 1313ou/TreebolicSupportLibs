@@ -33,9 +33,12 @@
       <w>couleurs</w>
       <w>dataset</w>
       <w>ddff</w>
+      <w>defaultcolor</w>
       <w>deployer</w>
+      <w>deps</w>
       <w>doubletap</w>
       <w>downloadbutton</w>
+      <w>dropdowns</w>
       <w>décale</w>
       <w>déplacements</w>
       <w>déplacer</w>
@@ -58,6 +61,7 @@
       <w>inclut</w>
       <w>informations</w>
       <w>kanivets</w>
+      <w>keyw</w>
       <w>nclose</w>
       <w>nilsson</w>
       <w>nlabels</w>
@@ -80,16 +84,30 @@
       <w>revient</w>
       <w>réduire</w>
       <w>réduit</w>
+      <w>scaledown</w>
+      <w>scaleone</w>
+      <w>scaleup</w>
+      <w>sdcards</w>
       <w>secteur</w>
+      <w>sectionhead</w>
       <w>seulement</w>
       <w>spinnerwheel</w>
+      <w>splitbar</w>
+      <w>startswith</w>
+      <w>statusbar</w>
+      <w>storages</w>
       <w>suivre</w>
       <w>syntaxe</w>
       <w>sélectionner</w>
       <w>taille</w>
+      <w>treebolic</w>
       <w>treebolicdir</w>
       <w>untar</w>
       <w>valeurs</w>
+      <w>wordnet</w>
+      <w>zoomin</w>
+      <w>zoomone</w>
+      <w>zoomout</w>
       <w>écarter</w>
       <w>égal</w>
       <w>égale</w>

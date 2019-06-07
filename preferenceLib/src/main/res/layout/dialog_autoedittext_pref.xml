@@ -13,6 +13,7 @@
 		android:dropDownWidth="match_parent"
 		android:ellipsize="middle"
 		android:ems="40"
+		android:hint="@string/hint"
 		android:inputType="textUri|textNoSuggestions">
 
 		<requestFocus/>

@@ -1,6 +1,7 @@
 <resources>
 
 	<!-- hint -->
+	<string name="hint">Type…</string>
 	<string name="hints">Hints</string>
 
 </resources>

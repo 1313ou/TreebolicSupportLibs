@@ -90,10 +90,8 @@ public class EntryChooser
 	@NonNull
 	static private List<String> getZipEntries(final File archive, @Nullable @SuppressWarnings("SameParameterValue") final String negativeFilter, @Nullable @SuppressWarnings("SameParameterValue") final String positiveFilter) throws IOException
 	{
-		ZipFile zipFile = null;
-		try
+		try (ZipFile zipFile = new ZipFile(archive))
 		{
-			zipFile = new ZipFile(archive);
 			final List<String> result = new ArrayList<>();
 			final Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
 			while (zipEntries.hasMoreElements())
@@ -110,19 +108,6 @@ public class EntryChooser
 				}
 			}
 			return result;
-		}
-		finally
-		{
-			if (zipFile != null)
-			{
-				try
-				{
-					zipFile.close();
-				}
-				catch (IOException ignored)
-				{
-				}
-			}
 		}
 	}
 

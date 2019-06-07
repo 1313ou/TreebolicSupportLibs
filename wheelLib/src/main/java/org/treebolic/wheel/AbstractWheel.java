@@ -351,19 +351,19 @@ public abstract class AbstractWheel extends View
 		//
 	}
 
-	@SuppressWarnings("WeakerAccess")
+	@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 	protected void onScrollTouched()
 	{
 		//
 	}
 
-	@SuppressWarnings("WeakerAccess")
+	@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 	protected void onScrollTouchedUp()
 	{
 		//
 	}
 
-	@SuppressWarnings("WeakerAccess")
+	@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 	protected void onScrollFinished()
 	{
 		//

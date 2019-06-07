@@ -40,29 +40,14 @@ public class Deploy
 	 */
 	public static void copy(@NonNull final InputStream in, @NonNull final File toFile) throws IOException
 	{
-		FileOutputStream out = null;
-		try
+		try (FileOutputStream out = new FileOutputStream(toFile))
 		{
-			out = new FileOutputStream(toFile);
 
 			final byte[] buffer = new byte[1024];
 			int read;
 			while ((read = in.read(buffer)) != -1)
 			{
 				out.write(buffer, 0, read);
-			}
-		}
-		finally
-		{
-			if (out != null)
-			{
-				try
-				{
-					out.close();
-				}
-				catch (IOException ignored)
-				{
-				}
 			}
 		}
 	}
@@ -110,10 +95,8 @@ public class Deploy
 		final byte[] buffer = new byte[1024];
 
 		// read and expand entries
-		ZipInputStream zipIn = null;
-		try
+		try (ZipInputStream zipIn = new ZipInputStream(in))
 		{
-			zipIn = new ZipInputStream(in);
 
 			// loop through entries
 			for (ZipEntry zipEntry = zipIn.getNextEntry(); zipEntry != null; zipEntry = zipIn.getNextEntry())
@@ -170,45 +153,16 @@ public class Deploy
 					destFile.createNewFile();
 
 					// copy
-					BufferedOutputStream bout = null;
-					try
+					try (BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(destFile)))
 					{
-						bout = new BufferedOutputStream(new FileOutputStream(destFile));
 						for (int len = zipIn.read(buffer); len != -1; len = zipIn.read(buffer))
 						{
 							bout.write(buffer, 0, len);
 						}
 					}
-					finally
-					{
-						if (bout != null)
-						{
-							try
-							{
-								bout.close();
-							}
-							catch (IOException ignored)
-							{
-							}
-
-						}
-					}
 				}
 			}
 			zipIn.closeEntry();
-		}
-		finally
-		{
-			if (zipIn != null)
-			{
-				try
-				{
-					zipIn.close();
-				}
-				catch (IOException ignored)
-				{
-				}
-			}
 		}
 
 		return destDir;
@@ -240,10 +194,8 @@ public class Deploy
 		final byte[] buffer = new byte[1024];
 
 		// input stream
-		TarArchiveInputStream tarIn = null;
-		try
+		try (TarArchiveInputStream tarIn = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(in))))
 		{
-			tarIn = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(in)));
 
 			// loop through entries
 			for (TarArchiveEntry tarEntry = tarIn.getNextTarEntry(); tarEntry != null; tarEntry = tarIn.getNextTarEntry())
@@ -297,44 +249,14 @@ public class Deploy
 					destFile.createNewFile();
 
 					// copy
-					BufferedOutputStream bout = null;
-					try
+					try (BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(destFile)))
 					{
-						bout = new BufferedOutputStream(new FileOutputStream(destFile));
 						for (int len = tarIn.read(buffer); len != -1; len = tarIn.read(buffer))
 						{
 							bout.write(buffer, 0, len);
 						}
 					}
-					finally
-					{
-						if (bout != null)
-						{
-							try
-							{
-								bout.close();
-							}
-							catch (IOException ignored)
-							{
-							}
-
-						}
-					}
 				}
-			}
-		}
-		finally
-		{
-			if (tarIn != null)
-			{
-				try
-				{
-					tarIn.close();
-				}
-				catch (IOException ignored)
-				{
-				}
-
 			}
 		}
 		return destDir;

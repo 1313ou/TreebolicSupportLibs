@@ -60,9 +60,7 @@ public class Storage
 	 * Storage types
 	 */
 	enum StorageType
-	{
-		PRIMARY_EMULATED, PRIMARY_PHYSICAL, SECONDARY
-	}
+	{PRIMARY_EMULATED, PRIMARY_PHYSICAL, SECONDARY}
 
 	/**
 	 * Directory type
@@ -70,8 +68,7 @@ public class Storage
 	 * @author <a href="mailto:1313ou@gmail.com">Bernard Bou</a>
 	 */
 	public enum DirType
-	{
-		AUTO, APP_EXTERNAL_SECONDARY, APP_EXTERNAL_PRIMARY, PUBLIC_EXTERNAL_SECONDARY, PUBLIC_EXTERNAL_PRIMARY, APP_INTERNAL;
+	{AUTO, APP_EXTERNAL_SECONDARY, APP_EXTERNAL_PRIMARY, PUBLIC_EXTERNAL_SECONDARY, PUBLIC_EXTERNAL_PRIMARY, APP_INTERNAL;
 
 		/**
 		 * Compare (sort by preference)
@@ -80,13 +77,15 @@ public class Storage
 		 * @param type2 type 2
 		 * @return order
 		 */
+		@SuppressWarnings("WeakerAccess")
 		static public int compare(@NonNull final DirType type1, @NonNull final DirType type2)
 		{
 			int i1 = type1.ordinal();
 			int i2 = type2.ordinal();
-			return i1 < i2 ? -1 : (i1 == i2 ? 0 : 1);
+			return Integer.compare(i1, i2);
 		}
 
+		@SuppressWarnings("WeakerAccess")
 		public String toDisplay()
 		{
 			switch (this)
@@ -105,8 +104,7 @@ public class Storage
 					return "internal";
 			}
 			return null;
-		}
-	}
+		}}
 
 	/**
 	 * Directory with type
@@ -139,6 +137,7 @@ public class Storage
 			return this.file.getAbsolutePath();
 		}
 
+		@SuppressWarnings("WeakerAccess")
 		public File getFile()
 		{
 			return this.file;
@@ -246,7 +245,6 @@ public class Storage
 				boolean isDigit = false;
 				try
 				{
-					//noinspection ResultOfMethodCallIgnored
 					Integer.valueOf(lastFolder);
 					isDigit = true;
 				}
@@ -258,7 +256,7 @@ public class Storage
 			}
 
 			// /extStorage/emulated/0[1,2,...]
-			if (userId != null && !userId.isEmpty())
+			if (!userId.isEmpty())
 			{
 				return emulatedStorageTarget + File.separatorChar + userId;
 			}
@@ -313,7 +311,6 @@ public class Storage
 				boolean isDigit = false;
 				try
 				{
-					//noinspection ResultOfMethodCallIgnored
 					Integer.valueOf(lastFolder);
 					isDigit = true;
 				}
@@ -324,7 +321,7 @@ public class Storage
 				userId = isDigit ? lastFolder : "";
 			}
 			// /extStorage/emulated/0[1,2,...]
-			if (userId == null || userId.isEmpty())
+			if (userId.isEmpty())
 			{
 				dirs.put(StorageType.PRIMARY_PHYSICAL, new String[]{emulatedStorageTarget});
 			}
@@ -536,7 +533,6 @@ public class Storage
 	 * @param fileName file in assets
 	 * @return uri of copied file
 	 */
-	@SuppressWarnings("resource")
 	@Nullable
 	public static Uri copyAssetFile(@NonNull final Context context, @NonNull final String fileName)
 	{
@@ -657,10 +653,10 @@ public class Storage
 	}
 
 	/**
-	 * Copy instream to outstream
+	 * Copy in stream to out stream
 	 *
-	 * @param in  instream
-	 * @param out outstream
+	 * @param in  in stream
+	 * @param out out stream
 	 * @throws IOException io exception
 	 */
 	@SuppressWarnings("WeakerAccess")
@@ -698,7 +694,7 @@ public class Storage
 	 * @param fileName zip file in assets
 	 * @return uri of dest dir
 	 */
-	@SuppressWarnings({"resource", "UnusedReturnValue"})
+	@SuppressWarnings({"UnusedReturnValue"})
 	public static Uri expandZipAssetFile(@NonNull final Context context, final String fileName)
 	{
 		final AssetManager assetManager = context.getAssets();
@@ -722,30 +718,14 @@ public class Storage
 	 */
 	private static boolean expandZipAsset(@NonNull final AssetManager assetManager, final String assetPath, @NonNull final String toPath)
 	{
-		InputStream in = null;
-		try
+		try (InputStream in = assetManager.open(assetPath))
 		{
-			in = assetManager.open(assetPath);
 			Storage.expandZip(in, null, new File(toPath));
 			return true;
 		}
 		catch (@NonNull final Exception ignored)
 		{
 			return false;
-		}
-		finally
-		{
-			if (in != null)
-			{
-				try
-				{
-					in.close();
-				}
-				catch (@NonNull final IOException ignored)
-				{
-					//
-				}
-			}
 		}
 	}
 
@@ -796,25 +776,14 @@ public class Storage
 							new File(outFile.getParent()).mkdirs();
 
 							// output
-							final FileOutputStream os = new FileOutputStream(outFile);
 
 							// copy
-							try
+							try (FileOutputStream os = new FileOutputStream(outFile))
 							{
 								int len;
 								while ((len = zis.read(buffer)) > 0)
 								{
 									os.write(buffer, 0, len);
-								}
-							}
-							finally
-							{
-								try
-								{
-									os.close();
-								}
-								catch (IOException ignored)
-								{
 								}
 							}
 						}
@@ -1060,7 +1029,6 @@ public class Storage
 		boolean isDigit = false;
 		try
 		{
-			//noinspection ResultOfMethodCallIgnored
 			Integer.valueOf(lastFolder);
 			isDigit = true;
 		}

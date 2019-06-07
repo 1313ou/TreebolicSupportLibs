@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp">
@@ -9,9 +10,12 @@
 		android:layout_height="wrap_content"
 		android:ellipsize="middle"
 		android:ems="40"
+		android:hint="@string/hint"
+		android:importantForAutofill="no"
 		android:inputType="textUri|textNoSuggestions"
+		android:selectAllOnFocus="false"
 		android:singleLine="true"
-		android:selectAllOnFocus="false">
+		tools:targetApi="o">
 
 		<requestFocus/>
 	</EditText>

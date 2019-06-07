@@ -185,6 +185,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	//
 	// --------------------------------------------------------------------------
 
+	@SuppressWarnings("WeakerAccess")
 	@Override
 	protected void initAttributes(AttributeSet attrs, int defStyle)
 	{
@@ -287,6 +288,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 		setSeparatorsPaintAlpha(this.mSelectionDividerActiveAlpha);
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	@Override
 	protected void onScrollTouchedUp()
 	{

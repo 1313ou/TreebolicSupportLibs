@@ -1000,9 +1000,9 @@ public class ColorPickerView extends View
 	}
 
 	@Override
-	protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh)
+	protected void onSizeChanged(final int w, final int h, final int oldW, final int oldH)
 	{
-		super.onSizeChanged(w, h, oldw, oldh);
+		super.onSizeChanged(w, h, oldW, oldH);
 
 		this.mDrawingRect = new RectF();
 		this.mDrawingRect.left = this.mDrawingOffset + getPaddingLeft();
@@ -1242,8 +1242,11 @@ public class ColorPickerView extends View
 
 	private class BitmapCache
 	{
+		@SuppressWarnings("WeakerAccess")
 		public Canvas canvas;
+		@SuppressWarnings("WeakerAccess")
 		public Bitmap bitmap;
+		@SuppressWarnings("WeakerAccess")
 		public float value;
 	}
 }

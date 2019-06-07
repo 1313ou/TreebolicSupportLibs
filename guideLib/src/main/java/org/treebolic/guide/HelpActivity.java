@@ -52,14 +52,13 @@ public class HelpActivity extends AppCompatCommonActivity
 		}
 
 		// web view
-		final WebView webview = findViewById(R.id.webView);
-		webview.clearCache(true);
-		webview.clearHistory();
-		//webview.getSettings().setJavaScriptEnabled(true);
-		//webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-		webview.setWebViewClient(new WebViewClient()
+		final WebView webView = findViewById(R.id.webView);
+		webView.clearCache(true);
+		webView.clearHistory();
+		//webView.getSettings().setJavaScriptEnabled(true);
+		//webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+		webView.setWebViewClient(new WebViewClient()
 		{
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onReceivedError(final WebView view, final int errorCode, final String description, final String failingUrl)
 			{
@@ -73,7 +72,6 @@ public class HelpActivity extends AppCompatCommonActivity
 				Log.e(HelpActivity.TAG, error.getDescription().toString() + ',' + error.getErrorCode());
 			}
 
-			@SuppressWarnings("deprecation")
 			@Override
 			public boolean shouldOverrideUrlLoading(@NonNull final WebView view, final String url)
 			{
@@ -97,7 +95,7 @@ public class HelpActivity extends AppCompatCommonActivity
 			url += lang + '-';
 		}
 		url += "index.html";
-		webview.loadUrl(url);
+		webView.loadUrl(url);
 	}
 
 	@SuppressWarnings("SameReturnValue")

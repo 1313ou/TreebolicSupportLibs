@@ -40,6 +40,7 @@ public abstract class AbstractWheelAdapter implements WheelViewAdapter
 	// Observers
 	private List<DataSetObserver> datasetObservers;
 
+	@SuppressWarnings("SameReturnValue")
 	@Nullable
 	@Override
 	public View getEmptyItem(View convertView, ViewGroup parent)

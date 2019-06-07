@@ -117,6 +117,7 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter
 		return null;
 	}
 
+	@SuppressWarnings("WeakerAccess")
 	@Override
 	public int getItemsCount()
 	{

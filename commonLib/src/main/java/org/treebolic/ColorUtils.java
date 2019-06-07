@@ -48,7 +48,7 @@ public class ColorUtils
 	 * @param iconTint tint
 	 * @param drawable drawable
 	 */
-	@SuppressWarnings({"WeakerAccess", "deprecation"})
+	@SuppressWarnings({"WeakerAccess"})
 	static public void tint(int iconTint, @NonNull final Drawable drawable)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -68,7 +68,7 @@ public class ColorUtils
 	 * @param resId   drawable id
 	 * @return drawable
 	 */
-	@SuppressWarnings({"WeakerAccess", "deprecation"})
+	@SuppressWarnings({"WeakerAccess"})
 	static public Drawable getDrawable(@NonNull final Context context, int resId)
 	{
 		final Resources resources = context.getResources();
@@ -159,7 +159,7 @@ public class ColorUtils
 	{
 		final TypedArray array = context.getTheme().obtainStyledAttributes(styleId, new int[]{attr});
 		int intColor = array.getColor(0 /* index */, 0 /* defaultVal */);
-		// Log.d(TAG, "style resid=" + Integer.toHexString(styleId) + "color=" + Integer.toHexString(intColor));
+		// Log.d(TAG, "style resId=" + Integer.toHexString(styleId) + "color=" + Integer.toHexString(intColor));
 		array.recycle();
 		return intColor;
 	}

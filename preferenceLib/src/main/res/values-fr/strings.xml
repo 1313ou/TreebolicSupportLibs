@@ -1,6 +1,7 @@
 <resources>
 
 	<!-- hint -->
+	<string name="hint">Taper…</string>
 	<string name="hints">Suggestions</string>
 
 </resources>

@@ -176,6 +176,7 @@ public class WheelVerticalView extends AbstractWheelView
 	//
 	// --------------------------------------------------------------------------
 
+	@SuppressWarnings("WeakerAccess")
 	@Override
 	protected int getBaseDimension()
 	{
@@ -187,6 +188,7 @@ public class WheelVerticalView extends AbstractWheelView
 	 *
 	 * @return the item height
 	 */
+	@SuppressWarnings("WeakerAccess")
 	@Override
 	protected int getItemDimension()
 	{

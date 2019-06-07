@@ -316,6 +316,7 @@ public class SearchSettings extends AppCompatDialogFragment
 			return this.labels[index];
 		}
 
+		@SuppressWarnings("WeakerAccess")
 		public Type getType()
 		{
 			return this.type;

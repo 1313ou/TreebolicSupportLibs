@@ -213,6 +213,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	 *
 	 * @param itemTextResourceId0 the item text resource Id to set
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public void setItemTextResource(int itemTextResourceId0)
 	{
 		this.itemTextResourceId = itemTextResourceId0;

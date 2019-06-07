@@ -3,20 +3,23 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT" />
+        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/colorLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/commonLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/downloadLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/fileChooserLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/guideLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/preferenceLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/searchLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/storageLib" />
-            <option value="/mnt/data2/devel/android-treebolic-as/TreebolicSupportLibs/wheelLib" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/colorLib" />
+            <option value="$PROJECT_DIR$/commonLib" />
+            <option value="$PROJECT_DIR$/downloadLib" />
+            <option value="$PROJECT_DIR$/fileChooserLib" />
+            <option value="$PROJECT_DIR$/guideLib" />
+            <option value="$PROJECT_DIR$/preferenceLib" />
+            <option value="$PROJECT_DIR$/searchLib" />
+            <option value="$PROJECT_DIR$/storageLib" />
+            <option value="$PROJECT_DIR$/wheelLib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

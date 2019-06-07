@@ -200,9 +200,9 @@ public class ColorPanelView extends View
 	}
 
 	@Override
-	protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh)
+	protected void onSizeChanged(final int w, final int h, final int oldW, final int oldH)
 	{
-		super.onSizeChanged(w, h, oldw, oldh);
+		super.onSizeChanged(w, h, oldW, oldH);
 
 		this.mDrawingRect = new RectF();
 		this.mDrawingRect.left = getPaddingLeft();

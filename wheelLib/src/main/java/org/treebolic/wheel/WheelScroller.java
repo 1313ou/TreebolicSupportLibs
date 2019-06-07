@@ -84,6 +84,7 @@ public abstract class WheelScroller
 		@NonNull
 		private final WeakReference<WheelScroller> wheelScrollerRef;
 
+		@SuppressWarnings("WeakerAccess")
 		public AnimationHandler(WheelScroller scroller0)
 		{
 			this.wheelScrollerRef = new WeakReference<>(scroller0);
