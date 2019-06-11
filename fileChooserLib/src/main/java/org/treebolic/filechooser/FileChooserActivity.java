@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,6 +100,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 * @param folder0 folder
 		 * @param parent0 parent
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public Entry(@Nullable final String name0, @Nullable final String data0, @Nullable final String path0, final boolean folder0, final boolean parent0)
 		{
 			this.name = name0;
@@ -113,6 +114,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		/**
 		 * Null entry
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public Entry()
 		{
 			this.none = true;
@@ -193,7 +195,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		}
 
 		@Override
-		public int compareTo(final Entry o)
+		public int compareTo(@NonNull final Entry o)
 		{
 			if (this.name != null)
 			{
@@ -209,6 +211,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	/**
 	 * Entry to list adapter
 	 */
+	@SuppressWarnings("WeakerAccess")
 	public class FileArrayAdapter extends ArrayAdapter<Entry>
 	{
 		/**
@@ -235,6 +238,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 * @param id0      text view resource id
 		 * @param items0   items
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public FileArrayAdapter(@NonNull final Context context0, final int id0, @NonNull final List<Entry> items0)
 		{
 			super(context0, id0, items0);

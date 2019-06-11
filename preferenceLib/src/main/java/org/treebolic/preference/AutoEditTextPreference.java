@@ -5,8 +5,8 @@ import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -180,6 +180,7 @@ public class AutoEditTextPreference extends DialogPreference
 		 *
 		 * @param superState superstate
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public SavedState(final Parcelable superState)
 		{
 			super(superState);
@@ -190,6 +191,7 @@ public class AutoEditTextPreference extends DialogPreference
 		 *
 		 * @param source source parcel
 		 */
+		@SuppressWarnings("WeakerAccess")
 		public SavedState(@NonNull final Parcel source)
 		{
 			super(source);

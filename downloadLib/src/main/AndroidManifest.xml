@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.treebolic.download">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.treebolic.download">
 
-	<application>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+
+	<application android:usesCleartextTraffic="true">
 
 		<!-- abstract -->
 		<!--

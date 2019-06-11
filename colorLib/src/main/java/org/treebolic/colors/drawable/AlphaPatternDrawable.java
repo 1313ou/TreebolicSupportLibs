@@ -24,7 +24,7 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * This drawable will draw a simple white and gray chessboard pattern. It's pattern you will often see as a background behind a partly transparent image in many
@@ -56,9 +56,8 @@ public class AlphaPatternDrawable extends Drawable
 		this.mPaintGray.setColor(0xffcbcbcb);
 	}
 
-	@SuppressWarnings("NullableProblems")
 	@Override
-	public void draw(final Canvas canvas)
+	public void draw(@NonNull final Canvas canvas)
 	{
 		canvas.drawBitmap(this.mBitmap, null, getBounds(), this.mPaint);
 	}

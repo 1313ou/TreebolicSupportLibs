@@ -10,11 +10,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +27,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * Download activity
@@ -57,28 +59,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	public static final String RESULT_DOWNLOAD_DATA_AVAILABLE = "download_data_available";
 
 	/**
-	 * Start download
-	 */
-	abstract protected void start();
-
-	/**
-	 * Whether to process
-	 */
-	abstract protected boolean doProcessing();
-
-	/**
-	 * Process obtained input stream: what to do once the file has been downloaded and opened as a stream
-	 *
-	 * @param inputStream obtained input stream
-	 * @return true if file should be disposed of
-	 */
-	@SuppressWarnings({"static-method", "RedundantThrows"})
-	protected boolean process(@SuppressWarnings("UnusedParameters") final InputStream inputStream) throws IOException
-	{
-		return false;
-	}
-
-	/**
 	 * Download id
 	 */
 	@SuppressWarnings("WeakerAccess")
@@ -95,11 +75,14 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	protected Uri downloadUri;
 
 	/**
-	 * Destination uri
+	 * Destination dir
 	 */
 	@SuppressWarnings("CanBeFinal")
 	protected File destDir;
 
+	/**
+	 * Destination uri
+	 */
 	protected Uri destUri;
 
 	/**
@@ -149,6 +132,32 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 * Whether to expand archive
 	 */
 	protected boolean expandArchive = false;
+
+	// A B S T R A C T
+
+	/**
+	 * Start download
+	 */
+	abstract protected void start();
+
+	/**
+	 * Whether to process
+	 */
+	abstract protected boolean doProcessing();
+
+	/**
+	 * Process obtained input stream: what to do once the file has been downloaded and opened as a stream
+	 *
+	 * @param inputStream obtained input stream
+	 * @return true if file should be disposed of
+	 */
+	@SuppressWarnings({"static-method", "RedundantThrows"})
+	protected boolean process(@SuppressWarnings("UnusedParameters") final InputStream inputStream) throws IOException
+	{
+		return false;
+	}
+
+	// L I F E C Y C L E
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
@@ -272,6 +281,8 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		super.onStop();
 	}
 
+	// C L I C K
+
 	@Override
 	public void onClick(@NonNull final View view)
 	{
@@ -302,12 +313,14 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 			final Request request = new Request(this.downloadUri);
 			request.setTitle(getResources().getText(titleRes));
 			request.setDescription(this.downloadUri.getLastPathSegment());
-			if (this.destDir != null)
+			if (this.destDir == null)
 			{
-				final File destFile = new File(this.destDir, this.downloadUri.getLastPathSegment());
-				this.destUri = Uri.fromFile(destFile);
-				request.setDestinationUri(this.destUri);
+				this.destDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 			}
+
+			final File destFile = new File(this.destDir, this.downloadUri.getLastPathSegment());
+			this.destUri = Uri.fromFile(destFile);
+			request.setDestinationUri(this.destUri);
 
 			// @formatter: off
 			//  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -322,6 +335,8 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 			// @formatter: on
 
 			request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
+			Log.d(DownloadActivity.TAG, "Source " + this.downloadUri);
+			Log.d(DownloadActivity.TAG, "Destination " + this.destUri);
 			this.downloadId = this.downloadManager.enqueue(request);
 
 			// start progress
@@ -330,6 +345,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		catch (Exception e)
 		{
 			Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+			Log.e(DownloadActivity.TAG, "Failed ", e);
 		}
 	}
 
@@ -338,7 +354,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 *
 	 * @return true if download has finished
 	 */
-	@SuppressWarnings("TryFinallyCanBeTryWithResources")
 	private boolean finished()
 	{
 		// query
@@ -375,7 +390,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 *
 	 * @return status
 	 */
-	@SuppressWarnings("TryFinallyCanBeTryWithResources")
 	private boolean retrieve()
 	{
 		// query
@@ -403,7 +417,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 
 					// process
 					InputStream inputStream = null;
-					//noinspection TryWithIdenticalCatches
 					try
 					{
 						inputStream = DownloadActivity.this.getContentResolver().openInputStream(uri);
@@ -441,6 +454,16 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 							}
 						}
 					}
+				}
+				else
+				{
+					final int uriColumn = cursor.getColumnIndex(DownloadManager.COLUMN_URI);
+					final String uri = cursor.getString(uriColumn);
+					final int localUriColumn = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI);
+					final String localUri = cursor.getString(localUriColumn);
+					final int reasonColumnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_REASON);
+					final int reason = cursor.getInt(reasonColumnIndex);
+					Log.e(DownloadActivity.TAG, "Downloading " + uri + " to " + localUri + " failed with reason code " + reason);
 				}
 			}
 			return false;

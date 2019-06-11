@@ -6,8 +6,8 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -211,7 +211,7 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	@SuppressWarnings("boxing")
 	@Override
-	protected void onDialogClosed(final boolean positiveResult)
+	protected void onDialogClosed(@SuppressWarnings("SameParameterValue") final boolean positiveResult)
 	{
 		if (positiveResult)
 		{
@@ -307,11 +307,13 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		// Member that holds the setting's value
 		int currentColor;
 
+		@SuppressWarnings("WeakerAccess")
 		public SavedState(final Parcelable superState)
 		{
 			super(superState);
 		}
 
+		@SuppressWarnings("WeakerAccess")
 		public SavedState(@NonNull final Parcel source)
 		{
 			super(source);

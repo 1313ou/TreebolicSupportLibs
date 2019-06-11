@@ -23,6 +23,7 @@
       <w>avant</w>
       <w>bouton</w>
       <w>buttonbar</w>
+      <w>bytt</w>
       <w>centrer</w>
       <w>cible</w>
       <w>coeff</w>
@@ -46,6 +47,7 @@
       <w>développer</w>
       <w>effet</w>
       <w>effets</w>
+      <w>elmnt</w>
       <w>enfant</w>
       <w>enfants</w>
       <w>faire</w>
@@ -73,12 +75,15 @@
       <w>nouvel</w>
       <w>nœud</w>
       <w>nœuds</w>
+      <w>ondisplaychange</w>
+      <w>onreadystatechange</w>
       <w>ouest</w>
       <w>ouvrant</w>
       <w>paramètres</w>
       <w>poursuivre</w>
       <w>radiale</w>
       <w>rapprocher</w>
+      <w>readyfunc</w>
       <w>rechercher</w>
       <w>rendu</w>
       <w>revient</w>
@@ -91,11 +96,13 @@
       <w>secteur</w>
       <w>sectionhead</w>
       <w>seulement</w>
+      <w>sortvalue</w>
       <w>spinnerwheel</w>
       <w>splitbar</w>
       <w>startswith</w>
       <w>statusbar</w>
       <w>storages</w>
+      <w>substr</w>
       <w>suivre</w>
       <w>syntaxe</w>
       <w>sélectionner</w>
@@ -105,6 +112,8 @@
       <w>untar</w>
       <w>valeurs</w>
       <w>wordnet</w>
+      <w>xhttp</w>
+      <w>xmlhttp</w>
       <w>zoomin</w>
       <w>zoomone</w>
       <w>zoomout</w>

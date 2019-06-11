@@ -29,7 +29,7 @@ import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;

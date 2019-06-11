@@ -8,10 +8,10 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatDialogFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -170,8 +170,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
 
 		// wheel 1 events
-		this.scopeWheel.addChangingListener((wheel, oldValue, newValue) ->
-		{
+		this.scopeWheel.addChangingListener((wheel, oldValue, newValue) -> {
 			Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
 			sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]).commit();
 			if (!SearchSettings.this.scrolling)
@@ -202,8 +201,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
 
 		// wheel 2 events
-		this.modeWheel.addChangingListener((wheel, oldValue, newValue) ->
-		{
+		this.modeWheel.addChangingListener((wheel, oldValue, newValue) -> {
 			WheelViewAdapter wheelViewAdapter = wheel.getViewAdapter();
 			Adapter adapter = (Adapter) wheelViewAdapter;
 			if (adapter.getType() == Adapter.Type.MODE)

@@ -9,8 +9,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.util.Pair;
 
@@ -48,6 +48,7 @@ public class Storage
 	/**
 	 * Cached treebolic storage
 	 */
+	@Nullable
 	private static File treebolicStorage = null;
 
 	/**
@@ -111,6 +112,7 @@ public class Storage
 	 *
 	 * @author <a href="mailto:1313ou@gmail.com">Bernard Bou</a>
 	 */
+	@SuppressWarnings("WeakerAccess")
 	static public class Directory implements Comparable<Directory>
 	{
 		private final File file;
@@ -557,7 +559,7 @@ public class Storage
 	 * @param toPath       destination path
 	 * @return true if successful
 	 */
-	private static boolean copyAsset(@NonNull final AssetManager assetManager, final String assetPath, @NonNull final String toPath)
+	private static boolean copyAsset(@NonNull final AssetManager assetManager, @NonNull final String assetPath, @NonNull final String toPath)
 	{
 		InputStream in = null;
 		OutputStream out = null;
@@ -695,7 +697,7 @@ public class Storage
 	 * @return uri of dest dir
 	 */
 	@SuppressWarnings({"UnusedReturnValue"})
-	public static Uri expandZipAssetFile(@NonNull final Context context, final String fileName)
+	public static Uri expandZipAssetFile(@NonNull final Context context, @NonNull final String fileName)
 	{
 		final AssetManager assetManager = context.getAssets();
 		final File dir = Storage.getTreebolicStorage(context);
@@ -716,7 +718,7 @@ public class Storage
 	 * @param toPath       destination path
 	 * @return true if successful
 	 */
-	private static boolean expandZipAsset(@NonNull final AssetManager assetManager, final String assetPath, @NonNull final String toPath)
+	private static boolean expandZipAsset(@NonNull final AssetManager assetManager, @NonNull final String assetPath, @NonNull final String toPath)
 	{
 		try (InputStream in = assetManager.open(assetPath))
 		{

@@ -25,7 +25,7 @@
 package org.treebolic.wheel.adapters;
 
 import android.database.DataSetObserver;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
