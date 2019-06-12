@@ -10,7 +10,6 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 import org.treebolic.AppCompatCommonActivity;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -73,17 +71,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 
 	@SuppressWarnings("WeakerAccess")
 	protected Uri downloadUri;
-
-	/**
-	 * Destination dir
-	 */
-	@SuppressWarnings("CanBeFinal")
-	protected File destDir;
-
-	/**
-	 * Destination uri
-	 */
-	protected Uri destUri;
 
 	/**
 	 * Download manager
@@ -248,7 +235,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	{
 		super.onPostCreate(savedInstanceState);
 		this.src.setText(this.downloadUrl);
-		this.target.setText(this.destDir != null ? this.destDir.getAbsolutePath() : getString(R.string.internal));
+		this.target.setText(getString(R.string.internal));
 	}
 
 	@Override
@@ -311,16 +298,9 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		try
 		{
 			final Request request = new Request(this.downloadUri);
+			Log.d(DownloadActivity.TAG, "Source " + this.downloadUri);
 			request.setTitle(getResources().getText(titleRes));
 			request.setDescription(this.downloadUri.getLastPathSegment());
-			if (this.destDir == null)
-			{
-				this.destDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-			}
-
-			final File destFile = new File(this.destDir, this.downloadUri.getLastPathSegment());
-			this.destUri = Uri.fromFile(destFile);
-			request.setDestinationUri(this.destUri);
 
 			// @formatter: off
 			//  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -335,8 +315,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 			// @formatter: on
 
 			request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
-			Log.d(DownloadActivity.TAG, "Source " + this.downloadUri);
-			Log.d(DownloadActivity.TAG, "Destination " + this.destUri);
 			this.downloadId = this.downloadManager.enqueue(request);
 
 			// start progress
@@ -416,55 +394,35 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 					}
 
 					// process
-					InputStream inputStream = null;
-					try
+					boolean dispose = false;
+					try (InputStream inputStream = DownloadActivity.this.getContentResolver().openInputStream(uri))
 					{
-						inputStream = DownloadActivity.this.getContentResolver().openInputStream(uri);
-
 						// handle
-						if (process(inputStream))
-						{
-							// dispose
-							final File file = new File(this.destDir, uri.getLastPathSegment());
-							//noinspection ResultOfMethodCallIgnored
-							file.delete();
-						}
-
-						return true;
-					}
-					catch (@NonNull final FileNotFoundException e)
-					{
-						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e);
+						dispose = process(inputStream);
 					}
 					catch (@NonNull final IOException e)
 					{
-						Log.e(DownloadActivity.TAG, "Downloading " + uriString, e);
+						Log.e(DownloadActivity.TAG, "Processing " + uriString, e);
 					}
-					finally
+
+					// dispose
+					if (dispose)
 					{
-						if (inputStream != null)
-						{
-							try
-							{
-								inputStream.close();
-							}
-							catch (@NonNull final IOException e)
-							{
-								//
-							}
-						}
+						// dispose
+						final File file = new File(uri.getPath());
+						//noinspection ResultOfMethodCallIgnored
+						file.delete();
 					}
+					return true;
 				}
-				else
-				{
-					final int uriColumn = cursor.getColumnIndex(DownloadManager.COLUMN_URI);
-					final String uri = cursor.getString(uriColumn);
-					final int localUriColumn = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI);
-					final String localUri = cursor.getString(localUriColumn);
-					final int reasonColumnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_REASON);
-					final int reason = cursor.getInt(reasonColumnIndex);
-					Log.e(DownloadActivity.TAG, "Downloading " + uri + " to " + localUri + " failed with reason code " + reason);
-				}
+
+				final int uriColumn = cursor.getColumnIndex(DownloadManager.COLUMN_URI);
+				final String uri = cursor.getString(uriColumn);
+				final int localUriColumn = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI);
+				final String localUri = cursor.getString(localUriColumn);
+				final int reasonColumnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_REASON);
+				final int reason = cursor.getInt(reasonColumnIndex);
+				Log.e(DownloadActivity.TAG, "Downloading " + uri + " to " + localUri + " failed with reason code " + reason);
 			}
 			return false;
 		}
