@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+  -->
+
 <resources>
 	<attr name="treebolic_search_settings_background" format="color|reference"/>
 	<attr name="treebolic_search_settings_foreground" format="color|reference"/>

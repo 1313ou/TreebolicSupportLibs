@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+ */
+
 package org.treebolic.filechooser;
 
 import android.annotation.SuppressLint;
@@ -8,11 +12,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +32,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * File chooser
@@ -200,8 +206,10 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			if (this.name != null)
 			{
 				final String name2 = o.getName();
-				if(name2 == null)
+				if (name2 == null)
+				{
 					return 1;
+				}
 				return this.name.compareToIgnoreCase(name2);
 			}
 			throw new IllegalArgumentException();
@@ -234,17 +242,17 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		/**
 		 * Constructor
 		 *
-		 * @param context0 context
-		 * @param id0      text view resource id
-		 * @param items0   items
+		 * @param context   context
+		 * @param layoutRes text view resource id
+		 * @param items     items
 		 */
 		@SuppressWarnings("WeakerAccess")
-		public FileArrayAdapter(@NonNull final Context context0, final int id0, @NonNull final List<Entry> items0)
+		public FileArrayAdapter(@NonNull final Context context, @LayoutRes final int layoutRes, @NonNull final List<Entry> items)
 		{
-			super(context0, id0, items0);
-			this.context = context0;
-			this.id = id0;
-			this.items = items0;
+			super(context, layoutRes, items);
+			this.context = context;
+			this.id = layoutRes;
+			this.items = items;
 		}
 
 		@SuppressWarnings("WeakerAccess")
@@ -414,8 +422,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 			if (extensionExtras != null && extensionExtras.length > 0)
 			{
 				this.extensions = Arrays.asList(extensionExtras);
-				this.fileFilter = file ->
-				{
+				this.fileFilter = file -> {
 					final String name = file.getName();
 					final int dot = name.lastIndexOf('.');
 					return file.isDirectory() //

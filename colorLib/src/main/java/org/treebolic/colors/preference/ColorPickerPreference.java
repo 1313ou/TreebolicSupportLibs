@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+ */
+
 package org.treebolic.colors.preference;
 
 import android.content.Context;
@@ -6,8 +10,6 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +17,9 @@ import android.widget.LinearLayout;
 import org.treebolic.colors.R;
 import org.treebolic.colors.view.ColorPanelView;
 import org.treebolic.colors.view.ColorPickerView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class ColorPickerPreference extends DialogPreference implements ColorPickerView.OnColorChangedListener
 {

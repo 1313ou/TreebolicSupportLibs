@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+ */
+
 package org.treebolic.download;
 
 import android.app.DownloadManager;
@@ -28,6 +32,7 @@ import java.io.InputStream;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -292,7 +297,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	/**
 	 * Start download. Assume download url has been set by derived class
 	 */
-	protected void start(final int titleRes)
+	protected void start(@StringRes final int titleRes)
 	{
 		this.downloadUri = Uri.parse(this.downloadUrl);
 		try
@@ -506,6 +511,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 * @param status status
 	 * @return string resource id
 	 */
+	@StringRes
 	private static int status2ResourceId(final int status)
 	{
 		switch (status)

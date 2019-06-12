@@ -1,11 +1,12 @@
+/*
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+ */
+
 package org.treebolic.filechooser;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import android.widget.ArrayAdapter;
 
 import java.io.File;
@@ -15,6 +16,10 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * Zip entry chooser
@@ -122,8 +127,7 @@ public class EntryChooser
 	static public void choose(final Context context, final File archive, @NonNull final Callback callback) throws IOException
 	{
 		final List<String> list = EntryChooser.getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*");
-		final DialogInterface.OnClickListener listener = (dialog, which) ->
-		{
+		final DialogInterface.OnClickListener listener = (dialog, which) -> {
 			// The 'which' argument contains the index position of the selected item
 			callback.onSelect(list.get(which));
 		};

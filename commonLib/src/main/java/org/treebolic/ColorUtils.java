@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+ */
+
 package org.treebolic;
 
 import android.content.Context;
@@ -5,13 +9,18 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.DrawableCompat;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import org.treebolic.common.R;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StyleRes;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
  * Tint
@@ -29,7 +38,7 @@ public class ColorUtils
 	 * @param menu        menu
 	 * @param menuItemIds menu item ids
 	 */
-	static public void tint(final int iconTint, @NonNull final Menu menu, @NonNull final int... menuItemIds)
+	static public void tint(@ColorInt final int iconTint, @NonNull final Menu menu, @NonNull final int... menuItemIds)
 	{
 		for (int menuItemId : menuItemIds)
 		{
@@ -49,7 +58,7 @@ public class ColorUtils
 	 * @param drawable drawable
 	 */
 	@SuppressWarnings({"WeakerAccess"})
-	static public void tint(int iconTint, @NonNull final Drawable drawable)
+	static public void tint(@ColorInt int iconTint, @NonNull final Drawable drawable)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 		{
@@ -69,7 +78,7 @@ public class ColorUtils
 	 * @return drawable
 	 */
 	@SuppressWarnings({"WeakerAccess"})
-	static public Drawable getDrawable(@NonNull final Context context, int resId)
+	static public Drawable getDrawable(@NonNull final Context context, @DrawableRes int resId)
 	{
 		final Resources resources = context.getResources();
 		Drawable drawable;
@@ -120,14 +129,14 @@ public class ColorUtils
 	/**
 	 * Get tinted drawable
 	 *
-	 * @param context  context
-	 * @param resId    drawable id
-	 * @param iconTint tint
+	 * @param context     context
+	 * @param drawableRes drawable id
+	 * @param iconTint    tint
 	 * @return tinted drawable
 	 */
-	static public Drawable getTintedDrawable(@NonNull final Context context, final int resId, final int iconTint)
+	static public Drawable getTintedDrawable(@NonNull final Context context, @DrawableRes final int drawableRes, @ColorInt final int iconTint)
 	{
-		Drawable drawable = getDrawable(context, resId);
+		Drawable drawable = getDrawable(context, drawableRes);
 		ColorUtils.tint(iconTint, drawable);
 		return drawable;
 	}
@@ -150,14 +159,14 @@ public class ColorUtils
 	/**
 	 * Get color from style
 	 *
-	 * @param context context
-	 * @param styleId style id (R.style.MyTheme)
-	 * @param attr    attr id (R.attr.editTextColor)
+	 * @param context  context
+	 * @param styleRes style id (R.style.MyTheme)
+	 * @param attr     attr id (R.attr.editTextColor)
 	 * @return color
 	 */
-	static public int fetchColorFromStyle(@NonNull final Context context, int styleId, int attr)
+	static public int fetchColorFromStyle(@NonNull final Context context, @StyleRes int styleRes, int attr)
 	{
-		final TypedArray array = context.getTheme().obtainStyledAttributes(styleId, new int[]{attr});
+		final TypedArray array = context.getTheme().obtainStyledAttributes(styleRes, new int[]{attr});
 		int intColor = array.getColor(0 /* index */, 0 /* defaultVal */);
 		// Log.d(TAG, "style resId=" + Integer.toHexString(styleId) + "color=" + Integer.toHexString(intColor));
 		array.recycle();
@@ -173,7 +182,7 @@ public class ColorUtils
 	 * @return color
 	 */
 	@SuppressWarnings("WeakerAccess")
-	static public int getColorFromTheme(@NonNull final Context context, int styleId, @SuppressWarnings("SameParameterValue") int colorAttrId)
+	static public int getColorFromTheme(@NonNull final Context context, @AttrRes int styleId, @AttrRes @SuppressWarnings("SameParameterValue") int colorAttrId)
 	{
 		final Resources.Theme theme = context.getTheme();
 		// theme.dump(Log.DEBUG, TAG, "theme");

@@ -1,34 +1,24 @@
 /*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
  */
 package androidx.appcompat.app.contrib;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import org.treebolic.common.R;
+
+import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import org.treebolic.common.R;
 
 /**
  * A {@link PreferenceActivity} which implements and proxies the necessary calls to be used with AppCompat.
@@ -89,7 +79,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity
 
 	// A C T I O N   B A R
 
-	protected void setupToolbar(int toolbarLayout, int toolbarId)
+	protected void setupToolbar(@LayoutRes int toolbarLayout, @IdRes int toolbarId)
 	{
 		// TODO hacked dependency on R.id.action_bar_root
 		final ViewGroup rootView = findViewById(R.id.action_bar_root); //id from appcompat
@@ -127,9 +117,9 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity
 	// C O N T E N T   V I E W
 
 	@Override
-	public void setContentView(@LayoutRes int layoutResID)
+	public void setContentView(@LayoutRes int layoutRes)
 	{
-		getDelegate().setContentView(layoutResID);
+		getDelegate().setContentView(layoutRes);
 	}
 
 	@Override

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+ */
+
 package org.treebolic.search;
 
 import android.annotation.SuppressLint;
@@ -8,10 +12,6 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
-import androidx.appcompat.app.AppCompatDialogFragment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +23,11 @@ import org.treebolic.wheel.OnWheelScrollListener;
 import org.treebolic.wheel.WheelView;
 import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
 import org.treebolic.wheel.adapters.WheelViewAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * Search settings

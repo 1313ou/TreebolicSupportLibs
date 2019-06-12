@@ -1,30 +1,5 @@
 /*
- * Copyright (C) 2010 Daniel Nilsson
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- *
- *
- *
- * Change Log:
- *
- * 1.1
- * - Fixed buggy measure and layout code. You can now make the view any size you want.
- * - Optimization of the drawing using a bitmap cache, a lot faster!
- * - Support for hardware acceleration for all but the problematic
- *	 part of the view will still be software rendered but much faster!
- *   See comment in drawSatValPanel() for more info.
- * - Support for declaring some variables in xml.
+ * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
  */
 
 package org.treebolic.colors.view;
@@ -45,14 +20,16 @@ import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import org.treebolic.colors.R;
 import org.treebolic.colors.drawable.AlphaPatternDrawable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 /**
  * Displays a color picker to the user and allow them to select a color. A slider for the alpha channel is also available. Enable it by setting
@@ -1210,11 +1187,11 @@ public class ColorPickerView extends View
 	/**
 	 * Set the text that should be shown in the alpha slider. Set to null to disable text.
 	 *
-	 * @param res string resource id.
+	 * @param stringRes string resource id.
 	 */
-	public void setAlphaSliderText(final int res)
+	public void setAlphaSliderText(@StringRes final int stringRes)
 	{
-		final String text = getContext().getString(res);
+		final String text = getContext().getString(stringRes);
 		setAlphaSliderText(text);
 	}
 
