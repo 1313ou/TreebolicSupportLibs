@@ -79,13 +79,13 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity
 
 	// A C T I O N   B A R
 
-	protected void setupToolbar(@LayoutRes int toolbarLayout, @IdRes int toolbarId)
+	protected void setupToolbar(@LayoutRes int toolbarLayoutRes, @IdRes int toolbarId)
 	{
 		// TODO hacked dependency on R.id.action_bar_root
 		final ViewGroup rootView = findViewById(R.id.action_bar_root); //id from appcompat
 		if (rootView != null)
 		{
-			final View view = getLayoutInflater().inflate(toolbarLayout, rootView, false);
+			final View view = getLayoutInflater().inflate(toolbarLayoutRes, rootView, false);
 			rootView.addView(view, 0);
 
 			final Toolbar toolbar = findViewById(toolbarId);

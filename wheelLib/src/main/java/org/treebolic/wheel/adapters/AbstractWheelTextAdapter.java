@@ -194,12 +194,12 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	/**
 	 * Sets resource Id for text view in item layout
 	 *
-	 * @param itemTextResourceId0 the item text resource Id to set
+	 * @param itemTextResId the item text resource Id to set
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public void setItemTextResource(@IdRes int itemTextResourceId0)
+	public void setItemTextResource(@IdRes int itemTextResId)
 	{
-		this.itemTextResourceId = itemTextResourceId0;
+		this.itemTextResourceId = itemTextResId;
 	}
 
 	/**
@@ -303,23 +303,23 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	/**
 	 * Loads a text view from view
 	 *
-	 * @param view         the text view or layout containing it
-	 * @param textResource the text resource Id in layout
+	 * @param view      the text view or layout containing it
+	 * @param textResId the text resource Id in layout
 	 * @return the loaded text view
 	 */
 	@Nullable
-	private static TextView getTextView(View view, @IdRes int textResource)
+	private static TextView getTextView(View view, @IdRes int textResId)
 	{
 		TextView text = null;
 		try
 		{
-			if (textResource == NO_RESOURCE && view instanceof TextView)
+			if (textResId == NO_RESOURCE && view instanceof TextView)
 			{
 				text = (TextView) view;
 			}
-			else if (textResource != NO_RESOURCE)
+			else if (textResId != NO_RESOURCE)
 			{
-				text = view.findViewById(textResource);
+				text = view.findViewById(textResId);
 			}
 		}
 		catch (ClassCastException e)

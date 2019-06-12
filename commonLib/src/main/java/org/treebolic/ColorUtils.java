@@ -73,23 +73,23 @@ public class ColorUtils
 	/**
 	 * Get drawable
 	 *
-	 * @param context context
-	 * @param resId   drawable id
+	 * @param context     context
+	 * @param drawableRes drawable id
 	 * @return drawable
 	 */
 	@SuppressWarnings({"WeakerAccess"})
-	static public Drawable getDrawable(@NonNull final Context context, @DrawableRes int resId)
+	static public Drawable getDrawable(@NonNull final Context context, @DrawableRes int drawableRes)
 	{
 		final Resources resources = context.getResources();
 		Drawable drawable;
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
 		{
 			final Resources.Theme theme = context.getTheme();
-			drawable = resources.getDrawable(resId, theme);
+			drawable = resources.getDrawable(drawableRes, theme);
 		}
 		else
 		{
-			drawable = resources.getDrawable(resId);
+			drawable = resources.getDrawable(drawableRes);
 		}
 		return drawable;
 	}
@@ -177,35 +177,35 @@ public class ColorUtils
 	 * Get color from theme
 	 *
 	 * @param context     context
-	 * @param styleId     style id (ex: R.style.MyTheme)
+	 * @param style       style id (ex: R.style.MyTheme)
 	 * @param colorAttrId attr id (ex: R.attr.editTextColor)
 	 * @return color
 	 */
 	@SuppressWarnings("WeakerAccess")
-	static public int getColorFromTheme(@NonNull final Context context, @AttrRes int styleId, @AttrRes @SuppressWarnings("SameParameterValue") int colorAttrId)
+	static public int getColorFromTheme(@NonNull final Context context, @AttrRes int style, @AttrRes @SuppressWarnings("SameParameterValue") int colorAttrId)
 	{
 		final Resources.Theme theme = context.getTheme();
 		// theme.dump(Log.DEBUG, TAG, "theme");
 
 		// res id of style pointed to from actionBarStyle
 		final TypedValue typedValue = new TypedValue();
-		theme.resolveAttribute(styleId, typedValue, true);
+		theme.resolveAttribute(style, typedValue, true);
 		final int resId = typedValue.resourceId;
 		// Log.d(TAG, "actionBarStyle=" + Integer.toHexString(resId));
 
 		// now get action bar style values
 		final int[] attrs = new int[]{colorAttrId};
-		final TypedArray style = theme.obtainStyledAttributes(resId, attrs);
+		final TypedArray array = theme.obtainStyledAttributes(resId, attrs);
 
 		// get color
 		try
 		{
 			// Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + Integer.toHexString(intColor));
-			return style.getColor(0 /* index */, 0xCCCCCCCC /* defaultVal */);
+			return array.getColor(0 /* index */, 0xCCCCCCCC /* defaultVal */);
 		}
 		finally
 		{
-			style.recycle();
+			array.recycle();
 		}
 	}
 

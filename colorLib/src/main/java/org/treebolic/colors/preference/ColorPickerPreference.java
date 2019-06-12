@@ -250,9 +250,9 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 
 	@SuppressWarnings("boxing")
 	@Override
-	protected Object onGetDefaultValue(@NonNull final TypedArray a, final int index)
+	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
 	{
-		return a.getInteger(index, DEFAULTCOLOR);
+		return array.getInteger(index, DEFAULTCOLOR);
 	}
 
 	@Override
