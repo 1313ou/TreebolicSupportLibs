@@ -6,9 +6,9 @@ package org.treebolic;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.contrib.AppCompatPreferenceActivity;
+import androidx.preference.legacy.contrib.PreferenceActivityCompat;
 
-public abstract class AppCompatCommonPreferenceActivity extends AppCompatPreferenceActivity
+public abstract class AppCompatCommonPreferenceActivity extends PreferenceActivityCompat
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
