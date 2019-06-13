@@ -136,6 +136,9 @@
       <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity src" />
       <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity TAG" />
       <entry_point TYPE="field" FQNAME="org.treebolic.download.DownloadActivity target" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.preference.Header CREATOR" />
+      <entry_point TYPE="field" FQNAME="androidx.appcompat.app.contrib.AppCompatPreferenceActivity mDelegate" />
+      <entry_point TYPE="field" FQNAME="androidx.preference.legacy.contrib.Header CREATOR" />
     </entry_points>
     <pattern value="org.treebolic.AppCompatCommonUtils" method="setThemePref" />
     <pattern value="org.treebolic.ColorUtils" method="getActionBarForegroundColorFromTheme" />
@@ -395,6 +398,77 @@
     <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="scrollerFling" />
     <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="getMotionEventPosition" />
     <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="scrollerFling" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="addContentView" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompatDelegate.Connector" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity.Entry" method="Entry" />
+    <pattern value="org.treebolic.filechooser.FileChooserActivity.FileArrayAdapter" method="FileArrayAdapter" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="getDelegate" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="getHeaders" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="getMenuInflater" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="getSelectedItemPosition" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="getSupportActionBar" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="hasHeaders" />
+    <pattern value="org.treebolic.preference.Header" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="invalidateHeaders" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="invalidateOptionsMenu" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="isMultiPane" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="loadHeadersFromResource" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompatDelegate.Connector" method="onBuildHeaders" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onConfigurationChanged" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onCreate" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onDestroy" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onPostCreate" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onPostResume" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompatDelegate" method="onRestoreInstanceState" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onStop" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="onTitleChanged" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompatDelegate" />
+    <pattern value="org.treebolic.wheel.AbstractWheel.SavedState" method="SavedState" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.SavedState" method="SavedState" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.SavedState" method="SavedState" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference.SavedState" method="SavedState" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="setContentView" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="setListFooter" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="setSupportActionBar" />
+    <pattern value="androidx.appcompat.app.contrib.AppCompatPreferenceActivity" method="setupToolbar" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="switchToHeader" />
+    <pattern value="org.treebolic.wheel.WheelHorizontalScroller" method="WheelHorizontalScroller" />
+    <pattern value="org.treebolic.wheel.WheelVerticalScroller" method="WheelVerticalScroller" />
+    <pattern value="org.treebolic.wheel.WheelVerticalView" method="WheelVerticalView" />
+    <pattern value="org.treebolic.preference.Header" method="describeContents" />
+    <pattern value="org.treebolic.preference.Header" method="Header" />
+    <pattern value="org.treebolic.preference.HeaderAdapter" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="isValidFragment" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onBackPressed" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onBuildHeaders" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onCreate" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onDestroy" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onIsMultiPane" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onPreferenceStartFragment" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onRestoreInstanceState" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompat" method="onSaveInstanceState" />
+    <pattern value="org.treebolic.preference.PreferenceActivityCompatDelegate" method="PreferenceActivityCompatDelegate" />
+    <pattern value="org.treebolic.preference.HeaderAdapter.ViewHolder" />
+    <pattern value="org.treebolic.preference.HeaderAdapter.ViewHolder" method="ViewHolder" />
+    <pattern value="org.treebolic.preference.Header" method="writeToParcel" />
+    <pattern value="org.treebolic.preference.HeaderAdapter" method="getView" />
+    <pattern value="org.treebolic.preference.HeaderAdapter" method="HeaderAdapter" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompatDelegate.Connector" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="getHeaders" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="getSelectedItemPosition" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="hasHeaders" />
+    <pattern value="androidx.preference.legacy.contrib.Header" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="invalidateHeaders" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="isMultiPane" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="loadHeadersFromResource" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompatDelegate.Connector" method="onBuildHeaders" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompatDelegate" method="onRestoreInstanceState" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompatDelegate" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="setListFooter" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="switchToHeader" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="androidx.annotation.Nullable" />

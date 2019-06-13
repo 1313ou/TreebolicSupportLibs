@@ -137,13 +137,14 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 */
 	abstract protected boolean doProcessing();
 
+	// P R O C E S S I N G
+
 	/**
 	 * Process obtained input stream: what to do once the file has been downloaded and opened as a stream
 	 *
 	 * @param inputStream obtained input stream
 	 * @return true if file should be disposed of
 	 */
-	@SuppressWarnings({"static-method", "RedundantThrows"})
 	protected boolean process(@SuppressWarnings("UnusedParameters") final InputStream inputStream) throws IOException
 	{
 		return false;
