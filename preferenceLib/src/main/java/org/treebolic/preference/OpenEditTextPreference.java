@@ -6,18 +6,24 @@ package org.treebolic.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.preference.DialogPreference;
 import android.text.Editable;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.preference.DialogPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceViewHolder;
 
 /**
  * OpenEditTextPreference
@@ -40,12 +46,6 @@ public class OpenEditTextPreference extends DialogPreference
 	 * Possible entry enable
 	 */
 	private boolean[] enable;
-
-	/**
-	 * Default value
-	 */
-	@Nullable
-	private String defaultValue;
 
 	/**
 	 * Value
@@ -72,7 +72,7 @@ public class OpenEditTextPreference extends DialogPreference
 	public OpenEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		super(context, attrs);
-		init(context, attrs);
+		init(attrs);
 
 		setDialogLayoutResource(R.layout.dialog_openedittext_pref);
 		setPositiveButtonText(android.R.string.ok);
@@ -85,12 +85,8 @@ public class OpenEditTextPreference extends DialogPreference
 	 *
 	 * @param attrs attributes
 	 */
-	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
+	private void init(@NonNull final AttributeSet attrs)
 	{
-		// obtain default value
-		final int id = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", -1);
-		this.defaultValue = id == -1 ? null : context.getResources().getString(id);
-
 		// obtain values through styled attributes
 		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference);
 		this.values = array.getTextArray(R.styleable.OpenEditTextPreference_values);
@@ -166,12 +162,27 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onBindDialogView(@NonNull final View view)
+	protected void onSetInitialValue(final Object defaultValue0)
 	{
-		super.onBindDialogView(view);
+		// set default state from the XML attribute
+		this.value = (String) defaultValue0;
+		persistString(this.value);
+	}
+
+	@Nullable
+	@Override
+	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
+	{
+		return array.getString(index);
+	}
+
+	@Override
+	public void onBindViewHolder(@NonNull final PreferenceViewHolder viewHolder)
+	{
+		super.onBindViewHolder(viewHolder);
 
 		// edit text
-		this.editView = view.findViewById(R.id.edit);
+		this.editView = (EditText) viewHolder.findViewById(R.id.edit);
 		if (this.editView != null)
 		{
 			if (this.value != null)
@@ -182,7 +193,7 @@ public class OpenEditTextPreference extends DialogPreference
 		}
 
 		// options
-		this.optionsView = view.findViewById(R.id.options);
+		this.optionsView = (RadioGroup) viewHolder.findViewById(R.id.options);
 		if (this.optionsView != null)
 		{
 			// populate
@@ -218,46 +229,66 @@ public class OpenEditTextPreference extends DialogPreference
 		}
 	}
 
-	@Override
-	protected void onDialogClosed(final boolean positiveResult)
-	{
-		super.onDialogClosed(positiveResult);
+	// D I A L O G
 
-		// when the user selects "OK", persist the new value
-		if (positiveResult)
+	static public OpenEditTextDialog newInstance(final OpenEditTextPreference pref)
+	{
+		final OpenEditTextDialog fragment = pref.new OpenEditTextDialog();
+		final Bundle args = new Bundle();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	private class OpenEditTextDialog extends PreferenceDialogFragmentCompat
+	{
+		@Override
+		public void onDialogClosed(final boolean positiveResult)
 		{
-			final Editable editable = this.editView.getText();
-			final String value0 = editable == null ? null : editable.toString();
-			if (callChangeListener(value0))
+			// when the user selects "OK", persist the new value
+			if (positiveResult)
 			{
-				// set value
-				this.value = value0;
-				persistString(value0);
-				notifyChanged();
+				final Editable editable = OpenEditTextPreference.this.editView.getText();
+				final String value0 = editable == null ? null : editable.toString();
+				if (callChangeListener(value0))
+				{
+					// set value
+					OpenEditTextPreference.this.value = value0;
+					persistString(value0);
+					notifyChanged();
+				}
 			}
 		}
 	}
 
-	@Override
-	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue0)
-	{
-		if (restorePersistedValue)
-		{
-			this.value = getPersistedString(this.defaultValue);
-		}
-		else
-		{
-			// set default state from the XML attribute
-			this.value = (String) defaultValue0;
-			persistString(this.value);
-		}
-	}
+	private static final String DIALOG_FRAGMENT_TAG = "OpenEditTextPreference";
 
-	@Nullable
-	@Override
-	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
+	/**
+	 * onDisplayPreferenceDialog helper
+	 *
+	 * @param prefFragment preference fragment
+	 * @param preference   preference
+	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
+	 */
+	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
-		return array.getString(index);
+		final FragmentManager manager = prefFragment.getFragmentManager();
+		if (manager == null)
+		{
+			return false;
+		}
+		if (manager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null)
+		{
+			return true;
+		}
+
+		if (preference instanceof OpenEditTextPreference)
+		{
+			final DialogFragment dialogFragment = OpenEditTextPreference.newInstance((OpenEditTextPreference) preference);
+			dialogFragment.setTargetFragment(prefFragment, 0);
+			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
+			return true;
+		}
+		return false;
 	}
 
 	// S T A T E

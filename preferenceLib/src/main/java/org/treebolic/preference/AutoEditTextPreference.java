@@ -6,17 +6,24 @@ package org.treebolic.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.preference.DialogPreference;
 import android.text.Editable;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.preference.DialogPreference;
+import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceViewHolder;
 
 /**
  * AutoEditTextPreference
@@ -29,12 +36,6 @@ public class AutoEditTextPreference extends DialogPreference
 	 * Possible values
 	 */
 	private CharSequence[] values;
-
-	/**
-	 * Default value
-	 */
-	@Nullable
-	private String defaultValue;
 
 	/**
 	 * Value
@@ -56,7 +57,7 @@ public class AutoEditTextPreference extends DialogPreference
 	public AutoEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		super(context, attrs);
-		init(context, attrs);
+		init(attrs);
 
 		setDialogLayoutResource(R.layout.dialog_autoedittext_pref);
 		setPositiveButtonText(android.R.string.ok);
@@ -69,12 +70,8 @@ public class AutoEditTextPreference extends DialogPreference
 	 *
 	 * @param attrs attributes
 	 */
-	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
+	private void init(@NonNull final AttributeSet attrs)
 	{
-		// obtain default value
-		final int id = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "defaultValue", -1);
-		this.defaultValue = id == -1 ? null : context.getResources().getString(id);
-
 		// obtain values through styled attributes
 		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference);
 		this.values = array.getTextArray(R.styleable.AutoEditTextPreference_values);
@@ -108,12 +105,12 @@ public class AutoEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onBindDialogView(@NonNull final View view)
+	public void onBindViewHolder(@NonNull final PreferenceViewHolder viewHolder)
 	{
-		super.onBindDialogView(view);
+		super.onBindViewHolder(viewHolder);
 
 		// get editView
-		this.editView = view.findViewById(R.id.autoedittext);
+		this.editView = (AutoCompleteTextView) viewHolder.findViewById(R.id.autoedittext);
 		if (this.editView != null)
 		{
 			// fill with value and possible values
@@ -128,38 +125,11 @@ public class AutoEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onDialogClosed(final boolean positiveResult)
+	protected void onSetInitialValue(final Object defaultValue0)
 	{
-		super.onDialogClosed(positiveResult);
-
-		// when the user selects "OK", persist the new value
-		if (positiveResult)
-		{
-			final Editable editable = this.editView.getText();
-			final String value0 = editable == null ? null : editable.toString();
-			if (callChangeListener(value0))
-			{
-				// set value
-				this.value = value0;
-				persistString(value0);
-				notifyChanged();
-			}
-		}
-	}
-
-	@Override
-	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue0)
-	{
-		if (restorePersistedValue)
-		{
-			this.value = getPersistedString(this.defaultValue);
-		}
-		else
-		{
-			// set default state from the XML attribute
-			this.value = (String) defaultValue0;
-			persistString(this.value);
-		}
+		// set default state from the XML attribute
+		this.value = (String) defaultValue0;
+		persistString(this.value);
 	}
 
 	@Nullable
@@ -167,6 +137,68 @@ public class AutoEditTextPreference extends DialogPreference
 	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
 	{
 		return array.getString(index);
+	}
+
+	// D I A L O G
+
+	static public AutoEditTextPreference.AutoEditTextDialog newInstance(final AutoEditTextPreference pref)
+	{
+		final AutoEditTextPreference.AutoEditTextDialog fragment = pref.new AutoEditTextDialog();
+		final Bundle args = new Bundle();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	private class AutoEditTextDialog extends PreferenceDialogFragmentCompat
+	{
+		@Override
+		public void onDialogClosed(final boolean positiveResult)
+		{
+			// when the user selects "OK", persist the new value
+			if (positiveResult)
+			{
+				final Editable editable = AutoEditTextPreference.this.editView.getText();
+				final String value0 = editable == null ? null : editable.toString();
+				if (callChangeListener(value0))
+				{
+					// set value
+					AutoEditTextPreference.this.value = value0;
+					persistString(value0);
+					notifyChanged();
+				}
+			}
+		}
+	}
+
+	private static final String DIALOG_FRAGMENT_TAG = "AutoEditTextPreference";
+
+	/**
+	 * onDisplayPreferenceDialog helper
+	 *
+	 * @param prefFragment preference fragment
+	 * @param preference   preference
+	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
+	 */
+	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
+	{
+		final FragmentManager manager = prefFragment.getFragmentManager();
+		if (manager == null)
+		{
+			return false;
+		}
+		if (manager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null)
+		{
+			return true;
+		}
+
+		if (preference instanceof AutoEditTextPreference)
+		{
+			final DialogFragment dialogFragment = AutoEditTextPreference.newInstance((AutoEditTextPreference) preference);
+			dialogFragment.setTargetFragment(prefFragment, 0);
+			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
+			return true;
+		}
+		return false;
 	}
 
 	// S T A T E
@@ -270,5 +302,13 @@ public class AutoEditTextPreference extends DialogPreference
 
 		// set this Preference's widget to reflect the restored state
 		this.editView.setText(state.value);
+	}
+
+	class xxx extends EditTextPreference
+	{
+		public xxx(final Context context)
+		{
+			super(context);
+		}
 	}
 }

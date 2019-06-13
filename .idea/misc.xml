@@ -139,6 +139,8 @@
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.Header CREATOR" />
       <entry_point TYPE="field" FQNAME="androidx.appcompat.app.contrib.AppCompatPreferenceActivity mDelegate" />
       <entry_point TYPE="field" FQNAME="androidx.preference.legacy.contrib.Header CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.preference.AutoEditTextPreference defaultValue" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.preference.OpenEditTextPreference defaultValue" />
     </entry_points>
     <pattern value="org.treebolic.AppCompatCommonUtils" method="setThemePref" />
     <pattern value="org.treebolic.ColorUtils" method="getActionBarForegroundColorFromTheme" />
@@ -469,6 +471,36 @@
     <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompatDelegate" />
     <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="setListFooter" />
     <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="switchToHeader" />
+    <pattern value="androidx.preference.legacy.contrib.Header" method="describeContents" />
+    <pattern value="androidx.preference.legacy.contrib.Header" method="Header" />
+    <pattern value="androidx.preference.legacy.contrib.HeaderAdapter" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="isValidFragment" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onBackPressed" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onBuildHeaders" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onCreate" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onDestroy" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onIsMultiPane" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onPreferenceStartFragment" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onRestoreInstanceState" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompat" method="onSaveInstanceState" />
+    <pattern value="androidx.preference.legacy.contrib.PreferenceActivityCompatDelegate" method="PreferenceActivityCompatDelegate" />
+    <pattern value="androidx.preference.legacy.contrib.HeaderAdapter.ViewHolder" />
+    <pattern value="androidx.preference.legacy.contrib.HeaderAdapter.ViewHolder" method="ViewHolder" />
+    <pattern value="androidx.preference.legacy.contrib.Header" method="writeToParcel" />
+    <pattern value="androidx.preference.legacy.contrib.HeaderAdapter" method="getView" />
+    <pattern value="androidx.preference.legacy.contrib.HeaderAdapter" method="HeaderAdapter" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.AutoEditTextDialog" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference.OpenEditTextDialog" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="newInstance" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="newInstance" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onBindViewHolder" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onBindViewHolder" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.AutoEditTextDialog" method="onDialogClosed" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference.OpenEditTextDialog" method="onDialogClosed" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference" method="onDisplayPreferenceDialog" />
+    <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onDisplayPreferenceDialog" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.xxx" />
+    <pattern value="org.treebolic.preference.AutoEditTextPreference.xxx" method="xxx" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="androidx.annotation.Nullable" />
