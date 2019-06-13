@@ -501,6 +501,8 @@
     <pattern value="org.treebolic.preference.OpenEditTextPreference" method="onDisplayPreferenceDialog" />
     <pattern value="org.treebolic.preference.AutoEditTextPreference.xxx" />
     <pattern value="org.treebolic.preference.AutoEditTextPreference.xxx" method="xxx" />
+    <pattern value="org.treebolic.AppCompatCommonPreferenceActivity" method="getSupportActionBar" />
+    <pattern value="org.treebolic.AppCompatCommonPreferenceActivity" method="setupToolbar" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="androidx.annotation.Nullable" />
