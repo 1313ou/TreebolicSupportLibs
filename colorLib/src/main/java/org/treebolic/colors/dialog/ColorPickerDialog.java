@@ -45,7 +45,7 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 
 	private void init(final Integer color)
 	{
-		// to fight color branding.
+		// to fight value branding.
 		final Window window = getWindow();
 		if (window != null)
 		{

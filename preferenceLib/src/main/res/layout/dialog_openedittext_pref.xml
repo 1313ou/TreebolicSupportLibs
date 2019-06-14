@@ -9,7 +9,7 @@
                 android:padding="16dp">
 
 	<EditText
-		android:id="@+id/edit"
+		android:id="@+id/openedit_text"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:ellipsize="middle"
@@ -25,9 +25,9 @@
 	</EditText>
 
 	<RadioGroup
-		android:id="@+id/options"
+		android:id="@+id/openedit_options"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/edit"/>
+		android:layout_below="@+id/openedit_text"/>
 
 </RelativeLayout>

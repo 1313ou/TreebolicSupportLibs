@@ -7,9 +7,8 @@ package org.treebolic.colors.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.os.Parcel;
+import android.os.Bundle;
 import android.os.Parcelable;
-import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,36 +19,23 @@ import org.treebolic.colors.view.ColorPickerView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.preference.DialogPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceViewHolder;
 
-public class ColorPickerPreference extends DialogPreference implements ColorPickerView.OnColorChangedListener
+public class ColorPickerPreference extends DialogPreference
 {
-	// V I E W S
-
-	/**
-	 * Picker view
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected ColorPickerView mColorPickerView;
-
-	/**
-	 * Old color view
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected ColorPanelView mOldColorView;
-
-	/**
-	 * New color view
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected ColorPanelView mNewColorView;
-
 	// C O L O R
 
 	/**
 	 * Color
 	 */
 	@SuppressWarnings("WeakerAccess")
-	protected int mColor;
+	protected int value;
 
 	/**
 	 * S E T T I N G S
@@ -93,6 +79,27 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	{
 		super(context, attrs, defStyle);
 		init(attrs);
+		// resource
+		setDialogLayoutResource(R.layout.dialog_color_picker);
+
+		// buttons
+		setPositiveButtonText(android.R.string.ok);
+		setNegativeButtonText(android.R.string.cancel);
+
+		// persistence
+		setPersistent(true);
+
+		// list
+		if (this.showPreviewSelectedColorInList)
+		{
+			setWidgetLayoutResource(R.layout.preference_preview_layout);
+		}
+
+		// title
+		if (!this.showDialogTitle)
+		{
+			setDialogTitle(null);
+		}
 	}
 
 	/**
@@ -116,91 +123,56 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		this.colorPickerBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, -1);
 		array.recycle();
 
-		// list
-		if (this.showPreviewSelectedColorInList)
-		{
-			setWidgetLayoutResource(R.layout.preference_preview_layout);
-		}
-
-		// title
-		if (!this.showDialogTitle)
-		{
-			setDialogTitle(null);
-		}
-
-		// resource
-		setDialogLayoutResource(R.layout.dialog_color_picker);
-
-		// buttons
-		setPositiveButtonText(android.R.string.ok);
-		setNegativeButtonText(android.R.string.cancel);
-
-		// persistence
-		setPersistent(true);
 	}
 
 	// B I N D
 
 	@Override
-	protected void onBindView(@NonNull final View view)
+	public void onBindViewHolder(final PreferenceViewHolder viewHolder)
 	{
-		super.onBindView(view);
+		super.onBindViewHolder(viewHolder);
 
-		final ColorPanelView preview = view.findViewById(R.id.preference_preview_color_panel);
-		if (preview != null)
-		{
-			preview.setColor(this.mColor);
-		}
-	}
-
-	@Override
-	protected void onBindDialogView(@NonNull final View layout)
-	{
-		super.onBindDialogView(layout);
-
-		this.mColorPickerView = layout.findViewById(R.id.color_picker_view);
-		this.mOldColorView = layout.findViewById(R.id.color_panel_old);
-		this.mNewColorView = layout.findViewById(R.id.color_panel_new);
+		final ColorPickerView colorPickerView = (ColorPickerView) viewHolder.findViewById(R.id.color_picker_view);
+		final ColorPanelView oldColorView = (ColorPanelView) viewHolder.findViewById(R.id.color_panel_old);
+		final ColorPanelView newColorView = (ColorPanelView) viewHolder.findViewById(R.id.color_panel_new);
+		final LinearLayout landscapeLayout = (LinearLayout) viewHolder.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
+		final ColorPanelView preview = (ColorPanelView) viewHolder.findViewById(R.id.preference_preview_color_panel);
 
 		// padding
 		boolean isLandscapeLayout = false;
-		final LinearLayout landscapeLayout = layout.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
 		if (landscapeLayout != null)
 		{
 			isLandscapeLayout = true;
 		}
 		if (!isLandscapeLayout)
 		{
-			((LinearLayout) this.mOldColorView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0, Math.round(this.mColorPickerView.getDrawingOffset()), 0);
+			((LinearLayout) oldColorView.getParent()).setPadding(Math.round(colorPickerView.getDrawingOffset()), 0, Math.round(colorPickerView.getDrawingOffset()), 0);
 		}
 		else
 		{
-			landscapeLayout.setPadding(0, 0, Math.round(this.mColorPickerView.getDrawingOffset()), 0);
+			landscapeLayout.setPadding(0, 0, Math.round(colorPickerView.getDrawingOffset()), 0);
 		}
 
 		// alpha
-		this.mColorPickerView.setAlphaSliderVisible(this.alphaChannelVisible);
-		this.mColorPickerView.setAlphaSliderText(this.alphaChannelText);
+		colorPickerView.setAlphaSliderVisible(this.alphaChannelVisible);
+		colorPickerView.setAlphaSliderText(this.alphaChannelText);
 
 		// colors
-		this.mColorPickerView.setSliderTrackerColor(this.colorPickerSliderColor);
+		colorPickerView.setSliderTrackerColor(this.colorPickerSliderColor);
 		if (this.colorPickerSliderColor != -1)
 		{
-			this.mColorPickerView.setSliderTrackerColor(this.colorPickerSliderColor);
+			colorPickerView.setSliderTrackerColor(this.colorPickerSliderColor);
 		}
 		if (this.colorPickerBorderColor != -1)
 		{
-			this.mColorPickerView.setBorderColor(this.colorPickerBorderColor);
+			colorPickerView.setBorderColor(this.colorPickerBorderColor);
 		}
 
-		// listener
-		this.mColorPickerView.setOnColorChangedListener(this);
+		// old value
+		oldColorView.setColor(this.value);
 
-		// Dialog old color
-		this.mOldColorView.setColor(this.mColor);
-
-		// Dialog new color
-		int newColor = this.mColor;
+		// new value
+		int newColor = this.value;
 		if (newColor == 0) // unset value (=transparent black)
 		{
 			newColor = Color.GRAY;
@@ -209,44 +181,19 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		{
 			newColor |= 0xFF000000;
 		}
-		this.mColorPickerView.setColor(newColor, true);
-	}
+		colorPickerView.setColor(newColor, true);
 
-	// C L O S E
-
-	@SuppressWarnings("boxing")
-	@Override
-	protected void onDialogClosed(@SuppressWarnings("SameParameterValue") final boolean positiveResult)
-	{
-		if (positiveResult)
+		// preview
+		if (preview != null)
 		{
-			this.mColor = this.mColorPickerView.getColor();
-			if (callChangeListener(this.mColor))
-			{
-				persistInt(this.mColor);
-				notifyChanged();
-			}
+			preview.setColor(this.value);
 		}
+
 	}
 
 	// V A L U E S
 
 	static private final int DEFAULTCOLOR = 0xFF000000;
-
-	@Override
-	protected void onSetInitialValue(final boolean restorePersistedValue, final Object defaultValue)
-	{
-		if (restorePersistedValue)
-		{
-			this.mColor = getPersistedInt(DEFAULTCOLOR);
-			// Log.d("mColorPicker", "Load saved color: " + mColor);
-		}
-		else
-		{
-			this.mColor = (Integer) defaultValue;
-			persistInt(this.mColor);
-		}
-	}
 
 	@SuppressWarnings("boxing")
 	@Override
@@ -256,9 +203,94 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	}
 
 	@Override
-	public void onColorChanged(final int newColor)
+	protected void onSetInitialValue(final Object defaultValue)
 	{
-		this.mNewColorView.setColor(newColor);
+		this.value = (Integer) defaultValue;
+		persistInt(this.value);
+	}
+
+	protected void setValue(int value)
+	{
+		this.value = value;
+		persistInt(this.value);
+		notifyChanged();
+	}
+
+	static public class ColorPickerDialog extends PreferenceDialogFragmentCompat implements ColorPickerView.OnColorChangedListener
+	{
+		static public ColorPickerPreference.ColorPickerDialog newInstance(final ColorPickerPreference pref)
+		{
+			final ColorPickerPreference.ColorPickerDialog fragment = new ColorPickerDialog();
+			final Bundle args = new Bundle();
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		@Override
+		protected View onCreateDialogView(final Context context)
+		{
+			final View view = super.onCreateDialogView(context);
+
+			// listener
+			final ColorPickerView colorPickerView = view.findViewById(R.id.color_picker_view);
+			colorPickerView.setOnColorChangedListener(this);
+
+			return view;
+		}
+
+		@Override
+		public void onDialogClosed(final boolean positiveResult)
+		{
+			// when the user selects "OK", persist the new value
+			if (positiveResult)
+			{
+				final ColorPickerPreference pref = (ColorPickerPreference) getPreference();
+				final ColorPickerView colorPickerView = getView().findViewById(R.id.color_picker_view);
+				int color = colorPickerView.getColor();
+				if (pref.callChangeListener(color))
+				{
+					pref.setValue(color);
+				}
+			}
+		}
+
+		@Override
+		public void onColorChanged(final int newColor)
+		{
+			final ColorPanelView newColorView = getView().findViewById(R.id.color_panel_new);
+			newColorView.setColor(newColor);
+		}
+	}
+
+	private static final String DIALOG_FRAGMENT_TAG = "ColorPickerPreference";
+
+	/**
+	 * onDisplayPreferenceDialog helper
+	 *
+	 * @param prefFragment preference fragment
+	 * @param preference   preference
+	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
+	 */
+	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
+	{
+		final FragmentManager manager = prefFragment.getFragmentManager();
+		if (manager == null)
+		{
+			return false;
+		}
+		if (manager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null)
+		{
+			return true;
+		}
+
+		if (preference instanceof ColorPickerPreference)
+		{
+			final DialogFragment dialogFragment = ColorPickerDialog.newInstance((ColorPickerPreference) preference);
+			dialogFragment.setTargetFragment(prefFragment, 0);
+			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
+			return true;
+		}
+		return false;
 	}
 
 	// S A V E / R E S T O R E
@@ -269,26 +301,19 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 	{
 		final Parcelable superState = super.onSaveInstanceState();
 
-		// Create instance of custom BaseSavedState
-		final SavedState myState = new SavedState(superState);
-		// Set the state's value with the class member that holds current setting value
+		// create instance of custom BaseSavedState
+		final ColorSavedState state = new ColorSavedState(superState);
 
-		if (getDialog() != null && this.mColorPickerView != null)
-		{
-			myState.currentColor = this.mColorPickerView.getColor();
-		}
-		else
-		{
-			myState.currentColor = 0;
-		}
-		return myState;
+		// set the state's value with the class member that holds current setting value
+		state.value = this.value;
+		return state;
 	}
 
 	@Override
 	protected void onRestoreInstanceState(@Nullable final Parcelable state)
 	{
 		// Check whether we saved the state in onSaveInstanceState
-		if (state == null || !state.getClass().equals(SavedState.class))
+		if (state == null || !state.getClass().equals(ColorSavedState.class))
 		{
 			// Didn't save the state, so call superclass
 			super.onRestoreInstanceState(state);
@@ -296,58 +321,10 @@ public class ColorPickerPreference extends DialogPreference implements ColorPick
 		}
 
 		// Cast state to custom BaseSavedState and pass to superclass
-		final SavedState myState = (SavedState) state;
-		super.onRestoreInstanceState(myState.getSuperState());
+		final ColorSavedState savedState = (ColorSavedState) state;
+		super.onRestoreInstanceState(savedState.getSuperState());
 
-		// Set this Preference's widget to reflect the restored state
-		if (getDialog() != null && this.mColorPickerView != null)
-		{
-			// Log.d("mColorPicker", "Restoring color!");
-			this.mColorPickerView.setColor(myState.currentColor, true);
-		}
-	}
-
-	private static class SavedState extends BaseSavedState
-	{
-		// Member that holds the setting's value
-		int currentColor;
-
-		@SuppressWarnings("WeakerAccess")
-		public SavedState(final Parcelable superState)
-		{
-			super(superState);
-		}
-
-		@SuppressWarnings("WeakerAccess")
-		public SavedState(@NonNull final Parcel source)
-		{
-			super(source);
-			// Get the current preference's value
-			this.currentColor = source.readInt();
-		}
-
-		@Override
-		public void writeToParcel(@NonNull final Parcel dest, final int flags)
-		{
-			super.writeToParcel(dest, flags);
-			// Write the preference's value
-			dest.writeInt(this.currentColor);
-		}
-
-		// Standard creator object using an instance of this class
-		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
-		{
-			@Override
-			public SavedState createFromParcel(@NonNull final Parcel in)
-			{
-				return new SavedState(in);
-			}
-
-			@Override
-			public SavedState[] newArray(final int size)
-			{
-				return new SavedState[size];
-			}
-		};
+		// set this preference's widget to reflect the restored state
+		setValue(savedState.value);
 	}
 }

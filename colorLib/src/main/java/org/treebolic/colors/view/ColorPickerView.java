@@ -32,7 +32,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 /**
- * Displays a color picker to the user and allow them to select a color. A slider for the alpha channel is also available. Enable it by setting
+ * Displays a value picker to the user and allow them to select a value. A slider for the alpha channel is also available. Enable it by setting
  * setAlphaSliderVisible(boolean) to true.
  *
  * @author Daniel Nilsson
@@ -56,7 +56,7 @@ public class ColorPickerView extends View
 	// D I M E N S I O N S
 
 	/**
-	 * The width in pixels of the border surrounding all color panels.
+	 * The width in pixels of the border surrounding all value panels.
 	 */
 	private final static float BORDER_WIDTH_PX = 1;
 
@@ -71,12 +71,12 @@ public class ColorPickerView extends View
 	private float ALPHA_PANEL_HEIGHT = 20f;
 
 	/**
-	 * The distance in dp between the different color panels.
+	 * The distance in dp between the different value panels.
 	 */
 	private float PANEL_SPACING = 10f;
 
 	/**
-	 * The radius in dp of the color palette tracker circle.
+	 * The radius in dp of the value palette tracker circle.
 	 */
 	private float PALETTE_CIRCLE_TRACKER_RADIUS = 5f;
 
@@ -178,12 +178,12 @@ public class ColorPickerView extends View
 	private boolean mShowAlphaPanel = false;
 
 	/**
-	 * Slider tracker color
+	 * Slider tracker value
 	 */
 	private int mSliderTrackerColor = 0xFFBDBDBD;
 
 	/**
-	 * Border color
+	 * Border value
 	 */
 	private int mBorderColor = 0xFF6E6E6E;
 
@@ -879,7 +879,7 @@ public class ColorPickerView extends View
 		final int widthAllowed = MeasureSpec.getSize(widthMeasureSpec);
 		final int heightAllowed = MeasureSpec.getSize(heightMeasureSpec);
 
-		// Log.d("color-picker-view", "widthMode: " + modeToString(widthMode) + " heightMode: " + modeToString(heightMode) + " widthAllowed: " + widthAllowed +
+		// Log.d("value-picker-view", "widthMode: " + modeToString(widthMode) + " heightMode: " + modeToString(heightMode) + " widthAllowed: " + widthAllowed +
 		// " heightAllowed: " + heightAllowed);
 
 		if (widthMode == MeasureSpec.EXACTLY || heightMode == MeasureSpec.EXACTLY)
@@ -1000,7 +1000,7 @@ public class ColorPickerView extends View
 
 	private void setUpSatValRect()
 	{
-		// Calculate the size for the big color rectangle.
+		// Calculate the size for the big value rectangle.
 		final RectF dRect = this.mDrawingRect;
 
 		final float left = dRect.left + ColorPickerView.BORDER_WIDTH_PX;
@@ -1050,7 +1050,7 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Set a OnColorChangedListener to get notified when the color selected by the user has changed.
+	 * Set a OnColorChangedListener to get notified when the value selected by the user has changed.
 	 *
 	 * @param listener change listener
 	 */
@@ -1060,9 +1060,9 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Get the current color this view is showing.
+	 * Get the current value this view is showing.
 	 *
-	 * @return the current color.
+	 * @return the current value.
 	 */
 	public int getColor()
 	{
@@ -1070,9 +1070,9 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Set the color the view should show.
+	 * Set the value the view should show.
 	 *
-	 * @param color The color that should be selected.
+	 * @param color The value that should be selected.
 	 */
 	public void setColor(final int color)
 	{
@@ -1080,9 +1080,9 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Set the color this view should show.
+	 * Set the value this view should show.
 	 *
-	 * @param color    The color that should be selected.
+	 * @param color    The value that should be selected.
 	 * @param callback If you want to get a callback to your OnColorChangedListener.
 	 */
 	public void setColor(final int color, final boolean callback)
@@ -1110,8 +1110,8 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Get the drawing offset of the color picker view. The drawing offset is the distance from the side of a panel to the side of the view minus the padding.
-	 * Useful if you want to have your own panel below showing the currently selected color and want to align it perfectly.
+	 * Get the drawing offset of the value picker view. The drawing offset is the distance from the side of a panel to the side of the view minus the padding.
+	 * Useful if you want to have your own panel below showing the currently selected value and want to align it perfectly.
 	 *
 	 * @return The offset in pixels.
 	 */
@@ -1144,9 +1144,9 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Set the color of the tracker slider on the hue and alpha panel.
+	 * Set the value of the tracker slider on the hue and alpha panel.
 	 *
-	 * @param color tracker color
+	 * @param color tracker value
 	 */
 	public void setSliderTrackerColor(final int color)
 	{
@@ -1156,9 +1156,9 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Get color of the tracker slider on the hue and alpha panel.
+	 * Get value of the tracker slider on the hue and alpha panel.
 	 *
-	 * @return slider tracker color
+	 * @return slider tracker value
 	 */
 	public int getSliderTrackerColor()
 	{
@@ -1166,9 +1166,9 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Set the color of the border surrounding all panels.
+	 * Set the value of the border surrounding all panels.
 	 *
-	 * @param color border color
+	 * @param color border value
 	 */
 	public void setBorderColor(final int color)
 	{
@@ -1177,7 +1177,7 @@ public class ColorPickerView extends View
 	}
 
 	/**
-	 * Get the color of the border surrounding all panels.
+	 * Get the value of the border surrounding all panels.
 	 */
 	public int getBorderColor()
 	{

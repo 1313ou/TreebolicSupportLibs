@@ -7,7 +7,6 @@ package org.treebolic.preference;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.util.AttributeSet;
@@ -52,16 +51,6 @@ public class OpenEditTextPreference extends DialogPreference
 	 */
 	@Nullable
 	private String value;
-
-	/**
-	 * Edit text
-	 */
-	private EditText editView;
-
-	/**
-	 * Radio group
-	 */
-	private RadioGroup optionsView;
 
 	/**
 	 * Constructor
@@ -124,11 +113,11 @@ public class OpenEditTextPreference extends DialogPreference
 	/**
 	 * Labels Setter
 	 *
-	 * @param values0 values
+	 * @param values values
 	 */
-	public void setValues(CharSequence[] values0)
+	public void setValues(CharSequence[] values)
 	{
-		this.values = values0;
+		this.values = values;
 	}
 
 	/**
@@ -144,30 +133,24 @@ public class OpenEditTextPreference extends DialogPreference
 	/**
 	 * Values Setter
 	 *
-	 * @param labels0 labels
+	 * @param labels labels
 	 */
-	public void setLabels(CharSequence[] labels0)
+	public void setLabels(CharSequence[] labels)
 	{
-		this.values = labels0;
+		this.values = labels;
 	}
 
 	/**
 	 * Enable Setter
 	 *
-	 * @param enable0 enable flags
+	 * @param enables enable flags
 	 */
-	public void setEnables(boolean[] enable0)
+	public void setEnables(boolean[] enables)
 	{
-		this.enable = enable0;
+		this.enable = enables;
 	}
 
-	@Override
-	protected void onSetInitialValue(final Object defaultValue0)
-	{
-		// set default state from the XML attribute
-		this.value = (String) defaultValue0;
-		persistString(this.value);
-	}
+	// V A L U E
 
 	@Nullable
 	@Override
@@ -177,28 +160,45 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	@Override
+	protected void onSetInitialValue(final Object initialValue)
+	{
+		// set default state from the XML attribute
+		this.value = (String) initialValue;
+		persistString(this.value);
+	}
+
+	protected void setValue(final String value)
+	{
+		this.value = value;
+		persistString(value);
+		notifyChanged();
+	}
+
+	// V A L U E  T O   V I E W
+
+	@Override
 	public void onBindViewHolder(@NonNull final PreferenceViewHolder viewHolder)
 	{
 		super.onBindViewHolder(viewHolder);
 
 		// edit text
-		this.editView = (EditText) viewHolder.findViewById(R.id.edit);
-		if (this.editView != null)
+		final EditText editView = (EditText) viewHolder.findViewById(R.id.openedit_text);
+		if (editView != null)
 		{
 			if (this.value != null)
 			{
-				this.editView.setText(this.value);
-				this.editView.setSelection(this.value.length());
+				editView.setText(this.value);
+				editView.setSelection(this.value.length());
 			}
 		}
 
 		// options
-		this.optionsView = (RadioGroup) viewHolder.findViewById(R.id.options);
-		if (this.optionsView != null)
+		final RadioGroup optionsView = (RadioGroup) viewHolder.findViewById(R.id.openedit_options);
+		if (optionsView != null)
 		{
 			// populate
 			final Context context = getContext();
-			this.optionsView.removeAllViews();
+			optionsView.removeAllViews();
 			for (int i = 0; i < this.values.length && i < this.labels.length && i < this.enable.length; i++)
 			{
 				final CharSequence value = this.values[i];
@@ -209,52 +209,52 @@ public class OpenEditTextPreference extends DialogPreference
 				radioButton.setText(label);
 				radioButton.setTag(value);
 				radioButton.setEnabled(enable);
-				this.optionsView.addView(radioButton);
+				optionsView.addView(radioButton);
 			}
 
 			// check listener
-			this.optionsView.setOnCheckedChangeListener((group, checkedId) -> {
+			optionsView.setOnCheckedChangeListener((group, checkedId) -> {
 				if (checkedId == -1)
 				{
-					OpenEditTextPreference.this.editView.setText("");
+					editView.setText("");
 				}
 				else
 				{
-					final RadioButton radioButton = OpenEditTextPreference.this.optionsView.findViewById(checkedId);
+					final RadioButton radioButton = optionsView.findViewById(checkedId);
 					final String tag = radioButton.getTag().toString();
-					OpenEditTextPreference.this.editView.setText(tag);
-					OpenEditTextPreference.this.editView.setSelection(tag.length());
+					editView.setText(tag);
+					editView.setSelection(tag.length());
 				}
 			});
 		}
 	}
 
-	// D I A L O G
+	// D I A L O G  F R A G M E N T
 
-	static public OpenEditTextDialog newInstance(final OpenEditTextPreference pref)
+	static public class OpenEditTextDialog extends PreferenceDialogFragmentCompat
 	{
-		final OpenEditTextDialog fragment = pref.new OpenEditTextDialog();
-		final Bundle args = new Bundle();
-		fragment.setArguments(args);
-		return fragment;
-	}
+		static public OpenEditTextDialog newInstance(final OpenEditTextPreference pref)
+		{
+			final OpenEditTextDialog fragment = new OpenEditTextDialog();
+			final Bundle args = new Bundle();
+			args.putString(ARG_KEY, pref.getKey());
+			fragment.setArguments(args);
+			return fragment;
+		}
 
-	private class OpenEditTextDialog extends PreferenceDialogFragmentCompat
-	{
 		@Override
 		public void onDialogClosed(final boolean positiveResult)
 		{
 			// when the user selects "OK", persist the new value
 			if (positiveResult)
 			{
-				final Editable editable = OpenEditTextPreference.this.editView.getText();
-				final String value0 = editable == null ? null : editable.toString();
-				if (callChangeListener(value0))
+				final EditText editView = getView().findViewById(R.id.openedit_text);
+				final Editable editable = editView.getText();
+				final OpenEditTextPreference pref = (OpenEditTextPreference) getPreference();
+				final String newValue = editable == null ? null : editable.toString();
+				if (pref.callChangeListener(newValue))
 				{
-					// set value
-					OpenEditTextPreference.this.value = value0;
-					persistString(value0);
-					notifyChanged();
+					pref.setValue(newValue);
 				}
 			}
 		}
@@ -276,6 +276,7 @@ public class OpenEditTextPreference extends DialogPreference
 		{
 			return false;
 		}
+
 		if (manager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null)
 		{
 			return true;
@@ -283,7 +284,7 @@ public class OpenEditTextPreference extends DialogPreference
 
 		if (preference instanceof OpenEditTextPreference)
 		{
-			final DialogFragment dialogFragment = OpenEditTextPreference.newInstance((OpenEditTextPreference) preference);
+			final DialogFragment dialogFragment = OpenEditTextDialog.newInstance((OpenEditTextPreference) preference);
 			dialogFragment.setTargetFragment(prefFragment, 0);
 			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
 			return true;
@@ -292,68 +293,6 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	// S T A T E
-
-	/**
-	 * Saved state
-	 */
-	private static class SavedState extends BaseSavedState
-	{
-		// member that holds the setting's value
-		@Nullable
-		private String value;
-
-		/**
-		 * Constructor from superstate
-		 *
-		 * @param superState superstate
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public SavedState(final Parcelable superState)
-		{
-			super(superState);
-		}
-
-		/**
-		 * Constructor from parcel
-		 *
-		 * @param source source parcel
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public SavedState(@NonNull final Parcel source)
-		{
-			super(source);
-
-			// get the current preference's value
-			this.value = source.readString();
-		}
-
-		@Override
-		public void writeToParcel(@NonNull final Parcel dest, final int flags)
-		{
-			super.writeToParcel(dest, flags);
-
-			// write the preference's value
-			dest.writeString(this.value);
-		}
-
-		/**
-		 * Standard creator object using an instance of this class
-		 */
-		public static final Creator<SavedState> CREATOR = new Creator<SavedState>()
-		{
-			@Override
-			public SavedState createFromParcel(@NonNull final Parcel in)
-			{
-				return new SavedState(in);
-			}
-
-			@Override
-			public SavedState[] newArray(final int size)
-			{
-				return new SavedState[size];
-			}
-		};
-	}
 
 	@Override
 	protected Parcelable onSaveInstanceState()
@@ -368,7 +307,7 @@ public class OpenEditTextPreference extends DialogPreference
 		}
 
 		// create instance of custom BaseSavedState
-		final SavedState state = new SavedState(superState);
+		final StringSavedState state = new StringSavedState(superState);
 
 		// set the state's value with the class member that holds current setting value
 		state.value = this.value;
@@ -376,21 +315,21 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onRestoreInstanceState(@Nullable final Parcelable state0)
+	protected void onRestoreInstanceState(@Nullable final Parcelable state)
 	{
 		// check whether we saved the state in onSaveInstanceState
-		if (state0 == null || !state0.getClass().equals(SavedState.class))
+		if (state == null || !state.getClass().equals(StringSavedState.class))
 		{
 			// didn't save the state, so call superclass
-			super.onRestoreInstanceState(state0);
+			super.onRestoreInstanceState(state);
 			return;
 		}
 
 		// cast state to custom BaseSavedState and pass to superclass
-		final SavedState state = (SavedState) state0;
-		super.onRestoreInstanceState(state.getSuperState());
+		final StringSavedState savedState = (StringSavedState) state;
+		super.onRestoreInstanceState(savedState.getSuperState());
 
-		// set this Preference's widget to reflect the restored state
-		this.editView.setText(state.value);
+		// set this preference's widget to reflect the restored state
+		setValue(savedState.value);
 	}
 }

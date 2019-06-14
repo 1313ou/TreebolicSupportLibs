@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
- * This class draws a panel which which will be filled with a color which can be set. It can be used to show the currently selected color which you will get
+ * This class draws a panel which which will be filled with a value which can be set. It can be used to show the currently selected value which you will get
  * from the {@link ColorPickerView}.
  *
  * @author Daniel Nilsson
@@ -26,7 +26,7 @@ import androidx.annotation.Nullable;
 public class ColorPanelView extends View
 {
 	/**
-	 * The width in pixels of the border surrounding the color panel.
+	 * The width in pixels of the border surrounding the value panel.
 	 */
 	private final static float BORDER_WIDTH_PX = 1;
 
@@ -36,7 +36,7 @@ public class ColorPanelView extends View
 	private static float mDensity = 1f;
 
 	/**
-	 * Border color
+	 * Border value
 	 */
 	private int mBorderColor = 0xff6E6E6E;
 
@@ -171,7 +171,7 @@ public class ColorPanelView extends View
 			this.mAlphaPattern.draw(canvas);
 		}
 
-		// color
+		// value
 		if (!this.mIsNull)
 		{
 			this.mColorPaint.setColor(this.mColor);
@@ -202,7 +202,7 @@ public class ColorPanelView extends View
 	}
 
 	/**
-	 * Set up color rectangle
+	 * Set up value rectangle
 	 */
 	private void setUpColorRect()
 	{
@@ -236,9 +236,9 @@ public class ColorPanelView extends View
 	}
 
 	/**
-	 * Set the color that should be shown by this view.
+	 * Set the value that should be shown by this view.
 	 *
-	 * @param color color
+	 * @param color value
 	 */
 	public void setColor(final int color)
 	{
@@ -248,9 +248,9 @@ public class ColorPanelView extends View
 	}
 
 	/**
-	 * Get the color currently shown by this view.
+	 * Get the value currently shown by this view.
 	 *
-	 * @return color
+	 * @return value
 	 */
 	public int getColor()
 	{
@@ -258,9 +258,9 @@ public class ColorPanelView extends View
 	}
 
 	/**
-	 * Set the color of the border surrounding the panel.
+	 * Set the value of the border surrounding the panel.
 	 *
-	 * @param color border color
+	 * @param color border value
 	 */
 	public void setBorderColor(@SuppressWarnings("SameParameterValue") final int color)
 	{
@@ -269,9 +269,9 @@ public class ColorPanelView extends View
 	}
 
 	/**
-	 * Get the color of the border surrounding the panel.
+	 * Get the value of the border surrounding the panel.
 	 *
-	 * @return border color
+	 * @return border value
 	 */
 	public int getBorderColor()
 	{

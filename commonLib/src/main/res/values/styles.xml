@@ -67,6 +67,9 @@
 		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
 		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
 
+		<!-- preferences -->
+		<item name="preferenceTheme">@style/PreferenceCompatTheme</item>
+
 		<!-- TREEBOLIC attributes -->
 
 		<!-- treebolic colors -->
