@@ -42,15 +42,20 @@ public class ColorPickerPreference extends DialogPreference
 	 */
 	@SuppressWarnings("WeakerAccess")
 	protected boolean alphaChannelVisible = false;
+
 	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	protected String alphaChannelText = null;
+
 	@SuppressWarnings("WeakerAccess")
 	protected boolean showDialogTitle = false;
+
 	@SuppressWarnings("WeakerAccess")
 	protected boolean showPreviewSelectedColorInList = true;
+
 	@SuppressWarnings("WeakerAccess")
 	protected int colorPickerSliderColor = -1;
+
 	@SuppressWarnings("WeakerAccess")
 	protected int colorPickerBorderColor = -1;
 
@@ -122,7 +127,6 @@ public class ColorPickerPreference extends DialogPreference
 		this.colorPickerSliderColor = array.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, -1);
 		this.colorPickerBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, -1);
 		array.recycle();
-
 	}
 
 	// B I N D
@@ -132,62 +136,6 @@ public class ColorPickerPreference extends DialogPreference
 	{
 		super.onBindViewHolder(viewHolder);
 
-		final ColorPickerView colorPickerView = (ColorPickerView) viewHolder.findViewById(R.id.color_picker_view);
-		final ColorPanelView oldColorView = (ColorPanelView) viewHolder.findViewById(R.id.color_panel_old);
-		final ColorPanelView newColorView = (ColorPanelView) viewHolder.findViewById(R.id.color_panel_new);
-		final LinearLayout landscapeLayout = (LinearLayout) viewHolder.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
-		final ColorPanelView preview = (ColorPanelView) viewHolder.findViewById(R.id.preference_preview_color_panel);
-
-		// padding
-		boolean isLandscapeLayout = false;
-		if (landscapeLayout != null)
-		{
-			isLandscapeLayout = true;
-		}
-		if (!isLandscapeLayout)
-		{
-			((LinearLayout) oldColorView.getParent()).setPadding(Math.round(colorPickerView.getDrawingOffset()), 0, Math.round(colorPickerView.getDrawingOffset()), 0);
-		}
-		else
-		{
-			landscapeLayout.setPadding(0, 0, Math.round(colorPickerView.getDrawingOffset()), 0);
-		}
-
-		// alpha
-		colorPickerView.setAlphaSliderVisible(this.alphaChannelVisible);
-		colorPickerView.setAlphaSliderText(this.alphaChannelText);
-
-		// colors
-		colorPickerView.setSliderTrackerColor(this.colorPickerSliderColor);
-		if (this.colorPickerSliderColor != -1)
-		{
-			colorPickerView.setSliderTrackerColor(this.colorPickerSliderColor);
-		}
-		if (this.colorPickerBorderColor != -1)
-		{
-			colorPickerView.setBorderColor(this.colorPickerBorderColor);
-		}
-
-		// old value
-		oldColorView.setColor(this.value);
-
-		// new value
-		int newColor = this.value;
-		if (newColor == 0) // unset value (=transparent black)
-		{
-			newColor = Color.GRAY;
-		}
-		if (!this.alphaChannelVisible)
-		{
-			newColor |= 0xFF000000;
-		}
-		colorPickerView.setColor(newColor, true);
-
-		// preview
-		if (preview != null)
-		{
-			preview.setColor(this.value);
-		}
 
 	}
 
@@ -226,16 +174,78 @@ public class ColorPickerPreference extends DialogPreference
 			return fragment;
 		}
 
-		@Override
-		protected View onCreateDialogView(final Context context)
-		{
-			final View view = super.onCreateDialogView(context);
+		private ColorPickerView colorPickerView;
 
-			// listener
-			final ColorPickerView colorPickerView = view.findViewById(R.id.color_picker_view);
+		private ColorPanelView newColorView;
+
+		private ColorPanelView oldColorView;
+
+		private ColorPanelView preview;
+
+		private LinearLayout landscapeLayout;
+
+		@Override
+		protected void onBindDialogView(View view)
+		{
+			super.onBindDialogView(view);
+
+			// pref
+			final ColorPickerPreference pref = (ColorPickerPreference) getPreference();
+
+			colorPickerView = view.findViewById(R.id.color_picker_view);
 			colorPickerView.setOnColorChangedListener(this);
 
-			return view;
+			newColorView = view.findViewById(R.id.color_panel_new);
+			oldColorView = view.findViewById(R.id.color_panel_old);
+			preview = view.findViewById(R.id.preference_preview_color_panel);
+			final LinearLayout landscapeLayout = view.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
+
+			// padding
+			boolean isLandscapeLayout = landscapeLayout != null;
+			if (isLandscapeLayout)
+			{
+				landscapeLayout.setPadding(0, 0, Math.round(colorPickerView.getDrawingOffset()), 0);
+			}
+			else
+			{
+				((LinearLayout) oldColorView.getParent()).setPadding(Math.round(colorPickerView.getDrawingOffset()), 0, Math.round(colorPickerView.getDrawingOffset()), 0);
+			}
+
+			// alpha
+			colorPickerView.setAlphaSliderVisible(pref.alphaChannelVisible);
+			colorPickerView.setAlphaSliderText(pref.alphaChannelText);
+
+			// colors
+			colorPickerView.setSliderTrackerColor(pref.colorPickerSliderColor);
+			if (pref.colorPickerSliderColor != -1)
+			{
+				colorPickerView.setSliderTrackerColor(pref.colorPickerSliderColor);
+			}
+			if (pref.colorPickerBorderColor != -1)
+			{
+				colorPickerView.setBorderColor(pref.colorPickerBorderColor);
+			}
+
+			// old value
+			oldColorView.setColor(pref.value);
+
+			// new value
+			int newColor = pref.value;
+			if (newColor == 0) // unset value (=transparent black)
+			{
+				newColor = Color.GRAY;
+			}
+			if (!pref.alphaChannelVisible)
+			{
+				newColor |= 0xFF000000;
+			}
+			colorPickerView.setColor(newColor, true);
+
+			// preview
+			if (preview != null)
+			{
+				preview.setColor(pref.value);
+			}
 		}
 
 		@Override
@@ -244,12 +254,11 @@ public class ColorPickerPreference extends DialogPreference
 			// when the user selects "OK", persist the new value
 			if (positiveResult)
 			{
+				int newColor = colorPickerView.getColor();
 				final ColorPickerPreference pref = (ColorPickerPreference) getPreference();
-				final ColorPickerView colorPickerView = getView().findViewById(R.id.color_picker_view);
-				int color = colorPickerView.getColor();
-				if (pref.callChangeListener(color))
+				if (pref.callChangeListener(newColor))
 				{
-					pref.setValue(color);
+					pref.setValue(newColor);
 				}
 			}
 		}
@@ -257,7 +266,6 @@ public class ColorPickerPreference extends DialogPreference
 		@Override
 		public void onColorChanged(final int newColor)
 		{
-			final ColorPanelView newColorView = getView().findViewById(R.id.color_panel_new);
 			newColorView.setColor(newColor);
 		}
 	}
@@ -312,15 +320,15 @@ public class ColorPickerPreference extends DialogPreference
 	@Override
 	protected void onRestoreInstanceState(@Nullable final Parcelable state)
 	{
-		// Check whether we saved the state in onSaveInstanceState
+		// check whether we saved the state in onSaveInstanceState
 		if (state == null || !state.getClass().equals(ColorSavedState.class))
 		{
-			// Didn't save the state, so call superclass
+			// didn't save the state, so call superclass
 			super.onRestoreInstanceState(state);
 			return;
 		}
 
-		// Cast state to custom BaseSavedState and pass to superclass
+		// cast state to custom BaseSavedState and pass to superclass
 		final ColorSavedState savedState = (ColorSavedState) state;
 		super.onRestoreInstanceState(savedState.getSuperState());
 

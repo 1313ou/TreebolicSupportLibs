@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -21,7 +22,6 @@ import androidx.preference.DialogPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceDialogFragmentCompat;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceViewHolder;
 
 /**
  * AutoEditTextPreference
@@ -97,28 +97,6 @@ public class AutoEditTextPreference extends DialogPreference
 		this.values = values;
 	}
 
-	// V A L U E  T O   V I E W
-
-	@Override
-	public void onBindViewHolder(@NonNull final PreferenceViewHolder viewHolder)
-	{
-		super.onBindViewHolder(viewHolder);
-
-		// get editView
-		final AutoCompleteTextView editView = (AutoCompleteTextView) viewHolder.findViewById(R.id.autoedit_text);
-		if (editView != null)
-		{
-			// fill with value and possible values
-			final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, this.values);
-			editView.setAdapter(adapter);
-			if (this.value != null)
-			{
-				editView.setText(this.value);
-				editView.setSelection(this.value.length());
-			}
-		}
-	}
-
 	// V A L U E
 
 	@Nullable
@@ -156,13 +134,40 @@ public class AutoEditTextPreference extends DialogPreference
 			return fragment;
 		}
 
+		private AutoCompleteTextView editView;
+
+		@Override
+		protected void onBindDialogView(View view)
+		{
+			super.onBindDialogView(view);
+
+			// pref
+			final AutoEditTextPreference pref = (AutoEditTextPreference) getPreference();
+
+			// edit text
+			editView = view.findViewById(R.id.autoedit_text);
+			assert editView != null;
+			editView.requestFocus();
+
+			// populate with value
+			if (pref.value != null)
+			{
+				editView.setText(pref.value);
+				// place cursor at the end
+				editView.setSelection(pref.value.length());
+			}
+
+			// populate with possible values
+			final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, pref.values);
+			editView.setAdapter(adapter);
+		}
+
 		@Override
 		public void onDialogClosed(final boolean positiveResult)
 		{
 			// when the user selects "OK", persist the new value
 			if (positiveResult)
 			{
-				final AutoCompleteTextView editView = getView().findViewById(R.id.autoedit_text);
 				final Editable editable = editView.getText();
 				final AutoEditTextPreference pref = (AutoEditTextPreference) getPreference();
 				final String newValue = editable == null ? null : editable.toString();

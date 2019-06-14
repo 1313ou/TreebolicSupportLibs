@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -111,7 +112,7 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	/**
-	 * Labels Setter
+	 * Values Setter
 	 *
 	 * @param values values
 	 */
@@ -131,7 +132,7 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	/**
-	 * Values Setter
+	 * Labels Setter
 	 *
 	 * @param labels labels
 	 */
@@ -167,45 +168,64 @@ public class OpenEditTextPreference extends DialogPreference
 		persistString(this.value);
 	}
 
-	protected void setValue(final String value)
+	protected void setValue(final String newValue)
 	{
-		this.value = value;
-		persistString(value);
+		this.value = newValue;
+		persistString(newValue);
 		notifyChanged();
 	}
 
-	// V A L U E  T O   V I E W
+	// D I A L O G  F R A G M E N T
 
-	@Override
-	public void onBindViewHolder(@NonNull final PreferenceViewHolder viewHolder)
+	static public class OpenEditTextDialog extends PreferenceDialogFragmentCompat
 	{
-		super.onBindViewHolder(viewHolder);
-
-		// edit text
-		final EditText editView = (EditText) viewHolder.findViewById(R.id.openedit_text);
-		if (editView != null)
+		static public OpenEditTextDialog newInstance(final OpenEditTextPreference pref)
 		{
-			if (this.value != null)
-			{
-				editView.setText(this.value);
-				editView.setSelection(this.value.length());
-			}
+			final OpenEditTextDialog fragment = new OpenEditTextDialog();
+			final Bundle args = new Bundle();
+			args.putString(ARG_KEY, pref.getKey());
+			fragment.setArguments(args);
+			return fragment;
 		}
 
-		// options
-		final RadioGroup optionsView = (RadioGroup) viewHolder.findViewById(R.id.openedit_options);
-		if (optionsView != null)
-		{
-			// populate
-			final Context context = getContext();
-			optionsView.removeAllViews();
-			for (int i = 0; i < this.values.length && i < this.labels.length && i < this.enable.length; i++)
-			{
-				final CharSequence value = this.values[i];
-				final CharSequence label = this.labels[i];
-				final boolean enable = this.enable[i];
+		private EditText editView;
 
-				final RadioButton radioButton = new RadioButton(context);
+		private RadioGroup optionsView;
+
+		@Override
+		protected void onBindDialogView(View view)
+		{
+			super.onBindDialogView(view);
+
+			// pref
+			final OpenEditTextPreference pref = (OpenEditTextPreference) getPreference();
+
+			// edit text
+			editView = view.findViewById(R.id.openedit_text);
+			assert editView != null;
+			editView.requestFocus();
+
+			// populate with value
+			if (pref.value != null)
+			{
+				editView.setText(pref.value);
+				// place cursor at the end
+				editView.setSelection(pref.value.length());
+			}
+
+			// options
+			optionsView = view.findViewById(R.id.openedit_options);
+			assert optionsView != null;
+
+			// populate
+			optionsView.removeAllViews();
+			for (int i = 0; i < pref.values.length && i < pref.labels.length && i < pref.enable.length; i++)
+			{
+				final CharSequence value = pref.values[i];
+				final CharSequence label = pref.labels[i];
+				final boolean enable = pref.enable[i];
+
+				final RadioButton radioButton = new RadioButton(getContext());
 				radioButton.setText(label);
 				radioButton.setTag(value);
 				radioButton.setEnabled(enable);
@@ -227,20 +247,6 @@ public class OpenEditTextPreference extends DialogPreference
 				}
 			});
 		}
-	}
-
-	// D I A L O G  F R A G M E N T
-
-	static public class OpenEditTextDialog extends PreferenceDialogFragmentCompat
-	{
-		static public OpenEditTextDialog newInstance(final OpenEditTextPreference pref)
-		{
-			final OpenEditTextDialog fragment = new OpenEditTextDialog();
-			final Bundle args = new Bundle();
-			args.putString(ARG_KEY, pref.getKey());
-			fragment.setArguments(args);
-			return fragment;
-		}
 
 		@Override
 		public void onDialogClosed(final boolean positiveResult)
@@ -248,7 +254,6 @@ public class OpenEditTextPreference extends DialogPreference
 			// when the user selects "OK", persist the new value
 			if (positiveResult)
 			{
-				final EditText editView = getView().findViewById(R.id.openedit_text);
 				final Editable editable = editView.getText();
 				final OpenEditTextPreference pref = (OpenEditTextPreference) getPreference();
 				final String newValue = editable == null ? null : editable.toString();
