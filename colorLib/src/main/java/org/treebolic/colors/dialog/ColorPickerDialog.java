@@ -32,18 +32,18 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 	public ColorPickerDialog(@NonNull final Context context, final Integer initialColor)
 	{
 		this(context, initialColor, null);
-		init(initialColor);
+		init(context, initialColor);
 	}
 
 	@SuppressWarnings("WeakerAccess")
-	public ColorPickerDialog(@NonNull final Context context, final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
+	public ColorPickerDialog(@NonNull final Context context, @Nullable final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
 	{
 		super(context);
 		this.mListener = listener;
-		init(initialColor);
+		init(context, initialColor);
 	}
 
-	private void init(final Integer color)
+	private void init(@NonNull final Context context, @Nullable final Integer color)
 	{
 		// to fight value branding.
 		final Window window = getWindow();
@@ -51,16 +51,16 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		{
 			window.setFormat(PixelFormat.RGBA_8888);
 		}
-		setUp(color);
+		setUp(context, color);
 	}
 
 	@SuppressLint("InflateParams")
-	private void setUp(@Nullable final Integer color)
+	private void setUp(@NonNull final Context context, @Nullable final Integer color)
 	{
 		boolean isLandscapeLayout = false;
 
 		// custom view
-		final LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		assert inflater != null;
 		final View layout = inflater.inflate(R.layout.dialog_color_picker, null);
 		setView(layout);
