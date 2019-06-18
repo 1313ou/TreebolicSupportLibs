@@ -17,10 +17,12 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="preference 1.1.0">
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="lint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/dialog/ColorPickerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/dialog/ColorPickerDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/WheelHorizontalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/WheelHorizontalView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPanelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPanelView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/PreferenceActivityCompatDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/PreferenceActivityCompatDelegate.java" afterDir="false" />
     </list>
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -204,7 +206,17 @@
     <favorites_list name="TreebolicSupportLibs" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1131">
+              <caret line="225" column="24" selection-start-line="225" selection-start-column="24" selection-end-line="225" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -215,8 +227,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buildT</find>
-      <find>buildToll</find>
       <find>buildTol</find>
       <find>buildTo</find>
       <find>buildToo</find>
@@ -245,6 +255,8 @@
       <find>getMenuInflater</find>
       <find>X_X_X</find>
       <find>getContext</find>
+      <find>getActivity</find>
+      <find>\bm</find>
     </findStrings>
     <replaceStrings>
       <replace>Open</replace>
@@ -270,7 +282,6 @@
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/ColorPickerActivity.java" />
         <option value="$PROJECT_DIR$/searchLib/src/main/java/org/treebolic/search/SearchSettings.java" />
         <option value="$PROJECT_DIR$/guideLib/src/main/java/org/treebolic/guide/HelpActivity.java" />
-        <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPanelView.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/adapters/AbstractWheelAdapter.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/adapters/ArrayWheelAdapter.java" />
         <option value="$PROJECT_DIR$/fileChooserLib/src/main/java/org/treebolic/filechooser/EntryChooser.java" />
@@ -283,7 +294,6 @@
         <option value="$PROJECT_DIR$/preferenceLib/src/main/res/values-fr/strings.xml" />
         <option value="$PROJECT_DIR$/storageLib/build.gradle" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/drawable/AlphaPatternDrawable.java" />
-        <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/AbstractWheelView.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/WheelView.java" />
         <option value="$PROJECT_DIR$/downloadLib/src/main/java/org/treebolic/download/DownloadActivity.java" />
@@ -318,6 +328,8 @@
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/WheelVerticalView.java" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/dialog/ColorPickerDialog.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/WheelHorizontalView.java" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPanelView.java" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" />
       </list>
     </option>
   </component>
@@ -336,10 +348,38 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="colors" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="colors" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -595,13 +635,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
-    </task>
-    <task id="LOCAL-00029" summary="initial grey color on color dialog">
-      <created>1505286441513</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1505286441513</updated>
     </task>
     <task id="LOCAL-00030" summary="lint">
       <created>1505485561510</created>
@@ -939,7 +972,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560842754959</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="lint">
+      <created>1560844119602</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1560844119602</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -953,8 +993,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1173" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
       <window_info id="Resources Explorer" order="1" weight="0.32950193" />
       <window_info id="Structure" order="2" weight="0.25" />
       <window_info id="Designer" order="3" />
@@ -964,7 +1005,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Image Layers" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.484948" visible="true" weight="0.32778865" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.484948" weight="0.32778865" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -977,7 +1018,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" weight="0.29745597" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.52764094" weight="0.32941177" />
       <window_info anchor="bottom" id="Gradle Console" order="13" sideWeight="0.2846196" side_tool="true" weight="0.32941177" />
-      <window_info anchor="bottom" id="Inspection Results" order="14" sideWeight="0.76464146" weight="0.24657534" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" sideWeight="0.76464146" weight="0.36105675" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.6560264" weight="0.327451" />
       <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" weight="0.3297456" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1067,27 +1108,14 @@
     <MESSAGE value="artwork make" />
     <MESSAGE value="androidx&#10;lint" />
     <MESSAGE value="simplify download (always to std dest)&#10;icon transparency for search-includes" />
-    <MESSAGE value="lint" />
     <MESSAGE value="annotations&#10;copyright" />
     <MESSAGE value="androidx preference" />
     <MESSAGE value="preferenceactivitycompat" />
     <MESSAGE value="preference 1.1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="preference 1.1.0" />
+    <MESSAGE value="lint" />
+    <option name="LAST_COMMIT_MESSAGE" value="lint" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/res/layout/content.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding>
-            <element signature="e#513#542#0" expanded="true" />
-            <element signature="e#945#974#0" expanded="true" />
-            <element signature="e#1003#1023#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/res/layout/preference_category_compat.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -1433,13 +1461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="1194" column="28" selection-start-line="1194" selection-start-column="28" selection-end-line="1194" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/HeaderAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1508,6 +1529,20 @@
             <element signature="e#4286#4287#0" expanded="true" />
             <element signature="e#4358#4359#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPanelView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="225" column="21" selection-start-line="225" selection-start-column="20" selection-end-line="225" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1131">
+          <caret line="225" column="24" selection-start-line="225" selection-start-column="24" selection-end-line="225" selection-end-column="24" />
         </state>
       </provider>
     </entry>

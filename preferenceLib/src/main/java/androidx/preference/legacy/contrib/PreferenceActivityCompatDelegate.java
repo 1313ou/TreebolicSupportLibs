@@ -268,7 +268,7 @@ public class PreferenceActivityCompatDelegate
 		}
 	}
 
-	public void onRestoreInstanceState(@NonNull final Bundle state)
+	public void onRestoreInstanceState(@SuppressWarnings("unused") @NonNull final Bundle state)
 	{
 		if (!this.singlePane)
 		{

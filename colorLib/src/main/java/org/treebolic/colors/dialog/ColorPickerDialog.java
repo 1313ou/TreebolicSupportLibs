@@ -6,6 +6,7 @@ package org.treebolic.colors.dialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,23 +24,22 @@ import androidx.appcompat.app.AlertDialog;
 
 public class ColorPickerDialog extends AlertDialog implements ColorPickerView.OnColorChangedListener
 {
-	private ColorPickerView mColorPicker;
+	private ColorPickerView colorPicker;
 
-	private ColorPanelView mNewColor;
+	private ColorPanelView newColorView;
 
-	private final OnColorChangedListener mListener;
+	private final OnColorChangedListener listener;
 
 	public ColorPickerDialog(@NonNull final Context context, final Integer initialColor)
 	{
 		this(context, initialColor, null);
-		init(context, initialColor);
 	}
 
 	@SuppressWarnings("WeakerAccess")
 	public ColorPickerDialog(@NonNull final Context context, @Nullable final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
 	{
 		super(context);
-		this.mListener = listener;
+		this.listener = listener;
 		init(context, initialColor);
 	}
 
@@ -74,47 +74,47 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 			isLandscapeLayout = true;
 		}
 
-		this.mColorPicker = layout.findViewById(R.id.color_picker_view);
-		ColorPanelView mOldColor = layout.findViewById(R.id.color_panel_old);
-		this.mNewColor = layout.findViewById(R.id.color_panel_new);
+		this.colorPicker = layout.findViewById(R.id.color_picker_view);
+		this.newColorView = layout.findViewById(R.id.color_panel_new);
+		ColorPanelView oldColorView = layout.findViewById(R.id.color_panel_old);
 
 		if (!isLandscapeLayout)
 		{
-			((LinearLayout) mOldColor.getParent()).setPadding(Math.round(this.mColorPicker.getDrawingOffset()), 0, Math.round(this.mColorPicker.getDrawingOffset()), 0);
+			((LinearLayout) oldColorView.getParent()).setPadding(Math.round(this.colorPicker.getDrawingOffset()), 0, Math.round(this.colorPicker.getDrawingOffset()), 0);
 		}
 		else
 		{
-			landscapeLayout.setPadding(0, 0, Math.round(this.mColorPicker.getDrawingOffset()), 0);
+			landscapeLayout.setPadding(0, 0, Math.round(this.colorPicker.getDrawingOffset()), 0);
 			setTitle(null);
 		}
 
-		this.mColorPicker.setOnColorChangedListener(this);
+		this.colorPicker.setOnColorChangedListener(this);
 
-		if (color != null)
-		{
-			mOldColor.setColor(color);
-			this.mColorPicker.setColor(color, true);
-		}
+		// set colors
+		int newColor = color != null ? color : Color.GRAY;
+		oldColorView.setValue(color);
+		this.newColorView.setColor(newColor);
+		this.colorPicker.setColor(newColor, true);
 	}
 
 	@Override
 	public void onColorChanged(final int color)
 	{
-		this.mNewColor.setColor(color);
+		this.newColorView.setColor(color);
 
-		if (this.mListener != null)
+		if (this.listener != null)
 		{
-			this.mListener.onColorChanged(color);
+			this.listener.onColorChanged(color);
 		}
 	}
 
 	public void setAlphaSliderVisible(@SuppressWarnings("SameParameterValue") final boolean visible)
 	{
-		this.mColorPicker.setAlphaSliderVisible(visible);
+		this.colorPicker.setAlphaSliderVisible(visible);
 	}
 
 	public int getColor()
 	{
-		return this.mColorPicker.getColor();
+		return this.colorPicker.getColor();
 	}
 }

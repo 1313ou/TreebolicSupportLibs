@@ -33,72 +33,72 @@ public class ColorPanelView extends View
 	/**
 	 * Density
 	 */
-	private static float mDensity = 1f;
+	private static float density = 1f;
 
 	/**
 	 * Border value
 	 */
-	private int mBorderColor = 0xff6E6E6E;
+	private int borderColor = 0xff6E6E6E;
 
 	/**
 	 * Color
 	 */
-	private int mColor = 0xff000000;
+	private int color = 0xff000000;
 
 	/**
 	 * Back paint
 	 */
-	static private final Paint mBackPaint = new Paint();
+	static private final Paint BACK_PAINT = new Paint();
 
 	static
 	{
-		mBackPaint.setColor(Color.WHITE);
+		BACK_PAINT.setColor(Color.WHITE);
 	}
 
 	/**
 	 * Draw paint
 	 */
-	static private final Paint mDrawPaint = new Paint();
+	static private final Paint DRAW_PAINT = new Paint();
 
 	static
 	{
-		mDrawPaint.setColor(Color.GRAY);
+		DRAW_PAINT.setColor(Color.GRAY);
 	}
 
 	/**
 	 * Border paint
 	 */
-	private Paint mBorderPaint;
+	private Paint borderPaint;
 
 	/**
 	 * Color paint
 	 */
-	private Paint mColorPaint;
+	private Paint colorPaint;
 
 	/**
 	 * Drawing rect
 	 */
-	private RectF mDrawingRect;
+	private RectF drawingRect;
 
 	/**
 	 * Color rect
 	 */
-	private RectF mColorRect;
+	private RectF colorRect;
 
 	/**
 	 * Alpha pattern
 	 */
-	private AlphaPatternDrawable mAlphaPattern;
+	private AlphaPatternDrawable alphaPattern;
 
 	/**
 	 * IsNull
 	 */
-	private boolean mIsNull;
+	private boolean isNull;
 
 	/**
 	 * IsIllegal
 	 */
-	private boolean mIsCrossed;
+	private boolean isCrossed;
 
 	/**
 	 * Constructor
@@ -141,9 +141,9 @@ public class ColorPanelView extends View
 	 */
 	private void init(@NonNull final Context context)
 	{
-		this.mColorPaint = new Paint();
-		this.mBorderPaint = new Paint();
-		ColorPanelView.mDensity = context.getResources().getDisplayMetrics().density;
+		this.colorPaint = new Paint();
+		this.borderPaint = new Paint();
+		ColorPanelView.density = context.getResources().getDisplayMetrics().density;
 	}
 
 	@Override
@@ -153,32 +153,32 @@ public class ColorPanelView extends View
 		//noinspection ConstantConditions
 		if (ColorPanelView.BORDER_WIDTH_PX > 0)
 		{
-			this.mBorderPaint.setColor(this.mBorderColor);
-			canvas.drawRect(this.mDrawingRect, this.mBorderPaint);
+			this.borderPaint.setColor(this.borderColor);
+			canvas.drawRect(this.drawingRect, this.borderPaint);
 		}
 
 		// crossed
-		if (this.mIsCrossed)
+		if (this.isCrossed)
 		{
-			canvas.drawRect(this.mColorRect, mBackPaint);
+			canvas.drawRect(this.colorRect, BACK_PAINT);
 
-			canvas.drawLine(this.mDrawingRect.left, this.mDrawingRect.top, this.mDrawingRect.right, this.mDrawingRect.bottom, mDrawPaint);
-			canvas.drawLine(this.mDrawingRect.right, this.mDrawingRect.top, this.mDrawingRect.left, this.mDrawingRect.bottom, mDrawPaint);
+			canvas.drawLine(this.drawingRect.left, this.drawingRect.top, this.drawingRect.right, this.drawingRect.bottom, DRAW_PAINT);
+			canvas.drawLine(this.drawingRect.right, this.drawingRect.top, this.drawingRect.left, this.drawingRect.bottom, DRAW_PAINT);
 			return;
 		}
 
 		// pattern
-		if (this.mAlphaPattern != null)
+		if (this.alphaPattern != null)
 		{
-			this.mAlphaPattern.draw(canvas);
+			this.alphaPattern.draw(canvas);
 		}
 
 		// value
-		if (!this.mIsNull)
+		if (!this.isNull)
 		{
-			this.mColorPaint.setColor(this.mColor);
-			final RectF rect = this.mColorRect;
-			canvas.drawRect(rect, this.mColorPaint);
+			this.colorPaint.setColor(this.color);
+			final RectF rect = this.colorRect;
+			canvas.drawRect(rect, this.colorPaint);
 		}
 	}
 
@@ -195,11 +195,11 @@ public class ColorPanelView extends View
 	{
 		super.onSizeChanged(w, h, oldW, oldH);
 
-		this.mDrawingRect = new RectF();
-		this.mDrawingRect.left = getPaddingLeft();
-		this.mDrawingRect.right = w - getPaddingRight();
-		this.mDrawingRect.top = getPaddingTop();
-		this.mDrawingRect.bottom = h - getPaddingBottom();
+		this.drawingRect = new RectF();
+		this.drawingRect.left = getPaddingLeft();
+		this.drawingRect.right = w - getPaddingRight();
+		this.drawingRect.top = getPaddingTop();
+		this.drawingRect.bottom = h - getPaddingBottom();
 		setUpColorRect();
 	}
 
@@ -208,16 +208,16 @@ public class ColorPanelView extends View
 	 */
 	private void setUpColorRect()
 	{
-		final RectF dRect = this.mDrawingRect;
+		final RectF dRect = this.drawingRect;
 		final float left = dRect.left + ColorPanelView.BORDER_WIDTH_PX;
 		final float top = dRect.top + ColorPanelView.BORDER_WIDTH_PX;
 		final float bottom = dRect.bottom - ColorPanelView.BORDER_WIDTH_PX;
 		final float right = dRect.right - ColorPanelView.BORDER_WIDTH_PX;
 
-		this.mColorRect = new RectF(left, top, right, bottom);
-		this.mAlphaPattern = new AlphaPatternDrawable((int) (5 * ColorPanelView.mDensity));
-		this.mAlphaPattern.setBounds(Math.round(this.mColorRect.left), Math.round(this.mColorRect.top), Math.round(this.mColorRect.right), Math.round(this.mColorRect.bottom));
-		this.mIsCrossed = false;
+		this.colorRect = new RectF(left, top, right, bottom);
+		this.alphaPattern = new AlphaPatternDrawable((int) (5 * ColorPanelView.density));
+		this.alphaPattern.setBounds(Math.round(this.colorRect.left), Math.round(this.colorRect.top), Math.round(this.colorRect.right), Math.round(this.colorRect.bottom));
+		this.isCrossed = false;
 	}
 
 	/**
@@ -229,8 +229,8 @@ public class ColorPanelView extends View
 	{
 		if (color == null)
 		{
-			this.mIsNull = true;
-			this.mColor = 0x00ffffff;
+			this.isNull = true;
+			this.color = 0x00ffffff;
 			invalidate();
 			return;
 		}
@@ -244,8 +244,8 @@ public class ColorPanelView extends View
 	 */
 	public void setColor(final int color)
 	{
-		this.mIsNull = false;
-		this.mColor = color;
+		this.isNull = false;
+		this.color = color;
 		invalidate();
 	}
 
@@ -256,7 +256,7 @@ public class ColorPanelView extends View
 	 */
 	public int getColor()
 	{
-		return this.mColor;
+		return this.color;
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class ColorPanelView extends View
 	 */
 	public void setBorderColor(@SuppressWarnings("SameParameterValue") final int color)
 	{
-		this.mBorderColor = color;
+		this.borderColor = color;
 		invalidate();
 	}
 
@@ -277,7 +277,7 @@ public class ColorPanelView extends View
 	 */
 	public int getBorderColor()
 	{
-		return this.mBorderColor;
+		return this.borderColor;
 	}
 
 	/**
@@ -287,6 +287,6 @@ public class ColorPanelView extends View
 	 */
 	public void setCrossed(final boolean isCrossed)
 	{
-		this.mIsCrossed = isCrossed;
+		this.isCrossed = isCrossed;
 	}
 }
