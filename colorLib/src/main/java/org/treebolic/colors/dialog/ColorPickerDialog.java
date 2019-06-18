@@ -24,6 +24,8 @@ import androidx.appcompat.app.AlertDialog;
 
 public class ColorPickerDialog extends AlertDialog implements ColorPickerView.OnColorChangedListener
 {
+	static private final int START_COLOR = Color.GRAY;
+
 	private ColorPickerView colorPicker;
 
 	private ColorPanelView newColorView;
@@ -91,7 +93,7 @@ public class ColorPickerDialog extends AlertDialog implements ColorPickerView.On
 		this.colorPicker.setOnColorChangedListener(this);
 
 		// set colors
-		int newColor = color != null ? color : Color.GRAY;
+		int newColor = color != null ? color : START_COLOR;
 		oldColorView.setValue(color);
 		this.newColorView.setColor(newColor);
 		this.colorPicker.setColor(newColor, true);
