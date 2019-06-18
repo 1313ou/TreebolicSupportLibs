@@ -5,7 +5,6 @@
 package org.treebolic.search;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -93,10 +92,9 @@ public class SearchSettings extends AppCompatDialogFragment
 	@Override
 	public Dialog onCreateDialog(final Bundle savedInstanceState)
 	{
-		final Context context = getActivity();
-		assert context != null;
+		final Context context = requireContext();
 		final Resources resources = context.getResources();
-		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
 		// get strings
 		final String[] scopeLabels = resources.getStringArray(R.array.search_scope_labels);
@@ -161,9 +159,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		}
 
 		// dialog
-		final Activity activity = getActivity();
-		assert activity != null;
-		final Dialog dialog = new Dialog(activity);
+		final Dialog dialog = new Dialog(requireActivity());
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// dialog.setTitle(R.string.search_title);
 		dialog.setContentView(R.layout.dialog_search_settings);

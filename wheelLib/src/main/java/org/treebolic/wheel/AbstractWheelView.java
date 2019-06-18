@@ -19,6 +19,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ObjectAnimator;
 
 import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.DrawableCompat;
 
@@ -147,6 +148,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 	@SuppressWarnings("WeakerAccess")
 	protected Bitmap mSpinBitmap;
+
 	@SuppressWarnings("WeakerAccess")
 	protected Bitmap mSeparatorsBitmap;
 
@@ -156,7 +158,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	//
 	// --------------------------------------------------------------------------
 
-	public AbstractWheelView(Context context, AttributeSet attrs, @AttrRes int defStyle)
+	public AbstractWheelView(@NonNull final Context context, AttributeSet attrs, @AttrRes int defStyle)
 	{
 		super(context, attrs, defStyle);
 	}
@@ -169,11 +171,11 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 	@SuppressWarnings("WeakerAccess")
 	@Override
-	protected void initAttributes(AttributeSet attrs, @AttrRes int defStyle)
+	protected void initAttributes(@NonNull final Context context, AttributeSet attrs, @AttrRes int defStyle)
 	{
-		super.initAttributes(attrs, defStyle);
+		super.initAttributes(context, attrs, defStyle);
 
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
+		final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
 		this.mItemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA);
 		this.mSelectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA);
 		this.mSelectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA);
@@ -186,7 +188,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	}
 
 	@Override
-	protected void initData(Context context)
+	protected void initData(@NonNull Context context)
 	{
 		super.initData(context);
 

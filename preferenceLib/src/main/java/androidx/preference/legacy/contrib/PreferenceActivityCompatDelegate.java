@@ -30,6 +30,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.XmlRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentFactory;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Lifecycle.State;
@@ -285,10 +286,10 @@ public class PreferenceActivityCompatDelegate
 
 	public void startPreferenceFragment(@NonNull final Preference pref)
 	{
-		final Fragment fragment = Fragment.instantiate(getContext(), pref.getFragment(), pref.getExtras());
-		//final FragmentManager fragmentManager = getFragmentManager();
-		//FragmentFactory factory = fragmentManager.getFragmentFactory();
-		//final Fragment fragment = factory.instantiate(getContext().getClassLoader(), pref.getFragment());
+		//final Fragment fragment = Fragment.instantiate(getContext(), pref.getFragment(), pref.getExtras());
+		final FragmentManager fragmentManager = getFragmentManager();
+		FragmentFactory factory = fragmentManager.getFragmentFactory();
+		final Fragment fragment = factory.instantiate(getContext().getClassLoader(), pref.getFragment());
 
 		getFragmentManager().beginTransaction().replace(R.id.prefs, fragment).setBreadCrumbTitle(pref.getTitle()).setTransition(FragmentTransaction.TRANSIT_NONE).addToBackStack(BACK_STACK_PREFS).commitAllowingStateLoss();
 	}
@@ -485,11 +486,10 @@ public class PreferenceActivityCompatDelegate
 		{
 			throw new IllegalArgumentException("Invalid fragment for this activity: " + fragmentName);
 		}
-		fragment = Fragment.instantiate(getContext(), fragmentName, args);
-		//FragmentFactory factory = fragmentManager.getFragmentFactory();
-		//this.fragment = factory.instantiate(getContext().getClassLoader(), fragmentName);
+		//fragment = Fragment.instantiate(getContext(), fragmentName, args);
+		FragmentFactory factory = fragmentManager.getFragmentFactory();
+		this.fragment = factory.instantiate(getContext().getClassLoader(), fragmentName);
 		this.fragment.setArguments(args);
-
 
 		fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_NONE).replace(R.id.prefs, fragment).commitAllowingStateLoss();
 

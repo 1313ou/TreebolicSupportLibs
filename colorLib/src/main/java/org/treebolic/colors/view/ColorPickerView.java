@@ -246,7 +246,7 @@ public class ColorPickerView extends View
 	 *
 	 * @param context context
 	 */
-	public ColorPickerView(final Context context)
+	public ColorPickerView(@NonNull final Context context)
 	{
 		this(context, null);
 	}
@@ -257,7 +257,7 @@ public class ColorPickerView extends View
 	 * @param context context
 	 * @param attrs   attributes
 	 */
-	public ColorPickerView(final Context context, final AttributeSet attrs)
+	public ColorPickerView(@NonNull final Context context, final AttributeSet attrs)
 	{
 		this(context, attrs, 0);
 	}
@@ -269,28 +269,29 @@ public class ColorPickerView extends View
 	 * @param attrs    attributes
 	 * @param defStyle def style
 	 */
-	public ColorPickerView(final Context context, final AttributeSet attrs, final int defStyle)
+	public ColorPickerView(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
-		init(attrs);
+		init(context, attrs);
 	}
 
 	/**
 	 * Common init
 	 *
+	 * @param context  context
 	 * @param attrs attributes
 	 */
-	private void init(final AttributeSet attrs)
+	private void init(@NonNull final Context context, final AttributeSet attrs)
 	{
 		// Load those if set in xml resource file.
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
+		final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
 		this.mShowAlphaPanel = array.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
 		this.mAlphaSliderText = array.getString(R.styleable.ColorPickerView_alphaChannelText);
 		this.mSliderTrackerColor = array.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, 0xFFBDBDBD);
 		this.mBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, 0xFF6E6E6E);
 		array.recycle();
 
-		ColorPickerView.mDensity = getContext().getResources().getDisplayMetrics().density;
+		ColorPickerView.mDensity = context.getResources().getDisplayMetrics().density;
 		this.PALETTE_CIRCLE_TRACKER_RADIUS *= ColorPickerView.mDensity;
 		this.RECTANGLE_TRACKER_OFFSET *= ColorPickerView.mDensity;
 		this.HUE_PANEL_WIDTH *= ColorPickerView.mDensity;

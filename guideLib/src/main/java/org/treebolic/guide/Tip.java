@@ -27,7 +27,7 @@ public class Tip extends AppCompatDialogFragment
 	@Override
 	public AppCompatDialog onCreateDialog(final Bundle savedInstanceState)
 	{
-		final AppCompatDialog dialog = new AppCompatDialog(getActivity());
+		final AppCompatDialog dialog = new AppCompatDialog(requireActivity());
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.dialog_tips);
 

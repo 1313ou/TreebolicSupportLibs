@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 public class ColorPickerActivity extends AppCompatCommonActivity implements OnColorChangedListener, View.OnClickListener
 {
 	private ColorPickerView mColorPickerView;
+
 	private ColorPanelView mNewColorPanelView;
 
 	@Override

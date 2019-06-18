@@ -8,4 +8,7 @@
 	<string name="hint">Taper…</string>
 	<string name="hints">Suggestions</string>
 
+	<!-- default value -->
+	<string name="pref_value_default">Défaut</string>
+
 </resources>

@@ -12,29 +12,43 @@ import androidx.preference.Preference;
 
 class ColorSavedState extends Preference.BaseSavedState
 {
-	// Member that holds the setting's value
+	/**
+	 * The value
+	 */
 	int value;
 
+	/**
+	 * Constructor from superstate
+	 *
+	 * @param superState superstate
+	 */
 	@SuppressWarnings("WeakerAccess")
 	public ColorSavedState(final Parcelable superState)
 	{
 		super(superState);
 	}
 
+	/**
+	 * Constructor from parcel
+	 *
+	 * @param parcel source parcel
+	 */
 	@SuppressWarnings("WeakerAccess")
-	public ColorSavedState(@NonNull final Parcel source)
+	public ColorSavedState(@NonNull final Parcel parcel)
 	{
-		super(source);
-		// Get the current preference's value
-		this.value = source.readInt();
+		super(parcel);
+
+		// get the preference's value
+		this.value = parcel.readInt();
 	}
 
 	@Override
-	public void writeToParcel(@NonNull final Parcel dest, final int flags)
+	public void writeToParcel(@NonNull final Parcel parcel, final int flags)
 	{
-		super.writeToParcel(dest, flags);
-		// Write the preference's value
-		dest.writeInt(this.value);
+		super.writeToParcel(parcel, flags);
+
+		// write the preference's value
+		parcel.writeInt(this.value);
 	}
 
 	// Standard creator object using an instance of this class

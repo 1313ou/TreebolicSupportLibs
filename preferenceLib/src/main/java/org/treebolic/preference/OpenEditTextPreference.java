@@ -23,7 +23,6 @@ import androidx.preference.DialogPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceDialogFragmentCompat;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceViewHolder;
 
 /**
  * OpenEditTextPreference
@@ -32,15 +31,12 @@ import androidx.preference.PreferenceViewHolder;
  */
 public class OpenEditTextPreference extends DialogPreference
 {
+	// V A L U E
+
 	/**
 	 * Possible values
 	 */
 	private CharSequence[] values;
-
-	/**
-	 * Possible labels
-	 */
-	private CharSequence[] labels;
 
 	/**
 	 * Possible entry enable
@@ -53,6 +49,33 @@ public class OpenEditTextPreference extends DialogPreference
 	@Nullable
 	private String value;
 
+	// S E T T I N G S
+
+	/**
+	 * Possible labels
+	 */
+	private CharSequence[] labels;
+
+	// C O N S T R U C T O R
+
+	/**
+	 * Constructor
+	 *
+	 * @param context  context
+	 * @param attrs    attributes
+	 * @param defStyle def style
+	 */
+	public OpenEditTextPreference(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
+	{
+		super(context, attrs, defStyle);
+
+		// attributes
+		init(context, attrs);
+
+		// set up
+		setup();
+	}
+
 	/**
 	 * Constructor
 	 *
@@ -62,23 +85,24 @@ public class OpenEditTextPreference extends DialogPreference
 	public OpenEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		super(context, attrs);
-		init(attrs);
 
-		setDialogLayoutResource(R.layout.dialog_openedittext_pref);
-		setPositiveButtonText(android.R.string.ok);
-		setNegativeButtonText(android.R.string.cancel);
-		setDialogIcon(null);
+		// attributes
+		init(context, attrs);
+
+		// set up
+		setup();
 	}
 
 	/**
 	 * Initialize
 	 *
+	 * @param context context
 	 * @param attrs attributes
 	 */
-	private void init(@NonNull final AttributeSet attrs)
+	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		// obtain values through styled attributes
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference);
+		final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference);
 		this.values = array.getTextArray(R.styleable.OpenEditTextPreference_values);
 		this.labels = array.getTextArray(R.styleable.OpenEditTextPreference_labels);
 		array.recycle();
@@ -99,6 +123,17 @@ public class OpenEditTextPreference extends DialogPreference
 		{
 			this.enable[i] = true;
 		}
+	}
+
+	/**
+	 * Set up
+	 */
+	private void setup()
+	{
+		setDialogLayoutResource(R.layout.dialog_openedittext_pref);
+		setPositiveButtonText(android.R.string.ok);
+		setNegativeButtonText(android.R.string.cancel);
+		setDialogIcon(null);
 	}
 
 	/**
@@ -161,14 +196,12 @@ public class OpenEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onSetInitialValue(final Object initialValue)
+	protected void onSetInitialValue(final Object defaultValue)
 	{
-		// set default state from the XML attribute
-		this.value = (String) initialValue;
-		persistString(this.value);
+		setValue(getPersistedString((String) defaultValue));
 	}
 
-	protected void setValue(final String newValue)
+	private void setValue(@Nullable final String newValue)
 	{
 		this.value = newValue;
 		persistString(newValue);
@@ -177,11 +210,12 @@ public class OpenEditTextPreference extends DialogPreference
 
 	// D I A L O G  F R A G M E N T
 
-	static public class OpenEditTextDialog extends PreferenceDialogFragmentCompat
+	static public class OpenEditTextPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat
 	{
-		static public OpenEditTextDialog newInstance(final OpenEditTextPreference pref)
+		@SuppressWarnings("WeakerAccess")
+		static public OpenEditTextPreferenceDialogFragmentCompat newInstance(final OpenEditTextPreference pref)
 		{
-			final OpenEditTextDialog fragment = new OpenEditTextDialog();
+			final OpenEditTextPreferenceDialogFragmentCompat fragment = new OpenEditTextPreferenceDialogFragmentCompat();
 			final Bundle args = new Bundle();
 			args.putString(ARG_KEY, pref.getKey());
 			fragment.setArguments(args);
@@ -225,7 +259,7 @@ public class OpenEditTextPreference extends DialogPreference
 				final CharSequence label = pref.labels[i];
 				final boolean enable = pref.enable[i];
 
-				final RadioButton radioButton = new RadioButton(getContext());
+				final RadioButton radioButton = new RadioButton(requireContext());
 				radioButton.setText(label);
 				radioButton.setTag(value);
 				radioButton.setEnabled(enable);
@@ -274,6 +308,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 * @param preference   preference
 	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
 	 */
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
 		final FragmentManager manager = prefFragment.getFragmentManager();
@@ -289,7 +324,7 @@ public class OpenEditTextPreference extends DialogPreference
 
 		if (preference instanceof OpenEditTextPreference)
 		{
-			final DialogFragment dialogFragment = OpenEditTextDialog.newInstance((OpenEditTextPreference) preference);
+			final DialogFragment dialogFragment = OpenEditTextPreferenceDialogFragmentCompat.newInstance((OpenEditTextPreference) preference);
 			dialogFragment.setTargetFragment(prefFragment, 0);
 			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
 			return true;
@@ -337,4 +372,16 @@ public class OpenEditTextPreference extends DialogPreference
 		// set this preference's widget to reflect the restored state
 		setValue(savedState.value);
 	}
+
+	// S U M M A R Y
+
+	/**
+	 * Summary provider
+	 */
+	static public final Preference.SummaryProvider<OpenEditTextPreference> SUMMARY_PROVIDER = (preference) -> {
+
+		final Context context = preference.getContext();
+		final String value = preference.getPersistedString(null);
+		return value == null ? context.getString(R.string.pref_value_default) : value;
+	};
 }

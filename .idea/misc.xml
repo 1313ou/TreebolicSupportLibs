@@ -141,6 +141,9 @@
       <entry_point TYPE="field" FQNAME="androidx.preference.legacy.contrib.Header CREATOR" />
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.AutoEditTextPreference defaultValue" />
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.OpenEditTextPreference defaultValue" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.preference.OpenEditTextPreference SUMMARY_PROVIDER" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.preference.AutoEditTextPreference SUMMARY_PROVIDER" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.colors.preference.ColorPickerPreference SUMMARY_PROVIDER" />
     </entry_points>
     <pattern value="org.treebolic.AppCompatCommonUtils" method="setThemePref" />
     <pattern value="org.treebolic.ColorUtils" method="getActionBarForegroundColorFromTheme" />
@@ -503,6 +506,13 @@
     <pattern value="org.treebolic.preference.AutoEditTextPreference.xxx" method="xxx" />
     <pattern value="org.treebolic.AppCompatCommonPreferenceActivity" method="getSupportActionBar" />
     <pattern value="org.treebolic.AppCompatCommonPreferenceActivity" method="setupToolbar" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onBindViewHolder" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onColorChanged" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference" method="onDisplayPreferenceDialog" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onBindDialogView" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onDialogClosed" />
+    <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onPrepareDialogBuilder" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="androidx.annotation.Nullable" />

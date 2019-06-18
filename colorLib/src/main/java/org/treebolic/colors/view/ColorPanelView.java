@@ -116,7 +116,7 @@ public class ColorPanelView extends View
 	 * @param context context
 	 * @param attrs   attributes
 	 */
-	public ColorPanelView(final Context context, final AttributeSet attrs)
+	public ColorPanelView(@NonNull final Context context, final AttributeSet attrs)
 	{
 		this(context, attrs, 0);
 	}
@@ -131,17 +131,19 @@ public class ColorPanelView extends View
 	public ColorPanelView(final Context context, final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
-		init();
+		init(context);
 	}
 
 	/**
 	 * Common init
+	 *
+	 * @param context context
 	 */
-	private void init()
+	private void init(@NonNull final Context context)
 	{
 		this.mColorPaint = new Paint();
 		this.mBorderPaint = new Paint();
-		ColorPanelView.mDensity = getContext().getResources().getDisplayMetrics().density;
+		ColorPanelView.mDensity = context.getResources().getDisplayMetrics().density;
 	}
 
 	@Override

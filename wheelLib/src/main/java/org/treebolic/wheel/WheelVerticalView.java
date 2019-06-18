@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Spinner wheel vertical view.
@@ -48,7 +49,7 @@ public class WheelVerticalView extends AbstractWheelView
 	 *
 	 * @param context The application environment.
 	 */
-	public WheelVerticalView(Context context)
+	public WheelVerticalView(@NonNull final Context context)
 	{
 		this(context, null);
 	}
@@ -59,7 +60,7 @@ public class WheelVerticalView extends AbstractWheelView
 	 * @param context The application environment.
 	 * @param attrs   A collection of attributes.
 	 */
-	public WheelVerticalView(Context context, AttributeSet attrs)
+	public WheelVerticalView(@NonNull final Context context, @Nullable final AttributeSet attrs)
 	{
 		this(context, attrs, R.attr.abstractWheelViewStyle);
 	}
@@ -71,7 +72,7 @@ public class WheelVerticalView extends AbstractWheelView
 	 * @param attrs    a collection of attributes.
 	 * @param defStyle The default style to apply to this view.
 	 */
-	public WheelVerticalView(Context context, AttributeSet attrs, @AttrRes int defStyle)
+	public WheelVerticalView(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes final int defStyle)
 	{
 		super(context, attrs, defStyle);
 	}
@@ -83,13 +84,16 @@ public class WheelVerticalView extends AbstractWheelView
 	// --------------------------------------------------------------------------
 
 	@Override
-	protected void initAttributes(AttributeSet attrs, @AttrRes int defStyle)
+	protected void initAttributes(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes final int defStyle)
 	{
-		super.initAttributes(attrs, defStyle);
+		super.initAttributes(context, attrs, defStyle);
 
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0);
-		this.mSelectionDividerHeight = array.getDimensionPixelSize(R.styleable.WheelVerticalView_selectionDividerHeight, DEF_SELECTION_DIVIDER_SIZE);
-		array.recycle();
+		if (attrs != null)
+		{
+			final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0);
+			this.mSelectionDividerHeight = array.getDimensionPixelSize(R.styleable.WheelVerticalView_selectionDividerHeight, DEF_SELECTION_DIVIDER_SIZE);
+			array.recycle();
+		}
 	}
 
 	@Override

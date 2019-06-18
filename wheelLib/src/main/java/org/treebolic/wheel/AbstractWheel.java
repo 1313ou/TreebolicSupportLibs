@@ -22,6 +22,7 @@ import java.util.List;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Abstract spinner spinnerwheel view. This class should be subclassed.
@@ -113,10 +114,10 @@ public abstract class AbstractWheel extends View
 	 * @param attrs    a collection of attributes.
 	 * @param defStyle The default style to apply to this view.
 	 */
-	public AbstractWheel(Context context, AttributeSet attrs, @AttrRes int defStyle)
+	public AbstractWheel(@NonNull Context context, @Nullable final AttributeSet attrs, @AttrRes int defStyle)
 	{
 		super(context, attrs);
-		initAttributes(attrs, defStyle);
+		initAttributes(context, attrs, defStyle);
 		initData(context);
 	}
 
@@ -129,18 +130,21 @@ public abstract class AbstractWheel extends View
 	/**
 	 * Initiates data and parameters from styles
 	 *
+	 * @param context  the application environment.
 	 * @param attrs    a collection of attributes.
 	 * @param defStyle The default style to apply to this view.
 	 */
 	@SuppressWarnings("WeakerAccess")
-	protected void initAttributes(AttributeSet attrs, @AttrRes int defStyle)
+	protected void initAttributes(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes int defStyle)
 	{
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AbstractWheel, defStyle, 0);
-		this.mVisibleItems = array.getInt(R.styleable.AbstractWheel_visibleItems, DEF_VISIBLE_ITEMS);
-		this.mIsAllVisible = array.getBoolean(R.styleable.AbstractWheel_isAllVisible, false);
-		this.mIsCyclic = array.getBoolean(R.styleable.AbstractWheel_isCyclic, DEF_IS_CYCLIC);
-
-		array.recycle();
+		if (attrs != null)
+		{
+			final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheel, defStyle, 0);
+			this.mVisibleItems = array.getInt(R.styleable.AbstractWheel_visibleItems, DEF_VISIBLE_ITEMS);
+			this.mIsAllVisible = array.getBoolean(R.styleable.AbstractWheel_isAllVisible, false);
+			this.mIsCyclic = array.getBoolean(R.styleable.AbstractWheel_isCyclic, DEF_IS_CYCLIC);
+			array.recycle();
+		}
 	}
 
 	/**
@@ -149,9 +153,8 @@ public abstract class AbstractWheel extends View
 	 * @param context the context
 	 */
 	@SuppressWarnings("WeakerAccess")
-	protected void initData(Context context)
+	protected void initData(@NonNull final Context context)
 	{
-
 		this.mDataObserver = new DataSetObserver()
 		{
 			@Override

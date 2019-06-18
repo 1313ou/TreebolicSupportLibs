@@ -30,16 +30,38 @@ import androidx.preference.PreferenceFragmentCompat;
  */
 public class AutoEditTextPreference extends DialogPreference
 {
-	/**
-	 * Possible values
-	 */
-	private CharSequence[] values;
+	// V A L U E
 
 	/**
 	 * Value
 	 */
 	@Nullable
 	private String value;
+
+	/**
+	 * Possible values
+	 */
+	private CharSequence[] values;
+
+	// C O N S T R U C T O R
+
+	/**
+	 * Constructor
+	 *
+	 * @param context  context
+	 * @param attrs    attributes
+	 * @param defStyle def style
+	 */
+	public AutoEditTextPreference(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
+	{
+		super(context, attrs, defStyle);
+
+		// init attributes
+		init(context, attrs);
+
+		// set up
+		setup();
+	}
 
 	/**
 	 * Constructor
@@ -50,23 +72,24 @@ public class AutoEditTextPreference extends DialogPreference
 	public AutoEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		super(context, attrs);
-		init(attrs);
 
-		setDialogLayoutResource(R.layout.dialog_autoedittext_pref);
-		setPositiveButtonText(android.R.string.ok);
-		setNegativeButtonText(android.R.string.cancel);
-		setDialogIcon(null);
+		// init attributes
+		init(context, attrs);
+
+		// set up
+		setup();
 	}
 
 	/**
 	 * Initialize
 	 *
-	 * @param attrs attributes
+	 * @param context context
+	 * @param attrs   attributes
 	 */
-	private void init(@NonNull final AttributeSet attrs)
+	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		// obtain values through styled attributes
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference);
+		final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference);
 		this.values = array.getTextArray(R.styleable.AutoEditTextPreference_values);
 		array.recycle();
 
@@ -75,6 +98,17 @@ public class AutoEditTextPreference extends DialogPreference
 		{
 			this.values = new CharSequence[0];
 		}
+	}
+
+	/**
+	 * Set up
+	 */
+	private void setup()
+	{
+		setDialogLayoutResource(R.layout.dialog_autoedittext_pref);
+		setPositiveButtonText(android.R.string.ok);
+		setNegativeButtonText(android.R.string.cancel);
+		setDialogIcon(null);
 	}
 
 	/**
@@ -107,14 +141,12 @@ public class AutoEditTextPreference extends DialogPreference
 	}
 
 	@Override
-	protected void onSetInitialValue(final Object initialValue)
+	protected void onSetInitialValue(final Object defaultValue)
 	{
-		// set default state from the XML attribute
-		this.value = (String) initialValue;
-		persistString(this.value);
+		setValue(getPersistedString((String) defaultValue));
 	}
 
-	protected void setValue(final String newValue)
+	private void setValue(@Nullable final String newValue)
 	{
 		this.value = newValue;
 		persistString(newValue);
@@ -123,11 +155,12 @@ public class AutoEditTextPreference extends DialogPreference
 
 	// D I A L O G  F R A G M E N T
 
-	static public class AutoEditTextDialog extends PreferenceDialogFragmentCompat
+	static public class AutoEditTextPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat
 	{
-		static public AutoEditTextPreference.AutoEditTextDialog newInstance(final AutoEditTextPreference pref)
+		@SuppressWarnings("WeakerAccess")
+		static public AutoEditTextPreferenceDialogFragmentCompat newInstance(final AutoEditTextPreference pref)
 		{
-			final AutoEditTextPreference.AutoEditTextDialog fragment = new AutoEditTextDialog();
+			final AutoEditTextPreferenceDialogFragmentCompat fragment = new AutoEditTextPreferenceDialogFragmentCompat();
 			final Bundle args = new Bundle();
 			args.putString(ARG_KEY, pref.getKey());
 			fragment.setArguments(args);
@@ -158,7 +191,7 @@ public class AutoEditTextPreference extends DialogPreference
 			}
 
 			// populate with possible values
-			final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, pref.values);
+			final ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, pref.values);
 			editView.setAdapter(adapter);
 		}
 
@@ -202,7 +235,7 @@ public class AutoEditTextPreference extends DialogPreference
 
 		if (preference instanceof AutoEditTextPreference)
 		{
-			final DialogFragment dialogFragment = AutoEditTextDialog.newInstance((AutoEditTextPreference) preference);
+			final DialogFragment dialogFragment = AutoEditTextPreferenceDialogFragmentCompat.newInstance((AutoEditTextPreference) preference);
 			dialogFragment.setTargetFragment(prefFragment, 0);
 			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
 			return true;
@@ -250,4 +283,16 @@ public class AutoEditTextPreference extends DialogPreference
 		// set this preference's widget to reflect the restored state
 		setValue(savedState.value);
 	}
+
+	// S U M M A R Y
+
+	/**
+	 * Summary provider
+	 */
+	static public final Preference.SummaryProvider<AutoEditTextPreference> SUMMARY_PROVIDER = (preference) -> {
+
+		final Context context = preference.getContext();
+		final String value = preference.getPersistedString(null);
+		return value == null ? context.getString(R.string.pref_value_default) : value;
+	};
 }

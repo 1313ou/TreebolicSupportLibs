@@ -16,7 +16,9 @@ import androidx.preference.Preference;
  */
 class StringSavedState extends Preference.BaseSavedState
 {
-	// member that holds the setting's value
+	/**
+	 * The value
+	 */
 	@Nullable
 	String value;
 
@@ -34,15 +36,15 @@ class StringSavedState extends Preference.BaseSavedState
 	/**
 	 * Constructor from parcel
 	 *
-	 * @param source source parcel
+	 * @param parcel source parcel
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public StringSavedState(@NonNull final Parcel source)
+	public StringSavedState(@NonNull final Parcel parcel)
 	{
-		super(source);
+		super(parcel);
 
-		// get the current preference's value
-		this.value = source.readString();
+		// get the preference's value
+		this.value = parcel.readString();
 	}
 
 	@Override

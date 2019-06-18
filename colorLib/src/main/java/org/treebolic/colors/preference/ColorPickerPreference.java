@@ -5,6 +5,7 @@
 package org.treebolic.colors.preference;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import org.treebolic.colors.view.ColorPickerView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.DialogPreference;
@@ -29,17 +31,18 @@ import androidx.preference.PreferenceViewHolder;
 
 public class ColorPickerPreference extends DialogPreference
 {
-	// C O L O R
+	// V A L U E
+
+	private static final int NULL_VALUE = 0;
 
 	/**
 	 * Color
 	 */
 	@SuppressWarnings("WeakerAccess")
-	protected int value;
+	protected Integer value;
 
-	/**
-	 * S E T T I N G S
-	 */
+	// S E T T I N G S
+
 	@SuppressWarnings("WeakerAccess")
 	protected boolean alphaChannelVisible = false;
 
@@ -59,6 +62,8 @@ public class ColorPickerPreference extends DialogPreference
 	@SuppressWarnings("WeakerAccess")
 	protected int colorPickerBorderColor = -1;
 
+	// C O N S T R U C T O R
+
 	/**
 	 * Constructor
 	 *
@@ -69,7 +74,14 @@ public class ColorPickerPreference extends DialogPreference
 	public ColorPickerPreference(final Context context, final AttributeSet attrs)
 	{
 		super(context, attrs);
-		init(attrs);
+
+		this.value = null;
+
+		// attributes
+		init(context, attrs);
+
+		// set up
+		setup();
 	}
 
 	/**
@@ -80,10 +92,45 @@ public class ColorPickerPreference extends DialogPreference
 	 * @param defStyle def style
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public ColorPickerPreference(final Context context, final AttributeSet attrs, final int defStyle)
+	public ColorPickerPreference(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
-		init(attrs);
+
+		// attributes
+		init(context, attrs);
+
+		// set up
+		setup();
+	}
+
+	/**
+	 * Initialize
+	 *
+	 * @param context context
+	 * @param attrs   attributes
+	 */
+	private void init(@NonNull final Context context, final AttributeSet attrs)
+	{
+		// preference attributes
+		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ColorPickerPreference);
+		this.showDialogTitle = array.getBoolean(R.styleable.ColorPickerPreference_showDialogTitle, false);
+		this.showPreviewSelectedColorInList = array.getBoolean(R.styleable.ColorPickerPreference_showSelectedColorInList, true);
+		array.recycle();
+
+		// view attributes
+		array = context.obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
+		this.alphaChannelVisible = array.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
+		this.alphaChannelText = array.getString(R.styleable.ColorPickerView_alphaChannelText);
+		this.colorPickerSliderColor = array.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, -1);
+		this.colorPickerBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, -1);
+		array.recycle();
+	}
+
+	/**
+	 * Set up
+	 */
+	private void setup()
+	{
 		// resource
 		setDialogLayoutResource(R.layout.dialog_color_picker);
 
@@ -107,69 +154,99 @@ public class ColorPickerPreference extends DialogPreference
 		}
 	}
 
-	/**
-	 * Initialize
-	 *
-	 * @param attrs attributes
-	 */
-	private void init(final AttributeSet attrs)
-	{
-		// preference attributes
-		TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerPreference);
-		this.showDialogTitle = array.getBoolean(R.styleable.ColorPickerPreference_showDialogTitle, false);
-		this.showPreviewSelectedColorInList = array.getBoolean(R.styleable.ColorPickerPreference_showSelectedColorInList, true);
-		array.recycle();
+	// V A L U E S
 
-		// view attributes
-		array = getContext().obtainStyledAttributes(attrs, R.styleable.ColorPickerView);
-		this.alphaChannelVisible = array.getBoolean(R.styleable.ColorPickerView_alphaChannelVisible, false);
-		this.alphaChannelText = array.getString(R.styleable.ColorPickerView_alphaChannelText);
-		this.colorPickerSliderColor = array.getColor(R.styleable.ColorPickerView_colorPickerSliderColor, -1);
-		this.colorPickerBorderColor = array.getColor(R.styleable.ColorPickerView_colorPickerBorderColor, -1);
-		array.recycle();
+	static private final int START_COLOR = Color.GRAY;
+
+	// V A L U E
+
+	@SuppressWarnings("UnusedReturnValue")
+	private boolean persistValue(@Nullable Integer value)
+	{
+		//Log.d(TAG, "Persist " + this.value);
+		if (value == null)
+		{
+			if (!shouldPersist())
+			{
+				return false;
+			}
+
+			final SharedPreferences.Editor editor = getSharedPreferences().edit();
+			editor.remove(getKey());
+			try
+			{
+				editor.apply();
+			}
+			catch (AbstractMethodError ignored)
+			{
+				editor.commit();
+			}
+			return true;
+		}
+		else
+		{
+			return persistInt(this.value);
+		}
+	}
+
+	@Nullable
+	private Integer getPersistedValue(@Nullable final Object defaultValue)
+	{
+		int value = getPersistedInt(NULL_VALUE);
+		if (value != NULL_VALUE)
+		{
+			return value;
+		}
+		if (defaultValue != null)
+		{
+			return (Integer) defaultValue;
+		}
+		return null;
+	}
+
+	@Nullable
+	@Override
+	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
+	{
+		return array.getInteger(index, NULL_VALUE);
+	}
+
+	@Override
+	protected void onSetInitialValue(@Nullable final Object defaultValue)
+	{
+		setValue(getPersistedValue(defaultValue));
+	}
+
+	private void setValue(@Nullable Integer value)
+	{
+		this.value = value;
+		persistValue(this.value);
+		notifyChanged();
 	}
 
 	// B I N D
 
 	@Override
-	public void onBindViewHolder(final PreferenceViewHolder viewHolder)
+	public void onBindViewHolder(final PreferenceViewHolder holder)
 	{
-		super.onBindViewHolder(viewHolder);
-
-
-	}
-
-	// V A L U E S
-
-	static private final int DEFAULTCOLOR = 0xFF000000;
-
-	@SuppressWarnings("boxing")
-	@Override
-	protected Object onGetDefaultValue(@NonNull final TypedArray array, final int index)
-	{
-		return array.getInteger(index, DEFAULTCOLOR);
-	}
-
-	@Override
-	protected void onSetInitialValue(final Object defaultValue)
-	{
-		this.value = (Integer) defaultValue;
-		persistInt(this.value);
-	}
-
-	protected void setValue(int value)
-	{
-		this.value = value;
-		persistInt(this.value);
-		notifyChanged();
-	}
-
-	static public class ColorPickerDialog extends PreferenceDialogFragmentCompat implements ColorPickerView.OnColorChangedListener
-	{
-		static public ColorPickerPreference.ColorPickerDialog newInstance(final ColorPickerPreference pref)
+		super.onBindViewHolder(holder);
+		final ColorPanelView preview = (ColorPanelView) holder.findViewById(R.id.preference_preview_color_panel);
+		if (preview != null)
 		{
-			final ColorPickerPreference.ColorPickerDialog fragment = new ColorPickerDialog();
+			preview.setValue(this.value);
+		}
+	}
+
+	// D I A L O G   F R A G M E N T
+
+	static public class ColorPickerPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat implements ColorPickerView.OnColorChangedListener
+	{
+		@SuppressWarnings("WeakerAccess")
+		static public ColorPickerPreferenceDialogFragmentCompat newInstance(final ColorPickerPreference pref)
+		{
+			final ColorPickerPreferenceDialogFragmentCompat fragment = new ColorPickerPreferenceDialogFragmentCompat();
 			final Bundle args = new Bundle();
+			args.putString(ARG_KEY, pref.getKey());
 			fragment.setArguments(args);
 			return fragment;
 		}
@@ -181,8 +258,6 @@ public class ColorPickerPreference extends DialogPreference
 		private ColorPanelView oldColorView;
 
 		private ColorPanelView preview;
-
-		private LinearLayout landscapeLayout;
 
 		@Override
 		protected void onBindDialogView(View view)
@@ -227,14 +302,10 @@ public class ColorPickerPreference extends DialogPreference
 			}
 
 			// old value
-			oldColorView.setColor(pref.value);
+			oldColorView.setValue(pref.value);
 
 			// new value
-			int newColor = pref.value;
-			if (newColor == 0) // unset value (=transparent black)
-			{
-				newColor = Color.GRAY;
-			}
+			int newColor = pref.value == null ? START_COLOR : pref.value;
 			if (!pref.alphaChannelVisible)
 			{
 				newColor |= 0xFF000000;
@@ -244,8 +315,30 @@ public class ColorPickerPreference extends DialogPreference
 			// preview
 			if (preview != null)
 			{
-				preview.setColor(pref.value);
+				preview.setValue(pref.value);
 			}
+		}
+
+		@Override
+		protected void onPrepareDialogBuilder(@NonNull final AlertDialog.Builder builder)
+		{
+			super.onPrepareDialogBuilder(builder);
+
+			// Don't show the positive button; clicking a color will be the "positive" action
+			final ColorPickerPreference pref = (ColorPickerPreference) getPreference();
+
+			// Neutral button to clear value
+			builder.setNeutralButton(R.string.dialog_title_none, (dialog, which) -> {
+
+				if (pref.callChangeListener(null))
+				{
+					pref.setValue(null);
+				}
+				if (getDialog() != null)
+				{
+					getDialog().dismiss();
+				}
+			});
 		}
 
 		@Override
@@ -293,7 +386,7 @@ public class ColorPickerPreference extends DialogPreference
 
 		if (preference instanceof ColorPickerPreference)
 		{
-			final DialogFragment dialogFragment = ColorPickerDialog.newInstance((ColorPickerPreference) preference);
+			final DialogFragment dialogFragment = ColorPickerPreferenceDialogFragmentCompat.newInstance((ColorPickerPreference) preference);
 			dialogFragment.setTargetFragment(prefFragment, 0);
 			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
 			return true;
@@ -335,4 +428,16 @@ public class ColorPickerPreference extends DialogPreference
 		// set this preference's widget to reflect the restored state
 		setValue(savedState.value);
 	}
+
+	/**
+	 * Summary provider for color
+	 */
+	static public final Preference.SummaryProvider<ColorPickerPreference> SUMMARY_PROVIDER = (preference) -> {
+
+		final Context context = preference.getContext();
+		final Integer value = preference.getPersistedValue(null);
+
+		// set the summary to the value's hex string representation.
+		return value == null ? context.getString(R.string.pref_value_default) : Integer.toHexString(value);
+	};
 }

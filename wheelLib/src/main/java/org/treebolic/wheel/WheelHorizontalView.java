@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Spinner wheel horizontal view.
@@ -51,7 +52,7 @@ public class WheelHorizontalView extends AbstractWheelView
 	 *
 	 * @param context The application environment.
 	 */
-	public WheelHorizontalView(Context context)
+	public WheelHorizontalView(@NonNull final Context context)
 	{
 		this(context, null);
 	}
@@ -62,7 +63,7 @@ public class WheelHorizontalView extends AbstractWheelView
 	 * @param context The application environment.
 	 * @param attrs   A collection of attributes.
 	 */
-	public WheelHorizontalView(Context context, AttributeSet attrs)
+	public WheelHorizontalView(@NonNull final Context context, @Nullable final AttributeSet attrs)
 	{
 		this(context, attrs, R.attr.abstractWheelViewStyle);
 	}
@@ -74,7 +75,7 @@ public class WheelHorizontalView extends AbstractWheelView
 	 * @param attrs    a collection of attributes.
 	 * @param defStyle The default style to apply to this view.
 	 */
-	public WheelHorizontalView(Context context, AttributeSet attrs, @AttrRes int defStyle)
+	public WheelHorizontalView(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes int defStyle)
 	{
 		super(context, attrs, defStyle);
 	}
@@ -86,13 +87,16 @@ public class WheelHorizontalView extends AbstractWheelView
 	// --------------------------------------------------------------------------
 
 	@Override
-	protected void initAttributes(AttributeSet attrs, @AttrRes int defStyle)
+	protected void initAttributes(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes int defStyle)
 	{
-		super.initAttributes(attrs, defStyle);
+		super.initAttributes(context, attrs, defStyle);
 
-		final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0);
-		this.mSelectionDividerWidth = array.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE);
-		array.recycle();
+		if (attrs != null)
+		{
+			final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0);
+			this.mSelectionDividerWidth = array.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE);
+			array.recycle();
+		}
 	}
 
 	public void setSelectionDividerWidth(int selectionDividerWidth)
