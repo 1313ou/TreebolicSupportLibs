@@ -15,6 +15,7 @@ class ColorSavedState extends Preference.BaseSavedState
 	/**
 	 * The value
 	 */
+	boolean isNull;
 	int value;
 
 	/**
@@ -39,6 +40,7 @@ class ColorSavedState extends Preference.BaseSavedState
 		super(parcel);
 
 		// get the preference's value
+		this.isNull = parcel.readInt() != 0;
 		this.value = parcel.readInt();
 	}
 
@@ -48,6 +50,7 @@ class ColorSavedState extends Preference.BaseSavedState
 		super.writeToParcel(parcel, flags);
 
 		// write the preference's value
+		parcel.writeInt(this.isNull ? 1 : 0);
 		parcel.writeInt(this.value);
 	}
 

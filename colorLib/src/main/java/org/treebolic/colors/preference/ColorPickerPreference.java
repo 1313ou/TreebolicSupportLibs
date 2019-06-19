@@ -38,6 +38,7 @@ public class ColorPickerPreference extends DialogPreference
 	/**
 	 * Color
 	 */
+	@Nullable
 	@SuppressWarnings("WeakerAccess")
 	protected Integer value;
 
@@ -71,7 +72,7 @@ public class ColorPickerPreference extends DialogPreference
 	 * @param attrs   attributes
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public ColorPickerPreference(final Context context, final AttributeSet attrs)
+	public ColorPickerPreference(@NonNull final Context context, final AttributeSet attrs)
 	{
 		super(context, attrs);
 
@@ -185,7 +186,7 @@ public class ColorPickerPreference extends DialogPreference
 		}
 		else
 		{
-			return persistInt(this.value);
+			return persistInt(value);
 		}
 	}
 
@@ -227,7 +228,7 @@ public class ColorPickerPreference extends DialogPreference
 	// B I N D
 
 	@Override
-	public void onBindViewHolder(final PreferenceViewHolder holder)
+	public void onBindViewHolder(@NonNull final PreferenceViewHolder holder)
 	{
 		super.onBindViewHolder(holder);
 		final ColorPanelView preview = (ColorPanelView) holder.findViewById(R.id.preference_preview_color_panel);
@@ -241,6 +242,7 @@ public class ColorPickerPreference extends DialogPreference
 
 	static public class ColorPickerPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat implements ColorPickerView.OnColorChangedListener
 	{
+		@NonNull
 		@SuppressWarnings("WeakerAccess")
 		static public ColorPickerPreferenceDialogFragmentCompat newInstance(final ColorPickerPreference pref)
 		{
@@ -260,7 +262,7 @@ public class ColorPickerPreference extends DialogPreference
 		private ColorPanelView preview;
 
 		@Override
-		protected void onBindDialogView(View view)
+		protected void onBindDialogView(@NonNull View view)
 		{
 			super.onBindDialogView(view);
 
@@ -406,7 +408,8 @@ public class ColorPickerPreference extends DialogPreference
 		final ColorSavedState state = new ColorSavedState(superState);
 
 		// set the state's value with the class member that holds current setting value
-		state.value = this.value;
+		state.isNull = this.value == null;
+		state.value = this.value == null ? 0 : this.value;
 		return state;
 	}
 
@@ -426,7 +429,7 @@ public class ColorPickerPreference extends DialogPreference
 		super.onRestoreInstanceState(savedState.getSuperState());
 
 		// set this preference's widget to reflect the restored state
-		setValue(savedState.value);
+		setValue(savedState.isNull ? null : savedState.value);
 	}
 
 	/**

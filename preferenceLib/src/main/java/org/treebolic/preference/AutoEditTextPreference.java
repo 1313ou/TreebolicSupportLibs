@@ -52,7 +52,7 @@ public class AutoEditTextPreference extends DialogPreference
 	 * @param attrs    attributes
 	 * @param defStyle def style
 	 */
-	public AutoEditTextPreference(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
+	public AutoEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
 
@@ -157,6 +157,7 @@ public class AutoEditTextPreference extends DialogPreference
 
 	static public class AutoEditTextPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat
 	{
+		@NonNull
 		@SuppressWarnings("WeakerAccess")
 		static public AutoEditTextPreferenceDialogFragmentCompat newInstance(final AutoEditTextPreference pref)
 		{
@@ -170,7 +171,7 @@ public class AutoEditTextPreference extends DialogPreference
 		private AutoCompleteTextView editView;
 
 		@Override
-		protected void onBindDialogView(View view)
+		protected void onBindDialogView(@NonNull View view)
 		{
 			super.onBindDialogView(view);
 

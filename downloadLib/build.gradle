@@ -29,7 +29,8 @@ android {
 
 dependencies {
     implementation project(':commonLib')
-    api files('libs/commons-compress-proguard-1.8.1.jar')
+
+    implementation files('libs/commons-compress-proguard-1.8.1.jar')
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0'

@@ -65,7 +65,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 * @param attrs    attributes
 	 * @param defStyle def style
 	 */
-	public OpenEditTextPreference(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
+	public OpenEditTextPreference(@NonNull final Context context, @NonNull final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
 
@@ -212,6 +212,7 @@ public class OpenEditTextPreference extends DialogPreference
 
 	static public class OpenEditTextPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat
 	{
+		@NonNull
 		@SuppressWarnings("WeakerAccess")
 		static public OpenEditTextPreferenceDialogFragmentCompat newInstance(final OpenEditTextPreference pref)
 		{
@@ -227,7 +228,7 @@ public class OpenEditTextPreference extends DialogPreference
 		private RadioGroup optionsView;
 
 		@Override
-		protected void onBindDialogView(View view)
+		protected void onBindDialogView(@NonNull View view)
 		{
 			super.onBindDialogView(view);
 

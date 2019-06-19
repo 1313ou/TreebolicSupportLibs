@@ -27,7 +27,7 @@ public class AppCompatCommonUtils
 	 * @param themeIdx theme idx
 	 */
 	@SuppressLint("ApplySharedPref")
-	public static void setThemePref(final Context context, int themeIdx)
+	static public void setThemePref(final Context context, int themeIdx)
 	{
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final SharedPreferences.Editor editor = sharedPrefs.edit();

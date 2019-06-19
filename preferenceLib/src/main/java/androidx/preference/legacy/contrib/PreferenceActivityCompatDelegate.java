@@ -286,7 +286,6 @@ public class PreferenceActivityCompatDelegate
 
 	public void startPreferenceFragment(@NonNull final Preference pref)
 	{
-		//final Fragment fragment = Fragment.instantiate(getContext(), pref.getFragment(), pref.getExtras());
 		final FragmentManager fragmentManager = getFragmentManager();
 		FragmentFactory factory = fragmentManager.getFragmentFactory();
 		final Fragment fragment = factory.instantiate(getContext().getClassLoader(), pref.getFragment());
@@ -486,8 +485,7 @@ public class PreferenceActivityCompatDelegate
 		{
 			throw new IllegalArgumentException("Invalid fragment for this activity: " + fragmentName);
 		}
-		//fragment = Fragment.instantiate(getContext(), fragmentName, args);
-		FragmentFactory factory = fragmentManager.getFragmentFactory();
+		final FragmentFactory factory = fragmentManager.getFragmentFactory();
 		this.fragment = factory.instantiate(getContext().getClassLoader(), fragmentName);
 		this.fragment.setArguments(args);
 

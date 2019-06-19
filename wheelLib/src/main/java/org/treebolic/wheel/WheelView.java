@@ -8,23 +8,24 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
 
 /**
  *
  */
 public class WheelView extends WheelVerticalView
 {
-	public WheelView(Context context, AttributeSet attrs, @AttrRes int defStyle)
+	public WheelView(@NonNull Context context, AttributeSet attrs, @AttrRes int defStyle)
 	{
 		super(context, attrs, defStyle);
 	}
 
-	public WheelView(Context context, AttributeSet attrs)
+	public WheelView(@NonNull Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 	}
 
-	public WheelView(Context context)
+	public WheelView(@NonNull Context context)
 	{
 		super(context);
 	}

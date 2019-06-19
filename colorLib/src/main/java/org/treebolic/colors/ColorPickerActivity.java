@@ -23,9 +23,9 @@ import androidx.annotation.NonNull;
 @SuppressLint("Registered")
 public class ColorPickerActivity extends AppCompatCommonActivity implements OnColorChangedListener, View.OnClickListener
 {
-	private ColorPickerView mColorPickerView;
+	private ColorPickerView colorPickerView;
 
-	private ColorPanelView mNewColorPanelView;
+	private ColorPanelView newColorPanelView;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
@@ -43,28 +43,28 @@ public class ColorPickerActivity extends AppCompatCommonActivity implements OnCo
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		final int initialColor = sharedPrefs.getInt("color_3", 0xFF000000);
 
-		this.mColorPickerView = findViewById(R.id.color_picker_view);
-		ColorPanelView mOldColorPanelView = findViewById(R.id.color_panel_old);
-		this.mNewColorPanelView = findViewById(R.id.color_panel_new);
+		this.colorPickerView = findViewById(R.id.color_picker_view);
+		this.newColorPanelView = findViewById(R.id.color_panel_new);
+		ColorPanelView oldColorPanelView = findViewById(R.id.color_panel_old);
 
-		Button mOkButton = findViewById(R.id.okButton);
-		Button mCancelButton = findViewById(R.id.cancelButton);
+		Button okButton = findViewById(R.id.okButton);
+		Button cancelButton = findViewById(R.id.cancelButton);
 
-		((LinearLayout) mOldColorPanelView.getParent()).setPadding(Math.round(this.mColorPickerView.getDrawingOffset()), 0, Math.round(this.mColorPickerView.getDrawingOffset()), 0);
+		((LinearLayout) oldColorPanelView.getParent()).setPadding(Math.round(this.colorPickerView.getDrawingOffset()), 0, Math.round(this.colorPickerView.getDrawingOffset()), 0);
 
-		this.mColorPickerView.setOnColorChangedListener(this);
-		this.mColorPickerView.setColor(initialColor, true);
-		mOldColorPanelView.setColor(initialColor);
+		this.colorPickerView.setOnColorChangedListener(this);
+		this.colorPickerView.setColor(initialColor, true);
+		oldColorPanelView.setColor(initialColor);
 
-		mOkButton.setOnClickListener(this);
-		mCancelButton.setOnClickListener(this);
+		okButton.setOnClickListener(this);
+		cancelButton.setOnClickListener(this);
 
 	}
 
 	@Override
 	public void onColorChanged(final int newColor)
 	{
-		this.mNewColorPanelView.setColor(this.mColorPickerView.getColor());
+		this.newColorPanelView.setColor(this.colorPickerView.getColor());
 	}
 
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
@@ -75,7 +75,7 @@ public class ColorPickerActivity extends AppCompatCommonActivity implements OnCo
 		if (id == R.id.okButton)
 		{
 			final SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
-			edit.putInt("color_3", this.mColorPickerView.getColor());
+			edit.putInt("color_3", this.colorPickerView.getColor());
 			edit.commit();
 			finish();
 		}

@@ -105,7 +105,7 @@ public class ColorPanelView extends View
 	 *
 	 * @param context context
 	 */
-	public ColorPanelView(final Context context)
+	public ColorPanelView(@NonNull final Context context)
 	{
 		this(context, null);
 	}
@@ -128,7 +128,7 @@ public class ColorPanelView extends View
 	 * @param attrs    attributes
 	 * @param defStyle style
 	 */
-	public ColorPanelView(final Context context, final AttributeSet attrs, final int defStyle)
+	public ColorPanelView(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
 	{
 		super(context, attrs, defStyle);
 		init(context);
