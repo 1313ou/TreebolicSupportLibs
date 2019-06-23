@@ -26,13 +26,12 @@ public class AppCompatCommonUtils
 	 * @param context  context
 	 * @param themeIdx theme idx
 	 */
-	@SuppressLint("ApplySharedPref")
 	static public void setThemePref(final Context context, int themeIdx)
 	{
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final SharedPreferences.Editor editor = sharedPrefs.edit();
 		editor.putString(PREF_THEME, Integer.toString(themeIdx));
-		editor.commit();
+		tryCommit(editor);
 	}
 
 	/**
@@ -76,5 +75,24 @@ public class AppCompatCommonUtils
 			editor.apply();
 		}
 		return null;
+	}
+
+	/**
+	 * Try to commit
+	 *
+	 * @param editor editor editor
+	 */
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
+	static private void tryCommit(@NonNull final SharedPreferences.Editor editor)
+	{
+		try
+		{
+			editor.apply();
+		}
+		catch (@NonNull final AbstractMethodError ignored)
+		{
+			// The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
+			editor.commit();
+		}
 	}
 }

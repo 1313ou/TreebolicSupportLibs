@@ -67,21 +67,39 @@ public class ColorPickerActivity extends AppCompatCommonActivity implements OnCo
 		this.newColorPanelView.setColor(this.colorPickerView.getColor());
 	}
 
-	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	@Override
 	public void onClick(@NonNull final View v)
 	{
 		final int id = v.getId();
 		if (id == R.id.okButton)
 		{
-			final SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
-			edit.putInt("color_3", this.colorPickerView.getColor());
-			edit.commit();
+			final SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+			editor.putInt("color_3", this.colorPickerView.getColor());
+			tryCommit(editor);
 			finish();
 		}
 		else if (id == R.id.cancelButton)
 		{
 			finish();
+		}
+	}
+
+	/**
+	 * Try to commit
+	 *
+	 * @param editor editor editor
+	 */
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
+	private void tryCommit(@NonNull final SharedPreferences.Editor editor)
+	{
+		try
+		{
+			editor.apply();
+		}
+		catch (@NonNull final AbstractMethodError ignored)
+		{
+			// The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
+			editor.commit();
 		}
 	}
 }

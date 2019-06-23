@@ -12,9 +12,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 
 import org.treebolic.wheel.AbstractWheel;
@@ -25,7 +25,9 @@ import org.treebolic.wheel.adapters.WheelViewAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.FragmentManager;
 
 /**
@@ -43,6 +45,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	@SuppressWarnings("WeakerAccess")
 	static public final String PREF_SEARCH_MODE = "pref_search_mode";
 
+
 	static public final String SCOPE_SOURCE = "SOURCE";
 
 	static public final String SCOPE_LABEL = "LABEL";
@@ -52,6 +55,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	static public final String SCOPE_LINK = "LINK";
 
 	static public final String SCOPE_ID = "ID";
+
 
 	static public final String MODE_STARTSWITH = "STARTSWITH";
 
@@ -88,7 +92,7 @@ public class SearchSettings extends AppCompatDialogFragment
 	}
 
 	@NonNull
-	@SuppressLint({"InflateParams", "ApplySharedPref"})
+	@SuppressLint("InflateParams")
 	@Override
 	public Dialog onCreateDialog(final Bundle savedInstanceState)
 	{
@@ -116,7 +120,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeAdapter = new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE);
 		this.sourceAdapter = new Adapter(context, R.layout.item_mode, sourceLabels, sourceIcons, this.sources.length, Adapter.Type.SOURCE);
 
-		// initial values
+		// initial values for scope
 		int scopeIndex = defaultScopeIndex;
 		final String scope = sharedPref.getString(PREF_SEARCH_SCOPE, null);
 		Log.d(TAG, "Scope " + scope);
@@ -133,10 +137,12 @@ public class SearchSettings extends AppCompatDialogFragment
 		}
 		else
 		{
-			sharedPref.edit().putString(PREF_SEARCH_SCOPE, this.scopes[defaultScopeIndex]).commit();
+			final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, this.scopes[defaultScopeIndex]);
+			tryCommit(editor);
 		}
+		// initial values for mode
 		int modeIndex = defaultModeIndex;
-		if (scopeIndex < this.scopes.length - 1)
+		if (scopeIndex < this.scopes.length - 1) // label id content link
 		{
 			modeIndex = 1;
 			final String mode = sharedPref.getString(PREF_SEARCH_MODE, null);
@@ -152,20 +158,33 @@ public class SearchSettings extends AppCompatDialogFragment
 					}
 				}
 			}
+			else
+			{
+				final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_MODE, this.modes[defaultModeIndex]);
+				tryCommit(editor);
+			}
 		}
-		else
+		else // source
 		{
-			sharedPref.edit().putString(PREF_SEARCH_MODE, this.modes[defaultModeIndex]).commit();
+			if (sharedPref.contains(PREF_SEARCH_MODE))
+			{
+				final SharedPreferences.Editor editor = sharedPref.edit().remove(PREF_SEARCH_MODE);
+				tryCommit(editor);
+			}
 		}
 
 		// dialog
-		final Dialog dialog = new Dialog(requireActivity());
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		// dialog.setTitle(R.string.search_title);
-		dialog.setContentView(R.layout.dialog_search_settings);
 
-		// wheel 1
-		this.scopeWheel = dialog.findViewById(R.id.scope);
+		//final Dialog dialog = new AppCompatDialog(requireActivity());
+		//dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // or
+		//dialog.setTitle(R.string.search_title);
+		//dialog.setContentView(R.layout.dialog_search_settings);
+		//dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded);
+
+		final View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_search_settings, null);
+
+		// wheel 1abandon
+		this.scopeWheel = view.findViewById(R.id.scope);
 		assert this.scopeWheel != null;
 		this.scopeWheel.setVisibleItems(4);
 		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
@@ -173,7 +192,8 @@ public class SearchSettings extends AppCompatDialogFragment
 		// wheel 1 events
 		this.scopeWheel.addChangingListener((wheel, oldValue, newValue) -> {
 			Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
-			sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]).commit();
+			final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]);
+			tryCommit(editor);
 			if (!SearchSettings.this.scrolling)
 			{
 				updateWheel2(newValue);
@@ -196,7 +216,7 @@ public class SearchSettings extends AppCompatDialogFragment
 		});
 
 		// wheel 2
-		this.modeWheel = dialog.findViewById(R.id.mode);
+		this.modeWheel = view.findViewById(R.id.mode);
 		assert this.modeWheel != null;
 		this.modeWheel.setVisibleItems(4);
 		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
@@ -208,12 +228,14 @@ public class SearchSettings extends AppCompatDialogFragment
 			if (adapter.getType() == Adapter.Type.MODE)
 			{
 				Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]);
-				sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]).commit();
+				final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]);
+				tryCommit(editor);
 			}
 			else if (adapter.getType() == Adapter.Type.SOURCE)
 			{
 				Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]);
-				sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]).commit();
+				final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]);
+				tryCommit(editor);
 			}
 		});
 
@@ -221,18 +243,11 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.scopeWheel.setCurrentItem(scopeIndex);
 		this.modeWheel.setCurrentItem(modeIndex);
 
-		// dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded);
+		final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom));
 
-		// final ImageButton button = (ImageButton) dialog.findViewById(R.id.tip_dismiss);
-		// button.setOnClickListener(new View.OnClickListener()
-		// {
-		// @Override
-		// public void onClick(View v)
-		// {
-		// dialog.cancel();
-		// }
-		// });
-		return dialog;
+		return builder //
+				.setView(view).setPositiveButton(R.string.title_yes, (dialog2, which) -> dialog2.dismiss()) //
+				.create();
 	}
 
 	/**
@@ -258,7 +273,6 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.modeWheel.setViewAdapter(adapter);
 		this.modeWheel.setCurrentItem(modeIndex);
 	}
-
 
 	/**
 	 * Adapter for scopes
@@ -319,6 +333,25 @@ public class SearchSettings extends AppCompatDialogFragment
 		public Type getType()
 		{
 			return this.type;
+		}
+	}
+
+	/**
+	 * Try to commit
+	 *
+	 * @param editor editor editor
+	 */
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
+	static private void tryCommit(@NonNull final SharedPreferences.Editor editor)
+	{
+		try
+		{
+			editor.apply();
+		}
+		catch (@NonNull final AbstractMethodError ignored)
+		{
+			// The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
+			editor.commit();
 		}
 	}
 

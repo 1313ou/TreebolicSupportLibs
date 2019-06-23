@@ -7,23 +7,23 @@
 <resources>
 
 	<!-- Overlay -->
-	<style name="MyDarkOverlay" parent="ThemeOverlay.AppCompat.Dark"> <!-- DARK -->
+	<style name="MyDarkOverlay" parent="ThemeOverlay.MaterialComponents.Dark"> <!-- DARK -->
 		<item name="android:background">?attr/colorPrimary</item>
 		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
 	</style>
 
-	<style name="MyLightOverlay" parent="ThemeOverlay.AppCompat.Light"> <!-- LIGHT -->
+	<style name="MyLightOverlay" parent="ThemeOverlay.MaterialComponents.Light"> <!-- LIGHT -->
 		<item name="android:background">?attr/colorPrimary</item>
 		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
 	</style>
 
 	<!-- Action bar -->
-	<style name="MyDarkActionBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"> <!-- DARK -->
+	<style name="MyDarkActionBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"> <!-- DARK -->
 		<item name="android:background">?attr/colorPrimary</item>
 		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
 	</style>
 
-	<style name="MyLightActionBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar"> <!-- LIGHT -->
+	<style name="MyLightActionBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar"> <!-- LIGHT -->
 		<item name="android:background">?attr/colorPrimary</item>
 		<!-- <item name="android:textColorPrimary">@color/xxx</item> -->
 	</style>
@@ -45,7 +45,7 @@
 	</style>
 
 	<!-- BASE application theme -->
-	<style name="MyBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"> <!-- LIGHT -->
+	<style name="MyBaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar"> <!-- LIGHT -->
 
 		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
 		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->

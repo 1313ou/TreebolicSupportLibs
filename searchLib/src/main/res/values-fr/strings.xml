@@ -5,6 +5,9 @@
 
 <resources>
 
+	<!-- dialog -->
+	<string name="title_yes">OK</string>
+
 	<!-- menu -->
 	<string name="title_search">Recherche</string>
 	<string name="title_search_run">Lancer recherche</string>

@@ -4,6 +4,7 @@
 
 package org.treebolic.colors.preference;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
@@ -174,14 +175,7 @@ public class ColorPickerPreference extends DialogPreference
 
 			final SharedPreferences.Editor editor = getSharedPreferences().edit();
 			editor.remove(getKey());
-			try
-			{
-				editor.apply();
-			}
-			catch (AbstractMethodError ignored)
-			{
-				editor.commit();
-			}
+			tryCommit(editor);
 			return true;
 		}
 		else
@@ -203,6 +197,25 @@ public class ColorPickerPreference extends DialogPreference
 			return (Integer) defaultValue;
 		}
 		return null;
+	}
+
+	/**
+	 * Try to commit
+	 *
+	 * @param editor editor editor
+	 */
+	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
+	static private void tryCommit(@NonNull final SharedPreferences.Editor editor)
+	{
+		try
+		{
+			editor.apply();
+		}
+		catch (@NonNull final AbstractMethodError ignored)
+		{
+			// The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
+			editor.commit();
+		}
 	}
 
 	@Nullable

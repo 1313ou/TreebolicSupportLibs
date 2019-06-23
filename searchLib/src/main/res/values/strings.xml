@@ -5,6 +5,9 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+	<!-- dialog -->
+	<string name="title_yes">OK</string>
+
 	<!-- menu -->
 	<string name="title_search" tools:ignore="UnusedResources">Search</string>
 	<string name="title_search_run" tools:ignore="UnusedResources">Run search</string>
