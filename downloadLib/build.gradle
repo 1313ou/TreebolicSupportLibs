@@ -30,9 +30,8 @@ android {
 dependencies {
     implementation project(':commonLib')
 
-    implementation files('libs/commons-compress-proguard-1.8.1.jar')
-
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'org.apache.commons:commons-compress:1.12'
 }
