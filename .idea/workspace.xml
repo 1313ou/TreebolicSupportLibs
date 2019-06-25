@@ -17,15 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="trycommit factored out&#10;search settings alert dialog">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/colorLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/colorLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/guideLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/guideLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/searchLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/searchLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storageLib/storageLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/storageLib/storageLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheelLib/wheelLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/wheelLib.iml" afterDir="false" />
-    </list>
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="dep on commons-compress" />
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -208,17 +200,7 @@
     <favorites_list name="TreebolicSupportLibs" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/downloadLib/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -316,7 +298,6 @@
         <option value="$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/AppCompatCommonPreferenceActivity.java" />
         <option value="$PROJECT_DIR$/fileChooserLib/build.gradle" />
         <option value="$PROJECT_DIR$/guideLib/build.gradle" />
-        <option value="$PROJECT_DIR$/downloadLib/build.gradle" />
         <option value="$PROJECT_DIR$/preferenceLib/src/main/java/org/treebolic/preference/OpenEditTextPreference.java" />
         <option value="$PROJECT_DIR$/preferenceLib/src/main/java/org/treebolic/preference/StringSavedState.java" />
         <option value="$PROJECT_DIR$/preferenceLib/src/main/java/org/treebolic/preference/AutoEditTextPreference.java" />
@@ -332,6 +313,7 @@
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPanelView.java" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/dialog/ColorPickerDialog.java" />
+        <option value="$PROJECT_DIR$/downloadLib/build.gradle" />
       </list>
     </option>
   </component>
@@ -352,10 +334,24 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="downloadLib" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="downloadLib" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="downloadLib" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="download" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
             <path>
               <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -364,6 +360,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -619,13 +616,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
-    </task>
-    <task id="LOCAL-00034" summary="new theming model">
-      <created>1506451446611</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1506451446611</updated>
     </task>
     <task id="LOCAL-00035" summary="lint">
       <created>1506696709160</created>
@@ -963,7 +953,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561305557314</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="dep on commons-compress">
+      <created>1561353548073</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1561353548073</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -977,9 +974,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1173" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
       <window_info id="Resources Explorer" order="1" weight="0.32950193" />
       <window_info id="Structure" order="2" weight="0.25" />
       <window_info id="Designer" order="3" />
@@ -999,12 +995,12 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50027364" side_tool="true" weight="0.3297456" />
       <window_info anchor="bottom" id="Logcat" order="9" weight="0.32941177" />
       <window_info anchor="bottom" id="Android Monitor" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" weight="0.29745597" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" visible="true" weight="0.29745597" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.52764094" weight="0.32941177" />
       <window_info anchor="bottom" id="Gradle Console" order="13" sideWeight="0.2846196" side_tool="true" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Inspection Results" order="14" sideWeight="0.76464146" visible="true" weight="0.36105675" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" sideWeight="0.76464146" weight="0.36105675" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.6560264" weight="0.327451" />
-      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" visible="true" weight="0.3297456" />
+      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" weight="0.3297456" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958949" />
@@ -1072,7 +1068,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="refactoring&#10;gen tools" />
     <MESSAGE value="various fixes on menus" />
     <MESSAGE value="optimizing and&#10;lint" />
     <MESSAGE value="new theming model" />
@@ -1097,7 +1092,8 @@
     <MESSAGE value="renames&#10;start color in dialog" />
     <MESSAGE value="lint" />
     <MESSAGE value="trycommit factored out&#10;search settings alert dialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="trycommit factored out&#10;search settings alert dialog" />
+    <MESSAGE value="dep on commons-compress" />
+    <option name="LAST_COMMIT_MESSAGE" value="dep on commons-compress" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/res/layout/preference_category_compat.xml">
@@ -1495,8 +1491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/downloadLib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="377">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
