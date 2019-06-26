@@ -13,8 +13,8 @@
 	<color name="default_secondaryDarkColor">#b6003a</color>
 
 	<color name="default_primaryForeColor">#ffffff</color>
-	<color name="default_secondaryForeColor">#c0c0d0</color>
-	<color name="default_tertiaryForeColor">#e0e0e0</color>
+	<color name="default_secondaryForeColor">#a0a0a0</color>
+	<color name="default_tertiaryForeColor">#c0c0c0</color>
 
 	<style name="MyDefaultDarkTheme" parent="MyDarkBaseTheme">
 	</style>

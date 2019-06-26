@@ -2,9 +2,14 @@
 <!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
+
 <resources>
 
 	<string name="dialog_title">Pick a Color</string>
 	<string name="dialog_title_none">None</string>
+
+	<string name="desc_pick">Pick color</string>
+	<string name="desc_old">Old color</string>
+	<string name="desc_new">New color</string>
 
 </resources>

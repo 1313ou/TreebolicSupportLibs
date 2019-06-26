@@ -17,7 +17,25 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="dep on commons-compress" />
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="lib update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/colorLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/colorLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/layout-land/dialog_color_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/layout-land/dialog_color_picker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/layout/activity_color_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/layout/activity_color_picker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/layout/dialog_color_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/layout/dialog_color_picker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonLib/commonLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/commonLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/downloadLib/downloadLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/downloadLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guideLib/guideLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/guideLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guideLib/src/main/res/drawable/bg_semitransparent_rounded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/src/main/res/drawable/bg_semitransparent_rounded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchLib/searchLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/searchLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storageLib/storageLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/storageLib/storageLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wheelLib/wheelLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/wheelLib.iml" afterDir="false" />
+    </list>
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -200,7 +218,26 @@
     <favorites_list name="TreebolicSupportLibs" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -211,7 +248,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buildTo</find>
       <find>buildToo</find>
       <find>buildTool</find>
       <find>buildTools</find>
@@ -241,6 +277,7 @@
       <find>getActivity</find>
       <find>\bm</find>
       <find>Color.GRAY</find>
+      <find>contentDescription</find>
     </findStrings>
     <replaceStrings>
       <replace>Open</replace>
@@ -263,9 +300,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/ColorPickerActivity.java" />
-        <option value="$PROJECT_DIR$/searchLib/src/main/java/org/treebolic/search/SearchSettings.java" />
-        <option value="$PROJECT_DIR$/guideLib/src/main/java/org/treebolic/guide/HelpActivity.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/adapters/AbstractWheelAdapter.java" />
         <option value="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/adapters/ArrayWheelAdapter.java" />
         <option value="$PROJECT_DIR$/fileChooserLib/src/main/java/org/treebolic/filechooser/EntryChooser.java" />
@@ -302,8 +336,6 @@
         <option value="$PROJECT_DIR$/preferenceLib/src/main/java/org/treebolic/preference/StringSavedState.java" />
         <option value="$PROJECT_DIR$/preferenceLib/src/main/java/org/treebolic/preference/AutoEditTextPreference.java" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/preference/ColorSavedState.java" />
-        <option value="$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/preference/ColorPickerPreference.java" />
         <option value="$PROJECT_DIR$/colorLib/build.gradle" />
         <option value="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/PreferenceActivityCompatDelegate.java" />
@@ -314,6 +346,11 @@
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/view/ColorPickerView.java" />
         <option value="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/dialog/ColorPickerDialog.java" />
         <option value="$PROJECT_DIR$/downloadLib/build.gradle" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/res/layout/activity_color_picker.xml" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/res/layout/dialog_color_picker.xml" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/res/layout-land/dialog_color_picker.xml" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml" />
       </list>
     </option>
   </component>
@@ -332,35 +369,51 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
-              <item name="downloadLib" type="feadf853:AndroidModuleNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
               <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
-              <item name="downloadLib" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
-              <item name="downloadLib" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="download" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="dialog_color_picker" type="c431d0b8:AndroidResGroupNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="TreebolicSupportLibs" type="1abcf292:AndroidViewProjectNode" />
+              <item name="colorLib" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -616,13 +669,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
-    </task>
-    <task id="LOCAL-00035" summary="lint">
-      <created>1506696709160</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1506696709160</updated>
     </task>
     <task id="LOCAL-00036" summary="lint&#10;add color utils">
       <created>1506697805131</created>
@@ -960,7 +1006,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561353548073</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="lib update">
+      <created>1561481653948</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1561481653948</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -974,8 +1027,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1173" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
       <window_info id="Resources Explorer" order="1" weight="0.32950193" />
       <window_info id="Structure" order="2" weight="0.25" />
       <window_info id="Designer" order="3" />
@@ -995,12 +1049,12 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50027364" side_tool="true" weight="0.3297456" />
       <window_info anchor="bottom" id="Logcat" order="9" weight="0.32941177" />
       <window_info anchor="bottom" id="Android Monitor" order="10" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" visible="true" weight="0.29745597" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" weight="0.29745597" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.52764094" weight="0.32941177" />
       <window_info anchor="bottom" id="Gradle Console" order="13" sideWeight="0.2846196" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Inspection Results" order="14" sideWeight="0.76464146" weight="0.36105675" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.6560264" weight="0.327451" />
-      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" weight="0.3297456" />
+      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" visible="true" weight="0.3297456" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958949" />
@@ -1068,7 +1122,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="various fixes on menus" />
     <MESSAGE value="optimizing and&#10;lint" />
     <MESSAGE value="new theming model" />
     <MESSAGE value="lint&#10;add color utils" />
@@ -1093,57 +1146,10 @@
     <MESSAGE value="lint" />
     <MESSAGE value="trycommit factored out&#10;search settings alert dialog" />
     <MESSAGE value="dep on commons-compress" />
-    <option name="LAST_COMMIT_MESSAGE" value="dep on commons-compress" />
+    <MESSAGE value="lib update" />
+    <option name="LAST_COMMIT_MESSAGE" value="lib update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/res/layout/preference_category_compat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="e#424#452#0" expanded="true" />
-            <element signature="e#725#753#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/res/layout-xlarge/breadcrumbs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="e#421#452#0" expanded="true" />
-            <element signature="e#673#704#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/res/layout/header_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/HeaderLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.preference/preference/1.0.0/3eb748f2645fba8bb4510f4a53456dfcde7f8a0d/preference-1.0.0-sources.jar!/androidx/preference/DialogPreference.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.preference/preference/1.0.0/3eb748f2645fba8bb4510f4a53456dfcde7f8a0d/preference-1.0.0-sources.jar!/androidx/preference/EditTextPreference.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.preference/preference/1.0.0/3eb748f2645fba8bb4510f4a53456dfcde7f8a0d/preference-1.0.0-sources.jar!/androidx/preference/PreferenceFragmentCompat.java" />
     <entry file="file://$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/AppCompatCommonActivity.java">
@@ -1291,20 +1297,6 @@
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.preference/preference/1.0.0/3eb748f2645fba8bb4510f4a53456dfcde7f8a0d/preference-1.0.0-sources.jar!/androidx/preference/Preference.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.preference/preference/1.0.0/3eb748f2645fba8bb4510f4a53456dfcde7f8a0d/preference-1.0.0-sources.jar!/androidx/preference/SeekBarPreference.java" />
-    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="8" selection-start-line="7" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/colorLib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1493,6 +1485,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileChooserLib/src/main/res/drawable-hdpi/filechooser_cancel.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileChooserLib/src/main/res/layout/activity_choose_file.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/layout/dialog_color_picker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-70">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="e#618#637#0" expanded="true" />
+            <element signature="e#1289#1307#0" expanded="true" />
+            <element signature="e#1811#1829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/layout-land/dialog_color_picker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+          <folding>
+            <element signature="e#1086#1105#0" expanded="true" />
+            <element signature="e#1507#1525#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/layout/preference_preview_layout.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/layout/activity_color_picker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="57" column="60" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
+          <folding>
+            <element signature="e#721#740#0" expanded="true" />
+            <element signature="e#1307#1325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
