@@ -32,11 +32,11 @@
 					android:layout_alignParentEnd="true"
 					android:layout_alignParentRight="true"
 					android:layout_gravity="center_horizontal|top"
-					android:paddingRight="10dp"
-					android:paddingEnd="10dp"
-					android:paddingLeft="1dp"
-					android:paddingStart="1dp"
 					android:contentDescription="@string/tip_dismiss"
+					android:paddingStart="1dp"
+					android:paddingLeft="1dp"
+					android:paddingEnd="10dp"
+					android:paddingRight="10dp"
 					android:src="@drawable/ic_tip_close"/>
 
 			</RelativeLayout>
@@ -47,11 +47,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_press"
 				android:text="@string/tip_gesture_press"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_press"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_press"
 				android:src="@drawable/ic_tip_press"/>
 
 			<TextView
@@ -63,11 +64,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_doubletap"
 				android:text="@string/tip_gesture_doubletap"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_doubletap"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_doubletap"
 				android:src="@drawable/ic_tip_doubletap"/>
 
 			<TextView
@@ -79,11 +81,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_drag"
 				android:text="@string/tip_gesture_drag"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_drag"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_drag"
 				android:src="@drawable/ic_tip_drag"/>
 
 			<TextView
@@ -95,11 +98,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_pinch_open_ne_sw"
 				android:text="@string/tip_gesture_pinch_open_ne_sw"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_pinch_open_ne_sw"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_pinch_open_ne_sw"
 				android:src="@drawable/ic_tip_pinch_open_ne_sw"/>
 
 			<TextView
@@ -111,11 +115,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_pinch_close_ne_sw"
 				android:text="@string/tip_gesture_pinch_close_ne_sw"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_pinch_close_ne_sw"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_pinch_close_ne_sw"
 				android:src="@drawable/ic_tip_pinch_close_ne_sw"/>
 
 			<TextView
@@ -127,11 +132,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_pinch_open_nw_se"
 				android:text="@string/tip_gesture_pinch_open_nw_se"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_pinch_open_nw_se"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_pinch_open_nw_se"
 				android:src="@drawable/ic_tip_pinch_open_nw_se"/>
 
 			<TextView
@@ -143,11 +149,12 @@
 
 			<TextView
 				style="@style/tipGesture"
+				android:labelFor="@id/tip_gesture_pinch_close_nw_se"
 				android:text="@string/tip_gesture_pinch_close_nw_se"/>
 
 			<ImageView
+				android:id="@+id/tip_gesture_pinch_close_nw_se"
 				style="@style/tipImage"
-				android:contentDescription="@string/tip_gesture_pinch_close_nw_se"
 				android:src="@drawable/ic_tip_pinch_close_nw_se"/>
 
 			<TextView

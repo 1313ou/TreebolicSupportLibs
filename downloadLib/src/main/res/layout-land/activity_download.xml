@@ -29,6 +29,7 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
 				android:indeterminate="false"
+				android:contentDescription="@string/download_progress"
 				android:max="100"
 				android:progress="0"
 				android:visibility="invisible"/>
@@ -38,7 +39,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
-				android:text="@string/download"
+				android:text="@string/download_status"
 				android:textAppearance="?android:attr/textAppearanceSmall"
 				android:visibility="invisible"/>
 

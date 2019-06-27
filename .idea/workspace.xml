@@ -17,25 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="lib update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/colorLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/colorLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/layout-land/dialog_color_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/layout-land/dialog_color_picker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/layout/activity_color_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/layout/activity_color_picker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/layout/dialog_color_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/layout/dialog_color_picker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/commonLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/commonLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/downloadLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/downloadLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/guideLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/guideLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/src/main/res/drawable/bg_semitransparent_rounded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/src/main/res/drawable/bg_semitransparent_rounded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/searchLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/searchLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storageLib/storageLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/storageLib/storageLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheelLib/wheelLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/wheelLib.iml" afterDir="false" />
-    </list>
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="content description" />
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -218,26 +200,7 @@
     <favorites_list name="TreebolicSupportLibs" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/colorLib/src/main/res/values-fr/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -670,13 +633,6 @@
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
     </task>
-    <task id="LOCAL-00036" summary="lint&#10;add color utils">
-      <created>1506697805131</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1506697805131</updated>
-    </task>
     <task id="LOCAL-00037" summary="commonlib check for theme existence">
       <created>1506849922658</created>
       <option name="number" value="00037" />
@@ -1013,7 +969,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561481653948</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="content description">
+      <created>1561540014557</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1561540014557</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1027,9 +990,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="27" width="1869" height="1173" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17569786" />
       <window_info id="Resources Explorer" order="1" weight="0.32950193" />
       <window_info id="Structure" order="2" weight="0.25" />
       <window_info id="Designer" order="3" />
@@ -1049,12 +1011,12 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50027364" side_tool="true" weight="0.3297456" />
       <window_info anchor="bottom" id="Logcat" order="9" weight="0.32941177" />
       <window_info anchor="bottom" id="Android Monitor" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" weight="0.29745597" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.4909688" visible="true" weight="0.29745597" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.52764094" weight="0.32941177" />
       <window_info anchor="bottom" id="Gradle Console" order="13" sideWeight="0.2846196" side_tool="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Inspection Results" order="14" sideWeight="0.76464146" weight="0.36105675" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.6560264" weight="0.327451" />
-      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" visible="true" weight="0.3297456" />
+      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.49972633" weight="0.3297456" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958949" />
@@ -1122,7 +1084,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="optimizing and&#10;lint" />
     <MESSAGE value="new theming model" />
     <MESSAGE value="lint&#10;add color utils" />
     <MESSAGE value="commonlib check for theme existence" />
@@ -1147,7 +1108,8 @@
     <MESSAGE value="trycommit factored out&#10;search settings alert dialog" />
     <MESSAGE value="dep on commons-compress" />
     <MESSAGE value="lib update" />
-    <option name="LAST_COMMIT_MESSAGE" value="lib update" />
+    <MESSAGE value="content description" />
+    <option name="LAST_COMMIT_MESSAGE" value="content description" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.preference/preference/1.0.0/3eb748f2645fba8bb4510f4a53456dfcde7f8a0d/preference-1.0.0-sources.jar!/androidx/preference/EditTextPreference.java" />
