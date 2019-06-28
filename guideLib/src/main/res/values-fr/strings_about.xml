@@ -9,5 +9,6 @@
 
 	<string name="title_about">À propos</string>
 	<string name="about_treebolic_text">Treebolic est un composant destiné à visualiser des données hiérarchisées avec un rendu hyperbolique.</string>
+	<string name="about_desc_treebolic_logo">Logo Treebolic</string>
 
 </resources>

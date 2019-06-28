@@ -9,5 +9,6 @@
 
 	<string name="title_about">About</string>
 	<string name="about_treebolic_text">Treebolic is a widget whose purpose is to provide a hyperbolic rendering of hierarchical data.</string>
+	<string name="about_desc_treebolic_logo">Treebolic logo</string>
 
 </resources>

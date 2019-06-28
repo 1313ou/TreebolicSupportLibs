@@ -8,6 +8,7 @@
 	<string name="title_activity_help">Aide</string>
 
 	<string name="title_help">Aide</string>
+	<string name="desc_help">Contenu de l\'aide</string>
 	<string name="lang_tag">fr</string>
 
 </resources>

@@ -15,6 +15,7 @@
 
 	<WebView
 		android:id="@+id/webView"
+		android:contentDescription="@string/desc_help"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
 

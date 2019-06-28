@@ -19,12 +19,11 @@
 		android:paddingRight="16dp"
 		android:paddingTop="16dp">
 
-
 		<ImageView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:contentDescription="@string/about_treebolic_label"
+			android:contentDescription="@string/about_desc_treebolic_logo"
 			android:src="@drawable/ic_about_logo"/>
 
 		<TextView
