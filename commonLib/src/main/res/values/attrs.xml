@@ -21,7 +21,6 @@
 	<!-- treebolic toolbar (not app toolbar) (see GLUE, but this module has no deps) -->
 	<declare-styleable name="TreebolicToolbar">
 		<attr name="treebolic_toolbar_background" format="color|reference"/>
-		<attr name="treebolic_toolbar_foreground" format="color|reference"/>
 		<attr name="treebolic_toolbar_foreground_icon" format="color|reference"/>
 	</declare-styleable>
 

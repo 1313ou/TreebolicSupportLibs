@@ -17,64 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="accessibility">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_rc01_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_rc01_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_preference_preference_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_rc01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/custom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/colorLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/colorLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/preference/ColorPickerPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/src/main/java/org/treebolic/colors/preference/ColorPickerPreference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/commonLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/commonLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/AppCompatCommonPreferenceActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/AppCompatCommonPreferenceActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/ColorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/ColorUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values-v21/styles_compat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values-v21/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/styles_compat.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/downloadLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/downloadLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/src/main/res/layout-land/activity_download.xml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/src/main/res/layout-land/activity_download.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/src/main/res/layout/activity_download.xml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/src/main/res/layout/activity_download.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/src/main/res/layout/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/src/main/res/layout/toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/src/main/res/layout/activity_choose_file.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/src/main/res/layout/activity_choose_file.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/src/main/res/layout/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/src/main/res/layout/toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/guideLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/guideLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/src/main/java/org/treebolic/guide/HelpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/src/main/java/org/treebolic/guide/HelpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/src/main/res/layout/activity_about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/src/main/res/layout/activity_about.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/src/main/res/layout/activity_help.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/src/main/res/layout/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/src/main/res/layout/toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/HeaderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/HeaderAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/PreferenceActivityCompatDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/src/main/java/androidx/preference/legacy/contrib/PreferenceActivityCompatDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/src/main/res/layout/content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/src/main/res/layout/content.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/searchLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/searchLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storageLib/storageLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/storageLib/storageLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/OnWheelScrollListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/src/main/java/org/treebolic/wheel/OnWheelScrollListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheelLib/wheelLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/wheelLib.iml" afterDir="false" />
-    </list>
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="toolbar" />
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -260,53 +203,7 @@
     <favorites_list name="TreebolicSupportLibs" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/custom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values-v21/themes.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="27" column="70" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -698,13 +595,6 @@
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
     </task>
-    <task id="LOCAL-00039" summary="lint">
-      <created>1506850355905</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1506850355905</updated>
-    </task>
     <task id="LOCAL-00040" summary="manifest merging">
       <created>1506875852016</created>
       <option name="number" value="00040" />
@@ -1041,7 +931,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561701013887</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="toolbar">
+      <created>1566716441253</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1566716441253</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1054,7 +951,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="27" width="1869" height="1173" extended-state="7" />
+    <frame x="51" y="27" width="1869" height="1173" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17679256" />
       <window_info id="Resources Explorer" order="1" weight="0.32950193" />
@@ -1149,7 +1046,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="commonlib check for theme existence" />
     <MESSAGE value="manifest merging" />
     <MESSAGE value="theming simplication" />
     <MESSAGE value="reformatted" />
@@ -1174,7 +1070,8 @@
     <MESSAGE value="content description" />
     <MESSAGE value="version number&#10;download accessibility" />
     <MESSAGE value="accessibility" />
-    <option name="LAST_COMMIT_MESSAGE" value="accessibility" />
+    <MESSAGE value="toolbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="toolbar" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/searchLib/build.gradle">
