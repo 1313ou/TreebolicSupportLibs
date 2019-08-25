@@ -14,6 +14,7 @@ public interface OnWheelScrollListener
 	 *
 	 * @param wheel the spinnerwheel view whose state has changed.
 	 */
+	@SuppressWarnings("EmptyMethod")
 	void onScrollingStarted(AbstractWheel wheel);
 
 	/**
@@ -21,5 +22,6 @@ public interface OnWheelScrollListener
 	 *
 	 * @param wheel the spinnerwheel view whose state has changed.
 	 */
+	@SuppressWarnings("EmptyMethod")
 	void onScrollingFinished(AbstractWheel wheel);
 }

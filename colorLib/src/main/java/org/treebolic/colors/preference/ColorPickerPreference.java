@@ -270,10 +270,6 @@ public class ColorPickerPreference extends DialogPreference
 
 		private ColorPanelView newColorView;
 
-		private ColorPanelView oldColorView;
-
-		private ColorPanelView preview;
-
 		@Override
 		protected void onBindDialogView(@NonNull View view)
 		{
@@ -286,8 +282,8 @@ public class ColorPickerPreference extends DialogPreference
 			colorPickerView.setOnColorChangedListener(this);
 
 			newColorView = view.findViewById(R.id.color_panel_new);
-			oldColorView = view.findViewById(R.id.color_panel_old);
-			preview = view.findViewById(R.id.preference_preview_color_panel);
+			ColorPanelView oldColorView = view.findViewById(R.id.color_panel_old);
+			ColorPanelView preview = view.findViewById(R.id.preference_preview_color_panel);
 			final LinearLayout landscapeLayout = view.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
 
 			// padding

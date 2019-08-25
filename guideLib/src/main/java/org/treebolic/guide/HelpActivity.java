@@ -64,7 +64,6 @@ public class HelpActivity extends AppCompatCommonActivity
 		//webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		webView.setWebViewClient(new WebViewClient()
 		{
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onReceivedError(final WebView view, final int errorCode, final String description, final String failingUrl)
 			{
@@ -78,7 +77,6 @@ public class HelpActivity extends AppCompatCommonActivity
 				Log.e(HelpActivity.TAG, error.getDescription().toString() + ',' + error.getErrorCode());
 			}
 
-			@SuppressWarnings("deprecation")
 			@Override
 			public boolean shouldOverrideUrlLoading(@NonNull final WebView view, final String url)
 			{

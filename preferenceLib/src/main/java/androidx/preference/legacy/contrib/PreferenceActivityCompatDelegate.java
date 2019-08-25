@@ -290,7 +290,12 @@ public class PreferenceActivityCompatDelegate
 		FragmentFactory factory = fragmentManager.getFragmentFactory();
 		final Fragment fragment = factory.instantiate(getContext().getClassLoader(), pref.getFragment());
 
-		getFragmentManager().beginTransaction().replace(R.id.prefs, fragment).setBreadCrumbTitle(pref.getTitle()).setTransition(FragmentTransaction.TRANSIT_NONE).addToBackStack(BACK_STACK_PREFS).commitAllowingStateLoss();
+		getFragmentManager().beginTransaction() //
+				.replace(R.id.prefs, fragment) //
+				.setBreadCrumbTitle(pref.getTitle()) //
+				.setTransition(FragmentTransaction.TRANSIT_NONE) //
+				.addToBackStack(BACK_STACK_PREFS) //
+				.commitAllowingStateLoss();
 	}
 
 	// A C C E S S

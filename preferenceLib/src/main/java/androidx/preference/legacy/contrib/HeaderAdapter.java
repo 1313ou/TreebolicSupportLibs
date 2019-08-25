@@ -153,7 +153,6 @@ class HeaderAdapter extends ArrayAdapter<Header>
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private void setBackground(@NonNull final View view)
 	{
 		if (mColorAccent == 0)

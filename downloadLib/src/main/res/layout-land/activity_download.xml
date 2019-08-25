@@ -1,126 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
-  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+  ~ Copyright (c) Treebolic 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="org.treebolic.download.DownloadActivity">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="org.treebolic.download.DownloadActivity">
 
-	<include layout="@layout/toolbar"/>
-
-	<FrameLayout
-		android:id="@+id/mid"
+	<RelativeLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_centerVertical="true">
+		android:layout_height="match_parent"
+		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-		<LinearLayout
+		<Button
+			android:id="@+id/showButton"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentBottom="true"
+			android:layout_marginStart="25dp"
+			android:layout_marginLeft="25dp"
+			android:layout_marginBottom="25dp"
+			android:text="@string/show" />
+
+		<CheckBox
+			android:id="@+id/expandArchive"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:layout_marginEnd="25dp"
+			android:layout_marginRight="25dp"
+			android:layout_marginBottom="25dp"
+			android:text="@string/expandArchive"
+			android:visibility="visible"
+			tools:ignore="RelativeOverlap" />
+
+		<FrameLayout
+			android:id="@+id/mid"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:orientation="vertical">
+			android:layout_centerVertical="true">
 
-			<ProgressBar
-				android:id="@+id/progressBar"
-				style="@android:style/Widget.ProgressBar.Horizontal"
-				android:layout_width="wrap_content"
+			<LinearLayout
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
-				android:indeterminate="false"
-				android:contentDescription="@string/download_progress"
-				android:max="100"
-				android:progress="0"
-				android:visibility="invisible"/>
+				android:orientation="vertical">
 
-			<TextView
-				android:id="@+id/progressStatus"
-				android:layout_width="wrap_content"
+				<ProgressBar
+					android:id="@+id/progressBar"
+					style="@android:style/Widget.ProgressBar.Horizontal"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:contentDescription="@string/download_progress"
+					android:indeterminate="false"
+					android:max="100"
+					android:progress="0"
+					android:visibility="invisible" />
+
+				<TextView
+					android:id="@+id/progressStatus"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:text="@string/download_status"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:visibility="invisible" />
+
+			</LinearLayout>
+
+			<include
+				android:id="@+id/downloadButton"
+				layout="@layout/downloadbutton"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:text="@string/download_status"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:visibility="invisible"/>
+				android:layout_gravity="center" />
 
-		</LinearLayout>
+		</FrameLayout>
 
-		<include
-			android:id="@+id/downloadButton"
-			layout="@layout/downloadbutton"
-			android:layout_width="match_parent"
+		<TextView
+			android:id="@+id/src"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"/>
+			android:layout_above="@+id/mid"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginBottom="10dp"
+			android:drawableTop="@drawable/ic_download_source"
+			android:drawablePadding="5dp"
+			android:ellipsize="marquee"
+			android:focusable="true"
+			android:focusableInTouchMode="true"
+			android:freezesText="true"
+			android:gravity="center_horizontal"
+			android:marqueeRepeatLimit="marquee_forever"
+			android:scrollHorizontally="true"
+			android:singleLine="true"
+			android:text="@string/src" />
 
-	</FrameLayout>
+		<TextView
+			android:id="@+id/target"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/mid"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginRight="10dp"
+			android:drawableBottom="@drawable/ic_download_dest"
+			android:drawablePadding="5dp"
+			android:ellipsize="marquee"
+			android:focusable="true"
+			android:focusableInTouchMode="true"
+			android:freezesText="true"
+			android:gravity="center_horizontal"
+			android:marqueeRepeatLimit="marquee_forever"
+			android:scrollHorizontally="true"
+			android:singleLine="true"
+			android:text="@string/target" />
 
-	<TextView
-		android:id="@+id/src"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_above="@+id/mid"
-		android:layout_centerHorizontal="true"
-		android:layout_marginBottom="10dp"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:drawablePadding="5dp"
-		android:drawableTop="@drawable/ic_download_source"
-		android:ellipsize="marquee"
-		android:focusable="true"
-		android:focusableInTouchMode="true"
-		android:freezesText="true"
-		android:gravity="center_horizontal"
-		android:marqueeRepeatLimit="marquee_forever"
-		android:scrollHorizontally="true"
-		android:singleLine="true"
-		android:text="@string/src"/>
+	</RelativeLayout>
 
-	<TextView
-		android:id="@+id/target"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/mid"
-		android:layout_centerHorizontal="true"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_marginTop="10dp"
-		android:drawableBottom="@drawable/ic_download_dest"
-		android:drawablePadding="5dp"
-		android:ellipsize="marquee"
-		android:focusable="true"
-		android:focusableInTouchMode="true"
-		android:freezesText="true"
-		android:gravity="center_horizontal"
-		android:marqueeRepeatLimit="marquee_forever"
-		android:scrollHorizontally="true"
-		android:singleLine="true"
-		android:text="@string/target"/>
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
 
-	<CheckBox
-		android:id="@+id/expandArchive"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentEnd="true"
-		android:layout_alignParentRight="true"
-		android:layout_marginBottom="25dp"
-		android:layout_marginEnd="25dp"
-		android:layout_marginRight="25dp"
-		android:text="@string/expandArchive"
-		android:visibility="visible"
-		tools:ignore="RelativeOverlap"/>
+		<include layout="@layout/toolbar" />
 
-	<Button
-		android:id="@+id/showButton"
-		style="?android:attr/buttonBarButtonStyle"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentStart="true"
-		android:layout_marginBottom="25dp"
-		android:layout_marginLeft="25dp"
-		android:layout_marginStart="25dp"
-		android:text="@string/show"/>
+	</com.google.android.material.appbar.AppBarLayout>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

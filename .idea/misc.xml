@@ -144,6 +144,10 @@
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.OpenEditTextPreference SUMMARY_PROVIDER" />
       <entry_point TYPE="field" FQNAME="org.treebolic.preference.AutoEditTextPreference SUMMARY_PROVIDER" />
       <entry_point TYPE="field" FQNAME="org.treebolic.colors.preference.ColorPickerPreference SUMMARY_PROVIDER" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.colors.preference.ColorSavedState CREATOR" />
+      <entry_point TYPE="field" FQNAME="org.treebolic.preference.StringSavedState CREATOR" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.search.SearchSettings$1 void onScrollingFinished(org.treebolic.wheel.AbstractWheel wheel)" />
+      <entry_point TYPE="method" FQNAME="org.treebolic.search.SearchSettings$1 void onScrollingStarted(org.treebolic.wheel.AbstractWheel wheel)" />
     </entry_points>
     <pattern value="org.treebolic.AppCompatCommonUtils" method="setThemePref" />
     <pattern value="org.treebolic.ColorUtils" method="getActionBarForegroundColorFromTheme" />
@@ -513,13 +517,24 @@
     <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onBindDialogView" />
     <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onDialogClosed" />
     <pattern value="org.treebolic.colors.preference.ColorPickerPreference.ColorPickerPreferenceDialogFragmentCompat" method="onPrepareDialogBuilder" />
+    <pattern value="org.treebolic.download.DownloadActivity$2" />
+    <pattern value="org.treebolic.download.DownloadActivity$1" />
+    <pattern value="org.treebolic.download.DownloadActivity$4" />
+    <pattern value="org.treebolic.download.DownloadActivity$4$1" />
+    <pattern value="org.treebolic.AppCompatCommonActivity" />
+    <pattern value="org.treebolic.colors.preference.ColorSavedState" />
+    <pattern value="org.treebolic.download.DownloadActivity$1" method="onClick" />
+    <pattern value="org.treebolic.download.DownloadActivity$2" method="onReceive" />
+    <pattern value="org.treebolic.download.DownloadActivity$4" method="run" />
+    <pattern value="org.treebolic.download.DownloadActivity$4$1" method="run" />
+    <pattern value="org.treebolic.preference.StringSavedState" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="androidx.annotation.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="10">
+        <list size="12">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
@@ -530,12 +545,14 @@
           <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
+          <item index="10" class="java.lang.String" itemvalue="android.annotation.Nullable" />
+          <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="9">
+        <list size="11">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
@@ -545,6 +562,8 @@
           <item index="6" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
           <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
+          <item index="9" class="java.lang.String" itemvalue="android.annotation.NonNull" />
+          <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
         </list>
       </value>
     </option>
