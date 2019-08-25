@@ -16,6 +16,12 @@
 	<attr name="colorForeSecondary" format="color|reference"/>
 	<attr name="colorForeTertiary" format="color|reference"/>
 
+	<attr name="actionbar_color" format="color|reference"/>
+	<attr name="actionbar_fore_color" format="color|reference"/>
+	<attr name="actionbar_secondary_fore_color" format="color|reference"/>
+	<attr name="dropdown_color" format="color|reference"/>
+	<attr name="dropdown_fore_color" format="color|reference"/>
+
 	<!-- TREEBOLIC -->
 
 	<!-- treebolic toolbar (not app toolbar) (see GLUE, but this module has no deps) -->

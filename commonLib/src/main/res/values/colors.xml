@@ -28,15 +28,4 @@
 	<color name="secondaryForeColor">@color/default_secondaryForeColor</color>
 	<color name="tertiaryForeColor">@color/default_tertiaryForeColor</color>
 
-	<!-- D E R I V E D -->
-
-	<color name="accentColor">@color/secondaryColor</color>
-
-	<!-- action bar -->
-	<color name="actionbar_color">@color/primaryColor</color>
-	<color name="actionbar_fore_color">@color/primaryForeColor</color>
-	<color name="actionbar_secondary_fore_color">@color/secondaryForeColor</color>
-	<color name="dropdown_color">@color/primaryColor</color>
-	<color name="dropdown_fore_color">@color/primaryForeColor</color>
-
 </resources>
