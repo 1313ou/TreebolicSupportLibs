@@ -26,8 +26,8 @@
 	<style name="MyActionBarOverlay" parent="MyActionBarBaseOverlay">
 		<item name="android:background">@null</item> <!-- menu overflow, search view, title, subtitle backgrounds -->
 		<item name="android:textColorPrimary">?attr/actionbar_fore_color</item> <!-- search view foreground -->
-		<item name="titleTextColor">?attr/colorForePrimary</item> <!-- title foreground -->
-		<item name="subtitleTextColor">?attr/colorForeSecondary</item> <!-- subtitle foreground -->
+		<item name="titleTextColor">?attr/actionbar_title_fore_color</item> <!-- title foreground -->
+		<item name="subtitleTextColor">?attr/actionbar_subtitle_fore_color</item> <!-- subtitle foreground -->
 		<item name="colorControlNormal">?attr/actionbar_fore_color</item> <!-- pictograms (menu overflow, search magnifying glass, navigation) -->
 	</style>
 

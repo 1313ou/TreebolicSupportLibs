@@ -243,8 +243,8 @@ public class SearchSettings extends AppCompatDialogFragment
 		this.scopeWheel.setCurrentItem(scopeIndex);
 		this.modeWheel.setCurrentItem(modeIndex);
 
+		//final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
 		final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom));
-
 		return builder //
 				.setView(view).setPositiveButton(R.string.title_yes, (dialog2, which) -> dialog2.dismiss()) //
 				.create();

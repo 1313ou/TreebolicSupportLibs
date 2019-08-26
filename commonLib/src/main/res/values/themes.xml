@@ -11,47 +11,10 @@
 
 	<style name="MyXBaseTheme" parent="MyBaseTheme" />
 
-	<style name="MyDefaultTheme" parent="MyXBaseTheme">
+	<style name="MyTreebolicBaseTheme" parent="MyXBaseTheme">
 
-		<!-- color attr -->
-		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
-		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
-		<item name="colorAccent">@color/default_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+		<!-- android widgets -->
 
-		<item name="colorPrimaryLight">@color/default_primaryLightColor</item>
-		<item name="colorSecondary">@color/default_secondaryColor</item>
-		<item name="colorSecondaryLight">@color/default_secondaryLightColor</item>
-		<item name="colorSecondaryDark">@color/default_secondaryDarkColor</item>
-
-		<item name="colorForePrimary">@color/default_primaryForeColor</item>
-		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>
-		<item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
-
-		<item name="actionbar_color">@color/default_primaryColor</item>
-		<item name="actionbar_fore_color">@color/default_primaryForeColor</item>
-		<item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
-		<item name="dropdown_color">@color/default_primaryColor</item>
-		<item name="dropdown_fore_color">@color/default_primaryForeColor</item>
-
-		<!-- action bar -->
-		<item name="android:actionBarStyle">@style/MyActionBar</item>
-
-		<!-- theme UI controls action bar -->
-		<item name="actionBarTheme">@style/MyActionBarOverlay</item>
-
-		<!-- theme UI controls pop ups -->
-		<item name="actionBarPopupTheme">@style/MyOverlay</item>
-
-		<!-- dropdowns -->
-		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
-		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
-
-		<!-- preferences -->
-		<item name="preferenceTheme">@style/PreferenceCompatTheme</item>
-
-		<!-- TREEBOLIC attributes (used within widget) -->
-
-		<!-- treebolic colors -->
 		<item name="treebolic_toolbar_background">?attr/colorPrimary</item>
 		<item name="treebolic_toolbar_foreground_icon">?attr/colorForeTertiary</item>
 
@@ -75,6 +38,45 @@
 		<!-- treebolic search settings colors -->
 		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>
 		<item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
+
+	</style>
+
+	<style name="MyDefaultTheme" parent="MyTreebolicBaseTheme">
+
+		<!-- color attr -->
+		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorAccent">@color/default_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+
+		<item name="colorSecondary">@color/default_secondaryColor</item>
+
+		<item name="colorForePrimary">@color/default_primaryForeColor</item>
+		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>
+		<item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
+
+		<item name="actionbar_color">@color/default_primaryColor</item>
+		<item name="actionbar_fore_color">@color/default_primaryForeColor</item>
+		<item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
+		<item name="actionbar_title_fore_color">@color/default_primaryForeColor</item>
+		<item name="actionbar_subtitle_fore_color">@color/default_secondaryForeColor</item>
+		<item name="dropdown_color">@color/default_primaryColor</item>
+		<item name="dropdown_fore_color">@color/default_primaryForeColor</item>
+
+		<!-- action bar -->
+		<item name="android:actionBarStyle">@style/MyActionBar</item>
+
+		<!-- theme UI controls action bar -->
+		<item name="actionBarTheme">@style/MyActionBarOverlay</item>
+
+		<!-- theme UI controls pop ups -->
+		<item name="actionBarPopupTheme">@style/MyOverlay</item>
+
+		<!-- dropdowns -->
+		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
+		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
+
+		<!-- preferences -->
+		<item name="preferenceTheme">@style/PreferenceCompatTheme</item>
 
 		<!-- treebolic widget colors -->
 		<item name="treebolic_back_color">#adc1cc</item> <!-- #f3f1e2 #9eb0ba -->

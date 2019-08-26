@@ -7,68 +7,67 @@
 
 	<!-- APPLICATION -->
 
-	<attr name="colorPrimaryLight" format="color|reference"/>
-	<attr name="colorSecondary" format="color|reference"/>
-	<attr name="colorSecondaryDark" format="color|reference"/>
-	<attr name="colorSecondaryLight" format="color|reference"/>
+	<attr name="colorSecondary" format="color|reference" />
 
-	<attr name="colorForePrimary" format="color|reference"/>
-	<attr name="colorForeSecondary" format="color|reference"/>
-	<attr name="colorForeTertiary" format="color|reference"/>
+	<attr name="colorForePrimary" format="color|reference" />
+	<attr name="colorForeSecondary" format="color|reference" />
+	<attr name="colorForeTertiary" format="color|reference" />
 
-	<attr name="actionbar_color" format="color|reference"/>
-	<attr name="actionbar_fore_color" format="color|reference"/>
-	<attr name="actionbar_secondary_fore_color" format="color|reference"/>
-	<attr name="dropdown_color" format="color|reference"/>
-	<attr name="dropdown_fore_color" format="color|reference"/>
+	<attr name="actionbar_color" format="color|reference" />
+	<attr name="actionbar_fore_color" format="color|reference" />
+	<attr name="actionbar_title_fore_color" format="color|reference" />
+	<attr name="actionbar_subtitle_fore_color" format="color|reference" />
+	<attr name="actionbar_secondary_fore_color" format="color|reference" />
+	<attr name="dropdown_color" format="color|reference" />
+	<attr name="dropdown_fore_color" format="color|reference" />
 
 	<!-- TREEBOLIC -->
 
 	<!-- treebolic toolbar (not app toolbar) (see GLUE, but this module has no deps) -->
-	<declare-styleable name="TreebolicToolbar">
-		<attr name="treebolic_toolbar_background" format="color|reference"/>
-		<attr name="treebolic_toolbar_foreground_icon" format="color|reference"/>
-	</declare-styleable>
+	<attr name="treebolic_back_color" format="color|reference" />
 
 	<!-- treebolic statusbar (see GLUE, but this module has no deps) -->
-	<declare-styleable name="TreebolicStatusbar">
-		<attr name="treebolic_statusbar_background" format="color|reference"/>
-		<attr name="treebolic_statusbar_foreground" format="color|reference"/>
-		<attr name="treebolic_statusbar_foreground_enhanced" format="color|reference"/>
-		<attr name="treebolic_statusbar_foreground_icon" format="color|reference"/>
-	</declare-styleable>
+	<attr name="treebolic_tree_edge_color" format="color|reference" />
 
 	<!-- treebolic dialog (see GLUE, but this module has no deps) -->
-	<declare-styleable name="TreebolicDialog">
-		<attr name="treebolic_dialog_background" format="color|reference"/>
-		<attr name="treebolic_dialog_foreground" format="color|reference"/>
-		<attr name="treebolic_dialog_foreground_enhanced" format="color|reference"/>
-		<attr name="treebolic_dialog_foreground_icon" format="color|reference"/>
-	</declare-styleable>
+	<attr name="treebolic_root_background_color" format="color|reference" />
 
 	<!-- treebolic splitbar (see GLUE, but this module has no deps) -->
-	<declare-styleable name="TreebolicSplitbar">
-		<attr name="treebolic_splitbar_color" format="color|reference"/>
-		<attr name="treebolic_splitbar_drag_color" format="color|reference"/>
-	</declare-styleable>
+	<attr name="treebolic_root_foreground_color" format="color|reference" />
 
 	<!-- treebolic splash (see GLUE, but this module has no deps) -->
-	<declare-styleable name="TreebolicSplash">
-		<attr name="treebolic_splash_background" format="color|reference"/>
-		<attr name="treebolic_splash_foreground" format="color|reference"/>
-		<attr name="treebolic_splash_progress" format="color|reference"/>
-	</declare-styleable>
+	<attr name="treebolic_node_background_color" format="color|reference" />
 
 	<!-- treebolic graph (see GLUE, but this module has no deps)-->
-	<attr name="treebolic_back_color" format="color|reference"/>
-	<attr name="treebolic_tree_edge_color" format="color|reference"/>
-	<attr name="treebolic_root_background_color" format="color|reference"/>
-	<attr name="treebolic_root_foreground_color" format="color|reference"/>
-	<attr name="treebolic_node_background_color" format="color|reference"/>
-	<attr name="treebolic_node_foreground_color" format="color|reference"/>
+	<attr name="treebolic_node_foreground_color" format="color|reference" />
+	<attr name="treebolic_search_settings_background" format="color|reference" />
+	<attr name="treebolic_search_settings_foreground" format="color|reference" />
+	<declare-styleable name="TreebolicToolbar">
+		<attr name="treebolic_toolbar_background" format="color|reference" />
+		<attr name="treebolic_toolbar_foreground_icon" format="color|reference" />
+	</declare-styleable>
+	<declare-styleable name="TreebolicStatusbar">
+		<attr name="treebolic_statusbar_background" format="color|reference" />
+		<attr name="treebolic_statusbar_foreground" format="color|reference" />
+		<attr name="treebolic_statusbar_foreground_enhanced" format="color|reference" />
+		<attr name="treebolic_statusbar_foreground_icon" format="color|reference" />
+	</declare-styleable>
+	<declare-styleable name="TreebolicDialog">
+		<attr name="treebolic_dialog_background" format="color|reference" />
+		<attr name="treebolic_dialog_foreground" format="color|reference" />
+		<attr name="treebolic_dialog_foreground_enhanced" format="color|reference" />
+		<attr name="treebolic_dialog_foreground_icon" format="color|reference" />
+	</declare-styleable>
 
 	<!-- treebolic search tool (see searchLib, but this module has no deps) -->
-	<attr name="treebolic_search_settings_background" format="color|reference"/>
-	<attr name="treebolic_search_settings_foreground" format="color|reference"/>
+	<declare-styleable name="TreebolicSplitbar">
+		<attr name="treebolic_splitbar_color" format="color|reference" />
+		<attr name="treebolic_splitbar_drag_color" format="color|reference" />
+	</declare-styleable>
+	<declare-styleable name="TreebolicSplash">
+		<attr name="treebolic_splash_background" format="color|reference" />
+		<attr name="treebolic_splash_foreground" format="color|reference" />
+		<attr name="treebolic_splash_progress" format="color|reference" />
+	</declare-styleable>
 
 </resources>

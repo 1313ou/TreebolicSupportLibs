@@ -5,8 +5,9 @@
 
 <resources>
 
-	<style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+	<style name="AlertDialogCustom" parent="ThemeOverlay.AppCompat.Dialog.Alert">
 		<item name="android:background">?attr/colorPrimary</item>
+		<item name="android:textColor">?attr/colorAccent</item>
 	</style>
 
 </resources>
