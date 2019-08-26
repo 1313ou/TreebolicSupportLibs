@@ -6,8 +6,8 @@
 
 	<!-- must override -->
 	<style name="MyBaseTheme" />
-	<!--<style name="MyBaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar"/>-->
-	<!--<style name="MyBaseTheme" parent="Theme.MaterialComponents.NoActionBar"/>-->
+	<!--<style name="MyBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>-->
+	<!--<style name="MyBaseTheme" parent="Theme.AppCompat.NoActionBar"/>-->
 
 	<style name="MyXBaseTheme" parent="MyBaseTheme" />
 
@@ -59,8 +59,6 @@
 		<item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
 		<item name="actionbar_title_fore_color">@color/default_primaryForeColor</item>
 		<item name="actionbar_subtitle_fore_color">@color/default_secondaryForeColor</item>
-		<item name="dropdown_color">@color/default_primaryColor</item>
-		<item name="dropdown_fore_color">@color/default_primaryForeColor</item>
 
 		<!-- action bar -->
 		<item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -71,9 +69,9 @@
 		<!-- theme UI controls pop ups -->
 		<item name="actionBarPopupTheme">@style/MyOverlay</item>
 
-		<!-- dropdowns -->
-		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
-		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
+		<!-- spinner dropdowns -->
+		<item name="android:dropDownListViewStyle">@style/MySpinnerDropDown</item>
+		<item name="spinnerStyle">@style/MySpinner</item>
 
 		<!-- preferences -->
 		<item name="preferenceTheme">@style/PreferenceCompatTheme</item>

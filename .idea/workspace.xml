@@ -17,25 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="trim theme attrs&#10;fixes sear settings style">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colorLib/colorLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/colorLib/colorLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/commonLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/commonLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/downloadLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/downloadLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileChooserLib/fileChooserLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guideLib/guideLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/guideLib/guideLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/searchLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/searchLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/src/main/java/org/treebolic/search/SearchSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/src/main/java/org/treebolic/search/SearchSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/src/main/res/values/style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/src/main/res/values/style.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storageLib/storageLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/storageLib/storageLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wheelLib/wheelLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/wheelLib/wheelLib.iml" afterDir="false" />
-    </list>
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="trim theme attrs&#10;fixes sear settings style" />
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -223,7 +205,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-104">
@@ -235,13 +217,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/preferenceLib/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="33" selection-start-line="32" selection-end-line="33" />
+            <state relative-caret-position="273">
+              <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/AppCompatCommonActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="143">
@@ -645,13 +627,6 @@
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
     </task>
-    <task id="LOCAL-00043" summary="lint">
-      <created>1507465148610</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1507465148610</updated>
-    </task>
     <task id="LOCAL-00044" summary="reformatted">
       <created>1507465245036</created>
       <option name="number" value="00044" />
@@ -988,7 +963,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566750064336</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="trim theme attrs&#10;fixes sear settings style">
+      <created>1566800227668</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1566800227669</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1002,6 +984,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="59" y="27" width="1466" height="1173" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16994382" />
       <window_info id="Resources Explorer" order="1" weight="0.32950193" />
@@ -1509,20 +1492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preferenceLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="33" selection-start-line="32" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/commonLib/src/main/java/org/treebolic/AppCompatCommonActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1530,6 +1499,20 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preferenceLib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commonLib/src/main/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-104">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>

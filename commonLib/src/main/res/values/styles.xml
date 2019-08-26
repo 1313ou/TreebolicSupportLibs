@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
 
 <!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
@@ -7,7 +7,7 @@
 <resources>
 
 	<!-- used by default theme  -->
-	<style name="MyBaseOverlay"  parent="ThemeOverlay.AppCompat.Dark"/>
+	<style name="MyBaseOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
 	<!-- used by default theme -->
 	<style name="MyActionBarBaseOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -38,15 +38,13 @@
 		<item name="android:textColorSecondary">?attr/actionbar_secondary_fore_color</item> <!-- submenu item foreground -->
 	</style>
 
-	<!-- Dropdown list -->
-	<style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
-		<item name="android:background">?attr/dropdown_color</item>
+	<!-- Spinner dropdown list -->
+	<style name="MySpinnerDropDown" parent="Widget.AppCompat.ListView.DropDown">
+		<item name="android:background">?attr/actionbar_color</item>
 	</style>
 
-	<!-- Dropdown item -->
-	<style name="MyDropDownItemStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
-		<item name="android:textColor">?attr/dropdown_fore_color</item>
-		<item name="android:textSize">14sp</item>
+	<style name="MySpinner" parent="Widget.AppCompat.Spinner">
+		<item name="android:background">@drawable/bg_spinner</item>-->
+		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
 	</style>
-
 </resources>

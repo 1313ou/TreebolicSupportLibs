@@ -18,8 +18,6 @@
 	<attr name="actionbar_title_fore_color" format="color|reference" />
 	<attr name="actionbar_subtitle_fore_color" format="color|reference" />
 	<attr name="actionbar_secondary_fore_color" format="color|reference" />
-	<attr name="dropdown_color" format="color|reference" />
-	<attr name="dropdown_fore_color" format="color|reference" />
 
 	<!-- TREEBOLIC -->
 
