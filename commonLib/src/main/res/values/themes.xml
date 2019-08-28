@@ -6,8 +6,8 @@
 
 	<!-- must override -->
 	<style name="MyBaseTheme" />
-	<!--<style name="MyBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>-->
-	<!--<style name="MyBaseTheme" parent="Theme.AppCompat.NoActionBar"/>-->
+	<!--<style name="MyBaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar"/>-->
+	<!--<style name="MyBaseTheme" parent="Theme.MaterialComponents.NoActionBar"/>-->
 
 	<style name="MyXBaseTheme" parent="MyBaseTheme" />
 
@@ -42,6 +42,9 @@
 	</style>
 
 	<style name="MyDefaultTheme" parent="MyTreebolicBaseTheme">
+
+		<item name="android:textColorPrimary">@color/default_primaryForeColor</item>
+		<item name="android:textColorSecondary">@color/default_secondaryForeColor</item>
 
 		<!-- color attr -->
 		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
