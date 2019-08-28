@@ -61,12 +61,14 @@ class StringSavedState extends Preference.BaseSavedState
 	 */
 	public static final Creator<StringSavedState> CREATOR = new Creator<StringSavedState>()
 	{
+		@NonNull
 		@Override
 		public StringSavedState createFromParcel(@NonNull final Parcel in)
 		{
 			return new StringSavedState(in);
 		}
 
+		@NonNull
 		@Override
 		public StringSavedState[] newArray(final int size)
 		{

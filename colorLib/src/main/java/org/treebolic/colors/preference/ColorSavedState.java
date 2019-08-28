@@ -57,12 +57,14 @@ class ColorSavedState extends Preference.BaseSavedState
 	// Standard creator object using an instance of this class
 	public static final Creator<ColorSavedState> CREATOR = new Creator<ColorSavedState>()
 	{
+		@NonNull
 		@Override
 		public ColorSavedState createFromParcel(@NonNull final Parcel in)
 		{
 			return new ColorSavedState(in);
 		}
 
+		@NonNull
 		@Override
 		public ColorSavedState[] newArray(final int size)
 		{

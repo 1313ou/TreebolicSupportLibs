@@ -17,20 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="theming">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_compress_1_19_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/bbou.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/bbou.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values-v21/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values-v21/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/custom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/custom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commonLib/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloadLib/downloadLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/downloadLib/downloadLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/preferenceLib/preferenceLib.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchLib/src/main/res/values/style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/searchLib/src/main/res/values/style.xml" afterDir="false" />
-    </list>
+    <list default="true" id="43a3c578-2fcd-4013-8974-97bdb1cd17d1" name="Default" comment="theming materialcomponents" />
     <ignored path="TreebolicSupportLibs.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -338,7 +325,7 @@
     <scope name="Analyzed" pattern="((file[colorLib]:src//*||file[downloadLib]:src//*||file[fileChooserLib]:src//*||file[guideLib]:src//*||file[preferenceLib]:src//*||file[searchLib]:src//*||file[storageLib]:src//*||file[wheelLib]:src//*||file[TreebolicSupportLibs]:build.gradle||file[TreebolicSupportLibs]:local.properties||file[TreebolicSupportLibs]:settings.gradle||file[wheelLib]:build.gradle||file[searchLib]:build.gradle||file[preferenceLib]:build.gradle||file[storageLib]:build.gradle||file[fileChooserLib]:build.gradle||file[guideLib]:build.gradle||file[colorLib]:build.gradle||file[downloadLib]:build.gradle||file[commonLib]:src//*||file[commonLib]:build.gradle||file[TreebolicSupportLibs]:gradle.properties||file[guideLib]:help//*)&amp;&amp;!file[guideLib]:help/fr-actionbar.html&amp;&amp;!file[guideLib]:help/fr-index-all.html&amp;&amp;!file[guideLib]:help/fr-index.html&amp;&amp;!file[guideLib]:help/fr-more.html&amp;&amp;!file[guideLib]:help/fr-popup.html&amp;&amp;!file[guideLib]:help/fr-search.html&amp;&amp;!file[guideLib]:help/fr-toolbar.html&amp;&amp;!file[guideLib]:help/fr-touch.html||file[preferenceLib]:src/main//*||file[guideLib]:src/main//*)&amp;&amp;!file[guideLib]:src/main/assets/help/fr-index.html" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="55" />
+    <option name="x" value="196" />
     <option name="y" value="27" />
     <option name="width" value="1250" />
     <option name="height" value="1172" />
@@ -608,13 +595,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1491459217660</updated>
-    </task>
-    <task id="LOCAL-00045" summary="new tools">
-      <created>1512200923850</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1512200923850</updated>
     </task>
     <task id="LOCAL-00046" summary="new tools">
       <created>1513504272671</created>
@@ -952,7 +932,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566832951171</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="theming materialcomponents">
+      <created>1566982733613</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1566982733613</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1060,7 +1047,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="enhanced color utils" />
     <MESSAGE value="new gradle tool" />
     <MESSAGE value="new build chain" />
     <MESSAGE value="lint&#10;nullable analysis" />
@@ -1085,7 +1071,8 @@
     <MESSAGE value="extend theme attrs" />
     <MESSAGE value="trim theme attrs&#10;fixes sear settings style" />
     <MESSAGE value="theming" />
-    <option name="LAST_COMMIT_MESSAGE" value="theming" />
+    <MESSAGE value="theming materialcomponents" />
+    <option name="LAST_COMMIT_MESSAGE" value="theming materialcomponents" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/guideLib/src/main/java/org/treebolic/guide/AboutActivity.java">

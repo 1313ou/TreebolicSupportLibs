@@ -599,6 +599,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		edit.putString(key, folder).commit();
 	}
 
+	@Nullable
 	static public File getFolder(final Context context, final String key)
 	{
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

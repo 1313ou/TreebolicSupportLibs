@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class AppCompatCommonUtils
 {
@@ -40,6 +41,7 @@ public class AppCompatCommonUtils
 	 * @param context context
 	 * @return value (null if node)
 	 */
+	@Nullable
 	@SuppressWarnings("boxing")
 	static public Integer getThemePref(@NonNull final Context context)
 	{

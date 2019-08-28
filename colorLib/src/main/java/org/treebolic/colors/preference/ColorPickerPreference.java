@@ -257,7 +257,7 @@ public class ColorPickerPreference extends DialogPreference
 	{
 		@NonNull
 		@SuppressWarnings("WeakerAccess")
-		static public ColorPickerPreferenceDialogFragmentCompat newInstance(final ColorPickerPreference pref)
+		static public ColorPickerPreferenceDialogFragmentCompat newInstance(@NonNull final ColorPickerPreference pref)
 		{
 			final ColorPickerPreferenceDialogFragmentCompat fragment = new ColorPickerPreferenceDialogFragmentCompat();
 			final Bundle args = new Bundle();
@@ -383,7 +383,7 @@ public class ColorPickerPreference extends DialogPreference
 	 * @param preference   preference
 	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
 	 */
-	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
+	static public boolean onDisplayPreferenceDialog(@NonNull final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
 		final FragmentManager manager = prefFragment.getFragmentManager();
 		if (manager == null)

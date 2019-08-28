@@ -159,7 +159,7 @@ public class AutoEditTextPreference extends DialogPreference
 	{
 		@NonNull
 		@SuppressWarnings("WeakerAccess")
-		static public AutoEditTextPreferenceDialogFragmentCompat newInstance(final AutoEditTextPreference pref)
+		static public AutoEditTextPreferenceDialogFragmentCompat newInstance(@NonNull final AutoEditTextPreference pref)
 		{
 			final AutoEditTextPreferenceDialogFragmentCompat fragment = new AutoEditTextPreferenceDialogFragmentCompat();
 			final Bundle args = new Bundle();
@@ -222,7 +222,7 @@ public class AutoEditTextPreference extends DialogPreference
 	 * @param preference   preference
 	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
 	 */
-	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
+	static public boolean onDisplayPreferenceDialog(@NonNull final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
 		final FragmentManager manager = prefFragment.getFragmentManager();
 		if (manager == null)

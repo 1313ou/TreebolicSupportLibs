@@ -85,6 +85,7 @@ public class SearchSettings extends AppCompatDialogFragment
 
 	private int sourceModeIndex;
 
+	@NonNull
 	@SuppressWarnings("WeakerAccess")
 	public static SearchSettings newInstance()
 	{

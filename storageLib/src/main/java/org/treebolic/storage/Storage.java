@@ -91,6 +91,7 @@ public class Storage
 			return Integer.compare(i1, i2);
 		}
 
+		@Nullable
 		@SuppressWarnings("WeakerAccess")
 		public String toDisplay()
 		{
@@ -180,6 +181,7 @@ public class Storage
 	 * @param context context
 	 * @return data cache
 	 */
+	@NonNull
 	static public File getCacheDir(@NonNull final Context context)
 	{
 		// external is first choice
@@ -214,6 +216,7 @@ public class Storage
 	 *
 	 * @return (cached) external storage directory
 	 */
+	@Nullable
 	static private String discoverExternalStorage()
 	{
 		// S E C O N D A R Y
@@ -701,6 +704,7 @@ public class Storage
 	 * @param fileName zip file in assets
 	 * @return uri of dest dir
 	 */
+	@Nullable
 	@SuppressWarnings({"UnusedReturnValue"})
 	public static Uri expandZipAssetFile(@NonNull final Context context, @NonNull final String fileName)
 	{
@@ -827,6 +831,7 @@ public class Storage
 	 *
 	 * @return pair of types and values
 	 */
+	@NonNull
 	static public Pair<CharSequence[], CharSequence[]> getDirectoriesTypesValues()
 	{
 		final List<CharSequence> types = new ArrayList<>();
@@ -947,6 +952,7 @@ public class Storage
 	 *
 	 * @return primary emulated external storage directory
 	 */
+	@Nullable
 	static private File discoverPrimaryEmulatedExternalStorage()
 	{
 		// primary emulated sdcard
@@ -975,6 +981,7 @@ public class Storage
 	 *
 	 * @return primary physical external storage directory
 	 */
+	@Nullable
 	static private File discoverPrimaryPhysicalExternalStorage()
 	{
 		final String externalStorage = System.getenv("EXTERNAL_STORAGE");
@@ -992,6 +999,7 @@ public class Storage
 	 *
 	 * @return secondary external storage directories
 	 */
+	@Nullable
 	static private File[] discoverSecondaryExternalStorage()
 	{
 		// all secondary sdcards (all except primary) separated by ":"

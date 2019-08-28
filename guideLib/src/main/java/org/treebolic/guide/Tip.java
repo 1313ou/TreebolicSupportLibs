@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 public class Tip extends AppCompatDialogFragment
 {
+	@NonNull
 	@SuppressWarnings("WeakerAccess")
 	public static Tip newInstance()
 	{

@@ -337,6 +337,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter
 	 * @param layoutRes the resource Id
 	 * @return the loaded view or null if resource is not set
 	 */
+	@Nullable
 	private View getView(@LayoutRes int layoutRes, ViewGroup parent)
 	{
 		switch (layoutRes)

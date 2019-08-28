@@ -298,12 +298,14 @@ public abstract class AbstractWheel extends View
 		// required field that makes Parcelables from a Parcel
 		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>()
 		{
+			@NonNull
 			@Override
 			public SavedState createFromParcel(@NonNull Parcel in)
 			{
 				return new SavedState(in);
 			}
 
+			@NonNull
 			@Override
 			public SavedState[] newArray(int size)
 			{
@@ -911,6 +913,7 @@ public abstract class AbstractWheel extends View
 	 *
 	 * @return the items range
 	 */
+	@NonNull
 	private ItemsRange getItemsRange()
 	{
 		if (this.mIsAllVisible)
@@ -1002,6 +1005,7 @@ public abstract class AbstractWheel extends View
 	 * @param index0 the item index
 	 * @return item view or empty view if index is out of bounds
 	 */
+	@Nullable
 	private View getItemView(int index0)
 	{
 		int index = index0;

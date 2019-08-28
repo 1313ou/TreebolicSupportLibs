@@ -214,7 +214,7 @@ public class OpenEditTextPreference extends DialogPreference
 	{
 		@NonNull
 		@SuppressWarnings("WeakerAccess")
-		static public OpenEditTextPreferenceDialogFragmentCompat newInstance(final OpenEditTextPreference pref)
+		static public OpenEditTextPreferenceDialogFragmentCompat newInstance(@NonNull final OpenEditTextPreference pref)
 		{
 			final OpenEditTextPreferenceDialogFragmentCompat fragment = new OpenEditTextPreferenceDialogFragmentCompat();
 			final Bundle args = new Bundle();
@@ -310,7 +310,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
 	 */
 	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
-	static public boolean onDisplayPreferenceDialog(final PreferenceFragmentCompat prefFragment, final Preference preference)
+	static public boolean onDisplayPreferenceDialog(@NonNull final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
 		final FragmentManager manager = prefFragment.getFragmentManager();
 		if (manager == null)

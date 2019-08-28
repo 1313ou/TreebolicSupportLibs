@@ -188,7 +188,7 @@ class HeaderLoader
 	}
 
 	@SuppressWarnings("StatementWithEmptyBody")
-	private static void skipCurrentTag(final XmlPullParser parser) throws IOException, XmlPullParserException
+	private static void skipCurrentTag(@NonNull final XmlPullParser parser) throws IOException, XmlPullParserException
 	{
 		final int startDepth = parser.getDepth();
 		while (!reachToEnd(parser.next(), parser.getDepth(), startDepth))

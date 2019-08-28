@@ -89,7 +89,7 @@ public final class Header implements Parcelable
 	}
 
 	@Override
-	public void writeToParcel(final Parcel dest, final int flags)
+	public void writeToParcel(@NonNull final Parcel dest, final int flags)
 	{
 		dest.writeLong(id);
 		dest.writeInt(titleRes);
@@ -113,7 +113,7 @@ public final class Header implements Parcelable
 		dest.writeBundle(extras);
 	}
 
-	private void readFromParcel(final Parcel in)
+	private void readFromParcel(@NonNull final Parcel in)
 	{
 		id = in.readLong();
 		titleRes = in.readInt();
@@ -139,11 +139,13 @@ public final class Header implements Parcelable
 
 	public static final Creator<Header> CREATOR = new Creator<Header>()
 	{
+		@NonNull
 		public Header createFromParcel(@NonNull final Parcel source)
 		{
 			return new Header(source);
 		}
 
+		@NonNull
 		public Header[] newArray(final int size)
 		{
 			return new Header[size];
