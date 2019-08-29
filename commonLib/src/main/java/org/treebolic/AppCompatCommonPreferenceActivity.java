@@ -132,9 +132,9 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 		return true;
 	}
 
-	// HEADER FRAGEMTNS
+	// H E A D E R   F R A G M E N T
 
-	public static class HeaderFragment extends PreferenceFragmentCompat
+	static class HeaderFragment extends PreferenceFragmentCompat
 	{
 		@Override
 		public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
@@ -148,7 +148,7 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 	/**
 	 * Reset settings
 	 */
-	protected void resetSettings()
+	private void resetSettings()
 	{
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		final SharedPreferences.Editor editor = sharedPrefs.edit();
@@ -178,7 +178,7 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 	/**
 	 * Restart app
 	 */
-	protected void restart()
+	private void restart()
 	{
 		final Intent restartIntent = getPackageManager().getLaunchIntentForPackage(getPackageName());
 		assert restartIntent != null;
