@@ -134,7 +134,7 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 
 	// H E A D E R   F R A G M E N T
 
-	static class HeaderFragment extends PreferenceFragmentCompat
+	public static class HeaderFragment extends PreferenceFragmentCompat
 	{
 		@Override
 		public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
