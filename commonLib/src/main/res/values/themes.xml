@@ -43,20 +43,18 @@
 
 	<style name="MyDefaultTheme" parent="MyTreebolicBaseTheme">
 
-		<item name="android:textColorPrimary">@color/default_primaryForeColor</item>
-		<item name="android:textColorSecondary">@color/default_secondaryForeColor</item>
-
-		<!-- color attr -->
+		<!-- appcompat color attr -->
 		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
 		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
 		<item name="colorAccent">@color/default_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
 
+		<!-- defined color attr -->
 		<item name="colorSecondary">@color/default_secondaryColor</item>
-
 		<item name="colorForePrimary">@color/default_primaryForeColor</item>
 		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>
 		<item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
 
+		<!--treebolic color attr -->
 		<item name="actionbar_color">@color/default_primaryColor</item>
 		<item name="actionbar_fore_color">@color/default_primaryForeColor</item>
 		<item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
@@ -77,7 +75,7 @@
 		<item name="spinnerStyle">@style/MySpinner</item>
 
 		<!-- preferences -->
-		<item name="preferenceTheme">@style/PreferenceCompatTheme</item>
+		<item name="preferenceTheme">@style/MyPreference</item>
 
 		<!-- treebolic widget colors -->
 		<item name="treebolic_back_color">#adc1cc</item> <!-- #f3f1e2 #9eb0ba -->

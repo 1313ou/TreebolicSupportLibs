@@ -57,7 +57,6 @@ public class ColorUtils
 	 * @param iconTint tint
 	 * @param drawable drawable
 	 */
-	@SuppressWarnings({"WeakerAccess"})
 	static public void tint(@ColorInt int iconTint, @NonNull final Drawable drawable)
 	{
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -134,7 +133,7 @@ public class ColorUtils
 	 * @param iconTint    tint
 	 * @return tinted drawable
 	 */
-	static public Drawable getTintedDrawable(@NonNull final Context context, @DrawableRes final int drawableRes, @ColorInt final int iconTint)
+	static public Drawable getTintedDrawable(@NonNull final Context context,@DrawableRes final int drawableRes, @ColorInt final int iconTint)
 	{
 		Drawable drawable = getDrawable(context, drawableRes);
 		ColorUtils.tint(iconTint, drawable);

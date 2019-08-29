@@ -3,11 +3,10 @@
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
-<View
+<androidx.appcompat.widget.Toolbar
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="1dp"
-	android:layout_height="match_parent"
-	android:background="@color/divider"
-	tools:ignore="Overdraw"
-	/>
+	android:id="@+id/toolbar"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	tools:ignore="UnusedAttribute"/>

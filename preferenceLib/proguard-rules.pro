@@ -19,8 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
-# P R E F E R E N C E
-
-# Invoked to load preference-header from xml
--keep public class * extends androidx.preference.PreferenceFragmentCompat

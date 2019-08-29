@@ -83,7 +83,6 @@ public class Storage
 		 * @param type2 type 2
 		 * @return order
 		 */
-		@SuppressWarnings("WeakerAccess")
 		static public int compare(@NonNull final DirType type1, @NonNull final DirType type2)
 		{
 			int i1 = type1.ordinal();
@@ -91,8 +90,7 @@ public class Storage
 			return Integer.compare(i1, i2);
 		}
 
-		@Nullable
-		@SuppressWarnings("WeakerAccess")
+		@NonNull
 		public String toDisplay()
 		{
 			switch (this)

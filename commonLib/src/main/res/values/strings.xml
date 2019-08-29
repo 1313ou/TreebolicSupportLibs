@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="title_settings">Paramètres</string>
+	<string name="title_reset_settings">Effacer Paramètres</string>
+
+</resources>

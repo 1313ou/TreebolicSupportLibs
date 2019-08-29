@@ -34,7 +34,7 @@
 	<!-- Overlay -->
 	<style name="MyOverlay" parent="MyBaseOverlay">
 		<item name="android:background">?attr/actionbar_color</item>item> <!-- submenu background -->
-		<item name="android:textColorPrimary">?attr/actionbar_fore_color</item>item> <!-- item foreground -->
+		<item name="android:textColor">?attr/actionbar_fore_color</item>item> <!-- item foreground -->
 		<item name="android:textColorSecondary">?attr/actionbar_secondary_fore_color</item> <!-- submenu item foreground -->
 	</style>
 
@@ -48,9 +48,13 @@
 		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
 	</style>
 
+	<!-- Preference -->
+	<style name="MyPreference" parent="PreferenceThemeOverlay.v14.Material">
+	</style>
+
 	<!-- SearchView -->
 	<style name="MySearchView" parent="Widget.AppCompat.SearchView">
-	<!-- <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>-->
+		<!-- <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>-->
 	</style>
 
 </resources>
