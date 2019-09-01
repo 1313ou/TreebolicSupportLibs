@@ -5,8 +5,9 @@
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
 	<TableLayout style="@style/tips">
 
@@ -53,7 +54,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_press"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_press"/>
+				android:src="@drawable/ic_tip_press"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
@@ -70,7 +72,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_doubletap"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_doubletap"/>
+				android:src="@drawable/ic_tip_doubletap"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
@@ -87,7 +90,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_drag"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_drag"/>
+				android:src="@drawable/ic_tip_drag"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
@@ -104,7 +108,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_open_ne_sw"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_pinch_open_ne_sw"/>
+				android:src="@drawable/ic_tip_pinch_open_ne_sw"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
@@ -121,7 +126,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_close_ne_sw"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_pinch_close_ne_sw"/>
+				android:src="@drawable/ic_tip_pinch_close_ne_sw"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
@@ -138,7 +144,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_open_nw_se"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_pinch_open_nw_se"/>
+				android:src="@drawable/ic_tip_pinch_open_nw_se"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
@@ -155,7 +162,8 @@
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_close_nw_se"
 				style="@style/tipImage"
-				android:src="@drawable/ic_tip_pinch_close_nw_se"/>
+				android:src="@drawable/ic_tip_pinch_close_nw_se"
+				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"

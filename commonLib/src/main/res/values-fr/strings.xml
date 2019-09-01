@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="title_settings">Settings</string>
-	<string name="title_reset_settings">Reset settings</string>
+	<string name="title_settings">Paramètres</string>
+	<string name="title_reset_settings">Éffacer Paramètres</string>
 
 </resources>

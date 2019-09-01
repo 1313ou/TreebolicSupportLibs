@@ -27,6 +27,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
  *
  * @author Bernard Bou
  */
+@SuppressWarnings("WeakerAccess")
 public class ColorUtils
 {
 	// static private final String TAG = "ColorUtils";

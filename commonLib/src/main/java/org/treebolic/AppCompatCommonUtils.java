@@ -14,6 +14,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+@SuppressWarnings("WeakerAccess")
 public class AppCompatCommonUtils
 {
 	static private final String TAG = "AppCompatCommonUtils";

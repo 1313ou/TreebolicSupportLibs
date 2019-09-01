@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class AppCompatCommonActivity extends AppCompatActivity
 {
+	@SuppressWarnings("UnusedReturnValue")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
