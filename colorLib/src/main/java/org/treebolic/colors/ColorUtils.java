@@ -2,7 +2,7 @@
  * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
  */
 
-package org.treebolic;
+package org.treebolic.colors;
 
 import android.content.Context;
 import android.content.res.Resources;

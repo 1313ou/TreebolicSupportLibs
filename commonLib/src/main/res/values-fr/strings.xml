@@ -2,7 +2,7 @@
 <resources>
 
 	<string name="title_settings">Paramètres</string>
-	<string name="title_reset_settings">Effacer Paramètres</string>
+	<string name="title_reset_settings">Effacer paramètres</string>
 
 	<!-- submenus -->
 	<string name="title_menu_open">Ouvrir …</string>
