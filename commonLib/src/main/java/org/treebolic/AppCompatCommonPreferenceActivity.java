@@ -14,11 +14,14 @@ import android.view.MenuItem;
 
 import org.treebolic.common.R;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -42,20 +45,42 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 		// content view
 		setContentView(R.layout.activity_settings);
 
+		// fragment manager
+		final FragmentManager fm = getSupportFragmentManager();
+
 		// fragment
 		if (savedInstanceState == null)
 		{
-			getSupportFragmentManager().beginTransaction().replace(R.id.settings, new HeaderFragment()).commit();
+			fm.beginTransaction().replace(R.id.settings, new HeaderFragment()).commit();
 		}
 		else
 		{
 			setTitle(savedInstanceState.getCharSequence(TITLE_TAG));
 		}
-		getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+		fm.addOnBackStackChangedListener(() -> {
 
-			if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+			if (fm.getBackStackEntryCount() == 0)
 			{
 				setTitle(R.string.title_settings);
+			}
+			else
+			{
+				CharSequence title = null;
+				final List<Fragment> fragments = fm.getFragments();
+				if(fragments.size() > 0)
+				{
+					final Fragment fragment = fragments.get(0); // only one at a time
+					final PreferenceFragmentCompat preferenceFragment = (PreferenceFragmentCompat) fragment;
+					title = preferenceFragment.getPreferenceScreen().getTitle();
+				}
+				if (title == null || title.length() == 0)
+				{
+					setTitle(R.string.title_settings);
+				}
+				else
+				{
+					setTitle(title);
+				}
 			}
 		});
 
@@ -108,11 +133,18 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 	@Override
 	public boolean onSupportNavigateUp()
 	{
-		if (getSupportFragmentManager().popBackStackImmediate())
+		final FragmentManager fm = getSupportFragmentManager();
+		if (fm.popBackStackImmediate())
 		{
 			return true;
 		}
 		return super.onSupportNavigateUp();
+	}
+
+	@Override
+	protected void onTitleChanged(final CharSequence title, final int color)
+	{
+		super.onTitleChanged(title, color);
 	}
 
 	// U T I L S
@@ -128,7 +160,6 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 
 		// Replace the existing Fragment with the new Fragment
 		getSupportFragmentManager().beginTransaction().replace(R.id.settings, fragment).addToBackStack(null).commit();
-		setTitle(pref.getTitle());
 		return true;
 	}
 
