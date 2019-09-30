@@ -141,12 +141,6 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 		return super.onSupportNavigateUp();
 	}
 
-	@Override
-	protected void onTitleChanged(final CharSequence title, final int color)
-	{
-		super.onTitleChanged(title, color);
-	}
-
 	// U T I L S
 
 	@Override

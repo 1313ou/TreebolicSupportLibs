@@ -3,10 +3,10 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="16dp">
 
 	<EditText
 		android:id="@+id/openedit_text"
@@ -21,13 +21,19 @@
 		android:singleLine="true"
 		tools:targetApi="o">
 
-		<requestFocus/>
+		<requestFocus />
 	</EditText>
 
-	<RadioGroup
-		android:id="@+id/openedit_options"
-		android:layout_width="wrap_content"
+	<ScrollView
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/openedit_text"/>
+		android:layout_below="@+id/openedit_text">
+
+		<RadioGroup
+			android:id="@+id/openedit_options"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+
+	</ScrollView>
 
 </RelativeLayout>

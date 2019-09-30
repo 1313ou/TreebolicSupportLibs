@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -55,6 +57,16 @@ public class OpenEditTextPreference extends DialogPreference
 	 * Possible labels
 	 */
 	private CharSequence[] labels;
+
+	/**
+	 * Extra values
+	 */
+	private List<String> xValues;
+
+	/**
+	 * Labels for extra values
+	 */
+	private List<String> xLabels;
 
 	// C O N S T R U C T O R
 
@@ -97,7 +109,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 * Initialize
 	 *
 	 * @param context context
-	 * @param attrs attributes
+	 * @param attrs   attributes
 	 */
 	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
@@ -186,6 +198,18 @@ public class OpenEditTextPreference extends DialogPreference
 		this.enable = enables;
 	}
 
+	/**
+	 * Add options
+	 *
+	 * @param xValues extra values
+	 * @param xLabels extra labels
+	 */
+	public void addOptions(final List<String> xValues, final List<String> xLabels)
+	{
+		this.xValues = xValues;
+		this.xLabels = xLabels;
+	}
+
 	// V A L U E
 
 	@Nullable
@@ -265,6 +289,21 @@ public class OpenEditTextPreference extends DialogPreference
 				radioButton.setTag(value);
 				radioButton.setEnabled(enable);
 				optionsView.addView(radioButton);
+			}
+			if (pref.xValues != null && pref.xLabels != null)
+			{
+				for (int i = 0; i < pref.xValues.size() && i < pref.xLabels.size(); i++)
+				{
+					final CharSequence value = pref.xValues.get(i);
+					final CharSequence label = pref.xLabels.get(i);
+					final boolean enable = true;
+
+					final RadioButton radioButton = new RadioButton(requireContext());
+					radioButton.setText(label);
+					radioButton.setTag(value);
+					radioButton.setEnabled(enable);
+					optionsView.addView(radioButton);
+				}
 			}
 
 			// check listener
