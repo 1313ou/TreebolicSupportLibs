@@ -53,8 +53,8 @@
 	</style>
 
 	<!-- SearchView -->
-	<style name="MySearchView" parent="Widget.AppCompat.SearchView">
-		<!-- <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>-->
-	</style>
+<!--	<style name="MySearchView" parent="Widget.AppCompat.SearchView">-->
+<!--		&lt;!&ndash; <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>&ndash;&gt;-->
+<!--	</style>-->
 
 </resources>

@@ -15,7 +15,7 @@
 	<string name="title_search_settings" tools:ignore="UnusedResources">Search settings</string>
 
 	<!-- settings -->
-	<string name="search_title">Search settings</string>
+	<string name="search_title" tools:keep="@string/search_title">Search settings</string>
 	<string name="item_description">Item</string>
 
 	<!-- wheel1 -->

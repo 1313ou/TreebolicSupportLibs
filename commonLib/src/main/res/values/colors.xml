@@ -3,14 +3,14 @@
   ~ Copyright (c) Treebolic 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
 	<color name="default_primaryColor">#FF4251bd</color>
-	<color name="default_primaryLightColor">#FF797df0</color>
+	<color name="default_primaryLightColor" tools:keep="@color/default_primaryLightColor">#FF797df0</color>
 	<color name="default_primaryDarkColor">#FF00298c</color>
 	<color name="default_secondaryColor">#FFef2063</color>
-	<color name="default_secondaryLightColor">#FFff6290</color>
-	<color name="default_secondaryDarkColor">#FFb6003a</color>
+	<color name="default_secondaryLightColor" tools:keep="@color/default_secondaryLightColor">#FFff6290</color>
+	<color name="default_secondaryDarkColor" tools:keep="@color/default_secondaryDarkColor">#FFb6003a</color>
 
 	<color name="default_primaryForeColor">#ffffff</color>
 	<color name="default_secondaryForeColor">#a0a0a0</color>
@@ -18,14 +18,14 @@
 
 	<!-- B A S E -->
 
-	<color name="primaryColor">@color/default_primaryColor</color>
-	<color name="primaryLightColor">@color/default_primaryLightColor</color>
-	<color name="primaryDarkColor">@color/default_primaryDarkColor</color>
-	<color name="secondaryColor">@color/default_secondaryColor</color>
-	<color name="secondaryLightColor">@color/default_secondaryLightColor</color>
-	<color name="secondaryDarkColor">@color/default_secondaryDarkColor</color>
-	<color name="primaryForeColor">@color/default_primaryForeColor</color>
-	<color name="secondaryForeColor">@color/default_secondaryForeColor</color>
-	<color name="tertiaryForeColor">@color/default_tertiaryForeColor</color>
+	<color name="primaryColor" tools:keep="@color/primaryColor">@color/default_primaryColor</color>
+	<color name="primaryLightColor" tools:keep="@color/primaryLightColor">@color/default_primaryLightColor</color>
+	<color name="primaryDarkColor" tools:keep="@color/primaryDarkColor">@color/default_primaryDarkColor</color>
+	<color name="secondaryColor" tools:keep="@color/secondaryColor">@color/default_secondaryColor</color>
+	<color name="secondaryLightColor" tools:keep="@color/secondaryLightColor">@color/default_secondaryLightColor</color>
+	<color name="secondaryDarkColor" tools:keep="@color/secondaryDarkColor">@color/default_secondaryDarkColor</color>
+	<color name="primaryForeColor" tools:keep="@color/primaryForeColor">@color/default_primaryForeColor</color>
+	<color name="secondaryForeColor" tools:keep="@color/secondaryForeColor">@color/default_secondaryForeColor</color>
+	<color name="tertiaryForeColor" tools:keep="@color/tertiaryForeColor">@color/default_tertiaryForeColor</color>
 
 </resources>
