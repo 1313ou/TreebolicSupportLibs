@@ -2,4 +2,4 @@
  * Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
  */
 
-include ':commonLib', ':guideLib', ':fileChooserLib', ':downloadLib', ':preferenceLib', ':wheelLib', ':searchLib', ':colorLib', ':storageLib'
+include ':commonLib', ':guideLib', ':fileChooserLib', ':downloadLib', ':preferenceLib', ':wheelLib', ':searchLib', ':colorLib', ':storageLib', ':testLib'
