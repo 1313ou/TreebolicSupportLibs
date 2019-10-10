@@ -25,7 +25,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 public class DataUtils
 {
-	static private final String LISTFILE = "tests/sqlunet.list";
+	static private final String LIST_FILE = "tests/sqlunet.list";
 
 	@NonNull
 	static public String arrayToString(int... a)
@@ -52,7 +52,7 @@ public class DataUtils
 	// S A M P L E S
 
 	@Nullable
-	static String[] WORDLIST = {"abandon", "leave", "inveigle", "foist", "flounder", "flout"};
+	static String[] WORD_LIST = {"abandon", "leave", "inveigle", "foist", "flounder", "flout"};
 
 	static public String[] getWordList()
 	{
@@ -64,7 +64,7 @@ public class DataUtils
 		final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
 		final AssetManager assets = context.getResources().getAssets();
 		final List<String> list = new ArrayList<>();
-		try (final InputStream is = assets.open(DataUtils.LISTFILE); //
+		try (final InputStream is = assets.open(DataUtils.LIST_FILE); //
 		     final Reader reader = new InputStreamReader(is); //
 		     final BufferedReader br = new BufferedReader(reader) //
 		)
@@ -79,7 +79,7 @@ public class DataUtils
 		catch (IOException e)
 		{
 			//Log.d("Read", "Error " + dataFile.getAbsolutePath(), e);
-			Log.e("Read", "Error " + DataUtils.LISTFILE, e);
+			Log.e("Read", "Error " + DataUtils.LIST_FILE, e);
 			return null;
 		}
 	}
@@ -87,7 +87,7 @@ public class DataUtils
 	static private String[] readWordListAlt()
 	{
 		final List<String> list = new ArrayList<>();
-		final File dataFile = new File(Environment.getExternalStorageDirectory(), DataUtils.LISTFILE);
+		final File dataFile = new File(Environment.getExternalStorageDirectory(), DataUtils.LIST_FILE);
 		try (final FileReader reader = new FileReader(dataFile); //
 		     final BufferedReader br = new BufferedReader(reader))
 		{

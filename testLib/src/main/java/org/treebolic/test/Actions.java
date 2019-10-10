@@ -21,6 +21,7 @@ import androidx.test.espresso.action.Swipe;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.Matchers.allOf;
 
+@SuppressWarnings("WeakerAccess")
 public class Actions
 {
 	@NonNull

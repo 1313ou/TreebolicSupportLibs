@@ -16,6 +16,7 @@ import androidx.test.espresso.ViewAction;
 
 import static androidx.test.espresso.Espresso.onView;
 
+@SuppressWarnings("WeakerAccess")
 public class ContainerUtils
 {
 	/**

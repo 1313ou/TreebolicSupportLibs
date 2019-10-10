@@ -14,6 +14,7 @@ import androidx.test.espresso.ViewAssertion;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 
+@SuppressWarnings("WeakerAccess")
 public class ToBoolean
 {
 	static public boolean test(@NonNull final Matcher<View> view, @NonNull final Matcher<View> state)
