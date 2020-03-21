@@ -23,6 +23,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+@SuppressWarnings("WeakerAccess")
 public class Wait
 {
 	private static ViewAction waitId(final int viewId, final long millis)

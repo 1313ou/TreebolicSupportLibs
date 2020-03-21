@@ -1221,7 +1221,7 @@ public class ColorPickerView extends View
 		return this.alphaSliderText;
 	}
 
-	private class BitmapCache
+	private static class BitmapCache
 	{
 		@SuppressWarnings("WeakerAccess")
 		public Canvas canvas;

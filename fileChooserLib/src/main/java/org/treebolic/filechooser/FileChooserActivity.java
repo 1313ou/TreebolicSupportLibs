@@ -50,19 +50,16 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 {
 	// keys
 
-	@SuppressWarnings("WeakerAccess")
 	static public final String ARG_FILECHOOSER_EXTENSION_FILTER = "filechooser.extension_filter";
 
-	@SuppressWarnings("WeakerAccess")
 	static public final String ARG_FILECHOOSER_INITIAL_DIR = "filechooser.initial_dir";
 
-	@SuppressWarnings("WeakerAccess")
 	static public final String ARG_FILECHOOSER_CHOOSE_DIR = "filechooser.choose_dir";
 
 	/**
 	 * File entry
 	 */
-	public class Entry implements Comparable<Entry>
+	public static class Entry implements Comparable<Entry>
 	{
 		/**
 		 * Entry name
@@ -136,7 +133,6 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return name
 		 */
-		@SuppressWarnings("WeakerAccess")
 		@Nullable
 		public String getName()
 		{

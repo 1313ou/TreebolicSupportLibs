@@ -76,7 +76,7 @@ public class Actions
 	}
 
 	@NonNull
-	static ViewAction andThen(final ViewAction action1, final ViewAction action2, int lapse)
+	static ViewAction andThen(final ViewAction action1, final ViewAction action2, @SuppressWarnings("SameParameterValue") int lapse)
 	{
 		return new ViewAction()
 		{
