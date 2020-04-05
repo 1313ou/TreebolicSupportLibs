@@ -133,6 +133,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		 *
 		 * @return name
 		 */
+		@SuppressWarnings("WeakerAccess")
 		@Nullable
 		public String getName()
 		{

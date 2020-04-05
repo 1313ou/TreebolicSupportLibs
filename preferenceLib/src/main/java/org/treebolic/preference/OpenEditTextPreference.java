@@ -346,6 +346,7 @@ public class OpenEditTextPreference extends DialogPreference
 	 * @param preference   preference
 	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
 	 */
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	static public boolean onDisplayPreferenceDialog(@NonNull final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
 		final FragmentManager manager = prefFragment.getFragmentManager();
