@@ -77,6 +77,9 @@
 		<!-- preferences -->
 		<item name="preferenceTheme">@style/MyPreference</item>
 
+		<!-- alert dialog -->
+		<item name="alertDialogTheme">@style/MyAlertDialog</item>
+
 		<!-- treebolic widget colors -->
 		<item name="treebolic_back_color">#adc1cc</item> <!-- #f3f1e2 #9eb0ba -->
 		<item name="treebolic_tree_edge_color">#cccccc</item>

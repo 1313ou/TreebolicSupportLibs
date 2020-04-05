@@ -52,9 +52,23 @@
 	<style name="MyPreference" parent="PreferenceThemeOverlay.v14.Material">
 	</style>
 
+	<!-- AlertDialog -->
+	<style name="MyAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
+		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
+	</style>
+
+	<style name="MyNegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+		<item name="android:textColor">?attr/colorAccent</item>
+	</style>
+
+	<style name="MyPositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+		<item name="android:textColor">?attr/colorAccent</item>
+	</style>
+
 	<!-- SearchView -->
-<!--	<style name="MySearchView" parent="Widget.AppCompat.SearchView">-->
-<!--		&lt;!&ndash; <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>&ndash;&gt;-->
-<!--	</style>-->
+	<!-- <style name="MySearchView" parent="Widget.AppCompat.SearchView">-->
+	<!-- 	&lt;!&ndash; <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>&ndash;&gt;-->
+	<!--</style>-->
 
 </resources>

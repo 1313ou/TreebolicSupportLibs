@@ -216,7 +216,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	 * Entry to list adapter
 	 */
 	@SuppressWarnings("WeakerAccess")
-	public class FileArrayAdapter extends ArrayAdapter<Entry>
+	public static class FileArrayAdapter extends ArrayAdapter<Entry>
 	{
 		/**
 		 * Context

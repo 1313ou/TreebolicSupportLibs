@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.Arrays;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -131,10 +132,7 @@ public class OpenEditTextPreference extends DialogPreference
 
 		// enable all
 		this.enable = new boolean[this.values.length];
-		for (int i = 0; i < this.enable.length; i++)
-		{
-			this.enable[i] = true;
-		}
+		Arrays.fill(this.enable, true);
 	}
 
 	/**
@@ -348,7 +346,6 @@ public class OpenEditTextPreference extends DialogPreference
 	 * @param preference   preference
 	 * @return false if not handled: call super.onDisplayPreferenceDialog(preference)
 	 */
-	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	static public boolean onDisplayPreferenceDialog(@NonNull final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
 		final FragmentManager manager = prefFragment.getFragmentManager();
