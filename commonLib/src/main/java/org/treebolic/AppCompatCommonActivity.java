@@ -19,14 +19,12 @@ public abstract class AppCompatCommonActivity extends AppCompatActivity
 	/**
 	 * Version preference name
 	 */
-	static final String PREF_VERSION = "org.treebolic.wordnet.browser.version";
-
 	@SuppressWarnings("UnusedReturnValue")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		// first run of this version
-		clearSettingsOnUpgrade(AppCompatCommonActivity.PREF_VERSION);
+		clearSettingsOnUpgrade();
 
 		// theme
 		final Integer themeId = AppCompatCommonUtils.getThemePref(this);
@@ -38,16 +36,19 @@ public abstract class AppCompatCommonActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 	}
 
+	abstract protected String getVersionKey();
+
 	/**
 	 * Clear settings on upgrade
 	 *
-	 * @param key key holding last version
 	 * @return build version
 	 */
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
 	@SuppressWarnings({"UnusedReturnValue"})
-	private long clearSettingsOnUpgrade(@SuppressWarnings("SameParameterValue") final String key)
+	private long clearSettingsOnUpgrade()
 	{
+		final String key = getVersionKey();
+
 		// first run of this version
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		long version;
