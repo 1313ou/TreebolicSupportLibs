@@ -11,12 +11,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import org.treebolic.AppCompatCommonActivity;
 
@@ -43,7 +45,16 @@ public class HelpActivity extends AppCompatCommonActivity
 		super.onCreate(savedInstanceState);
 
 		// layout
-		setContentView(R.layout.activity_help);
+		try
+		{
+			setContentView(R.layout.activity_help);
+		}
+		catch (InflateException e)
+		{
+			Toast.makeText(this, "No WebView support", Toast.LENGTH_LONG).show();
+			finish();
+			return;
+		}
 
 		// toolbar
 		final Toolbar toolbar = findViewById(R.id.toolbar);

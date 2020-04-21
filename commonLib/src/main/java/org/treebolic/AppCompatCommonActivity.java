@@ -30,7 +30,9 @@ public abstract class AppCompatCommonActivity extends AppCompatActivity
 	/**
 	 * Pre-theming hook: give app a chance to do something before theme is set by overriding this.
 	 */
+	@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 	protected void preThemeHook()
 	{
+		//
 	}
 }
