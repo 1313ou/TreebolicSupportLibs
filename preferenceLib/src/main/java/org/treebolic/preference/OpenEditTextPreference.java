@@ -349,8 +349,12 @@ public class OpenEditTextPreference extends DialogPreference
 	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	static public boolean onDisplayPreferenceDialog(@NonNull final PreferenceFragmentCompat prefFragment, final Preference preference)
 	{
-		final FragmentManager manager = prefFragment.getFragmentManager();
-		if (manager == null)
+		final FragmentManager manager;
+		try
+		{
+			manager = prefFragment.getParentFragmentManager();
+		}
+		catch (IllegalStateException e)
 		{
 			return false;
 		}
