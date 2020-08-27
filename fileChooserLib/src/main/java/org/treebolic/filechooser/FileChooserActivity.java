@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +38,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 /**
  * File chooser
@@ -367,6 +367,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	 */
 	private List<String> extensions;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{
@@ -408,7 +409,11 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 				final Uri uri = Uri.parse(initialDirExtra);
 				if (uri != null && "file".equals(uri.getScheme()))
 				{
-					initialDirExtra = uri.getPath();
+					String path = uri.getPath();
+					if (path != null)
+					{
+						initialDirExtra = path;
+					}
 				}
 				this.currentDir = new File(initialDirExtra);
 			}

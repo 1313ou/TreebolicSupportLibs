@@ -90,7 +90,6 @@
 			android:layout_marginLeft="10dp"
 			android:layout_marginRight="10dp"
 			android:layout_marginBottom="10dp"
-			android:drawableTop="@drawable/ic_download_source"
 			android:drawablePadding="5dp"
 			android:ellipsize="marquee"
 			android:focusable="true"
@@ -100,7 +99,8 @@
 			android:marqueeRepeatLimit="marquee_forever"
 			android:scrollHorizontally="true"
 			android:singleLine="true"
-			android:text="@string/src" />
+			android:text="@string/src"
+			app:drawableTopCompat="@drawable/ic_download_source" />
 
 		<TextView
 			android:id="@+id/target"
@@ -111,7 +111,6 @@
 			android:layout_marginLeft="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginRight="10dp"
-			android:drawableBottom="@drawable/ic_download_dest"
 			android:drawablePadding="5dp"
 			android:ellipsize="marquee"
 			android:focusable="true"
@@ -121,7 +120,8 @@
 			android:marqueeRepeatLimit="marquee_forever"
 			android:scrollHorizontally="true"
 			android:singleLine="true"
-			android:text="@string/target" />
+			android:text="@string/target"
+			app:drawableBottomCompat="@drawable/ic_download_dest" />
 
 	</RelativeLayout>
 

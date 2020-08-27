@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,6 +18,7 @@ import org.treebolic.colors.view.ColorPickerView;
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 
 @SuppressLint("Registered")
 public class ColorPickerActivity extends AppCompatCommonActivity implements OnColorChangedListener, View.OnClickListener

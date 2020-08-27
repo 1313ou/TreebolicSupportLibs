@@ -84,6 +84,7 @@ public class DataUtils
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	static private String[] readWordListAlt()
 	{
 		final List<String> list = new ArrayList<>();

@@ -12,7 +12,6 @@ import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
 
@@ -34,6 +33,7 @@ import java.util.zip.ZipInputStream;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
 public class Storage
 {
@@ -74,7 +74,8 @@ public class Storage
 	 * @author <a href="mailto:1313ou@gmail.com">Bernard Bou</a>
 	 */
 	public enum DirType
-	{AUTO, APP_EXTERNAL_SECONDARY, APP_EXTERNAL_PRIMARY, PUBLIC_EXTERNAL_SECONDARY, PUBLIC_EXTERNAL_PRIMARY, APP_INTERNAL;
+	{
+		AUTO, APP_EXTERNAL_SECONDARY, APP_EXTERNAL_PRIMARY, PUBLIC_EXTERNAL_SECONDARY, PUBLIC_EXTERNAL_PRIMARY, APP_INTERNAL;
 
 		/**
 		 * Compare (sort by preference)
@@ -111,7 +112,8 @@ public class Storage
 					return "internal";
 			}
 			return null;
-		}}
+		}
+	}
 
 	/**
 	 * Directory with type
@@ -216,6 +218,7 @@ public class Storage
 	 *
 	 * @return (cached) external storage directory
 	 */
+	@SuppressWarnings("deprecation")
 	@Nullable
 	static private String discoverExternalStorage()
 	{
@@ -295,6 +298,7 @@ public class Storage
 	 *
 	 * @return map per type of of external storage directories
 	 */
+	@SuppressWarnings("deprecation")
 	@NonNull
 	public static Map<StorageType, String[]> getStorageDirectories()
 	{
@@ -422,7 +426,7 @@ public class Storage
 	 * @return Treebolic storage
 	 */
 	@Nullable
-	@SuppressWarnings("WeakerAccess")
+	@SuppressWarnings({"WeakerAccess", "deprecation"})
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static public File discoverTreebolicStorage(@NonNull final Context context)
 	{
@@ -690,10 +694,14 @@ public class Storage
 	public static void cleanup(@NonNull final Context context)
 	{
 		final File dir = Storage.getTreebolicStorage(context);
-		for (final File file : dir.listFiles())
+		File[] dirContent = dir.listFiles();
+		if (dirContent != null)
 		{
-			//noinspection ResultOfMethodCallIgnored
-			file.delete();
+			for (final File file : dirContent)
+			{
+				//noinspection ResultOfMethodCallIgnored
+				file.delete();
+			}
 		}
 	}
 
@@ -783,8 +791,13 @@ public class Storage
 							final File outFile = new File(destDir + File.separator + new File(entryName).getName());
 
 							// create all non exists folders else you will hit FileNotFoundException for compressed folder
-							//noinspection ResultOfMethodCallIgnored
-							new File(outFile.getParent()).mkdirs();
+							final String parent = outFile.getParent();
+							if (parent != null)
+							{
+								File dir = new File(parent);
+								boolean created = dir.mkdirs();
+								Log.d(TAG, dir + " created=" + created + " exists=" + dir.exists());
+							}
 
 							// output
 
@@ -853,6 +866,7 @@ public class Storage
 	 *
 	 * @return list of storage directories
 	 */
+	@SuppressWarnings("deprecation")
 	@NonNull
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static private Collection<Directory> getDirectories()
@@ -1035,6 +1049,7 @@ public class Storage
 	 *
 	 * @return user id
 	 */
+	@SuppressWarnings("deprecation")
 	@NonNull
 	static private String getUserId()
 	{

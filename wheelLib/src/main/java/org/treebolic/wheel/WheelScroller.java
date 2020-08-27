@@ -6,6 +6,7 @@ package org.treebolic.wheel;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -68,6 +69,7 @@ public abstract class WheelScroller
 		@SuppressWarnings("WeakerAccess")
 		public AnimationHandler(WheelScroller scroller0)
 		{
+			super(Looper.getMainLooper());
 			this.wheelScrollerRef = new WeakReference<>(scroller0);
 		}
 

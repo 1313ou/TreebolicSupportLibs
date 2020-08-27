@@ -20,6 +20,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
@@ -80,51 +81,8 @@ public class ColorUtils
 	@SuppressWarnings({"WeakerAccess"})
 	static public Drawable getDrawable(@NonNull final Context context, @DrawableRes int drawableRes)
 	{
-		final Resources resources = context.getResources();
-		Drawable drawable;
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
-		{
-			final Resources.Theme theme = context.getTheme();
-			drawable = resources.getDrawable(drawableRes, theme);
-		}
-		else
-		{
-			drawable = resources.getDrawable(drawableRes);
-		}
-		return drawable;
+		return ResourcesCompat.getDrawable(context.getResources(), drawableRes, context.getTheme());
 	}
-
-	/*
-	 * Get drawables
-	 *
-	 * @param context context
-	 * @param resIds  drawable ids
-	 * @return drawables
-	 */
-	/*
-	@SuppressWarnings({"WeakerAccess", "deprecation"})
-	static public Drawable[] getDrawables(final Context context, int... resIds)
-	{
-		final Resources resources = context.getResources();
-		Drawable[] drawables = new Drawable[resIds.length];
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
-		{
-			final Resources.Theme theme = context.getTheme();
-			for (int i = 0; i < resIds.length; i++)
-			{
-				drawables[i] = resources.getDrawable(resIds[i], theme);
-			}
-		}
-		else
-		{
-			for (int i = 0; i < resIds.length; i++)
-			{
-				drawables[i] = resources.getDrawable(resIds[i]);
-			}
-		}
-		return drawables;
-	}
-	*/
 
 	/**
 	 * Get tinted drawable
