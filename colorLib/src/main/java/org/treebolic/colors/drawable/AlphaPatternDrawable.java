@@ -51,7 +51,7 @@ public class AlphaPatternDrawable extends Drawable
 		canvas.drawBitmap(this.mBitmap, null, getBounds(), this.mPaint);
 	}
 
-	@SuppressWarnings("SameReturnValue")
+	@SuppressWarnings({"SameReturnValue", "deprecation"})
 	@Override
 	public int getOpacity()
 	{
