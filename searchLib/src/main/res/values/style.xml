@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
 <resources>
 
-	<style name="AlertDialogCustom" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+	<style name="AlertDialogCustom" parent="ThemeOverlay.AppCompat.Dialog.Alert">
 		<item name="android:background">?attr/colorPrimary</item>
 		<item name="android:textColor">?attr/colorAccent</item>
 	</style>

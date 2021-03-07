@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
@@ -8,12 +7,27 @@
 	<!-- Default application theme. -->
 	<style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
 
-		<!-- UI color attr -->
-		<item name="colorPrimary">@color/default_primaryColor</item><!-- app branding color for the app bar -->
-		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item><!-- darker variant for the status bar and contextual app bars -->
-		<item name="colorAccent">@color/default_secondaryColor</item><!-- theme UI controls like checkboxes and text fields -->
+		<!-- framework colors -->
+		<item name="android:colorBackground">@color/default_backgroundColor</item>
+		<item name="android:colorForeground">@color/default_foregroundColor</item>
+		<!-- <item name="colorOnSurface">@color/default_backgroundColor</item>-->
+		<!-- <item name="colorSurface">@color/default_foregroundColor</item>-->
+
+		<item name="colorPrimary">@color/default_primaryColor</item> <!-- app branding color for the app bar -->
+		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item> <!-- darker variant for the status bar and contextual app bars -->
+		<item name="colorPrimaryVariant">@color/default_primaryLightColor</item>
+		<item name="colorOnPrimary">@color/default_onPrimaryColor</item>
 
 		<item name="colorSecondary">@color/default_secondaryColor</item>
+		<item name="colorSecondaryVariant">@color/default_secondaryLightColor</item>
+		<item name="colorOnSecondary">@color/default_onSecondaryColor</item>
+
+		<item name="colorAccent">@color/default_secondaryColor</item> <!-- theme UI controls like checkboxes and text fields -->
+
+		<!-- extras color attrs -->
+		<item name="colorHighlightOnPrimary">@color/default_highlightOnPrimaryColor</item>
+		<item name="colorHighlightOnBackground">@color/default_highlightOnBackgroundColor</item>
+		<item name="colorDimmedOnBackground">@color/default_dimmedOnBackgroundColor</item>
 
 		<item name="colorForePrimary">@color/default_primaryForeColor</item>
 		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>

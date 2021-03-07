@@ -4,43 +4,9 @@
 
 <resources>
 
-	<!-- must override -->
-	<style name="MyBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar" />
+	// A P P L I C A T I O N
 
-	<style name="MyXBaseTheme" parent="MyBaseTheme" />
-
-	<style name="MyTreebolicBaseTheme" parent="MyXBaseTheme">
-
-		<!-- treebolic widgets -->
-
-		<item name="treebolic_toolbar_background">?attr/colorPrimary</item>
-		<item name="treebolic_toolbar_foreground_icon">?attr/colorForeTertiary</item>
-
-		<item name="treebolic_statusbar_background">?attr/colorPrimary</item>
-		<item name="treebolic_statusbar_foreground">?attr/colorForeSecondary</item>
-		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
-		<item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
-
-		<item name="treebolic_dialog_background">?attr/colorPrimary</item>
-		<item name="treebolic_dialog_foreground">?attr/colorForeSecondary</item>
-		<item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
-		<item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
-
-		<item name="treebolic_splitbar_color">?attr/colorPrimaryDark</item>
-		<item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
-
-		<item name="treebolic_splash_background">?attr/colorPrimary</item>
-		<item name="treebolic_splash_foreground">?attr/colorForePrimary</item>
-		<item name="treebolic_splash_progress">?attr/colorSecondary</item>
-
-		<!-- treebolic search settings colors -->
-		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>
-		<item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
-
-	</style>
-
-	<!-- T H E M E -->
-	<style name="MyTreebolicTheme" parent="MyTreebolicBaseTheme">
+	<style name="MyBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
 		<!-- theme UI controls action bar -->
 		<item name="actionBarTheme">@style/MyActionBarOverlay</item>
@@ -60,6 +26,47 @@
 		<item name="spinnerStyle">@style/MySpinner</item>
 
 	</style>
+
+	<style name="MyAppTheme" parent="MyBaseTheme" />
+
+	// T R E E B O L I C   A P P L I C A T I O N
+
+	<style name="MyTreebolicBaseTheme" parent="MyAppTheme">
+
+		<!-- treebolic toolbar -->
+		<item name="treebolic_toolbar_background">?attr/colorPrimary</item>
+		<item name="treebolic_toolbar_foreground_icon">?attr/colorForeTertiary</item>
+
+		<!-- treebolic status bar -->
+		<item name="treebolic_statusbar_background">?attr/colorPrimary</item>
+		<item name="treebolic_statusbar_foreground">?attr/colorForeSecondary</item>
+		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
+		<item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
+
+		<!-- treebolic dialog -->
+		<item name="treebolic_dialog_background">?attr/colorPrimary</item>
+		<item name="treebolic_dialog_foreground">?attr/colorForeSecondary</item>
+		<item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
+		<item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
+
+		<!-- treebolic split bar -->
+		<item name="treebolic_splitbar_color">?attr/colorPrimaryDark</item>
+		<item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
+
+		<!-- treebolic splash -->
+		<item name="treebolic_splash_background">?attr/colorPrimary</item>
+		<item name="treebolic_splash_foreground">?attr/colorForePrimary</item>
+		<item name="treebolic_splash_progress">?attr/colorSecondary</item>
+
+		<!-- treebolic search settings -->
+		<item name="treebolic_search_settings_background">?attr/colorPrimary</item>
+		<item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
+
+	</style>
+
+	<style name="MyTreebolicTheme" parent="MyTreebolicBaseTheme" />
+
+	// M Y  T H E M E
 
 	<style name="MyTheme" parent="MyTreebolicDefaultTheme" />
 

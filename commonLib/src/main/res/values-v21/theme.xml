@@ -4,7 +4,7 @@
 
 <resources>
 
-	<style name="MyXBaseTheme" parent="MyBaseTheme">
+	<style name="MyAppTheme" parent="MyBaseTheme">
 
 		<item name="android:colorPrimary">?attr/colorPrimary</item> <!-- app branding color for the app bar -->
 		<item name="android:colorPrimaryDark">?attr/colorPrimaryDark</item> <!-- darker variant for the status bar and contextual app bars -->

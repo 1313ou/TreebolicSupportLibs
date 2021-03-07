@@ -17,9 +17,6 @@
 		<!-- search views -->
 		<!-- <item name="android:searchViewStyle">@style/MySearchView</item> -->
 
-		<!-- force dark mode -->
-		<item name="android:forceDarkAllowed">false</item>
-
 	</style>
 
 </resources>

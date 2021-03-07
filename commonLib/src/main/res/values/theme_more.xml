@@ -61,16 +61,16 @@
 	</style>
 
 	<!-- AlertDialog -->
-	<style name="MyAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+	<style name="MyAlertDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
 		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
 		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
 	</style>
 
-	<style name="MyNegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+	<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
 		<item name="android:textColor">?attr/colorAccent</item>
 	</style>
 
-	<style name="MyPositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+	<style name="MyPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
 		<item name="android:textColor">?attr/colorAccent</item>
 	</style>
 
