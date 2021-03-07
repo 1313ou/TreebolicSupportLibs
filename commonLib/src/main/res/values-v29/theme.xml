@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+  -->
+
+<resources>
+
+	<style name="MyXBaseTheme" parent="MyBaseTheme">
+
+		<item name="android:colorPrimary">?attr/colorPrimary</item> <!-- app branding color for the app bar -->
+		<item name="android:colorPrimaryDark">?attr/colorPrimaryDark</item> <!-- darker variant for the status bar and contextual app bars -->
+		<item name="android:colorAccent">?attr/colorAccent</item> <!-- theme UI controls like checkboxes and text fields -->
+
+		<!-- toolbars -->
+		<item name="android:toolbarStyle">@style/MyToolbar</item>
+
+		<!-- search views -->
+		<!-- <item name="android:searchViewStyle">@style/MySearchView</item> -->
+
+		<!-- force dark mode -->
+		<item name="android:forceDarkAllowed">false</item>
+
+	</style>
+
+</resources>
