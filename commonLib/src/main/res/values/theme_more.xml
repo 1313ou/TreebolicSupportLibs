@@ -6,77 +6,66 @@
 
 <resources>
 
-	<!-- used by default theme  -->
-	<style name="MyBaseOverlay" parent="ThemeOverlay.AppCompat.DayNight">
-		<item name="colorSurface">?attr/actionbar_color</item>
-		<item name="colorOnSurface">?attr/actionbar_fore_color</item>
-		<item name="android:colorBackground">?attr/actionbar_color</item>
-		<item name="colorOnBackground">?attr/actionbar_fore_color</item>
-		<item name="android:background">?attr/actionbar_color</item>item> <!-- submenu background -->
+	<!-- T H E M E   O V E R L A Y S -->
+
+	<!-- ActionBar -->
+	<style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
+		<item name="android:background">@null</item> <!-- menu overflow, search view, title, subtitle backgrounds -->
+		<item name="android:textColorPrimary">?attr/actionbar_title_fore_color</item> <!-- search view foreground -->
+		<item name="android:textColorSecondary">?attr/actionbar_subtitle_fore_color</item> <!-- subtitle -->
+		<item name="colorControlNormal">?attr/actionbar_fore_color</item> <!-- pictograms (menu overflow, search magnifying glass, navigation) -->
+		<item name="searchViewStyle">@style/MyActionBarSearchView</item>
+	</style>
+
+	<!-- ActionBar Popup -->
+	<style name="MyActionBarPopupTheme" parent="ThemeOverlay.AppCompat.DayNight">
+		<item name="android:background">?attr/actionbar_color</item> <!-- submenu background -->
 		<item name="android:textColorPrimary">?attr/actionbar_fore_color</item>item> <!-- item foreground -->
 		<item name="android:textColorSecondary">?attr/actionbar_secondary_fore_color</item> <!-- submenu item foreground -->
 	</style>
 
-	<!-- used by default theme -->
-	<style name="MyActionBarBaseOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
-
-	<!-- Toolbar -->
-	<style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
-		<item name="android:background">?attr/actionbar_color</item>
-	</style>
-
-	<!-- Action bar -->
-	<style name="MyActionBar" parent="Widget.AppCompat.ActionBar">
-		<item name="android:background">?attr/actionbar_color</item> <!-- whole actionbar background -->
-	</style>
-
-	<!-- ActionBar Overlay -->
-	<style name="MyActionBarOverlay" parent="MyActionBarBaseOverlay">
-		<item name="android:background">@null</item> <!-- menu overflow, search view, title, subtitle backgrounds -->
-		<item name="android:textColorPrimary">?attr/actionbar_fore_color</item> <!-- search view foreground -->
-		<item name="titleTextColor">?attr/actionbar_title_fore_color</item> <!-- title foreground -->
-		<item name="subtitleTextColor">?attr/actionbar_subtitle_fore_color</item> <!-- subtitle foreground -->
-		<item name="colorControlNormal">?attr/actionbar_fore_color</item> <!-- pictograms (menu overflow, search magnifying glass, navigation) -->
-	</style>
-
-	<!-- Overlay -->
-	<style name="MyOverlay" parent="MyBaseOverlay">
-		<item name="android:background">?attr/actionbar_color</item>item> <!-- submenu background -->
-		<item name="android:textColor">?attr/actionbar_fore_color</item>item> <!-- item foreground -->
-		<item name="android:textColorSecondary">?attr/actionbar_secondary_fore_color</item> <!-- submenu item foreground -->
-	</style>
-
-	<!-- Spinner dropdown list -->
-	<style name="MySpinnerDropDown" parent="Widget.AppCompat.ListView.DropDown">
-		<item name="android:background">?attr/actionbar_color</item>
-	</style>
-
-	<style name="MySpinner" parent="Widget.AppCompat.Spinner">
-		<item name="android:background">@drawable/bg_spinner</item>-->
-		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
-	</style>
-
-	<!-- Preference -->
-	<style name="MyPreference" parent="PreferenceThemeOverlay.v14.Material">
-	</style>
-
 	<!-- AlertDialog -->
-	<style name="MyAlertDialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+	<style name="MyAlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
 		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
 		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
 	</style>
 
+	<!-- Preference -->
+	<style name="MyPreferenceTheme" parent="PreferenceThemeOverlay.v14.Material">
+	</style>
+
+	<!-- W I D G E T   S T Y L E S -->
+
+	<!-- Action bar -->
+	<style name="MyActionBarStyle" parent="Widget.AppCompat.ActionBar">
+		<item name="android:background">?attr/actionbar_color</item> <!-- whole actionbar background -->
+	</style>
+
+	<!-- Action bar spinner -->
+	<style name="MySpinnerStyle" parent="Widget.AppCompat.Spinner">
+		<item name="android:background">@drawable/bg_spinner</item>-->
+		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+	</style>
+
+	<!-- Action bar spinner dropdown list -->
+	<style name="MySpinnerDropDownStyle" parent="Widget.AppCompat.ListView.DropDown">
+		<item name="android:background">?attr/actionbar_color</item>
+	</style>
+
+	<!-- Action bar search view -->
+	<style name="MyActionBarSearchView" parent="Widget.AppCompat.SearchView.ActionBar">
+		<item name="queryBackground">?attr/colorPrimaryVariant</item>
+		<item name="submitBackground">?attr/colorPrimaryDark</item>
+	</style>
+
+	<!-- Dialog buttons no -->
 	<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
 		<item name="android:textColor">?attr/colorAccent</item>
 	</style>
 
+	<!-- Dialog button yes -->
 	<style name="MyPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
 		<item name="android:textColor">?attr/colorAccent</item>
 	</style>
-
-	<!-- SearchView -->
-	<!-- <style name="MySearchView" parent="Widget.AppCompat.SearchView">-->
-	<!-- 	&lt;!&ndash; <item name="android:background">android:background="@drawable/bg_searchview_rounded"</item>&ndash;&gt;-->
-	<!--</style>-->
 
 </resources>

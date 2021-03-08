@@ -12,10 +12,7 @@
 		<item name="android:colorSecondary">?attr/colorSecondary</item>
 
 		<!-- toolbars -->
-		<item name="android:toolbarStyle">@style/MyToolbar</item>
-
-		<!-- search views -->
-		<!-- <item name="android:searchViewStyle">@style/MySearchView</item> -->
+		<item name="android:toolbarStyle">@style/MyToolbarStyle</item>
 
 		<!-- force dark mode -->
 		<item name="android:forceDarkAllowed">false</item>

@@ -11,10 +11,7 @@
 		<item name="android:colorAccent">?attr/colorAccent</item> <!-- theme UI controls like checkboxes and text fields -->
 
 		<!-- toolbars -->
-		<item name="android:toolbarStyle">@style/MyToolbar</item>
-
-		<!-- search views -->
-		<!-- <item name="android:searchViewStyle">@style/MySearchView</item> -->
+		<item name="android:toolbarStyle">@style/MyToolbarStyle</item>
 
 	</style>
 

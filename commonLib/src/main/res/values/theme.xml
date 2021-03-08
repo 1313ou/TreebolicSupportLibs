@@ -9,21 +9,22 @@
 	<style name="MyBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
 		<!-- theme UI controls action bar -->
-		<item name="actionBarTheme">@style/MyActionBarOverlay</item>
+		<item name="actionBarTheme">@style/MyActionBarTheme</item>
+		<item name="android:actionBarStyle">@style/MyActionBarStyle</item>
 
 		<!-- theme UI controls pop ups -->
-		<item name="actionBarPopupTheme">@style/MyOverlay</item>
+		<item name="actionBarPopupTheme">@style/MyActionBarPopupTheme</item>
+
+		<!-- actionbar spinner -->
+		<item name="android:dropDownListViewStyle">@style/MySpinnerDropDownStyle</item>
+		<item name="android:spinnerStyle">@style/MySpinnerStyle</item>
+		<item name="spinnerStyle">@style/MySpinnerStyle</item>
 
 		<!-- preference -->
-		<item name="preferenceTheme">@style/MyPreference</item>
+		<item name="preferenceTheme">@style/MyPreferenceTheme</item>
 
 		<!-- alert dialog -->
-		<item name="alertDialogTheme">@style/MyAlertDialog</item>
-
-		<!-- spinner -->
-		<item name="android:dropDownListViewStyle">@style/MySpinnerDropDown</item>
-		<item name="android:spinnerStyle">@style/MySpinner</item>
-		<item name="spinnerStyle">@style/MySpinner</item>
+		<item name="alertDialogTheme">@style/MyAlertDialogTheme</item>
 
 	</style>
 
