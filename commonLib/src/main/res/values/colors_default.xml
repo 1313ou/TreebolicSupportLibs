@@ -2,7 +2,7 @@
   ~ Copyright (c) Treebolic 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
 	<!-- generic -->
 	<color name="default_backgroundColor">@android:color/white</color> <!-- generic window background -->
@@ -11,21 +11,21 @@
 	<color name="default_dimmedOnBackgroundColor">#808080</color>
 
 	<!-- primary -->
-	<color name="default_primaryColor">#4251bd</color>
-	<color name="default_primaryLightColor" tools:keep="@color/default_primaryLightColor">#797df0</color>
+	<color name="default_primaryColor">#4251BD</color>
+	<color name="default_primaryLightColor">#797DF0</color>
 	<color name="default_primaryDarkColor">#00298C</color>
 	<color name="default_onPrimaryColor">#EEEEEE</color>
 	<color name="default_highlightOnPrimaryColor">@android:color/white</color>
 
 	<!-- secondary -->
-	<color name="default_secondaryColor">#FFef2063</color>
-	<color name="default_secondaryLightColor" tools:keep="@color/default_secondaryLightColor">#FFff6290</color>
-	<color name="default_secondaryDarkColor" tools:keep="@color/default_secondaryDarkColor">#FFb6003a</color>
+	<color name="default_secondaryColor">#EF2063</color>
+	<color name="default_secondaryLightColor">#FF6290</color>
+	<color name="default_secondaryDarkColor">#B6003A</color>
 	<color name="default_onSecondaryColor">#EEEEEE</color>
 
 	<!-- misc fore -->
-	<color name="default_primaryForeColor">#ffffff</color>
-	<color name="default_secondaryForeColor">#a0a0a0</color>
-	<color name="default_tertiaryForeColor">#c0c0c0</color>
+	<color name="default_primaryForeColor">#FFFFFF</color>
+	<color name="default_secondaryForeColor">#A0A0A0</color>
+	<color name="default_tertiaryForeColor">#C0C0C0</color>
 
 </resources>
