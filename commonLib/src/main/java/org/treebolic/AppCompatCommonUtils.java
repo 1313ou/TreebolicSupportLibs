@@ -51,39 +51,30 @@ public class AppCompatCommonUtils
 		{
 			return null;
 		}
-		int intValue;
 		try
 		{
-			intValue = sharedPrefs.getInt(PREF_THEME, 0);
-		}
-		catch (ClassCastException ce)
-		{
-			intValue = 0;
-		}
-		if (intValue == 0)
-		{
-			sharedPrefs.edit() //
-					.remove(PREF_THEME) //
-					.apply();
-			return null;
-		}
-
-		final Resources resources = context.getResources();
-		try
-		{
-			final String type = resources.getResourceTypeName(intValue);
-			if ("style".equals(type))
+			String strValue = sharedPrefs.getString(PREF_THEME, null);
+			if (strValue != null)
 			{
-				Log.d(TAG, "Theme " + type + ' ' + resources.getResourceName(intValue));
-				return intValue;
+				int intValue = Integer.parseInt(strValue);
+				if (intValue != 0)
+				{
+					final Resources resources = context.getResources();
+					final String type = resources.getResourceTypeName(intValue);
+					if ("style".equals(type))
+					{
+						Log.d(TAG, "Theme " + type + ' ' + resources.getResourceName(intValue));
+						return intValue;
+					}
+				}
 			}
 		}
-		catch (Resources.NotFoundException ignored)
+		catch (NumberFormatException | Resources.NotFoundException | ClassCastException ignored)
 		{
-			sharedPrefs.edit() //
-					.remove(PREF_THEME) //
-					.apply();
 		}
+		sharedPrefs.edit() //
+				.remove(PREF_THEME) //
+				.apply();
 		return null;
 	}
 
