@@ -25,7 +25,7 @@
 					android:layout_centerHorizontal="true"
 					android:layout_gravity="center"
 					android:contentDescription="@string/tip_info"
-					android:src="@drawable/ic_tip_info"/>
+					android:src="@drawable/ic_tip_info" />
 
 				<ImageButton
 					android:id="@+id/tip_dismiss"
@@ -38,7 +38,7 @@
 					android:paddingLeft="1dp"
 					android:paddingEnd="10dp"
 					android:paddingRight="10dp"
-					android:src="@drawable/ic_tip_close"/>
+					android:src="@drawable/ic_tip_close" />
 
 			</RelativeLayout>
 
@@ -49,7 +49,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_press"
-				android:text="@string/tip_gesture_press"/>
+				android:text="@string/tip_gesture_press" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_press"
@@ -59,7 +59,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_press"/>
+				android:text="@string/tip_effect_press" />
+
 		</TableRow>
 
 		<TableRow style="@style/tip">
@@ -67,7 +68,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_doubletap"
-				android:text="@string/tip_gesture_doubletap"/>
+				android:text="@string/tip_gesture_doubletap" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_doubletap"
@@ -77,7 +78,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_doubletap"/>
+				android:text="@string/tip_effect_doubletap" />
+
 		</TableRow>
 
 		<TableRow style="@style/tip">
@@ -85,7 +87,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_drag"
-				android:text="@string/tip_gesture_drag"/>
+				android:text="@string/tip_gesture_drag" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_drag"
@@ -95,7 +97,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_drag"/>
+				android:text="@string/tip_effect_drag" />
+
 		</TableRow>
 
 		<TableRow style="@style/tip">
@@ -103,7 +106,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_pinch_open_ne_sw"
-				android:text="@string/tip_gesture_pinch_open_ne_sw"/>
+				android:text="@string/tip_gesture_pinch_open_ne_sw" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_open_ne_sw"
@@ -113,7 +116,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_pinch_open_ne_sw"/>
+				android:text="@string/tip_effect_pinch_open_ne_sw" />
+
 		</TableRow>
 
 		<TableRow style="@style/tip">
@@ -121,7 +125,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_pinch_close_ne_sw"
-				android:text="@string/tip_gesture_pinch_close_ne_sw"/>
+				android:text="@string/tip_gesture_pinch_close_ne_sw" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_close_ne_sw"
@@ -131,7 +135,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_pinch_close_ne_sw"/>
+				android:text="@string/tip_effect_pinch_close_ne_sw" />
+
 		</TableRow>
 
 		<TableRow style="@style/tip">
@@ -139,7 +144,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_pinch_open_nw_se"
-				android:text="@string/tip_gesture_pinch_open_nw_se"/>
+				android:text="@string/tip_gesture_pinch_open_nw_se" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_open_nw_se"
@@ -149,7 +154,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_pinch_open_nw_se"/>
+				android:text="@string/tip_effect_pinch_open_nw_se" />
+
 		</TableRow>
 
 		<TableRow style="@style/tip">
@@ -157,7 +163,7 @@
 			<TextView
 				style="@style/tipGesture"
 				android:labelFor="@id/tip_gesture_pinch_close_nw_se"
-				android:text="@string/tip_gesture_pinch_close_nw_se"/>
+				android:text="@string/tip_gesture_pinch_close_nw_se" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_close_nw_se"
@@ -167,7 +173,8 @@
 
 			<TextView
 				style="@style/tipEffect"
-				android:text="@string/tip_effect_pinch_close_nw_se"/>
+				android:text="@string/tip_effect_pinch_close_nw_se" />
+
 		</TableRow>
 
 	</TableLayout>
