@@ -32,7 +32,7 @@ public class AppCompatCommonUtils
 	{
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final SharedPreferences.Editor editor = sharedPrefs.edit();
-		editor.putString(PREF_THEME, Integer.toString(themeIdx));
+		editor.putInt(PREF_THEME, themeIdx);
 		tryCommit(editor);
 	}
 
@@ -47,17 +47,24 @@ public class AppCompatCommonUtils
 	static public Integer getThemePref(@NonNull final Context context)
 	{
 		final SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-		final String value = sharedPrefs.getString(PREF_THEME, null);
-		if (value == null)
+		if (!sharedPrefs.contains(PREF_THEME))
 		{
 			return null;
 		}
-		int intValue = Integer.parseInt(value);
+		int intValue;
+		try
+		{
+			intValue = sharedPrefs.getInt(PREF_THEME, 0);
+		}
+		catch (ClassCastException ce)
+		{
+			intValue = 0;
+		}
 		if (intValue == 0)
 		{
-			final SharedPreferences.Editor editor = sharedPrefs.edit();
-			editor.remove(PREF_THEME);
-			editor.apply();
+			sharedPrefs.edit() //
+					.remove(PREF_THEME) //
+					.apply();
 			return null;
 		}
 
@@ -67,15 +74,15 @@ public class AppCompatCommonUtils
 			final String type = resources.getResourceTypeName(intValue);
 			if ("style".equals(type))
 			{
-				Log.d(TAG, "Theme " + type + ' ' + resources.getResourceName(intValue) + ' ' + context.getResources().getResourceEntryName(intValue));
+				Log.d(TAG, "Theme " + type + ' ' + resources.getResourceName(intValue));
 				return intValue;
 			}
 		}
 		catch (Resources.NotFoundException ignored)
 		{
-			final SharedPreferences.Editor editor = sharedPrefs.edit();
-			editor.remove(PREF_THEME);
-			editor.apply();
+			sharedPrefs.edit() //
+					.remove(PREF_THEME) //
+					.apply();
 		}
 		return null;
 	}
