@@ -5,10 +5,10 @@
 <resources>
 
 	<!-- generic -->
-	<color name="default_backgroundColor">@android:color/white</color> <!-- generic window background -->
-	<color name="default_foregroundColor">#404040</color> <!-- generic window foreground -->
-	<color name="default_highlightOnBackgroundColor">@android:color/black</color>
-	<color name="default_dimmedOnBackgroundColor">#808080</color>
+	<color name="default_backgroundColor">@color/backgroundColor</color> <!-- generic window background -->
+	<color name="default_foregroundColor">@color/foregroundColor</color> <!-- generic window foreground -->
+	<color name="default_highlightOnBackgroundColor">@color/highlightOnBackgroundColor</color>
+	<color name="default_dimmedOnBackgroundColor">@color/dimmedOnBackgroundColor</color>
 
 	<!-- primary -->
 	<color name="default_primaryColor">#4251BD</color>
