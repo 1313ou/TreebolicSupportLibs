@@ -5,7 +5,7 @@
 <resources>
 
 	<!-- generic -->
-	<color name="backgroundColor">@android:color/white</color> <!-- generic window background -->
+	<color name="backgroundColor">#E0E0E0</color> <!-- generic window background -->
 	<color name="foregroundColor">#404040</color> <!-- generic window foreground -->
 	<color name="highlightOnBackgroundColor">@android:color/black</color>
 	<color name="dimmedOnBackgroundColor">#808080</color>
