@@ -88,16 +88,28 @@
 
 		</FrameLayout>
 
-		<TextView
-			android:id="@+id/src"
+		<ImageView
+			android:id="@+id/imgsrc"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_above="@+id/mid"
 			android:layout_centerHorizontal="true"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
+			android:layout_marginStart="50dp"
+			android:layout_marginEnd="50dp"
 			android:layout_marginBottom="10dp"
-			android:drawablePadding="5dp"
+			android:contentDescription="@string/src"
+			android:src="@drawable/ic_download_source"
+			app:tint="?android:attr/colorForeground" />
+
+		<TextView
+			android:id="@+id/src"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_above="@+id/imgsrc"
+			android:layout_centerHorizontal="true"
+			android:layout_marginStart="50dp"
+			android:layout_marginEnd="50dp"
+			android:layout_marginBottom="10dp"
 			android:ellipsize="marquee"
 			android:focusable="true"
 			android:focusableInTouchMode="true"
@@ -107,18 +119,43 @@
 			android:scrollHorizontally="true"
 			android:singleLine="true"
 			android:text="@string/src"
-			app:drawableTopCompat="@drawable/ic_download_source" />
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/src2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_above="@+id/src"
+			android:layout_centerHorizontal="true"
+			android:layout_marginStart="50dp"
+			android:layout_marginEnd="50dp"
+			android:scrollHorizontally="true"
+			android:singleLine="true"
+			android:text="@string/src"
+			tools:ignore="InconsistentLayout" />
+
+		<ImageView
+			android:id="@+id/imgtarget"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/mid"
+			android:layout_centerHorizontal="true"
+			android:layout_marginStart="50dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginEnd="50dp"
+			android:contentDescription="@string/target"
+			android:src="@drawable/ic_download_dest"
+			app:tint='?android:attr/colorForeground' />
 
 		<TextView
 			android:id="@+id/target"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_below="@+id/mid"
+			android:layout_below="@+id/imgtarget"
 			android:layout_centerHorizontal="true"
-			android:layout_marginLeft="10dp"
+			android:layout_marginStart="50dp"
 			android:layout_marginTop="10dp"
-			android:layout_marginRight="10dp"
-			android:drawablePadding="5dp"
+			android:layout_marginEnd="50dp"
 			android:ellipsize="marquee"
 			android:focusable="true"
 			android:focusableInTouchMode="true"
@@ -128,7 +165,7 @@
 			android:scrollHorizontally="true"
 			android:singleLine="true"
 			android:text="@string/target"
-			app:drawableBottomCompat="@drawable/ic_download_dest" />
+			android:textStyle="bold" />
 
 	</RelativeLayout>
 

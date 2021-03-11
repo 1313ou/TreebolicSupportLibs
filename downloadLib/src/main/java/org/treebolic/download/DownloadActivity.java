@@ -74,9 +74,6 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	@SuppressWarnings("CanBeFinal")
 	protected String downloadUrl;
 
-	@SuppressWarnings("WeakerAccess")
-	protected Uri downloadUri;
-
 	/**
 	 * Download manager
 	 */
@@ -105,9 +102,14 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	private TextView progressStatus;
 
 	/**
-	 * Source
+	 * Source (file)
 	 */
 	private TextView src;
+
+	/**
+	 * Source 2 (server)
+	 */
+	private TextView src2;
 
 	/**
 	 * Target
@@ -182,8 +184,9 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		showDownloadButton.setOnClickListener(this);
 		this.progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		this.progressStatus = (TextView) findViewById(R.id.progressStatus);
-		this.src = (TextView) findViewById(R.id.src);
-		this.target = (TextView) findViewById(R.id.target);
+		this.src = findViewById(R.id.src);
+		this.src2 = findViewById(R.id.src2);
+		this.target = findViewById(R.id.target);
 		this.expandArchiveCheckbox = (CheckBox) findViewById(R.id.expandArchive);
 		this.expandArchiveCheckbox.setOnClickListener(new OnClickListener()
 		{
@@ -240,7 +243,13 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	protected void onPostCreate(final Bundle savedInstanceState)
 	{
 		super.onPostCreate(savedInstanceState);
-		this.src.setText(this.downloadUrl);
+
+		final Uri downloadUri = Uri.parse(this.downloadUrl);
+		final String downloadUriStr = downloadUri.toString();
+		final String file = downloadUri.getLastPathSegment();
+		final String where = downloadUriStr.substring(0, downloadUriStr.length() - file.length());
+		this.src.setText(file);
+		this.src2.setText(where);
 		this.target.setText(getString(R.string.internal));
 	}
 
@@ -300,13 +309,13 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 	 */
 	protected void start(@StringRes final int titleRes)
 	{
-		this.downloadUri = Uri.parse(this.downloadUrl);
+		final Uri downloadUri = Uri.parse(this.downloadUrl);
 		try
 		{
-			final Request request = new Request(this.downloadUri);
-			Log.d(DownloadActivity.TAG, "Source " + this.downloadUri);
+			final Request request = new Request(downloadUri);
+			Log.d(DownloadActivity.TAG, "Source " + downloadUri);
 			request.setTitle(getResources().getText(titleRes));
-			request.setDescription(this.downloadUri.getLastPathSegment());
+			request.setDescription(downloadUri.getLastPathSegment());
 
 			// @formatter: off
 			//  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)

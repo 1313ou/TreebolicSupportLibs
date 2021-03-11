@@ -400,7 +400,6 @@ public class ColorPickerView extends View
 		// If the hue has changed we need to recreate the cache.
 		if (this.satValBackgroundCache == null || this.satValBackgroundCache.value != this.hue)
 		{
-
 			if (this.satValBackgroundCache == null)
 			{
 				this.satValBackgroundCache = new BitmapCache();
