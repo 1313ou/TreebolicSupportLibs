@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 public class DataUtils
@@ -51,8 +50,8 @@ public class DataUtils
 
 	// S A M P L E S
 
-	@Nullable
-	static String[] WORD_LIST = {"abandon", "leave", "inveigle", "foist", "flounder", "flout"};
+	//@Nullable
+	//static String[] WORD_LIST = {"abandon", "leave", "inveigle", "foist", "flounder", "flout"};
 
 	static public String[] getWordList()
 	{
@@ -84,7 +83,6 @@ public class DataUtils
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	static private String[] readWordListAlt()
 	{
 		final List<String> list = new ArrayList<>();

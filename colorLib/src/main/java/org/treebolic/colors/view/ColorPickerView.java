@@ -911,7 +911,8 @@ public class ColorPickerView extends View
 
 				finalWidth = widthAllowed;
 			}
-			else //noinspection ConstantConditions
+			else
+				//noinspection ConstantConditions
 				if (heightMode == MeasureSpec.EXACTLY && widthMode != MeasureSpec.EXACTLY)
 				{
 					// The height has been specified exactly, we need to stay within this height and adopt the width.

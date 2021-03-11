@@ -262,9 +262,8 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		}
 
 		@NonNull
-		@SuppressWarnings("NullableProblems")
 		@Override
-		public View getView(final int position, final View convertView, @SuppressWarnings("NullableProblems") final ViewGroup parent)
+		public View getView(final int position, final View convertView, final ViewGroup parent)
 		{
 			View view = convertView;
 			if (view == null)
@@ -367,7 +366,6 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	 */
 	private List<String> extensions;
 
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
 	{

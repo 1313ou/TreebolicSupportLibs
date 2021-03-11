@@ -51,7 +51,6 @@ public class Seq
 	/**
 	 * Press back control
 	 */
-	@SuppressWarnings("unused")
 	static public void do_pressBack()
 	{
 		onView(isRoot()).perform(pressBack());
@@ -63,7 +62,6 @@ public class Seq
 	 * @param editTextViewId EditTextView id
 	 * @param text           text
 	 */
-	@SuppressWarnings("unused")
 	static public void do_type(@SuppressWarnings("SameParameterValue") @IdRes final int editTextViewId, @NonNull final String text)
 	{
 		onView(withId(editTextViewId)) //
@@ -78,7 +76,6 @@ public class Seq
 	 * @param searchViewId SearchView id
 	 * @param text         text
 	 */
-	@SuppressWarnings("unused")
 	static public void do_typeSearch(@IdRes final int searchViewId, final String text)
 	{
 		final Matcher<View> searchView = withId(searchViewId);
@@ -103,7 +100,6 @@ public class Seq
 	 *
 	 * @param buttonId Button id
 	 */
-	@SuppressWarnings("unused")
 	static public void do_click(@IdRes final int buttonId)
 	{
 		onView(withId(buttonId)) //
@@ -118,7 +114,6 @@ public class Seq
 	 * @param menuId   Menu id
 	 * @param menuText Text in menu item to click
 	 */
-	@SuppressWarnings("unused")
 	static public void do_menu(final @IdRes int menuId, @StringRes int menuText)
 	{
 		onView(Matchers.withMenuIdOrText(menuId, menuText)).perform(click());
@@ -129,7 +124,6 @@ public class Seq
 	 *
 	 * @param menuText Text in menu item to click
 	 */
-	@SuppressWarnings("unused")
 	static public void do_options_menu(final @StringRes int menuText)
 	{
 		openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
@@ -142,7 +136,6 @@ public class Seq
 	 * @param spinnerId  Spinner id
 	 * @param targetText Text in spinner item to click
 	 */
-	@SuppressWarnings("Unused")
 	static public void do_choose(@IdRes int spinnerId, final String targetText)
 	{
 		// expand spinner
@@ -181,7 +174,6 @@ public class Seq
 	 *
 	 * @param viewId View id
 	 */
-	@SuppressWarnings("unused")
 	static public void do_swipeUp(@IdRes final int viewId)
 	{
 		onView(withId(viewId)) //

@@ -218,7 +218,6 @@ public class Storage
 	 *
 	 * @return (cached) external storage directory
 	 */
-	@SuppressWarnings("deprecation")
 	@Nullable
 	static private String discoverExternalStorage()
 	{
@@ -298,7 +297,6 @@ public class Storage
 	 *
 	 * @return map per type of of external storage directories
 	 */
-	@SuppressWarnings("deprecation")
 	@NonNull
 	public static Map<StorageType, String[]> getStorageDirectories()
 	{
@@ -426,7 +424,6 @@ public class Storage
 	 * @return Treebolic storage
 	 */
 	@Nullable
-	@SuppressWarnings({"WeakerAccess", "deprecation"})
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static public File discoverTreebolicStorage(@NonNull final Context context)
 	{
@@ -866,7 +863,6 @@ public class Storage
 	 *
 	 * @return list of storage directories
 	 */
-	@SuppressWarnings("deprecation")
 	@NonNull
 	@TargetApi(Build.VERSION_CODES.KITKAT)
 	static private Collection<Directory> getDirectories()
@@ -1049,7 +1045,6 @@ public class Storage
 	 *
 	 * @return user id
 	 */
-	@SuppressWarnings("deprecation")
 	@NonNull
 	static private String getUserId()
 	{
