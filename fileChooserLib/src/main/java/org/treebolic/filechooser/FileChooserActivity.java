@@ -393,7 +393,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 		this.listView.setOnItemLongClickListener(this);
 
 		// default
-		this.currentDir = Environment.getExternalStorageDirectory();
+		this.currentDir = getExternalFilesDir(null);
 		assert this.currentDir != null;
 
 		// extras
