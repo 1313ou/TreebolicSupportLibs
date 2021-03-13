@@ -13,5 +13,6 @@
 
 	<!-- title -->
 	<string name="title_activity_settings" tools:keep="@string/title_activity_settings">Paramètres</string>
+	<string name="pref_title_reset">RAZ</string>
 
 </resources>
