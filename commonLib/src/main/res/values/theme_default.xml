@@ -10,8 +10,8 @@
 		<!-- framework colors -->
 		<item name="android:colorBackground">@color/default_backgroundColor</item>
 		<item name="android:colorForeground">@color/default_foregroundColor</item>
-		<!-- <item name="colorOnSurface">@color/default_backgroundColor</item>-->
-		<!-- <item name="colorSurface">@color/default_foregroundColor</item>-->
+		<item name="colorOnSurface">@color/default_backgroundColor</item>
+		<item name="colorSurface">@color/default_foregroundColor</item>
 
 		<item name="colorPrimary">@color/default_primaryColor</item> <!-- app branding color for the app bar -->
 		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item> <!-- darker variant for the status bar and contextual app bars -->
