@@ -144,11 +144,13 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 	// U T I L S
 
 	@Override
-	public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref)
+	public boolean onPreferenceStartFragment(@NonNull PreferenceFragmentCompat caller, Preference pref)
 	{
 		// Instantiate the new Fragment
 		final Bundle args = pref.getExtras();
-		final Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(getClassLoader(), pref.getFragment());
+		final String className = pref.getFragment();
+		assert className != null;
+		final Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(getClassLoader(), className);
 		fragment.setArguments(args);
 		fragment.setTargetFragment(caller, 0);
 

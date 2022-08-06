@@ -123,17 +123,17 @@ public class Wait
 
 	static public void until(@IdRes int resId, int sec)
 	{
-		onView(isRoot()).perform(waitId(resId, sec * 1000));
+		onView(isRoot()).perform(waitId(resId, sec * 1000L));
 	}
 
 	static public void until_not_text(@IdRes int resId, String target, int sec)
 	{
-		onView(isRoot()).perform(waitIdText(resId, target, true, sec * 1000));
+		onView(isRoot()).perform(waitIdText(resId, target, true, sec * 1000L));
 	}
 
 	static public void until_text(@IdRes int resId, String target, int sec)
 	{
-		onView(isRoot()).perform(waitIdText(resId, target, false, sec * 1000));
+		onView(isRoot()).perform(waitIdText(resId, target, false, sec * 1000L));
 	}
 
 	static private final int PAUSE_UNIT = 1000;
@@ -142,7 +142,7 @@ public class Wait
 	{
 		try
 		{
-			Thread.sleep(PAUSE_UNIT * sec);
+			Thread.sleep((long) PAUSE_UNIT * sec);
 		}
 		catch (InterruptedException e)
 		{

@@ -173,7 +173,9 @@ public class ColorPickerPreference extends DialogPreference
 				return false;
 			}
 
-			final SharedPreferences.Editor editor = getSharedPreferences().edit();
+			final SharedPreferences sharedPrefs = getSharedPreferences();
+			assert sharedPrefs != null;
+			final SharedPreferences.Editor editor = sharedPrefs.edit();
 			editor.remove(getKey());
 			tryCommit(editor);
 			return true;

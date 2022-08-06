@@ -735,6 +735,7 @@ public class ColorPickerView extends View
 
 					if (!this.showAlphaPanel || this.alphaRect == null)
 					{
+						//noinspection ConstantConditions
 						update = false;
 					}
 					else

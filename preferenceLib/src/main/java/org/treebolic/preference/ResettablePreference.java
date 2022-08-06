@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -42,7 +43,7 @@ public class ResettablePreference extends Preference
 	}
 
 	@Override
-	public void onBindViewHolder(final PreferenceViewHolder holder)
+	public void onBindViewHolder(@NonNull final PreferenceViewHolder holder)
 	{
 		super.onBindViewHolder(holder);
 
