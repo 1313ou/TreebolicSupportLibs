@@ -115,10 +115,11 @@ public class OpenEditTextPreference extends DialogPreference
 	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		// obtain values through styled attributes
-		final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference);
-		this.values = array.getTextArray(R.styleable.OpenEditTextPreference_values);
-		this.labels = array.getTextArray(R.styleable.OpenEditTextPreference_labels);
-		array.recycle();
+		try(final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference))
+		{
+			this.values = array.getTextArray(R.styleable.OpenEditTextPreference_values);
+			this.labels = array.getTextArray(R.styleable.OpenEditTextPreference_labels);
+		}
 
 		// ensure not null
 		if (this.values == null)

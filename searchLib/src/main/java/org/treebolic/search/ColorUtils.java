@@ -88,17 +88,12 @@ public class ColorUtils
 
 		// now get action bar style values
 		final int[] attrs = new int[]{colorAttrId};
-		final TypedArray array = theme.obtainStyledAttributes(resId, attrs);
 
 		// get color
-		try
+		try(final TypedArray array = theme.obtainStyledAttributes(resId, attrs);)
 		{
 			// Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + Integer.toHexString(intColor));
 			return array.getColor(0 /* index */, 0xCCCCCCCC /* defaultVal */);
-		}
-		finally
-		{
-			array.recycle();
 		}
 	}
 

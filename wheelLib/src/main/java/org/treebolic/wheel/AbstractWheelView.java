@@ -175,15 +175,16 @@ public abstract class AbstractWheelView extends AbstractWheel
 	{
 		super.initAttributes(context, attrs, defStyle);
 
-		final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
-		this.mItemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA);
-		this.mSelectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA);
-		this.mSelectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA);
-		this.mSelectionDividerTint = array.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT);
-		this.mItemOffsetPercent = array.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT);
-		this.mItemsPadding = array.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING);
-		this.mSelectionDivider = array.getDrawable(R.styleable.AbstractWheelView_selectionDivider);
-		array.recycle();
+		try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0))
+		{
+			this.mItemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA);
+			this.mSelectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA);
+			this.mSelectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA);
+			this.mSelectionDividerTint = array.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT);
+			this.mItemOffsetPercent = array.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT);
+			this.mItemsPadding = array.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING);
+			this.mSelectionDivider = array.getDrawable(R.styleable.AbstractWheelView_selectionDivider);
+		}
 		//this.mSelectionDivider.setTint(this.mSelectionDividerTint);
 	}
 

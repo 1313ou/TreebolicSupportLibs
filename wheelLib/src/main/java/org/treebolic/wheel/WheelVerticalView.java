@@ -90,9 +90,10 @@ public class WheelVerticalView extends AbstractWheelView
 
 		if (attrs != null)
 		{
-			final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0);
-			this.mSelectionDividerHeight = array.getDimensionPixelSize(R.styleable.WheelVerticalView_selectionDividerHeight, DEF_SELECTION_DIVIDER_SIZE);
-			array.recycle();
+			try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0))
+			{
+				this.mSelectionDividerHeight = array.getDimensionPixelSize(R.styleable.WheelVerticalView_selectionDividerHeight, DEF_SELECTION_DIVIDER_SIZE);
+			}
 		}
 	}
 
