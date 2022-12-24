@@ -153,7 +153,7 @@ public abstract class WheelScroller
 		this.gestureDetector = new GestureDetector(context0, new SimpleOnGestureListener()
 		{
 			@Override
-			public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
+			public boolean onScroll(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float distanceX, float distanceY)
 			{
 				// Do scrolling in onTouchEvent() since onScroll() are not call immediately
 				// when user touch and move the spinnerwheel
@@ -161,7 +161,7 @@ public abstract class WheelScroller
 			}
 
 			@Override
-			public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
+			public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY)
 			{
 				WheelScroller.this.lastScrollPosition = 0;
 				scrollerFling(WheelScroller.this.lastScrollPosition, (int) velocityX, (int) velocityY);

@@ -443,7 +443,8 @@ public class ColorPickerView extends View
 		final Point p = satValToPoint(this.sat, this.val);
 
 		this.satValTrackerPaint.setColor(0xff000000);
-		canvas.drawCircle(p.x, p.y, this.PALETTE_CIRCLE_TRACKER_RADIUS - 1f * ColorPickerView.density, this.satValTrackerPaint);
+		//canvas.drawCircle(p.x, p.y, this.PALETTE_CIRCLE_TRACKER_RADIUS - 1f * ColorPickerView.density, this.satValTrackerPaint);
+		canvas.drawCircle(p.x, p.y, this.PALETTE_CIRCLE_TRACKER_RADIUS - ColorPickerView.density, this.satValTrackerPaint);
 
 		this.satValTrackerPaint.setColor(0xffdddddd);
 		canvas.drawCircle(p.x, p.y, this.PALETTE_CIRCLE_TRACKER_RADIUS, this.satValTrackerPaint);
