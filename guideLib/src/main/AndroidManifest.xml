@@ -1,23 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
-<manifest
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.treebolic.guide">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<application>
 
 		<activity
 			android:name="org.treebolic.guide.AboutActivity"
-			android:label="@string/title_activity_about">
-		</activity>
+			android:label="@string/title_activity_about"></activity>
 
 		<activity
 			android:name="org.treebolic.guide.HelpActivity"
-			android:label="@string/title_activity_help">
-		</activity>
+			android:label="@string/title_activity_help"></activity>
 
 	</application>
 
