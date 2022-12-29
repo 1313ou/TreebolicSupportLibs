@@ -26,5 +26,4 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation files('libs/nineoldandroids-2.2.0.jar')
 }

@@ -4,6 +4,8 @@
 
 package org.treebolic.wheel;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -15,8 +17,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.ObjectAnimator;
+//import com.nineoldandroids.animation.Animator;
+//import com.nineoldandroids.animation.ObjectAnimator;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
@@ -123,13 +125,13 @@ public abstract class AbstractWheelView extends AbstractWheel
 	protected Paint mSeparatorsPaint;
 
 	/**
-	 * {@link com.nineoldandroids.animation.Animator} for dimming the selector spinnerwheel.
+	 * Animator for dimming the selector spinnerwheel.
 	 */
 	@SuppressWarnings("WeakerAccess")
 	protected Animator mDimSelectorWheelAnimator;
 
 	/**
-	 * {@link com.nineoldandroids.animation.Animator} for dimming the selector spinnerwheel.
+	 * Animator for dimming the sepqrator.
 	 */
 	@SuppressWarnings("WeakerAccess")
 	protected Animator mDimSeparatorsAnimator;
