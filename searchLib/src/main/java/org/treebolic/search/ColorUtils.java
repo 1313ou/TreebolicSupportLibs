@@ -90,10 +90,20 @@ public class ColorUtils
 		final int[] attrs = new int[]{colorAttrId};
 
 		// get color
-		try(final TypedArray array = theme.obtainStyledAttributes(resId, attrs))
+		// try (final TypedArray array = theme.obtainStyledAttributes(resId, attrs))
+		TypedArray array = null;
+		try
 		{
+			array = theme.obtainStyledAttributes(resId, attrs);
 			// Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + Integer.toHexString(intColor));
 			return array.getColor(0 /* index */, 0xCCCCCCCC /* defaultVal */);
+		}
+		finally
+		{
+			if (array != null)
+			{
+				array.recycle();
+			}
 		}
 	}
 

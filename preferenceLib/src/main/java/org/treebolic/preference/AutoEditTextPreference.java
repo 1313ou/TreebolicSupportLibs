@@ -89,9 +89,19 @@ public class AutoEditTextPreference extends DialogPreference
 	private void init(@NonNull final Context context, @NonNull final AttributeSet attrs)
 	{
 		// obtain values through styled attributes
-		try(final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference))
+		// try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference))
+		TypedArray array = null;
+		try
 		{
+			array = context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference);
 			this.values = array.getTextArray(R.styleable.AutoEditTextPreference_values);
+		}
+		finally
+		{
+			if (array != null)
+			{
+				array.recycle();
+			}
 		}
 
 		// ensure not null
