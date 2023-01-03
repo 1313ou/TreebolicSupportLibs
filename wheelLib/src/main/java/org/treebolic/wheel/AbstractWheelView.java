@@ -128,7 +128,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	protected Animator mDimSelectorWheelAnimator;
 
 	/**
-	 * Animator for dimming the sepqrator.
+	 * Animator for dimming the separator.
 	 */
 	@SuppressWarnings("WeakerAccess")
 	protected Animator mDimSeparatorsAnimator;
