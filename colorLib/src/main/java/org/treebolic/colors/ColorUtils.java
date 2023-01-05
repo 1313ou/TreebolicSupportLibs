@@ -94,10 +94,11 @@ public class ColorUtils
 	 * @param iconTint    tint
 	 * @return tinted drawable
 	 */
-	@Nullable
+	@NonNull
 	static public Drawable getTintedDrawable(@NonNull final Context context,@DrawableRes final int drawableRes, @ColorInt final int iconTint)
 	{
 		Drawable drawable = getDrawable(context, drawableRes);
+		assert drawable != null;
 		ColorUtils.tint(iconTint, drawable);
 		return drawable;
 	}
