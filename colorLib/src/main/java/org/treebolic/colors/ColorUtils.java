@@ -19,6 +19,7 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -78,6 +79,7 @@ public class ColorUtils
 	 * @param drawableRes drawable id
 	 * @return drawable
 	 */
+	@Nullable
 	@SuppressWarnings({"WeakerAccess"})
 	static public Drawable getDrawable(@NonNull final Context context, @DrawableRes int drawableRes)
 	{
@@ -92,6 +94,7 @@ public class ColorUtils
 	 * @param iconTint    tint
 	 * @return tinted drawable
 	 */
+	@Nullable
 	static public Drawable getTintedDrawable(@NonNull final Context context,@DrawableRes final int drawableRes, @ColorInt final int iconTint)
 	{
 		Drawable drawable = getDrawable(context, drawableRes);

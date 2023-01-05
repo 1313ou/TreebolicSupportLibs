@@ -251,6 +251,7 @@ public abstract class AbstractWheel extends View
 		});
 	}
 
+	@NonNull
 	@Override
 	public Parcelable onSaveInstanceState()
 	{

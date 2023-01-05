@@ -15,22 +15,22 @@ import androidx.preference.PreferenceViewHolder;
 
 public class ResettablePreference extends Preference
 {
-	public ResettablePreference(final Context context)
+	public ResettablePreference(@NonNull final Context context)
 	{
 		super(context);
 	}
 
-	public ResettablePreference(final Context context, final AttributeSet attrs, final int defStyleAttr, final int defStyleRes)
+	public ResettablePreference(@NonNull final Context context, final AttributeSet attrs, final int defStyleAttr, final int defStyleRes)
 	{
 		super(context, attrs, defStyleAttr, defStyleRes);
 	}
 
-	public ResettablePreference(final Context context, final AttributeSet attrs, final int defStyleAttr)
+	public ResettablePreference(@NonNull final Context context, final AttributeSet attrs, final int defStyleAttr)
 	{
 		super(context, attrs, defStyleAttr);
 	}
 
-	public ResettablePreference(final Context context, final AttributeSet attrs)
+	public ResettablePreference(@NonNull final Context context, final AttributeSet attrs)
 	{
 		super(context, attrs);
 	}

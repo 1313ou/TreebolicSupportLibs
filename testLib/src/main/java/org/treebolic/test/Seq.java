@@ -76,7 +76,7 @@ public class Seq
 	 * @param searchViewId SearchView id
 	 * @param text         text
 	 */
-	static public void do_typeSearch(@IdRes final int searchViewId, final String text)
+	static public void do_typeSearch(@IdRes final int searchViewId, @NonNull final String text)
 	{
 		final Matcher<View> searchView = withId(searchViewId);
 

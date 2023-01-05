@@ -25,10 +25,11 @@ import static org.hamcrest.Matchers.allOf;
 public class Actions
 {
 	@NonNull
-	static ViewAction onlyIf(final ViewAction action, final Matcher<View> constraints)
+	static ViewAction onlyIf(@NonNull final ViewAction action, @NonNull final Matcher<View> constraints)
 	{
 		return new ViewAction()
 		{
+			@NonNull
 			@Override
 			public Matcher<View> getConstraints()
 			{
@@ -50,16 +51,18 @@ public class Actions
 	}
 
 	@NonNull
-	static ViewAction andThen(final ViewAction action1, final ViewAction action2)
+	static ViewAction andThen(@NonNull final ViewAction action1, @NonNull final ViewAction action2)
 	{
 		return new ViewAction()
 		{
+			@NonNull
 			@Override
 			public Matcher<View> getConstraints()
 			{
 				return allOf(action1.getConstraints(), action2.getConstraints());
 			}
 
+			@NonNull
 			@Override
 			public String getDescription()
 			{
@@ -76,16 +79,18 @@ public class Actions
 	}
 
 	@NonNull
-	static ViewAction andThen(final ViewAction action1, final ViewAction action2, @SuppressWarnings("SameParameterValue") int lapse)
+	static ViewAction andThen(@NonNull final ViewAction action1, @NonNull final ViewAction action2, @SuppressWarnings("SameParameterValue") int lapse)
 	{
 		return new ViewAction()
 		{
+			@NonNull
 			@Override
 			public Matcher<View> getConstraints()
 			{
 				return allOf(action1.getConstraints(), action2.getConstraints());
 			}
 
+			@NonNull
 			@Override
 			public String getDescription()
 			{
@@ -102,16 +107,19 @@ public class Actions
 		};
 	}
 
+	@NonNull
 	static ViewAction touchDownAndUp(final float x, final float y)
 	{
 		return new ViewAction()
 		{
+			@NonNull
 			@Override
 			public Matcher<View> getConstraints()
 			{
 				return isDisplayed();
 			}
 
+			@NonNull
 			@Override
 			public String getDescription()
 			{
@@ -119,7 +127,7 @@ public class Actions
 			}
 
 			@Override
-			public void perform(UiController uiController, final View view)
+			public void perform(@NonNull UiController uiController, @NonNull final View view)
 			{
 				// Get view absolute position
 				int[] location = new int[2];
@@ -137,21 +145,25 @@ public class Actions
 		};
 	}
 
+	@NonNull
 	public static ViewAction drag(final CoordinatesProvider from, final CoordinatesProvider to)
 	{
 		return new GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER);
 	}
 
+	@NonNull
 	public static ViewAction dragBack(final CoordinatesProvider from, final CoordinatesProvider to)
 	{
 		return andThen(new GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER), new GeneralSwipeAction(Swipe.SLOW, to, from, Press.FINGER), 1);
 	}
 
+	@NonNull
 	public static ViewAction dragBack(final CoordinatesProvider from, final CoordinatesProvider to, final CoordinatesProvider to2)
 	{
 		return andThen(new GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER), new GeneralSwipeAction(Swipe.SLOW, from, to2, Press.FINGER), 1);
 	}
 
+	@NonNull
 	public static ViewAction dragBack2(final CoordinatesProvider from, final CoordinatesProvider to, final CoordinatesProvider to2)
 	{
 		return andThen( //

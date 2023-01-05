@@ -593,7 +593,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	}
 
 	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
-	static public void setFolder(final Context context, final String key, final String folder)
+	static public void setFolder(@NonNull final Context context, final String key, final String folder)
 	{
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final SharedPreferences.Editor edit = prefs.edit();
@@ -601,7 +601,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 	}
 
 	@Nullable
-	static public File getFolder(final Context context, final String key)
+	static public File getFolder(@NonNull final Context context, final String key)
 	{
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		final String path = prefs.getString(key, null);

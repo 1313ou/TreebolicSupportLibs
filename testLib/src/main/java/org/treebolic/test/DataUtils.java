@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 public class DataUtils
@@ -27,7 +28,7 @@ public class DataUtils
 	static private final String LIST_FILE = "tests/sqlunet.list";
 
 	@NonNull
-	static public String arrayToString(int... a)
+	static public String arrayToString(@NonNull int... a)
 	{
 		final StringBuilder sb = new StringBuilder();
 		sb.append('{');
@@ -53,11 +54,13 @@ public class DataUtils
 	//@Nullable
 	//static String[] WORD_LIST = {"abandon", "leave", "inveigle", "foist", "flounder", "flout"};
 
+	@Nullable
 	static public String[] getWordList()
 	{
 		return readWordList();
 	}
 
+	@Nullable
 	static private String[] readWordList()
 	{
 		final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -83,6 +86,7 @@ public class DataUtils
 		}
 	}
 
+	@Nullable
 	static private String[] readWordListAlt()
 	{
 		final List<String> list = new ArrayList<>();
