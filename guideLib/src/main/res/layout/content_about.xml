@@ -5,10 +5,10 @@
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="org.treebolic.guide.AboutActivity">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="org.treebolic.guide.AboutActivity">
 
 	<LinearLayout
 		android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:contentDescription="@string/about_desc_treebolic_logo"
-			android:src="@drawable/ic_about_logo"/>
+			android:src="@drawable/ic_about_logo" />
 
 		<TextView
 			android:layout_width="wrap_content"
@@ -32,27 +32,27 @@
 			android:layout_gravity="center_horizontal"
 			android:text="@string/about_treebolic_label"
 			android:textSize="20sp"
-			android:textStyle="bold"/>
+			android:textStyle="bold" />
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:gravity="center"
-			android:text="@string/about_treebolic_text"/>
+			android:text="@string/about_treebolic_text" />
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:text="@string/about_treebolic_author"
-			android:textStyle="italic"/>
+			android:textStyle="italic" />
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:text="@string/about_treebolic_copyright"/>
+			android:text="@string/about_treebolic_copyright" />
 
 		<TextView
 			style="@android:style/TextAppearance.Small"
@@ -64,7 +64,7 @@
 			android:clickable="true"
 			android:linksClickable="true"
 			android:textIsSelectable="false"
-			android:focusable="true"/>
+			android:focusable="true" />
 
 	</LinearLayout>
 

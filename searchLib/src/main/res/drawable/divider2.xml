@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
@@ -8,6 +7,6 @@
 	<gradient
 		android:centerColor="#FF808080"
 		android:endColor="#00808080"
-		android:startColor="#FF808080"/>
+		android:startColor="#FF808080" />
 
 </shape>

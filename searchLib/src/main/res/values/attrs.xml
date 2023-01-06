@@ -3,6 +3,6 @@
   -->
 
 <resources>
-	<attr name="treebolic_search_settings_background" format="color|reference"/>
-	<attr name="treebolic_search_settings_foreground" format="color|reference"/>
+	<attr name="treebolic_search_settings_background" format="color|reference" />
+	<attr name="treebolic_search_settings_foreground" format="color|reference" />
 </resources>

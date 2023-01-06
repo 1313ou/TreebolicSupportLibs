@@ -69,9 +69,7 @@ public class Deployer
 		{
 			return false;
 		}
-		try(
-		InputStream in = assetManager.open(assetPath);
-		OutputStream out = new FileOutputStream(toPath))
+		try (InputStream in = assetManager.open(assetPath); OutputStream out = new FileOutputStream(toPath))
 		{
 			copyFile(in, out);
 			return true;
@@ -199,7 +197,7 @@ public class Deployer
 		destDir.mkdir();
 
 		// read and expand entries
-		try( ZipInputStream zis = new ZipInputStream(in))
+		try (ZipInputStream zis = new ZipInputStream(in))
 		{
 			// get the zipped file list entry
 			final byte[] buffer = new byte[1024];

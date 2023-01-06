@@ -31,8 +31,7 @@
 	</style>
 
 	<!-- Preference -->
-	<style name="MyPreferenceTheme" parent="PreferenceThemeOverlay">
-	</style>
+	<style name="MyPreferenceTheme" parent="PreferenceThemeOverlay"></style>
 
 	<!-- W I D G E T   S T Y L E S -->
 

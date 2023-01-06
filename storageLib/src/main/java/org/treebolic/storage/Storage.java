@@ -111,32 +111,32 @@ public class Storage
 
 		// top-level public external storage directory (KITKAT for DIRECTORY_DOCUMENTS)
 
-//		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
-//		{
-//			File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-//			if (Storage.qualifies(dir))
-//			{
-//				return dir;
-//			}
-//		}
+		//		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)
+		//		{
+		//			File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+		//			if (Storage.qualifies(dir))
+		//			{
+		//				return dir;
+		//			}
+		//		}
 
 		// top-level public in external
-//		try
-//		{
-//			final String storage = Storage.getExternalStorage();
-//			if (storage != null)
-//			{
-//				File dir = new File(storage, Storage.TREEBOLICDIR);
-//				if (Storage.qualifies(dir))
-//				{
-//					return dir;
-//				}
-//			}
-//		}
-//		catch (@NonNull final Throwable ignored)
-//		{
-//			//
-//		}
+		//		try
+		//		{
+		//			final String storage = Storage.getExternalStorage();
+		//			if (storage != null)
+		//			{
+		//				File dir = new File(storage, Storage.TREEBOLICDIR);
+		//				if (Storage.qualifies(dir))
+		//				{
+		//					return dir;
+		//				}
+		//			}
+		//		}
+		//		catch (@NonNull final Throwable ignored)
+		//		{
+		//			//
+		//		}
 
 		// internal private storage
 		return context.getFilesDir();

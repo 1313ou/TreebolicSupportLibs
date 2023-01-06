@@ -1,30 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
 
-<svg
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:cc="http://creativecommons.org/ns#"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-	version="1.1"
-	x="0px"
-	y="0px"
-	width="128"
-	height="128"
-	viewBox="0 0 128 128"
-	enable-background="new 0 0 780 650"
-	xml:space="preserve"
-	id="svg2"
-	inkscape:version="0.48.5 r10040"
-	sodipodi:docname="ic_tip_drag.svg"><metadata
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="128" height="128" viewBox="0 0 128 128" enable-background="new 0 0 780 650"
+	xml:space="preserve" id="svg2" inkscape:version="0.48.5 r10040" sodipodi:docname="ic_tip_drag.svg"><metadata
      id="metadata1456"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-	rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata>
-	<defs
-		id="defs1454"><clipPath
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata>
+	<defs id="defs1454"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath9180"><path
          sodipodi:type="arc"
@@ -36,9 +17,7 @@
          sodipodi:ry="52.026299"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          transform="matrix(1.3993902,0,0,1.1907217,3.486295,1.0575123)" /></clipPath>
-		<clipPath
-			clipPathUnits="userSpaceOnUse"
-			id="clipPath9184"><path
+		<clipPath clipPathUnits="userSpaceOnUse" id="clipPath9184"><path
          sodipodi:type="arc"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          id="path9186"
@@ -48,9 +27,7 @@
          sodipodi:ry="52.026299"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          transform="matrix(0.1815424,0,0,0.1544719,788.01368,700.63965)" /></clipPath>
-		<clipPath
-			id="clipPath9184-0"
-			clipPathUnits="userSpaceOnUse"><path
+		<clipPath id="clipPath9184-0" clipPathUnits="userSpaceOnUse"><path
          transform="matrix(0.1815424,0,0,0.1544719,788.01368,700.63965)"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          sodipodi:ry="52.026299"
@@ -60,9 +37,7 @@
          id="path9186-1"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          sodipodi:type="arc" /></clipPath>
-		<clipPath
-			id="clipPath9180-4"
-			clipPathUnits="userSpaceOnUse"><path
+		<clipPath id="clipPath9180-4" clipPathUnits="userSpaceOnUse"><path
          transform="matrix(1.3993902,0,0,1.1907217,3.486295,1.0575123)"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          sodipodi:ry="52.026299"
@@ -72,9 +47,7 @@
          id="path9182-5"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          sodipodi:type="arc" /></clipPath>
-		<clipPath
-			id="clipPath9184-02"
-			clipPathUnits="userSpaceOnUse"><path
+		<clipPath id="clipPath9184-02" clipPathUnits="userSpaceOnUse"><path
          transform="matrix(0.1815424,0,0,0.1544719,788.01368,700.63965)"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          sodipodi:ry="52.026299"
@@ -84,9 +57,7 @@
          id="path9186-4"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          sodipodi:type="arc" /></clipPath>
-		<clipPath
-			id="clipPath9180-7"
-			clipPathUnits="userSpaceOnUse"><path
+		<clipPath id="clipPath9180-7" clipPathUnits="userSpaceOnUse"><path
          transform="matrix(1.3993902,0,0,1.1907217,3.486295,1.0575123)"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          sodipodi:ry="52.026299"
@@ -96,52 +67,21 @@
          id="path9182-4"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          sodipodi:type="arc" /></clipPath>
-		<linearGradient
-			id="linearGradient2816"><stop
+		<linearGradient id="linearGradient2816"><stop
          style="stop-color:#f07836;stop-opacity:1;"
          offset="0"
          id="stop2818" />
-			<stop
-				style="stop-color:white;stop-opacity:1"
-				offset="1"
-				id="stop2820"/></linearGradient>
-		<linearGradient
-			id="linearGradient2794"><stop
+			<stop style="stop-color:white;stop-opacity:1" offset="1" id="stop2820" /></linearGradient>
+		<linearGradient id="linearGradient2794"><stop
          style="stop-color:#545454;stop-opacity:1"
          offset="0"
          id="stop2796" />
-			<stop
-				style="stop-color:#545454;stop-opacity:1"
-				offset="0.9464286"
-				id="stop2804"/>
-			<stop
-				style="stop-color:#c5c5c5;stop-opacity:0"
-				offset="1"
-				id="stop2798"/></linearGradient>
-		<linearGradient
-			inkscape:collect="always"
-			xlink:href="#linearGradient2816"
-			id="linearGradient3061"
-			gradientUnits="userSpaceOnUse"
-			gradientTransform="matrix(0.89419004,0,0,0.50191997,9.6878701,-0.29570749)"
-			x1="31.5"
-			y1="63"
-			x2="31.5"
-			y2="12"/>
-		<radialGradient
-			inkscape:collect="always"
-			xlink:href="#linearGradient2794"
-			id="radialGradient3065"
-			gradientUnits="userSpaceOnUse"
-			gradientTransform="matrix(1.0578729,0,0,1.1181378,-2.9853126,-10.795733)"
-			cx="62.984127"
-			cy="65.015877"
-			fx="62.984127"
-			fy="65.015877"
-			r="54.179893"/>
-		<clipPath
-			id="clipPath9184-3"
-			clipPathUnits="userSpaceOnUse"><path
+			<stop style="stop-color:#545454;stop-opacity:1" offset="0.9464286" id="stop2804" />
+			<stop style="stop-color:#c5c5c5;stop-opacity:0" offset="1" id="stop2798" /></linearGradient>
+		<linearGradient inkscape:collect="always" xlink:href="#linearGradient2816" id="linearGradient3061" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.89419004,0,0,0.50191997,9.6878701,-0.29570749)" x1="31.5" y1="63" x2="31.5" y2="12" />
+		<radialGradient inkscape:collect="always" xlink:href="#linearGradient2794" id="radialGradient3065" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.0578729,0,0,1.1181378,-2.9853126,-10.795733)" cx="62.984127" cy="65.015877"
+			fx="62.984127" fy="65.015877" r="54.179893" />
+		<clipPath id="clipPath9184-3" clipPathUnits="userSpaceOnUse"><path
          transform="matrix(0.1815424,0,0,0.1544719,788.01368,700.63965)"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          sodipodi:ry="52.026299"
@@ -151,9 +91,7 @@
          id="path9186-10"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          sodipodi:type="arc" /></clipPath>
-		<clipPath
-			id="clipPath9180-45"
-			clipPathUnits="userSpaceOnUse"><path
+		<clipPath id="clipPath9180-45" clipPathUnits="userSpaceOnUse"><path
          transform="matrix(1.3993902,0,0,1.1907217,3.486295,1.0575123)"
          d="m 87.96199,52.105968 a 43.980995,52.026299 0 1 1 -87.96199,0 43.980995,52.026299 0 1 1 87.96199,0 z"
          sodipodi:ry="52.026299"
@@ -163,216 +101,125 @@
          id="path9182-0"
          style="fill:#a9a9a9;fill-opacity:1;fill-rule:evenodd;stroke:none"
          sodipodi:type="arc" /></clipPath></defs>
-	<sodipodi:namedview
-		pagecolor="#ffffff"
-		bordercolor="#666666"
-		borderopacity="1"
-		objecttolerance="10"
-		gridtolerance="10"
-		guidetolerance="10"
-		inkscape:pageopacity="0"
-		inkscape:pageshadow="2"
-		inkscape:window-width="968"
-		inkscape:window-height="848"
-		id="namedview1452"
-		showgrid="false"
-		inkscape:zoom="0.93222087"
-		inkscape:cx="-133.92905"
-		inkscape:cy="224.63264"
-		inkscape:window-x="472"
-		inkscape:window-y="34"
-		inkscape:window-maximized="0"
-		inkscape:current-layer="svg2"/>
-	<g
-		id="Help"
-		transform="matrix(7.7083383,0,0,7.7083383,-6070.7897,-5399.7099)"
-		clip-path="url(#clipPath9184)"><path
+	<sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="968" inkscape:window-height="848"
+		id="namedview1452" showgrid="false" inkscape:zoom="0.93222087" inkscape:cx="-133.92905" inkscape:cy="224.63264" inkscape:window-x="472" inkscape:window-y="34" inkscape:window-maximized="0" inkscape:current-layer="svg2" />
+	<g id="Help" transform="matrix(7.7083383,0,0,7.7083383,-6070.7897,-5399.7099)" clip-path="url(#clipPath9184)"><path
        d="m 509.778,597.159 c -12.427,0 -22.5,10.074 -22.5,22.5 0,12.428 10.073,22.5 22.5,22.5 12.427,0 22.5,-10.072 22.5,-22.5 -10e-4,-12.426 -10.073,-22.5 -22.5,-22.5 z m -0.559,36.414 c -1.676,0 -3.054,-1.379 -3.054,-3.055 0,-1.676 1.378,-3.053 3.054,-3.053 1.677,0 3.054,1.377 3.054,3.053 0,1.676 -1.377,3.055 -3.054,3.055 z m 2.904,-11.791 c -0.892,1.305 -0.594,3.129 -3.052,3.129 -1.602,0 -2.385,-1.305 -2.385,-2.496 0,-4.432 6.519,-5.436 6.519,-9.086 0,-2.012 -1.34,-3.203 -3.576,-3.203 -4.767,0 -2.905,4.916 -6.518,4.916 -1.304,0 -2.421,-0.783 -2.421,-2.271 0,-3.65 4.172,-6.891 8.714,-6.891 4.769,0 9.46,2.197 9.46,7.449 10e-4,4.842 -5.55,6.703 -6.741,8.453 z"
        id="path695"
        inkscape:connector-curvature="0"
        style="fill:#333333" /></g>
-	<style
-		id="style8"
-		type="text/css">
+	<style id="style8" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-7"
-		type="text/css">
+	<style id="style8-7" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-3"
-		type="text/css">
+	<style id="style8-3" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-6"
-		type="text/css">
+	<style id="style8-6" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-1">
+	<style type="text/css" id="style8-1">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-7-0">
+	<style type="text/css" id="style8-7-0">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-3-2">
+	<style type="text/css" id="style8-3-2">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-6-7">
+	<style type="text/css" id="style8-6-7">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<path
-		style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none"
-		d=""
-		id="path7612"
-		inkscape:connector-curvature="0"
-		clip-path="url(#clipPath9180)"/>
-	<style
-		type="text/css"
-		id="style8-2">
+	<path style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none" d="" id="path7612" inkscape:connector-curvature="0" clip-path="url(#clipPath9180)" />
+	<style type="text/css" id="style8-2">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-7-7">
+	<style type="text/css" id="style8-7-7">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-3-1">
+	<style type="text/css" id="style8-3-1">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-6-79">
+	<style type="text/css" id="style8-6-79">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-1-5"
-		type="text/css">
+	<style id="style8-1-5" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-7-0-4"
-		type="text/css">
+	<style id="style8-7-0-4" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-3-2-5"
-		type="text/css">
+	<style id="style8-3-2-5" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-6-7-5"
-		type="text/css">
+	<style id="style8-6-7-5" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<g
-		id="Help-8"
-		transform="matrix(7.7083383,0,0,7.7083383,-6595.8254,-5618.5861)"
-		clip-path="url(#clipPath9184-0)"><path
+	<g id="Help-8" transform="matrix(7.7083383,0,0,7.7083383,-6595.8254,-5618.5861)" clip-path="url(#clipPath9184-0)"><path
        d="m 509.778,597.159 c -12.427,0 -22.5,10.074 -22.5,22.5 0,12.428 10.073,22.5 22.5,22.5 12.427,0 22.5,-10.072 22.5,-22.5 -10e-4,-12.426 -10.073,-22.5 -22.5,-22.5 z m -0.559,36.414 c -1.676,0 -3.054,-1.379 -3.054,-3.055 0,-1.676 1.378,-3.053 3.054,-3.053 1.677,0 3.054,1.377 3.054,3.053 0,1.676 -1.377,3.055 -3.054,3.055 z m 2.904,-11.791 c -0.892,1.305 -0.594,3.129 -3.052,3.129 -1.602,0 -2.385,-1.305 -2.385,-2.496 0,-4.432 6.519,-5.436 6.519,-9.086 0,-2.012 -1.34,-3.203 -3.576,-3.203 -4.767,0 -2.905,4.916 -6.518,4.916 -1.304,0 -2.421,-0.783 -2.421,-2.271 0,-3.65 4.172,-6.891 8.714,-6.891 4.769,0 9.46,2.197 9.46,7.449 10e-4,4.842 -5.55,6.703 -6.741,8.453 z"
        id="path695-7"
        inkscape:connector-curvature="0"
        style="fill:#333333" /></g>
-	<path
-		style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none"
-		d=""
-		id="path7612-6"
-		inkscape:connector-curvature="0"
-		clip-path="url(#clipPath9180-4)"
-		transform="translate(-525.03568,-218.87622)"/>
-	<style
-		type="text/css"
-		id="style8-8">
+	<path style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none" d="" id="path7612-6" inkscape:connector-curvature="0" clip-path="url(#clipPath9180-4)" transform="translate(-525.03568,-218.87622)" />
+	<style type="text/css" id="style8-8">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-7-6">
+	<style type="text/css" id="style8-7-6">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-3-21">
+	<style type="text/css" id="style8-3-21">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-6-4">
+	<style type="text/css" id="style8-6-4">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-1-4"
-		type="text/css">
+	<style id="style8-1-4" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-7-0-7"
-		type="text/css">
+	<style id="style8-7-0-7" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-3-2-0"
-		type="text/css">
+	<style id="style8-3-2-0" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-6-7-1"
-		type="text/css">
+	<style id="style8-6-7-1" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<g
-		id="g3340"
-		transform="matrix(0.05473067,-4.2098859,4.2098859,0.05473067,580.52818,-1669.8509)"><path
+	<g id="g3340" transform="matrix(0.05473067,-4.2098859,4.2098859,0.05473067,580.52818,-1669.8509)"><path
        style="fill:#808080;fill-opacity:1"
        inkscape:connector-curvature="0"
        id="path3344"
        d="m -419.33738,-126.39092 c -3.5311,0 -6.39332,2.87369 -6.39332,6.41831 0,3.54518 2.86222,6.4183 6.39332,6.4183 3.53082,0 6.39332,-2.87312 6.39332,-6.4183 0,-3.54462 -2.8625,-6.41831 -6.39332,-6.41831 z"
        sodipodi:nodetypes="sssss" />
-		<path
-			sodipodi:nodetypes="sssss"
-			d="m -419.33738,-122.39092 c -3.5311,0 -6.39332,2.87369 -6.39332,6.41831 0,3.54518 2.86222,6.4183 6.39332,6.4183 3.53082,0 6.39332,-2.87312 6.39332,-6.4183 0,-3.54462 -2.8625,-6.41831 -6.39332,-6.41831 z"
-			id="path3346"
-			inkscape:connector-curvature="0"
-			style="fill:#1a1a1a;fill-opacity:1"/></g>
-	<g
-		transform="translate(-40.25805,-27.025404)"
-		id="g3348"><g
+		<path sodipodi:nodetypes="sssss" d="m -419.33738,-122.39092 c -3.5311,0 -6.39332,2.87369 -6.39332,6.41831 0,3.54518 2.86222,6.4183 6.39332,6.4183 3.53082,0 6.39332,-2.87312 6.39332,-6.4183 0,-3.54462 -2.8625,-6.41831 -6.39332,-6.41831 z"
+			id="path3346" inkscape:connector-curvature="0" style="fill:#1a1a1a;fill-opacity:1" /></g>
+	<g transform="translate(-40.25805,-27.025404)" id="g3348"><g
        id="g3350"
        transform="matrix(7.7083383,0,0,7.7083383,-6070.7897,-5399.7099)"
        clip-path="url(#clipPath9184-02)"><path
@@ -380,64 +227,40 @@
          id="path3352"
          inkscape:connector-curvature="0"
          style="fill:#333333" /></g>
-		<path
-			style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none"
-			d=""
-			id="path3354"
-			inkscape:connector-curvature="0"
-			clip-path="url(#clipPath9180-7)"/>
-		<g
-			style="fill:#1a1a1a;fill-opacity:1"
-			id="g3358"
-			transform="matrix(1.0879389,0,0,1.0879389,-321.84918,-216.37885)"><polygon
+		<path style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none" d="" id="path3354" inkscape:connector-curvature="0" clip-path="url(#clipPath9180-7)" />
+		<g style="fill:#1a1a1a;fill-opacity:1" id="g3358" transform="matrix(1.0879389,0,0,1.0879389,-321.84918,-216.37885)"><polygon
          id="polygon3360"
          points="389.714,273.97 394.097,278.349 413.154,259.292 394.097,240.235 389.714,244.618 400.767,255.672 368.154,255.672 368.154,262.912 400.769,262.912 "
          style="fill:#1a1a1a;fill-opacity:1" /></g></g>
-	<style
-		type="text/css"
-		id="style8-26">
+	<style type="text/css" id="style8-26">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-7-5">
+	<style type="text/css" id="style8-7-5">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-3-7">
+	<style type="text/css" id="style8-3-7">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		type="text/css"
-		id="style8-6-75">
+	<style type="text/css" id="style8-6-75">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-1-2"
-		type="text/css">
+	<style id="style8-1-2" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-7-0-47"
-		type="text/css">
+	<style id="style8-7-0-47" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-3-2-1"
-		type="text/css">
+	<style id="style8-3-2-1" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style>
-	<style
-		id="style8-6-7-17"
-		type="text/css">
+	<style id="style8-6-7-17" type="text/css">
       .Border { fill: lightGray; stroke: black; stroke-width: 4; }
       .Label { font-size:24; font-family:Arial; fill:black; }
    </style></svg>

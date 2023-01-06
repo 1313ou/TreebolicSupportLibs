@@ -3,13 +3,13 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:context="org.treebolic.wordnet.HelpActivity">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context="org.treebolic.wordnet.HelpActivity">
 
 	<item
 		android:id="@+id/action_help"
 		android:title="@string/title_help"
-		app:showAsAction="never"/>
+		app:showAsAction="never" />
 
 </menu>

@@ -1,29 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
   -->
 
 <!-- We set the id on this layout so we in the ColorPickerDialog class can identify if the landscape or portrait layout has been loaded. -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@id/dialog_color_picker_extra_layout_landscape"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:layout_alignParentTop="true"
-              android:layout_alignParentBottom="true"
-              android:layout_centerHorizontal="true"
-              android:orientation="horizontal"
-              android:paddingLeft="10dp"
-              android:paddingTop="10dp"
-              android:paddingRight="10dp"
-              android:paddingBottom="10dp"
-              tools:ignore="InconsistentLayout">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@id/dialog_color_picker_extra_layout_landscape"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_alignParentTop="true"
+	android:layout_alignParentBottom="true"
+	android:layout_centerHorizontal="true"
+	android:orientation="horizontal"
+	android:paddingLeft="10dp"
+	android:paddingTop="10dp"
+	android:paddingRight="10dp"
+	android:paddingBottom="10dp"
+	tools:ignore="InconsistentLayout">
 
 	<org.treebolic.colors.view.ColorPickerView
 		android:id="@id/color_picker_view"
 		style="@style/dialog_color_picker_view_land"
-		android:contentDescription="@string/desc_pick"/>
+		android:contentDescription="@string/desc_pick" />
 
 	<LinearLayout
 		android:layout_width="wrap_content"
@@ -37,7 +36,7 @@
 			android:id="@id/color_panel_old"
 			android:layout_width="fill_parent"
 			android:layout_height="40dp"
-			android:contentDescription="@string/desc_old"/>
+			android:contentDescription="@string/desc_old" />
 
 		<TextView
 			android:layout_width="fill_parent"
@@ -48,13 +47,13 @@
 			android:paddingBottom="5dp"
 			android:text="@string/down_arrow"
 			android:textColor="#808080"
-			android:textSize="20sp"/>
+			android:textSize="20sp" />
 
 		<org.treebolic.colors.view.ColorPanelView
 			android:id="@id/color_panel_new"
 			android:layout_width="fill_parent"
 			android:layout_height="40dp"
-			android:contentDescription="@string/desc_new"/>
+			android:contentDescription="@string/desc_new" />
 
 	</LinearLayout>
 

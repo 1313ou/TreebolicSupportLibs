@@ -95,7 +95,7 @@ public class ColorUtils
 	 * @return tinted drawable
 	 */
 	@NonNull
-	static public Drawable getTintedDrawable(@NonNull final Context context,@DrawableRes final int drawableRes, @ColorInt final int iconTint)
+	static public Drawable getTintedDrawable(@NonNull final Context context, @DrawableRes final int drawableRes, @ColorInt final int iconTint)
 	{
 		Drawable drawable = getDrawable(context, drawableRes);
 		assert drawable != null;

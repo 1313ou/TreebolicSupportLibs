@@ -906,30 +906,30 @@ public class ColorPickerView extends View
 				finalWidth = widthAllowed;
 			}
 			else if (/*heightMode == MeasureSpec.EXACTLY && */ widthMode != MeasureSpec.EXACTLY)
+			{
+				// The height has been specified exactly, we need to stay within this height and adopt the width.
+
+				int w = (int) (heightAllowed + this.PANEL_SPACING + this.HUE_PANEL_WIDTH);
+
+				if (this.showAlphaPanel)
 				{
-					// The height has been specified exactly, we need to stay within this height and adopt the width.
-
-					int w = (int) (heightAllowed + this.PANEL_SPACING + this.HUE_PANEL_WIDTH);
-
-					if (this.showAlphaPanel)
-					{
-						w -= this.PANEL_SPACING - this.ALPHA_PANEL_HEIGHT;
-					}
-
-					// we can't fit within this container, set the size to whatever was allowed.
-					finalWidth = Math.min(w, widthAllowed);
-					finalHeight = heightAllowed;
+					w -= this.PANEL_SPACING - this.ALPHA_PANEL_HEIGHT;
 				}
-				else
-				{
-					// If we get here the dev has set the width and height to exact sizes. For example match_parent or 300dp.
-					// This will mean that the sat/val panel will not be square but it doesn't matter. It will work anyway.
-					// In all other scenarios our goal is to make that panel square.
 
-					// We set the sizes to exactly what we were told.
-					finalWidth = widthAllowed;
-					finalHeight = heightAllowed;
-				}
+				// we can't fit within this container, set the size to whatever was allowed.
+				finalWidth = Math.min(w, widthAllowed);
+				finalHeight = heightAllowed;
+			}
+			else
+			{
+				// If we get here the dev has set the width and height to exact sizes. For example match_parent or 300dp.
+				// This will mean that the sat/val panel will not be square but it doesn't matter. It will work anyway.
+				// In all other scenarios our goal is to make that panel square.
+
+				// We set the sizes to exactly what we were told.
+				finalWidth = widthAllowed;
+				finalHeight = heightAllowed;
+			}
 		}
 		else
 		{
