@@ -13,8 +13,6 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.treebolic.common.R;
-
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -180,7 +178,7 @@ public class ColorUtils
 	static public int getActionBarForegroundColorFromTheme(@NonNull final Context context)
 	{
 		// Log.d(TAG, "getActionBarForegroundColorFromTheme=0x" + Integer.toHexString(color));
-		return getColorFromTheme(context, android.R.attr.actionBarTheme, android.R.attr.textColorPrimary);
+		return getColorFromTheme(context, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? android.R.attr.actionBarTheme : R.attr.actionBarTheme, android.R.attr.textColorPrimary);
 	}
 
 	/*
