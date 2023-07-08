@@ -8,11 +8,11 @@
 
 		<activity
 			android:name="org.treebolic.guide.AboutActivity"
-			android:label="@string/title_activity_about"></activity>
+			android:label="@string/title_activity_about" />
 
 		<activity
 			android:name="org.treebolic.guide.HelpActivity"
-			android:label="@string/title_activity_help"></activity>
+			android:label="@string/title_activity_help" />
 
 	</application>
 
