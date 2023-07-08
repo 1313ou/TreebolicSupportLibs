@@ -11,7 +11,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:8.0.2'
     }
 }
 
@@ -27,8 +27,8 @@ allprojects {
         versionCode = 1
         versionName = '0.1'
         minSdkVersion = 14
-        targetSdkVersion = 32
-        compileSdkVersion = 32
+        targetSdkVersion = 33
+        compileSdkVersion = 33
         multiDexEnabled = true
     }
 
