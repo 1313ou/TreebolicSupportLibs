@@ -158,6 +158,7 @@ public class Deploy
 					destFile.createNewFile();
 
 					// copy
+					//noinspection IOStreamConstructor
 					try (BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(destFile)))
 					{
 						for (int len = zipIn.read(buffer); len != -1; len = zipIn.read(buffer))
@@ -254,6 +255,7 @@ public class Deploy
 					destFile.createNewFile();
 
 					// copy
+					//noinspection IOStreamConstructor
 					try (BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(destFile)))
 					{
 						for (int len = tarIn.read(buffer); len != -1; len = tarIn.read(buffer))

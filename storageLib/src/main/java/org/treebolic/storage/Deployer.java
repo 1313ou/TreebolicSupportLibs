@@ -69,7 +69,7 @@ public class Deployer
 		{
 			return false;
 		}
-		try (InputStream in = assetManager.open(assetPath); OutputStream out = new FileOutputStream(toPath))
+		try (InputStream in = assetManager.open(assetPath); @SuppressWarnings("IOStreamConstructor") OutputStream out = new FileOutputStream(toPath))
 		{
 			copyFile(in, out);
 			return true;
@@ -99,7 +99,7 @@ public class Deployer
 			return false;
 		}
 
-		try (InputStream in = new FileInputStream(fromPath); OutputStream out = new FileOutputStream(toPath))
+		try (@SuppressWarnings("IOStreamConstructor") InputStream in = new FileInputStream(fromPath); @SuppressWarnings("IOStreamConstructor") OutputStream out = new FileOutputStream(toPath))
 		{
 			copyFile(in, out);
 			return true;
