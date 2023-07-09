@@ -16,4 +16,4 @@
 	android:paddingStart="20dip"
 	android:paddingTop="10dip"
 	android:textSize="20sp"
-	android:textStyle="normal"></TextView>
+	android:textStyle="normal" />

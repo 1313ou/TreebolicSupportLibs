@@ -32,14 +32,14 @@
 			android:maxLines="1"
 			android:text="@string/currentDir"
 			android:textSize="20sp"
-			android:textStyle="bold"></TextView>
+			android:textStyle="bold" />
 
 		<TextView
 			android:id="@+id/containerName"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="5dip"
-			android:layout_marginStart="5dip"></TextView>
+			android:layout_marginStart="5dip" />
 	</LinearLayout>
 
 </LinearLayout>
