@@ -10,6 +10,9 @@
 		<item name="android:colorPrimaryDark">?attr/colorPrimaryDark</item> <!-- darker variant for the status bar and contextual app bars -->
 		<item name="android:colorAccent">?attr/colorAccent</item> <!-- theme UI controls like checkboxes and text fields -->
 
+		<!-- theme UI controls action bar -->
+		<item name="android:actionBarTheme">@style/MyActionBarTheme</item>
+
 		<!-- toolbars -->
 		<item name="android:toolbarStyle">@style/MyToolbarStyle</item>
 
