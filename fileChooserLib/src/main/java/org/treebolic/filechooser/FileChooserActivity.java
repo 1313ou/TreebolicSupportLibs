@@ -262,7 +262,7 @@ public class FileChooserActivity extends AppCompatCommonActivity implements Adap
 
 		@NonNull
 		@Override
-		public View getView(final int position, final View convertView, final ViewGroup parent)
+		public View getView(final int position, final View convertView, @NonNull final ViewGroup parent)
 		{
 			View view = convertView;
 			if (view == null)
