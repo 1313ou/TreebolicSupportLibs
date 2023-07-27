@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 /**
  * Numeric Wheel adapter.
+ * @noinspection WeakerAccess
  */
 public class NumericWheelAdapter extends AbstractWheelTextAdapter
 {
