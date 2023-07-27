@@ -734,14 +734,8 @@ public class ColorPickerView extends View
 
 				case PANEL_ALPHA:
 
-					if (!this.showAlphaPanel || this.alphaRect == null)
+					if (this.showAlphaPanel && this.alphaRect != null)
 					{
-						//noinspection ConstantConditions
-						update = false;
-					}
-					else
-					{
-
 						int alpha = (int) (this.alpha - x * 10);
 
 						if (alpha < 0)
