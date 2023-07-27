@@ -27,6 +27,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
  *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
+ * @noinspection WeakerAccess
  */
 public abstract class AbstractWheelView extends AbstractWheel
 {

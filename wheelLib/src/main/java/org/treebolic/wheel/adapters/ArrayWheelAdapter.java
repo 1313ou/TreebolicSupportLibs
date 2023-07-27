@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
  * The simple Array spinnerwheel adapter
  *
  * @param <T> the element type
+ * @noinspection WeakerAccess
  */
 public class ArrayWheelAdapter<T> extends AbstractWheelTextAdapter
 {

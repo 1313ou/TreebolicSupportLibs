@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 /**
  * Abstract Wheel adapter.
+ * @noinspection WeakerAccess
  */
 public abstract class AbstractWheelAdapter implements WheelViewAdapter
 {
