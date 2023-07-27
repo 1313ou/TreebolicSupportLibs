@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
  *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
+ * @noinspection WeakerAccess
  */
 public class WheelVerticalView extends AbstractWheelView
 {
