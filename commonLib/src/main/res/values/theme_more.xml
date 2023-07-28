@@ -49,6 +49,12 @@
 	<!-- Action bar spinner dropdown list -->
 	<style name="MySpinnerDropDownStyle" parent="Widget.AppCompat.ListView.DropDown">
 		<item name="android:background">?attr/actionbar_color</item>
+		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+	</style>
+
+	<style name="MySpinnerDividedDropDownStyle" parent="MySpinnerDropDownStyle">
+		<item name="android:divider">@drawable/divider</item>
+		<item name="android:dividerHeight">10dp</item>
 	</style>
 
 	<!-- Action bar search view -->
