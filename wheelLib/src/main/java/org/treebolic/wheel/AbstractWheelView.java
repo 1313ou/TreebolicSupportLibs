@@ -343,7 +343,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 	// --------------------------------------------------------------------------
 
 	@Override
-	protected void onDraw(Canvas canvas)
+	protected void onDraw(@NonNull Canvas canvas)
 	{
 		super.onDraw(canvas);
 
