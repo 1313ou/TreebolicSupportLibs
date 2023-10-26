@@ -78,14 +78,14 @@ public class HelpActivity extends AppCompatCommonActivity
 			@Override
 			public void onReceivedError(final WebView view, final int errorCode, final String description, final String failingUrl)
 			{
-				Log.e(HelpActivity.TAG, failingUrl + ':' + description + ',' + errorCode);
+				Log.e(TAG, failingUrl + ':' + description + ',' + errorCode);
 			}
 
 			@TargetApi(Build.VERSION_CODES.N)
 			@Override
 			public void onReceivedError(final WebView view, final WebResourceRequest request, @NonNull final WebResourceError error)
 			{
-				Log.e(HelpActivity.TAG, error.getDescription().toString() + ',' + error.getErrorCode());
+				Log.e(TAG, error.getDescription().toString() + ',' + error.getErrorCode());
 			}
 
 			@Override
