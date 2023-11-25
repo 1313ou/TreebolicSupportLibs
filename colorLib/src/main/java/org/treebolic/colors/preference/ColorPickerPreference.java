@@ -404,6 +404,7 @@ public class ColorPickerPreference extends DialogPreference
 		if (preference instanceof ColorPickerPreference)
 		{
 			final DialogFragment dialogFragment = ColorPickerPreferenceDialogFragmentCompat.newInstance((ColorPickerPreference) preference);
+			//noinspection deprecation
 			dialogFragment.setTargetFragment(prefFragment, 0);
 			dialogFragment.show(manager, DIALOG_FRAGMENT_TAG);
 			return true;
