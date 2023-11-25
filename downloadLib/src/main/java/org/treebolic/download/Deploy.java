@@ -204,7 +204,7 @@ public class Deploy
 		{
 
 			// loop through entries
-			for (TarArchiveEntry tarEntry = tarIn.getNextTarEntry(); tarEntry != null; tarEntry = tarIn.getNextTarEntry())
+			for (TarArchiveEntry tarEntry = tarIn.getNextEntry(); tarEntry != null; tarEntry = tarIn.getNextEntry())
 			{
 				String entryName = tarEntry.getName();
 
