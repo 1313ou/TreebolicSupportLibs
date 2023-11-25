@@ -4,6 +4,7 @@
 
 package org.treebolic.search;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -56,14 +57,7 @@ public class ColorUtils
 	 */
 	static public void tint(@ColorInt int iconTint, @NonNull final Drawable drawable)
 	{
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-		{
-			drawable.setTint(iconTint);
-		}
-		else
-		{
-			DrawableCompat.setTint(DrawableCompat.wrap(drawable), iconTint);
-		}
+		DrawableCompat.setTint(DrawableCompat.wrap(drawable), iconTint);
 	}
 
 	/**
@@ -113,6 +107,7 @@ public class ColorUtils
 	 * @param context context
 	 * @return color
 	 */
+	@SuppressLint("ObsoleteSdkInt")
 	static public int getActionBarForegroundColorFromTheme(@NonNull final Context context)
 	{
 		// Log.d(TAG, "getActionBarForegroundColorFromTheme=0x" + Integer.toHexString(color));
