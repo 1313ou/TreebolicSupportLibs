@@ -5,12 +5,8 @@
 package org.treebolic.storage;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.os.Environment;
-import android.util.Log;
 
 import java.io.File;
 
@@ -21,7 +17,7 @@ import androidx.preference.PreferenceManager;
 
 public class Storage
 {
-	static private final String TAG = "Storage";
+	// static private final String TAG = "Storage";
 
 	// T R E E B O L I C   S T O R A G E
 
@@ -150,18 +146,11 @@ public class Storage
 	 * @param dir candidate dir
 	 * @return true if it qualifies
 	 */
-	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 	static private boolean qualifies(@Nullable final File dir)
 	{
 		if (dir == null)
 		{
 			return false;
-		}
-
-		// log
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-		{
-			Log.d(Storage.TAG, "storage state of " + dir + ": " + Environment.getExternalStorageState(dir));
 		}
 
 		// either mkdirs() creates dir or it is already a dir
