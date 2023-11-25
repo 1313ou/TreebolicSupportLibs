@@ -153,6 +153,7 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 		assert className != null;
 		final Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(getClassLoader(), className);
 		fragment.setArguments(args);
+		//noinspection deprecation
 		fragment.setTargetFragment(caller, 0);
 
 		// Replace the existing Fragment with the new Fragment
