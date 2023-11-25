@@ -14,7 +14,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 
 import androidx.annotation.AttrRes;
@@ -218,14 +217,7 @@ public abstract class AbstractWheelView extends AbstractWheel
 
 		// drawable tint
 		assert this.mSelectionDivider != null;
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-		{
-			this.mSelectionDivider.setTint(this.mSelectionDividerTint);
-		}
-		else
-		{
-			DrawableCompat.setTint(DrawableCompat.wrap(this.mSelectionDivider), this.mSelectionDividerTint);
-		}
+		DrawableCompat.setTint(DrawableCompat.wrap(this.mSelectionDivider), this.mSelectionDividerTint);
 	}
 
 	/**
