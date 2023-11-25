@@ -75,12 +75,14 @@ public class HelpActivity extends AppCompatCommonActivity
 		//webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		webView.setWebViewClient(new WebViewClient()
 		{
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onReceivedError(final WebView view, final int errorCode, final String description, final String failingUrl)
 			{
 				Log.e(TAG, failingUrl + ':' + description + ',' + errorCode);
 			}
 
+			@SuppressLint("ObsoleteSdkInt")
 			@TargetApi(Build.VERSION_CODES.N)
 			@Override
 			public void onReceivedError(final WebView view, final WebResourceRequest request, @NonNull final WebResourceError error)
@@ -88,6 +90,7 @@ public class HelpActivity extends AppCompatCommonActivity
 				Log.e(TAG, error.getDescription().toString() + ',' + error.getErrorCode());
 			}
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public boolean shouldOverrideUrlLoading(@NonNull final WebView view, final String url)
 			{
@@ -95,6 +98,7 @@ public class HelpActivity extends AppCompatCommonActivity
 				return false;
 			}
 
+			@SuppressLint("ObsoleteSdkInt")
 			@TargetApi(Build.VERSION_CODES.N)
 			public boolean shouldOverrideUrlLoading(@NonNull final WebView view, @NonNull final WebResourceRequest request)
 			{
