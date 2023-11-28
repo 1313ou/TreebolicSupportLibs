@@ -6,7 +6,6 @@
 
 	<!-- submenus -->
 	<string name="title_menu_open" tools:keep="@string/title_menu_open">Open …</string>
-	<string name="title_menu_data" tools:keep="@string/title_menu_data">Data …</string>
 	<string name="title_menu_service" tools:keep="@string/title_menu_service">Services …</string>
 	<string name="title_menu_help" tools:keep="@string/title_menu_help">Help …</string>
 	<string name="title_menu_about" tools:keep="@string/title_menu_about">About …</string>
