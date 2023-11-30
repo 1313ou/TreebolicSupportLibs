@@ -31,13 +31,10 @@
 					android:id="@+id/tip_dismiss"
 					style="@style/tipButton"
 					android:layout_alignParentEnd="true"
-					android:layout_alignParentRight="true"
 					android:layout_gravity="center_horizontal|top"
 					android:contentDescription="@string/tip_dismiss"
 					android:paddingStart="1dp"
-					android:paddingLeft="1dp"
 					android:paddingEnd="10dp"
-					android:paddingRight="10dp"
 					android:src="@drawable/ic_tip_close" />
 
 			</RelativeLayout>
