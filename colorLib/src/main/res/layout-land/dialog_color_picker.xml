@@ -29,7 +29,6 @@
 		android:layout_height="wrap_content"
 		android:layout_gravity="center_vertical"
 		android:layout_marginStart="14dp"
-		android:layout_marginLeft="14dp"
 		android:orientation="vertical">
 
 		<org.treebolic.colors.view.ColorPanelView
