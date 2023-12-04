@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 	<string name="title_settings">Paramètres</string>
+	<string name="title_settings_service">Paramètres pour service</string>
 	<string name="title_reset_settings">Effacer paramètres</string>
 
 	<!-- submenus -->
