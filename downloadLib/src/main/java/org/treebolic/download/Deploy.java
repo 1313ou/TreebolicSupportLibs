@@ -107,7 +107,7 @@ public class Deploy
 			for (ZipEntry zipEntry = zipIn.getNextEntry(); zipEntry != null; zipEntry = zipIn.getNextEntry())
 			{
 				String entryName = zipEntry.getName();
-				Log.d(Deploy.TAG, "Entry " + entryName);
+				Log.d(TAG, "Entry " + entryName);
 
 				// include
 				if (includePattern != null)
@@ -153,7 +153,7 @@ public class Deploy
 
 					// create destination
 					final File destFile = new File(destDir, entryName);
-					Log.d(Deploy.TAG, "Unzip to " + destFile.getCanonicalPath());
+					Log.d(TAG, "Unzip to " + destFile.getCanonicalPath());
 					//noinspection ResultOfMethodCallIgnored
 					destFile.createNewFile();
 
@@ -250,7 +250,7 @@ public class Deploy
 
 					// create destination file with same name as entry
 					final File destFile = new File(destDir, entryName);
-					Log.d(Deploy.TAG, "Untar to " + destFile.getCanonicalPath());
+					Log.d(TAG, "Untar to " + destFile.getCanonicalPath());
 					//noinspection ResultOfMethodCallIgnored
 					destFile.createNewFile();
 

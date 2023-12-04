@@ -313,7 +313,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		try
 		{
 			final Request request = new Request(downloadUri);
-			Log.d(DownloadActivity.TAG, "Source " + downloadUri);
+			Log.d(TAG, "Source " + downloadUri);
 			request.setTitle(getResources().getText(titleRes));
 			request.setDescription(downloadUri.getLastPathSegment());
 
@@ -338,7 +338,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 		catch (Exception e)
 		{
 			Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-			Log.e(DownloadActivity.TAG, "Failed ", e);
+			Log.e(TAG, "Failed ", e);
 		}
 	}
 
@@ -417,7 +417,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 					}
 					catch (@NonNull final IOException e)
 					{
-						Log.e(DownloadActivity.TAG, "Processing " + uriString, e);
+						Log.e(TAG, "Processing " + uriString, e);
 					}
 
 					// dispose
@@ -437,7 +437,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 				final String localUri = cursor.getString(localUriColumn);
 				final int reasonColumnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_REASON);
 				final int reason = cursor.getInt(reasonColumnIndex);
-				Log.e(DownloadActivity.TAG, "Downloading " + uri + " to " + localUri + " failed with reason code " + reason);
+				Log.e(TAG, "Downloading " + uri + " to " + localUri + " failed with reason code " + reason);
 			}
 			return false;
 		}
@@ -488,7 +488,7 @@ abstract public class DownloadActivity extends AppCompatCommonActivity implement
 
 						// update UI
 						final int resStatus = DownloadActivity.status2ResourceId(status);
-						Log.d(DownloadActivity.TAG, getResources().getString(resStatus) + " at " + progress);
+						Log.d(TAG, getResources().getString(resStatus) + " at " + progress);
 						runOnUiThread(new Runnable()
 						{
 							@Override
