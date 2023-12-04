@@ -30,6 +30,8 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 {
 	private static final String TITLE_TAG = "settingsActivityTitle";
 
+	public static final String INITIAL_ARG = "settings_initial";
+
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState)
 	{
@@ -52,7 +54,22 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 		// fragment
 		if (savedInstanceState == null)
 		{
-			fm.beginTransaction().replace(R.id.settings, new HeaderFragment()).commit();
+			String fragmentClassName = null;
+			final Bundle args = getIntent().getExtras();
+			if (args != null && args.containsKey(INITIAL_ARG))
+			{
+				fragmentClassName = args.get(INITIAL_ARG).toString();
+			}
+			Fragment fragment;
+			if (fragmentClassName == null)
+			{
+				fragment = new HeaderFragment();
+			}
+			else
+			{
+				fragment = getSupportFragmentManager().getFragmentFactory().instantiate(getClassLoader(), fragmentClassName);
+			}
+			fm.beginTransaction().replace(R.id.settings, fragment).commit();
 		}
 		else
 		{
@@ -95,6 +112,25 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 		{
 			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
 		}
+	}
+
+	// U T I L S
+
+	@Override
+	public boolean onPreferenceStartFragment(@NonNull PreferenceFragmentCompat caller, @NonNull Preference pref)
+	{
+		// Instantiate the new Fragment
+		final Bundle args = pref.getExtras();
+		final String className = pref.getFragment();
+		assert className != null;
+		final Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(getClassLoader(), className);
+		fragment.setArguments(args);
+		//noinspection deprecation
+		fragment.setTargetFragment(caller, 0);
+
+		// Replace the existing Fragment with the new Fragment
+		getSupportFragmentManager().beginTransaction().replace(R.id.settings, fragment).addToBackStack(null).commit();
+		return true;
 	}
 
 	@Override
@@ -140,25 +176,6 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 			return true;
 		}
 		return super.onSupportNavigateUp();
-	}
-
-	// U T I L S
-
-	@Override
-	public boolean onPreferenceStartFragment(@NonNull PreferenceFragmentCompat caller, @NonNull Preference pref)
-	{
-		// Instantiate the new Fragment
-		final Bundle args = pref.getExtras();
-		final String className = pref.getFragment();
-		assert className != null;
-		final Fragment fragment = getSupportFragmentManager().getFragmentFactory().instantiate(getClassLoader(), className);
-		fragment.setArguments(args);
-		//noinspection deprecation
-		fragment.setTargetFragment(caller, 0);
-
-		// Replace the existing Fragment with the new Fragment
-		getSupportFragmentManager().beginTransaction().replace(R.id.settings, fragment).addToBackStack(null).commit();
-		return true;
 	}
 
 	// H E A D E R   F R A G M E N T
