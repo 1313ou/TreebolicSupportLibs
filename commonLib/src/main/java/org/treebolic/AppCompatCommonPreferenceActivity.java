@@ -58,7 +58,7 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 			final Bundle args = getIntent().getExtras();
 			if (args != null && args.containsKey(INITIAL_ARG))
 			{
-				fragmentClassName = args.get(INITIAL_ARG).toString();
+				fragmentClassName = args.getString(INITIAL_ARG);
 			}
 			Fragment fragment;
 			if (fragmentClassName == null)
