@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "../../../make-artwork-lib.sh"
+source "lib-artwork.sh"
 
 button="ic_download.svg"
 icon="ic_download_*.svg"

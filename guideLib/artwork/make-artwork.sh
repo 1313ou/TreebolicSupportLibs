@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "../../../make-artwork-lib.sh"
+source "lib-artwork.sh"
 
 tips="ic_tip_*.svg"
 tips_close="ic_tip_close.svg"

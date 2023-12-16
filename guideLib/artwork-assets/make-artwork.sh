@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "../../../make-artwork-lib.sh"
+source "lib-artwork.sh"
 
 help="menu*.svg search*.svg tip*.svg toolbar*.svg"
 move="moves.svg"

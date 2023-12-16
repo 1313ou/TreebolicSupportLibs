@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "../../../make-artwork-lib.sh"
+source "lib-artwork.sh"
 
 bar="ic_action_*.svg"
 search="ic_search_*.svg"
