@@ -6,7 +6,7 @@
 
 	<string name="about_treebolic_label" translatable="false">Treebolic</string>
 	<string name="about_treebolic_author" translatable="false">Bernard Bou</string>
-	<string name="about_treebolic_copyright" translatable="false">&#169; 2003&#8211;2022 Bernard Bou</string>
+	<string name="about_treebolic_copyright" translatable="false">&#169; 2003&#8211;2023 Bernard Bou</string>
 	<string name="about_treebolic_url" translatable="false">http://treebolic.sourceforge.net</string>
 
 </resources>
