@@ -21,6 +21,8 @@
 
 	<!-- ok/error -->
 	<string name="ok_data">Données disponibles</string>
+	<string name="ok_data_wn31">Données WN3.1 chargées</string>
+	<string name="ok_data_oewn">Données OEWN chargées</string>
 	<string name="fail_data">Données non disponibles</string>
 	<string name="error_null_download_url" tools:ignore="UnusedResources">URL de téléchargement nulle</string>
 

@@ -21,6 +21,8 @@
 
 	<!-- ok/error -->
 	<string name="ok_data">Data is available</string>
+	<string name="ok_data_wn31">WN3.1 data loaded</string>
+	<string name="ok_data_oewn">OEWN data loaded</string>
 	<string name="fail_data">Data is unavailable</string>
 	<string name="error_null_download_url" tools:ignore="UnusedResources">Null download URL</string>
 
