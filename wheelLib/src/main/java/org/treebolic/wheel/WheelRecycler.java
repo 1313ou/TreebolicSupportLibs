@@ -116,6 +116,7 @@ public class WheelRecycler
 	 * @param cache0 the cache list
 	 * @return the cache list
 	 */
+	@NonNull
 	private static List<View> addView(View view, List<View> cache0)
 	{
 		List<View> cache = cache0;
