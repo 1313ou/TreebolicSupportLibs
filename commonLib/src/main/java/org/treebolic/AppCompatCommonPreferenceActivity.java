@@ -85,7 +85,7 @@ public abstract class AppCompatCommonPreferenceActivity extends AppCompatActivit
 			{
 				CharSequence title = null;
 				final List<Fragment> fragments = fm.getFragments();
-				if (fragments.size() > 0)
+				if (!fragments.isEmpty())
 				{
 					final Fragment fragment = fragments.get(0); // only one at a time
 					final PreferenceFragmentCompat preferenceFragment = (PreferenceFragmentCompat) fragment;

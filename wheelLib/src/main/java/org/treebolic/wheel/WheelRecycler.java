@@ -164,7 +164,7 @@ public class WheelRecycler
 	@Nullable
 	private static View getCachedView(@Nullable final List<View> cache)
 	{
-		if (cache != null && cache.size() > 0)
+		if (cache != null && !cache.isEmpty())
 		{
 			View view = cache.get(0);
 			cache.remove(0);
