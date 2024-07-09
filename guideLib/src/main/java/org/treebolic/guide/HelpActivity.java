@@ -73,7 +73,6 @@ public class HelpActivity extends AppCompatCommonActivity
 		webView.clearHistory();
 		//webView.getSettings().setJavaScriptEnabled(true);
 		//webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-		//noinspection RedundantSuppression
 		webView.setWebViewClient(new WebViewClient()
 		{
 			@SuppressWarnings("deprecation")
