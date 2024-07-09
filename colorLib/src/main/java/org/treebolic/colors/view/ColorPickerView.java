@@ -892,7 +892,7 @@ public class ColorPickerView extends View
 
 				if (this.showAlphaPanel)
 				{
-					h += this.PANEL_SPACING + this.ALPHA_PANEL_HEIGHT;
+					h += (int) (this.PANEL_SPACING + this.ALPHA_PANEL_HEIGHT);
 				}
 
 				// We can't fit the view in this container, set the size to whatever was allowed.
@@ -907,7 +907,7 @@ public class ColorPickerView extends View
 
 				if (this.showAlphaPanel)
 				{
-					w -= this.PANEL_SPACING - this.ALPHA_PANEL_HEIGHT;
+					w -= (int) (this.PANEL_SPACING - this.ALPHA_PANEL_HEIGHT);
 				}
 
 				// we can't fit within this container, set the size to whatever was allowed.
@@ -937,8 +937,8 @@ public class ColorPickerView extends View
 
 			if (this.showAlphaPanel)
 			{
-				widthNeeded -= this.PANEL_SPACING + this.ALPHA_PANEL_HEIGHT;
-				heightNeeded += this.PANEL_SPACING + this.ALPHA_PANEL_HEIGHT;
+				widthNeeded -= (int) (this.PANEL_SPACING + this.ALPHA_PANEL_HEIGHT);
+				heightNeeded += (int) (this.PANEL_SPACING + this.ALPHA_PANEL_HEIGHT);
 			}
 
 			if (widthNeeded <= widthAllowed)
