@@ -1,20 +1,16 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.guide
 
-package org.treebolic.guide;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import org.treebolic.AppCompatCommonActivity;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.widget.Toolbar
+import org.treebolic.AppCompatCommonActivity
 
 /**
  * About activity
@@ -22,47 +18,36 @@ import androidx.appcompat.widget.Toolbar;
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class AboutActivity extends AppCompatCommonActivity
-{
-	// protected static final String TAG = "About activity";
+open class AboutActivity : AppCompatCommonActivity() {
 
-	@Override
-	protected void onCreate(final Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_about)
 
-		// toolbar
-		final Toolbar toolbar = findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
+        // toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-		// set up the action bar.
-		final ActionBar actionBar = getSupportActionBar();
-		if (actionBar != null)
-		{
-			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
-		}
-	}
+        // set up the action bar.
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.displayOptions = ActionBar.DISPLAY_USE_LOGO or ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_SHOW_HOME or ActionBar.DISPLAY_HOME_AS_UP
+        }
+    }
 
-	@SuppressWarnings("SameReturnValue")
-	@Override
-	public boolean onCreateOptionsMenu(final Menu menu)
-	{
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.about, menu);
-		return true;
-	}
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.about, menu)
+        return true
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(@NonNull final MenuItem item)
-	{
-		final int itemId = item.getItemId();
-		if (itemId == R.id.action_help)
-		{
-			final Intent intent = new Intent(this, HelpActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val itemId = item.itemId
+        if (itemId == R.id.action_help) {
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
