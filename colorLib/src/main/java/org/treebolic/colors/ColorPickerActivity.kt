@@ -31,7 +31,7 @@ class ColorPickerActivity : AppCompatCommonActivity(), OnColorChangedListener, V
         colorPickerView = findViewById(R.id.color_picker_view)
         newColorPanelView = findViewById(R.id.color_panel_new)
         val oldColorPanelView = findViewById<ColorPanelView>(R.id.color_panel_old)
-        (oldColorPanelView.parent as LinearLayout).setPadding(Math.round(colorPickerView.drawingOffset), 0, Math.round(colorPickerView.drawingOffset), 0)
+        (oldColorPanelView.parent as LinearLayout).setPadding(Math.round(colorPickerView.drawingOffset.toFloat()), 0, Math.round(colorPickerView.drawingOffset.toFloat()), 0)
 
         colorPickerView.setOnColorChangedListener(this)
 

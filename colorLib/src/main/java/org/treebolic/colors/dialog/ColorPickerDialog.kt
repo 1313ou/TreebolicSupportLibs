@@ -70,12 +70,12 @@ class ColorPickerDialog(context: Context, initialColor: Int?, private val listen
         // set colors
         val newColor = color ?: START_COLOR
         oldColorView.setValue(color)
-        newColorView.setColor(newColor)
+        newColorView.color = newColor
         colorPicker.setColor(newColor, true)
     }
 
     override fun onColorChanged(newColor: Int) {
-        newColorView.setColor(newColor)
+        newColorView.color = newColor
         listener?.onColorChanged(newColor)
     }
 

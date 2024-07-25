@@ -34,6 +34,11 @@ open class ColorPickerPreference : DialogPreference {
      * Color
      */
     protected var value: Int? = null
+        set(newValue) {
+            field = newValue
+            persistValue(field)
+            notifyChanged()
+        }
 
     // S E T T I N G S
 
@@ -164,13 +169,7 @@ open class ColorPickerPreference : DialogPreference {
     }
 
     override fun onSetInitialValue(defaultValue: Any?) {
-        setValue(getPersistedValue(defaultValue))
-    }
-
-    private fun setValue(value: Int?) {
-        this.value = value
-        persistValue(this.value)
-        notifyChanged()
+        value = getPersistedValue(defaultValue)
     }
 
     // B I N D
@@ -247,7 +246,7 @@ open class ColorPickerPreference : DialogPreference {
             // Neutral button to clear value
             builder.setNeutralButton(R.string.dialog_title_none) { _: DialogInterface?, _: Int ->
                 if (pref.callChangeListener(null)) {
-                    pref.setValue(null)
+                    pref.value = null
                 }
                 if (dialog != null) {
                     dialog!!.dismiss()
@@ -261,13 +260,13 @@ open class ColorPickerPreference : DialogPreference {
                 val newColor = colorPickerView.color
                 val pref = preference as ColorPickerPreference
                 if (pref.callChangeListener(newColor)) {
-                    pref.setValue(newColor)
+                    pref.value = newColor
                 }
             }
         }
 
         override fun onColorChanged(newColor: Int) {
-            newColorView!!.setColor(newColor)
+            newColorView!!.color = newColor
         }
 
         companion object {
@@ -309,7 +308,7 @@ open class ColorPickerPreference : DialogPreference {
         super.onRestoreInstanceState(savedState.superState)
 
         // set this preference's widget to reflect the restored state
-        setValue(if (savedState.isNull) null else savedState.value)
+        value = if (savedState.isNull) null else savedState.value
     }
 
     companion object {

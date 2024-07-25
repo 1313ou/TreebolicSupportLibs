@@ -181,7 +181,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
     /**
      * Offset from the edge we must have or else the finger tracker will get clipped when it is drawn outside of the view.
      */
-    private var drawingOffset = 0
+    var drawingOffset = 0
 
     // L I S T E N E R
 

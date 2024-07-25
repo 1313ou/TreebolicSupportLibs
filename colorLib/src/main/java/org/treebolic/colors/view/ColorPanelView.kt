@@ -31,9 +31,14 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
     private var borderColor = -0x919192
 
     /**
-     * Color
+     * Color, the value that should be shown by this view.
      */
-    private var color = -0x1000000
+    var color = -0x1000000
+        set(newColor) {
+            isNull = false
+            field = newColor
+            invalidate()
+        }
 
     /**
      * Border paint
@@ -164,18 +169,7 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
             invalidate()
             return
         }
-        setColor(newValue)
-    }
-
-    /**
-     * Set the value that should be shown by this view.
-     *
-     * @param newColor value
-     */
-    fun setColor(newColor: Int) {
-        isNull = false
-        color = newColor
-        invalidate()
+        color = newValue
     }
 
     // /**
@@ -230,7 +224,7 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
         /**
          * Back paint
          */
-        private val BACK_PAINT = Paint().apply{
+        private val BACK_PAINT = Paint().apply {
             color = Color.WHITE
         }
 
