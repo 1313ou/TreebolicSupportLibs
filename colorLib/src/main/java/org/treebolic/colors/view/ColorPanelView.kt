@@ -73,7 +73,7 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
     /**
      * IsIllegal
      */
-    private var isCrossed = false
+    var isCrossed = false
 
     init {
         init(context)
