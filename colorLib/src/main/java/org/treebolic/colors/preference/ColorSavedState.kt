@@ -1,74 +1,54 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.colors.preference
 
-package org.treebolic.colors.preference;
+import android.os.Parcel
+import android.os.Parcelable
+import androidx.preference.Preference
 
-import android.os.Parcel;
-import android.os.Parcelable;
+internal class ColorSavedState : Preference.BaseSavedState {
 
-import androidx.annotation.NonNull;
-import androidx.preference.Preference;
+    /**
+     * The value
+     */
+    var isNull: Boolean = false
+    var value: Int = 0
 
-class ColorSavedState extends Preference.BaseSavedState
-{
-	/**
-	 * The value
-	 */
-	boolean isNull;
-	int value;
+    /**
+     * Constructor from superstate
+     *
+     * @param superState superstate
+     */
+    constructor(superState: Parcelable?) : super(superState)
 
-	/**
-	 * Constructor from superstate
-	 *
-	 * @param superState superstate
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public ColorSavedState(final Parcelable superState)
-	{
-		super(superState);
-	}
+    /**
+     * Constructor/read from parcel
+     *
+     * @param parcel source parcel
+     */
+    constructor(parcel: Parcel) : super(parcel) {
+        this.isNull = parcel.readInt() != 0
+        this.value = parcel.readInt()
+    }
 
-	/**
-	 * Constructor from parcel
-	 *
-	 * @param parcel source parcel
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public ColorSavedState(@NonNull final Parcel parcel)
-	{
-		super(parcel);
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        super.writeToParcel(parcel, flags)
+        parcel.writeInt(if (this.isNull) 1 else 0)
+        parcel.writeInt(this.value)
+    }
 
-		// get the preference's value
-		this.isNull = parcel.readInt() != 0;
-		this.value = parcel.readInt();
-	}
+    companion object {
 
-	@Override
-	public void writeToParcel(@NonNull final Parcel parcel, final int flags)
-	{
-		super.writeToParcel(parcel, flags);
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<ColorSavedState> {
+            override fun createFromParcel(parcel: Parcel): ColorSavedState {
+                return ColorSavedState(parcel)
+            }
 
-		// write the preference's value
-		parcel.writeInt(this.isNull ? 1 : 0);
-		parcel.writeInt(this.value);
-	}
-
-	// Standard creator object using an instance of this class
-	public static final Creator<ColorSavedState> CREATOR = new Creator<ColorSavedState>()
-	{
-		@NonNull
-		@Override
-		public ColorSavedState createFromParcel(@NonNull final Parcel in)
-		{
-			return new ColorSavedState(in);
-		}
-
-		@NonNull
-		@Override
-		public ColorSavedState[] newArray(final int size)
-		{
-			return new ColorSavedState[size];
-		}
-	};
+            override fun newArray(size: Int): Array<ColorSavedState?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 }

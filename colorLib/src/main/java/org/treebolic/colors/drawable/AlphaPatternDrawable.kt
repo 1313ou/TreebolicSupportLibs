@@ -1,119 +1,87 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.colors.drawable
 
-package org.treebolic.colors.drawable;
-
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-
-import androidx.annotation.NonNull;
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.ColorFilter
+import android.graphics.Paint
+import android.graphics.PixelFormat
+import android.graphics.Rect
+import android.graphics.drawable.Drawable
+import kotlin.math.ceil
 
 /**
  * This drawable will draw a simple white and gray chessboard pattern. It's pattern you will often see as a background behind a partly transparent image in many
  * applications.
  *
  * @author Daniel Nilsson
+ * @author Bernard Bou
  */
-public class AlphaPatternDrawable extends Drawable
-{
-	private final int mRectangleSize;
+class AlphaPatternDrawable(private val rectangleSize: Int) : Drawable() {
 
-	private final Paint mPaint = new Paint();
-	private final Paint mPaintWhite = new Paint();
-	private final Paint mPaintGray = new Paint();
+    private val paint = Paint()
+    private val paintWhite = Paint().apply { color = -0x1 }
+    private val paintGray = Paint().apply { color = -0x343435 }
+    private var numRectanglesHorizontal = 0
+    private var numRectanglesVertical = 0
 
-	private int numRectanglesHorizontal;
-	private int numRectanglesVertical;
+    /**
+     * Bitmap in which the pattern will be cached. This is so the pattern will not have to be recreated each time draw() gets called.
+     * Because recreating the pattern is rather expensive, it will only be recreated if the size changes.
+     */
+    private var bitmap: Bitmap? = null
 
-	/**
-	 * Bitmap in which the pattern will be cached. This is so the pattern will not have to be recreated each time draw() gets called. Because recreating the
-	 * pattern i rather expensive. I will only be recreated if the size changes.
-	 */
-	private Bitmap mBitmap;
+    override fun draw(canvas: Canvas) {
+        canvas.drawBitmap(bitmap!!, null, bounds, paint)
+    }
 
-	public AlphaPatternDrawable(final int rectangleSize)
-	{
-		this.mRectangleSize = rectangleSize;
-		this.mPaintWhite.setColor(0xffffffff);
-		this.mPaintGray.setColor(0xffcbcbcb);
-	}
+    @Deprecated(message = "Deprecated API", replaceWith = ReplaceWith("PixelFormat.UNKNOWN", "android.graphics.PixelFormat"))
+    override fun getOpacity(): Int {
+        return PixelFormat.UNKNOWN
+    }
 
-	@Override
-	public void draw(@NonNull final Canvas canvas)
-	{
-		canvas.drawBitmap(this.mBitmap, null, getBounds(), this.mPaint);
-	}
+    override fun setAlpha(alpha: Int) {
+        throw UnsupportedOperationException("Alpha is not supported by this drawable.")
+    }
 
-	@SuppressWarnings("SameReturnValue")
-	@Override
-	public int getOpacity()
-	{
-		return PixelFormat.UNKNOWN;
-	}
+    override fun setColorFilter(cf: ColorFilter?) {
+        throw UnsupportedOperationException("ColorFilter is not supported by this drawable.")
+    }
 
-	@Override
-	public void setAlpha(final int alpha)
-	{
-		throw new UnsupportedOperationException("Alpha is not supported by this drawable.");
-	}
+    override fun onBoundsChange(bounds: Rect) {
+        super.onBoundsChange(bounds)
+        val height = bounds.height()
+        val width = bounds.width()
+        numRectanglesHorizontal = ceil((width.toFloat() / rectangleSize).toDouble()).toInt()
+        numRectanglesVertical = ceil((height.toFloat() / rectangleSize).toDouble()).toInt()
+        generatePatternBitmap()
+    }
 
-	@Override
-	public void setColorFilter(final ColorFilter cf)
-	{
-		throw new UnsupportedOperationException("ColorFilter is not supported by this drawable.");
-	}
-
-	@Override
-	protected void onBoundsChange(@NonNull final Rect bounds)
-	{
-		super.onBoundsChange(bounds);
-
-		final int height = bounds.height();
-		final int width = bounds.width();
-		this.numRectanglesHorizontal = (int) Math.ceil((float) width / this.mRectangleSize);
-		this.numRectanglesVertical = (int) Math.ceil((float) height / this.mRectangleSize);
-
-		generatePatternBitmap();
-	}
-
-	/**
-	 * This will generate a bitmap with the pattern as big as the rectangle we were allow to draw on. We do this to cache the bitmap so we don't need to
-	 * recreate it each time draw() is called since it takes a few milliseconds.
-	 */
-	private void generatePatternBitmap()
-	{
-		if (getBounds().width() <= 0 || getBounds().height() <= 0)
-		{
-			return;
-		}
-
-		this.mBitmap = Bitmap.createBitmap(getBounds().width(), getBounds().height(), Config.ARGB_8888);
-		final Canvas canvas = new Canvas(this.mBitmap);
-
-		final Rect r = new Rect();
-		boolean verticalStartWhite = true;
-		for (int i = 0; i <= this.numRectanglesVertical; i++)
-		{
-			boolean isWhite = verticalStartWhite;
-			for (int j = 0; j <= this.numRectanglesHorizontal; j++)
-			{
-				r.top = i * this.mRectangleSize;
-				r.left = j * this.mRectangleSize;
-				r.bottom = r.top + this.mRectangleSize;
-				r.right = r.left + this.mRectangleSize;
-
-				canvas.drawRect(r, isWhite ? this.mPaintWhite : this.mPaintGray);
-
-				isWhite = !isWhite;
-			}
-			verticalStartWhite = !verticalStartWhite;
-		}
-	}
+    /**
+     * This will generate a bitmap with the pattern as big as the rectangle we were allow to draw on. We do this to cache the bitmap so we don't need to
+     * recreate it each time draw() is called since it takes a few milliseconds.
+     */
+    private fun generatePatternBitmap() {
+        if (bounds.width() <= 0 || bounds.height() <= 0) {
+            return
+        }
+        bitmap = Bitmap.createBitmap(bounds.width(), bounds.height(), Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap!!)
+        val r = Rect()
+        var verticalStartWhite = true
+        for (i in 0..numRectanglesVertical) {
+            var isWhite = verticalStartWhite
+            for (j in 0..numRectanglesHorizontal) {
+                r.top = i * rectangleSize
+                r.left = j * rectangleSize
+                r.bottom = r.top + rectangleSize
+                r.right = r.left + rectangleSize
+                canvas.drawRect(r, if (isWhite) paintWhite else paintGray)
+                isWhite = !isWhite
+            }
+            verticalStartWhite = !verticalStartWhite
+        }
+    }
 }

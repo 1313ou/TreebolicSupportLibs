@@ -1,292 +1,244 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.colors.view
 
-package org.treebolic.colors.view;
-
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.util.AttributeSet;
-import android.view.View;
-
-import org.treebolic.colors.drawable.AlphaPatternDrawable;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
+import android.util.AttributeSet
+import android.view.View
+import org.treebolic.colors.drawable.AlphaPatternDrawable
 
 /**
  * This class draws a panel which which will be filled with a value which can be set. It can be used to show the currently selected value which you will get
- * from the {@link ColorPickerView}.
+ * from the [ColorPickerView].
+ *
+ * @param context  context
+ * @param attrs    attributes
+ * @param defStyle style
  *
  * @author Daniel Nilsson
+ * @author Bernard
  */
-public class ColorPanelView extends View
-{
-	/**
-	 * The width in pixels of the border surrounding the value panel.
-	 */
-	private final static float BORDER_WIDTH_PX = 1;
+class ColorPanelView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : View(context, attrs, defStyle) {
 
-	/**
-	 * Density
-	 */
-	private static float density = 1f;
+    /**
+     * Border value
+     */
+    private var borderColor = -0x919192
 
-	/**
-	 * Border value
-	 */
-	private int borderColor = 0xff6E6E6E;
+    /**
+     * Color
+     */
+    private var color = -0x1000000
 
-	/**
-	 * Color
-	 */
-	private int color = 0xff000000;
+    /**
+     * Border paint
+     */
+    private lateinit var borderPaint: Paint
 
-	/**
-	 * Back paint
-	 */
-	static private final Paint BACK_PAINT = new Paint();
+    /**
+     * Color paint
+     */
+    private lateinit var colorPaint: Paint
 
-	static
-	{
-		BACK_PAINT.setColor(Color.WHITE);
-	}
+    /**
+     * Drawing rect
+     */
+    private var drawingRect: RectF? = null
 
-	/**
-	 * Draw paint
-	 */
-	static private final Paint DRAW_PAINT = new Paint();
+    /**
+     * Color rect
+     */
+    private var colorRect: RectF? = null
 
-	static
-	{
-		DRAW_PAINT.setColor(Color.GRAY);
-	}
+    /**
+     * Alpha pattern
+     */
+    private var alphaPattern: AlphaPatternDrawable? = null
 
-	/**
-	 * Border paint
-	 */
-	private Paint borderPaint;
+    /**
+     * IsNull
+     */
+    private var isNull = false
 
-	/**
-	 * Color paint
-	 */
-	private Paint colorPaint;
+    /**
+     * IsIllegal
+     */
+    private var isCrossed = false
 
-	/**
-	 * Drawing rect
-	 */
-	private RectF drawingRect;
+    init {
+        init(context)
+    }
 
-	/**
-	 * Color rect
-	 */
-	private RectF colorRect;
+    /**
+     * Common init
+     *
+     * @param context context
+     */
+    private fun init(context: Context) {
+        colorPaint = Paint()
+        borderPaint = Paint()
+        density = context.resources.displayMetrics.density
+    }
 
-	/**
-	 * Alpha pattern
-	 */
-	private AlphaPatternDrawable alphaPattern;
+    override fun onDraw(canvas: Canvas) {
 
-	/**
-	 * IsNull
-	 */
-	private boolean isNull;
+        // border
+        if (BORDER_WIDTH_PX > 0) {
+            borderPaint.color = borderColor
+            canvas.drawRect(drawingRect!!, borderPaint)
+        }
 
-	/**
-	 * IsIllegal
-	 */
-	private boolean isCrossed;
+        // crossed
+        if (isCrossed) {
+            canvas.drawRect(colorRect!!, BACK_PAINT)
 
-	/**
-	 * Constructor
-	 *
-	 * @param context context
-	 */
-	public ColorPanelView(@NonNull final Context context)
-	{
-		this(context, null);
-	}
+            canvas.drawLine(drawingRect!!.left, drawingRect!!.top, drawingRect!!.right, drawingRect!!.bottom, DRAW_PAINT)
+            canvas.drawLine(drawingRect!!.right, drawingRect!!.top, drawingRect!!.left, drawingRect!!.bottom, DRAW_PAINT)
+            return
+        }
 
-	/**
-	 * Constructor
-	 *
-	 * @param context context
-	 * @param attrs   attributes
-	 */
-	public ColorPanelView(@NonNull final Context context, final AttributeSet attrs)
-	{
-		this(context, attrs, 0);
-	}
+        // pattern
+        if (alphaPattern != null) {
+            alphaPattern!!.draw(canvas)
+        }
 
-	/**
-	 * Constructor
-	 *
-	 * @param context  context
-	 * @param attrs    attributes
-	 * @param defStyle style
-	 */
-	public ColorPanelView(@NonNull final Context context, final AttributeSet attrs, final int defStyle)
-	{
-		super(context, attrs, defStyle);
-		init(context);
-	}
+        // value
+        if (!isNull) {
+            colorPaint.color = color
+            val rect = colorRect
+            canvas.drawRect(rect!!, colorPaint)
+        }
+    }
 
-	/**
-	 * Common init
-	 *
-	 * @param context context
-	 */
-	private void init(@NonNull final Context context)
-	{
-		this.colorPaint = new Paint();
-		this.borderPaint = new Paint();
-		ColorPanelView.density = context.getResources().getDisplayMetrics().density;
-	}
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val width = MeasureSpec.getSize(widthMeasureSpec)
+        val height = MeasureSpec.getSize(heightMeasureSpec)
+        setMeasuredDimension(width, height)
+    }
 
-	@Override
-	protected void onDraw(@NonNull final Canvas canvas)
-	{
-		// border
-		//noinspection ConstantConditions
-		if (ColorPanelView.BORDER_WIDTH_PX > 0)
-		{
-			this.borderPaint.setColor(this.borderColor);
-			canvas.drawRect(this.drawingRect, this.borderPaint);
-		}
+    override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
+        super.onSizeChanged(w, h, oldW, oldH)
 
-		// crossed
-		if (this.isCrossed)
-		{
-			canvas.drawRect(this.colorRect, BACK_PAINT);
+        drawingRect = RectF()
+        drawingRect!!.left = paddingLeft.toFloat()
+        drawingRect!!.right = (w - paddingRight).toFloat()
+        drawingRect!!.top = paddingTop.toFloat()
+        drawingRect!!.bottom = (h - paddingBottom).toFloat()
+        setUpColorRect()
+    }
 
-			canvas.drawLine(this.drawingRect.left, this.drawingRect.top, this.drawingRect.right, this.drawingRect.bottom, DRAW_PAINT);
-			canvas.drawLine(this.drawingRect.right, this.drawingRect.top, this.drawingRect.left, this.drawingRect.bottom, DRAW_PAINT);
-			return;
-		}
+    /**
+     * Set up value rectangle
+     */
+    private fun setUpColorRect() {
+        val dRect = drawingRect
+        val left = dRect!!.left + BORDER_WIDTH_PX
+        val top = dRect.top + BORDER_WIDTH_PX
+        val bottom = dRect.bottom - BORDER_WIDTH_PX
+        val right = dRect.right - BORDER_WIDTH_PX
 
-		// pattern
-		if (this.alphaPattern != null)
-		{
-			this.alphaPattern.draw(canvas);
-		}
+        colorRect = RectF(left, top, right, bottom)
+        alphaPattern = AlphaPatternDrawable((5 * density).toInt())
+        alphaPattern!!.setBounds(
+            Math.round(colorRect!!.left), Math.round(colorRect!!.top), Math.round(colorRect!!.right), Math.round(
+                colorRect!!.bottom
+            )
+        )
+        isCrossed = false
+    }
 
-		// value
-		if (!this.isNull)
-		{
-			this.colorPaint.setColor(this.color);
-			final RectF rect = this.colorRect;
-			canvas.drawRect(rect, this.colorPaint);
-		}
-	}
+    /**
+     * Set value
+     *
+     * @param newValue may be null
+     */
+    fun setValue(newValue: Int?) {
+        if (newValue == null) {
+            isNull = true
+            color = 0x00ffffff
+            invalidate()
+            return
+        }
+        setColor(newValue)
+    }
 
-	@Override
-	protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec)
-	{
-		final int width = MeasureSpec.getSize(widthMeasureSpec);
-		final int height = MeasureSpec.getSize(heightMeasureSpec);
-		setMeasuredDimension(width, height);
-	}
+    /**
+     * Set the value that should be shown by this view.
+     *
+     * @param newColor value
+     */
+    fun setColor(newColor: Int) {
+        isNull = false
+        color = newColor
+        invalidate()
+    }
 
-	@Override
-	protected void onSizeChanged(final int w, final int h, final int oldW, final int oldH)
-	{
-		super.onSizeChanged(w, h, oldW, oldH);
+    // /**
+    //  * Get the value currently shown by this view.
+    //  *
+    //  * @return value
+    //  */
+    // fun getColor(): Int {
+    //     return color
+    // }
 
-		this.drawingRect = new RectF();
-		this.drawingRect.left = getPaddingLeft();
-		this.drawingRect.right = w - getPaddingRight();
-		this.drawingRect.top = getPaddingTop();
-		this.drawingRect.bottom = h - getPaddingBottom();
-		setUpColorRect();
-	}
+    /**
+     * Set the value of the border surrounding the panel.
+     *
+     * @param color border value
+     */
+    fun setBorderColor(color: Int) {
+        borderColor = color
+        invalidate()
+    }
 
-	/**
-	 * Set up value rectangle
-	 */
-	private void setUpColorRect()
-	{
-		final RectF dRect = this.drawingRect;
-		final float left = dRect.left + ColorPanelView.BORDER_WIDTH_PX;
-		final float top = dRect.top + ColorPanelView.BORDER_WIDTH_PX;
-		final float bottom = dRect.bottom - ColorPanelView.BORDER_WIDTH_PX;
-		final float right = dRect.right - ColorPanelView.BORDER_WIDTH_PX;
+    // /**
+    //  * Get the value of the border surrounding the panel.
+    //  *
+    //  * @return border value
+    //  */
+    // fun getBorderColor(): Int {
+    //     return borderColor
+    // }
 
-		this.colorRect = new RectF(left, top, right, bottom);
-		this.alphaPattern = new AlphaPatternDrawable((int) (5 * ColorPanelView.density));
-		this.alphaPattern.setBounds(Math.round(this.colorRect.left), Math.round(this.colorRect.top), Math.round(this.colorRect.right), Math.round(this.colorRect.bottom));
-		this.isCrossed = false;
-	}
+    // /**
+    //  * Set crossed flag
+    //  *
+    //  * @param isCrossed whether the display is crossed
+    //  */
+    // fun setCrossed(flag: Boolean) {
+    //     isCrossed = flag
+    // }
 
-	/**
-	 * Set value
-	 *
-	 * @param color may be null
-	 */
-	public void setValue(@Nullable final Integer color)
-	{
-		if (color == null)
-		{
-			this.isNull = true;
-			this.color = 0x00ffffff;
-			invalidate();
-			return;
-		}
-		setColor(color);
-	}
+    companion object {
 
-	/**
-	 * Set the value that should be shown by this view.
-	 *
-	 * @param color value
-	 */
-	public void setColor(final int color)
-	{
-		this.isNull = false;
-		this.color = color;
-		invalidate();
-	}
+        /**
+         * The width in pixels of the border surrounding the value panel.
+         */
+        private const val BORDER_WIDTH_PX = 1f
 
-	/**
-	 * Get the value currently shown by this view.
-	 *
-	 * @return value
-	 */
-	public int getColor()
-	{
-		return this.color;
-	}
+        /**
+         * Density
+         */
+        private var density = 1f
 
-	/**
-	 * Set the value of the border surrounding the panel.
-	 *
-	 * @param color border value
-	 */
-	public void setBorderColor(@SuppressWarnings("SameParameterValue") final int color)
-	{
-		this.borderColor = color;
-		invalidate();
-	}
+        /**
+         * Back paint
+         */
+        private val BACK_PAINT = Paint().apply{
+            color = Color.WHITE
+        }
 
-	/**
-	 * Get the value of the border surrounding the panel.
-	 *
-	 * @return border value
-	 */
-	public int getBorderColor()
-	{
-		return this.borderColor;
-	}
-
-	/**
-	 * Set crossed flag
-	 *
-	 * @param isCrossed whether the display is crossed
-	 */
-	public void setCrossed(final boolean isCrossed)
-	{
-		this.isCrossed = isCrossed;
-	}
+        /**
+         * Draw paint
+         */
+        private val DRAW_PAINT = Paint().apply {
+            color = Color.GRAY
+        }
+    }
 }

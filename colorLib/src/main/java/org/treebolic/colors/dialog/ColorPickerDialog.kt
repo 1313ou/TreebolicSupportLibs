@@ -1,122 +1,90 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.colors.dialog
 
-package org.treebolic.colors.dialog;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
+import android.graphics.PixelFormat
+import android.view.LayoutInflater
+import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
+import org.treebolic.colors.R
+import org.treebolic.colors.view.ColorPanelView
+import org.treebolic.colors.view.ColorPickerView
+import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PixelFormat;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.LinearLayout;
+class ColorPickerDialog(context: Context, initialColor: Int?, private val listener: OnColorChangedListener?) : AlertDialog(context), OnColorChangedListener {
 
-import org.treebolic.colors.R;
-import org.treebolic.colors.view.ColorPanelView;
-import org.treebolic.colors.view.ColorPickerView;
-import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener;
+    val color: Int
+        get() = colorPicker.color
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
+    private lateinit var colorPicker: ColorPickerView
 
-public class ColorPickerDialog extends AlertDialog implements ColorPickerView.OnColorChangedListener
-{
-	static private final int START_COLOR = Color.GRAY;
+    private lateinit var newColorView: ColorPanelView
 
-	private ColorPickerView colorPicker;
+    constructor(context: Context, initialColor: Int?) : this(context, initialColor, null)
 
-	private ColorPanelView newColorView;
+    init {
+        init(context, initialColor)
+    }
 
-	private final OnColorChangedListener listener;
+    private fun init(context: Context, color: Int?) {
+        val window = window
+        window?.setFormat(PixelFormat.RGBA_8888)
+        setUp(context, color)
+    }
 
-	public ColorPickerDialog(@NonNull final Context context, final Integer initialColor)
-	{
-		this(context, initialColor, null);
-	}
+    @SuppressLint("InflateParams")
+    private fun setUp(context: Context, color: Int?) {
+        var isLandscapeLayout = false
 
-	@SuppressWarnings("WeakerAccess")
-	public ColorPickerDialog(@NonNull final Context context, @Nullable final Integer initialColor, @SuppressWarnings("SameParameterValue") final OnColorChangedListener listener)
-	{
-		super(context);
-		this.listener = listener;
-		init(context, initialColor);
-	}
+        setTitle(R.string.dialog_title)
 
-	private void init(@NonNull final Context context, @Nullable final Integer color)
-	{
-		// to fight value branding.
-		final Window window = getWindow();
-		if (window != null)
-		{
-			window.setFormat(PixelFormat.RGBA_8888);
-		}
-		setUp(context, color);
-	}
+        // custom view
+        val inflater = checkNotNull(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+        val layout = inflater.inflate(R.layout.dialog_color_picker, null)
+        setView(layout)
 
-	@SuppressLint("InflateParams")
-	private void setUp(@NonNull final Context context, @Nullable final Integer color)
-	{
-		boolean isLandscapeLayout = false;
+        // components
+        colorPicker = layout.findViewById(R.id.color_picker_view)
+        newColorView = layout.findViewById(R.id.color_panel_new)
+        val oldColorView = layout.findViewById<ColorPanelView>(R.id.color_panel_old)
 
-		// custom view
-		final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		assert inflater != null;
-		final View layout = inflater.inflate(R.layout.dialog_color_picker, null);
-		setView(layout);
+        // padding
+        val landscapeLayout = layout.findViewById<LinearLayout>(R.id.dialog_color_picker_extra_layout_landscape)
+        if (landscapeLayout != null) {
+            isLandscapeLayout = true
+        }
+        if (!isLandscapeLayout) {
+            (oldColorView.parent as LinearLayout).setPadding(Math.round(colorPicker.getDrawingOffset()), 0, Math.round(colorPicker.getDrawingOffset()), 0)
+        } else {
+            landscapeLayout!!.setPadding(0, 0, Math.round(colorPicker.getDrawingOffset()), 0)
+            setTitle(null)
+        }
 
-		setTitle(R.string.dialog_title);
-		// setIcon(android.R.drawable.ic_dialog_info);
+        // listener
+        colorPicker.setOnColorChangedListener(this)
 
-		final LinearLayout landscapeLayout = layout.findViewById(R.id.dialog_color_picker_extra_layout_landscape);
-		if (landscapeLayout != null)
-		{
-			isLandscapeLayout = true;
-		}
+        // set colors
+        val newColor = color ?: START_COLOR
+        oldColorView.setValue(color)
+        newColorView.setColor(newColor)
+        colorPicker.setColor(newColor, true)
+    }
 
-		this.colorPicker = layout.findViewById(R.id.color_picker_view);
-		this.newColorView = layout.findViewById(R.id.color_panel_new);
-		ColorPanelView oldColorView = layout.findViewById(R.id.color_panel_old);
+    override fun onColorChanged(newColor: Int) {
+        newColorView.setColor(newColor)
+        listener?.onColorChanged(newColor)
+    }
 
-		if (!isLandscapeLayout)
-		{
-			((LinearLayout) oldColorView.getParent()).setPadding(Math.round(this.colorPicker.getDrawingOffset()), 0, Math.round(this.colorPicker.getDrawingOffset()), 0);
-		}
-		else
-		{
-			landscapeLayout.setPadding(0, 0, Math.round(this.colorPicker.getDrawingOffset()), 0);
-			setTitle(null);
-		}
+    fun setAlphaSliderVisible(visible: Boolean) {
+        colorPicker.setAlphaSliderVisible(visible)
+    }
 
-		this.colorPicker.setOnColorChangedListener(this);
+    companion object {
 
-		// set colors
-		int newColor = color != null ? color : START_COLOR;
-		oldColorView.setValue(color);
-		this.newColorView.setColor(newColor);
-		this.colorPicker.setColor(newColor, true);
-	}
-
-	@Override
-	public void onColorChanged(final int color)
-	{
-		this.newColorView.setColor(color);
-
-		if (this.listener != null)
-		{
-			this.listener.onColorChanged(color);
-		}
-	}
-
-	public void setAlphaSliderVisible(@SuppressWarnings("SameParameterValue") final boolean visible)
-	{
-		this.colorPicker.setAlphaSliderVisible(visible);
-	}
-
-	public int getColor()
-	{
-		return this.colorPicker.getColor();
-	}
+        private const val START_COLOR = Color.GRAY
+    }
 }

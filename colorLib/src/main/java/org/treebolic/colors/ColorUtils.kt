@@ -1,224 +1,181 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.colors
 
-package org.treebolic.colors;
-
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import androidx.annotation.AttrRes;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StyleRes;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
+import android.content.Context
+import android.graphics.drawable.Drawable
+import android.util.Log
+import android.util.TypedValue
+import android.view.Menu
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.annotation.StyleRes
+import androidx.core.content.res.ResourcesCompat
 
 /**
- * Tint
+ * Color utilities
  *
  * @author Bernard Bou
  */
-@SuppressWarnings("WeakerAccess")
-public class ColorUtils
-{
-	// static private final String TAG = "ColorUtils";
+object ColorUtils {
 
-	/**
-	 * Tint menu items
-	 *
-	 * @param iconTint    tint
-	 * @param menu        menu
-	 * @param menuItemIds menu item ids
-	 */
-	static public void tint(@ColorInt final int iconTint, @NonNull final Menu menu, @NonNull final int... menuItemIds)
-	{
-		for (int menuItemId : menuItemIds)
-		{
-			final MenuItem menuItem = menu.findItem(menuItemId);
-			final Drawable drawable = menuItem.getIcon();
-			if (drawable != null)
-			{
-				tint(iconTint, drawable);
-			}
-		}
-	}
+    /**
+     * Tint menu items
+     *
+     * @param iconTint    tint
+     * @param menu        menu
+     * @param menuItemIds menu item ids
+     */
+    @JvmStatic
+    fun tint(@ColorInt iconTint: Int, menu: Menu, vararg menuItemIds: Int) {
+        for (menuItemId in menuItemIds) {
+            val menuItem = menu.findItem(menuItemId)
+            val drawable = menuItem.icon
+            if (drawable != null) {
+                tint(iconTint, drawable)
+            }
+        }
+    }
 
-	/**
-	 * Tint drawable
-	 *
-	 * @param iconTint tint
-	 * @param drawable drawable
-	 */
-	static public void tint(@ColorInt int iconTint, @NonNull final Drawable drawable)
-	{
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-		{
-			drawable.setTint(iconTint);
-		}
-		else
-		{
-			DrawableCompat.setTint(DrawableCompat.wrap(drawable), iconTint);
-		}
-	}
+    /**
+     * Tint drawable
+     *
+     * @param iconTint tint
+     * @param drawable drawable
+     */
+    @JvmStatic
+    fun tint(@ColorInt iconTint: Int, drawable: Drawable) {
+        drawable.setTint(iconTint)
+    }
 
-	/**
-	 * Get drawable
-	 *
-	 * @param context     context
-	 * @param drawableRes drawable id
-	 * @return drawable
-	 */
-	@Nullable
-	@SuppressWarnings({"WeakerAccess"})
-	static public Drawable getDrawable(@NonNull final Context context, @DrawableRes int drawableRes)
-	{
-		return ResourcesCompat.getDrawable(context.getResources(), drawableRes, context.getTheme());
-	}
+    /**
+     * Get drawable
+     *
+     * @param context     context
+     * @param drawableRes drawable id
+     * @return drawable
+     */
+    private fun getDrawable(context: Context, @DrawableRes drawableRes: Int): Drawable? {
+        return ResourcesCompat.getDrawable(context.resources, drawableRes, context.theme)
+    }
 
-	/**
-	 * Get tinted drawable
-	 *
-	 * @param context     context
-	 * @param drawableRes drawable id
-	 * @param iconTint    tint
-	 * @return tinted drawable
-	 */
-	@NonNull
-	static public Drawable getTintedDrawable(@NonNull final Context context, @DrawableRes final int drawableRes, @ColorInt final int iconTint)
-	{
-		Drawable drawable = getDrawable(context, drawableRes);
-		assert drawable != null;
-		ColorUtils.tint(iconTint, drawable);
-		return drawable;
-	}
+    /**
+     * Get tinted drawable
+     *
+     * @param context     context
+     * @param drawableRes drawable id
+     * @param iconTint    tint
+     * @return tinted drawable
+     */
+    fun getTintedDrawable(context: Context, @DrawableRes drawableRes: Int, @ColorInt iconTint: Int): Drawable {
+        val drawable = checkNotNull(getDrawable(context, drawableRes))
+        tint(iconTint, drawable)
+        return drawable
+    }
 
-	/**
-	 * Fetch color from theme
-	 *
-	 * @param context context
-	 * @param attr    color attr
-	 * @return color
-	 */
-	static public int fetchColor(@NonNull final Context context, int attr)
-	{
-		final Resources.Theme theme = context.getTheme();
-		final TypedValue typedValue = new TypedValue();
-		theme.resolveAttribute(attr, typedValue, true);
-		return typedValue.data;
-	}
+    /**
+     * Fetch color from theme
+     *
+     * @param context context
+     * @param attr    color attr
+     * @return color
+     */
+    fun fetchColor(context: Context, attr: Int): Int {
+        val theme = context.theme
+        val typedValue = TypedValue()
+        theme.resolveAttribute(attr, typedValue, true)
+        return typedValue.data
+    }
 
-	/**
-	 * Get color from style
-	 *
-	 * @param context  context
-	 * @param styleRes style id (R.style.MyTheme)
-	 * @param attr     attr id (R.attr.editTextColor)
-	 * @return color
-	 */
-	static public int fetchColorFromStyle(@NonNull final Context context, @StyleRes int styleRes, int attr)
-	{
-		final TypedArray array = context.getTheme().obtainStyledAttributes(styleRes, new int[]{attr});
-		int intColor = array.getColor(0 /* index */, 0 /* defaultVal */);
-		// Log.d(TAG, "style resId=" + Integer.toHexString(styleId) + "color=" + Integer.toHexString(intColor));
-		array.recycle();
-		return intColor;
-	}
+    /**
+     * Get color from style
+     *
+     * @param context  context
+     * @param styleRes style id (R.style.MyTheme)
+     * @param attr     attr id (R.attr.editTextColor)
+     * @return color
+     */
+    fun fetchColorFromStyle(context: Context, @StyleRes styleRes: Int, attr: Int): Int {
+        context.theme.obtainStyledAttributes(styleRes, intArrayOf(attr)).use {
+            val intColor = it.getColor(0,  /* index */0 /* defaultVal */)
+            // Log.d(TAG, "style resId=${Integer.toHexString(styleRes)} color=${Integer.toHexString(intColor)}")
+            return intColor
+        }
+    }
 
-	/**
-	 * Get color from theme
-	 *
-	 * @param context     context
-	 * @param style       style id (ex: R.style.MyTheme)
-	 * @param colorAttrId attr id (ex: R.attr.editTextColor)
-	 * @return color
-	 */
-	@SuppressWarnings("WeakerAccess")
-	static public int getColorFromTheme(@NonNull final Context context, @AttrRes int style, @AttrRes @SuppressWarnings("SameParameterValue") int colorAttrId)
-	{
-		final Resources.Theme theme = context.getTheme();
-		// theme.dump(Log.DEBUG, TAG, "theme");
+    /**
+     * Get color from theme
+     *
+     * @param context     context
+     * @param style       style id (ex: R.style.MyTheme)
+     * @param colorAttrId attr id (ex: R.attr.editTextColor)
+     * @return color
+     */
+    private fun getColorFromTheme(context: Context, @AttrRes style: Int, @Suppress("SameParameterValue") @AttrRes colorAttrId: Int): Int {
+        val theme = context.theme
 
-		// res id of style pointed to from actionBarStyle
-		final TypedValue typedValue = new TypedValue();
-		theme.resolveAttribute(style, typedValue, true);
-		final int resId = typedValue.resourceId;
-		// Log.d(TAG, "actionBarStyle=" + Integer.toHexString(resId));
+        // res id of style pointed to from actionBarStyle
+        val typedValue = TypedValue()
+        theme.resolveAttribute(style, typedValue, true)
+        val resId = typedValue.resourceId
 
-		// now get action bar style values
-		final int[] attrs = new int[]{colorAttrId};
-		final TypedArray array = theme.obtainStyledAttributes(resId, attrs);
+        // Log.d(TAG, "actionBarStyle=${Integer.toHexString(resId)}")
 
-		// get color
-		try
-		{
-			// Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + Integer.toHexString(intColor));
-			return array.getColor(0 /* index */, 0xCCCCCCCC /* defaultVal */);
-		}
-		finally
-		{
-			array.recycle();
-		}
-	}
+        // now get action bar style values
+        val attrs = intArrayOf(colorAttrId)
 
-	/**
-	 * Get actionbar fore color from theme
-	 *
-	 * @param context context
-	 * @return color
-	 */
-	static public int getActionBarForegroundColorFromTheme(@NonNull final Context context)
-	{
-		// Log.d(TAG, "getActionBarForegroundColorFromTheme=0x" + Integer.toHexString(color));
-		return getColorFromTheme(context, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? android.R.attr.actionBarTheme : R.attr.actionBarTheme, android.R.attr.textColorPrimary);
-	}
+        // get color
+        theme.obtainStyledAttributes(resId, attrs)
+            .use {
+                val color = it.getColor(0,  /* index */-0x33333334 /* defaultVal */)
+                Log.d(TAG, "$theme attr=${Integer.toHexString(attrs[0])} value=${Integer.toHexString(color)}")
+                return color
+            }
+    }
 
-	/*
-	 * Dump background and fore colors from theme
-	 *
-	 * @param context context
-	 */
-	/*
-	@SuppressWarnings("ResourceType")
-	static private void dumpActionBarColor(final Context context)
-	{
-		final Resources.Theme theme = context.getTheme();
-		theme.dump(Log.DEBUG, TAG, "theme");
+    /**
+     * Get actionbar fore color from theme
+     *
+     * @param context context
+     * @return color
+     */
+    @JvmStatic
+    fun getActionBarForegroundColorFromTheme(context: Context): Int {
+        val color = getColorFromTheme(context, R.attr.actionBarTheme, android.R.attr.textColorPrimary)
+        // Log.d(TAG, "getActionBarForegroundColorFromTheme=0x${Integer.toHexString(color)}")
+        return color
+    }
 
-		// res id of style pointed to from actionBarStyle
-		final TypedValue typedValue = new TypedValue();
-		theme.resolveAttribute(android.R.attr.actionBarStyle, typedValue, true);
-		final int resId = typedValue.resourceId;
-		//Log.d(TAG, "actionBarStyle=" + Integer.toHexString(resId));
+    private const val TAG = "ColorUtils"
 
-		// now get action bar style values
-		final int[] attrs = new int[]{android.R.attr.background, android.R.attr.colorForeground};
-		final TypedArray style = theme.obtainStyledAttributes(resId, attrs);
+    /**
+     * Dump background and fore colors from theme
+     *
+     * @param context context
+     */
+    @Suppress("unused")
+    private fun dumpActionBarColor(context: Context) {
+        val theme = context.theme
+        theme.dump(Log.DEBUG, TAG, "theme")
 
-		//
-		try
-		{
-			final Drawable drawable = style.getDrawable(0);
-			//Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[0]) + " value=" + drawable);
-			for (int i = 1; i < attrs.length; i++)
-			{
-				final int intColor = style.getColor(i , 0xCCCCCCCC); // index, defaultVal
-				//Log.d(TAG, theme + " attr=" + Integer.toHexString(attrs[i]) + " value=" + Integer.toHexString(intColor));
-			}
-		}
-		finally
-		{
-			style.recycle();
-		}
-	}
-	*/
+        // res id of style pointed to from actionBarStyle
+        val typedValue = TypedValue()
+        theme.resolveAttribute(R.attr.actionBarStyle, typedValue, true)
+        val resId = typedValue.resourceId
+        Log.d(TAG, "actionBarStyle=${Integer.toHexString(resId)}")
+
+        // now get action bar style values
+        val attrs = intArrayOf(R.attr.background, android.R.attr.colorForeground)
+        theme.obtainStyledAttributes(resId, attrs).use { style ->
+            val drawable = style.getDrawable(0)
+            Log.d(TAG, "attr=${Integer.toHexString(attrs[0])} value=$drawable")
+            for (i in 1 until attrs.size) {
+                val intColor = style.getColor(i, -0x33333334) // index, defaultVal
+                Log.d(TAG, "$theme  attr=${Integer.toHexString(attrs[i])} value=${Integer.toHexString(intColor)}")
+            }
+        }
+    }
 }
 
