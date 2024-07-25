@@ -1,43 +1,33 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.filechooser
 
-package org.treebolic.filechooser;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.treebolic.AppCompatCommonActivity;
-
-import java.io.File;
-import java.io.FileFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.preference.PreferenceManager;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView.OnItemLongClickListener
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.widget.Toolbar
+import androidx.preference.PreferenceManager
+import org.treebolic.AppCompatCommonActivity
+import java.io.File
+import java.io.FileFilter
+import java.util.Locale
 
 /**
  * File chooser
@@ -45,575 +35,325 @@ import androidx.preference.PreferenceManager;
  * @author Bernard Bou
  */
 @SuppressLint("Registered")
-public class FileChooserActivity extends AppCompatCommonActivity implements AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener
-{
-	// keys
+class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, OnItemClickListener {
 
-	@SuppressWarnings("WeakerAccess")
-	static public final String ARG_FILECHOOSER_EXTENSION_FILTER = "filechooser.extension_filter";
+    /**
+     * File entry
+     *
+     * @property name   name
+     * @property data   data
+     * @property path   path
+     * @property isFolder is folder
+     * @property isParent is parent
+     * */
+    data class Entry(
+        val name: String,
+        val data: String,
+        val path: String,
+        val isFolder: Boolean,
+        val isParent: Boolean,
+        val isNone: Boolean
+    ) : Comparable<Entry> {
 
-	@SuppressWarnings("WeakerAccess")
-	static public final String ARG_FILECHOOSER_INITIAL_DIR = "filechooser.initial_dir";
+        constructor(name: String, data: String, path: String, isFolder: Boolean, isParent: Boolean) : this(name, data, path, isFolder, isParent, false)
 
-	@SuppressWarnings("WeakerAccess")
-	static public final String ARG_FILECHOOSER_CHOOSE_DIR = "filechooser.choose_dir";
+        override fun compareTo(other: Entry): Int {
+            val name2 = other.name
+            return name.compareTo(name2, ignoreCase = true)
+        }
+    }
 
-	/**
-	 * File entry
-	 */
-	public static class Entry implements Comparable<Entry>
-	{
-		/**
-		 * Entry name
-		 */
-		@Nullable
-		private final String name;
+    /**
+     * Entry to list adapter
+     * @param context   context
+     * @param id        text view resource id
+     * @param items     items
+     */
+    class FileArrayAdapter(
+        private val context: Context,
+        @param:LayoutRes private val id: Int,
+        private val items: List<Entry>
+    ) : ArrayAdapter<Entry>(context, id, items) {
 
-		/**
-		 * Entry data
-		 */
-		@Nullable
-		private final String data;
+        override fun getItem(i: Int): Entry {
+            return items[i]
+        }
 
-		/**
-		 * Entry path
-		 */
-		@Nullable
-		private final String path;
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            var view = convertView
+            if (view == null) {
+                val inflater = checkNotNull(context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+                view = inflater.inflate(this.id, null)
+            }
+            val entry = items[position]
+            val image = view!!.findViewById<ImageView>(R.id.typeImage)
+            val containerLabel = view.findViewById<TextView>(R.id.containerLabel)
+            val containerName = view.findViewById<TextView>(R.id.containerName)
 
-		/**
-		 * Entry folder
-		 */
-		private final boolean folder;
+            if (entry.isNone) {
+                image.setImageResource(R.drawable.filechooser_cancel)
+            } else if (entry.isParent) {
+                image.setImageResource(R.drawable.filechooser_back)
+            } else if (entry.isFolder) {
+                image.setImageResource(R.drawable.filechooser_folder)
+            } else {
+                var name = entry.name
+                name = name.lowercase(Locale.getDefault())
+                if (name.endsWith(".zip")) {
+                    image.setImageResource(R.drawable.filechooser_zip)
+                } else {
+                    image.setImageResource(R.drawable.filechooser_file)
+                }
+            }
+            if (containerLabel != null) {
+                if (entry.isNone) {
+                    containerLabel.setText(R.string.cancel)
+                } else {
+                    containerLabel.text = entry.name
+                }
+            }
+            if (containerName != null) {
+                if (entry.isNone) {
+                    containerName.setText(R.string.none)
+                } else {
+                    containerName.text = entry.data
+                }
+            }
+            return view
+        }
+    }
 
-		/**
-		 * Entry parent
-		 */
-		private final boolean parent;
+    /**
+     * List view
+     */
+    private lateinit var listView: ListView
 
-		/**
-		 * Entry none
-		 */
-		private final boolean none;
+    /**
+     * Current directory
+     */
+    private var currentDir: File? = null
 
-		/**
-		 * Constructor
-		 *
-		 * @param name0   name
-		 * @param data0   data
-		 * @param path0   path
-		 * @param folder0 folder
-		 * @param parent0 parent
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public Entry(@Nullable final String name0, @Nullable final String data0, @Nullable final String path0, final boolean folder0, final boolean parent0)
-		{
-			this.name = name0;
-			this.data = data0;
-			this.path = path0;
-			this.folder = folder0;
-			this.parent = parent0;
-			this.none = false;
-		}
+    /**
+     * Type
+     */
+    private var chooseDir = false
 
-		/**
-		 * Null entry
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public Entry()
-		{
-			this.none = true;
-			this.name = null;
-			this.data = null;
-			this.path = null;
-			this.folder = false;
-			this.parent = false;
-		}
+    /**
+     * Adapter
+     */
+    private var adapter: FileArrayAdapter? = null
 
-		/**
-		 * Get name
-		 *
-		 * @return name
-		 */
-		@SuppressWarnings("WeakerAccess")
-		@Nullable
-		public String getName()
-		{
-			return this.name;
-		}
+    /**
+     * File filter
+     */
+    private var fileFilter: FileFilter? = null
 
-		/**
-		 * Get data
-		 *
-		 * @return data
-		 */
-		@SuppressWarnings("WeakerAccess")
-		@Nullable
-		public String getData()
-		{
-			return this.data;
-		}
+    /**
+     * Acceptable extensions
+     */
+    private var extensions: List<String>? = null
 
-		/**
-		 * Get path
-		 *
-		 * @return path
-		 */
-		@SuppressWarnings("WeakerAccess")
-		@Nullable
-		public String getPath()
-		{
-			return this.path;
-		}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-		/**
-		 * Is folder
-		 *
-		 * @return true if entry is folder
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public boolean isFolder()
-		{
-			return this.folder;
-		}
+        // layout
+        setContentView(R.layout.activity_choose_file)
 
-		/**
-		 * Is parent
-		 *
-		 * @return true if entry is parent
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public boolean isParent()
-		{
-			return this.parent;
-		}
+        // toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-		/**
-		 * Is none
-		 *
-		 * @return true if entry is parent
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public boolean isNone()
-		{
-			return this.none;
-		}
+        // set up the action bar
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.displayOptions = ActionBar.DISPLAY_USE_LOGO or ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_SHOW_HOME or ActionBar.DISPLAY_HOME_AS_UP
+        }
 
-		@Override
-		public int compareTo(@NonNull final Entry o)
-		{
-			if (this.name != null)
-			{
-				final String name2 = o.getName();
-				if (name2 == null)
-				{
-					return 1;
-				}
-				return this.name.compareToIgnoreCase(name2);
-			}
-			throw new IllegalArgumentException();
-		}
-	}
+        // list view
+        listView = findViewById(android.R.id.list)
 
-	/**
-	 * Entry to list adapter
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public static class FileArrayAdapter extends ArrayAdapter<Entry>
-	{
-		/**
-		 * Context
-		 */
-		@NonNull
-		private final Context context;
+        // click listeners
+        listView.onItemClickListener = this
+        listView.setOnItemLongClickListener(this)
 
-		/**
-		 * Entry id
-		 */
-		private final int id;
+        // default
+        this.currentDir = getExternalFilesDir(null)
+        checkNotNull(this.currentDir)
 
-		/**
-		 * List of entries
-		 */
-		@NonNull
-		private final List<Entry> items;
+        // extras
+        val extras = intent.extras
+        if (extras != null) {
+            // initial
+            var initialDirExtra = extras.getString(ARG_FILECHOOSER_INITIAL_DIR)
+            if (initialDirExtra != null) {
+                val uri = Uri.parse(initialDirExtra)
+                if (uri != null && "file" == uri.scheme) {
+                    val path = uri.path
+                    if (path != null) {
+                        initialDirExtra = path
+                    }
+                }
+                this.currentDir = File(initialDirExtra)
+            }
 
-		/**
-		 * Constructor
-		 *
-		 * @param context   context
-		 * @param layoutRes text view resource id
-		 * @param items     items
-		 */
-		@SuppressWarnings("WeakerAccess")
-		public FileArrayAdapter(@NonNull final Context context, @LayoutRes final int layoutRes, @NonNull final List<Entry> items)
-		{
-			super(context, layoutRes, items);
-			this.context = context;
-			this.id = layoutRes;
-			this.items = items;
-		}
+            // type
+            this.chooseDir = extras.getBoolean(ARG_FILECHOOSER_CHOOSE_DIR, false)
 
-		@Override
-		public Entry getItem(final int i)
-		{
-			return this.items.get(i);
-		}
+            // extensions
+            val extensionExtras = extras.getStringArray(ARG_FILECHOOSER_EXTENSION_FILTER)
+            if (!extensionExtras.isNullOrEmpty()) {
+                this.extensions = listOf(*extensionExtras)
+                this.fileFilter = FileFilter { file: File ->
+                    val name = file.name
+                    val dot = name.lastIndexOf('.')
+                    //
+                    //
+                    file.isDirectory || extensions == null || dot == -1 || extensions!!.contains(name.substring(dot + 1))
+                }
+            }
+        }
 
-		@NonNull
-		@Override
-		public View getView(final int position, final View convertView, @NonNull final ViewGroup parent)
-		{
-			View view = convertView;
-			if (view == null)
-			{
-				final LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				assert inflater != null;
-				view = inflater.inflate(this.id, null);
-			}
-			final Entry entry = this.items.get(position);
-			if (entry != null)
-			{
-				final ImageView image = view.findViewById(R.id.typeImage);
-				final TextView containerLabel = view.findViewById(R.id.containerLabel);
-				final TextView containerName = view.findViewById(R.id.containerName);
+        // initialize list
+        fill(currentDir!!)
 
-				if (entry.isNone())
-				{
-					image.setImageResource(R.drawable.filechooser_cancel);
-				}
-				else if (entry.isParent())
-				{
-					image.setImageResource(R.drawable.filechooser_back);
-				}
-				else if (entry.isFolder())
-				{
-					image.setImageResource(R.drawable.filechooser_folder);
-				}
-				else
-				{
-					String name = entry.getName();
-					if (name != null)
-					{
-						name = name.toLowerCase(Locale.getDefault());
-						if (name.endsWith(".zip"))
-						{
-							image.setImageResource(R.drawable.filechooser_zip);
-						}
-						else
-						{
-							image.setImageResource(R.drawable.filechooser_file);
-						}
-					}
-				}
+        // initialize list
+        if (this.chooseDir) {
+            Toast.makeText(this, R.string.howToSelect, Toast.LENGTH_SHORT).show()
+        }
+    }
 
-				if (containerLabel != null)
-				{
-					if (entry.isNone())
-					{
-						containerLabel.setText(R.string.cancel);
-					}
-					else
-					{
-						containerLabel.setText(entry.getName());
-					}
-				}
-				if (containerName != null)
-				{
-					if (entry.isNone())
-					{
-						containerName.setText(R.string.none);
-					}
-					else
-					{
-						containerName.setText(entry.getData());
-					}
-				}
-			}
-			return view;
-		}
-	}
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            checkNotNull(this.currentDir)
+            if ( // !this.currentDir.getName().equals(ROOT) &&
+                currentDir!!.parentFile != null) {
+                currentDir = currentDir!!.parentFile
+                fill(currentDir!!)
+            }
+            return false
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 
-	/**
-	 * List view
-	 */
-	private ListView listView;
+    override fun onItemClick(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+        val entry = adapter!!.getItem(position)
+        if (entry.isFolder || entry.isParent) {
+            // if folder we move into it
+            val path = entry.path
+            currentDir = File(path)
+            fill(currentDir!!)
+        } else {
+            // select
+            if (!chooseDir || entry.isNone) {
+                select(entry)
+            }
+        }
+    }
 
-	/**
-	 * Current directory
-	 */
-	@Nullable
-	private File currentDir;
+    override fun onItemLongClick(parent: AdapterView<*>?, view: View, position: Int, id: Long): Boolean {
+        val entry = adapter!!.getItem(position)
+        if (this.chooseDir && (entry.isFolder || entry.isParent)) {
+            // select
+            select(entry)
+            return true
+        }
+        return false
+    }
 
-	/**
-	 * Type
-	 */
-	private boolean chooseDir;
+    /**
+     * Select and return entry
+     *
+     * @param entry entry
+     */
+    private fun select(entry: Entry) {
+        // select
+        // Toast.makeText(this, getResources().getText(R.string.selected) + " " + entry.getName(), Toast.LENGTH_SHORT).show();
+        val resultIntent = Intent()
+        if (!entry.isNone) {
+            val fileUri = Uri.fromFile(File(entry.path))
+            resultIntent.setDataAndType(fileUri, contentResolver.getType(fileUri))
+        } else {
+            resultIntent.setData(null)
+        }
+        setResult(RESULT_OK, resultIntent)
+        finish()
+    }
 
-	/**
-	 * Adapter
-	 */
-	private FileArrayAdapter adapter;
+    /**
+     * Fill with entries from dir
+     *
+     * @param dirFile dir
+     */
+    private fun fill(dirFile: File) {
+        val items = if (this.fileFilter != null) {
+            dirFile.listFiles(this.fileFilter)
+        } else {
+            dirFile.listFiles()
+        }
 
-	/**
-	 * File filter
-	 */
-	private FileFilter fileFilter;
+        this.title = getString(R.string.currentDir) + ": " + dirFile.name
+        val dirs: MutableList<Entry> = ArrayList()
+        val files: MutableList<Entry> = ArrayList()
+        try {
+            if (items != null) {
+                for (item in items) {
+                    if (item.isDirectory && !item.isHidden) {
+                        dirs.add(Entry(item.name, getString(R.string.folder), item.absolutePath, isFolder = true, isParent = false))
+                    } else {
+                        if (!item.isHidden) {
+                            files.add(Entry(item.name, getString(R.string.fileSize) + ": " + item.length(), item.absolutePath, isFolder = false, isParent = false))
+                        }
+                    }
+                }
+            }
+        } catch (ignored: Exception) {
+            //
+        }
 
-	/**
-	 * Acceptable extensions
-	 */
-	private List<String> extensions;
+        // sort
+        dirs.sort()
+        files.sort()
+        dirs.addAll(files)
+        dirs.add(Entry("", "", "", isFolder = false, isParent = false, isNone = true))
 
-	@Override
-	protected void onCreate(final Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
+        // container
+        run {
+            if (dirFile.parentFile != null) {
+                dirs.add(0, Entry(".. ${getString(R.string.parentDirectory)}", dirFile.absolutePath, dirFile.parent!!, isFolder = false, isParent = true))
+            }
+        }
 
-		// layout
-		setContentView(R.layout.activity_choose_file);
+        // adapter
+        adapter = FileArrayAdapter(this@FileChooserActivity, R.layout.filechooser_entries_file, dirs)
+        listView.adapter = adapter
+    }
 
-		// toolbar
-		final Toolbar toolbar = findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
+    companion object {
 
-		// set up the action bar
-		final ActionBar actionBar = getSupportActionBar();
-		if (actionBar != null)
-		{
-			actionBar.setDisplayOptions(ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_HOME_AS_UP);
-		}
+        // keys
+        const val ARG_FILECHOOSER_EXTENSION_FILTER: String = "filechooser.extension_filter"
 
-		// list view
-		this.listView = findViewById(android.R.id.list);
+        const val ARG_FILECHOOSER_INITIAL_DIR: String = "filechooser.initial_dir"
 
-		// click listeners
-		this.listView.setOnItemClickListener(this);
-		this.listView.setOnItemLongClickListener(this);
+        const val ARG_FILECHOOSER_CHOOSE_DIR: String = "filechooser.choose_dir"
 
-		// default
-		this.currentDir = getExternalFilesDir(null);
-		assert this.currentDir != null;
+        @JvmStatic
+        @SuppressLint("CommitPrefEdits", "ApplySharedPref")
+        fun setFolder(context: Context, key: String?, folder: String?) {
+            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val edit = prefs.edit()
+            edit.putString(key, folder).commit()
+        }
 
-		// extras
-		final Bundle extras = getIntent().getExtras();
-		if (extras != null)
-		{
-			// initial
-			String initialDirExtra = extras.getString(FileChooserActivity.ARG_FILECHOOSER_INITIAL_DIR);
-			if (initialDirExtra != null)
-			{
-				final Uri uri = Uri.parse(initialDirExtra);
-				if (uri != null && "file".equals(uri.getScheme()))
-				{
-					String path = uri.getPath();
-					if (path != null)
-					{
-						initialDirExtra = path;
-					}
-				}
-				this.currentDir = new File(initialDirExtra);
-			}
-
-			// type
-			this.chooseDir = extras.getBoolean(FileChooserActivity.ARG_FILECHOOSER_CHOOSE_DIR, false);
-
-			// extensions
-			final String[] extensionExtras = extras.getStringArray(FileChooserActivity.ARG_FILECHOOSER_EXTENSION_FILTER);
-			if (extensionExtras != null && extensionExtras.length > 0)
-			{
-				this.extensions = Arrays.asList(extensionExtras);
-				this.fileFilter = file -> {
-					final String name = file.getName();
-					final int dot = name.lastIndexOf('.');
-					return file.isDirectory() //
-							|| FileChooserActivity.this.extensions == null //
-							|| dot == -1 //
-							|| FileChooserActivity.this.extensions.contains(name.substring(dot + 1));
-				};
-			}
-		}
-
-		// initialize list
-		fill(this.currentDir);
-
-		// initialize list
-		if (this.chooseDir)
-		{
-			Toast.makeText(this, R.string.howToSelect, Toast.LENGTH_SHORT).show();
-		}
-	}
-
-	@Override
-	public boolean onKeyDown(final int keyCode, final KeyEvent event)
-	{
-		if (keyCode == KeyEvent.KEYCODE_BACK)
-		{
-			assert this.currentDir != null;
-			if (// !this.currentDir.getName().equals(ROOT) &&
-					this.currentDir.getParentFile() != null)
-			{
-				this.currentDir = this.currentDir.getParentFile();
-				fill(this.currentDir);
-			}
-			return false;
-		}
-		return super.onKeyDown(keyCode, event);
-	}
-
-	@Override
-	public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id)
-	{
-		final Entry entry = this.adapter.getItem(position);
-		if (entry != null)
-		{
-			if (entry.isFolder() || entry.isParent())
-			{
-				// if folder we move into it
-				final String path = entry.getPath();
-				if (path != null)
-				{
-					this.currentDir = new File(path);
-					fill(this.currentDir);
-				}
-			}
-			else
-			{
-				// select
-				if (!this.chooseDir || entry.isNone())
-				{
-					select(entry);
-				}
-			}
-		}
-	}
-
-	@Override
-	public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, final long id)
-	{
-		final Entry entry = this.adapter.getItem(position);
-		if (entry != null)
-		{
-			if (this.chooseDir && (entry.isFolder() || entry.isParent()))
-			{
-				// select
-				select(entry);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Select and return entry
-	 *
-	 * @param entry entry
-	 */
-	private void select(@NonNull final Entry entry)
-	{
-		// select
-		// Toast.makeText(this, getResources().getText(R.string.selected) + " " + entry.getName(), Toast.LENGTH_SHORT).show();
-		final Intent resultIntent = new Intent();
-		if (!entry.isNone() && entry.getPath() != null)
-		{
-			final Uri fileUri = Uri.fromFile(new File(entry.getPath()));
-			resultIntent.setDataAndType(fileUri, getContentResolver().getType(fileUri));
-		}
-		else
-		{
-			resultIntent.setData(null);
-		}
-		setResult(AppCompatActivity.RESULT_OK, resultIntent);
-		finish();
-	}
-
-	/**
-	 * Fill with entries from dir
-	 *
-	 * @param dirFile dir
-	 */
-	private void fill(@NonNull final File dirFile)
-	{
-		File[] items;
-		if (this.fileFilter != null)
-		{
-			items = dirFile.listFiles(this.fileFilter);
-		}
-		else
-		{
-			items = dirFile.listFiles();
-		}
-
-		this.setTitle(getString(R.string.currentDir) + ": " + dirFile.getName());
-		final List<Entry> dirs = new ArrayList<>();
-		final List<Entry> files = new ArrayList<>();
-		try
-		{
-			if (items != null)
-			{
-				for (final File item : items)
-				{
-					if (item.isDirectory() && !item.isHidden())
-					{
-						dirs.add(new Entry(item.getName(), getString(R.string.folder), item.getAbsolutePath(), true, false));
-					}
-					else
-					{
-						if (!item.isHidden())
-						{
-							files.add(new Entry(item.getName(), getString(R.string.fileSize) + ": " + item.length(), item.getAbsolutePath(), false, false));
-						}
-					}
-				}
-			}
-		}
-		catch (@NonNull final Exception ignored)
-		{
-			//
-		}
-
-		// sort
-		Collections.sort(dirs);
-		Collections.sort(files);
-		dirs.addAll(files);
-		dirs.add(new Entry());
-
-		// container
-		// if (!dirFile.getName().equalsIgnoreCase(ROOT))
-		{
-			if (dirFile.getParentFile() != null)
-			{
-				dirs.add(0, new Entry(".. " + getString(R.string.parentDirectory), dirFile.getAbsolutePath(), dirFile.getParent(), false, true));
-			}
-		}
-
-		// adapter
-		this.adapter = new FileArrayAdapter(FileChooserActivity.this, R.layout.filechooser_entries_file, dirs);
-		this.listView.setAdapter(this.adapter);
-	}
-
-	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
-	static public void setFolder(@NonNull final Context context, final String key, final String folder)
-	{
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		final SharedPreferences.Editor edit = prefs.edit();
-		edit.putString(key, folder).commit();
-	}
-
-	@Nullable
-	static public File getFolder(@NonNull final Context context, final String key)
-	{
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		final String path = prefs.getString(key, null);
-		if (path == null)
-		{
-			return null;
-		}
-		final File dir = new File(path);
-		if (!dir.exists() || !dir.isDirectory())
-		{
-			return null;
-		}
-		return dir;
-	}
+        @JvmStatic
+        fun getFolder(context: Context, key: String?): File? {
+            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val path = prefs.getString(key, null) ?: return null
+            val dir = File(path)
+            if (!dir.exists() || !dir.isDirectory) {
+                return null
+            }
+            return dir
+        }
+    }
 }
