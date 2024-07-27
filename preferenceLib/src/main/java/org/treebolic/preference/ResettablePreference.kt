@@ -1,53 +1,35 @@
 /*
  * Copyright (c) 2023. Bernard Bou
  */
+package org.treebolic.preference
 
-package org.treebolic.preference;
+import android.content.Context
+import android.util.AttributeSet
+import android.view.View
+import android.widget.Button
+import androidx.preference.Preference
+import androidx.preference.PreferenceViewHolder
 
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.Button;
+class ResettablePreference : Preference {
 
-import androidx.annotation.NonNull;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
+    constructor(context: Context) : super(context)
 
-public class ResettablePreference extends Preference
-{
-	public ResettablePreference(@NonNull final Context context)
-	{
-		super(context);
-	}
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
-	public ResettablePreference(@NonNull final Context context, final AttributeSet attrs, final int defStyleAttr, final int defStyleRes)
-	{
-		super(context, attrs, defStyleAttr, defStyleRes);
-	}
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-	public ResettablePreference(@NonNull final Context context, final AttributeSet attrs, final int defStyleAttr)
-	{
-		super(context, attrs, defStyleAttr);
-	}
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
-	public ResettablePreference(@NonNull final Context context, final AttributeSet attrs)
-	{
-		super(context, attrs);
-	}
+    private var listener: View.OnClickListener? = null
 
-	private View.OnClickListener listener;
+    fun setClickListener(listener: View.OnClickListener?) {
+        this.listener = listener
+    }
 
-	public void setClickListener(final View.OnClickListener listener)
-	{
-		this.listener = listener;
-	}
+    override fun onBindViewHolder(holder: PreferenceViewHolder) {
+        super.onBindViewHolder(holder)
 
-	@Override
-	public void onBindViewHolder(@NonNull final PreferenceViewHolder holder)
-	{
-		super.onBindViewHolder(holder);
-
-		Button button = (Button) holder.findViewById(R.id.bn_model_dir_reset);
-		button.setOnClickListener(this.listener);
-	}
+        val button = holder.findViewById(R.id.bn_model_dir_reset) as Button
+        button.setOnClickListener(this.listener)
+    }
 }
