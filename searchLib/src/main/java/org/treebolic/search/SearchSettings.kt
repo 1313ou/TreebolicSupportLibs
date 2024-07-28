@@ -1,367 +1,294 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.search
 
-package org.treebolic.search;
-
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import org.treebolic.wheel.AbstractWheel;
-import org.treebolic.wheel.OnWheelScrollListener;
-import org.treebolic.wheel.WheelView;
-import org.treebolic.wheel.adapters.AbstractWheelTextAdapter;
-import org.treebolic.wheel.adapters.WheelViewAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.appcompat.view.ContextThemeWrapper;
-import androidx.fragment.app.FragmentManager;
-import androidx.preference.PreferenceManager;
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.fragment.app.FragmentManager
+import androidx.preference.PreferenceManager
+import org.treebolic.wheel.AbstractWheel
+import org.treebolic.wheel.OnWheelScrollListener
+import org.treebolic.wheel.WheelView
+import org.treebolic.wheel.adapters.AbstractWheelTextAdapter
 
 /**
  * Search settings
  *
  * @author Bernard Bou
  */
-public class SearchSettings extends AppCompatDialogFragment
-{
-	private static final String TAG = "SearchSettings";
+class SearchSettings : AppCompatDialogFragment() {
 
-	@SuppressWarnings("WeakerAccess")
-	static public final String PREF_SEARCH_SCOPE = "pref_search_scope";
+    private var scrolling = false
 
-	@SuppressWarnings("WeakerAccess")
-	static public final String PREF_SEARCH_MODE = "pref_search_mode";
+    private var scopeWheel: WheelView? = null
 
+    private var modeWheel: WheelView? = null
 
-	static public final String SCOPE_SOURCE = "SOURCE";
+    private var modeAdapter: Adapter? = null
 
-	static public final String SCOPE_LABEL = "LABEL";
+    private var sourceAdapter: Adapter? = null
 
-	static public final String SCOPE_CONTENT = "CONTENT";
+    private lateinit var modes: Array<String>
 
-	static public final String SCOPE_LINK = "LINK";
+    private lateinit var scopes: Array<String>
 
-	static public final String SCOPE_ID = "ID";
+    private lateinit var sources: Array<String>
 
+    private var sourceModeIndex = 0
 
-	static public final String MODE_STARTSWITH = "STARTSWITH";
+    @SuppressLint("InflateParams")
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val context = requireContext()
+        val resources = context.resources
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
 
-	static public final String MODE_EQUALS = "EQUALS";
+        // get strings
+        val scopeLabels = resources.getStringArray(R.array.search_scope_labels)
+        val modeLabels = resources.getStringArray(R.array.search_mode_labels)
+        val sourceLabels = resources.getStringArray(R.array.search_source_labels)
+        this.modes = resources.getStringArray(R.array.search_modes)
+        this.scopes = resources.getStringArray(R.array.search_scopes)
+        this.sources = resources.getStringArray(R.array.search_sources)
+        this.sourceModeIndex = resources.getInteger(R.integer.search_scope_source_index)
+        val defaultScopeIndex = resources.getInteger(R.integer.search_scope_default)
+        val defaultModeIndex = resources.getInteger(R.integer.search_mode_default)
 
-	static public final String MODE_INCLUDES = "INCLUDES";
+        // get icons
+        val scopeIcons = intArrayOf(R.drawable.ic_search_scope_label, R.drawable.ic_search_scope_id, R.drawable.ic_search_scope_content, R.drawable.ic_search_scope_link, R.drawable.ic_search_scope_source)
+        val modeIcons = intArrayOf(R.drawable.ic_search_mode_equals, R.drawable.ic_search_mode_startswith, R.drawable.ic_search_mode_includes)
+        val sourceIcons = intArrayOf(R.drawable.ic_search_mode_equals)
 
-	static public final String MODE_IS = "IS";
+        // wheel2 adapter
+        this.modeAdapter = Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.size, Adapter.Type.MODE)
+        this.sourceAdapter = Adapter(context, R.layout.item_mode, sourceLabels, sourceIcons, sources.size, Adapter.Type.SOURCE)
 
-	private boolean scrolling = false;
+        // initial values for scope
+        var scopeIndex = defaultScopeIndex
+        val scope = sharedPref.getString(PREF_SEARCH_SCOPE, null)
+        Log.d(TAG, "Scope $scope")
+        if (scope != null) {
+            for (i in scopes.indices) {
+                if (scope == scopes[i]) {
+                    scopeIndex = i
+                    break
+                }
+            }
+        } else {
+            val editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, scopes[defaultScopeIndex])
+            tryCommit(editor)
+        }
+        // initial values for mode
+        var modeIndex = defaultModeIndex
+        if (scopeIndex < scopes.size - 1) // label id content link
+        {
+            modeIndex = 1
+            val mode = sharedPref.getString(PREF_SEARCH_MODE, null)
+            Log.d(TAG, "Mode $mode")
+            if (mode != null) {
+                for (i in modes.indices) {
+                    if (mode == modes[i]) {
+                        modeIndex = i
+                        break
+                    }
+                }
+            } else {
+                val editor = sharedPref.edit().putString(PREF_SEARCH_MODE, modes[defaultModeIndex])
+                tryCommit(editor)
+            }
+        } else  // source
+        {
+            if (sharedPref.contains(PREF_SEARCH_MODE)) {
+                val editor = sharedPref.edit().remove(PREF_SEARCH_MODE)
+                tryCommit(editor)
+            }
+        }
 
-	private WheelView scopeWheel;
+        // dialog
 
-	private WheelView modeWheel;
+        // val dialog: Dialog  = AppCompatDialog(requireActivity())
+        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // or
+        // dialog.setTitle(R.string.search_title)
+        // dialog.setContentView(R.layout.dialog_search_settings)
+        // dialog.window?.setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded)
+        val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_search_settings, null)
 
-	@Nullable
-	private Adapter modeAdapter;
+        // wheel 1abandon
+        this.scopeWheel = view.findViewById(R.id.scope)
+        checkNotNull(this.scopeWheel)
+        scopeWheel!!.visibleItems = 4
+        scopeWheel!!.viewAdapter = Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, scopes.size, Adapter.Type.SCOPE)
 
-	@Nullable
-	private Adapter sourceAdapter;
+        // wheel 1 events
+        scopeWheel!!.addChangingListener { _: AbstractWheel?, _: Int, newValue: Int ->
+            Log.d(TAG, "Wheel 1 " + newValue + ' ' + scopes[newValue])
+            val editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, scopes[newValue])
+            tryCommit(editor)
+            if (!this@SearchSettings.scrolling) {
+                updateWheel2(newValue)
+            }
+        }
+        scopeWheel!!.addScrollingListener(object : OnWheelScrollListener {
+            override fun onScrollingStarted(wheel: AbstractWheel) {
+                this@SearchSettings.scrolling = true
+            }
 
-	private String[] modes;
+            override fun onScrollingFinished(wheel: AbstractWheel) {
+                this@SearchSettings.scrolling = false
+                updateWheel2(scopeWheel!!.currentItem)
+            }
+        })
 
-	private String[] scopes;
+        // wheel 2
+        this.modeWheel = view.findViewById(R.id.mode)
+        checkNotNull(this.modeWheel)
+        modeWheel!!.visibleItems = 4
+        modeWheel!!.viewAdapter = this.modeAdapter //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
 
-	private String[] sources;
+        // wheel 2 events
+        modeWheel!!.addChangingListener { wheel: AbstractWheel, _: Int, newValue: Int ->
+            val wheelViewAdapter = wheel.viewAdapter
+            val adapter = wheelViewAdapter as Adapter
+            if (adapter.type == Adapter.Type.MODE) {
+                Log.d(TAG, "Wheel 2 " + newValue + ' ' + modes[newValue])
+                val editor = sharedPref.edit().putString(PREF_SEARCH_MODE, modes[newValue])
+                tryCommit(editor)
+            } else if (adapter.type == Adapter.Type.SOURCE) {
+                Log.d(TAG, "Wheel 2 " + newValue + ' ' + sources[newValue])
+                val editor = sharedPref.edit().putString(PREF_SEARCH_MODE, sources[newValue])
+                tryCommit(editor)
+            }
+        }
 
-	private int sourceModeIndex;
+        // wheels initial
+        scopeWheel!!.currentItem = scopeIndex
+        modeWheel!!.currentItem = modeIndex
 
-	@NonNull
-	@SuppressWarnings("WeakerAccess")
-	public static SearchSettings newInstance()
-	{
-		return new SearchSettings();
-	}
+        //final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        val builder = AlertDialog.Builder(ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom))
+        return builder //
+            .setView(view).setPositiveButton(R.string.title_yes) { dialog2: DialogInterface, _: Int -> dialog2.dismiss() } //
+            .create()
+    }
 
-	@NonNull
-	@SuppressLint("InflateParams")
-	@Override
-	public Dialog onCreateDialog(final Bundle savedInstanceState)
-	{
-		final Context context = requireContext();
-		final Resources resources = context.getResources();
-		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+    /**
+     * Updates item_mode wheel depending on item_scope
+     */
+    private var oldModeIndex = 1
 
-		// get strings
-		final String[] scopeLabels = resources.getStringArray(R.array.search_scope_labels);
-		final String[] modeLabels = resources.getStringArray(R.array.search_mode_labels);
-		final String[] sourceLabels = resources.getStringArray(R.array.search_source_labels);
-		this.modes = resources.getStringArray(R.array.search_modes);
-		this.scopes = resources.getStringArray(R.array.search_scopes);
-		this.sources = resources.getStringArray(R.array.search_sources);
-		this.sourceModeIndex = resources.getInteger(R.integer.search_scope_source_index);
-		final int defaultScopeIndex = resources.getInteger(R.integer.search_scope_default);
-		final int defaultModeIndex = resources.getInteger(R.integer.search_mode_default);
+    private fun updateWheel2(scopeIndex: Int) {
+        val modeIndex: Int
+        val adapter: Adapter?
+        if (scopeIndex < this.sourceModeIndex) // item_scope != source
+        {
+            modeIndex = this.oldModeIndex
+            adapter = this.modeAdapter
+        } else  // item_scope == source
+        {
+            modeIndex = 0
+            adapter = this.sourceAdapter
+            this.oldModeIndex = modeWheel!!.currentItem
+        }
+        modeWheel!!.viewAdapter = adapter
+        modeWheel!!.currentItem = modeIndex
+    }
 
-		// get icons
-		final int[] scopeIcons = new int[]{R.drawable.ic_search_scope_label, R.drawable.ic_search_scope_id, R.drawable.ic_search_scope_content, R.drawable.ic_search_scope_link, R.drawable.ic_search_scope_source};
-		final int[] modeIcons = new int[]{R.drawable.ic_search_mode_equals, R.drawable.ic_search_mode_startswith, R.drawable.ic_search_mode_includes};
-		final int[] sourceIcons = new int[]{R.drawable.ic_search_mode_equals};
+    /**
+     * Adapter for scopes
+     */
+    private class Adapter(context0: Context, layout0: Int, val labels: Array<String?>, val icons: IntArray, val len: Int, val type: Type) : AbstractWheelTextAdapter(context0, layout0, NO_RESOURCE) {
 
-		// wheel2 adapter
-		this.modeAdapter = new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE);
-		this.sourceAdapter = new Adapter(context, R.layout.item_mode, sourceLabels, sourceIcons, this.sources.length, Adapter.Type.SOURCE);
+        enum class Type {
+            SCOPE, MODE, SOURCE
+        }
 
-		// initial values for scope
-		int scopeIndex = defaultScopeIndex;
-		final String scope = sharedPref.getString(PREF_SEARCH_SCOPE, null);
-		Log.d(TAG, "Scope " + scope);
-		if (scope != null)
-		{
-			for (int i = 0; i < this.scopes.length; i++)
-			{
-				if (scope.equals(this.scopes[i]))
-				{
-					scopeIndex = i;
-					break;
-				}
-			}
-		}
-		else
-		{
-			final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, this.scopes[defaultScopeIndex]);
-			tryCommit(editor);
-		}
-		// initial values for mode
-		int modeIndex = defaultModeIndex;
-		if (scopeIndex < this.scopes.length - 1) // label id content link
-		{
-			modeIndex = 1;
-			final String mode = sharedPref.getString(PREF_SEARCH_MODE, null);
-			Log.d(TAG, "Mode " + mode);
-			if (mode != null)
-			{
-				for (int i = 0; i < this.modes.length; i++)
-				{
-					if (mode.equals(this.modes[i]))
-					{
-						modeIndex = i;
-						break;
-					}
-				}
-			}
-			else
-			{
-				final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_MODE, this.modes[defaultModeIndex]);
-				tryCommit(editor);
-			}
-		}
-		else // source
-		{
-			if (sharedPref.contains(PREF_SEARCH_MODE))
-			{
-				final SharedPreferences.Editor editor = sharedPref.edit().remove(PREF_SEARCH_MODE);
-				tryCommit(editor);
-			}
-		}
+        /**
+         * Constructor
+         */
+        init {
+            itemTextResource = R.id.wheel_name
+        }
 
-		// dialog
+        override fun getItem(index: Int, cachedView: View, parent: ViewGroup): View {
+            val view = checkNotNull(super.getItem(index, cachedView, parent))
+            val img = view.findViewById<ImageView>(R.id.wheel_icon)
+            img.setImageResource(icons[index])
+            return view
+        }
 
-		//final Dialog dialog = new AppCompatDialog(requireActivity());
-		//dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // or
-		//dialog.setTitle(R.string.search_title);
-		//dialog.setContentView(R.layout.dialog_search_settings);
-		//dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded);
+        override fun getItemsCount(): Int {
+            return this.len
+        }
 
-		final View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_search_settings, null);
+        override fun getItemText(index: Int): CharSequence? {
+            return labels[index]
+        }
+    }
 
-		// wheel 1abandon
-		this.scopeWheel = view.findViewById(R.id.scope);
-		assert this.scopeWheel != null;
-		this.scopeWheel.setVisibleItems(4);
-		this.scopeWheel.setViewAdapter(new Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, this.scopes.length, Adapter.Type.SCOPE));
+    companion object {
 
-		// wheel 1 events
-		this.scopeWheel.addChangingListener((wheel, oldValue, newValue) -> {
-			Log.d(TAG, "Wheel 1 " + newValue + ' ' + SearchSettings.this.scopes[newValue]);
-			final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, SearchSettings.this.scopes[newValue]);
-			tryCommit(editor);
-			if (!SearchSettings.this.scrolling)
-			{
-				updateWheel2(newValue);
-			}
-		});
-		this.scopeWheel.addScrollingListener(new OnWheelScrollListener()
-		{
-			@Override
-			public void onScrollingStarted(AbstractWheel wheel)
-			{
-				SearchSettings.this.scrolling = true;
-			}
+        private const val TAG = "SearchSettings"
 
-			@Override
-			public void onScrollingFinished(AbstractWheel wheel)
-			{
-				SearchSettings.this.scrolling = false;
-				updateWheel2(SearchSettings.this.scopeWheel.getCurrentItem());
-			}
-		});
+        const val PREF_SEARCH_SCOPE: String = "pref_search_scope"
 
-		// wheel 2
-		this.modeWheel = view.findViewById(R.id.mode);
-		assert this.modeWheel != null;
-		this.modeWheel.setVisibleItems(4);
-		this.modeWheel.setViewAdapter(this.modeAdapter); //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
+        const val PREF_SEARCH_MODE: String = "pref_search_mode"
 
-		// wheel 2 events
-		this.modeWheel.addChangingListener((wheel, oldValue, newValue) -> {
-			WheelViewAdapter wheelViewAdapter = wheel.getViewAdapter();
-			Adapter adapter = (Adapter) wheelViewAdapter;
-			if (adapter.getType() == Adapter.Type.MODE)
-			{
-				Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.modes[newValue]);
-				final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.modes[newValue]);
-				tryCommit(editor);
-			}
-			else if (adapter.getType() == Adapter.Type.SOURCE)
-			{
-				Log.d(TAG, "Wheel 2 " + newValue + ' ' + SearchSettings.this.sources[newValue]);
-				final SharedPreferences.Editor editor = sharedPref.edit().putString(PREF_SEARCH_MODE, SearchSettings.this.sources[newValue]);
-				tryCommit(editor);
-			}
-		});
+        const val SCOPE_SOURCE: String = "SOURCE"
 
-		// wheels initial
-		this.scopeWheel.setCurrentItem(scopeIndex);
-		this.modeWheel.setCurrentItem(modeIndex);
+        const val SCOPE_LABEL: String = "LABEL"
 
-		//final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-		final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom));
-		return builder //
-				.setView(view).setPositiveButton(R.string.title_yes, (dialog2, which) -> dialog2.dismiss()) //
-				.create();
-	}
+        const val SCOPE_CONTENT: String = "CONTENT"
 
-	/**
-	 * Updates item_mode wheel depending on item_scope
-	 */
-	private int oldModeIndex = 1;
+        const val SCOPE_LINK: String = "LINK"
 
-	private void updateWheel2(int scopeIndex)
-	{
-		int modeIndex;
-		Adapter adapter;
-		if (scopeIndex < this.sourceModeIndex) // item_scope != source
-		{
-			modeIndex = this.oldModeIndex;
-			adapter = this.modeAdapter;
-		}
-		else // item_scope == source
-		{
-			modeIndex = 0;
-			adapter = this.sourceAdapter;
-			this.oldModeIndex = this.modeWheel.getCurrentItem();
-		}
-		this.modeWheel.setViewAdapter(adapter);
-		this.modeWheel.setCurrentItem(modeIndex);
-	}
+        const val SCOPE_ID: String = "ID"
 
-	/**
-	 * Adapter for scopes
-	 */
-	static private class Adapter extends AbstractWheelTextAdapter
-	{
-		public enum Type
-		{
-			SCOPE, MODE, SOURCE
-		}
+        const val MODE_STARTSWITH: String = "STARTSWITH"
 
-		final String[] labels;
+        const val MODE_EQUALS: String = "EQUALS"
 
-		final int[] icons;
+        const val MODE_INCLUDES: String = "INCLUDES"
 
-		final int len;
+        const val MODE_IS: String = "IS"
 
-		final Type type;
+        private fun newInstance(): SearchSettings {
+            return SearchSettings()
+        }
 
-		/**
-		 * Constructor
-		 */
-		@SuppressWarnings("WeakerAccess")
-		protected Adapter(@NonNull final Context context0, final int layout0, final String[] texts0, final int[] icons0, final int len0, final Type type0)
-		{
-			super(context0, layout0, NO_RESOURCE);
-			this.labels = texts0;
-			this.icons = icons0;
-			this.len = len0;
-			this.type = type0;
-			setItemTextResource(R.id.wheel_name);
-		}
+        /**
+         * Try to commit
+         *
+         * @param editor editor editor
+         */
+        @SuppressLint("CommitPrefEdits", "ApplySharedPref")
+        private fun tryCommit(editor: SharedPreferences.Editor) {
+            try {
+                editor.apply()
+            } catch (ignored: AbstractMethodError) {
+                // The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
+                editor.commit()
+            }
+        }
 
-		@Nullable
-		@Override
-		public View getItem(final int index, final View cachedView, final ViewGroup parent)
-		{
-			View view = super.getItem(index, cachedView, parent);
-			assert view != null;
-			ImageView img = view.findViewById(R.id.wheel_icon);
-			img.setImageResource(this.icons[index]);
-			return view;
-		}
-
-		@Override
-		public int getItemsCount()
-		{
-			return this.len;
-		}
-
-		@Override
-		protected CharSequence getItemText(int index)
-		{
-			return this.labels[index];
-		}
-
-		@SuppressWarnings("WeakerAccess")
-		public Type getType()
-		{
-			return this.type;
-		}
-	}
-
-	/**
-	 * Try to commit
-	 *
-	 * @param editor editor editor
-	 */
-	@SuppressLint({"CommitPrefEdits", "ApplySharedPref"})
-	static private void tryCommit(@NonNull final SharedPreferences.Editor editor)
-	{
-		try
-		{
-			editor.apply();
-		}
-		catch (@NonNull final AbstractMethodError ignored)
-		{
-			// The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
-			editor.commit();
-		}
-	}
-
-	/**
-	 * Show
-	 */
-	static public void show(@NonNull final FragmentManager fragmentManager)
-	{
-		final AppCompatDialogFragment newFragment = SearchSettings.newInstance();
-		newFragment.show(fragmentManager, "dialog");
-	}
+        /**
+         * Show
+         */
+        @JvmStatic
+        fun show(fragmentManager: FragmentManager) {
+            val newFragment: AppCompatDialogFragment = newInstance()
+            newFragment.show(fragmentManager, "dialog")
+        }
+    }
 }

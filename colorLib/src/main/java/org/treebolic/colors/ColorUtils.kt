@@ -47,6 +47,7 @@ object ColorUtils {
      */
     @JvmStatic
     fun tint(@ColorInt iconTint: Int, drawable: Drawable) {
+        // DrawableCompat.setTint(DrawableCompat.wrap(drawable), iconTint)
         drawable.setTint(iconTint)
     }
 
