@@ -1,80 +1,60 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel.adapters
 
-package org.treebolic.wheel.adapters;
-
-import android.database.DataSetObserver;
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import androidx.annotation.Nullable;
+import android.database.DataSetObserver
+import android.view.View
+import android.view.ViewGroup
+import java.util.LinkedList
 
 /**
  * Abstract Wheel adapter.
- * @noinspection WeakerAccess
  */
-public abstract class AbstractWheelAdapter implements WheelViewAdapter
-{
-	// Observers
-	private List<DataSetObserver> datasetObservers;
+abstract class AbstractWheelAdapter : WheelViewAdapter {
 
-	@SuppressWarnings("SameReturnValue")
-	@Nullable
-	@Override
-	public View getEmptyItem(View convertView, ViewGroup parent)
-	{
-		return null;
-	}
+    override fun getEmptyItem(convertView: View, parent: ViewGroup): View? {
+        return null
+    }
 
-	@Override
-	public void registerDataSetObserver(DataSetObserver observer)
-	{
-		if (this.datasetObservers == null)
-		{
-			this.datasetObservers = new LinkedList<>();
-		}
-		this.datasetObservers.add(observer);
-	}
+    // Observers
 
-	@Override
-	public void unregisterDataSetObserver(DataSetObserver observer)
-	{
-		if (this.datasetObservers != null)
-		{
-			this.datasetObservers.remove(observer);
-		}
-	}
+    private var datasetObservers: MutableList<DataSetObserver>? = null
 
-	/**
-	 * Notifies observers about data changing
-	 */
-	protected void notifyDataChangedEvent()
-	{
-		if (this.datasetObservers != null)
-		{
-			for (DataSetObserver observer : this.datasetObservers)
-			{
-				observer.onChanged();
-			}
-		}
-	}
+    override fun registerDataSetObserver(observer: DataSetObserver) {
+        if (datasetObservers == null) {
+            datasetObservers = LinkedList()
+        }
+        datasetObservers!!.add(observer)
+    }
 
-	/**
-	 * Notifies observers about invalidating data
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected void notifyDataInvalidatedEvent()
-	{
-		if (this.datasetObservers != null)
-		{
-			for (DataSetObserver observer : this.datasetObservers)
-			{
-				observer.onInvalidated();
-			}
-		}
-	}
+    override fun unregisterDataSetObserver(observer: DataSetObserver) {
+        if (datasetObservers != null) {
+            datasetObservers!!.remove(observer)
+        }
+    }
+
+    // Notifiers
+
+    /**
+     * Notifies observers about data changing
+     */
+    protected fun notifyDataChangedEvent() {
+        if (datasetObservers != null) {
+            for (observer in datasetObservers!!) {
+                observer.onChanged()
+            }
+        }
+    }
+
+    /**
+     * Notifies observers about invalidating data
+     */
+    protected fun notifyDataInvalidatedEvent() {
+        if (datasetObservers != null) {
+            for (observer in datasetObservers!!) {
+                observer.onInvalidated()
+            }
+        }
+    }
 }

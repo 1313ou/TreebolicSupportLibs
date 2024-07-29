@@ -1,176 +1,126 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel
 
-package org.treebolic.wheel;
-
-import android.view.View;
-import android.widget.LinearLayout;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.view.View
+import android.widget.LinearLayout
 
 /**
  * Recycle stored spinnerwheel items to reuse.
+ *
+ * @param wheel the spinnerwheel view
  */
-@SuppressWarnings("WeakerAccess")
-public class WheelRecycler
-{
-	// private static final String TAG = WheelRecycler.class.getName();
+class WheelRecycler(
+    /** Wheel view */
+    private val wheel: AbstractWheel
+) {
 
-	// Cached items
-	private List<View> items;
+    /** Cached items */
+    private var items: MutableList<View>? = null
 
-	// Cached empty items
-	private List<View> emptyItems;
+    /** Cached empty items */
+    private var emptyItems: MutableList<View>? = null
 
-	// Wheel view
-	private final AbstractWheel wheel;
+    /**
+     * Recycles items from specified layout. There are saved only items not included to specified range. All the cached items are removed from original layout.
+     *
+     * @param layout     the layout containing items to be cached
+     * @param firstItem0 the number of first item in layout
+     * @param range      the range of current spinnerwheel items
+     * @return the new value of first item number
+     */
+    fun recycleItems(layout: LinearLayout, firstItem0: Int, range: ItemsRange): Int {
+        var firstItem = firstItem0
+        var index = firstItem
+        var i = 0
+        while (i < layout.childCount) {
+            if (!range.contains(index)) {
+                recycleView(layout.getChildAt(i), index)
+                layout.removeViewAt(i)
+                if (i == 0) { // first item
+                    firstItem++
+                }
+            } else {
+                i++ // go to next item
+            }
+            index++
+        }
+        return firstItem
+    }
 
-	/**
-	 * Constructor
-	 *
-	 * @param wheel0 the spinnerwheel view
-	 */
-	public WheelRecycler(AbstractWheel wheel0)
-	{
-		this.wheel = wheel0;
-	}
+    /**
+     * Item view (the cached view)
+     */
+    val item: View?
+        get() = getCachedView(items)
 
-	/**
-	 * Recycles items from specified layout. There are saved only items not included to specified range. All the cached items are removed from original layout.
-	 *
-	 * @param layout     the layout containing items to be cached
-	 * @param firstItem0 the number of first item in layout
-	 * @param range      the range of current spinnerwheel items
-	 * @return the new value of first item number
-	 */
-	public int recycleItems(@NonNull LinearLayout layout, int firstItem0, @NonNull ItemsRange range)
-	{
-		int firstItem = firstItem0;
-		int index = firstItem;
-		for (int i = 0; i < layout.getChildCount(); )
-		{
-			if (!range.contains(index))
-			{
-				recycleView(layout.getChildAt(i), index);
-				layout.removeViewAt(i);
-				if (i == 0)
-				{ // first item
-					firstItem++;
-				}
-			}
-			else
-			{
-				i++; // go to next item
-			}
-			index++;
-		}
-		return firstItem;
-	}
+    /**
+     * Empty item view (the cached empty view)
+     */
+    val emptyItem: View?
+        get() = getCachedView(emptyItems)
 
-	/**
-	 * Gets item view
-	 *
-	 * @return the cached view
-	 */
-	@Nullable
-	public View getItem()
-	{
-		return getCachedView(this.items);
-	}
+    /**
+     * Clears all views
+     */
+    fun clearAll() {
+        if (items != null) {
+            items!!.clear()
+        }
+        if (emptyItems != null) {
+            emptyItems!!.clear()
+        }
+    }
 
-	/**
-	 * Gets empty item view
-	 *
-	 * @return the cached empty view
-	 */
-	@Nullable
-	public View getEmptyItem()
-	{
-		return getCachedView(this.emptyItems);
-	}
+    /**
+     * Adds view to cache. Determines view type (item view or empty one) by index.
+     *
+     * @param view   the view to be cached
+     * @param index0 the index of view
+     */
+    private fun recycleView(view: View, index0: Int) {
+        val count = wheel.viewAdapter!!.itemsCount
 
-	/**
-	 * Clears all views
-	 */
-	public void clearAll()
-	{
-		if (this.items != null)
-		{
-			this.items.clear();
-		}
-		if (this.emptyItems != null)
-		{
-			this.emptyItems.clear();
-		}
-	}
+        var index = index0
+        if ((index < 0 || index >= count) && !wheel.isCyclic) {
+            // empty view
+            emptyItems = addView(view, emptyItems!!)
+        } else {
+            while (index < 0) {
+                index += count
+            }
+            items = addView(view, items!!)
+        }
+    }
 
-	/**
-	 * Adds view to specified cache. Creates a cache list if it is null.
-	 *
-	 * @param view   the view to be cached
-	 * @param cache0 the cache list
-	 * @return the cache list
-	 */
-	@NonNull
-	private static List<View> addView(View view, List<View> cache0)
-	{
-		List<View> cache = cache0;
-		if (cache == null)
-		{
-			cache = new LinkedList<>();
-		}
+    companion object {
 
-		cache.add(view);
-		return cache;
-	}
+        /**
+         * Adds view to specified cache. Creates a cache list if it is null.
+         *
+         * @param view   the view to be cached
+         * @param cache the cache list
+         * @return the cache list
+         */
+        private fun addView(view: View, cache: MutableList<View>): MutableList<View> {
+            cache.add(view)
+            return cache
+        }
 
-	/**
-	 * Adds view to cache. Determines view type (item view or empty one) by index.
-	 *
-	 * @param view   the view to be cached
-	 * @param index0 the index of view
-	 */
-	private void recycleView(View view, int index0)
-	{
-		int count = this.wheel.getViewAdapter().getItemsCount();
-
-		int index = index0;
-		if ((index < 0 || index >= count) && !this.wheel.isCyclic())
-		{
-			// empty view
-			this.emptyItems = addView(view, this.emptyItems);
-		}
-		else
-		{
-			while (index < 0)
-			{
-				index = count + index;
-			}
-			this.items = addView(view, this.items);
-		}
-	}
-
-	/**
-	 * Gets view from specified cache.
-	 *
-	 * @param cache the cache
-	 * @return the first view from cache.
-	 */
-	@Nullable
-	private static View getCachedView(@Nullable final List<View> cache)
-	{
-		if (cache != null && !cache.isEmpty())
-		{
-			View view = cache.get(0);
-			cache.remove(0);
-			return view;
-		}
-		return null;
-	}
-
+        /**
+         * Gets view from specified cache.
+         *
+         * @param cache the cache
+         * @return the first view from cache.
+         */
+        private fun getCachedView(cache: MutableList<View>?): View? {
+            if (!cache.isNullOrEmpty()) {
+                val view = cache[0]
+                cache.removeAt(0)
+                return view
+            }
+            return null
+        }
+    }
 }

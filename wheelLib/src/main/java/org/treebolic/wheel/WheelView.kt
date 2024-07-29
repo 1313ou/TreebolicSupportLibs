@@ -1,32 +1,20 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel
 
-package org.treebolic.wheel;
-
-import android.content.Context;
-import android.util.AttributeSet;
-
-import androidx.annotation.AttrRes;
-import androidx.annotation.NonNull;
+import android.content.Context
+import android.util.AttributeSet
+import androidx.annotation.AttrRes
 
 /**
- *
+ * Default Wheel View
  */
-public class WheelView extends WheelVerticalView
-{
-	public WheelView(@NonNull Context context, AttributeSet attrs, @AttrRes int defStyle)
-	{
-		super(context, attrs, defStyle);
-	}
+class WheelView : WheelVerticalView {
 
-	public WheelView(@NonNull Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-	}
+    constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) : super(context, attrs, defStyle)
 
-	public WheelView(@NonNull Context context)
-	{
-		super(context);
-	}
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+
+    constructor(context: Context) : super(context)
 }

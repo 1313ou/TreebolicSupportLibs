@@ -132,7 +132,8 @@ class SearchSettings : AppCompatDialogFragment() {
         scopeWheel!!.viewAdapter = Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, scopes.size, Adapter.Type.SCOPE)
 
         // wheel 1 events
-        scopeWheel!!.addChangingListener { _: AbstractWheel?, _: Int, newValue: Int ->
+        scopeWheel!!.addChangingListener { _: AbstractWheel, _: Int, newValue: Int ->
+
             Log.d(TAG, "Wheel 1 " + newValue + ' ' + scopes[newValue])
             val editor = sharedPref.edit().putString(PREF_SEARCH_SCOPE, scopes[newValue])
             tryCommit(editor)
@@ -159,6 +160,7 @@ class SearchSettings : AppCompatDialogFragment() {
 
         // wheel 2 events
         modeWheel!!.addChangingListener { wheel: AbstractWheel, _: Int, newValue: Int ->
+
             val wheelViewAdapter = wheel.viewAdapter
             val adapter = wheelViewAdapter as Adapter
             if (adapter.type == Adapter.Type.MODE) {
@@ -228,9 +230,10 @@ class SearchSettings : AppCompatDialogFragment() {
             return view
         }
 
-        override fun getItemsCount(): Int {
-            return this.len
-        }
+        override val itemsCount: Int
+            get() {
+                return this.len
+            }
 
         override fun getItemText(index: Int): CharSequence? {
             return labels[index]

@@ -1,334 +1,283 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel
 
-package org.treebolic.wheel;
-
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-
-import java.lang.ref.WeakReference;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import android.view.GestureDetector
+import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.MotionEvent
+import android.view.animation.Interpolator
+import android.widget.Scroller
+import java.lang.ref.WeakReference
+import kotlin.math.abs
 
 /**
  * Scroller class handles scrolling events and updates the spinnerwheel
+ * @param context0  the current context
+ * @param listener0 the scrolling listener
  */
-public abstract class WheelScroller
-{
-	/**
-	 * Scrolling listener interface
-	 */
-	public interface ScrollingListener
-	{
-		/**
-		 * Scrolling callback called when scrolling is performed.
-		 *
-		 * @param distance the distance to scroll
-		 */
-		void onScroll(int distance);
+abstract class WheelScroller(context0: Context?, listener0: ScrollingListener) {
 
-		/**
-		 * This callback is invoked when scroller has been touched
-		 */
-		void onTouch();
+    /**
+     * Scrolling listener interface
+     */
+    interface ScrollingListener {
 
-		/**
-		 * This callback is invoked when touch is up
-		 */
-		void onTouchUp();
+        /**
+         * Scrolling callback called when scrolling is performed.
+         *
+         * @param distance the distance to scroll
+         */
+        fun onScroll(distance: Int)
 
-		/**
-		 * Starting callback called when scrolling is started
-		 */
-		void onStarted();
+        /**
+         * This callback is invoked when scroller has been touched
+         */
+        fun onTouch()
 
-		/**
-		 * Finishing callback called after justifying
-		 */
-		void onFinished();
+        /**
+         * This callback is invoked when touch is up
+         */
+        fun onTouchUp()
 
-		/**
-		 * Justifying callback called to justify a view when scrolling is ended
-		 */
-		void onJustify();
-	}
+        /**
+         * Starting callback called when scrolling is started
+         */
+        fun onStarted()
 
-	private static class AnimationHandler extends Handler
-	{
-		@NonNull
-		private final WeakReference<WheelScroller> wheelScrollerRef;
+        /**
+         * Finishing callback called after justifying
+         */
+        fun onFinished()
 
-		@SuppressWarnings("WeakerAccess")
-		public AnimationHandler(WheelScroller scroller0)
-		{
-			super(Looper.getMainLooper());
-			this.wheelScrollerRef = new WeakReference<>(scroller0);
-		}
+        /**
+         * Justifying callback called to justify a view when scrolling is ended
+         */
+        fun onJustify()
+    }
 
-		@Override
-		public void handleMessage(@NonNull Message msg)
-		{
-			final WheelScroller wheelScroller = this.wheelScrollerRef.get();
-			if (wheelScroller != null)
-			{
-				wheelScroller.scroller.computeScrollOffset();
-				int currPosition = wheelScroller.getCurrentScrollerPosition();
-				int delta = wheelScroller.lastScrollPosition - currPosition;
-				wheelScroller.lastScrollPosition = currPosition;
-				if (delta != 0)
-				{
-					wheelScroller.listener.onScroll(delta);
-				}
+    private class AnimationHandler(scroller0: WheelScroller) : Handler(Looper.getMainLooper()) {
 
-				// scrolling is not finished when it comes to final Y
-				// so, finish it manually
-				if (Math.abs(currPosition - wheelScroller.getFinalScrollerPosition()) < MIN_DELTA_FOR_SCROLLING)
-				{
-					// currPosition = getFinalScrollerPosition();
-					wheelScroller.scroller.forceFinished(true);
-				}
-				if (!wheelScroller.scroller.isFinished())
-				{
-					wheelScroller.animationHandler.sendEmptyMessage(msg.what);
-				}
-				else if (msg.what == wheelScroller.MESSAGE_SCROLL)
-				{
-					wheelScroller.justify();
-				}
-				else
-				{
-					wheelScroller.finishScrolling();
-				}
-			}
-		}
-	}
+        private val wheelScrollerRef = WeakReference(scroller0)
 
-	/**
-	 * Animation handler
-	 */
-	private final Handler animationHandler = new AnimationHandler(this);
+        override fun handleMessage(msg: Message) {
+            val wheelScroller = wheelScrollerRef.get()
+            if (wheelScroller != null) {
+                wheelScroller.scroller.computeScrollOffset()
+                val currPosition = wheelScroller.currentScrollerPosition
+                val delta = wheelScroller.lastScrollPosition - currPosition
+                wheelScroller.lastScrollPosition = currPosition
+                if (delta != 0) {
+                    wheelScroller.listener.onScroll(delta)
+                }
 
-	/**
-	 * Scrolling duration
-	 */
-	private static final int SCROLLING_DURATION = 400;
+                // scrolling is not finished when it comes to final Y. So, finish it manually
+                if (abs((currPosition - wheelScroller.finalScrollerPosition).toDouble()) < MIN_DELTA_FOR_SCROLLING) {
+                    // currPosition = getFinalScrollerPosition();
+                    wheelScroller.scroller.forceFinished(true)
+                }
+                if (!wheelScroller.scroller.isFinished) {
+                    wheelScroller.animationHandler.sendEmptyMessage(msg.what)
+                } else if (msg.what == wheelScroller.messageScroll) {
+                    wheelScroller.justify()
+                } else {
+                    wheelScroller.finishScrolling()
+                }
+            }
+        }
+    }
 
-	/**
-	 * Minimum delta for scrolling
-	 */
-	public static final int MIN_DELTA_FOR_SCROLLING = 1;
+    /**
+     * Animation handler
+     */
+    private val animationHandler: Handler = AnimationHandler(this)
 
-	// Listener
-	private final ScrollingListener listener;
+    // Listener
+    private val listener: ScrollingListener
 
-	// Context
-	private final Context context;
+    // Context
+    private val context: Context?
 
-	// Scrolling
-	@NonNull
-	private final GestureDetector gestureDetector;
-	@SuppressWarnings("WeakerAccess")
-	protected Scroller scroller;
-	private int lastScrollPosition;
-	private float lastTouchedPosition;
-	private boolean isScrollingPerformed;
+    // Scrolling
+    private val gestureDetector: GestureDetector
 
-	/**
-	 * Constructor
-	 *
-	 * @param context0  the current context
-	 * @param listener0 the scrolling listener
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public WheelScroller(Context context0, ScrollingListener listener0)
-	{
-		this.gestureDetector = new GestureDetector(context0, new SimpleOnGestureListener()
-		{
-			@Override
-			public boolean onScroll(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float distanceX, float distanceY)
-			{
-				// Do scrolling in onTouchEvent() since onScroll() are not call immediately
-				// when user touch and move the spinnerwheel
-				return true;
-			}
+    @JvmField
+    protected var scroller: Scroller
 
-			@Override
-			public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY)
-			{
-				WheelScroller.this.lastScrollPosition = 0;
-				scrollerFling(WheelScroller.this.lastScrollPosition, (int) velocityX, (int) velocityY);
-				setNextMessage(WheelScroller.this.MESSAGE_SCROLL);
-				return true;
-			}
+    private var lastScrollPosition = 0
 
-			// public boolean onDown(MotionEvent motionEvent);
+    private var lastTouchedPosition = 0f
 
-		});
-		this.gestureDetector.setIsLongpressEnabled(false);
+    private var isScrollingPerformed = false
 
-		this.scroller = new Scroller(context0);
+    /**
+     * Set the the specified scrolling interpolator
+     *
+     * @param interpolator the interpolator
+     */
+    fun setInterpolator(interpolator: Interpolator?) {
+        scroller.forceFinished(true)
+        scroller = Scroller(context, interpolator)
+    }
 
-		this.listener = listener0;
-		this.context = context0;
-	}
+    /**
+     * Scroll the spinnerwheel
+     *
+     * @param distance the scrolling distance
+     * @param time     the scrolling duration
+     */
+    fun scroll(distance: Int, time: Int) {
+        scroller.forceFinished(true)
+        lastScrollPosition = 0
+        scrollerStartScroll(distance, if (time != 0) time else SCROLLING_DURATION)
+        setNextMessage(messageScroll)
+        startScrolling()
+    }
 
-	/**
-	 * Set the the specified scrolling interpolator
-	 *
-	 * @param interpolator the interpolator
-	 */
-	public void setInterpolator(Interpolator interpolator)
-	{
-		this.scroller.forceFinished(true);
-		this.scroller = new Scroller(this.context, interpolator);
-	}
+    /**
+     * Stops scrolling
+     */
+    fun stopScrolling() {
+        scroller.forceFinished(true)
+    }
 
-	/**
-	 * Scroll the spinnerwheel
-	 *
-	 * @param distance the scrolling distance
-	 * @param time     the scrolling duration
-	 */
-	public void scroll(int distance, int time)
-	{
-		this.scroller.forceFinished(true);
-		this.lastScrollPosition = 0;
-		scrollerStartScroll(distance, time != 0 ? time : SCROLLING_DURATION);
-		setNextMessage(this.MESSAGE_SCROLL);
-		startScrolling();
-	}
+    /**
+     * Handles Touch event
+     *
+     * @param event the motion event
+     * @return true if the event was handled, false otherwise.
+     */
+    fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                lastTouchedPosition = getMotionEventPosition(event)
+                scroller.forceFinished(true)
+                clearMessages()
+                listener.onTouch()
+            }
 
-	/**
-	 * Stops scrolling
-	 */
-	public void stopScrolling()
-	{
-		this.scroller.forceFinished(true);
-	}
+            MotionEvent.ACTION_UP -> if (scroller.isFinished) {
+                listener.onTouchUp()
+            }
 
-	/**
-	 * Handles Touch event
-	 *
-	 * @param event the motion event
-	 * @return true if the event was handled, false otherwise.
-	 */
-	@SuppressWarnings("SameReturnValue")
-	public boolean onTouchEvent(@NonNull MotionEvent event)
-	{
-		switch (event.getAction())
-		{
-			case MotionEvent.ACTION_DOWN:
-				this.lastTouchedPosition = getMotionEventPosition(event);
-				this.scroller.forceFinished(true);
-				clearMessages();
-				this.listener.onTouch();
-				break;
+            MotionEvent.ACTION_MOVE -> {
+                // perform scrolling
+                val distance = (getMotionEventPosition(event) - lastTouchedPosition).toInt()
+                if (distance != 0) {
+                    startScrolling()
+                    listener.onScroll(distance)
+                    lastTouchedPosition = getMotionEventPosition(event)
+                }
+            }
 
-			case MotionEvent.ACTION_UP:
-				if (this.scroller.isFinished())
-				{
-					this.listener.onTouchUp();
-				}
-				break;
+            else -> {}
+        }
+        if (!gestureDetector.onTouchEvent(event) && event.action == MotionEvent.ACTION_UP) {
+            justify()
+        }
 
-			case MotionEvent.ACTION_MOVE:
-				// perform scrolling
-				int distance = (int) (getMotionEventPosition(event) - this.lastTouchedPosition);
-				if (distance != 0)
-				{
-					startScrolling();
-					this.listener.onScroll(distance);
-					this.lastTouchedPosition = getMotionEventPosition(event);
-				}
-				break;
+        return true
+    }
 
-			default:
-				break;
-		}
+    // Messages
 
-		if (!this.gestureDetector.onTouchEvent(event) && event.getAction() == MotionEvent.ACTION_UP)
-		{
-			justify();
-		}
+    private val messageScroll = 0
 
-		return true;
-	}
+    private val messageJustify = 1
 
-	// Messages
-	private final int MESSAGE_SCROLL = 0;
-	private final int MESSAGE_JUSTIFY = 1;
+    init {
+        gestureDetector = GestureDetector(context0, object : SimpleOnGestureListener() {
 
-	/**
-	 * Set next message to queue. Clears queue before.
-	 *
-	 * @param message the message to set
-	 */
-	private void setNextMessage(int message)
-	{
-		clearMessages();
-		this.animationHandler.sendEmptyMessage(message);
-	}
+            override fun onScroll(e1: MotionEvent?, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
+                // Do scrolling in onTouchEvent() since onScroll() are not call immediately when user touch and move the spinnerwheel
+                return true
+            }
 
-	/**
-	 * Clears messages from queue
-	 */
-	private void clearMessages()
-	{
-		this.animationHandler.removeMessages(this.MESSAGE_SCROLL);
-		this.animationHandler.removeMessages(this.MESSAGE_JUSTIFY);
-	}
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+                this@WheelScroller.lastScrollPosition = 0
+                scrollerFling(this@WheelScroller.lastScrollPosition, velocityX.toInt(), velocityY.toInt())
+                setNextMessage(this@WheelScroller.messageScroll)
+                return true
+            }
+        })
+        gestureDetector.setIsLongpressEnabled(false)
 
-	/**
-	 * Justifies spinnerwheel
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public void justify()
-	{
-		this.listener.onJustify();
-		setNextMessage(this.MESSAGE_JUSTIFY);
-	}
+        scroller = Scroller(context0)
 
-	/**
-	 * Starts scrolling
-	 */
-	private void startScrolling()
-	{
-		if (!this.isScrollingPerformed)
-		{
-			this.isScrollingPerformed = true;
-			this.listener.onStarted();
-		}
-	}
+        listener = listener0
+        context = context0
+    }
 
-	/**
-	 * Finishes scrolling
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected void finishScrolling()
-	{
-		if (this.isScrollingPerformed)
-		{
-			this.listener.onFinished();
-			this.isScrollingPerformed = false;
-		}
-	}
+    /**
+     * Set next message to queue. Clears queue before.
+     *
+     * @param message the message to set
+     */
+    private fun setNextMessage(message: Int) {
+        clearMessages()
+        animationHandler.sendEmptyMessage(message)
+    }
 
-	protected abstract int getCurrentScrollerPosition();
+    /**
+     * Clears messages from queue
+     */
+    private fun clearMessages() {
+        animationHandler.removeMessages(messageScroll)
+        animationHandler.removeMessages(messageJustify)
+    }
 
-	protected abstract int getFinalScrollerPosition();
+    /**
+     * Justifies spinnerwheel
+     */
+    fun justify() {
+        listener.onJustify()
+        setNextMessage(messageJustify)
+    }
 
-	protected abstract float getMotionEventPosition(MotionEvent event);
+    /**
+     * Starts scrolling
+     */
+    private fun startScrolling() {
+        if (!isScrollingPerformed) {
+            isScrollingPerformed = true
+            listener.onStarted()
+        }
+    }
 
-	protected abstract void scrollerStartScroll(int distance, int time);
+    /**
+     * Finishes scrolling
+     */
+    protected fun finishScrolling() {
+        if (isScrollingPerformed) {
+            listener.onFinished()
+            isScrollingPerformed = false
+        }
+    }
 
-	protected abstract void scrollerFling(int position, int velocityX, int velocityY);
+    protected abstract val currentScrollerPosition: Int
+
+    protected abstract val finalScrollerPosition: Int
+
+    protected abstract fun getMotionEventPosition(event: MotionEvent): Float
+
+    protected abstract fun scrollerStartScroll(distance: Int, time: Int)
+
+    protected abstract fun scrollerFling(position: Int, velocityX: Int, velocityY: Int)
+
+    companion object {
+
+        /**
+         * Scrolling duration
+         */
+        private const val SCROLLING_DURATION = 400
+
+        /**
+         * Minimum delta for scrolling
+         */
+        const val MIN_DELTA_FOR_SCROLLING: Int = 1
+    }
 }

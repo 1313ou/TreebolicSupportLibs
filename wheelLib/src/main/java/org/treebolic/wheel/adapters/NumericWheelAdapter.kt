@@ -1,108 +1,58 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel.adapters
 
-package org.treebolic.wheel.adapters;
-
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context
 
 /**
  * Numeric Wheel adapter.
- * @noinspection WeakerAccess
+ *
+ * @param context the current context
+ * @param minValue the spinnerwheel min value
+ * @param maxValue the spinnerwheel max value
+ * @param format   the format string
  */
-public class NumericWheelAdapter extends AbstractWheelTextAdapter
-{
-	/**
-	 * The default min value
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public static final int DEFAULT_MAX_VALUE = 9;
+class NumericWheelAdapter @JvmOverloads constructor(
+    context: Context,
+    private var minValue: Int = DEFAULT_MIN_VALUE,
+    private var maxValue: Int = DEFAULT_MAX_VALUE,
+    private val format: String? = null
+) : AbstractWheelTextAdapter(context) {
 
-	/**
-	 * The default max value
-	 */
-	private static final int DEFAULT_MIN_VALUE = 0;
+    fun setMinValue(minValue0: Int) {
+        minValue = minValue0
+        notifyDataInvalidatedEvent()
+    }
 
-	// Values
-	private int minValue;
-	private int maxValue;
+    fun setMaxValue(maxValue0: Int) {
+        maxValue = maxValue0
+        notifyDataInvalidatedEvent()
+    }
 
-	// format
-	private final String format;
+    public override fun getItemText(index: Int): CharSequence? {
+        if (index in 0 until itemsCount) {
+            val value = minValue + index
+            return if (format != null) String.format(format, value) else value.toString()
+        }
+        return null
+    }
 
-	/**
-	 * Constructor
-	 *
-	 * @param context0 the current context
-	 */
-	public NumericWheelAdapter(@NonNull Context context0)
-	{
-		this(context0, DEFAULT_MIN_VALUE, DEFAULT_MAX_VALUE);
-	}
+    override val itemsCount: Int
+        get() {
+            return maxValue - minValue + 1
+        }
 
-	/**
-	 * Constructor
-	 *
-	 * @param context0  the current context
-	 * @param minValue0 the spinnerwheel min value
-	 * @param maxValue0 the spinnerwheel max value
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public NumericWheelAdapter(@NonNull Context context0, @SuppressWarnings("SameParameterValue") int minValue0, @SuppressWarnings("SameParameterValue") int maxValue0)
-	{
-		this(context0, minValue0, maxValue0, null);
-	}
+    companion object {
 
-	/**
-	 * Constructor
-	 *
-	 * @param context0  the current context
-	 * @param minValue0 the spinnerwheel min value
-	 * @param maxValue0 the spinnerwheel max value
-	 * @param format0   the format string
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public NumericWheelAdapter(@NonNull Context context0, int minValue0, int maxValue0, @SuppressWarnings("SameParameterValue") String format0)
-	{
-		super(context0);
+        /**
+         * The default min value
+         */
+        const val DEFAULT_MAX_VALUE: Int = 9
 
-		this.minValue = minValue0;
-		this.maxValue = maxValue0;
-		this.format = format0;
-	}
-
-	public void setMinValue(int minValue0)
-	{
-		this.minValue = minValue0;
-		notifyDataInvalidatedEvent();
-	}
-
-	public void setMaxValue(int maxValue0)
-	{
-		this.maxValue = maxValue0;
-		notifyDataInvalidatedEvent();
-	}
-
-	@Nullable
-	@SuppressWarnings("boxing")
-	@Override
-	public CharSequence getItemText(int index)
-	{
-		if (index >= 0 && index < getItemsCount())
-		{
-			int value = this.minValue + index;
-			return this.format != null ? String.format(this.format, value) : Integer.toString(value);
-		}
-		return null;
-	}
-
-	@SuppressWarnings("WeakerAccess")
-	@Override
-	public int getItemsCount()
-	{
-		return this.maxValue - this.minValue + 1;
-	}
+        /**
+         * The default max value
+         */
+        const val DEFAULT_MIN_VALUE: Int = 0
+    }
 }

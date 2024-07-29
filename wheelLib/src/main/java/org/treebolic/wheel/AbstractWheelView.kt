@@ -1,359 +1,269 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel
 
-package org.treebolic.wheel;
-
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
-
-import androidx.annotation.AttrRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.graphics.drawable.DrawableCompat;
+import android.animation.Animator
+import android.animation.ObjectAnimator
+import android.content.Context
+import android.content.res.TypedArray
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.drawable.Drawable
+import android.util.AttributeSet
+import androidx.annotation.AttrRes
+import androidx.core.graphics.drawable.DrawableCompat
 
 /**
  * Abstract spinner spinnerwheel view. This class should be subclassed.
  *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
- * @noinspection WeakerAccess
  */
-public abstract class AbstractWheelView extends AbstractWheel
-{
-	// private final String TAG = AbstractWheelView.class.getName() + " #" + (++itemID);
-	// private static int itemID = -1;
+abstract class AbstractWheelView (context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) : AbstractWheel(context, attrs, defStyle) {
 
-	// ----------------------------------
-	// Default properties values
-	// ----------------------------------
+    /**
+     * The alpha of the selector spinnerwheel when it is dimmed.
+     */
+    @JvmField
+    protected var itemsDimmedAlpha: Int = 0
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_ITEMS_DIMMED_ALPHA = 50; // 60 in ICS
+    /**
+     * The alpha of separators spinnerwheel when they are shown.
+     */
+    private var selectionDividerActiveAlpha: Int = 0
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_SELECTION_DIVIDER_ACTIVE_ALPHA = 70;
+    /**
+     * The alpha of separators when they are is dimmed.
+     */
+    private var selectionDividerDimmedAlpha: Int = 0
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_SELECTION_DIVIDER_DIMMED_ALPHA = 70;
+    /**
+     * The tint of separators.
+     */
+    private var selectionDividerTint: Int = 0
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_ITEM_OFFSET_PERCENT = 10;
+    /**
+     * Top and bottom items offset
+     */
+    @JvmField
+    protected var itemOffsetPercent: Int = 0
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_ITEM_PADDING = 10;
+    /**
+     * Left and right padding value
+     */
+    @JvmField
+    protected var itemsPadding: Int = 0
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_SELECTION_DIVIDER_SIZE = 2;
+    /**
+     * Divider for showing item to be selected while scrolling
+     */
+    @JvmField
+    protected var selectionDivider: Drawable? = null
 
-	@SuppressWarnings("WeakerAccess")
-	protected static final int DEF_SELECTION_DIVIDER_TINT = 0;
+    /**
+     * The [android.graphics.Paint] for drawing the selector.
+     */
+    @JvmField
+    protected var selectorWheelPaint: Paint? = null
 
-	// ----------------------------------
-	// Class properties
-	// ----------------------------------
+    /**
+     * The [android.graphics.Paint] for drawing the separators.
+     */
+    @JvmField
+    protected var separatorsPaint: Paint? = null
 
-	// configurable properties
+    /**
+     * Animator for dimming the selector spinnerwheel.
+     */
+    private var dimSelectorWheelAnimator: Animator? = null
 
-	/**
-	 * The alpha of the selector spinnerwheel when it is dimmed.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mItemsDimmedAlpha;
+    /**
+     * Animator for dimming the separator.
+     */
+    private var dimSeparatorsAnimator: Animator? = null
 
-	/**
-	 * The alpha of separators spinnerwheel when they are shown.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mSelectionDividerActiveAlpha;
+    @JvmField
+    protected var spinBitmap: Bitmap? = null
 
-	/**
-	 * The alpha of separators when they are is dimmed.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mSelectionDividerDimmedAlpha;
+    @JvmField
+    protected var separatorsBitmap: Bitmap? = null
 
-	/**
-	 * The tint of separators.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mSelectionDividerTint;
+    // I N I T / S E T
 
-	/**
-	 * Top and bottom items offset
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mItemOffsetPercent;
+    override fun initAttributes(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) {
+        super.initAttributes(context, attrs, defStyle)
 
-	/**
-	 * Left and right padding value
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mItemsPadding;
+        // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0))
+        var array: TypedArray? = null
+        try {
+            array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0)
+            itemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA)
+            selectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA)
+            selectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA)
+            selectionDividerTint = array.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT)
+            itemOffsetPercent = array.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT)
+            itemsPadding = array.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING)
+            selectionDivider = array.getDrawable(R.styleable.AbstractWheelView_selectionDivider)
+            //selectionDivider.setTint(selectionDividerTint)
+        } finally {
+            array?.recycle()
+        }
+    }
 
-	/**
-	 * Divider for showing item to be selected while scrolling
-	 */
-	@Nullable
-	@SuppressWarnings("WeakerAccess")
-	protected Drawable mSelectionDivider;
+    override fun initData(context: Context) {
+        super.initData(context)
 
-	// the rest
+        // creating animators
+        dimSelectorWheelAnimator = ObjectAnimator.ofFloat(this, PROPERTY_SELECTOR_PAINT_COEFF, 1f, 0f)
 
-	/**
-	 * The {@link android.graphics.Paint} for drawing the selector.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected Paint mSelectorWheelPaint;
+        dimSeparatorsAnimator = ObjectAnimator.ofInt(this, PROPERTY_SEPARATORS_PAINT_ALPHA, selectionDividerActiveAlpha, selectionDividerDimmedAlpha)
 
-	/**
-	 * The {@link android.graphics.Paint} for drawing the separators.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected Paint mSeparatorsPaint;
+        // creating paints
+        separatorsPaint = Paint()
+        separatorsPaint!!.setXfermode(PorterDuffXfermode(PorterDuff.Mode.DST_IN))
+        separatorsPaint!!.alpha = selectionDividerDimmedAlpha
 
-	/**
-	 * Animator for dimming the selector spinnerwheel.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected Animator mDimSelectorWheelAnimator;
+        selectorWheelPaint = Paint()
+        selectorWheelPaint!!.setXfermode(PorterDuffXfermode(PorterDuff.Mode.DST_IN))
 
-	/**
-	 * Animator for dimming the separator.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected Animator mDimSeparatorsAnimator;
+        // drawable tint
+        checkNotNull(selectionDivider)
+        DrawableCompat.setTint(DrawableCompat.wrap(selectionDivider!!), selectionDividerTint)
+    }
 
-	/**
-	 * The property for setting the selector paint.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected static final String PROPERTY_SELECTOR_PAINT_COEFF = "selectorPaintCoeff";
+    /**
+     * Recreates assets (like bitmaps) when layout size has been changed
+     *
+     * @param width  New spinnerwheel width
+     * @param height New spinnerwheel height
+     */
+    override fun recreateAssets(width: Int, height: Int) {
+        spinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        separatorsBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        setSelectorPaintCoeff(0f)
+    }
 
-	/**
-	 * The property for setting the separators paint.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected static final String PROPERTY_SEPARATORS_PAINT_ALPHA = "separatorsPaintAlpha";
+    /**
+     * Sets the `alpha` of the [Paint] for drawing separators spinnerwheel.
+     *
+     * @param alpha alpha value from 0 to 255
+     */
+    private fun setSeparatorsPaintAlpha(alpha: Int) {
+        separatorsPaint!!.alpha = alpha
+        invalidate()
+    }
 
-	@SuppressWarnings("WeakerAccess")
-	protected Bitmap mSpinBitmap;
+    /**
+     * Sets the `coeff` of the [Paint] for drawing the selector spinnerwheel.
+     *
+     * @param coeff Coefficient from 0 (selector is passive) to 1 (selector is active)
+     */
+    abstract fun setSelectorPaintCoeff(coeff: Float)
 
-	@SuppressWarnings("WeakerAccess")
-	protected Bitmap mSeparatorsBitmap;
+    fun setSelectionDivider(divider: Drawable?) {
+        selectionDivider = divider
+        //selectionDivider.setTint(selectionDividerTint)
+    }
 
-	// --------------------------------------------------------------------------
-	//
-	// Constructor
-	//
-	// --------------------------------------------------------------------------
+    // S C R O L L E R   E V E N T S
 
-	public AbstractWheelView(@NonNull final Context context, AttributeSet attrs, @AttrRes int defStyle)
-	{
-		super(context, attrs, defStyle);
-	}
+    override fun onScrollTouched() {
+        dimSelectorWheelAnimator!!.cancel()
+        dimSeparatorsAnimator!!.cancel()
+        setSelectorPaintCoeff(1f)
+        setSeparatorsPaintAlpha(selectionDividerActiveAlpha)
+    }
 
-	// --------------------------------------------------------------------------
-	//
-	// Initiating assets and setters for paints
-	//
-	// --------------------------------------------------------------------------
+    override fun onScrollTouchedUp() {
+        super.onScrollTouchedUp()
+        fadeSelectorWheel(750)
+        lightSeparators(750)
+    }
 
-	@SuppressWarnings("WeakerAccess")
-	@Override
-	protected void initAttributes(@NonNull final Context context, AttributeSet attrs, @AttrRes int defStyle)
-	{
-		super.initAttributes(context, attrs, defStyle);
+    override fun onScrollFinished() {
+        fadeSelectorWheel(500)
+        lightSeparators(500)
+    }
 
-		// try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0))
-		TypedArray array = null;
-		try
-		{
-			array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0);
-			this.mItemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA);
-			this.mSelectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA);
-			this.mSelectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA);
-			this.mSelectionDividerTint = array.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT);
-			this.mItemOffsetPercent = array.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT);
-			this.mItemsPadding = array.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING);
-			this.mSelectionDivider = array.getDrawable(R.styleable.AbstractWheelView_selectionDivider);
-			//this.mSelectionDivider.setTint(this.mSelectionDividerTint);
-		}
-		finally
-		{
-			if (array != null)
-			{
-				array.recycle();
-			}
-		}
-	}
+    // A N I M A T I O N
 
-	@Override
-	protected void initData(@NonNull Context context)
-	{
-		super.initData(context);
+    /**
+     * Fade the selector spinnerwheel via an animation.
+     *
+     * @param animationDuration The duration of the animation.
+     */
+    private fun fadeSelectorWheel(animationDuration: Long) {
+        dimSelectorWheelAnimator!!.setDuration(animationDuration)
+        dimSelectorWheelAnimator!!.start()
+    }
 
-		// creating animators
-		this.mDimSelectorWheelAnimator = ObjectAnimator.ofFloat(this, PROPERTY_SELECTOR_PAINT_COEFF, 1, 0);
+    /**
+     * Fade the selector spinnerwheel via an animation.
+     *
+     * @param animationDuration The duration of the animation.
+     */
+    private fun lightSeparators(animationDuration: Long) {
+        dimSeparatorsAnimator!!.setDuration(animationDuration)
+        dimSeparatorsAnimator!!.start()
+    }
 
-		this.mDimSeparatorsAnimator = ObjectAnimator.ofInt(this, PROPERTY_SEPARATORS_PAINT_ALPHA, this.mSelectionDividerActiveAlpha, this.mSelectionDividerDimmedAlpha);
+    // L A Y O U T   M E A S U R I N G
 
-		// creating paints
-		this.mSeparatorsPaint = new Paint();
-		this.mSeparatorsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-		this.mSeparatorsPaint.setAlpha(this.mSelectionDividerDimmedAlpha);
+    /**
+     * Perform layout measurements
+     */
+    protected abstract fun measureLayout()
 
-		this.mSelectorWheelPaint = new Paint();
-		this.mSelectorWheelPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+    // D R A W I N G
 
-		// drawable tint
-		assert this.mSelectionDivider != null;
-		DrawableCompat.setTint(DrawableCompat.wrap(this.mSelectionDivider), this.mSelectionDividerTint);
-	}
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        if (viewAdapter != null && viewAdapter!!.itemsCount > 0) {
+            if (rebuildItems()) {
+                measureLayout()
+            }
+            doItemsLayout()
+            drawItems(canvas)
+        }
+    }
 
-	/**
-	 * Recreates assets (like bitmaps) when layout size has been changed
-	 *
-	 * @param width  New spinnerwheel width
-	 * @param height New spinnerwheel height
-	 */
-	@Override
-	protected void recreateAssets(int width, int height)
-	{
-		this.mSpinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-		this.mSeparatorsBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-		setSelectorPaintCoeff(0);
-	}
+    /**
+     * Draws items on specified canvas
+     *
+     * @param canvas the canvas for drawing
+     */
+    protected abstract fun drawItems(canvas: Canvas)
 
-	/**
-	 * Sets the <code>alpha</code> of the {@link Paint} for drawing separators spinnerwheel.
-	 *
-	 * @param alpha alpha value from 0 to 255
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public void setSeparatorsPaintAlpha(int alpha)
-	{
-		this.mSeparatorsPaint.setAlpha(alpha);
-		invalidate();
-	}
+    companion object {
 
-	/**
-	 * Sets the <code>coeff</code> of the {@link Paint} for drawing the selector spinnerwheel.
-	 *
-	 * @param coeff Coefficient from 0 (selector is passive) to 1 (selector is active)
-	 */
-	@SuppressWarnings("WeakerAccess")
-	abstract public void setSelectorPaintCoeff(float coeff);
+        // D E F A U L T   V A L U E S
 
-	public void setSelectionDivider(Drawable selectionDivider)
-	{
-		this.mSelectionDivider = selectionDivider;
-		//this.mSelectionDivider.setTint(this.mSelectionDividerTint);
-	}
+        const val DEF_ITEMS_DIMMED_ALPHA: Int = 50 // 60 in ICS
 
-	// --------------------------------------------------------------------------
-	//
-	// Processing scroller events
-	//
-	// --------------------------------------------------------------------------
+        const val DEF_SELECTION_DIVIDER_ACTIVE_ALPHA: Int = 70
 
-	@Override
-	protected void onScrollTouched()
-	{
-		this.mDimSelectorWheelAnimator.cancel();
-		this.mDimSeparatorsAnimator.cancel();
-		setSelectorPaintCoeff(1);
-		setSeparatorsPaintAlpha(this.mSelectionDividerActiveAlpha);
-	}
+        const val DEF_SELECTION_DIVIDER_DIMMED_ALPHA: Int = 70
 
-	@SuppressWarnings("WeakerAccess")
-	@Override
-	protected void onScrollTouchedUp()
-	{
-		super.onScrollTouchedUp();
-		fadeSelectorWheel(750);
-		lightSeparators(750);
-	}
+        const val DEF_ITEM_OFFSET_PERCENT: Int = 10
 
-	@Override
-	protected void onScrollFinished()
-	{
-		fadeSelectorWheel(500);
-		lightSeparators(500);
-	}
+        const val DEF_ITEM_PADDING: Int = 10
 
-	// ----------------------------------
-	// Animating components
-	// ----------------------------------
+        const val DEF_SELECTION_DIVIDER_SIZE: Int = 2
 
-	/**
-	 * Fade the selector spinnerwheel via an animation.
-	 *
-	 * @param animationDuration The duration of the animation.
-	 */
-	private void fadeSelectorWheel(long animationDuration)
-	{
-		this.mDimSelectorWheelAnimator.setDuration(animationDuration);
-		this.mDimSelectorWheelAnimator.start();
-	}
+        const val DEF_SELECTION_DIVIDER_TINT: Int = 0
 
-	/**
-	 * Fade the selector spinnerwheel via an animation.
-	 *
-	 * @param animationDuration The duration of the animation.
-	 */
-	private void lightSeparators(long animationDuration)
-	{
-		this.mDimSeparatorsAnimator.setDuration(animationDuration);
-		this.mDimSeparatorsAnimator.start();
-	}
+        /**
+         * The property for setting the selector paint.
+         */
+        const val PROPERTY_SELECTOR_PAINT_COEFF: String = "selectorPaintCoeff"
 
-	// --------------------------------------------------------------------------
-	//
-	// Layout measuring
-	//
-	// --------------------------------------------------------------------------
-
-	/**
-	 * Perform layout measurements
-	 */
-	abstract protected void measureLayout();
-
-	// --------------------------------------------------------------------------
-	//
-	// Drawing stuff
-	//
-	// --------------------------------------------------------------------------
-
-	@Override
-	protected void onDraw(@NonNull Canvas canvas)
-	{
-		super.onDraw(canvas);
-
-		if (this.mViewAdapter != null && this.mViewAdapter.getItemsCount() > 0)
-		{
-			if (rebuildItems())
-			{
-				measureLayout();
-			}
-			doItemsLayout();
-			drawItems(canvas);
-		}
-	}
-
-	/**
-	 * Draws items on specified canvas
-	 *
-	 * @param canvas the canvas for drawing
-	 */
-	abstract protected void drawItems(Canvas canvas);
+        /**
+         * The property for setting the separators paint.
+         */
+        const val PROPERTY_SEPARATORS_PAINT_ALPHA: String = "separatorsPaintAlpha"
+    }
 }

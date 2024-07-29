@@ -1,24 +1,23 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel
 
-package org.treebolic.wheel;
-
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-
-import androidx.annotation.AttrRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context
+import android.content.res.TypedArray
+import android.graphics.Canvas
+import android.graphics.LinearGradient
+import android.graphics.Shader
+import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.annotation.AttrRes
+import org.treebolic.wheel.WheelScroller.ScrollingListener
+import kotlin.math.max
+import kotlin.math.min
 
 /**
  * Spinner wheel horizontal view.
@@ -27,378 +26,285 @@ import androidx.annotation.Nullable;
  * @author Dimitri Fedorov
  * @noinspection WeakerAccess
  */
-public class WheelHorizontalView extends AbstractWheelView
-{
-	private final String LOG_TAG = WheelVerticalView.class.getName() + " #" + (++itemID);
+class WheelHorizontalView
+/**
+ * Create a new wheel horizontal view.
+ *
+ * @param context  the application environment.
+ * @param attrs    a collection of attributes.
+ * @param defStyle The default style to apply to this view.
+ */
+/**
+ * Create a new wheel horizontal view.
+ *
+ * @param context The application environment.
+ * @param attrs   A collection of attributes.
+ */
+// --------------------------------------------------------------------------
+//
+// Constructors
+//
+// --------------------------------------------------------------------------
+/**
+ * Create a new wheel horizontal view.
+ *
+ * @param context The application environment.
+ */
+@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, @AttrRes defStyle: Int = R.attr.abstractWheelViewStyle) : AbstractWheelView(context, attrs, defStyle) {
 
-	private static int itemID = -1;
+    /**
+     * The width of the selection divider.
+     */
+    private var selectionDividerWidth: Int = 0
 
-	/**
-	 * The width of the selection divider.
-	 */
-	@SuppressWarnings("WeakerAccess")
-	protected int mSelectionDividerWidth;
+    // Item width
+    private var itemWidth = 0
 
-	// Item width
-	private int itemWidth = 0;
+    // --------------------------------------------------------------------------
+    //
+    // Initiating assets and setter for selector paint
+    //
+    // --------------------------------------------------------------------------
+    override fun initAttributes(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) {
+        super.initAttributes(context, attrs, defStyle)
 
-	// --------------------------------------------------------------------------
-	//
-	// Constructors
-	//
-	// --------------------------------------------------------------------------
+        if (attrs != null) {
+            // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0))
+            var array: TypedArray? = null
+            try {
+                array = context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0)
+                selectionDividerWidth = array.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE)
+            } finally {
+                array?.recycle()
+            }
+        }
+    }
 
-	/**
-	 * Create a new wheel horizontal view.
-	 *
-	 * @param context The application environment.
-	 */
-	public WheelHorizontalView(@NonNull final Context context)
-	{
-		this(context, null);
-	}
+    fun setSelectionDividerWidth(width: Int) {
+        selectionDividerWidth = width
+    }
 
-	/**
-	 * Create a new wheel horizontal view.
-	 *
-	 * @param context The application environment.
-	 * @param attrs   A collection of attributes.
-	 */
-	public WheelHorizontalView(@NonNull final Context context, @Nullable final AttributeSet attrs)
-	{
-		this(context, attrs, R.attr.abstractWheelViewStyle);
-	}
+    override fun setSelectorPaintCoeff(coeff: Float) {
+        if (itemsDimmedAlpha >= 100) {
+            return
+        }
 
-	/**
-	 * Create a new wheel horizontal view.
-	 *
-	 * @param context  the application environment.
-	 * @param attrs    a collection of attributes.
-	 * @param defStyle The default style to apply to this view.
-	 */
-	public WheelHorizontalView(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes int defStyle)
-	{
-		super(context, attrs, defStyle);
-	}
+        val shader: LinearGradient
 
-	// --------------------------------------------------------------------------
-	//
-	// Initiating assets and setter for selector paint
-	//
-	// --------------------------------------------------------------------------
+        val w = measuredWidth
+        val iw = itemDimension
+        val p1 = (1 - iw / w.toFloat()) / 2
+        val p2 = (1 + iw / w.toFloat()) / 2
+        val z = itemsDimmedAlpha * (1 - coeff)
+        val c1f = z + 255 * coeff
 
-	@Override
-	protected void initAttributes(@NonNull final Context context, @Nullable final AttributeSet attrs, @AttrRes int defStyle)
-	{
-		super.initAttributes(context, attrs, defStyle);
+        if (visibleItems == 2) {
+            val positions = floatArrayOf(0f, p1, p1, p2, p2, 1f)
 
-		if (attrs != null)
-		{
-			// try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0))
-			TypedArray array = null;
-			try
-			{
-				array = context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0);
-				this.mSelectionDividerWidth = array.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE);
-			}
-			finally
-			{
-				if (array != null)
-				{
-					array.recycle();
-				}
-			}
-		}
-	}
+            val c1 = Math.round(c1f) shl 24
+            val c2 = Math.round(z) shl 24
+            val colors = intArrayOf(c2, c1, -0x1000000, -0x1000000, c1, c2)
+            shader = LinearGradient(0f, 0f, w.toFloat(), 0f, colors, positions, Shader.TileMode.CLAMP)
+        } else {
+            val p3 = (1 - iw * 3 / w.toFloat()) / 2
+            val p4 = (1 + iw * 3 / w.toFloat()) / 2
+            val positions = floatArrayOf(0f, p3, p3, p1, p1, p2, p2, p4, p4, 1f)
 
-	public void setSelectionDividerWidth(int selectionDividerWidth)
-	{
-		this.mSelectionDividerWidth = selectionDividerWidth;
-	}
+            val s = 255 * p3 / p1
+            val c3f = s * coeff // here goes some optimized stuff
+            val c2f = z + c3f
 
-	@Override
-	public void setSelectorPaintCoeff(float coeff)
-	{
-		if (this.mItemsDimmedAlpha >= 100)
-		{
-			return;
-		}
+            val c1 = Math.round(c1f) shl 24
+            val c2 = Math.round(c2f) shl 24
+            val c3 = Math.round(c3f) shl 24
+            //int[] colors = { c2, c2, c2, c2, 0xff000000, 0xff000000, c2, c2, c2, c2 };
+            val colors = intArrayOf(c3, c3, c2, c1, -0x1000000, -0x1000000, c1, c2, c3, c3)
 
-		LinearGradient shader;
+            shader = LinearGradient(0f, 0f, w.toFloat(), 0f, colors, positions, Shader.TileMode.CLAMP)
+        }
+        selectorWheelPaint!!.setShader(shader)
+        invalidate()
+    }
 
-		int w = getMeasuredWidth();
-		int iw = getItemDimension();
-		float p1 = (1 - iw / (float) w) / 2;
-		float p2 = (1 + iw / (float) w) / 2;
-		float z = this.mItemsDimmedAlpha * (1 - coeff);
-		float c1f = z + 255 * coeff;
+    // S C R O L L
 
-		if (this.mVisibleItems == 2)
-		{
-			float[] positions = {0, p1, p1, p2, p2, 1};
+    override fun createScroller(scrollingListener: ScrollingListener?): WheelScroller {
+        return WheelHorizontalScroller(context, scrollingListener)
+    }
 
-			int c1 = Math.round(c1f) << 24;
-			int c2 = Math.round(z) << 24;
-			int[] colors = {c2, c1, 0xff000000, 0xff000000, c1, c2};
-			shader = new LinearGradient(0, 0, w, 0, colors, positions, Shader.TileMode.CLAMP);
-		}
-		else
-		{
-			float p3 = (1 - iw * 3 / (float) w) / 2;
-			float p4 = (1 + iw * 3 / (float) w) / 2;
-			float[] positions = {0, p3, p3, p1, p1, p2, p2, p4, p4, 1};
+    override fun getMotionEventPosition(event: MotionEvent): Float {
+        return event.x
+    }
 
-			float s = 255 * p3 / p1;
-			float c3f = s * coeff; // here goes some optimized stuff
-			float c2f = z + c3f;
+    override val baseDimension: Int
+        get() = width
 
-			int c1 = Math.round(c1f) << 24;
-			int c2 = Math.round(c2f) << 24;
-			int c3 = Math.round(c3f) << 24;
-			//int[] colors = { c2, c2, c2, c2, 0xff000000, 0xff000000, c2, c2, c2, c2 };
-			int[] colors = {c3, c3, c2, c1, 0xff000000, 0xff000000, c1, c2, c3, c3};
+    /**
+     * Height of spinnerwheel item
+     */
+    override val itemDimension: Int
+        get() {
+            if (itemWidth != 0) {
+                return itemWidth
+            }
 
-			shader = new LinearGradient(0, 0, w, 0, colors, positions, Shader.TileMode.CLAMP);
-		}
-		this.mSelectorWheelPaint.setShader(shader);
-		invalidate();
-	}
+            if (itemsLayout != null && itemsLayout!!.getChildAt(0) != null) {
+                itemWidth = itemsLayout!!.getChildAt(0).measuredWidth
+                return itemWidth
+            }
 
-	// --------------------------------------------------------------------------
-	//
-	// Scroller-specific methods
-	//
-	// --------------------------------------------------------------------------
+            return baseDimension / visibleItems
+        }
 
-	@NonNull
-	@Override
-	protected WheelScroller createScroller(WheelScroller.ScrollingListener scrollingListener)
-	{
-		return new WheelHorizontalScroller(getContext(), scrollingListener);
-	}
+    // D E B U G
 
-	@Override
-	protected float getMotionEventPosition(@NonNull MotionEvent event)
-	{
-		return event.getX();
-	}
+    override fun onScrollTouchedUp() {
+        super.onScrollTouchedUp()
+        val cnt = itemsLayout!!.childCount
+        var itm: View
+        Log.e(TAG, " ----- layout: " + itemsLayout!!.measuredWidth + itemsLayout!!.measuredHeight)
+        Log.e(TAG, " -------- dumping $cnt items")
+        for (i in 0 until cnt) {
+            itm = itemsLayout!!.getChildAt(i)
+            Log.e(TAG, " item #" + i + ": " + itm.width + "x" + itm.height)
+            itm.forceLayout() // forcing layout without re-rendering parent
+        }
+        Log.e(TAG, " ---------- dumping finished ")
+    }
 
-	// --------------------------------------------------------------------------
-	//
-	// Base measurements
-	//
-	// --------------------------------------------------------------------------
+    // L A Y O U T   M E A S U R E M E N T
 
-	@SuppressWarnings("WeakerAccess")
-	@Override
-	protected int getBaseDimension()
-	{
-		return getWidth();
-	}
+    /**
+     * Creates item layouts if necessary
+     */
+    override fun createItemsLayout() {
+        if (itemsLayout == null) {
+            itemsLayout = LinearLayout(context)
+            itemsLayout!!.orientation = LinearLayout.HORIZONTAL
+        }
+    }
 
-	/**
-	 * Returns height of spinnerwheel item
-	 *
-	 * @return the item width
-	 */
-	@SuppressWarnings("WeakerAccess")
-	@Override
-	protected int getItemDimension()
-	{
-		if (this.itemWidth != 0)
-		{
-			return this.itemWidth;
-		}
+    override fun doItemsLayout() {
+        itemsLayout!!.layout(0, 0, measuredWidth, measuredHeight - 2 * itemsPadding)
+    }
 
-		if (this.mItemsLayout != null && this.mItemsLayout.getChildAt(0) != null)
-		{
-			this.itemWidth = this.mItemsLayout.getChildAt(0).getMeasuredWidth();
-			return this.itemWidth;
-		}
+    override fun measureLayout() {
+        itemsLayout!!.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        // XXX: Locating bug
+        itemsLayout!!.measure(MeasureSpec.makeMeasureSpec(width + itemDimension, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(height, MeasureSpec.AT_MOST))
+    }
 
-		return getBaseDimension() / this.mVisibleItems;
-	}
+    // XXX: Most likely, measurements of itemsLayout or/and its children are done incorrectly.
+    // Investigate and fix it
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
+        val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+        val widthSize = MeasureSpec.getSize(widthMeasureSpec)
+        val heightSize = MeasureSpec.getSize(heightMeasureSpec)
 
-	// --------------------------------------------------------------------------
-	//
-	// Debugging stuff
-	//
-	// --------------------------------------------------------------------------
+        rebuildItems() // rebuilding before measuring
 
-	@Override
-	protected void onScrollTouchedUp()
-	{
-		super.onScrollTouchedUp();
-		int cnt = this.mItemsLayout.getChildCount();
-		View itm;
-		Log.e(this.LOG_TAG, " ----- layout: " + this.mItemsLayout.getMeasuredWidth() + this.mItemsLayout.getMeasuredHeight());
-		Log.e(this.LOG_TAG, " -------- dumping " + cnt + " items");
-		for (int i = 0; i < cnt; i++)
-		{
-			itm = this.mItemsLayout.getChildAt(i);
-			Log.e(this.LOG_TAG, " item #" + i + ": " + itm.getWidth() + "x" + itm.getHeight());
-			itm.forceLayout(); // forcing layout without re-rendering parent
-		}
-		Log.e(this.LOG_TAG, " ---------- dumping finished ");
-	}
+        val height = calculateLayoutHeight(heightSize, heightMode)
 
-	// --------------------------------------------------------------------------
-	//
-	// Layout creation and measurement operations
-	//
-	// --------------------------------------------------------------------------
+        var width: Int
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize
+        } else {
+            width = max((itemDimension * (visibleItems - itemOffsetPercent / 100)).toDouble(), suggestedMinimumWidth.toDouble()).toInt()
 
-	/**
-	 * Creates item layouts if necessary
-	 */
-	@Override
-	protected void createItemsLayout()
-	{
-		if (this.mItemsLayout == null)
-		{
-			this.mItemsLayout = new LinearLayout(getContext());
-			this.mItemsLayout.setOrientation(LinearLayout.HORIZONTAL);
-		}
-	}
+            if (widthMode == MeasureSpec.AT_MOST) {
+                width = min(width.toDouble(), widthSize.toDouble()).toInt()
+            }
+        }
+        setMeasuredDimension(width, height)
+    }
 
-	@Override
-	protected void doItemsLayout()
-	{
-		this.mItemsLayout.layout(0, 0, getMeasuredWidth(), getMeasuredHeight() - 2 * this.mItemsPadding);
-	}
+    /**
+     * Calculates control height and creates text layouts
+     *
+     * @param heightSize the input layout height
+     * @param mode       the layout mode
+     * @return the calculated control height
+     */
+    private fun calculateLayoutHeight(heightSize: Int, mode: Int): Int {
+        itemsLayout!!.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        itemsLayout!!.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(heightSize, MeasureSpec.UNSPECIFIED))
+        var height = itemsLayout!!.measuredHeight
 
-	@Override
-	protected void measureLayout()
-	{
-		this.mItemsLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		// XXX: Locating bug
-		this.mItemsLayout.measure(MeasureSpec.makeMeasureSpec(getWidth() + getItemDimension(), MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(getHeight(), MeasureSpec.AT_MOST));
-	}
+        if (mode == MeasureSpec.EXACTLY) {
+            height = heightSize
+        } else {
+            height += 2 * itemsPadding
 
-	// XXX: Most likely, measurements of mItemsLayout or/and its children are done incorrectly.
-	// Investigate and fix it
+            // Check against our minimum width
+            height = max(height.toDouble(), suggestedMinimumHeight.toDouble()).toInt()
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-	{
-		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-		int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+            if (mode == MeasureSpec.AT_MOST && heightSize < height) {
+                height = heightSize
+            }
+        }
+        // forcing recalculating
+        itemsLayout!!.measure( // MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
+            MeasureSpec.makeMeasureSpec(400, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(height - 2 * itemsPadding, MeasureSpec.EXACTLY)
+        )
 
-		rebuildItems(); // rebuilding before measuring
+        return height
+    }
 
-		int height = calculateLayoutHeight(heightSize, heightMode);
+    // D R A W I N G
 
-		int width;
-		if (widthMode == MeasureSpec.EXACTLY)
-		{
-			width = widthSize;
-		}
-		else
-		{
-			width = Math.max(getItemDimension() * (this.mVisibleItems - this.mItemOffsetPercent / 100), getSuggestedMinimumWidth());
+    override fun drawItems(canvas: Canvas) {
+        canvas.save()
+        val w = measuredWidth
+        val h = measuredHeight
+        val iw = itemDimension
 
-			if (widthMode == MeasureSpec.AT_MOST)
-			{
-				width = Math.min(width, widthSize);
-			}
-		}
-		setMeasuredDimension(width, height);
-	}
+        // resetting intermediate bitmap and recreating canvases
+        spinBitmap!!.eraseColor(0)
+        val c = Canvas(spinBitmap!!)
+        val cSpin = Canvas(spinBitmap!!)
 
-	/**
-	 * Calculates control height and creates text layouts
-	 *
-	 * @param heightSize the input layout height
-	 * @param mode       the layout mode
-	 * @return the calculated control height
-	 */
-	private int calculateLayoutHeight(int heightSize, int mode)
-	{
-		this.mItemsLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		this.mItemsLayout.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(heightSize, MeasureSpec.UNSPECIFIED));
-		int height = this.mItemsLayout.getMeasuredHeight();
+        val left = (currentItemIdx - firstItemIdx) * iw + (iw - width) / 2
+        c.translate((-left + scrollingOffset).toFloat(), itemsPadding.toFloat())
+        itemsLayout!!.draw(c)
 
-		if (mode == MeasureSpec.EXACTLY)
-		{
-			height = heightSize;
-		}
-		else
-		{
-			height += 2 * this.mItemsPadding;
+        separatorsBitmap!!.eraseColor(0)
+        val cSeparators = Canvas(separatorsBitmap!!)
 
-			// Check against our minimum width
-			height = Math.max(height, getSuggestedMinimumHeight());
+        if (selectionDivider != null) {
+            // draw the top divider
+            val leftOfLeftDivider = (width - iw - selectionDividerWidth) / 2
+            val rightOfLeftDivider = leftOfLeftDivider + selectionDividerWidth
+            cSeparators.save()
+            // On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
+            cSeparators.clipRect(leftOfLeftDivider, 0, rightOfLeftDivider, h)
+            selectionDivider!!.setBounds(leftOfLeftDivider, 0, rightOfLeftDivider, h)
+            selectionDivider!!.draw(cSeparators)
+            cSeparators.restore()
 
-			if (mode == MeasureSpec.AT_MOST && heightSize < height)
-			{
-				height = heightSize;
-			}
-		}
-		// forcing recalculating
-		this.mItemsLayout.measure(
-				// MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
-				MeasureSpec.makeMeasureSpec(400, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(height - 2 * this.mItemsPadding, MeasureSpec.EXACTLY));
+            cSeparators.save()
+            // draw the bottom divider
+            val leftOfRightDivider = leftOfLeftDivider + iw
+            val rightOfRightDivider = rightOfLeftDivider + iw
+            // On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
+            cSeparators.clipRect(leftOfRightDivider, 0, rightOfRightDivider, h)
+            selectionDivider!!.setBounds(leftOfRightDivider, 0, rightOfRightDivider, h)
+            selectionDivider!!.draw(cSeparators)
+            cSeparators.restore()
+        }
 
-		return height;
-	}
+        cSpin.drawRect(0f, 0f, w.toFloat(), h.toFloat(), selectorWheelPaint!!)
+        cSeparators.drawRect(0f, 0f, w.toFloat(), h.toFloat(), separatorsPaint!!)
 
-	// --------------------------------------------------------------------------
-	//
-	// Drawing items
-	//
-	// --------------------------------------------------------------------------
+        canvas.drawBitmap(spinBitmap!!, 0f, 0f, null)
+        canvas.drawBitmap(separatorsBitmap!!, 0f, 0f, null)
+        canvas.restore()
+    }
 
-	@Override
-	protected void drawItems(@NonNull Canvas canvas)
-	{
-		canvas.save();
-		int w = getMeasuredWidth();
-		int h = getMeasuredHeight();
-		int iw = getItemDimension();
+    companion object {
 
-		// resetting intermediate bitmap and recreating canvases
-		this.mSpinBitmap.eraseColor(0);
-		Canvas c = new Canvas(this.mSpinBitmap);
-		Canvas cSpin = new Canvas(this.mSpinBitmap);
+        private var itemID = -1
 
-		int left = (this.mCurrentItemIdx - this.mFirstItemIdx) * iw + (iw - getWidth()) / 2;
-		c.translate(-left + this.mScrollingOffset, this.mItemsPadding);
-		this.mItemsLayout.draw(c);
-
-		this.mSeparatorsBitmap.eraseColor(0);
-		Canvas cSeparators = new Canvas(this.mSeparatorsBitmap);
-
-		if (this.mSelectionDivider != null)
-		{
-			// draw the top divider
-			int leftOfLeftDivider = (getWidth() - iw - this.mSelectionDividerWidth) / 2;
-			int rightOfLeftDivider = leftOfLeftDivider + this.mSelectionDividerWidth;
-			cSeparators.save();
-			// On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
-			cSeparators.clipRect(leftOfLeftDivider, 0, rightOfLeftDivider, h);
-			this.mSelectionDivider.setBounds(leftOfLeftDivider, 0, rightOfLeftDivider, h);
-			this.mSelectionDivider.draw(cSeparators);
-			cSeparators.restore();
-
-			cSeparators.save();
-			// draw the bottom divider
-			int leftOfRightDivider = leftOfLeftDivider + iw;
-			int rightOfRightDivider = rightOfLeftDivider + iw;
-			// On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
-			cSeparators.clipRect(leftOfRightDivider, 0, rightOfRightDivider, h);
-			this.mSelectionDivider.setBounds(leftOfRightDivider, 0, rightOfRightDivider, h);
-			this.mSelectionDivider.draw(cSeparators);
-			cSeparators.restore();
-		}
-
-		cSpin.drawRect(0, 0, w, h, this.mSelectorWheelPaint);
-		cSeparators.drawRect(0, 0, w, h, this.mSeparatorsPaint);
-
-		canvas.drawBitmap(this.mSpinBitmap, 0, 0, null);
-		canvas.drawBitmap(this.mSeparatorsBitmap, 0, 0, null);
-		canvas.restore();
-	}
-
+        private val TAG = WheelVerticalView::class.java.name + " #" + (++itemID)
+    }
 }

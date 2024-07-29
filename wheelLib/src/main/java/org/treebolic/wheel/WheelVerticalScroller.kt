@@ -1,60 +1,37 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.wheel
 
-package org.treebolic.wheel;
-
-import android.content.Context;
-import android.view.MotionEvent;
-
-import androidx.annotation.NonNull;
+import android.content.Context
+import android.view.MotionEvent
 
 /**
  * Scroller class handles scrolling events and updates the
+ *
+ * @param context  the current context
+ * @param listener the scrolling listener
  */
-public class WheelVerticalScroller extends WheelScroller
-{
-	/**
-	 * Constructor
-	 *
-	 * @param context  the current context
-	 * @param listener the scrolling listener
-	 */
-	public WheelVerticalScroller(Context context, ScrollingListener listener)
-	{
-		super(context, listener);
-	}
+class WheelVerticalScroller(context: Context?, listener: ScrollingListener?) : WheelScroller(context, listener!!) {
 
-	@Override
-	protected int getCurrentScrollerPosition()
-	{
-		return this.scroller.getCurrY();
-	}
+    override val currentScrollerPosition: Int
+        get() = scroller.currY
 
-	@Override
-	protected int getFinalScrollerPosition()
-	{
-		return this.scroller.getFinalY();
-	}
+    override val finalScrollerPosition: Int
+        get() = scroller.finalY
 
-	@Override
-	protected float getMotionEventPosition(@NonNull MotionEvent event)
-	{
-		// should be overridden
-		return event.getY();
-	}
+    override fun getMotionEventPosition(event: MotionEvent): Float {
+        // should be overridden
+        return event.y
+    }
 
-	@Override
-	protected void scrollerStartScroll(int distance, int time)
-	{
-		this.scroller.startScroll(0, 0, 0, distance, time);
-	}
+    override fun scrollerStartScroll(distance: Int, time: Int) {
+        scroller.startScroll(0, 0, 0, distance, time)
+    }
 
-	@Override
-	protected void scrollerFling(int position, int velocityX, int velocityY)
-	{
-		final int maxPosition = 0x7FFFFFFF;
-		final int minPosition = -maxPosition;
-		this.scroller.fling(0, position, 0, -velocityY, 0, 0, minPosition, maxPosition);
-	}
+    override fun scrollerFling(position: Int, velocityX: Int, velocityY: Int) {
+        val maxPosition = 0x7FFFFFFF
+        val minPosition = -maxPosition
+        scroller.fling(0, position, 0, -velocityY, 0, 0, minPosition, maxPosition)
+    }
 }

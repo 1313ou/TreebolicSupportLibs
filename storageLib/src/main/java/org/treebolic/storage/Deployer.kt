@@ -1,265 +1,222 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.storage
 
-package org.treebolic.storage;
+import android.content.Context
+import android.content.res.AssetManager
+import android.net.Uri
+import android.util.Log
+import org.treebolic.storage.Storage.getTreebolicStorage
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
+import java.util.zip.ZipInputStream
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.net.Uri;
-import android.util.Log;
+object Deployer {
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+    private const val TAG = "StorageUtils"
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+    // C O P Y   A S S E T
 
-public class Deployer
-{
-	private static final String TAG = "StorageUtils";
+    /**
+     * Copy asset file
+     *
+     * @param context  context
+     * @param fileName file in assets
+     * @return uri of copied file
+     */
+    @JvmStatic
+    fun copyAssetFile(context: Context, fileName: String): Uri? {
+        val assetManager = context.assets
+        val dir = getTreebolicStorage(context)
 
-	// C O P Y A S S E T
+        dir.mkdirs()
+        val file = File(dir, fileName)
+        if (copyAsset(assetManager, fileName, file.absolutePath)) {
+            return Uri.fromFile(file)
+        }
+        return null
+    }
 
-	/**
-	 * Copy asset file
-	 *
-	 * @param context  context
-	 * @param fileName file in assets
-	 * @return uri of copied file
-	 */
-	@Nullable
-	public static Uri copyAssetFile(@NonNull final Context context, @NonNull final String fileName)
-	{
-		final AssetManager assetManager = context.getAssets();
-		final File dir = Storage.getTreebolicStorage(context);
+    /**
+     * Copy asset file to path
+     *
+     * @param assetManager asset manager
+     * @param assetPath    asset path
+     * @param toPath       destination path
+     * @return true if successful
+     */
+    private fun copyAsset(assetManager: AssetManager, assetPath: String, toPath: String): Boolean {
+        try {
+            File(toPath).createNewFile()
+        } catch (e: IOException) {
+            return false
+        }
+        try {
+            assetManager.open(assetPath).use { `in` ->
+                FileOutputStream(toPath).use { out ->
+                    copyFile(`in`, out)
+                    return true
+                }
+            }
+        } catch (ignored: Exception) {
+            return false
+        }
+    }
 
-		//noinspection ResultOfMethodCallIgnored
-		dir.mkdirs();
-		final File file = new File(dir, fileName);
-		if (copyAsset(assetManager, fileName, file.getAbsolutePath()))
-		{
-			return Uri.fromFile(file);
-		}
-		return null;
-	}
+    /**
+     * Copy file to path
+     *
+     * @param fromPath source path
+     * @param toPath   destination path
+     * @return true if successful
+     */
+    fun copyFile(fromPath: String, toPath: String): Boolean {
+        try {
+            File(toPath).createNewFile()
+        } catch (e: IOException) {
+            return false
+        }
 
-	/**
-	 * Copy asset file to path
-	 *
-	 * @param assetManager asset manager
-	 * @param assetPath    asset path
-	 * @param toPath       destination path
-	 * @return true if successful
-	 */
-	private static boolean copyAsset(@NonNull final AssetManager assetManager, @NonNull final String assetPath, @NonNull final String toPath)
-	{
-		try
-		{
-			//noinspection ResultOfMethodCallIgnored
-			new File(toPath).createNewFile();
-		}
-		catch (IOException e)
-		{
-			return false;
-		}
-		try (InputStream in = assetManager.open(assetPath); @SuppressWarnings("IOStreamConstructor") OutputStream out = new FileOutputStream(toPath))
-		{
-			copyFile(in, out);
-			return true;
-		}
-		catch (@NonNull final Exception ignored)
-		{
-			return false;
-		}
-	}
+        try {
+            FileInputStream(fromPath).use { `in` ->
+                FileOutputStream(toPath).use { out ->
+                    copyFile(`in`, out)
+                    return true
+                }
+            }
+        } catch (ignored: Exception) {
+            return false
+        }
+    }
 
-	/**
-	 * Copy file to path
-	 *
-	 * @param fromPath source path
-	 * @param toPath   destination path
-	 * @return true if successful
-	 */
-	public static boolean copyFile(@NonNull final String fromPath, @NonNull final String toPath)
-	{
-		try
-		{
-			//noinspection ResultOfMethodCallIgnored
-			new File(toPath).createNewFile();
-		}
-		catch (IOException e)
-		{
-			return false;
-		}
+    /**
+     * Copy in stream to out stream
+     *
+     * @param in  in stream
+     * @param out out stream
+     * @throws IOException io exception
+     */
+    @Throws(IOException::class)
+    fun copyFile(`in`: InputStream, out: OutputStream) {
+        val buffer = ByteArray(1024)
+        var read: Int
+        while ((`in`.read(buffer).also { read = it }) != -1) {
+            out.write(buffer, 0, read)
+        }
+    }
 
-		try (@SuppressWarnings("IOStreamConstructor") InputStream in = new FileInputStream(fromPath); @SuppressWarnings("IOStreamConstructor") OutputStream out = new FileOutputStream(toPath))
-		{
-			copyFile(in, out);
-			return true;
-		}
-		catch (@NonNull final Exception ignored)
-		{
-			return false;
-		}
-	}
+    // E X P A N D   A S S E T
 
-	/**
-	 * Copy in stream to out stream
-	 *
-	 * @param in  in stream
-	 * @param out out stream
-	 * @throws IOException io exception
-	 */
-	@SuppressWarnings("WeakerAccess")
-	public static void copyFile(@NonNull final InputStream in, @NonNull final OutputStream out) throws IOException
-	{
-		final byte[] buffer = new byte[1024];
-		int read;
-		while ((read = in.read(buffer)) != -1)
-		{
-			out.write(buffer, 0, read);
-		}
-	}
+    /**
+     * Expand asset file
+     *
+     * @param context  context
+     * @param fileName zip file in assets
+     * @return uri of dest dir
+     */
+    @JvmStatic
+    fun expandZipAssetFile(context: Context, fileName: String): Uri? {
+        val assetManager = context.assets
+        val dir = getTreebolicStorage(context)
+        dir.mkdirs()
+        if (expandZipAsset(assetManager, fileName, dir.absolutePath)) {
+            return Uri.fromFile(dir)
+        }
+        return null
+    }
 
-	// E X P A N D A S S E T
+    /**
+     * Expand asset file to path
+     *
+     * @param assetManager asset manager
+     * @param assetPath    asset path
+     * @param toPath       destination path
+     * @return true if successful
+     */
+    private fun expandZipAsset(assetManager: AssetManager, assetPath: String, toPath: String): Boolean {
+        try {
+            assetManager.open(assetPath).use { `in` ->
+                expandZip(`in`, null, File(toPath))
+                return true
+            }
+        } catch (ignored: Exception) {
+            return false
+        }
+    }
 
-	/**
-	 * Expand asset file
-	 *
-	 * @param context  context
-	 * @param fileName zip file in assets
-	 * @return uri of dest dir
-	 */
-	@Nullable
-	@SuppressWarnings({"UnusedReturnValue"})
-	public static Uri expandZipAssetFile(@NonNull final Context context, @NonNull final String fileName)
-	{
-		final AssetManager assetManager = context.getAssets();
-		final File dir = Storage.getTreebolicStorage(context);
-		//noinspection ResultOfMethodCallIgnored
-		dir.mkdirs();
-		if (expandZipAsset(assetManager, fileName, dir.getAbsolutePath()))
-		{
-			return Uri.fromFile(dir);
-		}
-		return null;
-	}
+    /**
+     * Expand zip stream to dir
+     *
+     * @param in                zip file input stream
+     * @param pathPrefixFilter0 path prefix filter on entries
+     * @param destDir           destination dir
+     * @return dest dir
+     */
+    @Throws(IOException::class)
+    private fun expandZip(`in`: InputStream, pathPrefixFilter0: String?, destDir: File): File {
+        // prefix
+        var pathPrefixFilter = pathPrefixFilter0
+        if (!pathPrefixFilter.isNullOrEmpty() && pathPrefixFilter[0] == File.separatorChar) {
+            pathPrefixFilter = pathPrefixFilter.substring(1)
+        }
 
-	/**
-	 * Expand asset file to path
-	 *
-	 * @param assetManager asset manager
-	 * @param assetPath    asset path
-	 * @param toPath       destination path
-	 * @return true if successful
-	 */
-	private static boolean expandZipAsset(@NonNull final AssetManager assetManager, @NonNull final String assetPath, @NonNull final String toPath)
-	{
-		try (InputStream in = assetManager.open(assetPath))
-		{
-			expandZip(in, null, new File(toPath));
-			return true;
-		}
-		catch (@NonNull final Exception ignored)
-		{
-			return false;
-		}
-	}
+        // create output directory if not exists
+        destDir.mkdir()
 
-	/**
-	 * Expand zip stream to dir
-	 *
-	 * @param in                zip file input stream
-	 * @param pathPrefixFilter0 path prefix filter on entries
-	 * @param destDir           destination dir
-	 * @return dest dir
-	 */
-	@NonNull
-	@SuppressWarnings("UnusedReturnValue")
-	static private File expandZip(@NonNull final InputStream in, @SuppressWarnings("SameParameterValue") final String pathPrefixFilter0, @NonNull final File destDir) throws IOException
-	{
-		// prefix
-		String pathPrefixFilter = pathPrefixFilter0;
-		if (pathPrefixFilter != null && !pathPrefixFilter.isEmpty() && pathPrefixFilter.charAt(0) == File.separatorChar)
-		{
-			pathPrefixFilter = pathPrefixFilter.substring(1);
-		}
+        ZipInputStream(`in`).use { zis ->
+            // get the zipped file list entry
+            val buffer = ByteArray(1024)
+            var entry = zis.nextEntry
+            while (entry != null) {
+                if (!entry.isDirectory) {
+                    val entryName = entry.name
+                    if (!entryName.endsWith("MANIFEST.MF")) {
+                        if (pathPrefixFilter.isNullOrEmpty() || entryName.startsWith(pathPrefixFilter)) {
+                            // flatten zip hierarchy
+                            val outFile = File(destDir.toString() + File.separator + File(entryName).name)
 
-		// create output directory if not exists
-		//noinspection ResultOfMethodCallIgnored
-		destDir.mkdir();
+                            // create all non exists folders else you will hit FileNotFoundException for compressed folder
+                            val parent = outFile.parent
+                            if (parent != null) {
+                                val dir = File(parent)
+                                val created = dir.mkdirs()
+                                Log.d(TAG, dir.toString() + " created=" + created + " exists=" + dir.exists())
+                            }
 
-		// read and expand entries
-		try (ZipInputStream zis = new ZipInputStream(in))
-		{
-			// get the zipped file list entry
-			final byte[] buffer = new byte[1024];
-			ZipEntry entry = zis.getNextEntry();
-			while (entry != null)
-			{
-				if (!entry.isDirectory())
-				{
-					final String entryName = entry.getName();
-					if (!entryName.endsWith("MANIFEST.MF"))
-					{
-						if (pathPrefixFilter == null || pathPrefixFilter.isEmpty() || entryName.startsWith(pathPrefixFilter))
-						{
-							// flatten zip hierarchy
-							final File outFile = new File(destDir + File.separator + new File(entryName).getName());
+                            FileOutputStream(outFile).use { os ->
+                                var len: Int
+                                while ((zis.read(buffer).also { len = it }) > 0) {
+                                    os.write(buffer, 0, len)
+                                }
+                            }
+                        }
+                    }
+                }
+                zis.closeEntry()
+                entry = zis.nextEntry
+            }
+        }
+        return destDir
+    }
 
-							// create all non exists folders else you will hit FileNotFoundException for compressed folder
-							final String parent = outFile.getParent();
-							if (parent != null)
-							{
-								File dir = new File(parent);
-								boolean created = dir.mkdirs();
-								Log.d(TAG, dir + " created=" + created + " exists=" + dir.exists());
-							}
-
-							// output
-
-							// copy
-							try (FileOutputStream os = new FileOutputStream(outFile))
-							{
-								int len;
-								while ((len = zis.read(buffer)) > 0)
-								{
-									os.write(buffer, 0, len);
-								}
-							}
-						}
-					}
-				}
-				zis.closeEntry();
-				entry = zis.getNextEntry();
-			}
-		}
-		return destDir;
-	}
-
-	/**
-	 * Cleanup data storage
-	 *
-	 * @param context context
-	 */
-	public static void cleanup(@NonNull final Context context)
-	{
-		final File dir = Storage.getTreebolicStorage(context);
-		File[] dirContent = dir.listFiles();
-		if (dirContent != null)
-		{
-			for (final File file : dirContent)
-			{
-				//noinspection ResultOfMethodCallIgnored
-				file.delete();
-			}
-		}
-	}
+    /**
+     * Cleanup data storage
+     *
+     * @param context context
+     */
+    @JvmStatic
+    fun cleanup(context: Context) {
+        val dir = getTreebolicStorage(context)
+        val dirContent = dir.listFiles()
+        if (dirContent != null) {
+            for (file in dirContent) {
+                file.delete()
+            }
+        }
+    }
 }

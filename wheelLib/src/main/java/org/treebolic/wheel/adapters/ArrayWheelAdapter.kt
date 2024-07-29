@@ -1,57 +1,35 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
-package org.treebolic.wheel.adapters;
+package org.treebolic.wheel.adapters
 
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context
 
 /**
  * The simple Array spinnerwheel adapter
  *
- * @param <T> the element type
- * @noinspection WeakerAccess
+ * @param context the current context
+ * @property items the items
+ * @param T the element type
  */
-public class ArrayWheelAdapter<T> extends AbstractWheelTextAdapter
-{
-	// items
-	private final T[] items;
+class ArrayWheelAdapter<T>(
+    context: Context,
+    private val items: Array<T>
+) : AbstractWheelTextAdapter(context) {
 
-	/**
-	 * Constructor
-	 *
-	 * @param context0 the current context
-	 * @param items0   the items
-	 */
-	public ArrayWheelAdapter(@NonNull Context context0, T[] items0)
-	{
-		super(context0);
+    public override fun getItemText(index: Int): CharSequence? {
+        if (index >= 0 && index < items.size) {
+            val item = items[index]
+            if (item is CharSequence) {
+                return item
+            }
+            return item.toString()
+        }
+        return null
+    }
 
-		// setEmptyItemResource(TEXT_VIEW_ITEM_RESOURCE);
-		this.items = items0;
-	}
-
-	@Nullable
-	@Override
-	public CharSequence getItemText(int index)
-	{
-		if (index >= 0 && index < this.items.length)
-		{
-			T item = this.items[index];
-			if (item instanceof CharSequence)
-			{
-				return (CharSequence) item;
-			}
-			return item.toString();
-		}
-		return null;
-	}
-
-	@Override
-	public int getItemsCount()
-	{
-		return this.items.length;
-	}
+    override val itemsCount: Int
+        get() {
+            return items.size
+        }
 }
