@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import java.io.File
 import java.io.IOException
+import java.util.function.Consumer
 import java.util.zip.ZipFile
 
 /**
@@ -25,14 +26,6 @@ class EntryChooser(
     private val list: List<String>,
     private val listener: DialogInterface.OnClickListener
 ) {
-
-    /**
-     * Select callback
-     */
-    interface Callback {
-
-        fun onSelect(selected: String?)
-    }
 
     /**
      * Show dialog
@@ -82,16 +75,16 @@ class EntryChooser(
          *
          * @param context  context
          * @param archive  zip archive
-         * @param callback select callback
+         * @param consumer selection consumer
          * @throws IOException io exception
          */
         @JvmStatic
         @Throws(IOException::class)
-        fun choose(context: Context, archive: File, callback: Callback) {
+        fun choose(context: Context, archive: File, consumer: Consumer<String>) {
             val list = getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*")
             val listener = DialogInterface.OnClickListener { _: DialogInterface?, which: Int ->
                 // The 'which' argument contains the index position of the selected item
-                callback.onSelect(list[which])
+                consumer.accept(list[which])
             }
             EntryChooser(context, list, listener).show()
         }
