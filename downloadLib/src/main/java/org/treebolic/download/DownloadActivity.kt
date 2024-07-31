@@ -119,7 +119,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
      * @return true if file should be disposed of
      */
     @Throws(IOException::class)
-    protected open fun process(inputStream: InputStream?): Boolean {
+    protected open fun process(inputStream: InputStream): Boolean {
         return false
     }
 
@@ -340,7 +340,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                     try {
                         this@DownloadActivity.contentResolver.openInputStream(uri).use { inputStream ->
                             // handle
-                            dispose = process(inputStream)
+                            dispose = process(inputStream!!)
                         }
                     } catch (e: IOException) {
                         Log.e(TAG, "Processing $uriString", e)
