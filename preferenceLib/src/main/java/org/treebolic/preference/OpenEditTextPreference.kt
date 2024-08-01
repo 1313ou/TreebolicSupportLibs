@@ -33,7 +33,7 @@ class OpenEditTextPreference : DialogPreference {
     /**
      * Possible values
      */
-    lateinit var values: Array<CharSequence>
+    lateinit var values: Array<out CharSequence>
 
     /**
      * Possible entry enable
@@ -50,7 +50,7 @@ class OpenEditTextPreference : DialogPreference {
     /**
      * Possible labels
      */
-    lateinit var labels: Array<CharSequence>
+    lateinit var labels: Array<out CharSequence>
 
     /**
      * Extra values
