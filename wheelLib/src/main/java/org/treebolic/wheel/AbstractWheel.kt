@@ -722,7 +722,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
             index += count
         }
         index %= count
-        return viewAdapter!!.getItem(index, recycler.item!!, itemsLayout!!)
+        return viewAdapter!!.getItem(index, recycler.item, itemsLayout!!)
     }
 
     // R E B U I L D I N G   I T E M S
