@@ -5,6 +5,7 @@ package org.treebolic.wheel
 
 import android.view.View
 import android.widget.LinearLayout
+import java.util.LinkedList
 
 /**
  * Recycle stored spinnerwheel items to reuse.
@@ -90,7 +91,7 @@ class WheelRecycler(
             while (index < 0) {
                 index += count
             }
-            items = addView(view, items!!)
+            items = addView(view, items)
         }
     }
 
@@ -100,10 +101,14 @@ class WheelRecycler(
          * Adds view to specified cache. Creates a cache list if it is null.
          *
          * @param view   the view to be cached
-         * @param cache the cache list
+         * @param cache0 the cache list
          * @return the cache list
          */
-        private fun addView(view: View, cache: MutableList<View>): MutableList<View> {
+        private fun addView(view: View, cache0: MutableList<View>?): MutableList<View> {
+            var cache: MutableList<View>? = cache0
+            if (cache == null) {
+                cache = LinkedList()
+            }
             cache.add(view)
             return cache
         }

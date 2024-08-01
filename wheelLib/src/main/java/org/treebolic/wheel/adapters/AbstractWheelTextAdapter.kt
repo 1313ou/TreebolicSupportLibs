@@ -7,10 +7,12 @@ import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
 
 /**
  * Abstract spinnerwheel adapter provides common functionality for adapters.
@@ -26,6 +28,8 @@ abstract class AbstractWheelTextAdapter protected constructor(
     private var textColor: Int = DEFAULT_TEXT_COLOR
     private var textSize: Int = DEFAULT_TEXT_SIZE
 
+    private val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater?
+
     /**
      * Returns text for specified item
      *
@@ -34,9 +38,13 @@ abstract class AbstractWheelTextAdapter protected constructor(
      */
     protected abstract fun getItemText(index: Int): CharSequence?
 
-    override fun getItem(index: Int, convertView: View, parent: ViewGroup): View? {
+    override fun getItem(index: Int, convertView: View?, parent: ViewGroup): View? {
         if (index in 0 until itemsCount) {
-            val textView = getTextView(convertView, itemTextResource)
+            var view = convertView
+            if (view == null) {
+                view = getView(itemResource, parent)
+            }
+            val textView = getTextView(view!!, itemTextResource)
             if (textView != null) {
                 var text = getItemText(index)
                 if (text == null) {
@@ -45,12 +53,12 @@ abstract class AbstractWheelTextAdapter protected constructor(
                 textView.text = text
                 configureTextView(textView)
             }
-            return convertView
+            return view
         }
         return null
     }
 
-    override fun getEmptyItem(convertView: View, parent: ViewGroup): View? {
+    override fun getEmptyItem(convertView: View?, parent: ViewGroup): View? {
         if (convertView is TextView) {
             configureTextView(convertView)
         }
@@ -105,19 +113,36 @@ abstract class AbstractWheelTextAdapter protected constructor(
          * @param textResId the text resource Id in layout
          * @return the loaded text view
          */
-        private fun getTextView(view: View?, @IdRes textResId: Int): TextView? {
+        private fun getTextView(view: View, @IdRes textResId: Int): TextView? {
             var text: TextView? = null
             try {
                 if (textResId == NO_RESOURCE && view is TextView) {
                     text = view
                 } else if (textResId != NO_RESOURCE) {
-                    text = view!!.findViewById(textResId)
+                    text = view.findViewById(textResId)
                 }
             } catch (e: ClassCastException) {
                 Log.e("AbstractWheelAdapter", "You must supply a resource ID for a TextView")
                 throw IllegalStateException("AbstractWheelAdapter requires the resource ID to be a TextView", e)
             }
             return text
+        }
+    }
+
+    /**
+     * Loads view from resources
+     *
+     * @param layoutRes the resource Id
+     * @return the loaded view or null if resource is not set
+     */
+    private fun getView(@LayoutRes layoutRes: Int, parent: ViewGroup): View? {
+        when (layoutRes) {
+            NO_RESOURCE -> return null
+            TEXT_VIEW_ITEM_RESOURCE -> return TextView(this.context)
+            else -> {
+                checkNotNull(this.inflater)
+                return this.inflater.inflate(layoutRes, parent, false)
+            }
         }
     }
 }

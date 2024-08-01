@@ -716,7 +716,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
         }
         val count = viewAdapter!!.itemsCount
         if (!isValidItemIndex(index)) {
-            return viewAdapter!!.getEmptyItem(recycler.emptyItem!!, itemsLayout!!)
+            return viewAdapter!!.getEmptyItem(recycler.emptyItem, itemsLayout!!)
         }
         while (index < 0) {
             index += count
