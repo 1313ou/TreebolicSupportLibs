@@ -223,8 +223,8 @@ class SearchSettings : AppCompatDialogFragment() {
             itemTextResource = R.id.wheel_name
         }
 
-        override fun getItem(index: Int, cachedView: View, parent: ViewGroup): View {
-            val view = checkNotNull(super.getItem(index, cachedView, parent))
+        override fun getItem(index: Int, convertView: View?, parent: ViewGroup): View {
+            val view = checkNotNull(super.getItem(index, convertView, parent))
             val img = view.findViewById<ImageView>(R.id.wheel_icon)
             img.setImageResource(icons[index])
             return view
