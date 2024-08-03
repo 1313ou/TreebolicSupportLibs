@@ -22,9 +22,6 @@ import java.util.zip.ZipInputStream
  */
 object Deploy {
 
-    /**
-     * Log tag
-     */
     private const val TAG = "Deploy"
 
     /**

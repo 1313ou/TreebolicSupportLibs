@@ -425,9 +425,6 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
 
     companion object {
 
-        /**
-         * Log tag
-         */
         private const val TAG = "Download"
 
         /**
