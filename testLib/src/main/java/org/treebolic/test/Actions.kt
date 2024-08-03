@@ -1,174 +1,116 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.test
 
-package org.treebolic.test;
+import android.view.View
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.CoordinatesProvider
+import androidx.test.espresso.action.GeneralSwipeAction
+import androidx.test.espresso.action.MotionEvents
+import androidx.test.espresso.action.Press
+import androidx.test.espresso.action.Swipe
+import androidx.test.espresso.matcher.ViewMatchers
+import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 
-import android.view.MotionEvent;
-import android.view.View;
+object Actions {
 
-import org.hamcrest.Matcher;
+    fun onlyIf(action: ViewAction, constraints: Matcher<View>): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return constraints
+            }
 
-import androidx.annotation.NonNull;
-import androidx.test.espresso.UiController;
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.action.CoordinatesProvider;
-import androidx.test.espresso.action.GeneralSwipeAction;
-import androidx.test.espresso.action.MotionEvents;
-import androidx.test.espresso.action.Press;
-import androidx.test.espresso.action.Swipe;
+            override fun getDescription(): String {
+                return action.description
+            }
 
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static org.hamcrest.Matchers.allOf;
+            override fun perform(uiController: UiController, view: View) {
+                action.perform(uiController, view)
+            }
+        }
+    }
 
-@SuppressWarnings("WeakerAccess")
-public class Actions
-{
-	@NonNull
-	static ViewAction onlyIf(@NonNull final ViewAction action, @NonNull final Matcher<View> constraints)
-	{
-		return new ViewAction()
-		{
-			@NonNull
-			@Override
-			public Matcher<View> getConstraints()
-			{
-				return constraints;
-			}
+    fun andThen(action1: ViewAction, action2: ViewAction): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return Matchers.allOf(action1.constraints, action2.constraints)
+            }
 
-			@Override
-			public String getDescription()
-			{
-				return action.getDescription();
-			}
+            override fun getDescription(): String {
+                return action1.description + " then " + action2.description
+            }
 
-			@Override
-			public void perform(UiController uiController, View view)
-			{
-				action.perform(uiController, view);
-			}
-		};
-	}
+            override fun perform(uiController: UiController, view: View) {
+                action1.perform(uiController, view)
+                action2.perform(uiController, view)
+            }
+        }
+    }
 
-	@NonNull
-	static ViewAction andThen(@NonNull final ViewAction action1, @NonNull final ViewAction action2)
-	{
-		return new ViewAction()
-		{
-			@NonNull
-			@Override
-			public Matcher<View> getConstraints()
-			{
-				return allOf(action1.getConstraints(), action2.getConstraints());
-			}
+    fun andThen(action1: ViewAction, action2: ViewAction, lapse: Int): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return Matchers.allOf(action1.constraints, action2.constraints)
+            }
 
-			@NonNull
-			@Override
-			public String getDescription()
-			{
-				return action1.getDescription() + " then " + action2.getDescription();
-			}
+            override fun getDescription(): String {
+                return action1.description + " then " + action2.description
+            }
 
-			@Override
-			public void perform(UiController uiController, View view)
-			{
-				action1.perform(uiController, view);
-				action2.perform(uiController, view);
-			}
-		};
-	}
+            override fun perform(uiController: UiController, view: View) {
+                action1.perform(uiController, view)
+                Wait.pause(lapse)
+                action2.perform(uiController, view)
+            }
+        }
+    }
 
-	@NonNull
-	static ViewAction andThen(@NonNull final ViewAction action1, @NonNull final ViewAction action2, @SuppressWarnings("SameParameterValue") int lapse)
-	{
-		return new ViewAction()
-		{
-			@NonNull
-			@Override
-			public Matcher<View> getConstraints()
-			{
-				return allOf(action1.getConstraints(), action2.getConstraints());
-			}
+    fun touchDownAndUp(x: Float, y: Float): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return ViewMatchers.isDisplayed()
+            }
 
-			@NonNull
-			@Override
-			public String getDescription()
-			{
-				return action1.getDescription() + " then " + action2.getDescription();
-			}
+            override fun getDescription(): String {
+                return "Send touch events."
+            }
 
-			@Override
-			public void perform(UiController uiController, View view)
-			{
-				action1.perform(uiController, view);
-				Wait.pause(lapse);
-				action2.perform(uiController, view);
-			}
-		};
-	}
+            override fun perform(uiController: UiController, view: View) {
+                // Get view absolute position
+                val location = IntArray(2)
+                view.getLocationOnScreen(location)
 
-	@NonNull
-	static ViewAction touchDownAndUp(final float x, final float y)
-	{
-		return new ViewAction()
-		{
-			@NonNull
-			@Override
-			public Matcher<View> getConstraints()
-			{
-				return isDisplayed();
-			}
+                // Offset coordinates by view position
+                val coordinates = floatArrayOf(x + location[0], y + location[1])
+                val precision = floatArrayOf(1f, 1f)
 
-			@NonNull
-			@Override
-			public String getDescription()
-			{
-				return "Send touch events.";
-			}
+                // Send down event, pause, and send up
+                val down = MotionEvents.sendDown(uiController, coordinates, precision).down
+                uiController.loopMainThreadForAtLeast(200)
+                MotionEvents.sendUp(uiController, down, coordinates)
+            }
+        }
+    }
 
-			@Override
-			public void perform(@NonNull UiController uiController, @NonNull final View view)
-			{
-				// Get view absolute position
-				int[] location = new int[2];
-				view.getLocationOnScreen(location);
+    fun drag(from: CoordinatesProvider?, to: CoordinatesProvider?): ViewAction {
+        return GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER)
+    }
 
-				// Offset coordinates by view position
-				float[] coordinates = new float[]{x + location[0], y + location[1]};
-				float[] precision = new float[]{1f, 1f};
+    fun dragBack(from: CoordinatesProvider?, to: CoordinatesProvider?): ViewAction {
+        return andThen(GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER), GeneralSwipeAction(Swipe.SLOW, to, from, Press.FINGER), 1)
+    }
 
-				// Send down event, pause, and send up
-				MotionEvent down = MotionEvents.sendDown(uiController, coordinates, precision).down;
-				uiController.loopMainThreadForAtLeast(200);
-				MotionEvents.sendUp(uiController, down, coordinates);
-			}
-		};
-	}
+    fun dragBack(from: CoordinatesProvider?, to: CoordinatesProvider?, to2: CoordinatesProvider?): ViewAction {
+        return andThen(GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER), GeneralSwipeAction(Swipe.SLOW, from, to2, Press.FINGER), 1)
+    }
 
-	@NonNull
-	public static ViewAction drag(final CoordinatesProvider from, final CoordinatesProvider to)
-	{
-		return new GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER);
-	}
-
-	@NonNull
-	public static ViewAction dragBack(final CoordinatesProvider from, final CoordinatesProvider to)
-	{
-		return andThen(new GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER), new GeneralSwipeAction(Swipe.SLOW, to, from, Press.FINGER), 1);
-	}
-
-	@NonNull
-	public static ViewAction dragBack(final CoordinatesProvider from, final CoordinatesProvider to, final CoordinatesProvider to2)
-	{
-		return andThen(new GeneralSwipeAction(Swipe.SLOW, from, to, Press.FINGER), new GeneralSwipeAction(Swipe.SLOW, from, to2, Press.FINGER), 1);
-	}
-
-	@NonNull
-	public static ViewAction dragBack2(final CoordinatesProvider from, final CoordinatesProvider to, final CoordinatesProvider to2)
-	{
-		return andThen( //
-				dragBack(from, to, to2), //
-				dragBack(from, to2, to) //
-		);
-	}
+    fun dragBack2(from: CoordinatesProvider?, to: CoordinatesProvider?, to2: CoordinatesProvider?): ViewAction {
+        return andThen( //
+            dragBack(from, to, to2),  //
+            dragBack(from, to2, to) //
+        )
+    }
 }

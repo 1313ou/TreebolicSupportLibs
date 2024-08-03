@@ -1,46 +1,31 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.test
 
-package org.treebolic.test;
+import android.view.View
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.ViewAssertion
+import androidx.test.espresso.assertion.ViewAssertions
+import org.hamcrest.Matcher
 
-import android.view.View;
+object ToBoolean {
 
-import org.hamcrest.Matcher;
+    fun test(view: Matcher<View?>, state: Matcher<View?>): Boolean {
+        try {
+            Espresso.onView(view).check(ViewAssertions.matches(state))
+            return true
+        } catch (e: Throwable) {
+            return false
+        }
+    }
 
-import androidx.annotation.NonNull;
-import androidx.test.espresso.ViewAssertion;
-
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-
-@SuppressWarnings("WeakerAccess")
-public class ToBoolean
-{
-	static public boolean test(@NonNull final Matcher<View> view, @NonNull final Matcher<View> state)
-	{
-		try
-		{
-			onView(view).check(matches(state));
-			return true;
-		}
-		catch (Throwable e)
-		{
-			return false;
-		}
-	}
-
-	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
-	static public boolean testAssertion(@NonNull final Matcher<View> view, @NonNull final ViewAssertion assertion)
-	{
-		try
-		{
-			onView(view).check(assertion);
-			return true;
-		}
-		catch (Throwable e)
-		{
-			return false;
-		}
-	}
+    fun testAssertion(view: Matcher<View?>, assertion: ViewAssertion): Boolean {
+        try {
+            Espresso.onView(view).check(assertion)
+            return true
+        } catch (e: Throwable) {
+            return false
+        }
+    }
 }

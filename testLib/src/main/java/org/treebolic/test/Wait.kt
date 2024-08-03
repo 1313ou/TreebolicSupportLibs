@@ -1,162 +1,112 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.test
 
-package org.treebolic.test;
+import android.view.View
+import android.widget.TextView
+import androidx.annotation.IdRes
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.PerformException
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.util.HumanReadables
+import androidx.test.espresso.util.TreeIterables
+import org.hamcrest.Matcher
+import java.util.concurrent.TimeoutException
 
-import android.view.View;
-import android.widget.TextView;
+object Wait {
 
-import org.hamcrest.Matcher;
+    private fun waitId(viewId: Int, millis: Long): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return ViewMatchers.isRoot()
+            }
 
-import java.util.concurrent.TimeoutException;
+            override fun getDescription(): String {
+                return "wait for a specific view with id <$viewId> during $millis millis."
+            }
 
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.test.espresso.PerformException;
-import androidx.test.espresso.UiController;
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.util.HumanReadables;
-import androidx.test.espresso.util.TreeIterables;
+            override fun perform(uiController: UiController, view: View) {
+                uiController.loopMainThreadUntilIdle()
+                val startTime = System.currentTimeMillis()
+                val endTime = startTime + millis
+                val viewMatcher = ViewMatchers.withId(viewId)
+                do {
+                    for (child in TreeIterables.breadthFirstViewTraversal(view)) {
+                        // found view with required ID
+                        if (viewMatcher.matches(child)) {
+                            return
+                        }
+                    }
+                    uiController.loopMainThreadForAtLeast(50)
+                } while (System.currentTimeMillis() < endTime)
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
+                // timeout happens
+                throw PerformException.Builder().withActionDescription(this.description).withViewDescription(HumanReadables.describe(view)).withCause(TimeoutException()).build()
+            }
+        }
+    }
 
-@SuppressWarnings("WeakerAccess")
-public class Wait
-{
-	@NonNull
-	private static ViewAction waitId(final int viewId, final long millis)
-	{
-		return new ViewAction()
-		{
-			@NonNull
-			@Override
-			public Matcher<View> getConstraints()
-			{
-				return isRoot();
-			}
+    private fun waitIdText(viewId: Int, target: String, not: Boolean, millis: Long): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return ViewMatchers.isRoot()
+            }
 
-			@NonNull
-			@Override
-			public String getDescription()
-			{
-				return "wait for a specific view with id <" + viewId + "> during " + millis + " millis.";
-			}
+            override fun getDescription(): String {
+                return "wait for a specific view with id <$viewId> during $millis millis."
+            }
 
-			@Override
-			public void perform(@NonNull final UiController uiController, @NonNull final View view)
-			{
-				uiController.loopMainThreadUntilIdle();
-				final long startTime = System.currentTimeMillis();
-				final long endTime = startTime + millis;
-				final Matcher<View> viewMatcher = withId(viewId);
-				do
-				{
-					for (View child : TreeIterables.breadthFirstViewTraversal(view))
-					{
-						// found view with required ID
-						if (viewMatcher.matches(child))
-						{
-							return;
-						}
-					}
-					uiController.loopMainThreadForAtLeast(50);
-				}
-				while (System.currentTimeMillis() < endTime);
+            override fun perform(uiController: UiController, view: View) {
+                uiController.loopMainThreadUntilIdle()
+                val startTime = System.currentTimeMillis()
+                val endTime = startTime + millis
+                val viewMatcher = ViewMatchers.withId(viewId)
+                do {
+                    for (child in TreeIterables.breadthFirstViewTraversal(view)) {
+                        // found view with required ID
+                        if (viewMatcher.matches(child)) {
+                            if (child !is TextView) {
+                                throw PerformException.Builder().withActionDescription(this.description).withViewDescription(HumanReadables.describe(view)).withCause(ClassCastException()).build()
+                            }
+                            val text = child.text.toString()
+                            if (not && text != target) {
+                                return
+                            } else if (!not && text == target) {
+                                return
+                            }
+                        }
+                    }
+                    uiController.loopMainThreadForAtLeast(50)
+                } while (System.currentTimeMillis() < endTime)
 
-				// timeout happens
-				throw new PerformException.Builder().withActionDescription(this.getDescription()).withViewDescription(HumanReadables.describe(view)).withCause(new TimeoutException()).build();
-			}
-		};
-	}
+                // timeout happens
+                throw PerformException.Builder().withActionDescription(this.description).withViewDescription(HumanReadables.describe(view)).withCause(TimeoutException()).build()
+            }
+        }
+    }
 
-	@NonNull
-	private static ViewAction waitIdText(final int viewId, final String target, final boolean not, final long millis)
-	{
-		return new ViewAction()
-		{
-			@NonNull
-			@Override
-			public Matcher<View> getConstraints()
-			{
-				return isRoot();
-			}
+    fun until(@IdRes resId: Int, sec: Int) {
+        Espresso.onView(ViewMatchers.isRoot()).perform(waitId(resId, sec * 1000L))
+    }
 
-			@NonNull
-			@Override
-			public String getDescription()
-			{
-				return "wait for a specific view with id <" + viewId + "> during " + millis + " millis.";
-			}
+    fun until_not_text(@IdRes resId: Int, target: String, sec: Int) {
+        Espresso.onView(ViewMatchers.isRoot()).perform(waitIdText(resId, target, true, sec * 1000L))
+    }
 
-			@Override
-			public void perform(@NonNull final UiController uiController, @NonNull final View view)
-			{
-				uiController.loopMainThreadUntilIdle();
-				final long startTime = System.currentTimeMillis();
-				final long endTime = startTime + millis;
-				final Matcher<View> viewMatcher = withId(viewId);
-				do
-				{
-					for (View child : TreeIterables.breadthFirstViewTraversal(view))
-					{
-						// found view with required ID
-						if (viewMatcher.matches(child))
-						{
-							if (!(child instanceof TextView))
-							{
-								throw new PerformException.Builder().withActionDescription(this.getDescription()).withViewDescription(HumanReadables.describe(view)).withCause(new ClassCastException()).build();
-							}
-							final TextView textView = (TextView) child;
-							final String text = textView.getText().toString();
-							if (not && !text.equals(target))
-							{
-								return;
-							}
-							else if (!not && text.equals(target))
-							{
-								return;
-							}
-						}
-					}
-					uiController.loopMainThreadForAtLeast(50);
-				}
-				while (System.currentTimeMillis() < endTime);
+    fun until_text(@IdRes resId: Int, target: String, sec: Int) {
+        Espresso.onView(ViewMatchers.isRoot()).perform(waitIdText(resId, target, false, sec * 1000L))
+    }
 
-				// timeout happens
-				throw new PerformException.Builder().withActionDescription(this.getDescription()).withViewDescription(HumanReadables.describe(view)).withCause(new TimeoutException()).build();
-			}
-		};
-	}
+    private const val PAUSE_UNIT = 1000
 
-	static public void until(@IdRes int resId, int sec)
-	{
-		onView(isRoot()).perform(waitId(resId, sec * 1000L));
-	}
-
-	static public void until_not_text(@IdRes int resId, String target, int sec)
-	{
-		onView(isRoot()).perform(waitIdText(resId, target, true, sec * 1000L));
-	}
-
-	static public void until_text(@IdRes int resId, String target, int sec)
-	{
-		onView(isRoot()).perform(waitIdText(resId, target, false, sec * 1000L));
-	}
-
-	static private final int PAUSE_UNIT = 1000;
-
-	static public void pause(int sec)
-	{
-		try
-		{
-			Thread.sleep((long) PAUSE_UNIT * sec);
-		}
-		catch (InterruptedException e)
-		{
-			//
-		}
-	}
+    fun pause(sec: Int) {
+        try {
+            Thread.sleep(PAUSE_UNIT.toLong() * sec)
+        } catch (e: InterruptedException) {
+            //
+        }
+    }
 }

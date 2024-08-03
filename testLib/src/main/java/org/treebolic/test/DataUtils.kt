@@ -1,110 +1,81 @@
 /*
  * Copyright (c) 2019-2023. Bernard Bou
  */
+package org.treebolic.test
 
-package org.treebolic.test;
+import android.os.Environment
+import android.util.Log
+import androidx.test.platform.app.InstrumentationRegistry
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+import java.io.IOException
+import java.io.InputStreamReader
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.os.Environment;
-import android.util.Log;
+object DataUtils {
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.List;
+    private const val LIST_FILE = "tests/sqlunet.list"
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.test.platform.app.InstrumentationRegistry;
+    fun arrayToString(vararg a: Int): String {
+        val sb = StringBuilder()
+        sb.append('{')
+        var first = true
+        for (i in a) {
+            if (first) {
+                first = false
+            } else {
+                sb.append(',')
+            }
+            sb.append(i)
+        }
+        sb.append('}')
+        return sb.toString()
+    }
 
-public class DataUtils
-{
-	static private final String LIST_FILE = "tests/sqlunet.list";
+    // S A M P L E S
 
-	@NonNull
-	static public String arrayToString(@NonNull int... a)
-	{
-		final StringBuilder sb = new StringBuilder();
-		sb.append('{');
-		boolean first = true;
-		for (int i : a)
-		{
-			if (first)
-			{
-				first = false;
-			}
-			else
-			{
-				sb.append(',');
-			}
-			sb.append(i);
-		}
-		sb.append('}');
-		return sb.toString();
-	}
+    val wordList: Array<String>?
+         get() = readWordList()
 
-	// S A M P L E S
+    private fun readWordList(): Array<String>? {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val assets = context.resources.assets
+        val list: MutableList<String> = ArrayList()
+        try {
+            assets.open(LIST_FILE).use { `is` ->
+                InputStreamReader(`is`).use { reader ->
+                    BufferedReader(reader).use { br ->
+                        var line: String
+                        while ((br.readLine().also { line = it }) != null) {
+                            list.add(line.trim { it <= ' ' })
+                        }
+                        return list.toTypedArray<String>()
+                    }
+                }
+            }
+        } catch (e: IOException) {
+            //Log.d("Read", "Error " + dataFile.getAbsolutePath(), e);
+            Log.e("Read", "Error $LIST_FILE", e)
+            return null
+        }
+    }
 
-	//@Nullable
-	//static String[] WORD_LIST = {"abandon", "leave", "inveigle", "foist", "flounder", "flout"};
-
-	@Nullable
-	static public String[] getWordList()
-	{
-		return readWordList();
-	}
-
-	@Nullable
-	static private String[] readWordList()
-	{
-		final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-		final AssetManager assets = context.getResources().getAssets();
-		final List<String> list = new ArrayList<>();
-		try (final InputStream is = assets.open(DataUtils.LIST_FILE); //
-		     final Reader reader = new InputStreamReader(is); //
-		     final BufferedReader br = new BufferedReader(reader) //
-		)
-		{
-			String line;
-			while ((line = br.readLine()) != null)
-			{
-				list.add(line.trim());
-			}
-			return list.toArray(new String[0]);
-		}
-		catch (IOException e)
-		{
-			//Log.d("Read", "Error " + dataFile.getAbsolutePath(), e);
-			Log.e("Read", "Error " + DataUtils.LIST_FILE, e);
-			return null;
-		}
-	}
-
-	@Nullable
-	static private String[] readWordListAlt()
-	{
-		final List<String> list = new ArrayList<>();
-		final File dataFile = new File(Environment.getExternalStorageDirectory(), DataUtils.LIST_FILE);
-		try (final FileReader reader = new FileReader(dataFile); //
-		     final BufferedReader br = new BufferedReader(reader))
-		{
-			String line;
-			while ((line = br.readLine()) != null)
-			{
-				list.add(line.trim());
-			}
-			return list.toArray(new String[0]);
-		}
-		catch (final IOException e)
-		{
-			Log.d("Read", "Error " + dataFile.getAbsolutePath(), e);
-		}
-		return null;
-	}
+    private fun readWordListAlt(): Array<String>? {
+        val list: MutableList<String> = ArrayList()
+        val dataFile = File(Environment.getExternalStorageDirectory(), LIST_FILE)
+        try {
+            FileReader(dataFile).use { reader ->
+                BufferedReader(reader).use { br ->
+                    var line: String
+                    while ((br.readLine().also { line = it }) != null) {
+                        list.add(line.trim { it <= ' ' })
+                    }
+                    return list.toTypedArray<String>()
+                }
+            }
+        } catch (e: IOException) {
+            Log.d("Read", "Error " + dataFile.absolutePath, e)
+        }
+        return null
+    }
 }
