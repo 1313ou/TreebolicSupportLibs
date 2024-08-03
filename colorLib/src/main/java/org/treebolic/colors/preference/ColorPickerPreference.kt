@@ -359,6 +359,7 @@ open class ColorPickerPreference : DialogPreference {
 
             if (preference is ColorPickerPreference) {
                 val dialogFragment: DialogFragment = ColorPickerPreferenceDialogFragmentCompat.newInstance(preference)
+                @Suppress("DEPRECATION")
                 dialogFragment.setTargetFragment(prefFragment, 0)
                 dialogFragment.show(manager, DIALOG_FRAGMENT_TAG)
                 return true

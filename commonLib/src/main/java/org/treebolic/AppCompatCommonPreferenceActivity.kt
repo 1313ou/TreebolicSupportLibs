@@ -90,6 +90,7 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
         val className = checkNotNull(pref.fragment)
         val fragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, className)
         fragment.arguments = args
+        @Suppress("DEPRECATION")
         fragment.setTargetFragment(caller, 0)
 
         // Replace the existing Fragment with the new Fragment

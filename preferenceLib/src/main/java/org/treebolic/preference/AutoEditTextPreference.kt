@@ -224,6 +224,7 @@ class AutoEditTextPreference : DialogPreference {
 
             if (preference is AutoEditTextPreference) {
                 val dialogFragment: DialogFragment = AutoEditTextPreferenceDialogFragmentCompat.newInstance(preference)
+                @Suppress("DEPRECATION")
                 dialogFragment.setTargetFragment(prefFragment, 0)
                 dialogFragment.show(manager, DIALOG_FRAGMENT_TAG)
                 return true

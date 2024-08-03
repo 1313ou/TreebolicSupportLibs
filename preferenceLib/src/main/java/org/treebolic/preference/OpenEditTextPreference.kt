@@ -323,6 +323,7 @@ class OpenEditTextPreference : DialogPreference {
 
             if (preference is OpenEditTextPreference) {
                 val dialogFragment: DialogFragment = OpenEditTextPreferenceDialogFragmentCompat.newInstance(preference)
+                @Suppress("DEPRECATION")
                 dialogFragment.setTargetFragment(prefFragment, 0)
                 dialogFragment.show(manager, DIALOG_FRAGMENT_TAG)
                 return true
