@@ -4,7 +4,6 @@
 package org.treebolic.wheel
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -20,61 +19,31 @@ import kotlin.math.min
 /**
  * Spinner wheel vertical view.
  *
+ * @param context  the application environment.
+ * @param attrs    a collection of attributes.
+ * @param defStyle The default style to apply to this view.
+ *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
  * @noinspection WeakerAccess
  */
-open class WheelVerticalView
-/**
- * Create a new wheel vertical view.
- *
- * @param context  the application environment.
- * @param attrs    a collection of attributes.
- * @param defStyle The default style to apply to this view.
- */
-/**
- * Create a new wheel vertical view.
- *
- * @param context The application environment.
- * @param attrs   A collection of attributes.
- */
-// --------------------------------------------------------------------------
-//
-// Constructors
-//
-// --------------------------------------------------------------------------
-/**
- * Create a new wheel vertical view.
- *
- * @param context The application environment.
- */
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, @AttrRes defStyle: Int = R.attr.abstractWheelViewStyle) : AbstractWheelView(context, attrs, defStyle) {
-    // private final String TAG = WheelVerticalView.class.getName() + " #" + (++itemID);
-    // private static int itemID = -1;
+open class WheelVerticalView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, @AttrRes defStyle: Int = R.attr.abstractWheelViewStyle) : AbstractWheelView(context, attrs, defStyle) {
+
     /**
      * The height of the selection divider.
      */
     private var selectionDividerHeight: Int = 0
 
-    // Cached item height
+    /** Cached item height */
     private var itemHeight = 0
 
-    // --------------------------------------------------------------------------
-    //
-    // Initiating assets and setter for selector paint
-    //
-    // --------------------------------------------------------------------------
+    /** Initiating assets and setter for selector paint */
     override fun initAttributes(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) {
         super.initAttributes(context, attrs, defStyle)
 
         if (attrs != null) {
-            // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0))
-            var array: TypedArray? = null
-            try {
-                array = context.obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0)
-                selectionDividerHeight = array.getDimensionPixelSize(R.styleable.WheelVerticalView_selectionDividerHeight, DEF_SELECTION_DIVIDER_SIZE)
-            } finally {
-                array?.recycle()
+            context.obtainStyledAttributes(attrs, R.styleable.WheelVerticalView, defStyle, 0).use {
+                selectionDividerHeight = it.getDimensionPixelSize(R.styleable.WheelVerticalView_selectionDividerHeight, DEF_SELECTION_DIVIDER_SIZE)
             }
         }
     }

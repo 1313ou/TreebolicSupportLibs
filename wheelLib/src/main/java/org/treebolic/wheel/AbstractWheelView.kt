@@ -6,7 +6,6 @@ package org.treebolic.wheel
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -23,7 +22,7 @@ import androidx.core.graphics.drawable.DrawableCompat
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
  */
-abstract class AbstractWheelView (context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) : AbstractWheel(context, attrs, defStyle) {
+abstract class AbstractWheelView(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) : AbstractWheel(context, attrs, defStyle) {
 
     /**
      * The alpha of the selector spinnerwheel when it is dimmed.
@@ -96,21 +95,14 @@ abstract class AbstractWheelView (context: Context, attrs: AttributeSet?, @AttrR
 
     override fun initAttributes(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) {
         super.initAttributes(context, attrs, defStyle)
-
-        // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0))
-        var array: TypedArray? = null
-        try {
-            array = context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0)
-            itemsDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA)
-            selectionDividerActiveAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA)
-            selectionDividerDimmedAlpha = array.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA)
-            selectionDividerTint = array.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT)
-            itemOffsetPercent = array.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT)
-            itemsPadding = array.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING)
-            selectionDivider = array.getDrawable(R.styleable.AbstractWheelView_selectionDivider)
-            //selectionDivider.setTint(selectionDividerTint)
-        } finally {
-            array?.recycle()
+        context.obtainStyledAttributes(attrs, R.styleable.AbstractWheelView, defStyle, 0).use {
+            itemsDimmedAlpha = it.getInt(R.styleable.AbstractWheelView_itemsDimmedAlpha, DEF_ITEMS_DIMMED_ALPHA)
+            selectionDividerActiveAlpha = it.getInt(R.styleable.AbstractWheelView_selectionDividerActiveAlpha, DEF_SELECTION_DIVIDER_ACTIVE_ALPHA)
+            selectionDividerDimmedAlpha = it.getInt(R.styleable.AbstractWheelView_selectionDividerDimmedAlpha, DEF_SELECTION_DIVIDER_DIMMED_ALPHA)
+            selectionDividerTint = it.getInt(R.styleable.AbstractWheelView_selectionDividerTint, DEF_SELECTION_DIVIDER_TINT)
+            itemOffsetPercent = it.getInt(R.styleable.AbstractWheelView_itemOffsetPercent, DEF_ITEM_OFFSET_PERCENT)
+            itemsPadding = it.getDimensionPixelSize(R.styleable.AbstractWheelView_itemsPadding, DEF_ITEM_PADDING)
+            selectionDivider = it.getDrawable(R.styleable.AbstractWheelView_selectionDivider)
         }
     }
 

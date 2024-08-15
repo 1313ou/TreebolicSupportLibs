@@ -4,7 +4,6 @@
 package org.treebolic.wheel
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -27,6 +26,7 @@ import kotlin.math.min
  * @noinspection WeakerAccess
  */
 class WheelHorizontalView
+
 /**
  * Create a new wheel horizontal view.
  *
@@ -34,17 +34,17 @@ class WheelHorizontalView
  * @param attrs    a collection of attributes.
  * @param defStyle The default style to apply to this view.
  */
+
 /**
  * Create a new wheel horizontal view.
  *
  * @param context The application environment.
  * @param attrs   A collection of attributes.
  */
-// --------------------------------------------------------------------------
-//
-// Constructors
-//
-// --------------------------------------------------------------------------
+
+
+// C O N S T R U C T O R S
+
 /**
  * Create a new wheel horizontal view.
  *
@@ -57,25 +57,16 @@ class WheelHorizontalView
      */
     private var selectionDividerWidth: Int = 0
 
-    // Item width
+    /** Item width */
     private var itemWidth = 0
 
-    // --------------------------------------------------------------------------
-    //
-    // Initiating assets and setter for selector paint
-    //
-    // --------------------------------------------------------------------------
+    /** Initiating assets and setter for selector paint */
     override fun initAttributes(context: Context, attrs: AttributeSet?, @AttrRes defStyle: Int) {
         super.initAttributes(context, attrs, defStyle)
 
         if (attrs != null) {
-            // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0))
-            var array: TypedArray? = null
-            try {
-                array = context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0)
-                selectionDividerWidth = array.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE)
-            } finally {
-                array?.recycle()
+            context.obtainStyledAttributes(attrs, R.styleable.WheelHorizontalView, defStyle, 0).use {
+                selectionDividerWidth = it.getDimensionPixelSize(R.styleable.WheelHorizontalView_selectionDividerWidth, DEF_SELECTION_DIVIDER_SIZE)
             }
         }
     }

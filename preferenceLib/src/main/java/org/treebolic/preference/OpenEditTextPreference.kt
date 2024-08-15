@@ -103,19 +103,14 @@ class OpenEditTextPreference : DialogPreference {
      */
     private fun init(context: Context, attrs: AttributeSet) {
         // obtain values through styled attributes
-        // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference))
-        var array: TypedArray? = null
-        try {
-            array = context.obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference)
-            this.values = array.getTextArray(R.styleable.OpenEditTextPreference_values)
-            this.labels = array.getTextArray(R.styleable.OpenEditTextPreference_labels)
-        } finally {
-            array?.recycle()
+        context.obtainStyledAttributes(attrs, R.styleable.OpenEditTextPreference).use {
+            values = it.getTextArray(R.styleable.OpenEditTextPreference_values)
+            labels = it.getTextArray(R.styleable.OpenEditTextPreference_labels)
         }
 
         // enable all
-        this.enable = BooleanArray(values.size)
-        Arrays.fill(this.enable, true)
+        enable = BooleanArray(values.size)
+        Arrays.fill(enable, true)
     }
 
     /**
@@ -131,21 +126,21 @@ class OpenEditTextPreference : DialogPreference {
     /**
      * Enable Setter
      *
-     * @param enables enable flags
+     * @param enables0 enable flags
      */
-    fun setEnables(enables: BooleanArray) {
-        this.enable = enables
+    fun setEnables(enables0: BooleanArray) {
+       enable = enables0
     }
 
     /**
      * Add options
      *
-     * @param xValues extra values
-     * @param xLabels extra labels
+     * @param xValues0 extra values
+     * @param xLabels0 extra labels
      */
-    fun addOptions(xValues: List<String>?, xLabels: List<String>?) {
-        this.xValues = xValues
-        this.xLabels = xLabels
+    fun addOptions(xValues0: List<String>?, xLabels0: List<String>?) {
+       xValues = xValues0
+       xLabels = xLabels0
     }
 
     // V A L U E
@@ -277,7 +272,7 @@ class OpenEditTextPreference : DialogPreference {
         val state = StringSavedState(superState)
 
         // set the state's value with the class member that holds current setting value
-        state.value = this.value
+        state.value = value
         return state
     }
 
