@@ -172,15 +172,6 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
         color = newValue
     }
 
-    // /**
-    //  * Get the value currently shown by this view.
-    //  *
-    //  * @return value
-    //  */
-    // fun getColor(): Int {
-    //     return color
-    // }
-
     /**
      * Set the value of the border surrounding the panel.
      *
@@ -190,24 +181,6 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
         borderColor = color
         invalidate()
     }
-
-    // /**
-    //  * Get the value of the border surrounding the panel.
-    //  *
-    //  * @return border value
-    //  */
-    // fun getBorderColor(): Int {
-    //     return borderColor
-    // }
-
-    // /**
-    //  * Set crossed flag
-    //  *
-    //  * @param isCrossed whether the display is crossed
-    //  */
-    // fun setCrossed(flag: Boolean) {
-    //     isCrossed = flag
-    // }
 
     companion object {
 
