@@ -79,9 +79,8 @@ class AutoEditTextPreference : DialogPreference {
      */
     private fun init(context: Context, attrs: AttributeSet) {
         // obtain values through styled attributes
-        // try (final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference))
-        context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference).use{
-            this.values = it.getTextArray(R.styleable.AutoEditTextPreference_values)
+        context.obtainStyledAttributes(attrs, R.styleable.AutoEditTextPreference).use {
+            values = it.getTextArray(R.styleable.AutoEditTextPreference_values)
         }
     }
 
@@ -106,7 +105,7 @@ class AutoEditTextPreference : DialogPreference {
     }
 
     private fun setValue(newValue: String?) {
-        this.value = newValue
+        value = newValue
         persistString(newValue)
         notifyChanged()
     }
@@ -179,7 +178,7 @@ class AutoEditTextPreference : DialogPreference {
         val state = StringSavedState(superState)
 
         // set the state's value with the class member that holds current setting value
-        state.value = this.value
+        state.value = value
         return state
     }
 
