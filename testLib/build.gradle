@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.8.1'
+    implementation 'androidx.annotation:annotation:1.8.2'
     implementation 'androidx.test:core:1.6.1'
     implementation 'androidx.test.espresso:espresso-core:3.6.1'
     implementation 'androidx.test.espresso:espresso-contrib:3.6.1'

@@ -28,7 +28,7 @@
 
 	</style>
 
-	<style name="MyAppTheme" parent="MyBaseTheme" />
+	<style name="MyAppTheme" parent="MyBaseTheme" ></style>
 
 	// T R E E B O L I C A P P L I C A T I O N
 
