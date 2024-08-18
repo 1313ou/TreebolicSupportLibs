@@ -155,7 +155,7 @@ class OpenEditTextPreference : DialogPreference {
     }
 
     private fun setValue(newValue: String?) {
-        this.value = newValue
+        value = newValue
         persistString(newValue)
         notifyChanged()
     }

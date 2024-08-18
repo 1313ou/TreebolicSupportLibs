@@ -28,14 +28,14 @@ internal class ColorSavedState : Preference.BaseSavedState {
      * @param parcel source parcel
      */
     constructor(parcel: Parcel) : super(parcel) {
-        this.isNull = parcel.readInt() != 0
-        this.value = parcel.readInt()
+        isNull = parcel.readInt() != 0
+        value = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         super.writeToParcel(parcel, flags)
-        parcel.writeInt(if (this.isNull) 1 else 0)
-        parcel.writeInt(this.value)
+        parcel.writeInt(if (isNull) 1 else 0)
+        parcel.writeInt(value)
     }
 
     companion object {

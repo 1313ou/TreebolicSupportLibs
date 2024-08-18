@@ -31,12 +31,12 @@ internal class StringSavedState : Preference.BaseSavedState {
      * @param parcel source parcel
      */
     constructor(parcel: Parcel) : super(parcel) {
-        this.value = parcel.readString()
+        value = parcel.readString()
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         super.writeToParcel(dest, flags)
-        dest.writeString(this.value)
+        dest.writeString(value)
     }
 
     companion object {

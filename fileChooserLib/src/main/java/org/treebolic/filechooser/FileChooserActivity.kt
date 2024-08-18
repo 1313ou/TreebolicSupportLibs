@@ -83,7 +83,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
             var view = convertView
             if (view == null) {
                 val inflater = checkNotNull(context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater)
-                view = inflater.inflate(this.id, null)
+                view = inflater.inflate(id, null)
             }
             val entry = items[position]
             val image = view!!.findViewById<ImageView>(R.id.typeImage)
@@ -177,8 +177,8 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         listView.setOnItemLongClickListener(this)
 
         // default
-        this.currentDir = getExternalFilesDir(null)
-        checkNotNull(this.currentDir)
+        currentDir = getExternalFilesDir(null)
+        checkNotNull(currentDir)
 
         // extras
         val extras = intent.extras
@@ -193,17 +193,17 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
                         initialDirExtra = path
                     }
                 }
-                this.currentDir = File(initialDirExtra)
+                currentDir = File(initialDirExtra)
             }
 
             // type
-            this.chooseDir = extras.getBoolean(ARG_FILECHOOSER_CHOOSE_DIR, false)
+            chooseDir = extras.getBoolean(ARG_FILECHOOSER_CHOOSE_DIR, false)
 
             // extensions
             val extensionExtras = extras.getStringArray(ARG_FILECHOOSER_EXTENSION_FILTER)
             if (!extensionExtras.isNullOrEmpty()) {
-                this.extensions = listOf(*extensionExtras)
-                this.fileFilter = FileFilter { file: File ->
+                extensions = listOf(*extensionExtras)
+                fileFilter = FileFilter { file: File ->
                     val name = file.name
                     val dot = name.lastIndexOf('.')
                     //
@@ -217,15 +217,15 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         fill(currentDir!!)
 
         // initialize list
-        if (this.chooseDir) {
+        if (chooseDir) {
             Toast.makeText(this, R.string.howToSelect, Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            checkNotNull(this.currentDir)
-            if ( // !this.currentDir.getName().equals(ROOT) &&
+            checkNotNull(currentDir)
+            if ( // !currentDir.getName().equals(ROOT) &&
                 currentDir!!.parentFile != null) {
                 currentDir = currentDir!!.parentFile
                 fill(currentDir!!)
@@ -252,7 +252,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
 
     override fun onItemLongClick(parent: AdapterView<*>?, view: View, position: Int, id: Long): Boolean {
         val entry = adapter!!.getItem(position)
-        if (this.chooseDir && (entry.isFolder || entry.isParent)) {
+        if (chooseDir && (entry.isFolder || entry.isParent)) {
             // select
             select(entry)
             return true
@@ -285,13 +285,13 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
      * @param dirFile dir
      */
     private fun fill(dirFile: File) {
-        val items = if (this.fileFilter != null) {
-            dirFile.listFiles(this.fileFilter)
+        val items = if (fileFilter != null) {
+            dirFile.listFiles(fileFilter)
         } else {
             dirFile.listFiles()
         }
 
-        this.title = getString(R.string.currentDir) + ": " + dirFile.name
+        title = getString(R.string.currentDir) + ": " + dirFile.name
         val dirs: MutableList<Entry> = ArrayList()
         val files: MutableList<Entry> = ArrayList()
         try {

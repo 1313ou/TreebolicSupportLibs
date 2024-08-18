@@ -31,11 +31,11 @@ class EntryChooser(
      * Show dialog
      */
     fun show() {
-        val adapter = ArrayAdapter(this.context, R.layout.filechooser_entries_zip, this.list)
+        val adapter = ArrayAdapter(context, R.layout.filechooser_entries_zip, list)
 
-        val builder = AlertDialog.Builder(this.context)
+        val builder = AlertDialog.Builder(context)
         builder.setTitle(R.string.chooseEntry)
-        builder.setAdapter(adapter, this.listener)
+        builder.setAdapter(adapter, listener)
         val alert = builder.create()
         alert.show()
     }

@@ -64,7 +64,7 @@ open class ColorPickerPreference : DialogPreference {
      * @param attrs   attributes
      */
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        this.value = null
+        value = null
 
         // attributes
         init(context, attrs)
@@ -125,12 +125,12 @@ open class ColorPickerPreference : DialogPreference {
         isPersistent = true
 
         // list
-        if (this.showPreviewSelectedColorInList) {
+        if (showPreviewSelectedColorInList) {
             widgetLayoutResource = R.layout.preference_preview_layout
         }
 
         // title
-        if (!this.showDialogTitle) {
+        if (!showDialogTitle) {
             dialogTitle = null
         }
     }
@@ -138,7 +138,7 @@ open class ColorPickerPreference : DialogPreference {
     // V A L U E
 
     private fun persistValue(value: Int?): Boolean {
-        //Log.d(TAG, "Persist " + this.value);
+        //Log.d(TAG, "Persist " + value);
         if (value == null) {
             if (!shouldPersist()) {
                 return false
@@ -178,7 +178,7 @@ open class ColorPickerPreference : DialogPreference {
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
         val preview = holder.findViewById(R.id.preference_preview_color_panel) as ColorPanelView
-        preview.setValue(this.value)
+        preview.setValue(value)
     }
 
     // D I A L O G   F R A G M E N T
@@ -291,8 +291,8 @@ open class ColorPickerPreference : DialogPreference {
         val state = ColorSavedState(superState)
 
         // set the state's value with the class member that holds current setting value
-        state.isNull = this.value == null
-        state.value = if (this.value == null) 0 else value!!
+        state.isNull = value == null
+        state.value = if (value == null) 0 else value!!
         return state
     }
 

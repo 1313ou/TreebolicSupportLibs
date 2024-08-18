@@ -730,10 +730,10 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
     /**
      * Set a OnColorChangedListener to get notified when the value selected by the user has changed.
      *
-     * @param listener change listener
+     * @param listener0 change listener
      */
-    fun setOnColorChangedListener(listener: OnColorChangedListener?) {
-        this.listener = listener
+    fun setOnColorChangedListener(listener0: OnColorChangedListener?) {
+        listener = listener0
     }
 
     /**

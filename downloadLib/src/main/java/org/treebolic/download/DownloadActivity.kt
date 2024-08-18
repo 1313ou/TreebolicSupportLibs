@@ -143,20 +143,20 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
         }
 
         // download manager
-        this.downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+        downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
 
         // components
-        this.downloadButton = findViewById<View>(R.id.downloadButton) as ImageButton
+        downloadButton = findViewById<View>(R.id.downloadButton) as ImageButton
         downloadButton!!.setOnClickListener(this)
 
         val showDownloadButton = findViewById<View>(R.id.showButton) as Button
         showDownloadButton.setOnClickListener(this)
-        this.progressBar = findViewById<View>(R.id.progressBar) as ProgressBar
-        this.progressStatus = findViewById<View>(R.id.progressStatus) as TextView
-        this.src = findViewById(R.id.src)
-        this.src2 = findViewById(R.id.src2)
-        this.target = findViewById(R.id.target)
-        this.expandArchiveCheckbox = findViewById<View>(R.id.expandArchive) as CheckBox
+        progressBar = findViewById<View>(R.id.progressBar) as ProgressBar
+        progressStatus = findViewById<View>(R.id.progressStatus) as TextView
+        src = findViewById(R.id.src)
+        src2 = findViewById(R.id.src2)
+        target = findViewById(R.id.target)
+        expandArchiveCheckbox = findViewById<View>(R.id.expandArchive) as CheckBox
         expandArchiveCheckbox!!.setOnClickListener { this@DownloadActivity.expandArchive = expandArchiveCheckbox!!.isChecked }
 
         // retrieve arguments
@@ -166,7 +166,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
         }
 
         // receiver
-        this.receiver = object : BroadcastReceiver(
+        receiver = object : BroadcastReceiver(
         ) {
             override fun onReceive(context: Context, intent: Intent) {
                 val action = intent.action
@@ -197,7 +197,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        val downloadUri = Uri.parse(this.downloadUrl)
+        val downloadUri = Uri.parse(downloadUrl)
         val downloadUriStr = downloadUri.toString()
         val file = downloadUri.lastPathSegment
         val where = downloadUriStr.substring(0, downloadUriStr.length - file!!.length)
@@ -212,9 +212,9 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
 
         // register receiver
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(this.receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_NOT_EXPORTED)
+            registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_NOT_EXPORTED)
         } else {
-            registerReceiver(this.receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+            registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         }
 
         // finish
@@ -256,7 +256,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
      * Start download. Assume download url has been set by derived class
      */
     protected fun start(@StringRes titleRes: Int) {
-        val downloadUri = Uri.parse(this.downloadUrl)
+        val downloadUri = Uri.parse(downloadUrl)
         try {
             val request = DownloadManager.Request(downloadUri)
             Log.d(TAG, "Source $downloadUri")
@@ -275,7 +275,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
             //	request.setAllowedOverRoaming(false);
             // @formatter: on
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
-            this.downloadId = downloadManager!!.enqueue(request)
+            downloadId = downloadManager!!.enqueue(request)
 
             // start progress
             startProgress()
@@ -293,7 +293,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
     private fun finished(): Boolean {
         // query
         val query = DownloadManager.Query()
-        query.setFilterById(this.downloadId)
+        query.setFilterById(downloadId)
 
         // cursor
         val cursor = downloadManager!!.query(query)
@@ -318,7 +318,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
     private fun retrieve(): Boolean {
         // query
         val query = DownloadManager.Query()
-        query.setFilterById(this.downloadId)
+        query.setFilterById(downloadId)
 
         // cursor
         val cursor = downloadManager!!.query(query)

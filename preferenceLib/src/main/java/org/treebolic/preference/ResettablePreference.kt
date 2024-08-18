@@ -22,14 +22,14 @@ class ResettablePreference : Preference {
 
     private var listener: View.OnClickListener? = null
 
-    fun setClickListener(listener: View.OnClickListener?) {
-        this.listener = listener
+    fun setClickListener(listener0: View.OnClickListener?) {
+        listener = listener0
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
         super.onBindViewHolder(holder)
 
         val button = holder.findViewById(R.id.bn_model_dir_reset) as Button
-        button.setOnClickListener(this.listener)
+        button.setOnClickListener(listener)
     }
 }

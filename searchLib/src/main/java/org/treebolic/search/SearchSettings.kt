@@ -59,10 +59,10 @@ class SearchSettings : AppCompatDialogFragment() {
         val scopeLabels = resources.getStringArray(R.array.search_scope_labels)
         val modeLabels = resources.getStringArray(R.array.search_mode_labels)
         val sourceLabels = resources.getStringArray(R.array.search_source_labels)
-        this.modes = resources.getStringArray(R.array.search_modes)
-        this.scopes = resources.getStringArray(R.array.search_scopes)
-        this.sources = resources.getStringArray(R.array.search_sources)
-        this.sourceModeIndex = resources.getInteger(R.integer.search_scope_source_index)
+        modes = resources.getStringArray(R.array.search_modes)
+        scopes = resources.getStringArray(R.array.search_scopes)
+        sources = resources.getStringArray(R.array.search_sources)
+        sourceModeIndex = resources.getInteger(R.integer.search_scope_source_index)
         val defaultScopeIndex = resources.getInteger(R.integer.search_scope_default)
         val defaultModeIndex = resources.getInteger(R.integer.search_mode_default)
 
@@ -72,8 +72,8 @@ class SearchSettings : AppCompatDialogFragment() {
         val sourceIcons = intArrayOf(R.drawable.ic_search_mode_equals)
 
         // wheel2 adapter
-        this.modeAdapter = Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.size, Adapter.Type.MODE)
-        this.sourceAdapter = Adapter(context, R.layout.item_mode, sourceLabels, sourceIcons, sources.size, Adapter.Type.SOURCE)
+        modeAdapter = Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.size, Adapter.Type.MODE)
+        sourceAdapter = Adapter(context, R.layout.item_mode, sourceLabels, sourceIcons, sources.size, Adapter.Type.SOURCE)
 
         // initial values for scope
         var scopeIndex = defaultScopeIndex
@@ -126,8 +126,8 @@ class SearchSettings : AppCompatDialogFragment() {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_search_settings, null)
 
         // wheel 1abandon
-        this.scopeWheel = view.findViewById(R.id.scope)
-        checkNotNull(this.scopeWheel)
+        scopeWheel = view.findViewById(R.id.scope)
+        checkNotNull(scopeWheel)
         scopeWheel!!.visibleItems = 4
         scopeWheel!!.viewAdapter = Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, scopes.size, Adapter.Type.SCOPE)
 
@@ -153,10 +153,10 @@ class SearchSettings : AppCompatDialogFragment() {
         })
 
         // wheel 2
-        this.modeWheel = view.findViewById(R.id.mode)
-        checkNotNull(this.modeWheel)
+        modeWheel = view.findViewById(R.id.mode)
+        checkNotNull(modeWheel)
         modeWheel!!.visibleItems = 4
-        modeWheel!!.viewAdapter = this.modeAdapter //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, this.modes.length, Adapter.Type.MODE));
+        modeWheel!!.viewAdapter = modeAdapter //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.length, Adapter.Type.MODE));
 
         // wheel 2 events
         modeWheel!!.addChangingListener { wheel: AbstractWheel, _: Int, newValue: Int ->
@@ -193,15 +193,15 @@ class SearchSettings : AppCompatDialogFragment() {
     private fun updateWheel2(scopeIndex: Int) {
         val modeIndex: Int
         val adapter: Adapter?
-        if (scopeIndex < this.sourceModeIndex) // item_scope != source
+        if (scopeIndex < sourceModeIndex) // item_scope != source
         {
-            modeIndex = this.oldModeIndex
-            adapter = this.modeAdapter
+            modeIndex = oldModeIndex
+            adapter = modeAdapter
         } else  // item_scope == source
         {
             modeIndex = 0
-            adapter = this.sourceAdapter
-            this.oldModeIndex = modeWheel!!.currentItem
+            adapter = sourceAdapter
+            oldModeIndex = modeWheel!!.currentItem
         }
         modeWheel!!.viewAdapter = adapter
         modeWheel!!.currentItem = modeIndex
@@ -232,7 +232,7 @@ class SearchSettings : AppCompatDialogFragment() {
 
         override val itemsCount: Int
             get() {
-                return this.len
+                return len
             }
 
         override fun getItemText(index: Int): CharSequence? {
