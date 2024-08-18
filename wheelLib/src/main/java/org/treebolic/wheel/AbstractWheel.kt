@@ -54,7 +54,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
      * @param index0   the item index
      * @param animated the animation flag
      */
-    private fun setCurrentItem(index0: Int, animated: Boolean) {
+    private fun setCurrentItem(index0: Int, @Suppress("SameParameterValue") animated: Boolean) {
         var index = index0
         if (viewAdapter == null || viewAdapter!!.itemsCount == 0) {
             return  // throw?
@@ -338,6 +338,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
     protected abstract fun createScroller(scrollingListener: ScrollingListener?): WheelScroller
 
     /* These methods are not abstract, as we may want to override only some of them */
+    @Suppress("EmptyMethod")
     protected fun onScrollStarted() {
         //
     }
@@ -376,7 +377,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
      * @param itemsToScroll items to scroll
      * @param time          scrolling duration
      */
-    private fun scroll(itemsToScroll: Int, time: Int) {
+    private fun scroll(itemsToScroll: Int, @Suppress("SameParameterValue") time: Int) {
         val distance = itemsToScroll * itemDimension - scrollingOffset
         onScrollTouched() // we have to emulate touch when scrolling spinnerwheel programmatically to light up stuff
         scroller!!.scroll(distance, time)

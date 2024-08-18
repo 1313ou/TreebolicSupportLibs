@@ -33,7 +33,7 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
     /**
      * Color, the value that should be shown by this view.
      */
-    var color = -0x1000000
+    var color: Int = -0x1000000
         set(newColor) {
             isNull = false
             field = newColor
@@ -73,7 +73,7 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
     /**
      * IsIllegal
      */
-    var isCrossed = false
+    var isCrossed: Boolean = false
 
     init {
         init(context)

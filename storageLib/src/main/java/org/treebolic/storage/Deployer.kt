@@ -158,7 +158,7 @@ object Deployer {
      * @return dest dir
      */
     @Throws(IOException::class)
-    private fun expandZip(`in`: InputStream, pathPrefixFilter0: String?, destDir: File): File {
+    private fun expandZip(`in`: InputStream, @Suppress("SameParameterValue") pathPrefixFilter0: String?, destDir: File): File {
         // prefix
         var pathPrefixFilter = pathPrefixFilter0
         if (!pathPrefixFilter.isNullOrEmpty() && pathPrefixFilter[0] == File.separatorChar) {

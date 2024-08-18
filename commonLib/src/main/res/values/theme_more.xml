@@ -68,6 +68,6 @@
 		<item name="android:textColor">?attr/colorAccent</item>
 	</style>
 
-	<style name="MyToolbarStyle"></style>
+	<style name="MyToolbarStyle" />
 
 </resources>

@@ -108,6 +108,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
     /**
      * Whether to process
      */
+    @Suppress("SameReturnValue")
     protected abstract fun doProcessing(): Boolean
 
     // P R O C E S S I N G

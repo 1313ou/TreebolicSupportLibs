@@ -151,6 +151,7 @@ abstract class WheelScroller(context0: Context?, listener0: ScrollingListener) {
      * @param event the motion event
      * @return true if the event was handled, false otherwise.
      */
+    @Suppress("SameReturnValue")
     fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {

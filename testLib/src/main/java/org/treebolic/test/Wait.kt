@@ -92,11 +92,11 @@ object Wait {
         Espresso.onView(ViewMatchers.isRoot()).perform(waitId(resId, sec * 1000L))
     }
 
-    fun until_not_text(@IdRes resId: Int, target: String, sec: Int) {
+    fun untilNotText(@IdRes resId: Int, target: String, sec: Int) {
         Espresso.onView(ViewMatchers.isRoot()).perform(waitIdText(resId, target, true, sec * 1000L))
     }
 
-    fun until_text(@IdRes resId: Int, target: String, sec: Int) {
+    fun untilText(@IdRes resId: Int, target: String, sec: Int) {
         Espresso.onView(ViewMatchers.isRoot()).perform(waitIdText(resId, target, false, sec * 1000L))
     }
 

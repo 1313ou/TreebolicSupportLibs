@@ -26,7 +26,7 @@ object Seq {
     /**
      * Press back control
      */
-    fun do_pressBack() {
+    fun doPressBack() {
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.pressBack())
     }
 
@@ -36,7 +36,7 @@ object Seq {
      * @param editTextViewId EditTextView id
      * @param text           text
      */
-    fun do_type(@IdRes editTextViewId: Int, text: String) {
+    fun doType(@IdRes editTextViewId: Int, text: String) {
         Espresso.onView(ViewMatchers.withId(editTextViewId)) //
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
             .perform(
@@ -50,7 +50,7 @@ object Seq {
      * @param searchViewId SearchView id
      * @param text         text
      */
-    fun do_typeSearch(@IdRes searchViewId: Int, text: String) {
+    fun doTypeSearch(@IdRes searchViewId: Int, text: String) {
         val searchView = ViewMatchers.withId(searchViewId)
 
         // open search view
@@ -74,7 +74,7 @@ object Seq {
      *
      * @param buttonId Button id
      */
-    fun do_click(@IdRes buttonId: Int) {
+    fun doClick(@IdRes buttonId: Int) {
         Espresso.onView(ViewMatchers.withId(buttonId)) //
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
             .perform(ViewActions.click())
@@ -87,7 +87,7 @@ object Seq {
      * @param menuId   Menu id
      * @param menuText Text in menu item to click
      */
-    fun do_menu(@IdRes menuId: Int, @StringRes menuText: Int) {
+    fun doMenu(@IdRes menuId: Int, @StringRes menuText: Int) {
         Espresso.onView(Matchers.withMenuIdOrText(menuId, menuText)).perform(ViewActions.click())
     }
 
@@ -96,7 +96,7 @@ object Seq {
      *
      * @param menuText Text in menu item to click
      */
-    fun do_options_menu(@StringRes menuText: Int) {
+   fun doOptionsMenu(@StringRes menuText: Int) {
         Espresso.openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
         Espresso.onView(ViewMatchers.withText(menuText)).perform(ViewActions.click())
     }
@@ -107,7 +107,7 @@ object Seq {
      * @param spinnerId  Spinner id
      * @param targetText Text in spinner item to click
      */
-    fun do_choose(@IdRes spinnerId: Int, targetText: String) {
+    fun doChoose(@IdRes spinnerId: Int, targetText: String) {
         // expand spinner
         Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(spinnerId), CoreMatchers.instanceOf(Spinner::class.java))) //
             .perform(ViewActions.click())
@@ -127,7 +127,7 @@ object Seq {
      * @param spinnerId Spinner id
      * @param position  Text in spinner item to click
      */
-    fun do_choose(@IdRes spinnerId: Int, position: Int) {
+    fun doChoose(@IdRes spinnerId: Int, position: Int) {
         // expand spinner
         Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(spinnerId), CoreMatchers.instanceOf(Spinner::class.java))) //
             .perform(ViewActions.click())
@@ -142,7 +142,7 @@ object Seq {
      *
      * @param viewId View id
      */
-    fun do_swipeUp(@IdRes viewId: Int) {
+    fun doSwipeUp(@IdRes viewId: Int) {
         Espresso.onView(ViewMatchers.withId(viewId)) //
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
             .perform( //
