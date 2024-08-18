@@ -57,9 +57,9 @@ object Deployer {
             return false
         }
         try {
-            assetManager.open(assetPath).use { `in` ->
-                FileOutputStream(toPath).use { out ->
-                    copyFile(`in`, out)
+            assetManager.open(assetPath).use { input ->
+                FileOutputStream(toPath).use { output ->
+                    copyFile(input, output)
                     return true
                 }
             }
@@ -83,9 +83,9 @@ object Deployer {
         }
 
         try {
-            FileInputStream(fromPath).use { `in` ->
-                FileOutputStream(toPath).use { out ->
-                    copyFile(`in`, out)
+            FileInputStream(fromPath).use { input ->
+                FileOutputStream(toPath).use { output ->
+                    copyFile(input, output)
                     return true
                 }
             }
@@ -140,8 +140,8 @@ object Deployer {
      */
     private fun expandZipAsset(assetManager: AssetManager, assetPath: String, toPath: String): Boolean {
         try {
-            assetManager.open(assetPath).use { `in` ->
-                expandZip(`in`, null, File(toPath))
+            assetManager.open(assetPath).use { input ->
+                expandZip(input, null, File(toPath))
                 return true
             }
         } catch (ignored: Exception) {
@@ -168,10 +168,10 @@ object Deployer {
         // create output directory if not exists
         destDir.mkdir()
 
-        ZipInputStream(`in`).use { zis ->
+        ZipInputStream(`in`).use { zipInput ->
             // get the zipped file list entry
             val buffer = ByteArray(1024)
-            var entry = zis.nextEntry
+            var entry = zipInput.nextEntry
             while (entry != null) {
                 if (!entry.isDirectory) {
                     val entryName = entry.name
@@ -188,17 +188,17 @@ object Deployer {
                                 Log.d(TAG, dir.toString() + " created=" + created + " exists=" + dir.exists())
                             }
 
-                            FileOutputStream(outFile).use { os ->
+                            FileOutputStream(outFile).use { output ->
                                 var len: Int
-                                while ((zis.read(buffer).also { len = it }) > 0) {
-                                    os.write(buffer, 0, len)
+                                while ((zipInput.read(buffer).also { len = it }) > 0) {
+                                    output.write(buffer, 0, len)
                                 }
                             }
                         }
                     }
                 }
-                zis.closeEntry()
-                entry = zis.nextEntry
+                zipInput.closeEntry()
+                entry = zipInput.nextEntry
             }
         }
         return destDir

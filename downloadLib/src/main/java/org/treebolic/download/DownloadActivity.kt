@@ -338,9 +338,9 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                     // process
                     var dispose = false
                     try {
-                        this@DownloadActivity.contentResolver.openInputStream(uri).use { inputStream ->
+                        this@DownloadActivity.contentResolver.openInputStream(uri).use { input ->
                             // handle
-                            dispose = process(inputStream!!)
+                            dispose = process(input!!)
                         }
                     } catch (e: IOException) {
                         Log.e(TAG, "Processing $uriString", e)

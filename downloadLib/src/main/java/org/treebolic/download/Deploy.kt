@@ -33,12 +33,12 @@ object Deploy {
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun copy(`in`: InputStream, toFile: File) {
-        FileOutputStream(toFile).use { out ->
+    fun copy(input: InputStream, toFile: File) {
+        FileOutputStream(toFile).use { output ->
             val buffer = ByteArray(1024)
             var read: Int
-            while ((`in`.read(buffer).also { read = it }) != -1) {
-                out.write(buffer, 0, read)
+            while ((input.read(buffer).also { read = it }) != -1) {
+                output.write(buffer, 0, read)
             }
         }
     }
@@ -83,10 +83,10 @@ object Deploy {
         // buffer
         val buffer = ByteArray(1024)
 
-        ZipInputStream(`in`).use { zipIn ->
+        ZipInputStream(`in`).use { zipInput ->
 
             // loop through entries
-            var zipEntry = zipIn.nextEntry
+            var zipEntry = zipInput.nextEntry
             while (zipEntry != null) {
                 var entryName = zipEntry.name
                 Log.d(TAG, "Entry $entryName")
@@ -94,8 +94,8 @@ object Deploy {
                 // include
                 if (includePattern != null) {
                     if (!includePattern.matcher(entryName).matches()) {
-                        zipIn.closeEntry()
-                        zipEntry = zipIn.nextEntry
+                        zipInput.closeEntry()
+                        zipEntry = zipInput.nextEntry
                         continue
                     }
                 }
@@ -103,8 +103,8 @@ object Deploy {
                 // exclude
                 if (excludePattern != null) {
                     if (excludePattern.matcher(entryName).matches()) {
-                        zipIn.closeEntry()
-                        zipEntry = zipIn.nextEntry
+                        zipInput.closeEntry()
+                        zipEntry = zipInput.nextEntry
                         continue
                     }
                 }
@@ -129,17 +129,17 @@ object Deploy {
                     Log.d(TAG, "Unzip to " + destFile.canonicalPath)
                     destFile.createNewFile()
 
-                    BufferedOutputStream(FileOutputStream(destFile)).use { bout ->
-                        var len = zipIn.read(buffer)
+                    BufferedOutputStream(FileOutputStream(destFile)).use { output ->
+                        var len = zipInput.read(buffer)
                         while (len != -1) {
-                            bout.write(buffer, 0, len)
-                            len = zipIn.read(buffer)
+                            output.write(buffer, 0, len)
+                            len = zipInput.read(buffer)
                         }
                     }
                 }
-                zipEntry = zipIn.nextEntry
+                zipEntry = zipInput.nextEntry
             }
-            zipIn.closeEntry()
+            zipInput.closeEntry()
         }
         return destDir
     }
@@ -167,17 +167,17 @@ object Deploy {
         // buffer
         val buffer = ByteArray(1024)
 
-        TarArchiveInputStream(GzipCompressorInputStream(BufferedInputStream(`in`))).use { tarIn ->
+        TarArchiveInputStream(GzipCompressorInputStream(BufferedInputStream(`in`))).use { tarInput ->
 
             // loop through entries
-            var tarEntry = tarIn.nextEntry
+            var tarEntry = tarInput.nextEntry
             while (tarEntry != null) {
                 var entryName = tarEntry.name
 
                 // include
                 if (includePattern != null) {
                     if (!includePattern.matcher(entryName).matches()) {
-                        tarEntry = tarIn.nextEntry
+                        tarEntry = tarInput.nextEntry
                         continue
                     }
                 }
@@ -185,7 +185,7 @@ object Deploy {
                 // exclude
                 if (excludePattern != null) {
                     if (excludePattern.matcher(entryName).matches()) {
-                        tarEntry = tarIn.nextEntry
+                        tarEntry = tarInput.nextEntry
                         continue
                     }
                 }
@@ -210,15 +210,15 @@ object Deploy {
                     Log.d(TAG, "Untar to " + destFile.canonicalPath)
                     destFile.createNewFile()
 
-                    BufferedOutputStream(FileOutputStream(destFile)).use { bout ->
-                        var len = tarIn.read(buffer)
+                    BufferedOutputStream(FileOutputStream(destFile)).use { output ->
+                        var len = tarInput.read(buffer)
                         while (len != -1) {
-                            bout.write(buffer, 0, len)
-                            len = tarIn.read(buffer)
+                            output.write(buffer, 0, len)
+                            len = tarInput.read(buffer)
                         }
                     }
                 }
-                tarEntry = tarIn.nextEntry
+                tarEntry = tarInput.nextEntry
             }
         }
         return destDir

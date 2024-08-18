@@ -42,11 +42,11 @@ object DataUtils {
         val assets = context.resources.assets
         val list: MutableList<String> = ArrayList()
         try {
-            assets.open(LIST_FILE).use { `is` ->
-                InputStreamReader(`is`).use { reader ->
-                    BufferedReader(reader).use { br ->
+            assets.open(LIST_FILE).use { input ->
+                InputStreamReader(input).use { reader ->
+                    BufferedReader(reader).use { bufferedReader ->
                         var line: String
-                        while ((br.readLine().also { line = it }) != null) {
+                        while ((bufferedReader.readLine().also { line = it }) != null) {
                             list.add(line.trim { it <= ' ' })
                         }
                         return list.toTypedArray<String>()
@@ -65,9 +65,9 @@ object DataUtils {
         val dataFile = File(Environment.getExternalStorageDirectory(), LIST_FILE)
         try {
             FileReader(dataFile).use { reader ->
-                BufferedReader(reader).use { br ->
+                BufferedReader(reader).use { bufferedReader ->
                     var line: String
-                    while ((br.readLine().also { line = it }) != null) {
+                    while ((bufferedReader.readLine().also { line = it }) != null) {
                         list.add(line.trim { it <= ' ' })
                     }
                     return list.toTypedArray<String>()

@@ -169,11 +169,11 @@ object ColorUtils {
 
         // now get action bar style values
         val attrs = intArrayOf(R.attr.background, android.R.attr.colorForeground)
-        theme.obtainStyledAttributes(resId, attrs).use { style ->
-            val drawable = style.getDrawable(0)
+        theme.obtainStyledAttributes(resId, attrs).use {
+            val drawable = it.getDrawable(0)
             Log.d(TAG, "attr=${Integer.toHexString(attrs[0])} value=$drawable")
             for (i in 1 until attrs.size) {
-                val intColor = style.getColor(i, -0x33333334) // index, defaultVal
+                val intColor = it.getColor(i, -0x33333334) // index, defaultVal
                 Log.d(TAG, "$theme  attr=${Integer.toHexString(attrs[i])} value=${Integer.toHexString(intColor)}")
             }
         }
