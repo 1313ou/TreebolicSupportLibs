@@ -131,7 +131,7 @@ object ColorUtils {
         // get color
         theme.obtainStyledAttributes(resId, attrs).use {
             val color = it.getColor(0,  /* index */-0x33333334 /* defaultVal */)
-            Log.d(TAG, "$theme attr=${Integer.toHexString(attrs[0])} value=${Integer.toHexString(color)}")
+            // Log.d(TAG, "$theme attr=${Integer.toHexString(attrs[0])} value=${Integer.toHexString(color)}")
             return color
         }
     }
