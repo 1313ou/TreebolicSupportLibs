@@ -20,6 +20,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.StringRes
+import androidx.core.content.res.use
 import org.treebolic.colors.R
 import org.treebolic.colors.drawable.AlphaPatternDrawable
 import kotlin.math.max

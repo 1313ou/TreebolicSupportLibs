@@ -9,6 +9,7 @@ import android.util.TypedValue
 import android.view.Menu
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.core.content.res.use
 
 /**
  * Color utilities
@@ -68,8 +69,7 @@ object ColorUtils {
         val attrs = intArrayOf(colorAttrId)
 
         // get color
-        theme.obtainStyledAttributes(resId, attrs)
-            .use {
+        theme.obtainStyledAttributes(resId, attrs).use {
                 val color = it.getColor(0,  /* index */-0x33333334 /* defaultVal */)
                 // Log.d(TAG, "$theme attr=${Integer.toHexString(attrs[0])} value=${Integer.toHexString(color)}")
                 return color

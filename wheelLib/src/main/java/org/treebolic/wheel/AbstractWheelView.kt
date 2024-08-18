@@ -14,6 +14,7 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
+import androidx.core.content.res.use
 import androidx.core.graphics.drawable.DrawableCompat
 
 /**

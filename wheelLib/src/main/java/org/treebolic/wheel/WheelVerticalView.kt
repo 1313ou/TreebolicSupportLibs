@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
+import androidx.core.content.res.use
 import org.treebolic.wheel.WheelScroller.ScrollingListener
 import kotlin.math.max
 import kotlin.math.min

@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
+import androidx.core.content.res.use
 import org.treebolic.wheel.WheelScroller.ScrollingListener
 import kotlin.math.max
 import kotlin.math.min
@@ -21,11 +22,17 @@ import kotlin.math.min
 /**
  * Spinner wheel horizontal view.
  *
+ * @param context  the application environment.
+ * @param attrs    a collection of attributes.
+ * @param defStyle The default style to apply to this view.
+ *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
  * @noinspection WeakerAccess
  */
 class WheelHorizontalView
+
+// C O N S T R U C T O R S
 
 /**
  * Create a new wheel horizontal view.
@@ -33,22 +40,6 @@ class WheelHorizontalView
  * @param context  the application environment.
  * @param attrs    a collection of attributes.
  * @param defStyle The default style to apply to this view.
- */
-
-/**
- * Create a new wheel horizontal view.
- *
- * @param context The application environment.
- * @param attrs   A collection of attributes.
- */
-
-
-// C O N S T R U C T O R S
-
-/**
- * Create a new wheel horizontal view.
- *
- * @param context The application environment.
  */
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, @AttrRes defStyle: Int = R.attr.abstractWheelViewStyle) : AbstractWheelView(context, attrs, defStyle) {
 
