@@ -35,7 +35,7 @@ object DataUtils {
     // S A M P L E S
 
     val wordList: Array<String>?
-         get() = readWordList()
+        get() = readWordList()
 
     fun readWordList(): Array<String>? {
         val context = InstrumentationRegistry.getInstrumentation().targetContext

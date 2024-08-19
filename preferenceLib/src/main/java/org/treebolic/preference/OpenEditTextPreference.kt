@@ -130,7 +130,7 @@ class OpenEditTextPreference : DialogPreference {
      * @param enables0 enable flags
      */
     fun setEnables(enables0: BooleanArray) {
-       enable = enables0
+        enable = enables0
     }
 
     /**
@@ -140,8 +140,8 @@ class OpenEditTextPreference : DialogPreference {
      * @param xLabels0 extra labels
      */
     fun addOptions(xValues0: List<String>?, xLabels0: List<String>?) {
-       xValues = xValues0
-       xLabels = xLabels0
+        xValues = xValues0
+        xLabels = xLabels0
     }
 
     // V A L U E

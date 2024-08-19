@@ -457,7 +457,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
      */
     protected abstract val itemDimension: Int
 
-     /**
+    /**
      * Creates item layouts if necessary
      */
     protected abstract fun createItemsLayout()

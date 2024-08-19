@@ -96,7 +96,7 @@ object Seq {
      *
      * @param menuText Text in menu item to click
      */
-   fun doOptionsMenu(@StringRes menuText: Int) {
+    fun doOptionsMenu(@StringRes menuText: Int) {
         Espresso.openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
         Espresso.onView(ViewMatchers.withText(menuText)).perform(ViewActions.click())
     }
