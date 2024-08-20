@@ -267,7 +267,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
      */
     private fun select(entry: Entry) {
         // select
-        // Toast.makeText(this, getResources().getText(R.string.selected) + " " + entry.getName(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, getResources().getText(R.string.selected) + " " + entry.getName(), Toast.LENGTH_SHORT).show()
         val resultIntent = Intent()
         if (!entry.isNone) {
             val fileUri = Uri.fromFile(File(entry.path))

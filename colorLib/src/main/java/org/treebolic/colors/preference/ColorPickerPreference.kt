@@ -138,7 +138,7 @@ open class ColorPickerPreference : DialogPreference {
     // V A L U E
 
     private fun persistValue(value: Int?): Boolean {
-        //Log.d(TAG, "Persist " + value);
+        //Log.d(TAG, "Persist " + value)
         if (value == null) {
             if (!shouldPersist()) {
                 return false

@@ -156,7 +156,7 @@ class SearchSettings : AppCompatDialogFragment() {
         modeWheel = view.findViewById(R.id.mode)
         checkNotNull(modeWheel)
         modeWheel!!.visibleItems = 4
-        modeWheel!!.viewAdapter = modeAdapter //new Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.length, Adapter.Type.MODE));
+        modeWheel!!.viewAdapter = modeAdapter // Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.length, Adapter.Type.MODE))
 
         // wheel 2 events
         modeWheel!!.addChangingListener { wheel: AbstractWheel, _: Int, newValue: Int ->
@@ -178,7 +178,6 @@ class SearchSettings : AppCompatDialogFragment() {
         scopeWheel!!.currentItem = scopeIndex
         modeWheel!!.currentItem = modeIndex
 
-        //final AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         val builder = AlertDialog.Builder(ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom))
         return builder //
             .setView(view).setPositiveButton(R.string.title_yes) { dialog2: DialogInterface, _: Int -> dialog2.dismiss() } //

@@ -262,18 +262,8 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
             Log.d(TAG, "Source $downloadUri")
             request.setTitle(resources.getText(titleRes))
             request.setDescription(downloadUri.lastPathSegment)
-
-            // @formatter: off
-            //  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            //  {
-            // 	    request.setAllowedOverMetered(false);
-            //	}
-            //	else
-            //	{
-            //		request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
-            //	}
-            //	request.setAllowedOverRoaming(false);
-            // @formatter: on
+            //request.setAllowedOverMetered(false)
+            //request.setAllowedOverRoaming(false)
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
             downloadId = downloadManager!!.enqueue(request)
 
