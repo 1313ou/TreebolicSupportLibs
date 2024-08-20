@@ -26,7 +26,6 @@ import kotlin.math.min
  *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
- * @noinspection WeakerAccess
  */
 open class WheelVerticalView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, @AttrRes defStyle: Int = R.attr.abstractWheelViewStyle) : AbstractWheelView(context, attrs, defStyle) {
 

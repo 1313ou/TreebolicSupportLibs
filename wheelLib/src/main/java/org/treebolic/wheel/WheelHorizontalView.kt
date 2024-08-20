@@ -28,7 +28,6 @@ import kotlin.math.min
  *
  * @author Yuri Kanivets
  * @author Dimitri Fedorov
- * @noinspection WeakerAccess
  */
 class WheelHorizontalView
 
