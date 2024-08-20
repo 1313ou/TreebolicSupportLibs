@@ -98,7 +98,6 @@ class WheelHorizontalView
             val c1 = Math.round(c1f) shl 24
             val c2 = Math.round(c2f) shl 24
             val c3 = Math.round(c3f) shl 24
-            //int[] colors = { c2, c2, c2, c2, 0xff000000, 0xff000000, c2, c2, c2, c2 };
             val colors = intArrayOf(c3, c3, c2, c1, -0x1000000, -0x1000000, c1, c2, c3, c3)
 
             shader = LinearGradient(0f, 0f, w.toFloat(), 0f, colors, positions, Shader.TileMode.CLAMP)

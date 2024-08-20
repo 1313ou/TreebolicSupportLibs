@@ -54,7 +54,7 @@ object DataUtils {
                 }
             }
         } catch (e: IOException) {
-            //Log.d("Read", "Error " + dataFile.getAbsolutePath(), e);
+            //Log.d("Read", "Error " + dataFile.getAbsolutePath(), e)
             Log.e("Read", "Error $LIST_FILE", e)
             return null
         }

@@ -77,7 +77,6 @@ abstract class WheelScroller(context0: Context?, listener0: ScrollingListener) {
 
                 // scrolling is not finished when it comes to final Y. So, finish it manually
                 if (abs((currPosition - wheelScroller.finalScrollerPosition).toDouble()) < MIN_DELTA_FOR_SCROLLING) {
-                    // currPosition = getFinalScrollerPosition();
                     wheelScroller.scroller.forceFinished(true)
                 }
                 if (!wheelScroller.scroller.isFinished) {
