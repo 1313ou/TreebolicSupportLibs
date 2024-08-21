@@ -54,8 +54,8 @@
 
 	<!-- Action bar search view -->
 	<style name="MyActionBarSearchView" parent="Widget.AppCompat.SearchView.ActionBar">
-		<item name="queryBackground">?attr/colorPrimaryVariant</item>
-		<item name="submitBackground">?attr/colorPrimaryDark</item>
+		<item name="queryBackground">?attr/actionbar_color</item>
+		<item name="submitBackground">?attr/actionbar_fore_color</item>
 	</style>
 
 	<!-- Dialog buttons no -->
