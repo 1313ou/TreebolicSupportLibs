@@ -51,6 +51,8 @@
 		<item name="android:tint">@android:color/black</item>
 		<item name="android:paddingLeft">5dip</item>
 		<item name="android:paddingRight">5dip</item>
+		<item name="android:minWidth">50dp</item>
+		<item name="android:minHeight">50dp</item>
 	</style>
 
 	<style name="tipEffect">
