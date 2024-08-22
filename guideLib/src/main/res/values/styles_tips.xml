@@ -32,8 +32,9 @@
 	</style>
 
 	<style name="tipGesture">
-		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_width">0dp</item>
 		<item name="android:layout_height">match_parent</item>
+		<item name="android:layout_weight">1</item>
 		<item name="android:textSize">16sp</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:singleLine">false</item>
@@ -45,19 +46,21 @@
 	</style>
 
 	<style name="tipImage">
-		<item name="android:layout_width">wrap_content</item>
-		<item name="android:gravity">center_vertical</item>
+		<item name="android:layout_width">0dp</item>
 		<item name="android:layout_height">match_parent</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:gravity">center_vertical</item>
 		<item name="android:tint">@android:color/black</item>
 		<item name="android:paddingLeft">5dip</item>
 		<item name="android:paddingRight">5dip</item>
-		<item name="android:minWidth">50dp</item>
-		<item name="android:minHeight">50dp</item>
+		<item name="android:minWidth">32dp</item>
+		<item name="android:minHeight">32dp</item>
 	</style>
 
 	<style name="tipEffect">
-		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_width">0dp</item>
 		<item name="android:layout_height">match_parent</item>
+		<item name="android:layout_weight">2</item>
 		<item name="android:textSize">16sp</item>
 		<item name="android:textStyle">normal</item>
 		<item name="android:singleLine">false</item>
