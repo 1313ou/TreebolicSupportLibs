@@ -138,10 +138,10 @@ abstract class AbstractWheelTextAdapter protected constructor(
     private fun getView(@LayoutRes layoutRes: Int, parent: ViewGroup): View? {
         when (layoutRes) {
             NO_RESOURCE -> return null
-            TEXT_VIEW_ITEM_RESOURCE -> return TextView(this.context)
+            TEXT_VIEW_ITEM_RESOURCE -> return TextView(context)
             else -> {
-                checkNotNull(this.inflater)
-                return this.inflater.inflate(layoutRes, parent, false)
+                checkNotNull(inflater)
+                return inflater.inflate(layoutRes, parent, false)
             }
         }
     }
