@@ -44,7 +44,7 @@ object Wait {
                 } while (System.currentTimeMillis() < endTime)
 
                 // timeout happens
-                throw PerformException.Builder().withActionDescription(this.description).withViewDescription(HumanReadables.describe(view)).withCause(TimeoutException()).build()
+                throw PerformException.Builder().withActionDescription(description).withViewDescription(HumanReadables.describe(view)).withCause(TimeoutException()).build()
             }
         }
     }
@@ -69,7 +69,7 @@ object Wait {
                         // found view with required ID
                         if (viewMatcher.matches(child)) {
                             if (child !is TextView) {
-                                throw PerformException.Builder().withActionDescription(this.description).withViewDescription(HumanReadables.describe(view)).withCause(ClassCastException()).build()
+                                throw PerformException.Builder().withActionDescription(description).withViewDescription(HumanReadables.describe(view)).withCause(ClassCastException()).build()
                             }
                             val text = child.text.toString()
                             if (not && text != target) {
@@ -83,7 +83,7 @@ object Wait {
                 } while (System.currentTimeMillis() < endTime)
 
                 // timeout happens
-                throw PerformException.Builder().withActionDescription(this.description).withViewDescription(HumanReadables.describe(view)).withCause(TimeoutException()).build()
+                throw PerformException.Builder().withActionDescription(description).withViewDescription(HumanReadables.describe(view)).withCause(TimeoutException()).build()
             }
         }
     }
