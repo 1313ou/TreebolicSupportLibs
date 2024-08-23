@@ -7,31 +7,39 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
+	android:layout_height="match_parent">
 
-	<TableLayout style="@style/tips">
+	<TableLayout
+		style="@style/tips"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<RelativeLayout
-				android:layout_width="0dp"
-				android:layout_weight="1"
+				style="@style/tip"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_span="3"
 				android:orientation="horizontal">
 
 				<ImageView
 					style="@style/tipHeader"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:layout_centerHorizontal="true"
 					android:layout_gravity="center"
 					android:contentDescription="@string/tip_info"
-					android:src="@drawable/ic_tip_info"
-					android:tintMode="src_in"
-					app:tint="@color/default_primaryColor" />
+					android:src="@drawable/ic_tip_info" />
 
 				<ImageButton
 					android:id="@+id/tip_dismiss"
 					style="@style/tipButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:layout_alignParentEnd="true"
 					android:layout_gravity="center_horizontal|top"
 					android:contentDescription="@string/tip_dismiss"
@@ -43,135 +51,198 @@
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_press"
 				android:text="@string/tip_gesture_press" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_press"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_press"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_press" />
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_doubletap"
 				android:text="@string/tip_gesture_doubletap" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_doubletap"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_doubletap"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_doubletap" />
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_drag"
 				android:text="@string/tip_gesture_drag" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_drag"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_drag"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_drag" />
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_pinch_open_ne_sw"
 				android:text="@string/tip_gesture_pinch_open_ne_sw" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_open_ne_sw"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_pinch_open_ne_sw"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_pinch_open_ne_sw" />
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_pinch_close_ne_sw"
 				android:text="@string/tip_gesture_pinch_close_ne_sw" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_close_ne_sw"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_pinch_close_ne_sw"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_pinch_close_ne_sw" />
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_pinch_open_nw_se"
 				android:text="@string/tip_gesture_pinch_open_nw_se" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_open_nw_se"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_pinch_open_nw_se"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_pinch_open_nw_se" />
 
 		</TableRow>
 
-		<TableRow style="@style/tip">
+		<TableRow
+			style="@style/tip"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
 
 			<TextView
 				style="@style/tipGesture"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:labelFor="@id/tip_gesture_pinch_close_nw_se"
 				android:text="@string/tip_gesture_pinch_close_nw_se" />
 
 			<ImageView
 				android:id="@+id/tip_gesture_pinch_close_nw_se"
 				style="@style/tipImage"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:src="@drawable/ic_tip_pinch_close_nw_se"
 				tools:ignore="ContentDescription" />
 
 			<TextView
 				style="@style/tipEffect"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
 				android:text="@string/tip_effect_pinch_close_nw_se" />
 
 		</TableRow>
