@@ -13,7 +13,7 @@
 	<string name="tip_gesture_doubletap">Double-tap</string>
 	<string name="tip_effect_doubletap">to pop up\nnode\'s context menu</string>
 	<string name="tip_gesture_drag">Drag</string>
-	<string name="tip_effect_drag">to move node\nin hyperbolic space</string>
+	<string name="tip_effect_drag">to move node\nin hyperbolic\nspace</string>
 	<string name="tip_gesture_pinch_open_ne_sw">Pinch\nopen\nNE-SW</string>
 	<string name="tip_effect_pinch_open_ne_sw">to scale up\nlabels and images</string>
 	<string name="tip_gesture_pinch_close_ne_sw">Pinch\nclose\nNE-SW</string>

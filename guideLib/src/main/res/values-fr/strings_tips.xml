@@ -13,7 +13,7 @@
 	<string name="tip_gesture_doubletap">Taper\n2 fois</string>
 	<string name="tip_effect_doubletap">pour faire apparaître\nun menu contextuel</string>
 	<string name="tip_gesture_drag">Glisser</string>
-	<string name="tip_effect_drag">pour déplacer\nun nœud dans l\'espace hyperbolique</string>
+	<string name="tip_effect_drag">pour déplacer\nun nœud dans\nl\'espace hyperbolique</string>
 	<string name="tip_gesture_pinch_open_ne_sw">Pincer\nen ouvrant\nNE-SO</string>
 	<string name="tip_effect_pinch_open_ne_sw">pour agrandir\nétiquettes et images</string>
 	<string name="tip_gesture_pinch_close_ne_sw">Pincer\nen fermant\nNE-SO</string>
