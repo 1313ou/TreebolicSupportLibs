@@ -212,7 +212,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
 
         // register receiver
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_NOT_EXPORTED)
+            registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_EXPORTED)
         } else {
             registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         }
@@ -399,7 +399,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                 // sleep
                 try {
                     Thread.sleep(2000)
-                } catch (e: InterruptedException) {
+                } catch (_: InterruptedException) {
                     //
                 }
             }
