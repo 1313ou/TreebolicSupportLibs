@@ -124,8 +124,7 @@ class AutoEditTextPreference : DialogPreference {
             val pref = preference as AutoEditTextPreference
 
             // edit text
-            editView = view.findViewById(R.id.autoedit_text)
-            checkNotNull(editView)
+            editView = view.findViewById(R.id.autoedit_text)!!
             editView!!.requestFocus()
 
             // populate with value
@@ -215,7 +214,7 @@ class AutoEditTextPreference : DialogPreference {
             val manager: FragmentManager
             try {
                 manager = prefFragment.parentFragmentManager
-            } catch (e: IllegalStateException) {
+            } catch (_: IllegalStateException) {
                 return false
             }
             if (manager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {

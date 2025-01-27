@@ -175,8 +175,7 @@ class OpenEditTextPreference : DialogPreference {
             val pref = preference as OpenEditTextPreference
 
             // edit text
-            editView = view.findViewById(R.id.openedit_text)
-            checkNotNull(editView)
+            editView = view.findViewById(R.id.openedit_text)!!
             editView!!.requestFocus()
 
             // populate with value
@@ -187,8 +186,7 @@ class OpenEditTextPreference : DialogPreference {
             }
 
             // options
-            optionsView = view.findViewById(R.id.openedit_options)
-            checkNotNull(optionsView)
+            optionsView = view.findViewById(R.id.openedit_options)!!
 
             // populate
             optionsView!!.removeAllViews()
@@ -309,7 +307,7 @@ class OpenEditTextPreference : DialogPreference {
             val manager: FragmentManager
             try {
                 manager = prefFragment.parentFragmentManager
-            } catch (e: IllegalStateException) {
+            } catch (_: IllegalStateException) {
                 return false
             }
 

@@ -71,7 +71,7 @@ class ColorPickerActivity : AppCompatCommonActivity(), OnColorChangedListener, V
     private fun tryCommit(editor: SharedPreferences.Editor) {
         try {
             editor.apply()
-        } catch (ignored: AbstractMethodError) {
+        } catch (_: AbstractMethodError) {
             editor.commit()
         }
     }

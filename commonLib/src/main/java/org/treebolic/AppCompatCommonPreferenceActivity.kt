@@ -87,7 +87,7 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
     override fun onPreferenceStartFragment(caller: PreferenceFragmentCompat, pref: Preference): Boolean {
         // Instantiate the new Fragment
         val args = pref.extras
-        val className = checkNotNull(pref.fragment)
+        val className = pref.fragment!!
         val fragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, className)
         fragment.arguments = args
         @Suppress("DEPRECATION")
@@ -162,7 +162,7 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
     private fun tryCommit(editor: SharedPreferences.Editor) {
         try {
             editor.apply()
-        } catch (ignored: AbstractMethodError) {
+        } catch (_: AbstractMethodError) {
             // The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
             editor.commit()
         }
@@ -172,7 +172,7 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
      * Restart app
      */
     private fun restart() {
-        val restartIntent = checkNotNull(packageManager.getLaunchIntentForPackage(packageName))
+        val restartIntent = packageManager.getLaunchIntentForPackage(packageName)!!
         restartIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(restartIntent)
     }

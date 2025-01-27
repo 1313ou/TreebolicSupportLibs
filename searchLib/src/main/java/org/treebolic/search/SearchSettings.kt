@@ -126,8 +126,7 @@ class SearchSettings : AppCompatDialogFragment() {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_search_settings, null)
 
         // wheel 1abandon
-        scopeWheel = view.findViewById(R.id.scope)
-        checkNotNull(scopeWheel)
+        scopeWheel = view.findViewById(R.id.scope)!!
         scopeWheel!!.visibleItems = 4
         scopeWheel!!.viewAdapter = Adapter(context, R.layout.item_scope, scopeLabels, scopeIcons, scopes.size, Adapter.Type.SCOPE)
 
@@ -153,8 +152,7 @@ class SearchSettings : AppCompatDialogFragment() {
         })
 
         // wheel 2
-        modeWheel = view.findViewById(R.id.mode)
-        checkNotNull(modeWheel)
+        modeWheel = view.findViewById(R.id.mode)!!
         modeWheel!!.visibleItems = 4
         modeWheel!!.viewAdapter = modeAdapter // Adapter(context, R.layout.item_mode, modeLabels, modeIcons, modes.length, Adapter.Type.MODE))
 
@@ -223,7 +221,7 @@ class SearchSettings : AppCompatDialogFragment() {
         }
 
         override fun getItem(index: Int, convertView: View?, parent: ViewGroup): View {
-            val view = checkNotNull(super.getItem(index, convertView, parent))
+            val view = super.getItem(index, convertView, parent)!!
             val img = view.findViewById<ImageView>(R.id.wheel_icon)
             img.setImageResource(icons[index])
             return view
@@ -278,7 +276,7 @@ class SearchSettings : AppCompatDialogFragment() {
         private fun tryCommit(editor: SharedPreferences.Editor) {
             try {
                 editor.apply()
-            } catch (ignored: AbstractMethodError) {
+            } catch (_: AbstractMethodError) {
                 // The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
                 editor.commit()
             }

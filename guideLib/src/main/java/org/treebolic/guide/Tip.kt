@@ -22,7 +22,7 @@ class Tip : AppCompatDialogFragment() {
         val window = dialog.window
         window?.setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded)
 
-        val button = checkNotNull(dialog.findViewById<ImageButton>(R.id.tip_dismiss))
+        val button = dialog.findViewById<ImageButton>(R.id.tip_dismiss)!!
         button.setOnClickListener { dialog.cancel() }
         return dialog
     }

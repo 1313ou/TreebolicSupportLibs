@@ -43,7 +43,7 @@ class ColorPickerDialog(context: Context, initialColor: Int?, private val listen
         setTitle(R.string.dialog_title)
 
         // custom view
-        val inflater = checkNotNull(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout = inflater.inflate(R.layout.dialog_color_picker, null)
         setView(layout)
 

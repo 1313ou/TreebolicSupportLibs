@@ -140,8 +140,7 @@ abstract class AbstractWheelTextAdapter protected constructor(
             NO_RESOURCE -> return null
             TEXT_VIEW_ITEM_RESOURCE -> return TextView(context)
             else -> {
-                checkNotNull(inflater)
-                return inflater.inflate(layoutRes, parent, false)
+                return inflater!!.inflate(layoutRes, parent, false)
             }
         }
     }

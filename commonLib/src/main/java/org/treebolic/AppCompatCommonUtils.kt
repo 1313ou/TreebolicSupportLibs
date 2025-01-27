@@ -54,9 +54,9 @@ object AppCompatCommonUtils {
                     }
                 }
             }
-        } catch (ignored: NumberFormatException) {
-        } catch (ignored: NotFoundException) {
-        } catch (ignored: ClassCastException) {
+        } catch (_: NumberFormatException) {
+        } catch (_: NotFoundException) {
+        } catch (_: ClassCastException) {
         }
         sharedPrefs.edit() //
             .remove(PREF_THEME) //
@@ -73,7 +73,7 @@ object AppCompatCommonUtils {
     private fun tryCommit(editor: SharedPreferences.Editor) {
         try {
             editor.apply()
-        } catch (ignored: AbstractMethodError) {
+        } catch (_: AbstractMethodError) {
             editor.commit()
         }
     }

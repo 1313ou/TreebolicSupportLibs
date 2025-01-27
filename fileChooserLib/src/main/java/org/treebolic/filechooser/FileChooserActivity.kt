@@ -82,7 +82,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             var view = convertView
             if (view == null) {
-                val inflater = checkNotNull(context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+                val inflater = context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 view = inflater.inflate(id, null)
             }
             val entry = items[position]
@@ -177,8 +177,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         listView.setOnItemLongClickListener(this)
 
         // default
-        currentDir = getExternalFilesDir(null)
-        checkNotNull(currentDir)
+        currentDir = getExternalFilesDir(null)!!
 
         // extras
         val extras = intent.extras
@@ -224,8 +223,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            checkNotNull(currentDir)
-            if ( // !currentDir.getName().equals(ROOT) &&
+            if ( // !currentDir!!.getName().equals(ROOT) &&
                 currentDir!!.parentFile != null) {
                 currentDir = currentDir!!.parentFile
                 fill(currentDir!!)
@@ -306,7 +304,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
                     }
                 }
             }
-        } catch (ignored: Exception) {
+        } catch (_: Exception) {
             //
         }
 

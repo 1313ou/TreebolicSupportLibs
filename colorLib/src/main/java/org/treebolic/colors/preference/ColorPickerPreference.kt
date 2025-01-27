@@ -144,8 +144,7 @@ open class ColorPickerPreference : DialogPreference {
                 return false
             }
 
-            val sharedPrefs = checkNotNull(sharedPreferences)
-            val editor = sharedPrefs.edit()
+            val editor = sharedPreferences!!.edit()
             editor.remove(key)
             tryCommit(editor)
             return true
@@ -206,7 +205,7 @@ open class ColorPickerPreference : DialogPreference {
             val landscapeLayout = view.findViewById<LinearLayout>(R.id.dialog_color_picker_extra_layout_landscape)
             val isLandscapeLayout = landscapeLayout != null
             if (isLandscapeLayout) {
-                landscapeLayout!!.setPadding(0, 0, Math.round(colorPickerView.getDrawingOffset()), 0)
+                landscapeLayout.setPadding(0, 0, Math.round(colorPickerView.getDrawingOffset()), 0)
             } else {
                 (oldColorView.parent as LinearLayout).setPadding(Math.round(colorPickerView.getDrawingOffset()), 0, Math.round(colorPickerView.getDrawingOffset()), 0)
             }
@@ -331,7 +330,7 @@ open class ColorPickerPreference : DialogPreference {
         private fun tryCommit(editor: SharedPreferences.Editor) {
             try {
                 editor.apply()
-            } catch (ignored: AbstractMethodError) {
+            } catch (_: AbstractMethodError) {
                 // The app injected its own pre-Gingerbread SharedPreferences.Editor implementation without an apply method.
                 editor.commit()
             }
@@ -351,7 +350,7 @@ open class ColorPickerPreference : DialogPreference {
             val manager: FragmentManager
             try {
                 manager = prefFragment.parentFragmentManager
-            } catch (e: IllegalStateException) {
+            } catch (_: IllegalStateException) {
                 return false
             }
             if (manager.findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {

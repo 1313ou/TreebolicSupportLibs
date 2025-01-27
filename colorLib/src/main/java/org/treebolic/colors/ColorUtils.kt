@@ -72,7 +72,7 @@ object ColorUtils {
      * @return tinted drawable
      */
     fun getTintedDrawable(context: Context, @DrawableRes drawableRes: Int, @ColorInt iconTint: Int): Drawable {
-        val drawable = checkNotNull(getDrawable(context, drawableRes))
+        val drawable = getDrawable(context, drawableRes)!!
         tint(iconTint, drawable)
         return drawable
     }

@@ -124,7 +124,6 @@ abstract class AbstractWheelView(context: Context, attrs: AttributeSet?, @AttrRe
         selectorWheelPaint!!.setXfermode(PorterDuffXfermode(PorterDuff.Mode.DST_IN))
 
         // drawable tint
-        checkNotNull(selectionDivider)
         DrawableCompat.setTint(DrawableCompat.wrap(selectionDivider!!), selectionDividerTint)
     }
 
