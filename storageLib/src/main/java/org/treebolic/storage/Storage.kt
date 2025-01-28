@@ -47,7 +47,6 @@ object Storage {
 
         // discover
         treebolicStorage = discoverTreebolicStorage(context)
-        checkNotNull(treebolicStorage)
         val path = treebolicStorage!!.absolutePath
 
         // flag as discovered
