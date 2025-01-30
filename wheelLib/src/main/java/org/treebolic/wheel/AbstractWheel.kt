@@ -41,8 +41,6 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
         get() = currentItemIdx
         /**
          * Sets the current item w/o animation. Does nothing when index is wrong.
-         *
-         * @param index the item index
          */
         set(index) {
             setCurrentItem(index, false)

@@ -11,6 +11,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import org.treebolic.colors.drawable.AlphaPatternDrawable
+import kotlin.math.roundToInt
 
 /**
  * This class draws a panel which which will be filled with a value which can be set. It can be used to show the currently selected value which you will get
@@ -149,11 +150,7 @@ class ColorPanelView @JvmOverloads constructor(context: Context, attrs: Attribut
 
         colorRect = RectF(left, top, right, bottom)
         alphaPattern = AlphaPatternDrawable((5 * density).toInt())
-        alphaPattern!!.setBounds(
-            Math.round(colorRect!!.left), Math.round(colorRect!!.top), Math.round(colorRect!!.right), Math.round(
-                colorRect!!.bottom
-            )
-        )
+        alphaPattern!!.setBounds(colorRect!!.left.roundToInt(), colorRect!!.top.roundToInt(), colorRect!!.right.roundToInt(), colorRect!!.bottom.roundToInt())
         isCrossed = false
     }
 

@@ -117,11 +117,11 @@ abstract class AbstractWheelView(context: Context, attrs: AttributeSet?, @AttrRe
 
         // creating paints
         separatorsPaint = Paint()
-        separatorsPaint!!.setXfermode(PorterDuffXfermode(PorterDuff.Mode.DST_IN))
+        separatorsPaint!!.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
         separatorsPaint!!.alpha = selectionDividerDimmedAlpha
 
         selectorWheelPaint = Paint()
-        selectorWheelPaint!!.setXfermode(PorterDuffXfermode(PorterDuff.Mode.DST_IN))
+        selectorWheelPaint!!.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
 
         // drawable tint
         DrawableCompat.setTint(DrawableCompat.wrap(selectionDivider!!), selectionDividerTint)
@@ -189,7 +189,7 @@ abstract class AbstractWheelView(context: Context, attrs: AttributeSet?, @AttrRe
      * @param animationDuration The duration of the animation.
      */
     private fun fadeSelectorWheel(animationDuration: Long) {
-        dimSelectorWheelAnimator!!.setDuration(animationDuration)
+        dimSelectorWheelAnimator!!.duration = animationDuration
         dimSelectorWheelAnimator!!.start()
     }
 
@@ -199,7 +199,7 @@ abstract class AbstractWheelView(context: Context, attrs: AttributeSet?, @AttrRe
      * @param animationDuration The duration of the animation.
      */
     private fun lightSeparators(animationDuration: Long) {
-        dimSeparatorsAnimator!!.setDuration(animationDuration)
+        dimSeparatorsAnimator!!.duration = animationDuration
         dimSeparatorsAnimator!!.start()
     }
 

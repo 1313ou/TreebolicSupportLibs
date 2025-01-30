@@ -15,6 +15,7 @@ import org.treebolic.AppCompatCommonActivity
 import org.treebolic.colors.view.ColorPanelView
 import org.treebolic.colors.view.ColorPickerView
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener
+import kotlin.math.roundToInt
 
 @SuppressLint("Registered")
 class ColorPickerActivity : AppCompatCommonActivity(), OnColorChangedListener, View.OnClickListener {
@@ -31,7 +32,7 @@ class ColorPickerActivity : AppCompatCommonActivity(), OnColorChangedListener, V
         colorPickerView = findViewById(R.id.color_picker_view)
         newColorPanelView = findViewById(R.id.color_panel_new)
         val oldColorPanelView = findViewById<ColorPanelView>(R.id.color_panel_old)
-        (oldColorPanelView.parent as LinearLayout).setPadding(Math.round(colorPickerView.drawingOffset.toFloat()), 0, Math.round(colorPickerView.drawingOffset.toFloat()), 0)
+        (oldColorPanelView.parent as LinearLayout).setPadding(colorPickerView.drawingOffset.toFloat().roundToInt(), 0, colorPickerView.drawingOffset.toFloat().roundToInt(), 0)
 
         colorPickerView.setOnColorChangedListener(this)
 

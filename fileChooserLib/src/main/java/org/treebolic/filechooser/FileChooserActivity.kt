@@ -174,7 +174,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
 
         // click listeners
         listView.onItemClickListener = this
-        listView.setOnItemLongClickListener(this)
+        listView.onItemLongClickListener = this
 
         // default
         currentDir = getExternalFilesDir(null)!!
@@ -271,7 +271,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
             val fileUri = Uri.fromFile(File(entry.path))
             resultIntent.setDataAndType(fileUri, contentResolver.getType(fileUri))
         } else {
-            resultIntent.setData(null)
+            resultIntent.data = null
         }
         setResult(RESULT_OK, resultIntent)
         finish()

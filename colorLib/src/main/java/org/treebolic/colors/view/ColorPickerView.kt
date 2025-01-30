@@ -25,6 +25,7 @@ import org.treebolic.colors.R
 import org.treebolic.colors.drawable.AlphaPatternDrawable
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.roundToInt
 
 /**
  * Displays a value picker to the user and allow them to select a value. A slider for the alpha channel is also available. Enable it by setting
@@ -330,7 +331,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
             satShader = LinearGradient(rect!!.left, rect.top, rect.right, rect.top, -0x1, rgb, TileMode.CLAMP)
 
             val mShader = ComposeShader(valShader!!, satShader as LinearGradient, PorterDuff.Mode.MULTIPLY)
-            satValPaint!!.setShader(mShader)
+            satValPaint!!.shader = mShader
 
             // Finally we draw on our canvas, the result will be stored in our bitmap which is already in the cache.
             // Since this is drawn on a canvas not rendered on screen it will automatically not be using the hardware acceleration.
@@ -368,7 +369,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
         if (hueShader == null) {
             // The hue shader has either not yet been created or the view has been resized.
             hueShader = LinearGradient(0f, 0f, 0f, rect!!.height(), buildHueColorArray(), null, TileMode.CLAMP)
-            huePaint!!.setShader(hueShader)
+            huePaint!!.shader = hueShader
         }
         canvas.drawRect(rect!!, huePaint!!)
         val rectHeight = 4 * density / 2
@@ -398,7 +399,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
         val color = Color.HSVToColor(hsv)
         val acolor = Color.HSVToColor(0, hsv)
         alphaShader = LinearGradient(rect!!.left, rect.top, rect.right, rect.top, color, acolor, TileMode.CLAMP)
-        alphaPaint!!.setShader(alphaShader)
+        alphaPaint!!.shader = alphaShader
         canvas.drawRect(rect, alphaPaint!!)
         if (alphaSliderText != null && alphaSliderText!!.isNotEmpty()) {
             canvas.drawText(alphaSliderText!!, rect.centerX(), rect.centerY() + 4 * density, alphaTextPaint!!)
@@ -720,11 +721,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
         val right = dRect.right - BORDER_WIDTH_PX
         alphaRect = RectF(left, top, right, bottom)
         alphaPattern = AlphaPatternDrawable((5 * density).toInt())
-        alphaPattern!!.setBounds(
-            Math.round(alphaRect!!.left), Math.round(alphaRect!!.top), Math.round(alphaRect!!.right), Math.round(
-                alphaRect!!.bottom
-            )
-        )
+        alphaPattern!!.setBounds(alphaRect!!.left.roundToInt(), alphaRect!!.top.roundToInt(), alphaRect!!.right.roundToInt(), alphaRect!!.bottom.roundToInt())
     }
 
     /**

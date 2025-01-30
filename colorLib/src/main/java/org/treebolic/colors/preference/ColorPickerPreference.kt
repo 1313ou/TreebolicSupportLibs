@@ -28,6 +28,7 @@ import org.treebolic.colors.R
 import org.treebolic.colors.view.ColorPanelView
 import org.treebolic.colors.view.ColorPickerView
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener
+import kotlin.math.roundToInt
 
 open class ColorPickerPreference : DialogPreference {
 
@@ -205,9 +206,9 @@ open class ColorPickerPreference : DialogPreference {
             val landscapeLayout = view.findViewById<LinearLayout>(R.id.dialog_color_picker_extra_layout_landscape)
             val isLandscapeLayout = landscapeLayout != null
             if (isLandscapeLayout) {
-                landscapeLayout.setPadding(0, 0, Math.round(colorPickerView.getDrawingOffset()), 0)
+                landscapeLayout.setPadding(0, 0, colorPickerView.getDrawingOffset().roundToInt(), 0)
             } else {
-                (oldColorView.parent as LinearLayout).setPadding(Math.round(colorPickerView.getDrawingOffset()), 0, Math.round(colorPickerView.getDrawingOffset()), 0)
+                (oldColorView.parent as LinearLayout).setPadding(colorPickerView.getDrawingOffset().roundToInt(), 0, colorPickerView.getDrawingOffset().roundToInt(), 0)
             }
 
             // alpha

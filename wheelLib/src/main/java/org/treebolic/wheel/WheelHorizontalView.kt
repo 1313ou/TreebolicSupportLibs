@@ -18,6 +18,7 @@ import androidx.core.content.res.use
 import org.treebolic.wheel.WheelScroller.ScrollingListener
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.roundToInt
 
 /**
  * Spinner wheel horizontal view.
@@ -82,8 +83,8 @@ class WheelHorizontalView
         if (visibleItems == 2) {
             val positions = floatArrayOf(0f, p1, p1, p2, p2, 1f)
 
-            val c1 = Math.round(c1f) shl 24
-            val c2 = Math.round(z) shl 24
+            val c1 = c1f.roundToInt() shl 24
+            val c2 = z.roundToInt() shl 24
             val colors = intArrayOf(c2, c1, -0x1000000, -0x1000000, c1, c2)
             shader = LinearGradient(0f, 0f, w.toFloat(), 0f, colors, positions, Shader.TileMode.CLAMP)
         } else {
@@ -95,14 +96,14 @@ class WheelHorizontalView
             val c3f = s * coeff // here goes some optimized stuff
             val c2f = z + c3f
 
-            val c1 = Math.round(c1f) shl 24
-            val c2 = Math.round(c2f) shl 24
-            val c3 = Math.round(c3f) shl 24
+            val c1 = c1f.roundToInt() shl 24
+            val c2 = c2f.roundToInt() shl 24
+            val c3 = c3f.roundToInt() shl 24
             val colors = intArrayOf(c3, c3, c2, c1, -0x1000000, -0x1000000, c1, c2, c3, c3)
 
             shader = LinearGradient(0f, 0f, w.toFloat(), 0f, colors, positions, Shader.TileMode.CLAMP)
         }
-        selectorWheelPaint!!.setShader(shader)
+        selectorWheelPaint!!.shader = shader
         invalidate()
     }
 

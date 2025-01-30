@@ -27,7 +27,7 @@ object Deploy {
     /**
      * Copy stream to file
      *
-     * @param in     input stream
+     * @param input     input stream
      * @param toFile dest file
      * @throws IOException io exception
      */
@@ -46,25 +46,25 @@ object Deploy {
     /**
      * Expand archive stream to dir
      *
-     * @param in      input stream
-     * @param toDir   to directory
+     * @param input input stream
+     * @param toDir to directory
      * @param asTarGz is tar gz type
      * @throws IOException io exception
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun expand(`in`: InputStream, toDir: File, asTarGz: Boolean) {
+    fun expand(input: InputStream, toDir: File, asTarGz: Boolean) {
         if (asTarGz) {
-            extractTarGz(`in`, toDir, true, ".*", null)
+            extractTarGz(input, toDir, true, ".*", null)
             return
         }
-        expandZip(`in`, toDir, true, ".*", "META-INF.*")
+        expandZip(input, toDir, true, ".*", "META-INF.*")
     }
 
     /**
      * Expand zip stream to dir
      *
-     * @param in      zip file input stream
+     * @param input zip file input stream
      * @param destDir destination dir
      * @param include include regexp filter
      * @param exclude exclude regexp filter
@@ -72,7 +72,7 @@ object Deploy {
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun expandZip(`in`: InputStream?, destDir: File, flat: Boolean, include: String?, exclude: String?): File {
+    fun expandZip(input: InputStream?, destDir: File, flat: Boolean, include: String?, exclude: String?): File {
         // patterns
         val includePattern = if (include == null) null else Pattern.compile(include)
         val excludePattern = if (exclude == null) null else Pattern.compile(exclude)
@@ -83,7 +83,7 @@ object Deploy {
         // buffer
         val buffer = ByteArray(1024)
 
-        ZipInputStream(`in`).use { zipInput ->
+        ZipInputStream(input).use { zipInput ->
 
             // loop through entries
             var zipEntry = zipInput.nextEntry
@@ -147,9 +147,9 @@ object Deploy {
     /**
      * Extract tar.gz stream
      *
-     * @param in      input stream
+     * @param input input stream
      * @param destDir destination dir
-     * @param flat    flatten
+     * @param flat flatten
      * @param include include regexp filter
      * @param exclude exclude regexp filter
      * @return dest dir
@@ -157,7 +157,7 @@ object Deploy {
      */
     @JvmStatic
     @Throws(IOException::class)
-    fun extractTarGz(`in`: InputStream, destDir: File, flat: Boolean, include: String?, exclude: String?): File {
+    fun extractTarGz(input: InputStream, destDir: File, flat: Boolean, include: String?, exclude: String?): File {
         val includePattern = if (include == null) null else Pattern.compile(include)
         val excludePattern = if (exclude == null) null else Pattern.compile(exclude)
 
@@ -167,7 +167,7 @@ object Deploy {
         // buffer
         val buffer = ByteArray(1024)
 
-        TarArchiveInputStream(GzipCompressorInputStream(BufferedInputStream(`in`))).use { tarInput ->
+        TarArchiveInputStream(GzipCompressorInputStream(BufferedInputStream(input))).use { tarInput ->
 
             // loop through entries
             var tarEntry = tarInput.nextEntry

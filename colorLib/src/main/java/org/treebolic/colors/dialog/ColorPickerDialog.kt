@@ -14,6 +14,7 @@ import org.treebolic.colors.R
 import org.treebolic.colors.view.ColorPanelView
 import org.treebolic.colors.view.ColorPickerView
 import org.treebolic.colors.view.ColorPickerView.OnColorChangedListener
+import kotlin.math.roundToInt
 
 class ColorPickerDialog(context: Context, initialColor: Int?, private val listener: OnColorChangedListener?) : AlertDialog(context), OnColorChangedListener {
 
@@ -58,9 +59,9 @@ class ColorPickerDialog(context: Context, initialColor: Int?, private val listen
             isLandscapeLayout = true
         }
         if (!isLandscapeLayout) {
-            (oldColorView.parent as LinearLayout).setPadding(Math.round(colorPicker.getDrawingOffset()), 0, Math.round(colorPicker.getDrawingOffset()), 0)
+            (oldColorView.parent as LinearLayout).setPadding(colorPicker.getDrawingOffset().roundToInt(), 0, colorPicker.getDrawingOffset().roundToInt(), 0)
         } else {
-            landscapeLayout!!.setPadding(0, 0, Math.round(colorPicker.getDrawingOffset()), 0)
+            landscapeLayout!!.setPadding(0, 0, colorPicker.getDrawingOffset().roundToInt(), 0)
             setTitle(null)
         }
 
