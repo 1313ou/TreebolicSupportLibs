@@ -65,7 +65,7 @@ object Storage {
 
         // application-specific secondary or primary storage
         try {
-            val dirs = ContextCompat.getExternalFilesDirs(context, null)
+            val dirs = context.getExternalFilesDirs(null)
 
             // preferably secondary storage
             for (i in 1 until dirs.size) {
