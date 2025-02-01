@@ -204,6 +204,7 @@ abstract class WheelScroller(context0: Context?, listener0: ScrollingListener) {
                 return true
             }
         })
+        @Suppress("UsePropertyAccessSyntax")
         gestureDetector.setIsLongpressEnabled(false)
 
         scroller = Scroller(context0)
