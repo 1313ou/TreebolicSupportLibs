@@ -20,6 +20,7 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
@@ -169,6 +170,16 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
             actionBar.displayOptions = ActionBar.DISPLAY_USE_LOGO or ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_SHOW_HOME or ActionBar.DISPLAY_HOME_AS_UP
         }
 
+        // back pressed registration to handle the back button event
+        val callback = onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (currentDir!!.parentFile != null) {
+                    currentDir = currentDir!!.parentFile
+                    fill(currentDir!!)
+                }
+            }
+        })
+
         // list view
         listView = findViewById(android.R.id.list)
 
@@ -219,18 +230,6 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         if (chooseDir) {
             Toast.makeText(this, R.string.howToSelect, Toast.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if ( // !currentDir!!.getName().equals(ROOT) &&
-                currentDir!!.parentFile != null) {
-                currentDir = currentDir!!.parentFile
-                fill(currentDir!!)
-            }
-            return false
-        }
-        return super.onKeyDown(keyCode, event)
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
