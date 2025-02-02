@@ -8,8 +8,8 @@
 	<style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
 
 		<!-- framework colors -->
-		<item name="android:colorBackground">@color/default_backgroundColor</item>
-		<item name="android:colorForeground">@color/default_foregroundColor</item>
+<!--		<item name="android:colorBackground">@color/default_backgroundColor</item>-->
+<!--		<item name="android:colorForeground">@color/default_foregroundColor</item>-->
 		<item name="colorOnSurface">@color/default_backgroundColor</item>
 		<item name="colorSurface">@color/default_foregroundColor</item>
 
