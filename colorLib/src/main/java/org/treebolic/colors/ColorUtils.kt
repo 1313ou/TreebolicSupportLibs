@@ -4,6 +4,7 @@
 package org.treebolic.colors
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.util.TypedValue
@@ -21,6 +22,27 @@ import androidx.core.content.res.use
  * @author Bernard Bou
  */
 object ColorUtils {
+
+    /**
+     * Get colors from theme
+     *
+     * @param context     context
+     * @param colorAttrIds attr ids
+     * @return colors
+     */
+    fun getColorsFromTheme(context: Context, vararg colorAttrIds: Int): IntArray {
+        val theme = context.theme
+        val typedArray: TypedArray = theme.obtainStyledAttributes(colorAttrIds)
+        val colors = IntArray(typedArray.length())
+        try {
+            for (i in 0 until typedArray.length()) {
+                colors[i] = typedArray.getColor(i, 0)
+            }
+        } finally {
+            typedArray.recycle()
+        }
+        return colors
+    }
 
     /**
      * Tint menu items
@@ -108,14 +130,14 @@ object ColorUtils {
     }
 
     /**
-     * Get color from theme
+     * Get color from style in theme
      *
      * @param context     context
      * @param style       style id (ex: R.style.MyTheme)
      * @param colorAttrId attr id (ex: R.attr.editTextColor)
      * @return color
      */
-    private fun getColorFromTheme(context: Context, @AttrRes style: Int, @Suppress("SameParameterValue") @AttrRes colorAttrId: Int): Int {
+    private fun getColorFromStyleInTheme(context: Context, @AttrRes style: Int, @Suppress("SameParameterValue") @AttrRes colorAttrId: Int): Int {
         val theme = context.theme
 
         // res id of style pointed to from actionBarStyle
@@ -123,10 +145,8 @@ object ColorUtils {
         theme.resolveAttribute(style, typedValue, true)
         val resId = typedValue.resourceId
 
-        // Log.d(TAG, "actionBarStyle=${Integer.toHexString(resId)}")
-
         // now get action bar style values
-        val attrs = intArrayOf(colorAttrId)
+        val attrs: IntArray = intArrayOf(colorAttrId)
 
         // get color
         theme.obtainStyledAttributes(resId, attrs).use {
@@ -144,7 +164,7 @@ object ColorUtils {
      */
     @JvmStatic
     fun getActionBarForegroundColorFromTheme(context: Context): Int {
-        val color = getColorFromTheme(context, R.attr.actionBarTheme, android.R.attr.textColorPrimary)
+        val color = getColorFromStyleInTheme(context, R.attr.actionBarTheme, android.R.attr.textColorPrimary)
         // Log.d(TAG, "getActionBarForegroundColorFromTheme=0x${Integer.toHexString(color)}")
         return color
     }
