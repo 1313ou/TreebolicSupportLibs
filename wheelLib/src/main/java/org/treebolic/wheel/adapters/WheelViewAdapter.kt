@@ -33,10 +33,10 @@ interface WheelViewAdapter {
      * Get a View that displays an empty spinnerwheel item placed before the first or after the last spinnerwheel item.
      *
      * @param convertView the old view to reuse if possible
-     * @param ignoredParent the parent that this view will eventually be attached to
+     * @param parent the parent that this view will eventually be attached to
      * @return the empty item View
      */
-    fun getEmptyItem(convertView: View?, ignoredParent: ViewGroup): View?
+    fun getEmptyItem(convertView: View?, parent: ViewGroup): View?
 
     /**
      * Register an observer that is called when changes happen to the data used by this adapter.

@@ -13,7 +13,7 @@ import java.util.LinkedList
  */
 abstract class AbstractWheelAdapter : WheelViewAdapter {
 
-    override fun getEmptyItem(convertView: View?, ignoredParent: ViewGroup): View? {
+    override fun getEmptyItem(convertView: View?, parent: ViewGroup): View? {
         return null
     }
 
