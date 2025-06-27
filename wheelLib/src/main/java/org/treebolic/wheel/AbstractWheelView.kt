@@ -16,6 +16,7 @@ import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.core.content.res.use
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.graphics.createBitmap
 
 /**
  * Abstract spinner spinnerwheel view. This class should be subclassed.
@@ -134,8 +135,8 @@ abstract class AbstractWheelView(context: Context, attrs: AttributeSet?, @AttrRe
      * @param height New spinnerwheel height
      */
     override fun recreateAssets(width: Int, height: Int) {
-        spinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-        separatorsBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        spinBitmap = createBitmap(width, height)
+        separatorsBitmap = createBitmap(width, height)
         setSelectorPaintCoeff(0f)
     }
 

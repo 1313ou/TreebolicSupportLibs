@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.content.res.Resources.NotFoundException
 import android.util.Log
 import androidx.preference.PreferenceManager
+import androidx.core.content.edit
 
 object AppCompatCommonUtils {
 
@@ -58,9 +59,9 @@ object AppCompatCommonUtils {
         } catch (_: NotFoundException) {
         } catch (_: ClassCastException) {
         }
-        sharedPrefs.edit() //
-            .remove(PREF_THEME) //
-            .apply()
+        sharedPrefs.edit { 
+            remove(PREF_THEME) 
+        }
         return null
     }
 

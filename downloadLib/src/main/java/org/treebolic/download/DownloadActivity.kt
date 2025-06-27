@@ -9,7 +9,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +22,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.core.net.toUri
 import org.treebolic.AppCompatCommonActivity
 import java.io.File
 import java.io.IOException
@@ -197,9 +197,9 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        val downloadUri = Uri.parse(downloadUrl)
+        val downloadUri = downloadUrl?.toUri()
         val downloadUriStr = downloadUri.toString()
-        val file = downloadUri.lastPathSegment
+        val file = downloadUri?.lastPathSegment
         val where = downloadUriStr.substring(0, downloadUriStr.length - file!!.length)
         src!!.text = file
         src2!!.text = where
@@ -256,12 +256,12 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
      * Start download. Assume download url has been set by derived class
      */
     protected fun start(@StringRes titleRes: Int) {
-        val downloadUri = Uri.parse(downloadUrl)
+        val downloadUri = downloadUrl?.toUri()
         try {
             val request = DownloadManager.Request(downloadUri)
             Log.d(TAG, "Source $downloadUri")
             request.setTitle(resources.getText(titleRes))
-            request.setDescription(downloadUri.lastPathSegment)
+            request.setDescription(downloadUri?.lastPathSegment)
             //request.setAllowedOverMetered(false)
             //request.setAllowedOverRoaming(false)
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
@@ -319,7 +319,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                     // local uri
                     val uriIndex = it.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI)
                     val uriString = it.getString(uriIndex)
-                    val uri = Uri.parse(uriString)
+                    val uri = uriString.toUri()
 
                     // as is
                     if (!doProcessing()) {
@@ -400,7 +400,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                 try {
                     Thread.sleep(2000)
                 } catch (_: InterruptedException) {
-                    //
+                    
                 }
             }
         }.start()

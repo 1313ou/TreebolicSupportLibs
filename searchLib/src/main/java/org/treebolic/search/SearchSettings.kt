@@ -177,8 +177,8 @@ class SearchSettings : AppCompatDialogFragment() {
         modeWheel!!.currentItem = modeIndex
 
         val builder = AlertDialog.Builder(ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom))
-        return builder //
-            .setView(view).setPositiveButton(R.string.title_yes) { dialog2: DialogInterface, _: Int -> dialog2.dismiss() } //
+        return builder 
+            .setView(view).setPositiveButton(R.string.title_yes) { dialog2: DialogInterface, _: Int -> dialog2.dismiss() } 
             .create()
     }
 
@@ -207,7 +207,7 @@ class SearchSettings : AppCompatDialogFragment() {
     /**
      * Adapter for scopes
      */
-    private class Adapter(context0: Context, layout0: Int, val labels: Array<String?>, val icons: IntArray, val len: Int, val type: Type) : AbstractWheelTextAdapter(context0, layout0, NO_RESOURCE) {
+    private class Adapter(context0: Context, layout0: Int, val labels: Array<String?>, val icons: IntArray, val len: Int, val type: Type) : AbstractWheelTextAdapter(context0, layout0) {
 
         enum class Type {
             SCOPE, MODE, SOURCE

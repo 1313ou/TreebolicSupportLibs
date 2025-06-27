@@ -19,6 +19,8 @@ import org.treebolic.wheel.WheelScroller.ScrollingListener
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import androidx.core.graphics.withSave
+import androidx.core.graphics.withClip
 
 /**
  * Spinner wheel horizontal view.
@@ -235,51 +237,50 @@ class WheelHorizontalView
     // D R A W I N G
 
     override fun drawItems(canvas: Canvas) {
-        canvas.save()
-        val w = measuredWidth
-        val h = measuredHeight
-        val iw = itemDimension
+        canvas.withSave {
+            val w = measuredWidth
+            val h = measuredHeight
+            val iw = itemDimension
 
-        // resetting intermediate bitmap and recreating canvases
-        spinBitmap!!.eraseColor(0)
-        val c = Canvas(spinBitmap!!)
-        val cSpin = Canvas(spinBitmap!!)
+            // resetting intermediate bitmap and recreating canvases
+            spinBitmap!!.eraseColor(0)
+            val c = Canvas(spinBitmap!!)
+            val cSpin = Canvas(spinBitmap!!)
 
-        val left = (currentItemIdx - firstItemIdx) * iw + (iw - width) / 2
-        c.translate((-left + scrollingOffset).toFloat(), itemsPadding.toFloat())
-        itemsLayout!!.draw(c)
+            val left = (currentItemIdx - firstItemIdx) * iw + (iw - width) / 2
+            c.translate((-left + scrollingOffset).toFloat(), itemsPadding.toFloat())
+            itemsLayout!!.draw(c)
 
-        separatorsBitmap!!.eraseColor(0)
-        val cSeparators = Canvas(separatorsBitmap!!)
+            separatorsBitmap!!.eraseColor(0)
+            val cSeparators = Canvas(separatorsBitmap!!)
 
-        if (selectionDivider != null) {
-            // draw the top divider
-            val leftOfLeftDivider = (width - iw - selectionDividerWidth) / 2
-            val rightOfLeftDivider = leftOfLeftDivider + selectionDividerWidth
-            cSeparators.save()
-            // On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
-            cSeparators.clipRect(leftOfLeftDivider, 0, rightOfLeftDivider, h)
-            selectionDivider!!.setBounds(leftOfLeftDivider, 0, rightOfLeftDivider, h)
-            selectionDivider!!.draw(cSeparators)
-            cSeparators.restore()
+            if (selectionDivider != null) {
+                // draw the top divider
+                val leftOfLeftDivider = (width - iw - selectionDividerWidth) / 2
+                val rightOfLeftDivider = leftOfLeftDivider + selectionDividerWidth
+                cSeparators.withClip(leftOfLeftDivider, 0, rightOfLeftDivider, h) {
+                    // On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
+                    selectionDivider!!.setBounds(leftOfLeftDivider, 0, rightOfLeftDivider, h)
+                    selectionDivider!!.draw(this)
+                }
 
-            cSeparators.save()
-            // draw the bottom divider
-            val leftOfRightDivider = leftOfLeftDivider + iw
-            val rightOfRightDivider = rightOfLeftDivider + iw
-            // On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
-            cSeparators.clipRect(leftOfRightDivider, 0, rightOfRightDivider, h)
-            selectionDivider!!.setBounds(leftOfRightDivider, 0, rightOfRightDivider, h)
-            selectionDivider!!.draw(cSeparators)
-            cSeparators.restore()
+                cSeparators.withSave {
+                    // draw the bottom divider
+                    val leftOfRightDivider = leftOfLeftDivider + iw
+                    val rightOfRightDivider = rightOfLeftDivider + iw
+                    // On Gingerbread setBounds() is ignored resulting in an ugly visual bug.
+                    clipRect(leftOfRightDivider, 0, rightOfRightDivider, h)
+                    selectionDivider!!.setBounds(leftOfRightDivider, 0, rightOfRightDivider, h)
+                    selectionDivider!!.draw(this)
+                }
+            }
+
+            cSpin.drawRect(0f, 0f, w.toFloat(), h.toFloat(), selectorWheelPaint!!)
+            cSeparators.drawRect(0f, 0f, w.toFloat(), h.toFloat(), separatorsPaint!!)
+
+            drawBitmap(spinBitmap!!, 0f, 0f, null)
+            drawBitmap(separatorsBitmap!!, 0f, 0f, null)
         }
-
-        cSpin.drawRect(0f, 0f, w.toFloat(), h.toFloat(), selectorWheelPaint!!)
-        cSeparators.drawRect(0f, 0f, w.toFloat(), h.toFloat(), separatorsPaint!!)
-
-        canvas.drawBitmap(spinBitmap!!, 0f, 0f, null)
-        canvas.drawBitmap(separatorsBitmap!!, 0f, 0f, null)
-        canvas.restore()
     }
 
     companion object {

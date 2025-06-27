@@ -26,6 +26,7 @@ import org.treebolic.colors.drawable.AlphaPatternDrawable
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import androidx.core.graphics.createBitmap
 
 /**
  * Displays a value picker to the user and allow them to select a value. A slider for the alpha channel is also available. Enable it by setting
@@ -183,7 +184,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
     /**
      * Offset from the edge we must have or else the finger tracker will get clipped when it is drawn outside of the view.
      */
-    var drawingOffset = 0
+    var drawingOffset: Int = 0
 
     // L I S T E N E R
 
@@ -320,7 +321,7 @@ class ColorPickerView @JvmOverloads constructor(context: Context, attrs: Attribu
             }
             // We create our bitmap in the cache if it doesn't exist.
             if (satValBackgroundCache!!.bitmap == null) {
-                satValBackgroundCache!!.bitmap = Bitmap.createBitmap(rect!!.width().toInt(), rect.height().toInt(), Bitmap.Config.ARGB_8888)
+                satValBackgroundCache!!.bitmap = createBitmap(rect!!.width().toInt(), rect.height().toInt())
             }
             // We create the canvas once so we can draw on our bitmap and the hold on to it.
             if (satValBackgroundCache!!.canvas == null) {

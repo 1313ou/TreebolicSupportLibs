@@ -4,7 +4,6 @@
 package org.treebolic.guide
 
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +16,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import org.treebolic.AppCompatCommonActivity
@@ -66,7 +66,7 @@ open class HelpActivity : AppCompatCommonActivity() {
             }
 
             @SuppressLint("ObsoleteSdkInt")
-            @TargetApi(Build.VERSION_CODES.N)
+            @RequiresApi(Build.VERSION_CODES.N)
             override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
                 Log.e(TAG, error.description.toString() + ',' + error.errorCode)
             }
@@ -78,7 +78,7 @@ open class HelpActivity : AppCompatCommonActivity() {
             }
 
             @SuppressLint("ObsoleteSdkInt")
-            @TargetApi(Build.VERSION_CODES.N)
+            @RequiresApi(Build.VERSION_CODES.N)
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                 val uri = request.url
                 view.loadUrl(uri.toString())

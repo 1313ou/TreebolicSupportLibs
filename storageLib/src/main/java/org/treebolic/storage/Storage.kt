@@ -5,9 +5,9 @@ package org.treebolic.storage
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import java.io.File
+import androidx.core.content.edit
 
 object Storage {
 
@@ -50,7 +50,7 @@ object Storage {
         val path = treebolicStorage!!.absolutePath
 
         // flag as discovered
-        sharedPref.edit().putString(PREF_TREEBOLIC_STORAGE, path).commit()
+        sharedPref.edit(commit = true) { putString(PREF_TREEBOLIC_STORAGE, path) }
 
         return treebolicStorage!!
     }
@@ -78,7 +78,7 @@ object Storage {
                 return dirs[0]
             }
         } catch (ignored: Throwable) {
-            //
+            
         }
 
         // internal private storage

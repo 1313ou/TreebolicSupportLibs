@@ -17,6 +17,7 @@ import org.treebolic.wheel.WheelScroller.ScrollingListener
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import androidx.core.graphics.withSave
 
 /**
  * Spinner wheel vertical view.
@@ -193,42 +194,42 @@ open class WheelVerticalView @JvmOverloads constructor(context: Context, attrs: 
     // D R A W I N G   I T E M S
 
     override fun drawItems(canvas: Canvas) {
-        canvas.save()
-        val w = measuredWidth
-        val h = measuredHeight
-        val ih = itemDimension
+        canvas.withSave {
+            val w = measuredWidth
+            val h = measuredHeight
+            val ih = itemDimension
 
-        // resetting intermediate bitmap and recreating canvases
-        spinBitmap!!.eraseColor(0)
-        val c = Canvas(spinBitmap!!)
-        val cSpin = Canvas(spinBitmap!!)
+            // resetting intermediate bitmap and recreating canvases
+            spinBitmap!!.eraseColor(0)
+            val c = Canvas(spinBitmap!!)
+            val cSpin = Canvas(spinBitmap!!)
 
-        val top = (currentItemIdx - firstItemIdx) * ih + (ih - height) / 2
-        c.translate(itemsPadding.toFloat(), (-top + scrollingOffset).toFloat())
-        itemsLayout!!.draw(c)
+            val top = (currentItemIdx - firstItemIdx) * ih + (ih - height) / 2
+            c.translate(itemsPadding.toFloat(), (-top + scrollingOffset).toFloat())
+            itemsLayout!!.draw(c)
 
-        separatorsBitmap!!.eraseColor(0)
-        val cSeparators = Canvas(separatorsBitmap!!)
+            separatorsBitmap!!.eraseColor(0)
+            val cSeparators = Canvas(separatorsBitmap!!)
 
-        if (selectionDivider != null) {
-            // draw the top divider
-            val topOfTopDivider = (height - ih - selectionDividerHeight) / 2
-            val bottomOfTopDivider = topOfTopDivider + selectionDividerHeight
-            selectionDivider!!.setBounds(0, topOfTopDivider, w, bottomOfTopDivider)
-            selectionDivider!!.draw(cSeparators)
+            if (selectionDivider != null) {
+                // draw the top divider
+                val topOfTopDivider = (height - ih - selectionDividerHeight) / 2
+                val bottomOfTopDivider = topOfTopDivider + selectionDividerHeight
+                selectionDivider!!.setBounds(0, topOfTopDivider, w, bottomOfTopDivider)
+                selectionDivider!!.draw(cSeparators)
 
-            // draw the bottom divider
-            val topOfBottomDivider = topOfTopDivider + ih
-            val bottomOfBottomDivider = bottomOfTopDivider + ih
-            selectionDivider!!.setBounds(0, topOfBottomDivider, w, bottomOfBottomDivider)
-            selectionDivider!!.draw(cSeparators)
+                // draw the bottom divider
+                val topOfBottomDivider = topOfTopDivider + ih
+                val bottomOfBottomDivider = bottomOfTopDivider + ih
+                selectionDivider!!.setBounds(0, topOfBottomDivider, w, bottomOfBottomDivider)
+                selectionDivider!!.draw(cSeparators)
+            }
+
+            cSpin.drawRect(0f, 0f, w.toFloat(), h.toFloat(), selectorWheelPaint!!)
+            cSeparators.drawRect(0f, 0f, w.toFloat(), h.toFloat(), separatorsPaint!!)
+
+            drawBitmap(spinBitmap!!, 0f, 0f, null)
+            drawBitmap(separatorsBitmap!!, 0f, 0f, null)
         }
-
-        cSpin.drawRect(0f, 0f, w.toFloat(), h.toFloat(), selectorWheelPaint!!)
-        cSeparators.drawRect(0f, 0f, w.toFloat(), h.toFloat(), separatorsPaint!!)
-
-        canvas.drawBitmap(spinBitmap!!, 0f, 0f, null)
-        canvas.drawBitmap(separatorsBitmap!!, 0f, 0f, null)
-        canvas.restore()
     }
 }

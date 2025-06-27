@@ -28,6 +28,8 @@ import org.treebolic.AppCompatCommonActivity
 import java.io.File
 import java.io.FileFilter
 import java.util.Locale
+import androidx.core.net.toUri
+import androidx.core.content.edit
 
 /**
  * File chooser
@@ -170,7 +172,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         }
 
         // back pressed registration to handle the back button event
-        val callback = onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (currentDir!!.parentFile != null) {
                     currentDir = currentDir!!.parentFile
@@ -195,8 +197,8 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
             // initial
             var initialDirExtra = extras.getString(ARG_FILECHOOSER_INITIAL_DIR)
             if (initialDirExtra != null) {
-                val uri = Uri.parse(initialDirExtra)
-                if (uri != null && "file" == uri.scheme) {
+                val uri = initialDirExtra.toUri()
+                if ("file" == uri.scheme) {
                     val path = uri.path
                     if (path != null) {
                         initialDirExtra = path
@@ -215,8 +217,8 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
                 fileFilter = FileFilter { file: File ->
                     val name = file.name
                     val dot = name.lastIndexOf('.')
-                    //
-                    //
+                    
+                    
                     file.isDirectory || extensions == null || dot == -1 || extensions!!.contains(name.substring(dot + 1))
                 }
             }
@@ -303,7 +305,7 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
                 }
             }
         } catch (_: Exception) {
-            //
+            
         }
 
         // sort
@@ -337,8 +339,9 @@ class FileChooserActivity : AppCompatCommonActivity(), OnItemLongClickListener, 
         @SuppressLint("CommitPrefEdits", "ApplySharedPref")
         fun setFolder(context: Context, key: String?, folder: String?) {
             val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-            val edit = prefs.edit()
-            edit.putString(key, folder).commit()
+            prefs.edit(commit = true) {
+                putString(key, folder)
+            }
         }
 
         @JvmStatic

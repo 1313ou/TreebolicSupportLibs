@@ -21,6 +21,7 @@ import java.util.LinkedList
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import androidx.core.view.isEmpty
 
 /**
  * Abstract spinner spinnerwheel view. This class should be subclassed.
@@ -338,19 +339,19 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
     /* These methods are not abstract, as we may want to override only some of them */
     @Suppress("EmptyMethod")
     protected fun onScrollStarted() {
-        //
+        
     }
 
     protected open fun onScrollTouched() {
-        //
+        
     }
 
     protected open fun onScrollTouchedUp() {
-        //
+        
     }
 
     protected open fun onScrollFinished() {
-        //
+        
     }
 
     /**
@@ -762,7 +763,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
 
         var first = firstItemIdx
         for (i in itemsLayout!!.childCount until range.count) {
-            if (!addItemView(firstItemIdx + i, false) && itemsLayout!!.childCount == 0) {
+            if (!addItemView(firstItemIdx + i, false) && itemsLayout!!.isEmpty()) {
                 first++
             }
         }

@@ -108,9 +108,9 @@ object Actions {
     }
 
     fun dragBack2(from: CoordinatesProvider?, to: CoordinatesProvider?, to2: CoordinatesProvider?): ViewAction {
-        return andThen( //
-            dragBack(from, to, to2),  //
-            dragBack(from, to2, to) //
+        return andThen( 
+            dragBack(from, to, to2),  
+            dragBack(from, to2, to) 
         )
     }
 }

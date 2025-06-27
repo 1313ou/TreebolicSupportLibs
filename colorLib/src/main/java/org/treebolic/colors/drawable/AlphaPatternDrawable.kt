@@ -11,6 +11,7 @@ import android.graphics.PixelFormat
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import kotlin.math.ceil
+import androidx.core.graphics.createBitmap
 
 /**
  * This drawable will draw a simple white and gray chessboard pattern. It's pattern you will often see as a background behind a partly transparent image in many
@@ -67,7 +68,7 @@ class AlphaPatternDrawable(private val rectangleSize: Int) : Drawable() {
         if (bounds.width() <= 0 || bounds.height() <= 0) {
             return
         }
-        bitmap = Bitmap.createBitmap(bounds.width(), bounds.height(), Bitmap.Config.ARGB_8888)
+        bitmap = createBitmap(bounds.width(), bounds.height())
         val canvas = Canvas(bitmap!!)
         val r = Rect()
         var verticalStartWhite = true

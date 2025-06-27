@@ -106,7 +106,7 @@ object Wait {
         try {
             Thread.sleep(PAUSE_UNIT.toLong() * sec)
         } catch (e: InterruptedException) {
-            //
+            
         }
     }
 }

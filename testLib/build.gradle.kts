@@ -33,10 +33,10 @@ android {
 }
 
 dependencies {
-    implementation("androidx.annotation:annotation:1.9.1")
-    implementation("androidx.test:core:1.6.1")
-    implementation("androidx.test.espresso:espresso-core:3.6.1")
-    implementation("androidx.test.espresso:espresso-contrib:3.6.1")
+    implementation(libs.annotation)
+    implementation(libs.test.core)
+    implementation(libs.espresso.core)
+    implementation(libs.espresso.contrib)
 
     implementation(libs.core.ktx)
     coreLibraryDesugaring(libs.desugar)

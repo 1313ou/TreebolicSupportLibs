@@ -37,10 +37,10 @@ object Seq {
      * @param text           text
      */
     fun doType(@IdRes editTextViewId: Int, text: String) {
-        Espresso.onView(ViewMatchers.withId(editTextViewId)) //
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
+        Espresso.onView(ViewMatchers.withId(editTextViewId)) 
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) 
             .perform(
-                ViewActions.typeText(text) //
+                ViewActions.typeText(text) 
             )
     }
 
@@ -54,18 +54,18 @@ object Seq {
         val searchView = ViewMatchers.withId(searchViewId)
 
         // open search view
-        Espresso.onView(searchView) //
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
+        Espresso.onView(searchView) 
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) 
             .perform(
-                ViewActions.click() //
+                ViewActions.click() 
             )
 
         // type search
-        Espresso.onView(CoreMatchers.allOf(ViewMatchers.isDescendantOfA(searchView), ViewMatchers.isAssignableFrom(EditText::class.java))) //
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
-            .perform( //
-                ViewActions.typeText(text),  //
-                ViewActions.pressImeActionButton() //
+        Espresso.onView(CoreMatchers.allOf(ViewMatchers.isDescendantOfA(searchView), ViewMatchers.isAssignableFrom(EditText::class.java))) 
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) 
+            .perform( 
+                ViewActions.typeText(text),  
+                ViewActions.pressImeActionButton() 
             )
     }
 
@@ -75,10 +75,10 @@ object Seq {
      * @param buttonId Button id
      */
     fun doClick(@IdRes buttonId: Int) {
-        Espresso.onView(ViewMatchers.withId(buttonId)) //
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
+        Espresso.onView(ViewMatchers.withId(buttonId)) 
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) 
             .perform(ViewActions.click())
-        //
+        
     }
 
     /**
@@ -109,15 +109,15 @@ object Seq {
      */
     fun doChoose(@IdRes spinnerId: Int, targetText: String) {
         // expand spinner
-        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(spinnerId), CoreMatchers.instanceOf(Spinner::class.java))) //
+        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(spinnerId), CoreMatchers.instanceOf(Spinner::class.java))) 
             .perform(ViewActions.click())
 
         // do_click view matching text
-        Espresso.onData(CoreMatchers.allOf(CoreMatchers.`is`(CoreMatchers.instanceOf<Any>(String::class.java)), CoreMatchers.`is`(targetText))) //
+        Espresso.onData(CoreMatchers.allOf(CoreMatchers.`is`(CoreMatchers.instanceOf<Any>(String::class.java)), CoreMatchers.`is`(targetText))) 
             .perform(ViewActions.click())
 
         // check
-        Espresso.onView(ViewMatchers.withId(spinnerId)) //
+        Espresso.onView(ViewMatchers.withId(spinnerId)) 
             .check(ViewAssertions.matches(ViewMatchers.withSpinnerText(CoreMatchers.containsString(targetText))))
     }
 
@@ -129,11 +129,11 @@ object Seq {
      */
     fun doChoose(@IdRes spinnerId: Int, position: Int) {
         // expand spinner
-        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(spinnerId), CoreMatchers.instanceOf(Spinner::class.java))) //
+        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(spinnerId), CoreMatchers.instanceOf(Spinner::class.java))) 
             .perform(ViewActions.click())
 
         // do_click view matching position
-        Espresso.onData(org.hamcrest.Matchers.anything()).atPosition(position) //
+        Espresso.onData(org.hamcrest.Matchers.anything()).atPosition(position) 
             .perform(ViewActions.click())
     }
 
@@ -143,11 +143,11 @@ object Seq {
      * @param viewId View id
      */
     fun doSwipeUp(@IdRes viewId: Int) {
-        Espresso.onView(ViewMatchers.withId(viewId)) //
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) //
-            .perform( //
-                Actions.onlyIf(ViewActions.swipeUp(), ViewMatchers.isDisplayingAtLeast(1)) //
-                //, swipeUp() //
+        Espresso.onView(ViewMatchers.withId(viewId)) 
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed())) 
+            .perform( 
+                Actions.onlyIf(ViewActions.swipeUp(), ViewMatchers.isDisplayingAtLeast(1)) 
+                //, swipeUp() 
             )
     }
 }

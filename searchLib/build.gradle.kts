@@ -35,9 +35,9 @@ android {
 dependencies {
     implementation(project(":wheelLib"))
 
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("com.google.android.material:material:1.12.0")
+    implementation(libs.appcompat)
+    implementation(libs.preference.ktx)
+    implementation(libs.material)
 
     implementation(libs.core.ktx)
     coreLibraryDesugaring(libs.desugar)
