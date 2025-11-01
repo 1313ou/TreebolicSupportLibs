@@ -36,7 +36,7 @@ interface WheelViewAdapter {
      * @param parent the parent that this view will eventually be attached to
      * @return the empty item View
      */
-    fun getEmptyItem(convertView: View?, parent: ViewGroup): View?
+    fun getEmptyItem(convertView: View?, @Suppress("unused") parent: ViewGroup): View?
 
     /**
      * Register an observer that is called when changes happen to the data used by this adapter.

@@ -60,7 +60,7 @@ abstract class AbstractWheel(context: Context, attrs: AttributeSet?, @AttrRes de
         }
 
         val itemCount = viewAdapter!!.itemsCount
-        if (index < 0 || index >= itemCount) {
+        if (index !in 0..<itemCount) {
             if (isCyclic) {
                 while (index < 0) {
                     index += itemCount

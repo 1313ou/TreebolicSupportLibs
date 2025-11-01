@@ -200,7 +200,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
         val downloadUri = downloadUrl?.toUri()
         val downloadUriStr = downloadUri.toString()
         val file = downloadUri?.lastPathSegment
-        val where = downloadUriStr.substring(0, downloadUriStr.length - file!!.length)
+        val where = downloadUriStr.dropLast(file!!.length)
         src!!.text = file
         src2!!.text = where
         target!!.text = getString(R.string.internal)

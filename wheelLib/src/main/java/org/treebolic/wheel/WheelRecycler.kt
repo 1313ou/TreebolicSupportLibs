@@ -84,7 +84,7 @@ class WheelRecycler(
         val count = wheel.viewAdapter!!.itemsCount
 
         var index = index0
-        if ((index < 0 || index >= count) && !wheel.isCyclic) {
+        if ((index !in 0..<count) && !wheel.isCyclic) {
             // empty view
             emptyItems = addView(view, emptyItems!!)
         } else {
