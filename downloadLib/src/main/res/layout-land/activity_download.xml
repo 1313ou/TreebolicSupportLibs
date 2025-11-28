@@ -5,172 +5,173 @@
   -->
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context="org.treebolic.download.DownloadActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.treebolic.download.DownloadActivity">
 
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-		<Button
-			android:id="@+id/showButton"
-			style="?android:attr/buttonBarButtonStyle"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentStart="true"
-			android:layout_alignParentBottom="true"
-			android:layout_marginStart="25dp"
-			android:layout_marginBottom="25dp"
-			android:text="@string/show"
-			android:visibility="invisible" />
+        <Button
+            android:id="@+id/showButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/show"
+            android:visibility="invisible" />
 
-		<CheckBox
-			android:id="@+id/expandArchive"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentEnd="true"
-			android:layout_alignParentBottom="true"
-			android:layout_marginEnd="25dp"
-			android:layout_marginBottom="25dp"
-			android:text="@string/expandArchive"
-			android:visibility="visible"
-			tools:ignore="RelativeOverlap" />
+        <CheckBox
+            android:id="@+id/expandArchive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/expandArchive"
+            android:visibility="visible"
+            tools:ignore="RelativeOverlap" />
 
-		<FrameLayout
-			android:id="@+id/mid"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_centerVertical="true">
+        <FrameLayout
+            android:id="@+id/mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-				<ProgressBar
-					android:id="@+id/progressBar"
-					style="@android:style/Widget.ProgressBar.Horizontal"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:contentDescription="@string/download_progress"
-					android:indeterminate="false"
-					android:max="100"
-					android:progress="0"
-					android:visibility="invisible" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/download_progress"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:visibility="invisible" />
 
-				<TextView
-					android:id="@+id/progressStatus"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:text="@string/download_status"
-					android:textAppearance="?android:attr/textAppearanceSmall"
-					android:visibility="invisible" />
+                <TextView
+                    android:id="@+id/progressStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/download_status"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:visibility="invisible" />
 
-			</LinearLayout>
+            </LinearLayout>
 
-			<include
-				android:id="@+id/downloadButton"
-				layout="@layout/downloadbutton"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center" />
+            <include
+                android:id="@+id/downloadButton"
+                layout="@layout/downloadbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-		</FrameLayout>
+        </FrameLayout>
 
-		<ImageView
-			android:id="@+id/imgsrc"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_above="@+id/mid"
-			android:layout_centerHorizontal="true"
-			android:layout_marginStart="50dp"
-			android:layout_marginEnd="50dp"
-			android:layout_marginBottom="10dp"
-			android:contentDescription="@string/src"
-			android:src="@drawable/ic_download_source"
-			app:tint="?android:attr/colorForeground" />
+        <ImageView
+            android:id="@+id/imgsrc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/src"
+            android:src="@drawable/ic_download_source"
+            app:tint="?android:attr/colorForeground" />
 
-		<TextView
-			android:id="@+id/src"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_above="@+id/imgsrc"
-			android:layout_centerHorizontal="true"
-			android:layout_marginStart="50dp"
-			android:layout_marginEnd="50dp"
-			android:layout_marginBottom="10dp"
-			android:ellipsize="marquee"
-			android:focusable="true"
-			android:focusableInTouchMode="true"
-			android:freezesText="true"
-			android:gravity="center_horizontal"
-			android:marqueeRepeatLimit="marquee_forever"
-			android:scrollHorizontally="true"
-			android:singleLine="true"
-			android:text="@string/src"
-			android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imgtarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:contentDescription="@string/target"
+            android:src="@drawable/ic_download_dest"
+            app:tint='?android:attr/colorForeground' />
 
-		<TextView
-			android:id="@+id/src2"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_above="@+id/src"
-			android:layout_centerHorizontal="true"
-			android:layout_marginStart="50dp"
-			android:layout_marginEnd="50dp"
-			android:scrollHorizontally="true"
-			android:singleLine="true"
-			android:text="@string/src"
-			tools:ignore="InconsistentLayout" />
+        <TextView
+            android:id="@+id/src2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/src"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/src"
+            tools:ignore="InconsistentLayout" />
 
-		<ImageView
-			android:id="@+id/imgtarget"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/mid"
-			android:layout_centerHorizontal="true"
-			android:layout_marginStart="50dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="50dp"
-			android:contentDescription="@string/target"
-			android:src="@drawable/ic_download_dest"
-			app:tint='?android:attr/colorForeground' />
+        <TextView
+            android:id="@+id/src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imgsrc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="center_horizontal"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/src"
+            android:textStyle="bold" />
 
-		<TextView
-			android:id="@+id/target"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/imgtarget"
-			android:layout_centerHorizontal="true"
-			android:layout_marginStart="50dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="50dp"
-			android:ellipsize="marquee"
-			android:focusable="true"
-			android:focusableInTouchMode="true"
-			android:freezesText="true"
-			android:gravity="center_horizontal"
-			android:marqueeRepeatLimit="marquee_forever"
-			android:scrollHorizontally="true"
-			android:singleLine="true"
-			android:text="@string/target"
-			android:textStyle="bold" />
+        <TextView
+            android:id="@+id/target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgtarget"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="center_horizontal"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/target"
+            android:textStyle="bold" />
 
-	</RelativeLayout>
+    </RelativeLayout>
 
-	<com.google.android.material.appbar.AppBarLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
-		<include layout="@layout/toolbar" />
+        <include layout="@layout/toolbar" />
 
-	</com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
