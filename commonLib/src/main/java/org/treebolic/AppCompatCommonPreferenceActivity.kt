@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -29,6 +30,9 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
 
         // super
         super.onCreate(savedInstanceState)
+
+        // edge to edge
+        enableEdgeToEdge()
 
         // content view
         setContentView(R.layout.activity_settings)

@@ -4,6 +4,7 @@
 package org.treebolic
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import org.treebolic.AppCompatCommonUtils.getThemePref
 
@@ -20,6 +21,9 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
+
+        // edge to edge
+        enableEdgeToEdge()
     }
 
     /**
