@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import org.treebolic.AppCompatCommonUtils.getThemePref
+import org.treebolic.AppCompatCommonUtils.isCurrentThemeDark
 import org.treebolic.AppCompatCommonUtils.isThemeDark
 import org.treebolic.AppCompatCommonUtils.updateStatusBarForTheme
 
@@ -29,10 +30,8 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         // status bar
-        if (themeId != null) {
-            val isDark = isThemeDark(this, themeId)
-            updateStatusBarForTheme(this, isDark)
-        }
+        val isDark = if (themeId != null) isThemeDark(this, themeId) else isCurrentThemeDark(this)
+        updateStatusBarForTheme(this, isDark)
     }
 
     /**
