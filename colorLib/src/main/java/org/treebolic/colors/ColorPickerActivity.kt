@@ -26,6 +26,7 @@ class ColorPickerActivity : AppCompatCommonActivity(), OnColorChangedListener, V
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         window.setFormat(PixelFormat.RGBA_8888)
         setContentView(R.layout.activity_color_picker)
 

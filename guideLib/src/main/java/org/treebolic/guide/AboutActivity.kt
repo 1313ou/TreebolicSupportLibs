@@ -22,6 +22,8 @@ open class AboutActivity : AppCompatCommonActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // content
         setContentView(R.layout.activity_about)
 
         // toolbar
