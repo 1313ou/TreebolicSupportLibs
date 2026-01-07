@@ -6,7 +6,9 @@
 
 	<!-- APPLICATION -->
 
-	<attr name="colorSecondary" format="color|reference" />
+    <attr name="isDark" format="boolean" />
+
+    <attr name="colorSecondary" format="color|reference" />
 
 	<attr name="colorForePrimary" format="color|reference" />
 	<attr name="colorForeSecondary" format="color|reference" />

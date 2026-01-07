@@ -26,7 +26,11 @@
 		<!-- alert dialog -->
 		<item name="alertDialogTheme">@style/MyAlertDialogTheme</item>
 
-	</style>
+        <!-- transparent statusbar and navigation bar -->
+        <!-- <item name="android:statusBarColor">@android:color/transparent</item> -->
+        <!-- <item name="android:navigationBarColor">@android:color/transparent</item> -->
+
+    </style>
 
 	<style name="MyAppTheme" parent="MyBaseTheme" />
 

@@ -4,50 +4,52 @@
 
 <resources>
 
-	<!-- Default application theme. -->
-	<style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
+    <!-- Default application theme. -->
+    <style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
+        <!-- darkness -->
+        <item name="isDark">true</item>
 
-		<!-- framework colors -->
-<!--		<item name="android:colorBackground">@color/default_backgroundColor</item>-->
-<!--		<item name="android:colorForeground">@color/default_foregroundColor</item>-->
-		<item name="colorOnSurface">@color/default_backgroundColor</item>
-		<item name="colorSurface">@color/default_foregroundColor</item>
+        <!-- framework colors -->
+        <!-- <item name="android:colorBackground">@color/default_backgroundColor</item>-->
+        <!-- <item name="android:colorForeground">@color/default_foregroundColor</item>-->
+        <item name="colorOnSurface">@color/default_backgroundColor</item>
+        <item name="colorSurface">@color/default_foregroundColor</item>
 
-		<item name="colorPrimary">@color/default_primaryColor</item> <!-- app branding color for the app bar -->
-		<item name="colorPrimaryDark">@color/default_primaryDarkColor</item> <!-- darker variant for the status bar and contextual app bars -->
-		<item name="colorPrimaryVariant">@color/default_primaryLightColor</item>
-		<item name="colorOnPrimary">@color/default_onPrimaryColor</item>
+        <item name="colorPrimary">@color/default_primaryColor</item> <!-- app branding color for the app bar -->
+        <item name="colorPrimaryDark">@color/default_primaryDarkColor</item> <!-- darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryVariant">@color/default_primaryLightColor</item>
+        <item name="colorOnPrimary">@color/default_onPrimaryColor</item>
 
-		<item name="colorSecondary">@color/default_secondaryColor</item>
-		<item name="colorSecondaryVariant">@color/default_secondaryLightColor</item>
-		<item name="colorOnSecondary">@color/default_onSecondaryColor</item>
+        <item name="colorSecondary">@color/default_secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/default_secondaryLightColor</item>
+        <item name="colorOnSecondary">@color/default_onSecondaryColor</item>
 
-		<item name="colorAccent">@color/default_secondaryColor</item> <!-- theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/default_secondaryColor</item> <!-- theme UI controls like checkboxes and text fields -->
 
-		<!-- extras color attrs -->
-		<item name="colorHighlightOnPrimary">@color/default_highlightOnPrimaryColor</item>
-		<item name="colorHighlightOnBackground">@color/default_highlightOnBackgroundColor</item>
-		<item name="colorDimmedOnBackground">@color/default_dimmedOnBackgroundColor</item>
+        <!-- extras color attrs -->
+        <item name="colorHighlightOnPrimary">@color/default_highlightOnPrimaryColor</item>
+        <item name="colorHighlightOnBackground">@color/default_highlightOnBackgroundColor</item>
+        <item name="colorDimmedOnBackground">@color/default_dimmedOnBackgroundColor</item>
 
-		<item name="colorForePrimary">@color/default_primaryForeColor</item>
-		<item name="colorForeSecondary">@color/default_secondaryForeColor</item>
-		<item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
+        <item name="colorForePrimary">@color/default_primaryForeColor</item>
+        <item name="colorForeSecondary">@color/default_secondaryForeColor</item>
+        <item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
 
-		<!--treebolic UI color attr -->
-		<item name="actionbar_color">@color/default_primaryColor</item>
-		<item name="actionbar_fore_color">@color/default_primaryForeColor</item>
-		<item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
-		<item name="actionbar_title_fore_color">@color/default_primaryForeColor</item>
-		<item name="actionbar_subtitle_fore_color">@color/default_secondaryForeColor</item>
+        <!--treebolic UI color attr -->
+        <item name="actionbar_color">@color/default_primaryColor</item>
+        <item name="actionbar_fore_color">@color/default_primaryForeColor</item>
+        <item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
+        <item name="actionbar_title_fore_color">@color/default_primaryForeColor</item>
+        <item name="actionbar_subtitle_fore_color">@color/default_secondaryForeColor</item>
 
-		<!-- treebolic widget colors -->
-		<item name="treebolic_back_color">#adc1cc</item>
-		<item name="treebolic_tree_edge_color">#cccccc</item>
-		<item name="treebolic_root_background_color">#0000ff</item>
-		<item name="treebolic_root_foreground_color">#ffffff</item>
-		<item name="treebolic_node_background_color">#ffffff</item>
-		<item name="treebolic_node_foreground_color">#000000</item>
+        <!-- treebolic widget colors -->
+        <item name="treebolic_back_color">#adc1cc</item>
+        <item name="treebolic_tree_edge_color">#cccccc</item>
+        <item name="treebolic_root_background_color">#0000ff</item>
+        <item name="treebolic_root_foreground_color">#ffffff</item>
+        <item name="treebolic_node_background_color">#ffffff</item>
+        <item name="treebolic_node_foreground_color">#000000</item>
 
-	</style>
+    </style>
 
 </resources>
