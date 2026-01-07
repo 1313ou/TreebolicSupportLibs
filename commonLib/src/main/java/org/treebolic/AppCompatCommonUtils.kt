@@ -4,12 +4,17 @@
 package org.treebolic
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.content.res.Resources.NotFoundException
 import android.util.Log
-import androidx.preference.PreferenceManager
+import android.util.TypedValue
 import androidx.core.content.edit
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.preference.PreferenceManager
+import org.treebolic.common.R
 
 object AppCompatCommonUtils {
 
@@ -59,8 +64,8 @@ object AppCompatCommonUtils {
         } catch (_: NotFoundException) {
         } catch (_: ClassCastException) {
         }
-        sharedPrefs.edit { 
-            remove(PREF_THEME) 
+        sharedPrefs.edit {
+            remove(PREF_THEME)
         }
         return null
     }
@@ -77,5 +82,25 @@ object AppCompatCommonUtils {
         } catch (_: AbstractMethodError) {
             editor.commit()
         }
+    }
+
+    fun isNightMode(context: Context) = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+
+    fun isCurrentThemeDark(context: Context): Boolean {
+        val outValue = TypedValue()
+        context.theme.resolveAttribute(R.attr.isDark, outValue, true)
+        return outValue.data != 0
+    }
+
+    fun isThemeDark(context: Context, themeId: Int): Boolean {
+        val attrs = intArrayOf(R.attr.isDark)
+        return context.obtainStyledAttributes(themeId, attrs).use { typedArray ->
+            typedArray.getBoolean(0, true)
+        }
+    }
+
+    fun updateStatusBarForTheme(activity: Activity, isDarkTheme: Boolean) {
+        val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
+        controller.isAppearanceLightStatusBars = !isDarkTheme
     }
 }

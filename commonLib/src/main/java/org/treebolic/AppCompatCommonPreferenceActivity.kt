@@ -17,6 +17,8 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import org.treebolic.AppCompatCommonUtils.getThemePref
+import org.treebolic.AppCompatCommonUtils.isThemeDark
+import org.treebolic.AppCompatCommonUtils.updateStatusBarForTheme
 import org.treebolic.common.R
 
 abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
@@ -33,6 +35,12 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
 
         // edge to edge
         enableEdgeToEdge()
+
+        // status bar
+        if (themeId != null) {
+            val isDark = isThemeDark(this, themeId)
+            updateStatusBarForTheme(this, isDark)
+        }
 
         // content view
         setContentView(R.layout.activity_settings)

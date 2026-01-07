@@ -7,6 +7,8 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import org.treebolic.AppCompatCommonUtils.getThemePref
+import org.treebolic.AppCompatCommonUtils.isThemeDark
+import org.treebolic.AppCompatCommonUtils.updateStatusBarForTheme
 
 abstract class AppCompatCommonActivity : AppCompatActivity() {
 
@@ -20,16 +22,22 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
             setTheme(themeId)
         }
 
+        // super
         super.onCreate(savedInstanceState)
 
         // edge to edge
         enableEdgeToEdge()
+
+        // status bar
+        if (themeId != null) {
+            val isDark = isThemeDark(this, themeId)
+            updateStatusBarForTheme(this, isDark)
+        }
     }
 
     /**
      * Pre-theming hook: give app a chance to do something before theme is set by overriding this.
      */
     protected open fun preThemeHook() {
-        
     }
 }
