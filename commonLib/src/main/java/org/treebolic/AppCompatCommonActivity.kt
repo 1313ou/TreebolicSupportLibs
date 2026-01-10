@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import org.treebolic.AppCompatCommonUtils.getThemePref
 import org.treebolic.AppCompatCommonUtils.isCurrentThemeDark
 import org.treebolic.AppCompatCommonUtils.isThemeDark
-import org.treebolic.AppCompatCommonUtils.updateStatusBarForTheme
+import org.treebolic.AppCompatCommonUtils.updateBarsForTheme
 
 abstract class AppCompatCommonActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
 
         // status bar
         val isDark = if (themeId != null) isThemeDark(this, themeId) else isCurrentThemeDark(this)
-        updateStatusBarForTheme(this, isDark)
+        updateBarsForTheme(this, isDark)
     }
 
     /**
