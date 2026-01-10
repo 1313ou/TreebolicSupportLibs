@@ -102,5 +102,6 @@ object AppCompatCommonUtils {
     fun updateStatusBarForTheme(activity: Activity, isDarkTheme: Boolean) {
         val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
         controller.isAppearanceLightStatusBars = !isDarkTheme
+        controller.isAppearanceLightNavigationBars = !isDarkTheme
     }
 }
