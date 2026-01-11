@@ -9,7 +9,7 @@
 	<!-- T H E M E   O V E R L A Y S -->
 
 	<!-- ActionBar -->
-	<style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
+	<style name="MyActionBarTheme" parent="ThemeOverlay.MaterialComponents.ActionBar">
 		<item name="android:background">@null</item> <!-- menu overflow, search view, title, subtitle backgrounds -->
 		<item name="android:textColorPrimary">?attr/actionbar_title_fore_color</item> <!-- search view foreground -->
 		<item name="android:textColorSecondary">?attr/actionbar_subtitle_fore_color</item> <!-- subtitle -->
@@ -18,14 +18,14 @@
 	</style>
 
 	<!-- ActionBar Popup -->
-	<style name="MyActionBarPopupTheme" parent="ThemeOverlay.AppCompat.DayNight">
+	<style name="MyActionBarPopupTheme" parent="ThemeOverlay.MaterialComponents">
 		<item name="android:background">?attr/actionbar_color</item> <!-- submenu background -->
 		<item name="android:textColorPrimary">?attr/actionbar_fore_color</item>item> <!-- item foreground -->
 		<item name="android:textColorSecondary">?attr/actionbar_secondary_fore_color</item> <!-- submenu item foreground -->
 	</style>
 
 	<!-- AlertDialog -->
-	<style name="MyAlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+	<style name="MyAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
 		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
 		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
 	</style>

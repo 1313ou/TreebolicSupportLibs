@@ -6,7 +6,7 @@
 
     // A P P L I C A T I O N
 
-    <style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    <style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- theme UI controls action bar -->
         <item name="actionBarTheme">@style/MyActionBarTheme</item>
