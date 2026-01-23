@@ -15,6 +15,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.res.use
+import android.R as AndroidR
 
 /**
  * Color utilities
@@ -164,7 +165,7 @@ object ColorUtils {
      */
     @JvmStatic
     fun getActionBarForegroundColorFromTheme(context: Context): Int {
-        val color = getColorFromStyleInTheme(context, R.attr.actionBarTheme, android.R.attr.textColorPrimary)
+        val color = getColorFromStyleInTheme(context, AndroidR.attr.actionBarTheme, android.R.attr.textColorPrimary)
         // Log.d(TAG, "getActionBarForegroundColorFromTheme=0x${Integer.toHexString(color)}")
         return color
     }
@@ -183,12 +184,12 @@ object ColorUtils {
 
         // res id of style pointed to from actionBarStyle
         val typedValue = TypedValue()
-        theme.resolveAttribute(R.attr.actionBarStyle, typedValue, true)
+        theme.resolveAttribute(AndroidR.attr.actionBarStyle, typedValue, true)
         val resId = typedValue.resourceId
         Log.d(TAG, "actionBarStyle=${Integer.toHexString(resId)}")
 
         // now get action bar style values
-        val attrs = intArrayOf(R.attr.background, android.R.attr.colorForeground)
+        val attrs = intArrayOf(AndroidR.attr.background, android.R.attr.colorForeground)
         theme.obtainStyledAttributes(resId, attrs).use {
             val drawable = it.getDrawable(0)
             Log.d(TAG, "attr=${Integer.toHexString(attrs[0])} value=$drawable")

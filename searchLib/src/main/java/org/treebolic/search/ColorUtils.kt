@@ -10,6 +10,7 @@ import android.view.Menu
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.core.content.res.use
+import android.R as AndroidR
 
 /**
  * Color utilities
@@ -84,7 +85,7 @@ object ColorUtils {
      */
     @JvmStatic
     fun getActionBarForegroundColorFromTheme(context: Context): Int {
-        val color = getColorFromTheme(context, R.attr.actionBarTheme, android.R.attr.textColorPrimary)
+        val color = getColorFromTheme(context, AndroidR.attr.actionBarTheme, android.R.attr.textColorPrimary)
         // Log.d(TAG, "getActionBarForegroundColorFromTheme=0x${Integer.toHexString(color)}")
         return color
     }
