@@ -165,7 +165,7 @@ object ColorUtils {
      */
     @JvmStatic
     fun getActionBarForegroundColorFromTheme(context: Context): Int {
-        val color = getColorFromStyleInTheme(context, AndroidR.attr.actionBarTheme, android.R.attr.textColorPrimary)
+        val color = getColorFromStyleInTheme(context, AndroidR.attr.actionBarTheme, AndroidR.attr.textColorPrimary)
         // Log.d(TAG, "getActionBarForegroundColorFromTheme=0x${Integer.toHexString(color)}")
         return color
     }
@@ -189,7 +189,7 @@ object ColorUtils {
         Log.d(TAG, "actionBarStyle=${Integer.toHexString(resId)}")
 
         // now get action bar style values
-        val attrs = intArrayOf(AndroidR.attr.background, android.R.attr.colorForeground)
+        val attrs = intArrayOf(AndroidR.attr.background, AndroidR.attr.colorForeground)
         theme.obtainStyledAttributes(resId, attrs).use {
             val drawable = it.getDrawable(0)
             Log.d(TAG, "attr=${Integer.toHexString(attrs[0])} value=$drawable")
