@@ -36,5 +36,7 @@ dependencies {
     implementation(libs.preference.ktx)
 
     implementation(libs.core.ktx)
+    implementation(platform(libs.kotlin.bom))
+    implementation(kotlin("stdlib"))
     coreLibraryDesugaring(libs.desugar)
 }
