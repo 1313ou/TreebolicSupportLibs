@@ -4,8 +4,10 @@
 package org.treebolic
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import org.treebolic.AppCompatCommonUtils.getThemePref
 import org.treebolic.AppCompatCommonUtils.isCurrentThemeDark
 import org.treebolic.AppCompatCommonUtils.isThemeDark
@@ -29,9 +31,27 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
         // edge to edge
         enableEdgeToEdge()
 
-        // status bar
+        // day/night mode
         val isDark = if (themeId != null) isThemeDark(this, themeId) else isCurrentThemeDark(this)
+        switchToMode(if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
+
+        // status bar
         updateBarsForTheme(this, isDark)
+
+        switchToMode(if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    /**
+     * Switch to day/night mode
+     * @param mode mode
+     */
+    private fun switchToMode(mode: Int) {
+        Log.d("Switch mode", "set $mode mode for $componentName")
+        if (AppCompatDelegate.getDefaultNightMode() != mode) {
+            window.decorView.post {
+                AppCompatDelegate.setDefaultNightMode(mode)
+            }
+        }
     }
 
     /**

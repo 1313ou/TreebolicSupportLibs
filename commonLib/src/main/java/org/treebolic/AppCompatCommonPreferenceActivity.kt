@@ -7,11 +7,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -37,8 +39,11 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
         // edge to edge
         enableEdgeToEdge()
 
-        // status bar
+        // day/night mode
         val isDark = if (themeId != null) isThemeDark(this, themeId) else isCurrentThemeDark(this)
+        switchToMode(if(isDark)  AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
+
+        // status bar
         updateBarsForTheme(this, isDark)
 
         // content view
@@ -90,6 +95,19 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), Preferen
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.displayOptions = ActionBar.DISPLAY_USE_LOGO or ActionBar.DISPLAY_SHOW_TITLE or ActionBar.DISPLAY_SHOW_HOME or ActionBar.DISPLAY_HOME_AS_UP
+        }
+    }
+
+    /**
+     * Switch to day/night mode
+     * @param mode mode
+     */
+    private fun switchToMode(mode: Int) {
+        Log.d("Switch mode", "set $mode mode for $componentName")
+        if (AppCompatDelegate.getDefaultNightMode() != mode) {
+            window.decorView.post {
+                AppCompatDelegate.setDefaultNightMode(mode)
+            }
         }
     }
 
