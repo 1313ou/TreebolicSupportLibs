@@ -12,6 +12,7 @@ import android.content.res.Resources.NotFoundException
 import android.util.Log
 import android.util.TypedValue
 import androidx.core.content.edit
+import androidx.core.content.res.use
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.preference.PreferenceManager
 import org.treebolic.common.R
