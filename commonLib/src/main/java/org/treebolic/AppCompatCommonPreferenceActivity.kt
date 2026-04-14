@@ -24,7 +24,7 @@ import org.treebolic.AppCompatCommonUtils.isThemeDark
 import org.treebolic.AppCompatCommonUtils.updateBarsForTheme
 import org.treebolic.common.R
 
-abstract class AppCompatCommonPreferenceActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
+abstract class AppCompatCommonPreferenceActivity : BaseActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // theme
