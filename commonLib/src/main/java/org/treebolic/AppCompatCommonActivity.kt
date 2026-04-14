@@ -37,8 +37,6 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
 
         // status bar
         updateBarsForTheme(this, isDark)
-
-        switchToMode(if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     /**
