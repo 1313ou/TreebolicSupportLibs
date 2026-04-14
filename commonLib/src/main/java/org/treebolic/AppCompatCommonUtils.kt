@@ -7,6 +7,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources.NotFoundException
 import android.util.Log
@@ -71,20 +72,6 @@ object AppCompatCommonUtils {
         return null
     }
 
-    /**
-     * Try to commit
-     *
-     * @param editor editor editor
-     */
-    @SuppressLint("CommitPrefEdits", "ApplySharedPref")
-    private fun tryCommit(editor: SharedPreferences.Editor) {
-        try {
-            editor.apply()
-        } catch (_: AbstractMethodError) {
-            editor.commit()
-        }
-    }
-
     fun isNightMode(context: Context) = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
 
     fun isCurrentThemeDark(context: Context): Boolean {
@@ -105,4 +92,27 @@ object AppCompatCommonUtils {
         controller.isAppearanceLightStatusBars = !isDarkTheme
         controller.isAppearanceLightNavigationBars = !isDarkTheme
     }
+
+
+    /**
+     * Try to commit
+     *
+     * @param editor editor editor
+     */
+    @SuppressLint("CommitPrefEdits", "ApplySharedPref")
+    private fun tryCommit(editor: SharedPreferences.Editor) {
+        try {
+            editor.apply()
+        } catch (_: AbstractMethodError) {
+            editor.commit()
+        }
+    }
+
+    /**
+     * Has webview
+     *
+     * @param context context
+     * @return true if system has webview provider
+     */
+    fun hasWebview(context: Context,) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_WEBVIEW)
 }
