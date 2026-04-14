@@ -36,7 +36,7 @@ open class HelpActivity : AppCompatCommonActivity() {
         // layout
         try {
             setContentView(R.layout.activity_help)
-        } catch (e: InflateException) {
+        } catch (e: Exception) {
             Toast.makeText(this, "No WebView support", Toast.LENGTH_LONG).show()
             finish()
             return
