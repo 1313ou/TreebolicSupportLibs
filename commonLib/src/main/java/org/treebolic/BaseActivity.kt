@@ -78,6 +78,6 @@ open class BaseActivity : AppCompatActivity() {
 
     companion object {
 
-        private const val TAG = "BaseActivity"
+        private const val TAG = "BaseA"
     }
 }

@@ -416,7 +416,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
 
     companion object {
 
-        private const val TAG = "Download"
+        private const val TAG = "DownloadA"
 
         /**
          * Allow expanding of archive key
