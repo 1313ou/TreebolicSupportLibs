@@ -1,5 +1,5 @@
 <resources>
-	<style name="MyDefault-dayBaseTheme" parent="MyTreebolicTheme">
+	<style name="MyDefaultDayBaseTheme" parent="MyTreebolicTheme">
 		<item name="isDark">false</item>
 		<item name="colorCustom">#8E9BBE</item>
 		<item name="colorOnCustom">#000A23</item>

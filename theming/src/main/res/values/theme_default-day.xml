@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. Bernard Bou <1313ou@gmail.com>
+  -->
+
+<resources>
+
+    <style name="MyTreebolicDefaultDayTheme" parent="MyDefaultDayBaseTheme">
+        <!-- extras color attrs -->
+        <item name="colorForePrimary">?attr/colorOnSurface</item>
+        <item name="colorForeSecondary">?attr/colorOnSurfaceVariant</item>
+        <item name="colorForeTertiary">?attr/colorOnCustom</item>
+
+        <!--treebolic UI color attr -->
+        <item name="treebolic_splitbar_color">?attr/colorPrimary</item>
+
+        <!-- treebolic widget colors -->
+        <item name="treebolic_back_color">#adc1cc</item>
+        <item name="treebolic_tree_edge_color">#888888</item>
+        <item name="treebolic_root_background_color">#4251bd</item>
+        <item name="treebolic_root_foreground_color">#ffffff</item>
+        <item name="treebolic_node_background_color">#ffffff</item>
+        <item name="treebolic_node_foreground_color">#000000</item>
+
+    </style>
+
+</resources>
