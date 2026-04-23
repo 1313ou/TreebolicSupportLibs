@@ -45,6 +45,10 @@ android {
         buildConfigField("String", "GIT_HASH", "\"${getGitHash()}\"")
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
