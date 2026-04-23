@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Treebolic WordNet Themes</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			display: flex;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		.container {
+			display: flex;
+			width: 100%;
+			overflow-x: auto;
+			scroll-behavior: smooth;
+		}
+
+		.page {
+			flex-shrink: 0;
+			width: 380px;
+			height: 100vh;
+			border-right: 1px solid #ddd;
+		}
+
+		.page iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+<div class="container" id="container">
+<!--	<div class="page"><iframe src="page1.html"></iframe></div>-->
+<!--	<div class="page"><iframe src="page2.html"></iframe></div>-->
+	<div class="page"><iframe src="theme-default-day.html"></iframe></div>
+	<div class="page"><iframe src="theme-default-night.html"></iframe></div>
+</div>
+
+<script>
+	const container = document.getElementById('container');
+	const iframes = document.querySelectorAll('iframe');
+
+	iframes.forEach((iframe, i) => {
+		iframe.addEventListener('load', () => {
+			const doc = iframe.contentDocument;
+			doc.addEventListener('scroll', () => {
+				const scrollTop = doc.documentElement.scrollTop;
+				iframes.forEach(other => {
+					if (other !== iframe) {
+						other.contentDocument.documentElement.scrollTop = scrollTop;
+					}
+				});
+			});
+		});
+	});
+</script>
+</body>
+</html>
