@@ -26,4 +26,4 @@ dependencyResolutionManagement {
     }
 }
 
-include(":commonLib", ":guideLib", ":fileChooserLib", ":downloadLib", ":preferenceLib", ":wheelLib", ":searchLib", ":colorLib", ":storageLib", ":testLib")
+include(":theming", ":commonLib", ":guideLib", ":fileChooserLib", ":downloadLib", ":preferenceLib", ":wheelLib", ":searchLib", ":colorLib", ":storageLib", ":testLib")
