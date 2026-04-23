@@ -116,6 +116,6 @@ open class HelpActivity : AppCompatCommonActivity() {
 
     companion object {
 
-        private const val TAG = "Help activity"
+        private const val TAG = "HelpA"
     }
 }

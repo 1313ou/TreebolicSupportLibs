@@ -13,7 +13,7 @@ import org.treebolic.AppCompatCommonUtils.isCurrentThemeDark
 import org.treebolic.AppCompatCommonUtils.isThemeDark
 import org.treebolic.AppCompatCommonUtils.updateBarsForTheme
 
-abstract class AppCompatCommonActivity : AppCompatActivity() {
+abstract class AppCompatCommonActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // give app a chance to do something before theme is set
@@ -28,15 +28,9 @@ abstract class AppCompatCommonActivity : AppCompatActivity() {
         // super
         super.onCreate(savedInstanceState)
 
-        // edge to edge
-        enableEdgeToEdge()
-
         // day/night mode
         val isDark = if (themeId != null) isThemeDark(this, themeId) else isCurrentThemeDark(this)
         switchToMode(if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
-
-        // status bar
-        updateBarsForTheme(this, isDark)
     }
 
     /**

@@ -86,13 +86,28 @@ class OpenEditTextPreference : DialogPreference {
      * @param context context
      * @param attrs   attributes
      */
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+    constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
 
         // attributes
-        init(context, attrs)
+        if (attrs != null)
+            init(context, attrs)
+        else
+            init()
 
         // set up
         setup()
+    }
+
+    /**
+     * Initialize
+     *
+     * @param context context
+     */
+    private fun init() {
+        // obtain values through styled attributes
+        values = emptyArray()
+        labels = emptyArray()
+        enable = BooleanArray(0)
     }
 
     /**
