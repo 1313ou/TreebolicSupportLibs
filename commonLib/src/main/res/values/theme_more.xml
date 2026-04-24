@@ -9,13 +9,6 @@
 	<!-- T H E M E   O V E R L A Y S -->
 
 	<!-- ActionBar -->
-	<style name="MyActionBarTheme" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
-		<item name="android:background">@null</item> <!-- menu overflow, search view, title, subtitle backgrounds -->
-		<item name="android:textColorPrimary">?attr/actionbar_title_fore_color</item> <!-- search view foreground -->
-		<item name="android:textColorSecondary">?attr/actionbar_subtitle_fore_color</item> <!-- subtitle -->
-		<item name="colorControlNormal">?attr/actionbar_fore_color</item> <!-- pictograms (menu overflow, search magnifying glass, navigation) -->
-		<item name="searchViewStyle">@style/MyActionBarSearchView</item>
-	</style>
 
 	<!-- ActionBar Popup -->
 	<style name="MyActionBarPopupTheme" parent="ThemeOverlay.AppCompat.DayNight">
@@ -37,27 +30,12 @@
 	<!-- W I D G E T   S T Y L E S -->
 
 	<!-- Action bar -->
-	<style name="MyActionBarStyle" parent="Widget.AppCompat.ActionBar">
-		<item name="android:background">?attr/actionbar_color</item> <!-- whole actionbar background -->
-	</style>
 
 	<!-- Action bar spinner -->
-	<style name="MySpinnerStyle" parent="Widget.AppCompat.Spinner">
-		<item name="android:background">@drawable/bg_spinner</item>-->
-		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
-	</style>
 
 	<!-- Action bar spinner dropdown list -->
-	<style name="MySpinnerDropDownStyle" parent="Widget.AppCompat.ListView.DropDown">
-		<item name="android:background">?attr/actionbar_color</item>
-		<item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
-	</style>
 
 	<!-- Action bar search view -->
-	<style name="MyActionBarSearchView" parent="Widget.AppCompat.SearchView.ActionBar">
-		<item name="queryBackground">?attr/actionbar_color</item>
-		<item name="submitBackground">?attr/actionbar_fore_color</item>
-	</style>
 
 	<!-- Dialog buttons no -->
 	<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
