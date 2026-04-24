@@ -8,23 +8,23 @@
 
     <style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
 
-        <!-- theme UI controls action bar -->
-        <item name="actionBarTheme">@style/MyActionBarTheme</item>
-        <item name="android:actionBarStyle">@style/MyActionBarStyle</item>
+<!--       &lt;!&ndash; theme UI controls action bar &ndash;&gt;-->
+<!--       <item name="actionBarTheme">@style/MyActionBarTheme</item>-->
+<!--       <item name="android:actionBarStyle">@style/MyActionBarStyle</item>-->
 
-        <!-- theme UI controls pop ups -->
-        <item name="actionBarPopupTheme">@style/MyActionBarPopupTheme</item>
+<!--       &lt;!&ndash; theme UI controls pop ups &ndash;&gt;-->
+<!--       <item name="actionBarPopupTheme">@style/MyActionBarPopupTheme</item>-->
 
-        <!-- actionbar spinner -->
-        <item name="android:dropDownListViewStyle">@style/MySpinnerDropDownStyle</item>
-        <item name="android:spinnerStyle">@style/MySpinnerStyle</item>
-        <item name="spinnerStyle">@style/MySpinnerStyle</item>
+<!--       &lt;!&ndash; actionbar spinner &ndash;&gt;-->
+<!--       <item name="android:dropDownListViewStyle">@style/MySpinnerDropDownStyle</item>-->
+<!--       <item name="android:spinnerStyle">@style/MySpinnerStyle</item>-->
+<!--       <item name="spinnerStyle">@style/MySpinnerStyle</item>-->
 
-        <!-- preference -->
-        <item name="preferenceTheme">@style/MyPreferenceTheme</item>
+<!--       &lt;!&ndash; preference &ndash;&gt;-->
+<!--       <item name="preferenceTheme">@style/MyPreferenceTheme</item>-->
 
-        <!-- alert dialog -->
-        <item name="alertDialogTheme">@style/MyAlertDialogTheme</item>
+<!--       &lt;!&ndash; alert dialog &ndash;&gt;-->
+<!--       <item name="alertDialogTheme">@style/MyAlertDialogTheme</item>-->
 
         <!-- transparent statusbar and navigation bar -->
         <item name="android:statusBarColor">@android:color/transparent</item>
