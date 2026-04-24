@@ -4,75 +4,94 @@
 
 <resources>
 
-    // A P P L I C A T I O N
+	<style name="MyParentTheme" parent="Theme.Material3.Light.NoActionBar" />
 
-    <style name="MyBaseTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+	<style name="MyBaseTheme" parent="MyParentTheme">
 
-<!--       &lt;!&ndash; theme UI controls action bar &ndash;&gt;-->
-<!--       <item name="actionBarTheme">@style/MyActionBarTheme</item>-->
-<!--       <item name="android:actionBarStyle">@style/MyActionBarStyle</item>-->
+		<!-- O V E R R I D E S -->
 
-<!--       &lt;!&ndash; theme UI controls pop ups &ndash;&gt;-->
-<!--       <item name="actionBarPopupTheme">@style/MyActionBarPopupTheme</item>-->
+		<!-- transparent statusbar and navigation bar -->
+		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="android:navigationBarColor">@android:color/transparent</item>
 
-<!--       &lt;!&ndash; actionbar spinner &ndash;&gt;-->
-<!--       <item name="android:dropDownListViewStyle">@style/MySpinnerDropDownStyle</item>-->
-<!--       <item name="android:spinnerStyle">@style/MySpinnerStyle</item>-->
-<!--       <item name="spinnerStyle">@style/MySpinnerStyle</item>-->
+		<!-- whether this Window is responsible for drawing the background for the system bars.
+		     if true and the window is not floating, the system bars are drawn with a
+             transparent background and the corresponding areas in this window are filled with the
+             colors specified in android.R.attr#statusBarColor and android.R.attr#navigationBarColor-->
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
-<!--       &lt;!&ndash; preference &ndash;&gt;-->
-<!--       <item name="preferenceTheme">@style/MyPreferenceTheme</item>-->
+		<!-- Force drawing behind system bars -->
+		<!-- whether this window requests a translucent status bar -->
+		<item name="android:windowTranslucentStatus">false</item>
+		<!-- whether this window requests a translucent navigation bar -->
+		<item name="android:windowTranslucentNavigation">false</item>
 
-<!--       &lt;!&ndash; alert dialog &ndash;&gt;-->
-<!--       <item name="alertDialogTheme">@style/MyAlertDialogTheme</item>-->
+		<!-- S T Y L E S -->
 
-        <!-- transparent statusbar and navigation bar -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+		<!--app bar -->
+		<item name="appBarLayoutStyle">@style/MyAppBarLayout</item>
 
-    </style>
+		<!-- menu dropdown -->
+		<item name="popupMenuBackground">?attr/colorCustom</item>
 
-    <style name="MyAppTheme" parent="MyBaseTheme" />
+		<!-- dropdowns -->
+		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
+		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
 
-    // T R E E B O L I C A P P L I C A T I O N
+		<!-- alert dialog -->
+		<item name="alertDialogTheme">@style/MyAlertDialogTheme</item>
 
-    <style name="MyTreebolicBaseTheme" parent="MyAppTheme">
+		<!-- search view -->
+		<item name="searchViewStyle">@style/MySearchViewStyle</item>
 
-        <!-- treebolic toolbar -->
-        <item name="treebolic_toolbar_background">?attr/colorPrimary</item>
-        <item name="treebolic_toolbar_foreground_icon">?attr/colorForeTertiary</item>
+	</style>
 
-        <!-- treebolic status bar -->
-        <item name="treebolic_statusbar_background">?attr/colorPrimary</item>
-        <item name="treebolic_statusbar_foreground">?attr/colorForeSecondary</item>
-        <item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
-        <item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
+	<!-- Hooks to v25 -->
+	<style name="MyAppTheme25" parent="MyBaseTheme" />
 
-        <!-- treebolic dialog -->
-        <item name="treebolic_dialog_background">?attr/colorPrimary</item>
-        <item name="treebolic_dialog_foreground">?attr/colorForeSecondary</item>
-        <item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
-        <item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
+	<!-- Hooks to v29 -->
+	<style name="MyAppTheme29" parent="MyAppTheme25" />
 
-        <!-- treebolic split bar -->
-        <item name="treebolic_splitbar_color">?attr/colorPrimaryDark</item>
-        <item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
+	<!-- Treebolic -->
+	<style name="MyTreebolicBaseTheme" parent="MyAppTheme29">
 
-        <!-- treebolic splash -->
-        <item name="treebolic_splash_background">?attr/colorPrimary</item>
-        <item name="treebolic_splash_foreground">?attr/colorForePrimary</item>
-        <item name="treebolic_splash_progress">?attr/colorSecondary</item>
+		<!-- treebolic toolbar -->
+		<item name="treebolic_toolbar_background">?attr/colorCustomContainer</item>
+		<item name="treebolic_toolbar_foreground_icon">?attr/colorOnCustomContainer</item>
 
-        <!-- treebolic search settings -->
-        <item name="treebolic_search_settings_background">?attr/colorPrimary</item>
-        <item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
+		<!-- treebolic status bar -->
+		<item name="treebolic_statusbar_background">?attr/colorCustom</item>
+		<item name="treebolic_statusbar_foreground">?attr/colorOnCustom</item>
+		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
+		<item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
 
-    </style>
+		<!-- treebolic dialog -->
+		<item name="treebolic_dialog_background">?attr/colorCustom</item>
+		<item name="treebolic_dialog_foreground">?attr/colorOnCustom</item>
+		<item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
+		<item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
 
-    <style name="MyTreebolicTheme" parent="MyTreebolicBaseTheme" />
+		<!-- treebolic split bar -->
+		<item name="treebolic_splitbar_color">?attr/colorOnCustomContainer</item>
+		<item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
 
-    // M Y T H E M E
+		<!-- treebolic splash -->
+		<item name="treebolic_splash_background">?attr/colorCustom</item>
+		<item name="treebolic_splash_foreground">?attr/colorOnCustom</item>
+		<item name="treebolic_splash_progress">?attr/colorAccent</item>
 
-    <style name="MyTheme" parent="MyTreebolicDefaultTheme" />
+		<!-- treebolic search settings -->
+		<item name="treebolic_search_settings_background">?attr/colorCustom</item>
+		<item name="treebolic_search_settings_foreground">?attr/colorOnCustom</item>
+
+	</style>
+
+	<!-- X theme -->
+	<!--<style name="MyXBaseTheme" parent="MyTreebolicTheme"/> -->
+	<!--<style name="MyXTheme" parent="MyXBaseTheme"/> -->
+
+	<!-- Default App theme -->
+	<style name="MyTheme" parent="MyTreebolicDefaultDayTheme" />
+	<style name="MyTreebolicTheme" parent="MyTreebolicDefaultDayTheme" />
 
 </resources>

@@ -100,4 +100,29 @@
 		<item name="backgroundTint">?attr/colorCustom</item>
 	</style>
 
+	<!-- AlertDialog -->
+	<style name="MyAlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
+		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
+		<item name="buttonBarNeutralButtonStyle">@style/MyNeutralButtonStyle</item>
+	</style>
+
+	<!-- Dialog buttons no -->
+	<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+		<item name="android:textColor">?attr/colorAccent</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
+	<!-- Dialog button yes -->
+	<style name="MyPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+		<item name="android:textColor">?attr/colorAccent</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
+	<!-- Dialog button neutral -->
+	<style name="MyNeutralButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+		<item name="android:textColor">?attr/colorAccent</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
 </resources>
