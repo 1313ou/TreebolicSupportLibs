@@ -4,7 +4,7 @@
 
 <resources>
 
-    <style name="MyTreebolicDefaultNightTheme" parent="MyDefaultNightBaseTheme">
+    <style name="MyTreebolicDefaultTheme" parent="MyDefaultBaseTheme">
         <!-- extras color attrs -->
         <item name="colorForePrimary">?attr/colorOnSurface</item>
         <item name="colorForeSecondary">?attr/colorOnSurfaceVariant</item>

@@ -1,6 +1,5 @@
 <resources>
-<style name="ThemeOverlays.AppTheme.MediumContrast" parent="Theme.Material3.Light.NoActionBar">
-	<!-- <item name="isDark">false</item> -->
+<style name="ThemeOverlays.AppTheme.MediumContrast" parent="Theme.Material3.DayNight.NoActionBar">
 	<item name="colorCustom">@color/md_theme_custom</item>
 	<item name="colorOnCustom">@color/md_theme_onCustom</item>
 	<item name="colorCustomVariant">@color/md_theme_customVariant</item>

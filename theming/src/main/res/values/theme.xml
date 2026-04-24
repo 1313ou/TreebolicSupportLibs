@@ -4,7 +4,9 @@
 
 <resources>
 
-	<style name="MyParentTheme" parent="Theme.Material3.Light.NoActionBar" />
+	<style name="MyParentTheme" parent="Theme.Material3.DayNight.NoActionBar" />
+
+	<style name="MyParentOverlay" parent="ThemeOverlay.Material3" />
 
 	<style name="MyBaseTheme" parent="MyParentTheme">
 
@@ -86,12 +88,8 @@
 
 	</style>
 
-	<!-- X theme -->
-	<!--<style name="MyXBaseTheme" parent="MyTreebolicTheme"/> -->
-	<!--<style name="MyXTheme" parent="MyXBaseTheme"/> -->
-
 	<!-- Default App theme -->
-	<style name="MyTheme" parent="MyTreebolicDefaultDayTheme" />
-	<style name="MyTreebolicTheme" parent="MyTreebolicDefaultDayTheme" />
+	<style name="MyTheme" parent="MyTreebolicDefaultTheme" />
+	<style name="MyTreebolicTheme" parent="MyTreebolicDefaultTheme" />
 
 </resources>
