@@ -1,51 +1,33 @@
 #!/usr/bin/bash
 
-echo $1 $2 $3 $4
-
-source define_colors.sh
-
 m="$1"
 if [ -z "$m" ]; then
-  echo -e "${R}Mode needed${Z}"
+        echo "Module needed"
         exit 1
 fi
 
 if [ ! -z "$2" ]; then
-  seeds=$(readlink -f "$2")
-  seeds="-f $seeds"
+  seedsDay=$(readlink -f "$2")
+  seedsDay="-f $2"
 else
-        echo -e "${R}Seeds needed${Z}"
+        echo "Day seeds needed"
         exit 2
 fi
 
-theme="mytheme"
 if [ ! -z "$3" ]; then
-  theme="$3"
-  fi
+  seedsNight=$(readlink -f "$3")
+  seedsNight="-f $3"
+else
+        echo "Night seeds needed"
+        exit 3
+fi
 
-# arg checking
+source define_colors.sh
 
-case "$m" in
-        day)
-                mode=""
-                ;;
-        night)
-                mode="-d"
-                ;;
-        *)
-                echo -e "${R}Illegal mode${Z}"
-                exit 3
-                ;;
-esac
-
-
-name="My${theme^}"
-
-echo -e "${M}mode  ${m}$Z"
-echo -e "${M}seeds ${seeds}$Z"
-echo -e "${M}theme ${theme}$Z"
-echo -e "${M}name  ${name}$Z"
+echo -e "${M}seeds day          ${seedsDay}$Z"
+echo -e "${M}seeds night        ${seedsNight}$Z"
 
 # run
 
-./run.sh -o theme_html -n "$name" ${mode} $seeds -x > "html/theme-${theme}.html"
+./run.sh -o theme_html    $seedsDay   -x > "html/theme-${m}-day.html"
+./run.sh -o theme_html -d $seedsNight -x > "html/theme-${m}-night.html"

@@ -8,16 +8,14 @@ H=..
 ./convert_all_gpa.sh
 
 all="$@"
-if [ -z "$all" ]; then
+if [ -z "$all"]; then
   all="${themes}"
   fi
-  
-for theme in ${all}; do
-  mode=${theme2mode[$theme]}
-  res="$H/src/main/res"
-  name="${theme}-${mode}"
-  seeds="${theme}.txt"
-  echo -e "${Y}${theme}${Z} ${mode} ${res} ${seeds}"
+for t in ${all}; do
+  res=$H/src/main/res
+  seedsDay="${t}-day.txt"
+  seedsNight="${t}-night.txt"
+  echo -e "${Y}${t}${Z} $seedsDay $seedsNight"
 
-  ./build-theme.sh "$mode" "$seeds" "$res" "${theme}"
+  ./build-theme.sh "$res" "$seedsDay" "$seedsNight"
 done  

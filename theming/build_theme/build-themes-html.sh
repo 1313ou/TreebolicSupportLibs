@@ -3,16 +3,17 @@
 source define_colors.sh
 source define_data.sh
 
+./convert_all_gpa.sh
+
 all="$@"
 if [ -z "$all"]; then
-  all="${themes}"
+  all="${apps}"
   fi
+echo ":$all"
+for m in ${all}; do
+  seedsDay=${m}-day.txt
+  seedsNight=${m}-night.txt
+  echo -e "${Y}${m}${Z}"
 
-for theme in ${all}; do
-  mode=${theme2mode[$theme]}
-  name="${theme}-${mode}"
-  seeds="${theme}.txt"
-  echo -e "${Y}${theme}${Z} ${mode} ${res} ${seeds}"
-
-  ./build-theme-html.sh "$mode" "$seeds" "$theme"
+  ./build-theme-html.sh "$m" "$seedsDay" "$seedsNight"
 done  
