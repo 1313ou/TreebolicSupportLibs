@@ -61,6 +61,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":theming"))
     implementation(project(":preferenceLib"))
 
     implementation(libs.appcompat)

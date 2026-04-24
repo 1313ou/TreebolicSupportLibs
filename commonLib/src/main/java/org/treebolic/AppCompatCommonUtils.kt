@@ -16,7 +16,7 @@ import androidx.core.content.edit
 import androidx.core.content.res.use
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.preference.PreferenceManager
-import org.treebolic.common.R
+import org.treebolic.theme.R as ThemeR
 
 object AppCompatCommonUtils {
 
@@ -76,12 +76,12 @@ object AppCompatCommonUtils {
 
     fun isCurrentThemeDark(context: Context): Boolean {
         val outValue = TypedValue()
-        context.theme.resolveAttribute(R.attr.isDark, outValue, true)
+        context.theme.resolveAttribute(ThemeR.attr.isDark, outValue, true)
         return outValue.data != 0
     }
 
     fun isThemeDark(context: Context, themeId: Int): Boolean {
-        val attrs = intArrayOf(R.attr.isDark)
+        val attrs = intArrayOf(ThemeR.attr.isDark)
         return context.obtainStyledAttributes(themeId, attrs).use { typedArray ->
             typedArray.getBoolean(0, true)
         }

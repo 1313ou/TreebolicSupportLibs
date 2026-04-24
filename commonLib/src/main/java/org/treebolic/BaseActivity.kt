@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import org.treebolic.EdgeToEdge.updateHorizontalMargin
 import org.treebolic.NightMode.isNightMode
-import org.treebolic.common.R
+import org.treebolic.theme.R as ThemeR
 import android.R as AndroidR
 
 /**
@@ -42,7 +42,7 @@ open class BaseActivity : AppCompatActivity() {
         // Resolve custom theme color
         val navBarColor = if (isLandscape) {
             val typedValue = TypedValue()
-            theme.resolveAttribute(R.attr.colorCustom, typedValue, true)
+            theme.resolveAttribute(ThemeR.attr.colorCustom, typedValue, true)
             typedValue.data
         } else {
             Color.TRANSPARENT
