@@ -12,4 +12,7 @@
 	<string name="title_menu_about" tools:keep="@string/title_menu_about">About …</string>
 	<string name="title_menu_app" tools:keep="@string/title_menu_app">App …</string>
 
+	<!-- Hint -->
+    <string name="hint_search">Search …</string>
+
 </resources>
