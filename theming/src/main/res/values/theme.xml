@@ -58,7 +58,7 @@
 	<style name="MyTreebolicBaseTheme" parent="MyAppTheme29">
 
 		<!-- treebolic toolbar -->
-		<item name="treebolic_toolbar_background">?attr/colorCustomContainer</item>
+		<item name="treebolic_toolbar_background">?attr/colorCustom</item>
 		<item name="treebolic_toolbar_foreground_icon">?attr/colorOnCustomContainer</item>
 
 		<!-- treebolic status bar -->
