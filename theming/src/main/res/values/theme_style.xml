@@ -89,7 +89,7 @@
 		<item name="queryBackground">@android:color/transparent</item>
 
 		<!-- This controls the icon color or the icon itself -->
-		<item name="searchIcon">@drawable/logo_app_inv_mono</item>
+<!--		<item name="searchIcon">@drawable/logo_app_inv_mono</item>-->
 
 		<!-- You can also try to tint the standard icon if using Material components -->
 		<item name="searchHintIcon">@null</item>
