@@ -72,27 +72,11 @@ object AppCompatCommonUtils {
         return null
     }
 
-    fun isNightMode(context: Context) = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-
-    fun isCurrentThemeDark(context: Context): Boolean {
-        val outValue = TypedValue()
-        context.theme.resolveAttribute(ThemeR.attr.isDark, outValue, true)
-        return outValue.data != 0
-    }
-
-    fun isThemeDark(context: Context, themeId: Int): Boolean {
-        val attrs = intArrayOf(ThemeR.attr.isDark)
-        return context.obtainStyledAttributes(themeId, attrs).use { typedArray ->
-            typedArray.getBoolean(0, true)
-        }
-    }
-
     fun updateBarsForTheme(activity: Activity, isDarkTheme: Boolean) {
         val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
         controller.isAppearanceLightStatusBars = !isDarkTheme
         controller.isAppearanceLightNavigationBars = !isDarkTheme
     }
-
 
     /**
      * Try to commit
