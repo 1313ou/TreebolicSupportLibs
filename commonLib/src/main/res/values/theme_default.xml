@@ -6,8 +6,6 @@
 
     <!-- Default application theme. -->
     <style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
-        <!-- darkness -->
-        <item name="isDark">true</item>
 
         <!-- extras color attrs -->
         <item name="colorForePrimary">@color/default_primaryForeColor</item>
