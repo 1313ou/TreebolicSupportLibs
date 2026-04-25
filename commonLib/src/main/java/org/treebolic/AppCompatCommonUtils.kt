@@ -8,15 +8,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.content.res.Resources.NotFoundException
 import android.util.Log
-import android.util.TypedValue
 import androidx.core.content.edit
-import androidx.core.content.res.use
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.preference.PreferenceManager
-import org.treebolic.theme.R as ThemeR
 
 object AppCompatCommonUtils {
 
@@ -72,10 +68,10 @@ object AppCompatCommonUtils {
         return null
     }
 
-    fun updateBarsForTheme(activity: Activity, isDarkTheme: Boolean) {
+    fun updateBarsForTheme(activity: Activity, isDark: Boolean) {
         val controller = WindowInsetsControllerCompat(activity.window, activity.window.decorView)
-        controller.isAppearanceLightStatusBars = !isDarkTheme
-        controller.isAppearanceLightNavigationBars = !isDarkTheme
+        controller.isAppearanceLightStatusBars = !isDark
+        controller.isAppearanceLightNavigationBars = !isDark
     }
 
     /**
