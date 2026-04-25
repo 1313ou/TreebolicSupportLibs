@@ -9,38 +9,19 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
-import androidx.annotation.StyleRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import org.treebolic.AppCompatCommonUtils.getThemePref
-import org.treebolic.AppCompatCommonUtils.updateBarsForTheme
-import org.treebolic.NightMode.isNightMode
 import org.treebolic.common.R
 
-abstract class AppCompatCommonPreferenceActivity : BaseActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
-
-    @StyleRes
-    protected var themeId: Int? = null
+abstract class AppCompatCommonPreferenceActivity : AppCompatCommonActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // theme
-        themeId = getThemePref(this)
-        if (themeId != null) {
-            setTheme(themeId!!)
-        }
 
         // super
         super.onCreate(savedInstanceState)
-
-        // edge to edge
-        enableEdgeToEdge()
-
-        // status bar
-        updateBarsForTheme(this, isNightMode(this))
 
         // content view
         setContentView(R.layout.activity_settings)
