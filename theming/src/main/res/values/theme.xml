@@ -88,8 +88,9 @@
 
 	</style>
 
+	<style name="MyTreebolicTheme" parent="MyTreebolicBaseTheme" />
+
 	<!-- Default App theme -->
 	<style name="MyTheme" parent="MyTreebolicDefaultTheme" />
-	<style name="MyTreebolicTheme" parent="MyTreebolicDefaultTheme" />
 
 </resources>
