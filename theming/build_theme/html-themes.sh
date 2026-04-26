@@ -9,14 +9,13 @@ H=..
 
 all="$@"
 if [ -z "$all" ]; then
-  all="${!tasks[@]}"
+  all="${themes}"
   fi
-for m in ${all}; do
-  d=${tasks[$m]}
-  res=$H/$d/src/main/res
-  seedsDay=${m}-day.txt 
-  seedsNight=${m}-night.txt
-  echo -e "${Y}${m}${Z}"
+for t in ${all}; do
+  res=$H/src/main/res
+  seedsDay="${t}-day.txt"
+  seedsNight="${t}-night.txt"
+  echo -e "${Y}${t}${Z} $seedsDay $seedsNight"
 
   echo -e "${B}day ${K} $seedsDay${Z}"
   values=$(./run.sh -o map -f "$seedsDay")

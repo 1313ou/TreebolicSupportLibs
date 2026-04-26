@@ -7,13 +7,13 @@ source define_data.sh
 
 all="$@"
 if [ -z "$all"]; then
-  all="${apps}"
+  all="${themes}"
   fi
-echo ":$all"
-for m in ${all}; do
-  seedsDay=${m}-day.txt
-  seedsNight=${m}-night.txt
-  echo -e "${Y}${m}${Z}"
+for t in ${all}; do
+  res=$H/src/main/res
+  seedsDay="${t}-day.txt"
+  seedsNight="${t}-night.txt"
+  echo -e "${Y}${t}${Z} $seedsDay $seedsNight"
 
-  ./build-theme-html.sh "$m" "$seedsDay" "$seedsNight"
+  ./build-theme-html.sh "$t" "$seedsDay" "$seedsNight"
 done  

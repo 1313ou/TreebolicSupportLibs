@@ -37,13 +37,13 @@ echo -e "${M}seeds night        ${seedsNight}$Z"
 mkdir -p "$D/values"
 mkdir -p "$D/values-night"
 
-./run.sh -o attrs > "$D/values/attrs_custom.xml"
+#./run.sh -o attrs > "$D/values/attrs_custom.xml"
 
-./run.sh -o theme_day > "$D/values/themes.xml"
-./run.sh -o overlays_day > "$D/values/themes_overlays.xml"
+#./run.sh -o theme_day > "$D/values/themes.xml"
+#./run.sh -o overlays_day > "$D/values/themes_overlays.xml"
 
-./run.sh -o theme_night > "$D/values-night/themes.xml"
-./run.sh -o overlays_night > "$D/values-night/themes_overlays.xml"
+#./run.sh -o theme_night > "$D/values-night/themes.xml"
+#./run.sh -o overlays_night > "$D/values-night/themes_overlays.xml"
 
 ./run.sh -o colors    $seedsDay   -x > "$D/values/colors_theme.xml"
 ./run.sh -o colors -d $seedsNight -x > "$D/values-night/colors_theme.xml"
