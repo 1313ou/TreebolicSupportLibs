@@ -15,6 +15,11 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.res.use
+import org.treebolic.ColorUtils.fetchColors
+import org.treebolic.ColorUtils.fetchColorsFromStyle
+import org.treebolic.ColorUtils.fetchColorsNullableFromStyle
+import org.treebolic.ColorUtils.getColorFromStyleInTheme
+import org.treebolic.ColorUtils.getStyleFromTheme
 import android.R as AndroidR
 
 /**
@@ -100,50 +105,7 @@ object ColorUtils {
         return drawable
     }
 
-    /**
-     * Get color from style
-     *
-     * @param context  context
-     * @param styleRes style id (R.style.MyTheme)
-     * @param attr     attr id (R.attr.editTextColor)
-     * @return color
-     */
-    fun fetchColorFromStyle(context: Context, @StyleRes styleRes: Int, attr: Int): Int {
-        context.theme.obtainStyledAttributes(styleRes, intArrayOf(attr)).use {
-            val intColor = it.getColor(0,  /* index */0 /* defaultVal */)
-            // Log.d(TAG, "style resId=${Integer.toHexString(styleRes)} color=${Integer.toHexString(intColor)}")
-            return intColor
-        }
-    }
-
-    /**
-     * Get color from style in theme
-     *
-     * @param context     context
-     * @param style       style id (ex: R.style.MyTheme)
-     * @param colorAttrId attr id (ex: R.attr.editTextColor)
-     * @return color
-     */
-    private fun getColorFromStyleInTheme(context: Context, @AttrRes style: Int, @Suppress("SameParameterValue") @AttrRes colorAttrId: Int): Int {
-        val theme = context.theme
-
-        // res id of style pointed to from actionBarStyle
-        val typedValue = TypedValue()
-        theme.resolveAttribute(style, typedValue, true)
-        val resId = typedValue.resourceId
-
-        // now get action bar style values
-        val attrs: IntArray = intArrayOf(colorAttrId)
-
-        // get color
-        theme.obtainStyledAttributes(resId, attrs).use {
-            val color = it.getColor(0,  /* index */-0x33333334 /* defaultVal */)
-            // Log.d(TAG, "$theme attr=${Integer.toHexString(attrs[0])} value=${Integer.toHexString(color)}")
-            return color
-        }
-    }
-
-    /**
+     /**
      * Get actionbar fore color from theme
      *
      * @param context context
@@ -153,7 +115,7 @@ object ColorUtils {
     fun getActionBarForegroundColorFromTheme(context: Context): Int {
         val color = getColorFromStyleInTheme(context, AndroidR.attr.actionBarTheme, AndroidR.attr.textColorPrimary)
         // Log.d(TAG, "getActionBarForegroundColorFromTheme=0x${Integer.toHexString(color)}")
-        return color
+        return color ?: 0x333333
     }
 
     /**
