@@ -8,16 +8,9 @@
     <style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
 
         <!-- extras color attrs -->
-        <item name="colorForePrimary">@color/default_primaryForeColor</item>
-        <item name="colorForeSecondary">@color/default_secondaryForeColor</item>
-        <item name="colorForeTertiary">@color/default_tertiaryForeColor</item>
-
-        <!--treebolic UI color attr -->
-        <item name="actionbar_color">@color/default_primaryColor</item>
-        <item name="actionbar_fore_color">@color/default_primaryForeColor</item>
-        <item name="actionbar_secondary_fore_color">@color/default_secondaryForeColor</item>
-        <item name="actionbar_title_fore_color">@color/default_primaryForeColor</item>
-        <item name="actionbar_subtitle_fore_color">@color/default_secondaryForeColor</item>
+        <item name="colorForePrimary">#FFFFFF</item>
+        <item name="colorForeSecondary">#A0A0A0</item>
+        <item name="colorForeTertiary">#C0C0C0</item>
 
         <!-- treebolic widget colors -->
         <item name="treebolic_back_color">#adc1cc</item>
