@@ -64,7 +64,7 @@ object ColorUtils {
     @ColorInt
     fun fetchColors(
         context: Context,
-        vararg attrs: Int
+        @StyleableRes vararg attrs: Int
     ): IntArray {
         context.obtainStyledAttributes(attrs).use { typedArray ->
             return IntArray(attrs.size) { i ->
@@ -86,7 +86,7 @@ object ColorUtils {
     @ColorInt
     fun fetchColorsNullable(
         context: Context,
-        vararg attrs: Int
+        @StyleableRes vararg attrs: Int
     ): Array<Int?> {
         val typedValue = TypedValue()
         context.obtainStyledAttributes(typedValue.data, attrs).use {
