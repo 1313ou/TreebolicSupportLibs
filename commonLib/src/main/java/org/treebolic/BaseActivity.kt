@@ -7,7 +7,6 @@ package org.treebolic
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.SystemBarStyle
@@ -16,10 +15,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import org.treebolic.ColorUtils.fetchColor
 import org.treebolic.EdgeToEdge.updateHorizontalMargin
 import org.treebolic.NightMode.isNightMode
-import org.treebolic.theme.R as ThemeR
 import android.R as AndroidR
+import org.treebolic.theme.R as ThemeR
 
 /**
  * Common activity
@@ -40,13 +40,7 @@ open class BaseActivity : AppCompatActivity() {
         isLandscape = resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
 
         // Resolve custom theme color
-        val navBarColor = if (isLandscape) {
-            val typedValue = TypedValue()
-            theme.resolveAttribute(ThemeR.attr.colorCustom, typedValue, true)
-            typedValue.data
-        } else {
-            Color.TRANSPARENT
-        }
+        val navBarColor = if (isLandscape) fetchColor(this, ThemeR.attr.colorCustom) else Color.TRANSPARENT
 
         // Set the navigation bar style to your themed color instead of TRANSPARENT
         enableEdgeToEdge(
