@@ -4,22 +4,8 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-	<!-- generic -->
-	<color name="default_backgroundColor">@color/backgroundColor</color> <!-- generic window background -->
-	<color name="default_foregroundColor">@color/foregroundColor</color> <!-- generic window foreground -->
-
 	<!-- primary -->
 	<color name="default_primaryColor">#4251BD</color>
-	<color name="default_primaryLightColor">#797DF0</color>
-	<color name="default_primaryDarkColor">#00298C</color>
-	<color name="default_onPrimaryColor">#EEEEEE</color>
-	<color name="default_highlightOnPrimaryColor">@android:color/white</color>
-
-	<!-- secondary -->
-	<color name="default_secondaryColor">#EF2063</color>
-	<color name="default_secondaryLightColor">#FF6290</color>
-	<color name="default_secondaryDarkColor" tools:ignore="UnusedResources">#B6003A</color>
-	<color name="default_onSecondaryColor">#EEEEEE</color>
 
 	<!-- misc fore -->
 	<color name="default_primaryForeColor">#FFFFFF</color>
