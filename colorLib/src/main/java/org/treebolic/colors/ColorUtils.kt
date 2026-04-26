@@ -101,20 +101,6 @@ object ColorUtils {
     }
 
     /**
-     * Fetch color from theme
-     *
-     * @param context context
-     * @param attr    color attr
-     * @return color
-     */
-    fun fetchColor(context: Context, attr: Int): Int {
-        val theme = context.theme
-        val typedValue = TypedValue()
-        theme.resolveAttribute(attr, typedValue, true)
-        return typedValue.data
-    }
-
-    /**
      * Get color from style
      *
      * @param context  context
