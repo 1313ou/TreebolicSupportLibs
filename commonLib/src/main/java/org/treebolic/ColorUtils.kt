@@ -213,4 +213,14 @@ object ColorUtils {
     fun getColor(context: Context, @ColorRes resId: Int): Int {
         return ContextCompat.getColor(context, resId)
     }
+
+    /**
+     * Add transparency
+     * @receiver color int
+     * @param alpha 0.0 to 1.0
+     */
+    fun Int.withAlpha(alpha: Float): Int {
+        val alphaInt = (alpha.coerceIn(0f, 1f) * 255).toInt()
+        return (this and 0x00FFFFFF) or (alphaInt shl 24)
+    }
 }
