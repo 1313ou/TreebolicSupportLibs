@@ -4,32 +4,35 @@
 
 <resources>
 
-<!--	<declare-styleable name="TreebolicToolbar">-->
-<!--		<attr name="treebolic_toolbar_background" format="color|reference" />-->
-<!--		<attr name="treebolic_toolbar_foreground_icon" format="color|reference" />-->
-<!--	</declare-styleable>-->
-<!--	<declare-styleable name="TreebolicStatusbar">-->
-<!--		<attr name="treebolic_statusbar_background" format="color|reference" />-->
-<!--		<attr name="treebolic_statusbar_foreground" format="color|reference" />-->
-<!--		<attr name="treebolic_statusbar_foreground_enhanced" format="color|reference" />-->
-<!--		<attr name="treebolic_statusbar_foreground_icon" format="color|reference" />-->
-<!--	</declare-styleable>-->
-<!--	<declare-styleable name="TreebolicDialog">-->
-<!--		<attr name="treebolic_dialog_background" format="color|reference" />-->
-<!--		<attr name="treebolic_dialog_foreground" format="color|reference" />-->
-<!--		<attr name="treebolic_dialog_foreground_enhanced" format="color|reference" />-->
-<!--		<attr name="treebolic_dialog_foreground_icon" format="color|reference" />-->
-<!--	</declare-styleable>-->
-
-<!--	&lt;!&ndash; treebolic search tool (see searchLib, but this module has no deps) &ndash;&gt;-->
-<!--	<declare-styleable name="TreebolicSplitbar">-->
-<!--		<attr name="treebolic_splitbar_color" format="color|reference" />-->
-<!--		<attr name="treebolic_splitbar_drag_color" format="color|reference" />-->
-<!--	</declare-styleable>-->
-<!--	<declare-styleable name="TreebolicSplash">-->
-<!--		<attr name="treebolic_splash_background" format="color|reference" />-->
-<!--		<attr name="treebolic_splash_foreground" format="color|reference" />-->
-<!--		<attr name="treebolic_splash_progress" format="color|reference" />-->
-<!--	</declare-styleable>-->
-
+    <!--
+    <declare-styleable name="TreebolicToolbar">
+        <attr name="treebolic_toolbar_background" format="color|reference" />
+        <attr name="treebolic_toolbar_foreground_icon" format="color|reference" />
+    </declare-styleable>
+    <declare-styleable name="TreebolicStatusbar">
+        <attr name="treebolic_statusbar_background" format="color|reference" />
+        <attr name="treebolic_statusbar_foreground" format="color|reference" />
+        <attr name="treebolic_statusbar_foreground_enhanced" format="color|reference" />
+        <attr name="treebolic_statusbar_foreground_icon" format="color|reference" />
+    </declare-styleable>
+    <declare-styleable name="TreebolicDialog">
+        <attr name="treebolic_dialog_background" format="color|reference" />
+        <attr name="treebolic_dialog_foreground" format="color|reference" />
+        <attr name="treebolic_dialog_foreground_enhanced" format="color|reference" />
+        <attr name="treebolic_dialog_foreground_icon" format="color|reference" />
+    </declare-styleable>
+    <declare-styleable name="TreebolicSplitbar">
+        <attr name="treebolic_splitbar_color" format="color|reference" />
+        <attr name="treebolic_splitbar_drag_color" format="color|reference" />
+    </declare-styleable>
+    <declare-styleable name="TreebolicSplash">
+        <attr name="treebolic_splash_background" format="color|reference" />
+        <attr name="treebolic_splash_foreground" format="color|reference" />
+        <attr name="treebolic_splash_progress" format="color|reference" />
+    </declare-styleable>
+    <declare-styleable name="TreebolicSearchSettings">
+        <attr name="treebolic_search_settings_background" format="color|reference" />
+        <attr name="treebolic_search_settings_foreground" format="color|reference" />
+    </declare-styleable>
+	-->
 </resources>
