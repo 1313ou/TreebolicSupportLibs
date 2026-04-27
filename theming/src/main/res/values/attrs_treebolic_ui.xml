@@ -4,10 +4,6 @@
 
 <resources>
 
-	<!-- APPLICATION -->
-
-	<attr name="colorForeTertiary" format="color|reference" />
-
 	<!-- WIDGET -->
 
 	<!-- treebolic toolbar (not app toolbar) -->

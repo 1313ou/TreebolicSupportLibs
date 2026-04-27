@@ -7,9 +7,6 @@
     <!-- Default application theme. -->
     <style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
 
-        <!-- extras color attrs -->
-        <item name="colorForeTertiary">#C0C0C0</item>
-
         <!-- treebolic widget colors -->
         <item name="treebolic_back_color">#adc1cc</item>
         <item name="treebolic_tree_edge_color">#cccccc</item>

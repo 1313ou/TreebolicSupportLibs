@@ -5,8 +5,6 @@
 <resources>
 
     <style name="MyTreebolicDefaultTheme" parent="MyDefaultBaseTheme">
-        <!-- extras color attrs -->
-        <item name="colorForeTertiary">?attr/colorOnCustom</item>
 
         <!--treebolic UI color attr -->
         <item name="treebolic_splitbar_color">?attr/colorPrimary</item>
