@@ -24,9 +24,6 @@
         <item name="android:textColorSecondary">?attr/colorOnCustom</item> <!-- submenu item foreground -->
     </style>
 
-    <!-- Preference -->
-    <style name="MyPreferenceThemeCompat" parent="PreferenceThemeOverlay" />
-
     <!-- W I D G E T   S T Y L E S -->
 
     <!-- Action bar -->
