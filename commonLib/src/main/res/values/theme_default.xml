@@ -8,7 +8,6 @@
     <style name="MyTreebolicDefaultTheme" parent="MyTreebolicTheme">
 
         <!-- extras color attrs -->
-        <item name="colorForeSecondary">#A0A0A0</item>
         <item name="colorForeTertiary">#C0C0C0</item>
 
         <!-- treebolic widget colors -->

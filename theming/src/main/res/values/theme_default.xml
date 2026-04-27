@@ -6,7 +6,6 @@
 
     <style name="MyTreebolicDefaultTheme" parent="MyDefaultBaseTheme">
         <!-- extras color attrs -->
-        <item name="colorForeSecondary">?attr/colorOnSurfaceVariant</item>
         <item name="colorForeTertiary">?attr/colorOnCustom</item>
 
         <!--treebolic UI color attr -->
