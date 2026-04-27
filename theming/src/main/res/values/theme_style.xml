@@ -30,12 +30,6 @@
 		<item name="android:textColor">?attr/colorOnSurface</item>
 	</style>
 
-	<!-- Treebolic alert dialog overlay -->
-	<style name="AlertDialogCustom" parent="ThemeOverlay.AppCompat.Dialog.Alert">
-		<item name="android:background">?attr/colorCustom</item>
-		<item name="android:textColor">?attr/colorOnCustom</item>
-	</style>
-
 	<!-- Bottom sheet overlay -->
 	<style name="MyBottomSheetOverlay" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
 		<item name="colorSurface">?attr/colorTertiary</item>
@@ -46,7 +40,7 @@
 		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
 	</style>
 
-	<!-- S T Y L E S -->
+	<!-- A P P B A R-->
 
 	<!-- App bar -->
 	<style name="MyAppBarLayout" parent="Widget.Material3.AppBarLayout">
@@ -56,7 +50,8 @@
 		<item name="liftOnScroll">false</item>
 	</style>
 
-	<!-- Search view theme overlay -->
+	<!-- D R O P D O W N -->
+
 	<!-- 1. Dropdown list -->
 	<style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
 		<item name="android:background">?attr/colorCustom</item>
@@ -70,20 +65,14 @@
 		<item name="android:textSize">14sp</item>
 	</style>
 
-	<!-- Search view theme overlay -->
-	<!-- 1. The Theme Overlay (for text and icon colors) -->
-	<style name="MySearchViewTheme" parent="ThemeOverlay.Material3">
-		<item name="android:textColorPrimary">?attr/colorOnSurface</item>
-		<item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
-		<item name="colorControlNormal">?attr/colorOnSurface</item>
-	</style>
+	<!-- S E A R C H   V I E W S -->
 
-	<!-- 2. The Widget Style (for background, icons, and applying the theme) -->
+	<!-- The Widget Style (for background, icons, and applying the theme) -->
 	<style name="MySearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
 		<item name="android:background">?attr/colorSurface</item>
 
 		<!-- Apply the theme overlay here so it's encapsulated in the style -->
-		<item name="android:theme">@style/MySearchViewTheme</item>
+		<item name="android:theme">@style/MySearchViewOverlay</item>
 
 		<!-- This controls the background of the text field -->
 		<item name="queryBackground">@android:color/transparent</item>
@@ -95,34 +84,49 @@
 		<item name="searchHintIcon">@null</item>
 	</style>
 
+			<!-- The Theme Overlay (for text and icon colors) -->
+			<style name="MySearchViewOverlay" parent="ThemeOverlay.Material3">
+				<item name="android:textColorPrimary">?attr/colorOnSurface</item>
+				<item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
+				<item name="colorControlNormal">?attr/colorOnSurface</item>
+			</style>
+
 	<!-- M3 Search view -->
 	<style name="MyM3SearchViewStyle" parent="Widget.Material3.SearchView">
 		<item name="backgroundTint">?attr/colorCustom</item>
 	</style>
 
+	<!-- A L E R T   D I A L O G S -->
+
 	<!-- AlertDialog -->
-	<style name="MyAlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+	<style name="MyAlertDialogOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
 		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
 		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
 		<item name="buttonBarNeutralButtonStyle">@style/MyNeutralButtonStyle</item>
 	</style>
 
-	<!-- Dialog buttons no -->
-	<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-		<item name="android:textColor">?attr/colorAccent</item>
-		<item name="android:textAllCaps">true</item>
-	</style>
+			<!-- Dialog buttons no -->
+			<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+				<item name="android:textColor">?attr/colorAccent</item>
+				<item name="android:textAllCaps">true</item>
+			</style>
 
-	<!-- Dialog button yes -->
-	<style name="MyPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-		<item name="android:textColor">?attr/colorAccent</item>
-		<item name="android:textAllCaps">true</item>
-	</style>
+			<!-- Dialog button yes -->
+			<style name="MyPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+				<item name="android:textColor">?attr/colorAccent</item>
+				<item name="android:textAllCaps">true</item>
+			</style>
 
-	<!-- Dialog button neutral -->
-	<style name="MyNeutralButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-		<item name="android:textColor">?attr/colorAccent</item>
-		<item name="android:textAllCaps">true</item>
+			<!-- Dialog button neutral -->
+			<style name="MyNeutralButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+				<item name="android:textColor">?attr/colorAccent</item>
+				<item name="android:textAllCaps">true</item>
+			</style>
+
+	<!-- Treebolic alert dialog overlay -->
+	<style name="MyAlertDialogCustomOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+		<item name="android:background">?attr/colorCustom</item>
+		<item name="android:textColor">?attr/colorOnCustom</item>
 	</style>
 
 </resources>
