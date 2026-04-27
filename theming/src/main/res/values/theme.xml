@@ -64,14 +64,14 @@
 		<!-- treebolic status bar -->
 		<item name="treebolic_statusbar_background">?attr/colorCustom</item>
 		<item name="treebolic_statusbar_foreground">?attr/colorOnCustom</item>
-		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
-		<item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
+		<item name="treebolic_statusbar_foreground_enhanced">?attr/colorOnSurface</item>
+		<item name="treebolic_statusbar_foreground_icon">?attr/colorOnSurface</item>
 
 		<!-- treebolic dialog -->
 		<item name="treebolic_dialog_background">?attr/colorCustom</item>
 		<item name="treebolic_dialog_foreground">?attr/colorOnCustom</item>
-		<item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
-		<item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
+		<item name="treebolic_dialog_foreground_enhanced">?attr/colorOnSurface</item>
+		<item name="treebolic_dialog_foreground_icon">?attr/colorOnSurface</item>
 
 		<!-- treebolic split bar -->
 		<item name="treebolic_splitbar_color">?attr/colorOnCustomContainer</item>

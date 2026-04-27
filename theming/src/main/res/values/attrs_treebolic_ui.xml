@@ -6,7 +6,6 @@
 
 	<!-- APPLICATION -->
 
-	<attr name="colorForePrimary" format="color|reference" />
 	<attr name="colorForeSecondary" format="color|reference" />
 	<attr name="colorForeTertiary" format="color|reference" />
 

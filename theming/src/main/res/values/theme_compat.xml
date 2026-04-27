@@ -45,14 +45,14 @@
         <!-- treebolic status bar -->
         <item name="treebolic_statusbar_background">?attr/colorPrimary</item>
         <item name="treebolic_statusbar_foreground">?attr/colorForeSecondary</item>
-        <item name="treebolic_statusbar_foreground_enhanced">?attr/colorForePrimary</item>
-        <item name="treebolic_statusbar_foreground_icon">?attr/colorForePrimary</item>
+        <item name="treebolic_statusbar_foreground_enhanced">?attr/colorOnSurface</item>
+        <item name="treebolic_statusbar_foreground_icon">?attr/colorOnSurface</item>
 
         <!-- treebolic dialog -->
         <item name="treebolic_dialog_background">?attr/colorPrimary</item>
         <item name="treebolic_dialog_foreground">?attr/colorForeSecondary</item>
-        <item name="treebolic_dialog_foreground_enhanced">?attr/colorForePrimary</item>
-        <item name="treebolic_dialog_foreground_icon">?attr/colorForePrimary</item>
+        <item name="treebolic_dialog_foreground_enhanced">?attr/colorOnSurface</item>
+        <item name="treebolic_dialog_foreground_icon">?attr/colorOnSurface</item>
 
         <!-- treebolic split bar -->
         <item name="treebolic_splitbar_color">?attr/colorPrimaryDark</item>
@@ -60,12 +60,12 @@
 
         <!-- treebolic splash -->
         <item name="treebolic_splash_background">?attr/colorPrimary</item>
-        <item name="treebolic_splash_foreground">?attr/colorForePrimary</item>
+        <item name="treebolic_splash_foreground">?attr/colorOnSurface</item>
         <item name="treebolic_splash_progress">?attr/colorSecondary</item>
 
         <!-- treebolic search settings -->
         <item name="treebolic_search_settings_background">?attr/colorPrimary</item>
-        <item name="treebolic_search_settings_foreground">?attr/colorForePrimary</item>
+        <item name="treebolic_search_settings_foreground">?attr/colorOnSurface</item>
 
     </style>
 
