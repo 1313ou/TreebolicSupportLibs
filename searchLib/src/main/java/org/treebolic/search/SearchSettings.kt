@@ -176,7 +176,7 @@ class SearchSettings : AppCompatDialogFragment() {
         scopeWheel!!.currentItem = scopeIndex
         modeWheel!!.currentItem = modeIndex
 
-        val builder = AlertDialog.Builder(ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom))
+        val builder = AlertDialog.Builder(ContextThemeWrapper(requireActivity(), R.style.MyAlertDialogCustomOverlay))
         return builder 
             .setView(view).setPositiveButton(R.string.title_yes) { dialog2: DialogInterface, _: Int -> dialog2.dismiss() } 
             .create()
