@@ -7,7 +7,7 @@
     <style name="MyTreebolicDefaultTheme" parent="MyDefaultBaseTheme">
 
         <!-- treebolic widget colors -->
-        <item name="treebolic_back_color">#adc1cc</item>
+        <item name="treebolic_back_color">#012738</item>
         <item name="treebolic_tree_edge_color">#888888</item>
         <item name="treebolic_root_background_color">#4251bd</item>
         <item name="treebolic_root_foreground_color">#ffffff</item>
