@@ -6,9 +6,6 @@
 
     <style name="MyTreebolicDefaultTheme" parent="MyDefaultBaseTheme">
 
-        <!--treebolic UI color attr -->
-        <item name="treebolic_splitbar_color">?attr/colorPrimary</item>
-
         <!-- treebolic widget colors -->
         <item name="treebolic_back_color">#adc1cc</item>
         <item name="treebolic_tree_edge_color">#888888</item>
