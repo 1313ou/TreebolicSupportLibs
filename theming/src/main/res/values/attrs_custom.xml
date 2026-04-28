@@ -1,10 +1,9 @@
 
 <resources>
-  <attr name="colorCustom" format="color" />
-  <attr name="colorOnCustom" format="color" />
-  <attr name="colorCustomVariant" format="color" />
-  <attr name="colorOnCustomVariant" format="color" />
-  <attr name="colorCustomContainer" format="color" />
-  <attr name="colorOnCustomContainer" format="color" />
+  <attr name="colorCustom" format="color|reference" />
+  <attr name="colorOnCustom" format="color|reference" />
+  <attr name="colorCustomVariant" format="color|reference" />
+  <attr name="colorOnCustomVariant" format="color|reference" />
+  <attr name="colorCustomContainer" format="color|reference" />
+  <attr name="colorOnCustomContainer" format="color|reference" />
 </resources>
-
