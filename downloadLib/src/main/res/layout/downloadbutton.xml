@@ -12,8 +12,9 @@
 	android:contentDescription="@string/download"
 	android:elevation="4dp"
 	android:visibility="visible"
+	app:backgroundTint="?attr/colorPrimary"
+	app:tint="?attr/colorOnPrimary"
 	app:fabSize="normal"
-	app:tint="@android:color/white"
 	app:useCompatPadding="true"
 	app:srcCompat="@drawable/ic_download"
 	tools:ignore="UnusedAttribute" />
