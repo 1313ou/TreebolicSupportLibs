@@ -1,4 +1,4 @@
-#4251BD  Dark periwinkle
-#EF2063  Cerise
-#FF6290  Rosy pink
-#B6003A  Rose red
+#272D5B  Dark periwinkle
+#EF77A1  Cerise
+#FFB0CE  Rosy pink
+#BE5649  Purple brown
