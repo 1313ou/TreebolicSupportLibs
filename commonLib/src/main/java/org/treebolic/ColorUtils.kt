@@ -2,7 +2,9 @@ package org.treebolic
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.util.TypedValue
+import android.view.Menu
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
@@ -222,5 +224,34 @@ object ColorUtils {
     fun Int.withAlpha(alpha: Float): Int {
         val alphaInt = (alpha.coerceIn(0f, 1f) * 255).toInt()
         return (this and 0x00FFFFFF) or (alphaInt shl 24)
+    }
+
+    /**
+     * Tint drawable
+     *
+     * @param iconTint tint
+     * @param drawable drawable
+     */
+    fun tint(@ColorInt iconTint: Int, drawable: Drawable) {
+        // DrawableCompat.setTint(DrawableCompat.wrap(drawable), iconTint)
+        drawable.setTint(iconTint)
+    }
+
+    /**
+     * Tint menu items
+     *
+     * @param iconTint    tint
+     * @param menu        menu
+     * @param menuItemIds menu item ids
+     */
+    @JvmStatic
+    fun tint(@ColorInt iconTint: Int, menu: Menu, vararg menuItemIds: Int) {
+        for (menuItemId in menuItemIds) {
+            val menuItem = menu.findItem(menuItemId)
+            val drawable = menuItem.icon
+            if (drawable != null) {
+                tint(iconTint, drawable)
+            }
+        }
     }
 }
