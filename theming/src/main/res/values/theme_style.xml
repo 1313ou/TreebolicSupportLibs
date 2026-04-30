@@ -105,17 +105,11 @@
          <item name="buttonBarNeutralButtonStyle">@style/MyButtonStyle</item>
     </style>
 
-    <!-- Dialog buttons no -->
-    <style name="MyButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-        <item name="android:textColor">?attr/colorAccent</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-    <!-- Treebolic alert dialog overlay -->
-    <style name="MyAlertDialogCustomOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
-        <item name="android:background">?attr/colorCustom</item>
-        <item name="android:textColor">?attr/colorOnCustom</item>
-    </style>
+        <!-- Dialog buttons no -->
+        <style name="MyButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+            <item name="android:textColor">?attr/colorAccent</item>
+            <item name="android:textAllCaps">true</item>
+        </style>
 
    <!-- Treebolic M3 alert dialog overlay -->
     <style name="MyM3AlertDialogOverlay" parent="ThemeOverlay.Material3.MaterialAlertDialog">
