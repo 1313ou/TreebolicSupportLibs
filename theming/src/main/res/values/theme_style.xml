@@ -24,12 +24,6 @@
         <item name="android:textColor">?attr/colorOnCustom</item>
     </style>
 
-    <!-- Surface overlay -->
-    <style name="MySurfaceOverlay" parent="ThemeOverlay.Material3">
-        <item name="android:background">?attr/colorSurface</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
-    </style>
-
     <!-- Bottom sheet overlay -->
     <style name="MyBottomSheetOverlay" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
         <item name="colorSurface">?attr/colorTertiary</item>
