@@ -59,7 +59,7 @@
                     android:indeterminate="false"
                     android:max="100"
                     android:progress="0"
-                    android:visibility="visible" />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/progressStatus"
