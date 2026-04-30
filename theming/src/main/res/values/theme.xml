@@ -36,9 +36,6 @@
 		<item name="android:dropDownListViewStyle">@style/MyDropDownListViewStyle</item>
 		<item name="android:dropDownItemStyle">@style/MyDropDownItemStyle</item>
 
-		<!-- alert dialog -->
-		<item name="alertDialogTheme">@style/MyAlertDialogOverlay</item>
-
 		<!-- search view -->
 		<item name="searchViewStyle">@style/MySearchViewStyle</item>
 

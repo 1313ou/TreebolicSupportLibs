@@ -98,20 +98,7 @@
 
     <!-- A L E R T   D I A L O G S -->
 
-    <!-- AlertDialog -->
-    <style name="MyAlertDialogOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
-        <item name="buttonBarPositiveButtonStyle">@style/MyButtonStyle</item>
-        <item name="buttonBarNegativeButtonStyle">@style/MyButtonStyle</item>
-         <item name="buttonBarNeutralButtonStyle">@style/MyButtonStyle</item>
-    </style>
-
-        <!-- Dialog buttons no -->
-        <style name="MyButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-            <item name="android:textColor">?attr/colorAccent</item>
-            <item name="android:textAllCaps">true</item>
-        </style>
-
-   <!-- Treebolic M3 alert dialog overlay -->
+   <!-- M3 Alert Dialog overlay -->
     <style name="MyM3AlertDialogOverlay" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="android:backgroundTint">?attr/colorCustom</item>
         <!-- <item name="colorPrimary">?attr/colorOnPrimary</item>-->
