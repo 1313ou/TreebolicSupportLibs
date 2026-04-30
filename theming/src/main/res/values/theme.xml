@@ -67,7 +67,7 @@
 		<item name="treebolic_dialog_foreground_icon">?attr/colorOnSurface</item>
 
 		<!-- treebolic split bar -->
-		<item name="treebolic_splitbar_color">?attr/colorOnCustomContainer</item>
+		<item name="treebolic_splitbar_color">?attr/colorOnCustom</item>
 		<item name="treebolic_splitbar_drag_color">?attr/colorAccent</item>
 
 		<!-- treebolic splash -->
