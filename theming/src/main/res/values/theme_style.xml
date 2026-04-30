@@ -4,129 +4,123 @@
 
 <resources>
 
-	<!-- T H E M E S -->
+    <!-- T H E M E S -->
 
-	<!-- ShareActionChooserActivity -->
-	<style name="MyTranslucentTheme" parent="Theme.Material3.DayNight.NoActionBar">
-		<item name="android:windowIsTranslucent">true</item>
-		<item name="android:windowBackground">@android:color/transparent</item>
-		<item name="android:windowContentOverlay">@null</item>
-		<item name="android:windowNoTitle">true</item>
-		<item name="android:windowIsFloating">true</item>
-		<item name="android:backgroundDimEnabled">false</item>
-	</style>
+    <!-- ShareActionChooserActivity -->
+    <style name="MyTranslucentTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 
-	<!-- O V E R L A Y S -->
+    <!-- O V E R L A Y S -->
 
-	<!-- Custom overlay -->
-	<style name="MyCustomOverlay" parent="ThemeOverlay.Material3">
-		<item name="android:background">?attr/colorCustom</item>
-		<item name="android:textColor">?attr/colorOnCustom</item>
-	</style>
+    <!-- Custom overlay -->
+    <style name="MyCustomOverlay" parent="ThemeOverlay.Material3">
+        <item name="android:background">?attr/colorCustom</item>
+        <item name="android:textColor">?attr/colorOnCustom</item>
+    </style>
 
-	<!-- Surface overlay -->
-	<style name="MySurfaceOverlay" parent="ThemeOverlay.Material3">
-		<item name="android:background">?attr/colorSurface</item>
-		<item name="android:textColor">?attr/colorOnSurface</item>
-	</style>
+    <!-- Surface overlay -->
+    <style name="MySurfaceOverlay" parent="ThemeOverlay.Material3">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
 
-	<!-- Bottom sheet overlay -->
-	<style name="MyBottomSheetOverlay" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
-		<item name="colorSurface">?attr/colorTertiary</item>
-		<item name="colorOnSurface">?attr/colorOnTertiary</item>
-		<item name="android:textColor">?attr/colorOnTertiary</item>
-		<!-- Ensure the navigation bar remains transparent if the parent doesn't set it -->
-		<item name="android:navigationBarColor">@android:color/transparent</item>
-		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
-	</style>
+    <!-- Bottom sheet overlay -->
+    <style name="MyBottomSheetOverlay" parent="ThemeOverlay.Material3.DayNight.BottomSheetDialog">
+        <item name="colorSurface">?attr/colorTertiary</item>
+        <item name="colorOnSurface">?attr/colorOnTertiary</item>
+        <item name="android:textColor">?attr/colorOnTertiary</item>
+        <!-- Ensure the navigation bar remains transparent if the parent doesn't set it -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
 
-	<!-- A P P B A R-->
+    <!-- A P P B A R-->
 
-	<!-- App bar -->
-	<style name="MyAppBarLayout" parent="Widget.Material3.AppBarLayout">
-		<item name="android:background">?attr/colorCustom</item>
-		<item name="android:textColor">?attr/colorOnCustom</item>
-		<!-- This prevents the AppBarLayout from applying an elevation overlay that would cover the statusBarColor -->
-		<item name="liftOnScroll">false</item>
-	</style>
+    <!-- App bar -->
+    <style name="MyAppBarLayout" parent="Widget.Material3.AppBarLayout">
+        <item name="android:background">?attr/colorCustom</item>
+        <item name="android:textColor">?attr/colorOnCustom</item>
+        <!-- This prevents the AppBarLayout from applying an elevation overlay that would cover the statusBarColor -->
+        <item name="liftOnScroll">false</item>
+    </style>
 
-	<!-- D R O P D O W N -->
+    <!-- D R O P D O W N -->
 
-	<!-- 1. Dropdown list -->
-	<style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
-		<item name="android:background">?attr/colorCustom</item>
-		<item name="android:textColor">?attr/colorOnCustom</item>
-	</style>
+    <!-- 1. Dropdown list -->
+    <style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:background">?attr/colorCustom</item>
+        <item name="android:textColor">?attr/colorOnCustom</item>
+    </style>
 
-	<!-- 2. Dropdown item -->
-	<style name="MyDropDownItemStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
-		<item name="android:background">?attr/colorCustom</item>
-		<item name="android:textColor">?attr/colorOnCustom</item>
-		<item name="android:textSize">14sp</item>
-	</style>
+    <!-- 2. Dropdown item -->
+    <style name="MyDropDownItemStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:background">?attr/colorCustom</item>
+        <item name="android:textColor">?attr/colorOnCustom</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
-	<!-- S E A R C H   V I E W S -->
+    <!-- S E A R C H   V I E W S -->
 
-	<!-- The Widget Style (for background, icons, and applying the theme) -->
-	<style name="MySearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
-		<item name="android:background">?attr/colorSurface</item>
+    <!-- The Widget Style (for background, icons, and applying the theme) -->
+    <style name="MySearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
+        <item name="android:background">?attr/colorSurface</item>
 
-		<!-- Apply the theme overlay here so it's encapsulated in the style -->
-		<item name="android:theme">@style/MySearchViewOverlay</item>
+        <!-- Apply the theme overlay here so it's encapsulated in the style -->
+        <item name="android:theme">@style/MySearchViewOverlay</item>
 
-		<!-- This controls the background of the text field -->
-		<item name="queryBackground">@android:color/transparent</item>
+        <!-- This controls the background of the text field -->
+        <item name="queryBackground">@android:color/transparent</item>
 
-		<!-- This controls the icon color or the icon itself -->
-<!--		<item name="searchIcon">@drawable/logo_app_inv_mono</item>-->
+        <!-- This controls the icon color or the icon itself -->
+        <!--		<item name="searchIcon">@drawable/logo_app_inv_mono</item>-->
 
-		<!-- You can also try to tint the standard icon if using Material components -->
-		<item name="searchHintIcon">@null</item>
-	</style>
+        <!-- You can also try to tint the standard icon if using Material components -->
+        <item name="searchHintIcon">@null</item>
+    </style>
 
-			<!-- The Theme Overlay (for text and icon colors) -->
-			<style name="MySearchViewOverlay" parent="ThemeOverlay.Material3">
-				<item name="android:textColorPrimary">?attr/colorOnSurface</item>
-				<item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
-				<item name="colorControlNormal">?attr/colorOnSurface</item>
-			</style>
+    <!-- The Theme Overlay (for text and icon colors) -->
+    <style name="MySearchViewOverlay" parent="ThemeOverlay.Material3">
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
+        <item name="colorControlNormal">?attr/colorOnSurface</item>
+    </style>
 
-	<!-- M3 Search view -->
-	<style name="MyM3SearchViewStyle" parent="Widget.Material3.SearchView">
-		<item name="backgroundTint">?attr/colorCustom</item>
-	</style>
+    <!-- M3 Search view -->
+    <style name="MyM3SearchViewStyle" parent="Widget.Material3.SearchView">
+        <item name="backgroundTint">?attr/colorCustom</item>
+    </style>
 
-	<!-- A L E R T   D I A L O G S -->
+    <!-- A L E R T   D I A L O G S -->
 
-	<!-- AlertDialog -->
-	<style name="MyAlertDialogOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
-		<item name="buttonBarNegativeButtonStyle">@style/MyNegativeButtonStyle</item>
-		<item name="buttonBarPositiveButtonStyle">@style/MyPositiveButtonStyle</item>
-		<item name="buttonBarNeutralButtonStyle">@style/MyNeutralButtonStyle</item>
-	</style>
+    <!-- AlertDialog -->
+    <style name="MyAlertDialogOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/MyButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/MyButtonStyle</item>
+         <item name="buttonBarNeutralButtonStyle">@style/MyButtonStyle</item>
+    </style>
 
-			<!-- Dialog buttons no -->
-			<style name="MyNegativeButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-				<item name="android:textColor">?attr/colorAccent</item>
-				<item name="android:textAllCaps">true</item>
-			</style>
+    <!-- Dialog buttons no -->
+    <style name="MyButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
 
-			<!-- Dialog button yes -->
-			<style name="MyPositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-				<item name="android:textColor">?attr/colorAccent</item>
-				<item name="android:textAllCaps">true</item>
-			</style>
+    <!-- Treebolic alert dialog overlay -->
+    <style name="MyAlertDialogCustomOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:background">?attr/colorCustom</item>
+        <item name="android:textColor">?attr/colorOnCustom</item>
+    </style>
 
-			<!-- Dialog button neutral -->
-			<style name="MyNeutralButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
-				<item name="android:textColor">?attr/colorAccent</item>
-				<item name="android:textAllCaps">true</item>
-			</style>
-
-	<!-- Treebolic alert dialog overlay -->
-	<style name="MyAlertDialogCustomOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
-		<item name="android:background">?attr/colorCustom</item>
-		<item name="android:textColor">?attr/colorOnCustom</item>
-	</style>
+   <!-- Treebolic M3 alert dialog overlay -->
+    <style name="MyM3AlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:backgroundTint">?attr/colorCustom</item>
+        <item name="colorPrimary">?attr/colorOnCustom</item>
+    </style>
 
 </resources>
