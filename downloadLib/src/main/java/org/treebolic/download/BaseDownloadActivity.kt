@@ -33,7 +33,7 @@ import java.io.InputStream
  *
  * @author Bernard Bou
  */
-abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListener {
+abstract class BaseDownloadActivity : AppCompatCommonActivity(), View.OnClickListener {
 
     /**
      * Download id
@@ -157,7 +157,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
         src2 = findViewById(R.id.src2)
         target = findViewById(R.id.target)
         expandArchiveCheckbox = findViewById<View>(R.id.expandArchive) as CheckBox
-        expandArchiveCheckbox!!.setOnClickListener { this@DownloadActivity.expandArchive = expandArchiveCheckbox!!.isChecked }
+        expandArchiveCheckbox!!.setOnClickListener { this@BaseDownloadActivity.expandArchive = expandArchiveCheckbox!!.isChecked }
 
         // retrieve arguments
         val allowKeepArchive = intent.getBooleanExtra(ARG_ALLOW_EXPAND_ARCHIVE, false)
@@ -172,7 +172,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                 val action = intent.action
                 if (DownloadManager.ACTION_DOWNLOAD_COMPLETE == action) {
                     val id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0)
-                    if (id == this@DownloadActivity.downloadId) {
+                    if (id == this@BaseDownloadActivity.downloadId) {
                         val success = retrieve()
 
                         // progress
@@ -180,12 +180,12 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                         progressStatus!!.setText(if (success) R.string.status_download_successful else R.string.status_download_fail)
 
                         // toast
-                        Toast.makeText(this@DownloadActivity, if (success) R.string.ok_data else R.string.fail_data, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@BaseDownloadActivity, if (success) R.string.ok_data else R.string.fail_data, Toast.LENGTH_SHORT).show()
 
                         // return result
                         val resultIntent = Intent()
                         resultIntent.putExtra(RESULT_DOWNLOAD_DATA_AVAILABLE, true)
-                        this@DownloadActivity.setResult(RESULT_OK, resultIntent)
+                        this@BaseDownloadActivity.setResult(RESULT_OK, resultIntent)
 
                         finish()
                     }
@@ -219,7 +219,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
 
         // finish
         if (finished()) {
-            Toast.makeText(this@DownloadActivity, R.string.ok_data, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@BaseDownloadActivity, R.string.ok_data, Toast.LENGTH_SHORT).show()
 
             // return result
             val resultIntent = Intent()
@@ -232,7 +232,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
 
     override fun onStop() {
         // register receiver
-        unregisterReceiver(this@DownloadActivity.receiver)
+        unregisterReceiver(this@BaseDownloadActivity.receiver)
         super.onStop()
     }
 
@@ -329,7 +329,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
                     // process
                     var dispose = false
                     try {
-                        this@DownloadActivity.contentResolver.openInputStream(uri).use { input ->
+                        this@BaseDownloadActivity.contentResolver.openInputStream(uri).use { input ->
                             // handle
                             dispose = process(input!!)
                         }
@@ -367,7 +367,7 @@ abstract class DownloadActivity : AppCompatCommonActivity(), View.OnClickListene
             while (downloading) {
                 // query
                 val query = DownloadManager.Query()
-                query.setFilterById(this@DownloadActivity.downloadId)
+                query.setFilterById(this@BaseDownloadActivity.downloadId)
 
                 // cursor
                 val cursor = downloadManager!!.query(query)
