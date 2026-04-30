@@ -33,8 +33,8 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatCommonActivity(), Pr
         if (savedInstanceState == null) {
             var fragmentClassName: String? = null
             val args = intent.extras
-            if (args != null && args.containsKey(INITIAL_ARG)) {
-                fragmentClassName = args.getString(INITIAL_ARG)
+            if (args != null && args.containsKey(ARG_FRAGMENT)) {
+                fragmentClassName = args.getString(ARG_FRAGMENT)
             }
             val fragment = if (fragmentClassName == null) {
                 HeaderFragment()
@@ -174,6 +174,6 @@ abstract class AppCompatCommonPreferenceActivity : AppCompatCommonActivity(), Pr
 
         private const val TITLE_TAG = "settingsActivityTitle"
 
-        const val INITIAL_ARG: String = "settings_initial"
+        const val ARG_FRAGMENT: String = "settings_initial"
     }
 }
