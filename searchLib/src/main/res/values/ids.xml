@@ -4,6 +4,6 @@
 
 <resources>
 
-	<item type="style" name="MyM3AlertDialogTheme" />
+	<item type="style" name="MyM3AlertDialogOverlay" />
 
 </resources>

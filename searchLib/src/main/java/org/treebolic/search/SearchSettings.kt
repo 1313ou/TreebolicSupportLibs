@@ -6,19 +6,14 @@ package org.treebolic.search
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.view.children
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -174,29 +169,10 @@ class SearchSettings : AppCompatDialogFragment() {
         scopeWheel!!.currentItem = scopeIndex
         modeWheel!!.currentItem = modeIndex
 
-        val themedContext = ContextThemeWrapper(requireContext(), R.style.MyM3AlertDialogTheme)
-        val d = MaterialAlertDialogBuilder(themedContext)
-            //return AlertDialog.Builder(ContextThemeWrapper(requireContext(), R.style.MyAlertDialogCustomOverlay))
+        return MaterialAlertDialogBuilder(requireContext(), R.style.MyM3AlertDialogOverlay)
             .setView(view)
             .setPositiveButton(R.string.title_yes) { _, _ -> dismiss() }
             .create()
-        dump(d.window)
-        return d
-    }
-
-    fun dump(w: Window?) {
-        w?.decorView?.let { root ->
-            fun dump(v: View, indent: Int = 0) {
-                Log.d(
-                    "DIALOG", " ".repeat(indent) + v.javaClass.simpleName +
-                            " bg=" + v.background?.javaClass?.simpleName +
-                            " id=" + runCatching { resources.getResourceEntryName(v.id) }.getOrDefault("none")
-                )
-                if (v is ViewGroup) for (i in 0 until v.childCount) dump(v.getChildAt(i), indent + 2)
-            }
-            // post to ensure dialog is fully laid out
-            root.post { dump(root) }
-        }
     }
 
     /**

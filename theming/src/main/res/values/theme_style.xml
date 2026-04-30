@@ -118,9 +118,9 @@
     </style>
 
    <!-- Treebolic M3 alert dialog overlay -->
-    <style name="MyM3AlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <style name="MyM3AlertDialogOverlay" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="android:backgroundTint">?attr/colorCustom</item>
-        <item name="colorPrimary">?attr/colorOnCustom</item>
+        <!-- <item name="colorPrimary">?attr/colorOnPrimary</item>-->
     </style>
 
 </resources>
