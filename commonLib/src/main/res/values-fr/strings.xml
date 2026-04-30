@@ -13,6 +13,6 @@
 	<string name="title_menu_app" tools:keep="@string/title_menu_app">App …</string>
 
 	<!-- Hint -->
-	<string name="hint_search">Charcher …</string>
+	<string name="hint_search">Chercher …</string>
 
 </resources>
