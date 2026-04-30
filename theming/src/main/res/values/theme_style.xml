@@ -4,7 +4,7 @@
 
 <resources>
 
-    <!-- T H E M E S -->
+    <!-- G E N E R A L -->
 
     <!-- ShareActionChooserActivity -->
     <style name="MyTranslucentTheme" parent="Theme.Material3.DayNight.NoActionBar">
@@ -15,8 +15,6 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
-
-    <!-- O V E R L A Y S -->
 
     <!-- Custom overlay -->
     <style name="MyCustomOverlay" parent="ThemeOverlay.Material3">
@@ -44,7 +42,7 @@
         <item name="liftOnScroll">false</item>
     </style>
 
-    <!-- D R O P D O W N -->
+    <!-- D R O P D O W N  (spinner, menu popup)-->
 
     <!-- 1. Dropdown list -->
     <style name="MyDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
