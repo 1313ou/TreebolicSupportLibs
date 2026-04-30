@@ -13,12 +13,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.view.children
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.treebolic.wheel.AbstractWheel
 import org.treebolic.wheel.OnWheelScrollListener
 import org.treebolic.wheel.WheelView
@@ -118,11 +121,6 @@ class SearchSettings : AppCompatDialogFragment() {
 
         // dialog
 
-        // val dialog: Dialog  = AppCompatDialog(requireActivity())
-        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // or
-        // dialog.setTitle(R.string.search_title)
-        // dialog.setContentView(R.layout.dialog_search_settings)
-        // dialog.window?.setBackgroundDrawableResource(R.drawable.bg_semitransparent_rounded)
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_search_settings, null)
 
         // wheel 1abandon
@@ -176,10 +174,29 @@ class SearchSettings : AppCompatDialogFragment() {
         scopeWheel!!.currentItem = scopeIndex
         modeWheel!!.currentItem = modeIndex
 
-        val builder = AlertDialog.Builder(ContextThemeWrapper(requireActivity(), R.style.MyAlertDialogCustomOverlay))
-        return builder 
-            .setView(view).setPositiveButton(R.string.title_yes) { dialog2: DialogInterface, _: Int -> dialog2.dismiss() } 
+        val themedContext = ContextThemeWrapper(requireContext(), R.style.MyM3AlertDialogTheme)
+        val d = MaterialAlertDialogBuilder(themedContext)
+            //return AlertDialog.Builder(ContextThemeWrapper(requireContext(), R.style.MyAlertDialogCustomOverlay))
+            .setView(view)
+            .setPositiveButton(R.string.title_yes) { _, _ -> dismiss() }
             .create()
+        dump(d.window)
+        return d
+    }
+
+    fun dump(w: Window?) {
+        w?.decorView?.let { root ->
+            fun dump(v: View, indent: Int = 0) {
+                Log.d(
+                    "DIALOG", " ".repeat(indent) + v.javaClass.simpleName +
+                            " bg=" + v.background?.javaClass?.simpleName +
+                            " id=" + runCatching { resources.getResourceEntryName(v.id) }.getOrDefault("none")
+                )
+                if (v is ViewGroup) for (i in 0 until v.childCount) dump(v.getChildAt(i), indent + 2)
+            }
+            // post to ensure dialog is fully laid out
+            root.post { dump(root) }
+        }
     }
 
     /**
