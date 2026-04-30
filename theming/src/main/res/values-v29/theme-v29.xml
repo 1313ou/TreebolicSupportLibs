@@ -9,6 +9,9 @@
 		<!-- force dark mode -->
 		<item name="android:forceDarkAllowed">false</item>
 
+		<!-- no scrim -->
+		<item name="android:enforceNavigationBarContrast">false</item>
+
 	</style>
 
 </resources>
