@@ -7,6 +7,9 @@
 	<!-- buttons -->
 	<string name="title_dismiss">Ok</string>
 
+	<!-- menu -->
+	<string name="title_version">Version</string>
+
 	<!-- settings -->
 	<string name="title_settings">Paramètres</string>
 	<string name="title_reset_settings">Effacer paramètres</string>
