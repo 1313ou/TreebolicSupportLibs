@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+	<!-- appname -->
+	<string name="app_name">Treebolic</string>
+
+	<!-- buttons -->
+	<string name="title_dismiss">Ok</string>
+
+	<!-- settings -->
 	<string name="title_settings">Paramètres</string>
 	<string name="title_reset_settings">Effacer paramètres</string>
 
