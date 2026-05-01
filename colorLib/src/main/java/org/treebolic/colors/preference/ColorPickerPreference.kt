@@ -244,7 +244,7 @@ open class ColorPickerPreference : DialogPreference {
             val pref = preference as ColorPickerPreference
 
             // Neutral button to clear value
-            builder.setNeutralButton(R.string.dialog_title_none) { _: DialogInterface?, _: Int ->
+            builder.setNeutralButton(R.string.dialog_title_none) { _, _ ->
                 if (pref.callChangeListener(null)) {
                     pref.value = null
                 }

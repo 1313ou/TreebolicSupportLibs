@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import org.treebolic.makeDialog
 import java.io.File
 import java.io.IOException
 import java.util.function.Consumer
@@ -32,12 +33,11 @@ class EntryChooser(
      */
     fun show() {
         val adapter = ArrayAdapter(context, R.layout.filechooser_entries_zip, list)
-
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle(R.string.chooseEntry)
-        builder.setAdapter(adapter, listener)
-        val alert = builder.create()
-        alert.show()
+        makeDialog(context)
+            .setTitle(R.string.chooseEntry)
+            .setAdapter(adapter, listener)
+            .create()
+            .show()
     }
 
     companion object {
@@ -82,7 +82,7 @@ class EntryChooser(
         @Throws(IOException::class)
         fun choose(context: Context, archive: File, consumer: Consumer<String>) {
             val list = getZipEntries(archive, "(.*gif|.*png|.*jpg|.*properties|.*MF|.*/)", ".*")
-            val listener = DialogInterface.OnClickListener { _: DialogInterface?, which: Int ->
+            val listener = DialogInterface.OnClickListener { _, which: Int ->
                 // The 'which' argument contains the index position of the selected item
                 consumer.accept(list[which])
             }
