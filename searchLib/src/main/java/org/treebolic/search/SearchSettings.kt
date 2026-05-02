@@ -21,6 +21,7 @@ import org.treebolic.wheel.AbstractWheel
 import org.treebolic.wheel.OnWheelScrollListener
 import org.treebolic.wheel.WheelView
 import org.treebolic.wheel.adapters.AbstractWheelTextAdapter
+import org.treebolic.theme.R as ThemeR
 
 /**
  * Search settings
@@ -169,7 +170,7 @@ class SearchSettings : AppCompatDialogFragment() {
         scopeWheel!!.currentItem = scopeIndex
         modeWheel!!.currentItem = modeIndex
 
-        return MaterialAlertDialogBuilder(requireContext(), R.style.MyM3AlertDialogOverlay)
+        return MaterialAlertDialogBuilder(requireContext(), ThemeR.style.MyM3AlertDialogOverlay)
             .setView(view)
             .setPositiveButton(R.string.title_yes) { _, _ -> dismiss() }
             .create()

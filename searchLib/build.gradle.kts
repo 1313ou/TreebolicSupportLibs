@@ -32,6 +32,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":theming"))
     implementation(project(":wheelLib"))
 
     implementation(libs.appcompat)
