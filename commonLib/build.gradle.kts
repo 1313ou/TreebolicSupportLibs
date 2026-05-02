@@ -40,9 +40,9 @@ android {
         // BuildConfig fields
         buildConfigField("int", "VERSION_CODE", vCode.toString())
         buildConfigField("String", "VERSION_NAME", "\"$vName\"")
-        buildConfigField("boolean", "DROP_DATA", "false")
         buildConfigField("String", "BUILD_TIME", "\"$buildTime\"")
         buildConfigField("String", "GIT_HASH", "\"${getGitHash()}\"")
+        // buildConfigField("boolean", "DROP_DATA", "false")
     }
 
     buildFeatures {
