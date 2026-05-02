@@ -5,28 +5,15 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.text.SpannableStringBuilder
-import org.treebolic.common.BuildConfig
+import org.treebolic.common.BuildConfig as Common
 
 object Version {
-    /**
-     * Build time
-     *
-     * @return build time
-     */
-    fun buildTime(): String {
-        return BuildConfig.BUILD_TIME
-    }
 
-    /**
-     * Git hash
-     *
-     * @return git hasj
-     */
-    fun gitHash(): String {
-        return BuildConfig.GIT_HASH
-    }
+    fun buildTime(value: String, repo: String): CharSequence = "$repo build time: $value\n"
 
-    fun appVersion(context: Context): CharSequence {
+    fun gitHash(value: String, repo: String) = "$repo git commit hash: $value\n"
+
+    fun appVersion(context: Context): SpannableStringBuilder {
         val sb = SpannableStringBuilder()
         sb.apply {
             val packageName = context.applicationInfo.packageName
@@ -50,12 +37,8 @@ object Version {
             append(Build.VERSION.CODENAME)
             append('\n')
 
-            append("build time: ")
-            append(buildTime())
-            append('\n')
-            append("git commit hash: ")
-            append(gitHash())
-            append('\n')
+            append(buildTime(Common.BUILD_TIME, "common"))
+            append(gitHash(Common.GIT_HASH, "common"))
         }
         return sb
     }
