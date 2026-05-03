@@ -3,14 +3,9 @@
  */
 package org.treebolic.search
 
-import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.TypedValue
 import android.view.Menu
-import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
-import androidx.core.content.res.use
-import android.R as AndroidR
 
 /**
  * Color utilities

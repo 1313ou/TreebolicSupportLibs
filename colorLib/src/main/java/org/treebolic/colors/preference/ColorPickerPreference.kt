@@ -5,7 +5,6 @@ package org.treebolic.colors.preference
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.content.res.TypedArray
 import android.graphics.Color

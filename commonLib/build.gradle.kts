@@ -4,7 +4,6 @@
 
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Scanner
 
 val buildTime: String = SimpleDateFormat("yyyy-MM-dd_HH:mm").format(Date())
 

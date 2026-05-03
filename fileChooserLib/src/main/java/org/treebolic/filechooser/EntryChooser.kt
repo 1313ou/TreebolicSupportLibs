@@ -6,7 +6,6 @@ package org.treebolic.filechooser
 import android.content.Context
 import android.content.DialogInterface
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
 import org.treebolic.makeDialog
 import java.io.File
 import java.io.IOException

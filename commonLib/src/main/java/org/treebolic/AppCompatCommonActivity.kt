@@ -4,9 +4,7 @@
 package org.treebolic
 
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.StyleRes
-import androidx.appcompat.app.AppCompatDelegate
 import org.treebolic.AppCompatCommonUtils.getThemePref
 
 abstract class AppCompatCommonActivity : BaseActivity() {
