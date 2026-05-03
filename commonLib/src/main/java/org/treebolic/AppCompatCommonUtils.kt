@@ -94,5 +94,5 @@ object AppCompatCommonUtils {
      * @param context context
      * @return true if system has webview provider
      */
-    fun hasWebview(context: Context,) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_WEBVIEW)
+    fun hasWebview(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_WEBVIEW)
 }

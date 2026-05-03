@@ -199,7 +199,7 @@ abstract class WheelScroller(context0: Context?, listener0: ScrollingListener) {
 
             override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
                 this@WheelScroller.lastScrollPosition = 0
-                scrollerFling(this@WheelScroller.lastScrollPosition, velocityX.toInt(), velocityY.toInt())
+                scrollerFling(0, velocityX.toInt(), velocityY.toInt())
                 setNextMessage(this@WheelScroller.messageScroll)
                 return true
             }
