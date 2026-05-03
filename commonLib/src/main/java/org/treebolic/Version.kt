@@ -5,7 +5,6 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.text.SpannableStringBuilder
-import org.treebolic.common.BuildConfig as Common
 
 object Version {
 
@@ -36,9 +35,6 @@ object Version {
             append(' ')
             append(Build.VERSION.CODENAME)
             append('\n')
-
-            append(buildTime(Common.BUILD_TIME, "common"))
-            append(gitHash(Common.GIT_HASH, "common"))
         }
         return sb
     }
