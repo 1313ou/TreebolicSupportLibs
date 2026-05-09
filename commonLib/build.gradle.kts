@@ -26,24 +26,19 @@ plugins {
     alias(libs.plugins.androidLibrary)
 }
 
-private val vCompileSdk by lazy { rootProject.extra["compileSdk"] as Int }
-private val vMinSdk by lazy { rootProject.extra["minSdk"] as Int }
-private val vCode by lazy { rootProject.extra["versionCode"] as Int }
-private val vName by lazy { rootProject.extra["versionName"] as String }
-
 android {
 
     namespace = "org.treebolic.common"
 
-    compileSdk = vCompileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = vMinSdk
+        minSdk = libs.versions.minSdk.get().toInt()
         multiDexEnabled = true
 
         // BuildConfig fields
-        buildConfigField("int", "VERSION_CODE", vCode.toString())
-        buildConfigField("String", "VERSION_NAME", "\"$vName\"")
+        buildConfigField("int", "VERSION_CODE", libs.versions.versionCode.get())
+        buildConfigField("String", "VERSION_NAME", "\"${libs.versions.versionCode.get()}\"")
         buildConfigField("String", "BUILD_TIME", "\"$buildTime\"")
         buildConfigField("String", "GIT_HASH", "\"${getGitHash(File("TreebolicSupportLibs"))}\"")
         // buildConfigField("boolean", "DROP_DATA", "false")
